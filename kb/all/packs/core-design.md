@@ -1,0 +1,3675 @@
+# core-design
+
+## difficulty and challenge
+- [model] Challenge far below skill produces boredom, challenge far above skill produces frustration, and high-stakes danger produces anxiety; flow lies between these. When: Judging whether difficulty suits a player's current level. Why: Balance between challenge and skill determines the emotional state.
+- [model] Each challenge has an interesting introduction followed by stepped challenges that rise in difficulty.
+- [model] A good interest curve has labeled parts: prior expectation, an early hook, rising interest with small rests, a climax, and a resolution leaving the player satisfied.
+- [model] The classic pacing curve starts slow, rises through several cycles of tension and calm, reaches a climax, and then falls.
+- [model] A middle path estimates player performance like dynamic difficulty adjustment but lets the player choose the difficulty level. When: Designing difficulty systems. Why: Players keep agency over challenge while the system still supports them.
+- [model] A challenge is won when character power from time spent, plus player skill, plus combat luck, exceeds its difficulty.
+- [definition] Dynamic difficulty adjustment is a negative feedback loop that changes challenge in real time based on estimated player performance or payment model, instead of a fixed setting. (x2)
+- [definition] A positive feedback loop amplifies its own effect, usually favoring the player already ahead; 'positive' means additive, not good, so reading it as good misidentifies the effect. When: When analyzing designs or bug reports. Why: Positive refers to amplification, which can be harmful.
+- [definition] Challenge is not difficulty alone; a task is challenging only relative to a particular player's ability, so the same task can bore experts and overwhelm novices.
+- [definition] Perceived difficulty comes from four elements: player skill, virtual skill (power), virtual challenge (enemy power or numbers), and skill challenge (new ways of playing). Why: Each element contributes separately to how hard a challenge feels.
+- [definition] Balance is the subjective sense of fairness; progression should feel earned through choices and every player should believe they can win through skill or luck.
+- [definition] Hard Fun is enjoyment of mastering a challenge; Easy Fun is exploration, curiosity, and joy of interaction.
+- [definition] Challenge is a core pleasure because every game poses a problem to solve, though some players need more than challenge alone.
+- [definition] A challenge consists of two parts: goals and constraints.
+- [definition] Depth is the maximum skill at which a game stays interesting, while accessibility concerns the minimum skill at which it becomes playable.
+- [definition] A deliberately unfair game is an asymmetric design that accepts unfairness on purpose, as a third option beyond symmetry and balanced asymmetry.
+- [definition] A difficulty curve describes how challenge changes across a game; balance means the player is challenged at their current ability relative to the designer's intent and target audience. Why: Balance is judged against what the game is meant to do for its players.
+- [mechanism] Too little challenge bores players; too much causes anxiety and frustration, which can drive them away toward a more rewarding activity. (x4)
+- [mechanism] Dynamic difficulty adjustment raises difficulty when the player does well and lowers it when they struggle; as negative feedback, it punishes success and can make the game feel unfair. (x2)
+- [mechanism] Facing a more skilled opponent causes anxiety; flow returns by building skill, and lowering the challenge is harder once the player has noticed it.
+- [mechanism] A goal with a constraint, such as a time limit, puts an implicit question in the player's mind about whether they can achieve it.
+- [mechanism] Struggling against a skill test produces a pleasurable state of focus, and passing it brings energy, capability, and dominance. When: When a game is built around skill tests. Why: Effort on a test followed by success generates focus and then mastery feelings.
+- [mechanism] When some strategies are obviously easy and others obviously hard, players self-select the difficulty that matches their skill, without any settings menu. When: When designing strategy options of differing difficulty. Why: Players pick the option that fits their ability.
+- [mechanism] Raising challenge as the game progresses can build a rising sense of tension.
+- [mechanism] Players usually need progressively more experience points for each successive level. When: When designing experience levels.
+- [mechanism] A persistent bonus for the leader makes the leader more robust, which can turn late play into one-against-many.
+- [mechanism] Permadeath erases a character on death, so one loss can wipe out a run that may exceed 50 hours. When: long roguelike runs.
+- [mechanism] A power-up loses value when it duplicates an effect the player already holds. When: power-ups overlap in their effects. Why: Redundant effects add nothing new, so players lose incentive to collect them.
+- [mechanism] A power-up that makes the character pass through enemies reduces the challenge to timing jumps alone. When: an invulnerability power-up is granted. Why: Removing the threat of enemy contact leaves only the remaining obstacles as challenge.
+- [mechanism] Competition makes the effective skill ceiling unlimited, since a player can only become better than others and never reach completion.
+- [mechanism] A mild conditional penalty for a failure state can correct drift in play by encouraging careful behavior without punishing the player harshly. When: Single-player games where a checkpoint return is the failure consequence. Why: A small cost for failure steers players back toward careful play.
+- [mechanism] Pass/fail challenges suit only players whose skill falls in a narrow band; weaker players always fail and stronger players find no challenge.
+- [mechanism] Softer failure outcomes such as a slowed recovery or an incapacitated ally let the game continue, keeping players out of frustrating dead ends. When: When a failed challenge would otherwise end play outright. Why: Continuing play spares players who fail from frustration while still making failure costly.
+- [mechanism] Elastic fallbacks such as a weak infinite-ammo weapon or a regenerating minimum health pull a stuck player back to a state where challenges are hard but doable. When: When a player falls into a state where progress is near impossible. Why: Restoring a minimum capability prevents permanent dead ends.
+- [mechanism] Combining horizontal and vertical trajectories makes landings on specific platforms hard; consistent spacing makes that skill learnable.
+- [mechanism] Level sets built by designers of different skill can show a noticeable difficulty jump, which harms balance, pacing and enjoyment.
+- [mechanism] Low starting health and stamina make early exploration risky, which reinforces a limited lesson plan.
+- [mechanism] Optional challenge modifiers, such as more damage or exploding enemies, let players switch between levels for extra money and experience, keeping the default accessible. When: When designing optional challenge modifiers for players who vary widely in taste and skill. Why: Players who want challenge opt in for rewards, while others keep the easier default.
+- [mechanism] Giving trailing racers the strongest items and leaders weaker ones keeps the field close and nudges racers toward the middle of the flow channel. Why: strong items let trailing racers catch up.
+- [mechanism] Within one area, difficulty jumps when the player enters a new space after mastering the previous one. When: Player has mastered the previous space and enters a new one in the same area.
+- [mechanism] A boss at the end of an area causes a brief difficulty spike, followed by a power bump from boss loot or the next area's upgrades.
+- [mechanism] Under Elo with luck, players seek much stronger opponents for big gains; under masterpoint-style scoring, they seek weak opponents, since wins earn equal points. When: Choosing opponents under each scoring system. Why: Point payoffs differ by opponent strength depending on scoring rules.
+- [mechanism] Enemies that speed up as the player destroys more of them tie rising tension directly to player progress. When: When a fixed set of enemies must be cleared. Why: Progress itself raises the stakes.
+- [mechanism] Dynamic difficulty adjustment changes challenge on the fly to fit player skill, but it can break the sense that opponents are fixed challenges to master. When: When considering automatic difficulty scaling. Why: Players who know enemy strength depends on their skill stop treating opponents as fixed obstacles.
+- [mechanism] Adaptive difficulty lowers a hidden difficulty level after each failure and raises it after each success, within fixed minimum and maximum bounds.
+- [mechanism] Raising horde frequency as players master an area, and lowering it when they struggle, keeps the challenge matched to their skill.
+- [behavior] In a low-skill idle game where power rises steadily, perceived challenge falls as the player improves, so the game must add new difficulty to keep the player challenged. When: games where power grows without new skill demands. Why: Rising power and learned skill both reduce perceived challenge.
+- [behavior] Evenly matched players tend to produce the most exciting games because the outcome stays uncertain. Why: Uncertainty keeps players engaged through the match.
+- [behavior] Learners who improved most rated the training as challenging but not too challenging. When: when training games are tuned for learning gains. Why: Difficulty in a productive middle range supports engagement and improvement.
+- [behavior] Players will retry a hard challenge hundreds of times when each attempt might end in a win. When: challenges with an uncertain chance of success per attempt. Why: Each attempt carries a chance of reward.
+- [behavior] The relationships between control parameters shape the overall feel of control more than any single mapping does. When: Tuning movement and control systems. Why: Players perceive feel through how parameters relate, such as speed against turning radius.
+- [behavior] Several unusually long completion times can mean players were sandboxing the level, or were confused by a core mechanic yet kept playing instead of quitting. When: several sessions far longer than typical. Why: Confusion does not always cause players to quit.
+- [behavior] Players usually run toward the next action, so pacing can be shaped subtly through narrative cues in the path and rewards for exploration. When: when pacing a level. Why: players head for the next goal unless drawn elsewhere.
+- [behavior] In level-based F2P games, players often lose when they are close to finishing a level.
+- [behavior] Players who fail just before a regularly scheduled bonus are motivated to keep spending to reach it. When: a bonus appears after a fixed run of stages. Why: anticipation of the bonus outweighs the setback.
+- [rule] Use zigzag curves alternating hard fun with easy fun, such as a relaxed phase after a main challenge; they prevent excessive frustration and are more interesting than a straight climb. When: Sequencing challenge and relief; designing difficulty progression. Why: Continuous difficulty can cause excessive frustration. (x2)
+- [rule] In long PvE games, raise difficulty with player skill through play, offering new strategies rather than more obstacles in less time; this rising challenge is a difficulty curve. When: In any long PvE game where players improve within one playthrough, when designing challenge progression. Why: Repeating the same challenge faster stops producing fiero. (x2)
+- [rule] Plan difficulty curves that rise with player skill rather than staying flat, since flat or falling challenge may convince players they have already conquered it and leave. When: Designing progression for any game. Why: Flat challenge bores players once mastered.
+- [rule] Early on, choose intentionally which spots should test players and which should not, so future feedback has benchmarks to measure against. When: When drafting a UX strategy's opening phase. Why: Defined goals reveal which pain points deserve priority and which can be ignored.
+- [rule] Let players choose difficulty from a wide spectrum of activities and difficulties, since perceived difficulty is subjective and changes with the player's state. When: Designing difficulty options. Why: A fixed difficulty suits some players and frustrates others.
+- [rule] Balance challenge so players stay engaged, avoiding both frustration and boredom.
+- [rule] Offer variable difficulty levels with descriptive, non-judgmental labels, such as story mode rather than easy.
+- [rule] Offer customizable handicaps so players of different levels can compete at challenges they both enjoy.
+- [rule] Offer two or more related puzzles at once where one blocked challenge could halt all progress.
+- [rule] Balance a game so several strategies complement one another, with foreground and background both meaningful and interlocked.
+- [rule] Stop ongoing harm with real penalties such as ranking or points deductions, or brief bans. When: when a violation causes ongoing harm.
+- [rule] Check whether concentrating points in one or two attributes beats spreading them out, and whether any attribute is strong only for certain character types. When: balancing a point-buy attribute system.
+- [rule] Compare skill demands of games only within the same kind of skill, such as tactical depth against tactical depth. When: Comparing two games' skill requirements. Why: Different skill kinds are not measured on a common scale.
+- [rule] Challenge should test strategic decisions, such as choosing which item to use in a situation, not rote memorization of arbitrary details like recipes. When: deciding what players must memorize.
+- [rule] Do not place players in demanding multitasking situations unless multitasking is the challenge, especially while they are learning. When: learning phases or when multitasking is not the challenge. Why: demanding dual tasks overload working memory.
+- [rule] Use elastic challenges with several success levels so one challenge gives achievable but demanding goals to a wide range of skill.
+- [rule] Make each level harder than the last so that built skill is tested again, pairing this with a release-and-tension pattern.
+- [rule] Avoid challenges before players are ready, and provide healing when it is needed.
+- [rule] Combine mechanics only after each has been learned separately, when players need to use them together.
+- [rule] Use player personality types to inform multiplayer gamespace decisions.
+- [rule] Overall difficulty should suit the target audience so the game is neither too hard nor too easy for the people playing it.
+- [rule] Use catch-up item systems only where keeping the field close is part of the intended experience, not as a universal rule.
+- [rule] In casual games, losing may not be possible; the design focus shifts to how fast or slow progress is. When: Designing a casual game.
+- [rule] Balance risks from player skill just as carefully as chance elements such as drawn cards or die rolls.
+- [rule] Offer player choice over balance mainly through difficulty levels. When: Deciding where players may adjust balance. Why: Difficulty levels let players pick challenge without breaking the designed balance.
+- [rule] Guarantee a minimum score for any round, for example a 50-point bonus when the score would otherwise be zero, so no attempt ends at zero. When: score-based games. Why: A floor keeps effort visibly rewarded.
+- [rule] Offer a locked top-difficulty mode that disables adaptation, so experts who would otherwise manipulate it get an honest challenge.
+- [rule] Use adaptive difficulty only for games whose players will not reach very high skill, because expert players decode and exploit it, so expert-facing games need more honest difficulty. When: Choosing between adaptive and honest difficulty. Why: Experts detect and exploit hidden adjustments.
+- [heuristic] Raise challenge and probabilities gradually with skill; sudden spikes or sharp drops within a short span usually signal imbalance unless there is good reason. When: When designing difficulty progression. Why: Smooth scaling keeps challenge matched to growing skill; sudden deviations break players' expectations of the curve. (x2)
+- [heuristic] Scale challenge with player skill to keep play in the flow zone, neither too easy nor too hard; too easy becomes boring and too hard becomes stressful. (x2)
+- [heuristic] Frequent checkpoints let a large open world work without rooms, since losing a challenge is a minor setback; long gaps make failure serious and undermine learning through repeated failure. Why: A light tone softens failure.
+- [heuristic] Keep failure gentle while a mechanic is new, and apply strong challenge once players understand the basics and are engaged. When: early learning; especially in free-to-play games.
+- [heuristic] Offer difficulty settings or skill brackets when players differ widely in their ability to manage hit points.
+- [heuristic] An action is challenge if its result is predictable, its goal is clear and its feedback immediate; otherwise it is interference.
+- [heuristic] Not every successful experience follows the exact ideal curve, but most successful ones share some of its elements.
+- [heuristic] When players can set enemy number and hostility, still provide defaults that give a good first play experience. When: games with adjustable enemy settings.
+- [heuristic] An added option may be ignored by some optimal strategies, so its value as a balance addition should be checked, not assumed. When: Evaluating a new option that creates infinitely many optimal mixes. Why: Some optimal solutions drop the option entirely.
+- [heuristic] Depth can be shaped by tuning both the input-to-response mapping and the challenges the player faces.
+- [heuristic] Prioritize mechanics-first design when a perfectly balanced, clear challenge matters most. When: the core goal is a balanced, clear challenge. Why: mechanics-first design produces balance and clarity.
+- [heuristic] Use the hardest standard setting from a fresh start as a difficulty benchmark; a level the designer cannot beat that way is likely too difficult.
+- [heuristic] Offering many activities and spaces suited to different play styles encourages unplanned play, especially in multiplayer games with many character types. When: a game has many play styles or character types. Why: varied options let players choose their own paths.
+- [heuristic] Check difficulty, especially in early levels; avoid sudden spikes by moving the challenge later or adding easier levels before it. When: observing a playtest of early levels. Why: sudden jumps frustrate new players.
+- [heuristic] Widen jumps and chain them in quick succession as levels progress.
+- [heuristic] Difficulty should rise mostly in step with skill and power, with occasional deliberate spikes on top; a well-balanced curve need not be a perfect progression.
+- [heuristic] Limited hardware can still produce meaningful, rewarding play when designers find unique uses for its constraints. When: Designing within tight technical limits. Why: Constraints can focus designers on distinctive, rewarding solutions.
+- [heuristic] Lives and scoring that reward improved skill motivate players to get better in anticipation of greater rewards. When: designing the rules that frame player progress. Why: Anticipated rewards tied to skill give players a reason to improve.
+- [heuristic] Expect difficulty pitching a truly original design aimed at a niche audience in a market that favors fewer, bigger titles.
+- [heuristic] Layering explicit and adaptive difficulty lets a game serve novices while staying honest for experts, widening its skill range.
+- [heuristic] Narrative games usually balance for middle or bottom skill levels because they are not played as intensely.
+- [procedure] 1) Alternate demanding challenges with easier moments, where players feel powerful against weaker enemies. 2) Let players meet lower-level enemies now and then, ideally ones they once found hard. 3) Make progress visible, for example by tracking defeated foes. Why: Players relax and feel dominant in easier stretches, which expresses mastery; alternating intense challenge with feeling powerful is especially compelling.
+- [procedure] 1) Decide in advance what percentage of players should complete the game. 2) Design the difficulty curve so that target share of players can finish. 3) Keep the first one or two levels simple. When: Planning difficulty for a game with a completion goal. Why: Early success builds confidence, and confident players persist.
+- [procedure] 1) Compare the model's ranking with tier lists, popular high-profile deck lists and market prices relative to rarity. 2) Check that objects rated above the curve top the lists and those rated below are rarely played. 3) Investigate each mismatch.
+- [procedure] 1) Ramp difficulty numerically in a spreadsheet. 2) Add difficulty spikes by hand on top of the ramp.
+- [procedure] 1) Draw the curve of the experience's interest. 2) Check for a hook, rising interest with rests, and a grand finale. 3) Revise the weak parts. 4) Compare with a curve drawn by playtesters.
+- [procedure] 1) Write a sentence or paragraph stating the object's purpose. 2) List its design knobs, the numbers that may change. 3) List the numbers and constraints that must not change to keep the object's identity.
+- [procedure] 1) Estimate the performance of a theoretically perfect player. 2) Compare it with the most skilled possible human. 3) If they match, the game has a reachable ceiling; if perfect play beats every human, the game is limitlessly deep.
+- [procedure] 1) Set all payoffs to zero and probabilities to sum to 1. 2) Eliminate variables until two equations remain. 3) Express the other probabilities in one free variable. 4) Keep every probability between 0 and 1 to find the valid range. When: Solving a symmetric zero-sum game with infinitely many solutions.
+- [procedure] To move a game from chance toward skill, replace random elements with player choices, such as letting players pick cards, starting points, or equipment instead of generating them randomly. When: adjusting a game's position on the play matrix.
+- [procedure] 1) Offer hints when the player is stuck. 2) Secretly adjust difficulty. 3) Provide alternative challenges that the player can take instead. When: When a single-player player cannot pass a challenge. Why: Each option lets the player keep progressing without fully blocking play.
+- [procedure] 1) Decide early which areas should challenge players. 2) Reduce navigational load in the remaining areas.
+- [procedure] 1) Scale difficulty by adding more monsters, tougher monsters, harder terrain and fewer health packs. 2) Let the player's skill growth stand in for character growth. When: Game has no character levels, as in most first-person shooters.
+- [procedure] 1) Set the maximum enemy count for a location. 2) Play the encounter at maximum spawn with the expected damage range. 3) Confirm the player can still survive consistently. When: varying enemy spawn counts. Why: Random spawn ranges must stay survivable at their upper bound.
+- [procedure] 1) List the challenges in a sequence. 2) Estimate each challenge's virtual challenge, skill challenge, virtual skill, and player skill. 3) Compute perceived challenge for each. 4) Plot the values to check whether difficulty rises too fast or too slow. When: checking a difficulty progression. Why: Plotting the sequence reveals spikes and flat stretches before players reach them.
+- [metric] Death count can indicate challenge, and when graphed over time for a long game it can resemble an interest curve.
+- [tradeoff] Disclosing dynamic difficulty makes its punishment of success an expected rule, but aware players may game it or see events as artificial, so hidden adaptation can work better. When: When considering dynamic difficulty adjustment in a game. Why: Undisclosed adjustment makes players resent it, while awareness invites exploitation and undermines trust in events. (x2)
+- [tradeoff] Closing the gulf of execution removes challenge, while some friction is necessary because challenge requires the possibility of failure; the design task is distinguishing meaningful challenge from usability problems. Why: Games depend on overcoming obstacles between intent and action to create mastery.
+- [tradeoff] A medium or low skill ceiling can cause skill play to become dull once reached, but a game can stay excellent by offering art, exploration, and narrative beyond skill. Why: Players stop improving once they reach the ceiling.
+- [tradeoff] When one special option triggers a hazard that the other option can avoid, each option carries a different cost.
+- [tradeoff] Ruthless games (high probability, high penalty) produce extreme caution, masocore games (high probability, low penalty) encourage repeated attempts, punishing games (low probability, high penalty) produce disproportionate caution, and casual games (low on both) remove anxiety. When: choosing failure penalty and frequency. Why: The combination of loss probability and size determines the play style.
+- [tradeoff] Sophisticated clue systems cost much to build, while simpler fixes such as a prompt or environmental cue can be enough.
+- [tradeoff] Making a game both deep and accessible is difficult, because gentle ramps suit learners while limitless depth can make early lessons unclear and opponents exploit mistakes. When: When designing a game meant for both novices and experts. Why: Accessible ramps and deep competitive play pull in different directions.
+- [tradeoff] Hard turn or time limits fix game length directly and can be compelling, but they may signal too little playtesting; tuning progression addresses length at its source.
+- [tradeoff] Dynamic difficulty adjustment adapts to player skill and performance automatically, but it is harder to implement and tune than player-selected difficulty levels.
+- [tradeoff] Designers can either make a game harder than the market average or give players tools to adjust difficulty themselves. The right choice depends on genre, era and business model. When: When deciding how hard a game should be relative to peers. Why: Average difficulty varies by genre, era and business model, so the target must be set against them.
+- [tradeoff] Offering a difficulty change after repeated deaths removes the excuse for dying again, but some players find it patronizing. When: Designing difficulty prompts after failure. Why: The prompt helps stuck players but can feel condescending.
+- [pitfall] Opening that kills players while they learn controls, or packs every mechanism in too fast with punishing challenges, frustrates players and disrupts learning, so playtesters cannot finish. (x2)
+- [pitfall] Challenge is only one emotional trigger; treating it as necessary for every game narrows the emotions a design can reach, since many games create strong emotion without a predefined objective. When: When defining what a game must contain. Why: Restricting design to challenge excludes other emotional triggers.
+- [pitfall] Direct questions about difficulty tend to produce requests for easier play.
+- [pitfall] When players must prepare for future challenges they cannot foresee, such as during character creation, they default to the most familiar option. When: Character creation before players know the challenges. Why: Unfamiliar options offer no basis for prediction, so players pick the known choice.
+- [pitfall] A goal that seems impossible makes players give up, because they stop believing they have a real chance. When: Setting goal difficulty. Why: Belief in success drives continued effort.
+- [pitfall] Lowering difficulty after repeated defeats can feel insulting and disappointing to players, because it removes the satisfaction of mastering a challenge through practice. When: When a game makes enemies easier after the player keeps losing. Why: Players who improve through practice want their mastery to be earned against the same challenge.
+- [pitfall] Setting challenge too high early in a game produces frustration and can drive players away.
+- [pitfall] Setting challenge at the right moment is hard, and developers tend to overestimate what is needed.
+- [pitfall] Novice designers often confuse real and virtual skill, so keep the two clearly distinct in design.
+- [pitfall] Adding player power in a way that removes challenge destroys the wish fulfillment the pairing was meant to create. When: increasing player power.
+- [pitfall] Treating skill and luck as a single slider hides games with high amounts of both, or little of either.
+- [pitfall] Including every version of a challenge in one level leaves players stuck; spread the variations across the game. When: designing levels with a challenge type. Why: too many variants at once overwhelm learning.
+- [pitfall] Do not let difficulty and stress rise together, since the harder the game gets, the harder it feels, which seems unfair.
+- [pitfall] Making late levels so hard that most players quit causes frustration and abandonment, even though extra difficulty can extend play.
+- [pitfall] A game that claims to be fair while secretly manipulating numbers will frustrate players who discover it.
+- [pitfall] Irregular speed changes from poor balance can look like intentional variety but are usually a defect. Why: Unplanned spikes and drops in pace are typically caused by balancing errors rather than design choices.
+- [fact] Practicing interest curve drawing can give designers insights that others miss.
+- [fact] Balance matters mainly because it makes a game feel fair, and fun is only one possible goal; some games aim at other experiences such as art. When: Deciding how much balance matters. Why: Balance serves the experience the game intends.
+- [fact] A balanced game is not necessarily fun, and a fun game is not necessarily balanced. When: Judging balance and enjoyment. Why: The two qualities vary independently.
+- [fact] In the 1970s and 1980s games were harder and longer because players were assumed to improve, so designers filled the game space and characters often died for trivial mistakes. Why: Designers assumed players would get better over time.
+- [fact] By the mid-1990s difficulty levels became common to cover a range of ability and taste, and expert-level modes were seen either as a badge of honor or as a frustration. Why: Players of varied ability needed options.
+- [fact] In the mid-2000s player-created modes such as permadeath became common, restarting the game from scratch on death.
+- [fact] In the 2010s designers combined accessibility options with optional challenge, giving players both easier assist features and harder opt-in modes within one game.
+- [fact] Each difficulty level is a different balance of the same system variables, not a separate game. When: Designing multiple skill levels.
+- [fact] The interest-curve approach applies to any entertainment experience, including rides, films, and games.
+- [fact] No game can stretch one simple skill across a broad range, because players eventually exhaust aiming, movement, or map knowledge.
+- [fact] Fairness and depth are the goals balancing achieves most directly, so they stand above the other goals it can serve. Why: Balancing is the key method for reaching them.
+- [fact] Courses become harder through sharper and more frequent turns and through more obstacles.
+- [fact] One experience can be built from several physical forms, such as a window, a hole in a surface, or a gap in foliage.
+- [fact] Some games intend repeated deaths followed by eventual progress, while games for very young children skew so far toward the player that losing is nearly impossible. When: When judging whether a difficulty level is appropriate. Why: Acceptable difficulty depends on the intended experience and audience.
+- [fact] Average game difficulty has generally eased over time, so older hard games were often aimed at average audiences of their era. When: When comparing difficulty across release eras. Why: Player expectations and design norms changed across decades.
+- [fact] Difficulty curve can mean learning curve, monster strength relative to the player, or competitive level between PvP arenas. When: When reading design documents that use the term. Why: The same phrase refers to different measures in different contexts.
+- [fact] Games commonly offer several difficulty levels, where higher levels give the AI power bonuses or reduce the player's power; this is relatively cheap to design and build.
+- [fact] The difficulty dial applies at every scale, from a single encounter to the whole game.
+- [fact] Deliberately punishing games set high difficulty by design, while meditative games keep pressure very low by design.
+- [fact] Difficulty tiers can be easy (little resistance), normal (tuned for typical builds), hard (challenging for typical builds), and hardest (challenging even for optimal builds).
+- [fact] Balancing a fighting roster by hand is hard, since each character has many numbers and players cannot customize move sets.
+
+## multiplayer and social play
+- [model] Online friendships pass through three phases: breaking the ice, becoming friends, and staying friends; a game should support all three, not only the first two.
+- [model] Social progression loops are expression leading to cosmetics, connection leading to guilds, superiority leading to leaderboards, and community value leading to an influence loop.
+- [model] Community rests on four elements: membership (a sign that you belong to the group), influence (sway over outcomes), meeting of needs through integration, and shared emotional bond.
+- [model] Motive disposition theory names three implicit social motives: power, achievement, and affiliation.
+- [definition] Gift giving pleasure is the enjoyment of making someone else happy through a surprise.
+- [definition] Social progression loops (expression, connection, superiority, community value) only have meaning when players interact with each other.
+- [definition] A two-player card game in which each player uses a custom 50-card deck and the players alternate turns until one loses.
+- [definition] Interference is unpredictable game response that arbitrarily obscures player intent, adding noise between what the player intends and what happens.
+- [definition] A persistent shared world keeps existing across sessions and users, rather than resetting when each person leaves.
+- [definition] In unilateral competition, two or more participants oppose a single participant.
+- [definition] In single player versus game, one player competes against the game system, the most common digital pattern.
+- [mechanism] Title odds depend on each player's full path, so seeding, not only match odds, strongly shapes who wins a single-elimination bracket, since small per-match skill edges compound across rounds. When: when comparing single elimination brackets. Why: A winner must pass every round in sequence.
+- [mechanism] Friends lists drive engagement in online social games for many women, because playing with real friends builds real relationships.
+- [mechanism] A negative loop runs from sociopathy to griefing, which brings negative attention.
+- [mechanism] Players who jointly own property must communicate and cooperate, so group ownership quickly turns a set of players into a community. Why: Shared stakes require ongoing coordination and friendliness.
+- [mechanism] Relationships formed around a game create an emergent layer that can keep players engaged even after official support ends.
+- [mechanism] Social experiences succeed when they move a relationship's status, such as stranger to friend or low to high standing. When: designing social experiences.
+- [mechanism] When a visible player's mistakes can damage reputation in front of teammates, the moment becomes tense; skilled play builds reputation while errors erode it. When: decisive moments watched by a group. Why: observers attach social consequences to each action.
+- [mechanism] Showing other agents' key values lets players notice large deviations from their own, prompting them to check for an error or an unusual strategy. When: The player can compare their values with visible competitors' values.
+- [mechanism] Multiplayer games assign each player a precise role, so one player's unusual choices can upset balance for everyone. The same behavior in single-player is rarely fatal. When: multiplayer games with defined roles. Why: Each role is tuned against the others, so deviation breaks the tuning.
+- [mechanism] Rewarding only the final blow invites kill stealing, as griefers wait near fights and strike when enemies are nearly defeated.
+- [mechanism] Disruptive behavior that goes without consequences is tolerated and tends to spread through the community. Why: Without consequences, others see the behavior as acceptable.
+- [mechanism] A shared objective alongside individual goals produces shifting alliances, since players must cooperate on the common aim while competing for their own. When: Multiplayer games with shared and private victory goals.
+- [mechanism] A large player count dilutes the effect of divergent goals, since one goofing-off player matters far more on a team of two than on a team of twelve.
+- [mechanism] When two throws match and one differs, the lone thrower gains 1 point per opponent it beats and loses 1 per opponent beating it; the matching pair get the reverse. When: two throws match and one differs.
+- [mechanism] Persuasive play works by being disruptive and strange rather than seamless and comfortable, which encourages deliberation.
+- [mechanism] Player choices, such as where a piece is moved, change relationships among objects, so the same setup can evolve in different ways.
+- [mechanism] Information every player shares cannot reveal a winner alone, so shared public state adds decisions without creating obvious answers.
+- [mechanism] Interdependency creates shared victory but forces players to suffer for others' failures; the best designs keep shared victory while removing shared failure. When: designing team or multiplayer games. Why: Players are forced to bear costs caused by teammates, which creates frustration.
+- [mechanism] A shared physical display viewed from several sides can use per-player fog-of-war, since one viewpoint cannot show every side at once.
+- [mechanism] Placing trainers and vendors for many classes in one place encourages players to mingle.
+- [mechanism] Multiplayer pacing alternates high and low action, and spawn points give players a moment to refresh.
+- [behavior] Speaking aloud can make some players more careful, so their behavior no longer reflects natural play. When: during think-aloud sessions.
+- [behavior] Players carry habits from other games into a new community, and a design can override them by shaping the expected tone. When: When players move between online games with different social norms. Why: Environment and available communication tools guide conduct more than prior habits.
+- [behavior] When one player is clearly ahead, others gang up on them, and players often overshoot by destroying the leader completely, which makes doing well feel punished. When: In multiplayer games with a clear leader. Why: Negative feedback from opponents is useful but tends to be overapplied.
+- [behavior] Players enjoy acting out social roles: top players enjoy power, underdogs enjoy the fight, and upsets feel gratifying. When: Games with visible ranking and social hierarchy. Why: Roles give players emotional stakes beyond winning.
+- [behavior] Open trading and at-will challenges let player reputations form around strong play, lucky wins and bluffing.
+- [behavior] Players who organize their own parties or play with friends tend to treat cutscene waits as a shared experience and tolerate them. When: self-organized or friend groups. Why: Shared goals and social bonds make waiting acceptable.
+- [behavior] A player who leaves a multiplayer game is pursuing a divergent goal, since they want something else while remaining players want to continue.
+- [behavior] Girls in group play socialized more, shouting warnings and suggestions and holding face-to-face huddles to divide responsibilities. When: cooperative group play in a shared space.
+- [behavior] Leading players cannot relax, since a strong item might hit them at any moment. When: a race uses catch-up item distribution. Why: strong items can be aimed at the leader.
+- [behavior] Theft of items attracts griefers because items give players power, and victims feel violated.
+- [behavior] In click-based social games, losing progress is nearly impossible and skill only speeds progress.
+- [behavior] In social deduction games, players gather information by asking questions and reading other players' faces, which adds a social layer to logic. When: when deduction happens among several players.
+- [behavior] Most players in persistent online worlds dislike malicious attacks on other players, while a minority sees them as adding richness. When: Persistent multiplayer worlds that allow player-on-player attacks.
+- [behavior] Players read coordinated tactics such as ambushes into enemies that each run simple independent rules, though no coordination is coded.
+- [behavior] Crowds watching together seem to sense one another's reactions, which deepens their shared feeling. When: a crowd watches the same event together.
+- [behavior] Adults aged 25 to 35 are mostly casual players whose time is scarce, while hardcore players in this group buy many games and influence their social network's purchases. When: Designing for adults aged 25 to 35. Why: Family formation makes time precious, and heavy buyers shape purchases in their social circles.
+- [behavior] Multiplayer play draws players more strongly than solo play because it meets basic social needs. When: comparing multiplayer with single-player games. Why: Social belonging sits lower in the hierarchy than self-esteem, so meeting it exerts a stronger pull.
+- [behavior] Judging whether an action will succeed depends heavily on how skilled players think their opponent is.
+- [behavior] Players may perceive a program's hidden knowledge, such as knowing every card, as cheating even when it never uses that knowledge. When: A program holds information the player cannot see. Why: Players judge fairness by what the program could know, not only by what it does.
+- [behavior] Games give players a socially safe way to see how others act under stress, which is part of why people like to play together. When: Players play with others.
+- [behavior] Games give people something to share and focus on, so they can gather and spend time together without needing awkward conversation.
+- [behavior] People need to feel part of something, and this social need is a powerful motivator for continued play.
+- [behavior] Most people prefer playing with family and friends rather than alone, yet many such relationships, like couples or remote grandparents, remain underserved by games.
+- [behavior] Players taking opposing sides of a conflict simulation often first think a few simple moves will resolve it, then find pressure on both sides makes it far harder. When: a simulation of a conflict played from both sides. Why: Experiencing both sides' pressures exposes complexity hidden from a single view.
+- [behavior] When new players have a safe starting zone, hostile players can wait just outside it to attack newcomers. When: open multiplayer worlds with safe zones. Why: The safe-zone boundary becomes a predictable ambush point for opponents.
+- [behavior] A player can be near the top of a local list even when only one player is number one worldwide, so local scopes can make players feel highly ranked. When: when a game offers local rank lists. Why: smaller comparison groups make standing look better.
+- [behavior] In multiplayer, the same action can carry very different social meaning depending on the state of the target player. When: When one player performs an action toward another, such as a melee attack. Why: The target's state and context give the action its social message.
+- [behavior] Repeatedly attacking a defeated player's body reads as insulting and belittling, while attacking a living opponent reads as ordinary play. When: When a defeated player's body remains visible before respawn. Why: The defeated player watches from the body's viewpoint until respawn, so the repetition feels personal.
+- [behavior] Witnesses are about twice as likely to misidentify an out-group member as a perpetrator, regardless of the witness's own group. When: When identifying a suspect in a simulated or real crime. Why: Group membership biases identification.
+- [behavior] The individuals-versus-game pattern suits noncompetitive, social players and gambling-style games. When: when players want a social, low-pressure experience.
+- [behavior] Players differ widely in outside knowledge, and most fall somewhere between the most and least informed players.
+- [behavior] Winning a strategic exchange comes from predicting the opponent and misleading them about one's own intentions.
+- [behavior] Stable player groups build shared histories and meet in hubs such as towns, taverns, chat rooms, and forums.
+- [behavior] In asymmetric two-sided games, one side may score early, the other build defenses mid-game, and the first break through late, so each side's strengths peak at different phases. When: in asymmetric games with distinct sides. Why: each side's goals peak at different times.
+- [behavior] Top-rated players in Elo-style systems sometimes skip matches to guard their standing, particularly when they suspect their rating is inflated. When: when a visible rating is high. Why: losing a high rating feels costly.
+- [behavior] A listener who sees the game as their own defends it to others; ownership is the ideal outcome of a pitch. When: Pitching to a decision-maker. Why: People defend ideas they feel invested in.
+- [behavior] In open player-versus-player worlds, players tend to form protective groups that hunt those outside them. When: Combat is allowed anywhere in the world. Why: Group members protect each other from other players.
+- [rule] Limit antisocial play in online multiplayer games: show a code of conduct players commit to before play, enforce it, and design so antisocial acts are unrewarded or impossible. (x2)
+- [rule] A meaningful online relationship needs three things: the ability to talk, someone worth talking to, and something worth talking about.
+- [rule] Give players ways to find each other again, such as friends lists, guilds and memorable nicknames. Why: online, friends cannot easily find each other without game support.
+- [rule] Use games to help people who find it hard to connect with others because they are absorbed in their own problems.
+- [rule] Track and broadcast player achievements, or let players display their conquests, since peer recognition is a strong motivator that consumables cannot match. When: Designing rewards for multiplayer or RPG games. Why: Social recognition motivates players in ways item rewards do not.
+- [rule] Simple neuroevolution used for feature selection cannot capture the complex underlying function, so network complexity must be grown after feature selection.
+- [rule] Because sandbagging needs all three conditions, breaking any one of them can stop the strategy.
+- [rule] Before adopting a mechanic, test how griefers would exploit it, and only then settle on it. When: choosing a mechanic that affects other players.
+- [rule] Disrupting any one of the three kingmaking conditions removes kingmaking. Why: Every player believing they can win, hidden standings, or players unable to help one another each removes the chain.
+- [rule] Offer separate servers for opt-in hardcore rules so fans get their preferred experience without imposing it on other players.
+- [rule] Add multiplayer only when its reasons are clear and certain, never simply because it seems cool or fashionable. Why: The payoff justifies the high cost only with a clear design purpose.
+- [rule] For most of a PvP game, every player should feel that someone could win. Why: If the result seems certain, players may concede.
+- [rule] Resolve a drawn bracket match by replaying until someone wins, switching to a sudden-death mode that cannot draw, or breaking the tie with a metric such as resources in play. Why: Bracket matches must produce a single winner.
+- [rule] Do not design multiplayer systems that assume cooperation, such as skill-matched teams; instead absorb constant low-grade chaos: dropouts, griefing, missing skills, wrong play. When: designing multiplayer systems or games. Why: Such disruptions are constant, not rare edge cases; designs assuming cooperation collapse because players drop out, grief, lack key skills, or play incorrectly.
+- [rule] When a single-elimination player withdraws, give the departed player's next opponent a bye, the easiest way to repair the hole. When: single-elimination bracket with a withdrawal.
+- [rule] In theory, rebuild the whole bracket so the bye goes to the highest-seeded player who has not yet received one. When: when a withdrawal must be repaired across the whole bracket.
+- [rule] In three-player rock-paper-scissors, a round where all throws match or all throws differ is a draw.
+- [rule] Group leaderboards into smaller leagues so most players can be the best within their group, not only in the global ranking. Why: most players can then experience top placement.
+- [rule] Choose an exact player count when the system cannot function without that many players. When: the system needs a fixed number of players.
+- [heuristic] Friendships usually form through talk about something both players care about, often a shared experience, so offer chat right after intense play.
+- [heuristic] A deliberate ritual, such as inviting another player onto a friends list, can mark the moment two players become friends.
+- [heuristic] Give newbies meaningful contact with experienced players, and reward veterans for helping if they will not volunteer.
+- [heuristic] When designing for a group you once belonged to, recall how you reasoned, what you enjoyed, and how things felt at that age. When: Designing for a group you were once part of. Why: Memories of past experience give direct insight into the audience, though people tend to forget how things really felt.
+- [heuristic] Eye contact, natural gestures and movement in a shared space make a remote person and place feel real.
+- [heuristic] Showing the players immediately above and below a player in global rank lets them see their nearest competitors. When: when displaying global leaderboards.
+- [heuristic] Creatures high in a food chain should not work in coordinated groups; they may appear in groups but should act as individuals. When: Designing upper-tier predators. Why: Group coordination makes behavior more complicated.
+- [heuristic] Choose a conflict that both children and adults can relate to, so players of different ages can play together. When: Games meant for mixed-age groups. Why: A shared conflict gives each age group a reason to engage.
+- [heuristic] Alternate cooperative and competitive phases to add variety and to reveal whether a partner prefers cooperation or competition. When: Designing multiplayer games that mix shared and opposing goals. Why: Switching modes adds variety and exposes each player's social preference.
+- [heuristic] In online worlds, buddy lists, guilds, and recurring shared locations let players see each other repeatedly and find time to talk, which builds community. When: designing multiplayer social systems. Why: Repeated contact with the same players turns strangers into a community.
+- [heuristic] With more than two players, treat all other players as one combined opponent; each added player raises equation degree: quadratics for three players, cubics for four, quartics for five. When: Analyzing an intransitive game with more than two players.
+- [heuristic] Design multiplayer actions with the target's state in mind, since one action can read as friendly or hostile depending on that state.
+- [heuristic] Let players team up optionally and briefly, such as small alliances that form for one engagement and then split, instead of requiring sustained cooperation. When: designing multiplayer team modes. Why: Players rarely cooperate reliably, so optional short-term teamwork keeps benefits without depending on sustained coordination.
+- [heuristic] Link a physical artifact to an online leaderboard so players gain a place in a wider community.
+- [procedure] 1) Identify the social roles players want, such as competitors, collaborators, helpers, or teammates. 2) Determine whether they want quick chats or long-term relationships. 3) Offer low-pressure ways for strangers to meet. 4) Provide channels and shared content for conversation. 5) Support the point where strangers become friends. 6) Give friends lists and guilds for reconnecting. When: when designing social features for a game community.
+- [procedure] 1) Use a rating system to measure player skill. 2) Pair players with similar ratings. 3) Rely on pairing rather than handicaps to keep matches balanced. When: when the player pool is large. Why: Similar-skill pairing keeps matches uncertain and in flow without handicaps.
+- [procedure] 1) Define a shared goal for players to pursue. 2) Announce the goal to the player base, for example through a mass email. 3) Let players work toward it together. When: When running a low-effort event in an online game.
+- [procedure] 1) Compute each player's probability of winning the tournament under each candidate bracket. 2) Judge fairness by how evenly title chances fall as rank falls. When: when comparing candidate seedings for an elimination bracket.
+- [procedure] 1) Draw the pairings as a bracket before play. 2) Move each match winner into the next round's slot. 3) Repeat until one winner remains.
+- [metric] In a 2015 survey, 57% of teenagers had met a new friend online and 52% spent time with friends playing games.
+- [metric] In an N-player game where each non-winner reaches six strikes, total strikes range from 6×(N−1) up to 6×(N−1)+5. When: each player has equal strike probability. Why: The winner always has between 0 and 5 strikes.
+- [tradeoff] Anti-blocking options are collision rules that let players slip past, doorways too wide to block, and pushing; pushing helps reposition players but can be abused.
+- [tradeoff] Not rating a game removes the payoff from disconnecting, but gives players about to lose an incentive to drop on purpose. When: when a player disconnects in a two-player game.
+- [tradeoff] Counting the disconnecting player as a loss makes unstable connections feel punished, and attackers could knock opponents offline to collect wins cheaply. When: in two-player games.
+- [tradeoff] Giving each player a spawn point guarantees a safe spawn, but maps must then match the player count, which rules out fluctuating counts.
+- [tradeoff] Games aim for a unique experience per player, which conflicts with the shared-audience model of theater.
+- [pitfall] Treating a group that merely shares an activity or location as a community misleads designers about what players actually experience.
+- [pitfall] In cooperative survival games, a player who separates to pursue a personal challenge leaves teammates unsupported, and the group's balance can collapse. When: cooperative games where teammates depend on each other. Why: Support is lost when the player leaves the group.
+- [pitfall] Making listeners guess what kind of game it is, or relying on the presenter's presence to make the pitch compelling, weakens the pitch. When: Designing pitch materials. Why: Materials must stand alone when the presenter is absent.
+- [pitfall] Framing digital multiplayer around massive player counts can overlook the design potential of smaller, directly competitive groups.
+- [pitfall] A disruptive persuasive game can make players and bystanders uncomfortable, since its strangeness is part of its effect.
+- [pitfall] Deterministic match outcomes, where skill always yields the same kill count, can make a multiplayer mode feel predictable and dull even when skill matters.
+- [fact] Score leaderboards often show a mean above the median because a small group of very strong players posts extreme scores.
+- [fact] Communication channels, emotes, and cooperative or competitive play increase engagement, especially when they are meaningful.
+- [fact] In multiplayer games, pressure to reach objectives can set players against each other, not only against the game's rules.
+- [fact] Online play offers many social formats, from small two-player matches to large competing groups, yet the psychological drives behind competition and cooperation stay the same. When: Designing social structures across player counts. Why: Scale changes format but not the underlying motivations.
+- [fact] People share a longing for utopia, which motivates schools, governments, art and games; games promise worlds that are more exciting, beautiful and just.
+- [fact] Games help people connect by giving reasons to interact, revealing how others respond, supplying conversation topics, showing shared traits, and creating shared memories.
+- [fact] The combined social effects of games make them useful for building and maintaining relationships with important people.
+- [fact] In online games the most real danger is dangerous strangers reaching players, who can hide behind anonymity. When: games where players can contact strangers.
+- [fact] Rank can be global, comparing a player with everyone worldwide, or local, comparing within friends, guilds, servers, or nearby cities.
+- [fact] Shared illusions, such as the Shepard tone, affect everyone in the same way because they follow common perceptual principles.
+- [fact] Games are ahead of much of the tech industry, including social media, in protecting players from antisocial behavior in multiplayer play.
+- [fact] Fear, anger, intense music and sexual tension can all produce the same physiological arousal, so the cognitive label determines the felt emotion.
+- [fact] Playing a game often signals something beyond play, such as adulthood, fearlessness or romantic interest.
+- [fact] Public interaction, even passing contact, yields social and economic benefit that reinforces safety and builds relationships.
+- [fact] Diplomacy-heavy games can expect kingmaking, since persuading others is their core activity.
+- [fact] Disconnects inject randomness: either side could drop, and connection quality differs between players.
+- [fact] Adding a player changes both strategies and the social dynamics of a game.
+- [fact] Face-to-face games are protected by social consequences, while online anonymity and easy quitting remove that check.
+- [fact] Multiplayer games lasting hundreds of hours need a larger structure than single-player interest curves provide.
+- [fact] Any multiplayer feature added to a game, including to a generated or procedural one, inherits the same trust concerns about cheating.
+- [fact] Picking an online username is a milestone many kids and teens go through, and most people keep that handle for life.
+- [fact] New kinds of online communities may become permanent elements of human culture.
+- [fact] Community property need not be tangible; a shared status, such as a guild's reputation, can serve the same community-building role.
+- [fact] Massively multiplayer online worlds with persistent shared spaces were pioneered by late-1990s role-playing designs.
+- [fact] Opponents, usually other players, are the main source of conflict in multiplayer games.
+- [fact] Some multiplayer games let players define their own rules and teams.
+- [fact] Unilateral competition, which mixes cooperation and competition, is underused and promising for digital game development.
+- [fact] Digital games with several players are called multiplayer, although games have had several players for thousands of years.
+- [fact] Games can give all players the same role, as in chess, or assign distinct roles that must all be filled, as in Mastermind's code-maker and code-breaker.
+- [fact] Games that let players define their own roles encourage creativity and self-expression over competition.
+- [fact] Some games need an exact player count; solitaire supports one player and tic-tac-toe requires exactly two.
+- [fact] Some games accommodate a range of player counts, like one board game for two to four players or another for two to eight.
+- [fact] Massively multiplayer games can support tens of thousands of players, and a single player can still be alone in the world while the systems keep working.
+- [fact] Multiplayer endings reward players through beating opponents or through team success.
+- [fact] In some team shooters, a second group of players controls the enemies, so the opposing side is human rather than AI.
+
+## player agency and choice
+- [model] Decision scope falls into five groups: non-decisions, reflex-level choices, tactical choices, deep strategic choices, and impossible choices.
+- [model] Decisions vary in importance, difficulty, amount of information, certainty, speed and spacing, and each combination creates a different emotional flavor.
+- [definition] A decision carries weight when it genuinely alters subsequent events and the ending, and presents multiple workable options. When: Judging if a choice is significant. Why: Options that shift results grant players a sense of control. (x2)
+- [definition] Agency is the player's ability to make decisions and meaningful actions, and their belief that these drive the story; it threatens authored stories since players can contradict or skip content. (x2)
+- [definition] A choice is not meaningful when one option is obviously best, when options cannot be evaluated, or when options produce the same result; balance options so none is obviously best.
+- [definition] A player is a voluntary participant who makes decisions, is invested in the outcome, and can win.
+- [definition] Felt freedom is the player's sense of having freedom of action, and it can matter more than real freedom.
+- [definition] A hollow decision has no real consequences whichever option the player picks.
+- [definition] An obvious decision looks life-and-death but has one clearly best option, so it is not a real choice.
+- [definition] Immediate decisions have impact right away, while long-term decisions have impact felt later in play.
+- [definition] Decision scope measures how much deliberation a choice demands: choices with many variables are large, while those with one or two are small.
+- [definition] Nondecisions are answers so obvious they are done by habit; they keep the hands busy but do not sustain flow.
+- [definition] Impossible decisions exceed the player's understanding, so the player chooses randomly and flow does not occur.
+- [definition] Decisions are the basic units of interactivity and the emotional trigger unique to games.
+- [definition] A decision is a process of inferring the right answer from available information, so if the answer is stated outright, no thinking occurs.
+- [definition] Agency is the character's practical role as the player's stand-in, while empathy is the player's emotional attachment to the character and shared goals.
+- [definition] Railroading occurs when the game forces a narrative choice or situation that conflicts with the player's earlier choices or abilities.
+- [definition] A task is any goal the player must reach through gameplay; missions and quests are both kinds of task, and each may involve several tasks.
+- [definition] A task is what the player is asked to accomplish, while an obstacle stands in the way and must be overcome using the available actions.
+- [definition] A predefined decision is an authored branch whose options each lead to a scripted outcome chosen by the designer rather than resolved by systems.
+- [mechanism] When player choices become permanent, each change makes the idea that actions alter the world visible across sessions. When: Campaign games where results carry from one session to the next. Why: Persistent consequences reinforce the theme through play.
+- [mechanism] Special jumps with fixed upward trajectories regardless of button hold time let players judge only whether a platform is reachable. When: Designing jump types for precise platforming. Why: Predictable arcs reduce the judgement players must make.
+- [mechanism] A meaningful reason often leads to another feature; needing a weapon implies finding ingredients, which makes scavenging meaningful.
+- [mechanism] Fixed relationships, such as ranked hierarchies or a linear sequence of spaces, constrain play by keeping the order of objects unchanged throughout.
+- [mechanism] As a player learns, the same decision can move from impossible to profound, then tactical, then twitch, and finally to a nondecision.
+- [mechanism] Because the player is the protagonist, a supporting character's win or loss feels personal, so players can feel beaten when a villain succeeds.
+- [mechanism] Skill gating keeps content technically available from the start but requires skill, upgrades, or allies first, so players experience content in rough order along a progression.
+- [behavior] Players pick dialogue or scripted options to roleplay values, such as refusing payment for a good deed or being good or evil, or to guess designer habits for best payoff. When: A dialogue offers choices with moral or personal weight. (x2)
+- [behavior] At the challenge ramp, players choose among staying and monetizing, grinding through skill, or leaving the game. When: challenge outpaces player resources.
+- [behavior] Players feel their actions drive the story when events would have clearly gone differently without them. When: Story is designed around player interaction.
+- [behavior] Poorly managed railroading makes players feel hampered or angry, and frequent railroading can make them stop playing. When: When forced choices or situations are frequent or poorly handled. Why: Forced outcomes override the player's abilities and decisions.
+- [behavior] Players act out of character to explore simulation limits, consume content, acquire items, meet goals, impress others, or watch spectacle. When: the fiction offers actions the character would not take. Why: player goals sit outside the character's motives.
+- [behavior] Players may react strongly to endings that break a world's internal logic, because the illusion of reality can matter more than the story's quality. When: An ending or event contradicts the world's established logic.
+- [behavior] In participatory performances, performers follow scripts while audience members choose which scenes to follow, so no single participant sees the whole story. When: audiences move freely through a staged story. Why: each participant's path is different.
+- [rule] If players do not feel they strongly influence outcomes, change the design so their actions matter more.
+- [rule] Build features such as guilds and easy, meaningful ways to friend strangers to favor cooperation.
+- [rule] Do not force play by threatening loss of progress or loot. When: when designing retention mechanics.
+- [rule] Define what happens when a player has no legal option, such as losing the turn, so play never stalls.
+- [rule] Withhold a special option when it has no meaningful target, such as when a player has only one piece or all pieces share one space.
+- [rule] Support different play styles so each has a role, such as close-range and cover-based approaches. Why: Players with different styles stay engaged when their approach is viable.
+- [rule] Leave success open-ended when players should define what winning means, as construction games often do. When: players should define their own success conditions. Why: Player-interpreted success suits construction play.
+- [rule] Use non-zero-sum outcomes when graded rewards, statistics, or several objectives are wanted rather than one winner. When: graded rewards or multiple objectives are wanted.
+- [rule] Choose a range or variable player count when group size should flex with the social situation. When: group size should adapt to the social setting.
+- [rule] Rework decisions that carry little consequence so they matter, and remove those that cannot be made to matter. Why: Inconsequential choices hurt the experience.
+- [rule] Simple decisions are acceptable if they are not hollow, obvious, or uninformed; purely creative or exploratory choices also have value.
+- [rule] Support autonomy by letting players express themselves and choose how to overcome obstacles, such as through appearance or movement options. Why: autonomy is one of three intrinsic motivation needs.
+- [rule] A decision needs at least two viable strategies that could reasonably lead to a good outcome; with only one, the decision is degenerate.
+- [rule] Aim to create a rich internal thought process in players, with epiphanies, doubts and dilemmas, even for skilled players, by making the decision process more nuanced.
+- [rule] Narrative should not hamper gameplay or take away player control; favor narrative built into gameplay.
+- [rule] A choice only matters when its consequences are visible in the game, so consequences must be shown rather than left implicit.
+- [rule] Let the player have the great idea instead of an NPC, and use cutscenes that reward player actions rather than interrupting them. When: When a scene or cutscene gives weak agency.
+- [rule] Let an 'I'm not interested' option rarely end a quest outright; have the NPC plead or invite the player to return. When: A player declines a quest.
+- [rule] Never include in a cutscene a moment that allows player agency or interactivity, because removing control turns a reward into an annoyance.
+- [rule] When a needed change is impossible because content is finished or locked, add an in-game artifact, such as a document or letter, to patch the gap. When: a narrative problem cannot be fixed at its source.
+- [rule] Use standard game verbs such as moving, collecting, pushing, jumping, and shooting to express social interaction and drive plot branches. When: the game needs player interaction without a separate dialogue interface. Why: the controls stay the same and the player's control rhythm is preserved.
+- [rule] Use predefined choices when the player should influence narrative content that no system can simulate, such as a full human mind or an entire story world. When: narrative content beyond what systems can simulate. Why: Systems cannot simulate a full human mind or an entire narrative world.
+- [heuristic] Aim for a decisive advantage to form near the actual end, so the final stretch does not drag while the result can no longer change. When: when tuning the ending of a game. Why: a dragging finish with no way to change the outcome frustrates players.
+- [heuristic] Letting players influence when phase transitions happen adds interest to the game.
+- [heuristic] Players decide from the information they have, so the attributes that change during play and what changes them form the core of a game's mechanics.
+- [heuristic] Few choices can be best when each option is interesting, while some players want many choices, such as a detailed item-shopping interface. When: Deciding how many options to offer. Why: The right count depends on whether players want variety or simplicity in that context.
+- [heuristic] For each choice offered, ask whether it is meaningful, how many options exist, and whether more options would empower the player or fewer would clarify the game. When: Auditing a game's decision points. Why: Choice count and meaning shape whether players feel their actions matter.
+- [heuristic] Offer repeated pairs of safe and risky options within a game, such as a low-risk path versus a high-risk path with more rewards. When: Building the decision structure of a racing or action game. Why: Repeated risk choices keep players making meaningful decisions throughout play.
+- [heuristic] Balance decisions across types rather than relying on a single type.
+- [heuristic] Give players a goal and freedom to choose how to reach it, since meaningful choice and self-expression are more motivating.
+- [heuristic] Favor emergent systems when breadth matters more than input count, since players learn fewer controls to master. When: aiming for variety with minimal input learning.
+- [heuristic] Keep rules few and stable so players can practice them and plan routes through challenges.
+- [heuristic] Let players choose their starting point along a moving path, which gives them control over how they begin.
+- [heuristic] When an experience lacks a coherent story, the player's own imagination can supply the story if the other elements support the theme.
+- [heuristic] Start worldbuilding at the macro level, deciding world size and locations, for open worlds that encourage exploration; start at a fixed protagonist's origin when the protagonist has a defined backstory. When: choosing where worldbuilding begins. Why: The genre and character type determine which scope the world needs first.
+- [heuristic] Personal experience input is most useful when research alone feels abstract. When: the world needs emotional texture.
+- [heuristic] Check agency at every planning stage and ask whether a small change could increase it. When: During story planning.
+- [heuristic] The strongest fix for players acting against the story is making them want what their character wants, so the urge to deviate never arises. When: players are likely to take actions the story cannot absorb. Why: a shared goal removes the motive for deviation instead of forbidding it.
+- [heuristic] Incorporate an unwanted player action as narrative content when it honestly expresses a motivation the designer is willing to support.
+- [procedure] 1) Watch playtests for overflow. 2) Reduce decision pressure where overflow appears. 3) Choose a minimum skill level deliberately and design around it. Why: Designing for everyone can leave the core experience unclear.
+- [procedure] 1) What actions exist? 2) How do actions group into goals and states? 3) What triggers a behavior change and what information does it need? 4) Is look-ahead planning needed? 5) Should responses depend on memory or on learning from the player?
+- [procedure] 1) Mark moments of freedom and check whether players feel free there. 2) Mark constrained moments and check whether they feel constrained. 3) Find where freedom can expand or is overwhelming. 4) Pick indirect control methods that create felt freedom where real freedom is limited. When: Auditing a level or sequence for pacing and freedom.
+- [procedure] 1) List the decisions in your gameplay diagram. 2) Place each on a consequence scale. 3) Rework low-consequence decisions to carry more weight. When: after the core loop exists. Why: Shows which decisions players actually make.
+- [procedure] 1) List the decisions players make. 2) Classify each by decision type. 3) Flag hollow, obvious, and uninformed decisions. 4) Redesign flagged decisions so they carry consequences and information.
+- [procedure] 1) Look for spots where the player-character feels passive or is upstaged by NPCs, in dialogue or gameplay. 2) Restructure the scene so the player is in command.
+- [procedure] 1) Anticipate which choices a participant is likely to make. 2) Subtly limit those choices through the environment or framing, not by overt restriction. When: when designing interactive stories with some control over player choice. Why: preserves the feeling of freedom while keeping the story coherent.
+- [procedure] Put the player on the defensive with reactive moments in which events happen to the character that the player did not start. When: Keeping agency in a linear story.
+- [procedure] 1) Recall memorable scenes you loved or hated. 2) Note how strongly each made you feel. 3) Compare: favorite scenes keep the character central and make the player feel important, while disliked ones upstage or invalidate the character. 4) Redesign a disliked scene to give the player more agency. When: Warm-up before designing a linear sequence.
+- [metric] Adding a fourth option to each of the four original properties gives 256 cards, about three times the base complexity, which is already difficult for players.
+- [metric] A two-minute round in a fast competitive shooter can contain about 100 decisions.
+- [tradeoff] Strengthening the effect of decisions widens the gap between viable and optimal builds but makes character choices matter more.
+- [tradeoff] Interactivity gives players control, but full control is expensive and can be boring. Removing freedom for a key scene can make it more exciting while players still feel free elsewhere. When: When deciding where players should act freely and where the designer directs the experience. Why: A game can be more interesting than real life, so cutting tedious or unnecessary decisions is acceptable.
+- [tradeoff] Indirection between mechanics and events is the fundamental difference of games from other media; it is both their greatest opportunity and their toughest challenge.
+- [tradeoff] Tragedy requires inevitability, while interactivity grants freedom; gaining one costs the other, so solutions must be carefully crafted. When: designing tragic interactive stories. Why: Freedom and destiny are opposites.
+- [tradeoff] Combining agency and empathy is hard because their sources of drama differ. When: Designing a game where story matters.
+- [tradeoff] Characters who run and shoot tell emergent stories more easily than characters who stand and talk, which avoids the difficulty of human interaction. When: Designing emergent narrative in a combat-heavy game.
+- [pitfall] If a game rewards not interacting, players turtle, which removes the interaction that is usually the fun part of the game.
+- [pitfall] Novelty that appears only at the start will not sustain long-term play.
+- [pitfall] Autonomy that has no effect on gameplay adds personality but not challenge.
+- [pitfall] A long run of same-scoped decisions at the same rate creates plodding flow that quickly becomes monotonous.
+- [pitfall] Designing decisions as fixed, individually authored items tends to destroy them.
+- [pitfall] Adding choices is easy to create and measure but is not inherently valuable and often adds complexity without benefit.
+- [pitfall] If a VR scene never establishes the player's identity, the player keeps being reminded they are not really there.
+- [pitfall] Interactions whose emotional effect depends on built-up attachment and specific context are hard to translate into interactive form. When: Adapting a non-interactive scene into a game. Why: The scene relies on context the game may not supply.
+- [pitfall] Weak agency is a frequent reason individual scenes or entire games feel flat.
+- [pitfall] A single player action that falls out of step with the story can topple the whole structure the author built, since authored stories depend on each part supporting later events.
+- [fact] Every successful videogame combines something familiar with something novel.
+- [fact] Meaning runs through the competence, autonomy, and relatedness needs and is a key concept to keep in mind throughout design.
+- [fact] Scripting lets players create their own behaviors, which extends a PC game's shelf life well beyond typical titles, and most triple-A titles include scripting.
+- [fact] Communication originally meant an exchange of ideas, which depends on listening, but now often means only talking.
+- [fact] Some designers aspire to let players attempt any verb they can imagine within a game.
+- [fact] Making interesting decisions is itself a mental skill, so nearly every game involves some mental skill.
+- [fact] A designer who could make a game do good but chooses not to may be as at fault as one who makes a harmful game.
+- [fact] The number and type of participants determine what must be directed and drive decisions about timing, pacing and volume.
+- [fact] Open-ended games still provide moments of resolution and measurable achievement.
+- [fact] Decisions can be classified into eight types: hollow, obvious, uninformed, informed, dramatic, weighted, immediate, and long-term.
+- [fact] Twitch shooting, tactical movement and team strategy are different flavors of decision, and each contributes to the pacing of play.
+- [fact] Decisions are clearly separated in some games, such as fold-or-call choices, but overlap heavily in fast real-time games, where they still exist.
+- [fact] Collusion-style simulation of goal-driven characters may become central to the future of interactive storytelling.
+- [fact] Narrative agency problems fall into two categories: player-character motivation alignment and the human interaction problem.
+- [fact] Games differ from other media because players have agency over a story instead of passively absorbing it.
+
+## narrative and story
+- [model] The story stack has five layers from least to most flexible: fantasy, action, economy, world, and story, and designs should be built bottom up starting from a strong fantasy. Why: Lower layers constrain the higher ones, so the base must be fixed first.
+- [model] A game can be viewed as a machine that generates sequences of events; the less story is prescribed in advance, the more varied and memorable the stories players produce.
+- [model] A narrative designer needs knowledge of content design (level, asset and audio production) and systems design (game mechanics).
+- [model] Story criteria for judging a generated experience are characterization, a climax that is unpredictable yet inevitable, smooth invisible exposition, and overall structure such as three-act.
+- [definition] Genius loci (spirit of place) is the aim of giving a space a memorable identifiable emotional character, understood through its own elements and direct sensory experience rather than prior knowledge.
+- [definition] Fantasy is the pleasure of an imaginary world and of imagining yourself as something you are not.
+- [definition] Narrative is a dramatic unfolding of events, which need not be a prescribed linear story.
+- [definition] A truth-based theme expresses a belief many people hold, even if that belief is not scientific fact.
+- [definition] Theme means focusing a game on something that matters to its players.
+- [definition] The medium means the necessary conditions for game feel; content means judgments about how a particular game feels.
+- [definition] Representation is what an object conceptually is to the player; treatment is the combined art, visual effects, sound, tactile feedback and music that presents it. When: when analysing how metaphor shapes game feel. Why: These two parts together set player expectations.
+- [definition] Under the material metaphor, generation is a new medium that a designer manipulates and sculpts, much as a sculptor works stone or clay.
+- [definition] Juxtaposition combines different, seemingly incompatible feelings, which can produce strange and valuable results.
+- [definition] A game's fiction layer can be treated as a large metaphor whose basic job is to make its systems understandable to players. Why: The fiction also serves emotional goals, but understanding the system is its simplest role.
+- [definition] Mechanics versus motif contrasts designs that begin from core mechanics with designs that begin from a story or visual theme.
+- [mechanism] Showing a desirable item or ability before players can obtain it stimulates curiosity and motivates them to grow toward it. Why: Curiosity is an intrinsically motivating factor.
+- [mechanism] When story moments hinder gameplay, players abort them one after another; when story makes a moment important without hindering play, gameplay and story merge.
+- [mechanism] In interactive experiences the guest can be the main character and change the story world directly, which makes projection especially strong.
+- [mechanism] Repeatedly pairing a motif with a character builds firm expectation, so sounding the motif without the character, or danger without its warning, produces shock.
+- [mechanism] When mechanics actually enforce a fiction's harshness, such as scarce resources and little chance of survival, players feel that harshness directly and become immersed. When: the fiction implies scarcity, danger or entrapment. Why: Players experience the fiction's conditions through play rather than being told about them.
+- [mechanism] Deception can be layered, where one player makes the opponent believe something false about what the first player knows; multilayered deception is hard to design directly and emerges from combining basic tools. When: designing deep information games. Why: Combining basic tools creates nested beliefs that designers cannot easily script.
+- [mechanism] When every element reinforces a truth-based theme, the experience becomes powerful. Realistic presentation can make players feel the theme's consequences personally.
+- [mechanism] Without a dramatic premise, many games stay too abstract for players to invest emotionally in the outcome. Why: abstract rules give players no concrete stakes.
+- [mechanism] Persistent weather and night settings can add a melancholy undertone to a game's events, such as loss or crime. Why: Sustained gloomy environment colors how players feel about the story.
+- [mechanism] Graphics, sound and fiction let players pretend mechanics are more than rules, and a mechanic framed as a thematic event can add emotional echo beyond its rule. Why: Framing gives abstract rules human meaning such as hunger, grief or desire.
+- [mechanism] Pairing violent excitement with mournful tone, such as combat set in ruins of a beautiful civilization, creates an unsettling contrast that deepens emotion. Why: Clashing feelings reinforce each other when placed together.
+- [mechanism] When a setting is grounded in an established fiction, designers cannot freely change its basic rules, such as physics, to balance a challenge, so the mechanics suffer. When: fiction-first design with a realistic or established world. Why: fiction constraints block the parameter changes balancing needs.
+- [mechanism] Offering several possible futures at each moment makes play feel decision-rich, while a single future at a time leaves play emotionally empty.
+- [mechanism] Wrapping abstract mechanics in a setting such as a growing city or an ancient war makes them easier to learn, because the fiction shows how relationships connect.
+- [behavior] Players judge a character by imagining themselves in its position, using its surroundings, available information and actions taken. When: when observing a character's action.
+- [behavior] When the number of choices matches the number of things the player wants to do, the player feels free and fulfilled. When: Choice count equals player desires.
+- [behavior] Designers disagree on whether gameplay ruins story or story cheapens play, so the middle path needs deliberate testing. When: blending story and gameplay. Why: Opinions about the two diverge.
+- [behavior] Players react immediately when a character they care about is threatened, even before that character is actually harmed. When: Players care about the threatened character. Why: Players feel that letting the character be threatened is letting them down.
+- [behavior] Adults spend heavily and use deception to keep children believing a fantasy world is real. When: A fantasy world aimed at children.
+- [behavior] Absurd premise, silly sound effects and exaggerated effects make players expect less real-car accuracy and perceive the experience as surreal. Why: Playful framing lowers the realism bar.
+- [behavior] Players often leave the main story path through side quests, open-world exploration, or by skipping story in multiplayer. When: games with optional content or multiplayer.
+- [behavior] Prospect and refuge spaces normally evoke fear, but subverting the player's vulnerability within them can evoke other emotions. When: when a player's vulnerability is subverted.
+- [behavior] Players judge paths as certain, uncertain or risky from what they have learned, and explore unmarked branches that may hold rewards. When: spaces with several unmarked passages.
+- [behavior] The mind's-eye image of a game often differs from its drawn form, so a sketch can change the design's direction.
+- [rule] Let story serve the game experience rather than master it.
+- [rule] Keep subthemes, such as teamwork, only where they serve the main theme. Why: Subthemes that drift from the main theme dilute it.
+- [rule] Music should inform game design rather than be added on, with music systems tuned to the game's circumstances. When: Planning music for a game. Why: Music added late cannot shape play as designed music can.
+- [rule] Keep story and characters important but secondary until formal elements are settled. When: Early in design.
+- [rule] Thread fiction and mechanics into a single system of emotion instead of giving either one primacy. Why: the strongest games unify both rather than balancing one against the other.
+- [rule] Choices with no stat or path effects can rely on fiction alone; once a choice changes mechanics, it needs unambiguous mechanical information. When: moral or narrative choices. Why: Players can only act reliably on mechanical effects they can read.
+- [rule] Connect narrative development, cultural ideas, and usable gamespace so that a layout carries meaning as well as function. When: Designing any layout that must convey meaning.
+- [rule] Design play so people can roam the setting and discover who their avatar is, with decisions that carry weight and suit the persona.
+- [heuristic] A unifying theme strengthens any game, even one lacking a deep resonant theme; a game without a clear theme may engage players less than it could.
+- [heuristic] Choose a fantasy with clear appeal, since players either are drawn to a fantasy or are not. When: Starting a design. Why: Fantasy is the least flexible layer and cannot easily be changed later.
+- [heuristic] Make the primary player actions the ones that best fulfill the fantasy, rather than letting the fantasy appear only in cutscenes. Why: Playtesters' stated desires can reveal which actions the fantasy needs.
+- [heuristic] Modern settings work unusually well only when the player gains extraordinary power over ordinary life.
+- [heuristic] Story and mechanics should progress together, so gameplay does not stagnate and the plot is not padded with filler. When: when tuning length in story-heavy RPGs. Why: matched progression keeps players engaged.
+- [heuristic] Touch, distance, facing direction and eye contact are underused design material for expressing intimacy and interpersonal relations in games. When: Designing games about social or physical closeness. Why: Cultural conventions and non-verbal communication are a largely untapped expressive resource.
+- [heuristic] Games with unifying, resonant themes produce much stronger experiences than games with weak themes or none.
+- [heuristic] The strongest themes connect to desires players already have, such as wanting freedom from obligations and worries.
+- [heuristic] Not every game needs a resonant theme, but a resonant theme, once found, is worth using fully across the design.
+- [heuristic] Once the theme is settled, keep an element if it reinforces the theme and remove it if it does not. When: Deciding whether to include a mechanic, object, or content. Why: A theme filter removes elements that pull the design apart.
+- [heuristic] Reinforce a theme through the physical form of a product as well as its content, such as shaping the object itself to match the theme. When: Products where form and packaging can carry meaning. Why: Unexpected channels make the theme more memorable.
+- [heuristic] Add choices about how players reach goals so that different stories can emerge from the same rules. When: designing rules for a story-generating game. Why: Varied methods produce varied player stories.
+- [heuristic] Check how story supports and is supported by aesthetics, technology, and gameplay, and whether each could do its job better. When: finishing story work. Why: Story should integrate with the other elements of the design.
+- [heuristic] Judge story and gameplay by the experience they create rather than by treating them as governed by separate rules. When: combining story and play. Why: Both are machines for producing experiences.
+- [heuristic] Recheck the world's fantasy as content grows, so the fantasy stays intact. When: Adding content to an existing world.
+- [heuristic] When a team member loses interest in a dull or cut-down element, reframing it around a more engaging idea can revive their effort and spark competition among others. When: Scope cuts leave team members detached from their assigned work. Why: A new framing gives the work emotional stake.
+- [heuristic] A fantastical world stays believable when its own rules are internally consistent, and it holds up under close inspection.
+- [heuristic] Tie combat mechanics to the story's emotional theme so the fight system expresses the game's core idea. When: Designing combat for an emotionally driven story. Why: Mechanics that match the theme reinforce the story.
+- [heuristic] Limit invented words to about one per line, applying the same limit to character names even when they are English, since overloaded names make speech hard to follow. When: Sci-fi or fantasy dialogue.
+- [heuristic] Exaggerated fictional rules, such as a hazard that spawns giant creatures, can justify content that a realistic model would not allow.
+- [heuristic] Mechanics that yield vivid storytelling or social moments can stay in the design even when they permit degenerate strategies.
+- [heuristic] Use symbols with real-world associations, such as wood and pickaxes, so players carry prior knowledge into their choices.
+- [heuristic] When a story's spatial logic matches the camera or view angle, the threat or drama reads more strongly to the player.
+- [procedure] 1) Decide the game's theme, the idea that ties the whole game together. 2) Use every available means to reinforce it, applying it to nearly every element, including hardware, sound and rules such as invulnerability, not only the story, especially in clever, unexpected ways. When: Early in design, before other choices are made. Why: A settled theme guides every later decision; unexpected details can carry a theme as strongly as obvious ones.
+- [procedure] 1) Find a powerful but inflexible fantasy. 2) Build the other design elements around it. 3) Craft a story that explains why the stake sits where it does.
+- [procedure] 1) Ask what about the design feels powerful and special. 2) Note which ideas excite people most when you describe it. 3) Imagine the game without constraints. 4) Examine what drives your instincts about how it should be. When: When searching for a game's hidden power or resonant core. Why: Resonance often shows up in your own reactions and in other people's.
+- [metric] Narrative space by medium: a novel for hours, a feature film about 120 minutes, a TV episode about 45 minutes, a sitcom about 25 minutes.
+- [tradeoff] Mechanics-first aids balance, clarity and depth but makes fitting fiction hard to find; fiction-first gives rich worlds but restricts later mechanical changes; mechanics and motif are strongest together. When: Choosing the starting point for a design. (x2)
+- [tradeoff] Ludologists hold that a game's most important qualities lie in its mechanical systems, while narratologists hold that mechanics scaffold a story, which is the main source of value.
+- [tradeoff] Expanding the story or adding mechanics both tend to be expensive, while trimming either side is possible but hard when plot and mechanics are strong. When: when story and mechanics are out of step. Why: each fix has a different cost.
+- [tradeoff] Heavily prescripted design gives authors control of the plot but yields fewer player stories; systems that generate events yield more varied stories. When: Deciding how much story to script in advance. Why: Prescripting reduces the variety of stories players produce.
+- [pitfall] Fiction suggests many actions a game may not support, and players cannot tell which fictional ideas are real mechanics, nor assume everything in the fiction is mechanical. When: a mechanic's imagery implies interactions the systems do not simulate. Why: Fiction carries no reliable information about which interactions are mechanically supported; treating it as mechanical would be wrong most of the time.
+- [pitfall] Placing a story stake first forces an inflexible fantasy to be dragged to that spot.
+- [pitfall] Gathering more research does not produce a theme on its own; a shift in thinking about what the subject is really about is needed.
+- [pitfall] Rejecting theme because players will never consciously notice it discards a benefit that works below conscious awareness.
+- [pitfall] Treating theme as a puzzle of hidden symbols that players must decode misreads what theme is for.
+- [pitfall] Working without a defined theme leaves the game's elements pulling in different directions.
+- [pitfall] A subtheme on its own is not enough; without a central conflict it lacks the power to unify the game.
+- [pitfall] Treating a rejected idea as bad is a mistake; it may simply not be useful to that listener now. When: after a rejection.
+- [pitfall] A thin game layer over exercises is not enough; many educational games are neither truly educational nor fun. When: When an educational product is built by adding game elements to drills. Why: Learners disengage when the activity itself is not engaging.
+- [pitfall] Relying on a popular theme attached to a traditional game, without real design work, gets submissions rejected.
+- [pitfall] Scripted storytelling modes borrowed from other media often break down when applied to games.
+- [pitfall] Adding a fiction on top of finished mechanics rarely works; fiction and mechanics must be designed together so they integrate.
+- [pitfall] Puzzles that rely on fictionally plausible solutions leave players guessing among many reasonable answers, because only the implemented one works.
+- [pitfall] The machine's facilities do not uniquely determine the choice of representation, which is often difficult.
+- [fact] Medieval game worlds are simpler because technology is primitive, so magic provides transcendence; futuristic games usually show simpler post-apocalyptic or frontier settings where advanced technology acts as that magic.
+- [fact] The main difference between interactive and noninteractive stories is the ability to act; the desire to act and its emotions exist in both. When: comparing story forms.
+- [fact] Player expression is a frequently neglected area of multiplayer design, so it is worth revisiting during reviews.
+- [fact] In representational power, state machines rank below rule-based systems, which rank below blackboards; state machines are fast and easy but restrictive.
+- [fact] A theme may emerge gradually during production rather than being fixed at the start. When: When the theme is not obvious at the start of development.
+- [fact] Subthemes for a playful game can include having fun with friends, escaping from reality, and simplicity combined with transcendence.
+- [fact] Board games can make changes lasting using irremovable stickers, permanent marker writing, torn cards, and edited rulebooks.
+- [fact] Nearly every popular game has a story element, and even abstract games like chess have a thin layer of story that players invent.
+- [fact] Outer space suits frictionless motion, but a space theme is not inextricably tied to it.
+- [fact] A premise's initial job is making the formal system playable by attaching tangible meaning to abstract moves, for example blasting invaders rather than generic tiles.
+- [fact] Relationships between objects can be expressed through location, through hierarchy such as ranked values, or through other means.
+- [fact] Whether mechanics come first, story comes first, or both are developed together does not matter; what matters is that they fit.
+- [fact] Games designed for very short sessions are usually not story oriented, and many have no cutscenes at all.
+- [fact] Fiction produces emotion through character, plot and world, such as laughter, tears and fascination; mechanics produce tension, relief, triumph, loss, learning and social reward.
+- [fact] Fiction alone cannot offer competition or skill mastery, and mechanics alone struggle to deliver humor, awe, immersion and empathy.
+- [fact] One line of dialogue may give a few experiences over repeat viewings, whereas a sound mechanic can produce thousands or more.
+- [fact] Story is mostly conveyed through art and writing, and clarity is mostly achieved through interface design rather than balancing.
+- [fact] A thermal printer can print each next part of an interactive story after every player choice, leaving a paper strip that records the player's path through the adventure.
+- [fact] Even roleplay engages a game's meta-elements, so players stay aware of the game's frame while playing.
+- [fact] Level designers turn story descriptions into decisions about enemy numbers, enemy types, and terrain, such as whether enemies use cover or emerge from water. When: Translating story combat into levels.
+- [fact] The internet is often described as rhizomatic because any website can be reached from any other by entering its address.
+
+## teaching and tutorials
+- [model] Three learning paradigms guide game learning: behavioral (stimulus-response, rewards and thoughtful punishments), cognitive (mental processes and limits), and constructivist (knowledge built through interaction).
+- [model] Three teaching models for levels are operant conditioning, the Montessori Method, and constructivism; use them together as lenses on one design task.
+- [model] The instructor can act as a dungeon master who runs a scenario with difficult problems for students. When: teacher-guided game scenarios.
+- [model] Levels can be nested like lessons: one puzzle is one problem, a level is a lesson of several problems on one concept, and the whole game is a subject unit. When: content must be taught in ordered concepts. Why: Scaling from problem to lesson to course keeps teaching sequenced.
+- [definition] Transfer of learning is applying skills or knowledge from one context to another; it rarely happens easily, and far transfer to very different real-life situations is the main educational goal.
+- [definition] Learnability is how easily players accomplish basic tasks on first contact with a game.
+- [definition] Titles, marketing messages, interviews and word of mouth set player expectations, which shape how the game is experienced.
+- [definition] A good learning curve makes a game easy to learn and difficult to master, a maxim often quoted in design circles.
+- [mechanism] When giving hints is a limited, deliberate action, choosing what to share and when becomes the central decision for each player. When: When designing cooperative information sharing. Why: Scarcity turns sharing into a meaningful choice.
+- [mechanism] A tutorial that appears inside a mission, and only when the player is stuck, teaches a mechanic better than a text block that pauses play before any action. When: Teaching a mechanic such as jumping in a platformer. Why: Players learn while doing, and instructions tied to a goal feel like help rather than a list to endure.
+- [mechanism] Learners absorb knowledge most readily when they are ready, so that certain information suddenly seems useful and important. When: a learner is in a state of readiness. Why: Readiness makes knowledge feel relevant.
+- [mechanism] A limited asset set with clear limits defines the possibility space, making it learnable and easier on player memory.
+- [mechanism] A guide who leads the player and scolds straying enforces a limited lesson plan within an open area.
+- [mechanism] When a rule restricts the player but not enemies, placing the item enemies use in the environment explains where enemies get it.
+- [behavior] Many female players prefer clear step-by-step examples that show exactly what to do before attempting a task, rather than learning by trial and error. When: designing tutorials and early instruction.
+- [behavior] Loading-screen hints convey information through text, a weaker route than hands-on experience, so they suit reinforcing or reminding players about a feature.
+- [behavior] Players die often early in an open tutorial, yet a compelling space keeps them engaged despite repeated failure.
+- [behavior] In extreme cases, players may reveal their decks and skip the match. When: metagames where deck matchup largely decides results.
+- [behavior] Players may quit when early progress feels unrewarding and no longer-term goal is visible, though encouragement from others can keep them playing. When: Early game progression.
+- [behavior] Teachers who were told certain randomly chosen students were gifted saw those students improve, showing that believed potential drives actual performance. When: When leaders or teachers hold a stated belief about a person's ability. Why: Expectations held by authority figures influence how people develop.
+- [behavior] When new players meet an encounter, they may invent unexpected strategies, snipe from distance, charge past enemies, fall through floor holes, get flanked, or miss obvious hazards. When: first playthroughs of a fight by unfamiliar players. Why: Newcomers do not share the designer's assumed approach.
+- [rule] Do not interrupt play to explain; teach a mechanic when players need it to progress or earn a reward, since no designer will be present. Why: buyers will not have a designer present. (x2)
+- [rule] Plan dedicated tutorial tasks for mechanics that depart from genre conventions; familiar mechanics need little teaching, as teaching intuitive skills wastes time and removes discovery pacing. When: designing onboarding for a game mixing familiar and unfamiliar mechanics. Why: Players lack existing schemas for new mechanics, so teaching effort belongs where expectations are violated. (x2)
+- [rule] Avoid squeezing all tutorials into the game's beginning, which is inefficient and goes unappreciated; teach mechanics in the first short levels instead of long tutorials. (x2)
+- [rule] Keep loading screen tips to no more than three simple, brief bullets, since players skip or forget long text.
+- [rule] Teach mechanics through level design that spreads learning by doing across play, using clear signs, affordances and immediate feedback, not text tutorials. When: designing onboarding and complex mechanics. Why: Text-only teaching fails for core loops and feels patronizing; players retain mechanics better through practice.
+- [rule] Do not make players hold tutorial text in mind across a pause, follow a story while learning a new mechanic, or read many messages packed into one pause. Why: These demand attention and inhibition of distractions; players cannot remember packed messages.
+- [rule] Design onboarding around limited working memory: new tasks need more resources than familiar ones, so keep focus on the core mechanic being practised. When: during onboarding. Why: The mind has limited capacity; tutorials carry high cognitive load.
+- [rule] Do not base tutorial design on a supposed learning style or on a personality or style test label, since these are unsupported bases.
+- [rule] Establish why players should care about each feature at the moment it is introduced, before teaching how to become competent, since this affects retention. When: introducing a feature in a tutorial. Why: Players engage with features they see a reason to care about; motivation affects whether they stay.
+- [rule] Let players practise new actions without punishment or severe consequences, and discover story through play rather than large text blocks. When: designing onboarding and narrative delivery. Why: Safe practice builds skill and keeps players engaged; punishment during learning disrupts acquisition.
+- [rule] Offer help when players need it; games should not require manuals, and gathering tooltips in one place helps players.
+- [rule] Teach rules, threats, and abilities early through onboarding; do not leave tutorials until the last minute.
+- [rule] Distribute tutorial teaching over time and avoid massed learning, where too much is taught at once.
+- [rule] On resume, remind players of mechanics and controls, and recap the story, especially when the game requires their input. When: players return after a break. Why: forgotten controls create skill mismatch.
+- [rule] Teach rules through tutorials that feel like part of the game, so players learn the rules and how to succeed. When: When onboarding new players.
+- [rule] Before adding an indicator, check whether a part should be learned before another part that is less visible, and swap visibilities to match the learning order. When: adding a new HUD indicator. Why: Players should notice the next most important item as skill grows, without being overwhelmed or coddled.
+- [rule] Helper objects such as triggers, colliders and volumes must be easy to show and hide, or placement errors are missed until late. When: evaluating editor visibility tools.
+- [rule] Build tutorial text into the environment's graphic design and give it a narrative voice, instead of pop-ups, when the budget is small and style would suffer. When: when voice acting or pop-ups are unaffordable or break the game's aesthetic. Why: integrated text keeps the aesthetic intact.
+- [rule] Show typical players how to have fun with the game rather than assuming they will discover it. When: designing for casual or typical players. Why: Typical players may never discover the fun on their own.
+- [rule] Decide during design how players will learn the game; players who cannot work out how to play will not keep playing.
+- [rule] Offer hints that escalate from vague to specific, with a small point cost, so stuck players can continue without copying the answer. When: Hard puzzles where frustration could cause quitting. Why: A timely hint revives hope and curiosity and beats no solution.
+- [rule] Show a working version or a slideshow of what playing feels like rather than describing it, especially when the game is early. When: Presenting an early-stage game. Why: Players and listeners understand play better from direct experience.
+- [rule] Shift challenge toward Discovery and Mastery and shorten Learning to reduce the feeling of endless difficulty. When: designing challenge pacing. Why: A long Learning phase with no visible progress feels endless.
+- [rule] Limited saves need guidance on average save spacing and danger locations, since otherwise players feel the game expects psychic knowledge. When: limited saves are used.
+- [rule] Support learning with helpers: tutorials, auto aim, dynamic difficulty adjustment and rubber-banding rules.
+- [rule] Make multiplayer onboarding efficient so new players are not crushed in their first matches. When: Designing multiplayer games with PvP. Why: Unskilled players beaten early have a bad experience, and balanced matchmaking alone cannot fix this.
+- [rule] Check whether players understand how to play the level; if not, add a clearer introduction or more teaching moments before the repeated mechanic. When: observing a playtest. Why: confusion blocks learning the mechanic.
+- [rule] Use playtest observations to write a tutorial lesson plan based on what players actually need to learn. When: designing a tutorial after playtests. Why: observed needs are more reliable than assumed ones.
+- [rule] Do not place an early level that uses every object in the game; it overwhelms players, so move it later and add preparatory levels first. When: an early level uses many objects at once. Why: players need preparation before combining everything.
+- [rule] Plan onboarding across levels and treat tutorials as part of level design.
+- [rule] Strong first levels let players use mechanics safely, offer tension or reward, keep tutorial content unobtrusive or optional, and introduce ideas that return later.
+- [rule] A good tutorial excites players and teaches mechanics in a fun, nonintrusive way, preparing players to use them without being pushed through instructions.
+- [rule] Make the first screen introduce the symbols, an enemy and a power-up, along with the rules that recur later.
+- [rule] Summarize the player's task in a short task list or journal entry, and state the underlying problem in quest text or dialogue.
+- [rule] Keep tutorials very streamlined and get players into the core game as quickly as possible, especially on free-to-play platforms. When: Free-to-play and mobile games. Why: Each extra click can cost players who would otherwise continue.
+- [heuristic] Teach mechanics through environment art and object placement, not just decoration, since many players skip manuals; show cause-and-effect procedures and let placements explain the world. (x2)
+- [heuristic] Learning by doing beats reading tutorial text and explanation: acting needs deeper processing, improving retention and interest; its advantage depends on task complexity. When: teaching new or complex mechanics and essential features.
+- [heuristic] Teach key mechanics where attention already is and remove distractions: prompts shown during a focal task or NPC speech go unnoticed unless the NPC says the same. When: timing tutorial prompts alongside other tasks or dialogue. Why: Divided attention blocks salient prompts; players attend to the speaker rather than overlaid text.
+- [heuristic] Large environmental text can lead players along a path they are meant to leave, and this is a deliberate narrative device.
+- [heuristic] Teach on smaller board sizes and reserve the full board for skilled players, so learners master the rules before full complexity.
+- [heuristic] Make a new skill the means to a goal the player already wants, such as reaching loot on a high platform, so practicing it feels worthwhile. When: Introducing a new mechanic. Why: Without a worthwhile goal, on-screen instructions give players little motivation to practice.
+- [heuristic] Tutorials are most effective when they are both contextual, built into a mission, and meaningful, tied to the player's current goal and sparking curiosity. When: Designing onboarding for any mechanic. Why: Each property alone leaves players either unmotivated or unable to learn while playing.
+- [heuristic] New players often remove the color property, leaving a 27-card deck where sets are easier to find. When: when learning Set. Why: fewer properties make sets easier to spot.
+- [heuristic] Small changes in who knows which facts can make a game much better or much worse, so knowledge distribution is a design variable. Why: Decisions depend on information, so knowledge shapes play.
+- [heuristic] Teach complex interacting systems through play, because linear media like lectures, readings and videos struggle to convey them. When: the subject is a system of interacting parts. Why: Such systems must be experimented with to be grasped.
+- [heuristic] Pair a simulation with a live instructor who points out where the model departs from reality, especially when the subject is serious. When: serious subjects where misapplied lessons could be costly. Why: Learners may otherwise carry over techniques valid only inside the simulation.
+- [heuristic] Give learning by doing to high-priority and difficult elements. Teach simple or low-priority elements with cheaper methods such as tutorial text or dynamic tips shown only when a player fails to act. When: assigning teaching resources. Why: Learning by doing cannot cover everything, so costly methods are reserved for the features that need them.
+- [heuristic] Learning should be contextual, meaningful, and distributed over time, drawing on behavioral, cognitive, and constructivist principles.
+- [heuristic] Begin with few actions, such as movement, jumping and punching, plus one forced early goal, such as building shelter before nightfall. When: sandbox or survival openings.
+- [heuristic] Keep each new task just ahead of what the player has learned so lessons stay engaging.
+- [heuristic] Model a demonstration room on a familiar real-world layout, such as a lecture room, so players recognize the social context and do not rush through.
+- [heuristic] Place tutorial mechanisms against normal geometry within a small space so they stand out. When: When introducing a new interactive object. Why: Contrast with ordinary geometry draws attention to the new element.
+- [heuristic] In tutorials, thresholds should first teach, showing scannable objects, goals behind barriers not yet crossable, and how locks change as they are worked, rather than offering deep strategy. When: When designing thresholds for early play. Why: Early players need instruction before strategic depth.
+- [heuristic] Teach core interactions in an enemy-free opening area with accessible platforms and no pits, where each interactive object is visible and can be tried without risk. When: at the start of a game or level. Why: Players can infer object use safely before threats appear.
+- [heuristic] Teach players how to use their avatar through clear, easily understood cues, since levels act as an indirect conversation with players.
+- [heuristic] Deliver story and tutorial information during play, such as through voiceover or interface cues, so nothing stops the action to explain controls. Why: interruptions break flow and annoy experienced players.
+- [heuristic] Teach through gameplay by making successes trigger large visual effects, offering things to experiment with, and reloading failed levels quickly. Why: rewarding feedback and fast retries let players learn by doing.
+- [heuristic] When assessment is the goal, designers can assume players already have some experience with the skill being tested.
+- [heuristic] Build lessons from reusable blocks, each teaching a different mechanic, so a variety of mechanics can be taught.
+- [procedure] 1) List everything players must learn. 2) Sort the list by importance. 3) Reserve deep teaching and reminders for the top items.
+- [procedure] 1) Let players skip training voluntarily. 2) Test players to decide which training they need. 3) Detect missing knowledge and teach it at the moment it is needed. When: designing training for varied player knowledge. Why: The least intrusive training is training never needed; targeted training avoids forcing unnecessary lessons.
+- [procedure] Testing a non-interrupting tutorial: 1) Have a player learn a popular game with such a tutorial. 2) Observe how quickly they master its mechanics. 3) If they are slow, ask afterward how and why they got stuck. When: evaluating a tutorial that does not interrupt play. Why: observed struggle reveals teaching gaps.
+- [procedure] 1) Write one interface control on each index card. 2) Sort the cards into groups. 3) Repeat with several other people. 4) Compare the groupings to find natural clusters. When: deciding how to group interface features. Why: Independent sorts reveal groupings that match how people think about the features.
+- [procedure] 1) Give each interactive action a distinct environmental cue. 2) Introduce the cue in a spot where it is the only route forward. 3) Reuse the identical cue in every later area. When: A game has several interactive actions that the environment could leave ambiguous. Why: Players learn cues by necessity and recognize them later without labels.
+- [procedure] 1) Break a large task into smaller steps. 2) Reinforce each correct step as the player completes it. When: teaching a multi-step skill.
+- [procedure] 1) Introduce a capability in a safe area where players can experiment. 2) Give a simple area that uses it. 3) Give a harder challenge combining it with existing abilities. When: Teaching a new mechanic. Why: Ordered teaching ramps skill quickly.
+- [procedure] 1) Put the player somewhere that acquiring or mastering the system feels worthwhile. 2) Introduce the system, mechanic, or item within that setting. When: Introducing a new system, mechanic, or item. Why: Players understand a system's value when they first meet it in a meaningful context.
+- [procedure] 1) Identify the core pillars of the game. 2) Decide where players should be challenged and where friction should be removed. 3) Apply learning principles to teach the core elements efficiently.
+- [procedure] 1) Teach each action alone, rewarding simple steps first. 2) Add the next action as each one is learned. 3) Combine learned actions into complex sequences.
+- [procedure] Designing a tutorial: 1) Write a lesson plan for each level listing the mechanics to teach and any graphic or symbol associations. 2) Build each level on earlier lessons. 3) List the concepts at a lesson's start, showing what will and will not be covered. When: designing a tutorial or level sequence. Why: planned lessons ramp difficulty and information gradually.
+- [procedure] 1) Make learning spaces destinations with their own identity, such as a dojo or a special realm. 2) Or make the practice space itself the reward, placing it at the end of a path that leads to a rewarding encounter. When: When designing how tutorial material is framed within a level. Why: Framing gives learning spaces purpose, so players are drawn through them.
+- [procedure] 1) Give a reminder soon after first exposure to a complex mechanic. 2) Introduce a second feature while the first is still being reinforced. 3) Repeat both across different contexts. When: teaching a complex mechanic. Why: spaced reinforcement strengthens memory.
+- [procedure] 1) Open with noninteractive art and story that raises questions. 2) Grant movement alone in a safe space with no threats. 3) Add one tool at a time. 4) Combine tools into puzzles and fights. When: designing an opening for a game with many systems. Why: Players learn controls and systems without noticing the training.
+- [procedure] 1) Introduce the concept in a safe place to practice. 2) Develop it with a more complex iteration. 3) Add a twist on the concept. 4) Test mastery in a final challenge. When: introducing a new mechanic players must practice before combining it with others. Why: Staged practice builds mastery before the challenge.
+- [metric] Players have little time to be captivated; if they don't sense achievement and direction within the opening minutes, they quit.
+- [tradeoff] Start with critical mechanics needed in the first hours, but importance alone does not justify early teaching; complex key components can wait while players enjoy easier systems first. When: ordering the onboarding sequence. Why: Priority measures importance, not readiness to learn.
+- [tradeoff] Learn-then-do tutorials front-load instructions before play, while learn-by-doing spreads teaching into play, distributing learning but requiring tasks that carry meaning.
+- [pitfall] Obvious tutorials, text messages, hints, or the game talking at the player pull players out of the game and make them feel controlled and powerless. (x2)
+- [pitfall] Teaching many moderate or difficult features at once overloads players and makes them stop learning; dying while still learning feels unfair. When: onboarding with many new elements, especially when sorted by difficulty. Why: Concentrated load exceeds what players can absorb; overload and unfair deaths both increase frustration.
+- [pitfall] Assuming completed tutorials guarantee lasting retention is a mistake; unreinforced information fades according to the forgetting curve.
+- [pitfall] The first-time user experience decides whether a game is worth players' time and money; treating tutorials as trivial is a mistake, since newest elements are learned there. When: designing tutorials and onboarding.
+- [pitfall] Assuming players learned something because they dismissed a tutorial text with a button press, which requires only shallow processing.
+- [pitfall] Many players quit during early play below the skill barrier, before they experience the game as intended. When: When early play requires skill the player does not yet have. Why: Early play that feels like a chore drives players away.
+- [pitfall] Writing the story first can force onboarding to fit it, hurting the learning curve.
+- [pitfall] Mandatory exposition in action games is often skipped by players.
+- [fact] Players learn games through embedded guides, websites, and printed handbooks.
+- [fact] Early computer games lacked social, verbal, and emotional elements, had steep learning curves, and offered unlimited virtual destruction, mostly attracting male players. When: affordable early home computers.
+- [fact] Games have been proposed as tools to help people imagine career success, leave abusive relationships, break addictions, or become better volunteers.
+- [fact] Interactive tutorials teach through play and work well, but they take many iterations and can only be finished once the game reaches its near-final state.
+- [fact] Traditional education often lacks surprise, projection, pleasure, and community, and its interest curve is poor.
+- [fact] Standardized networked tablets for students and teachers may make teacher-guided multiplayer simulations practical.
+
+## randomness and chance
+- [model] Probability design raises three questions: whether it is a professional ethics matter; where to draw the line between player wishes and accurate simulation; whether actual or perceived mechanics matter more.
+- [model] For conversational hidden-information games, model the hidden item in one party's mind, the accumulated knowledge in the other's, and the conversation as the channel carrying information. When: A game built on questions and answers with a secret.
+- [definition] A deterministic mechanic always produces the same output for the same input, while a non-deterministic one adds randomness so identical actions can yield different outcomes.
+- [definition] A straight is five consecutive ranks; aces count only as high cards, so a run from ace down to four is not a straight.
+- [definition] Two pair means exactly two pairs of different ranks, so four of a kind is not two pair; a full house is three cards of one rank plus a pair of another.
+- [definition] Input randomness shapes the starting setup before a choice, while output randomness is triggered by a player action and resolves its result. When: Classifying a game's random elements. Why: The two differ in when randomness acts relative to the player's decision.
+- [definition] Predictable results means a player's input yields the response they expect, with no interference between intent and outcome. Controls may be complex yet still predictable.
+- [definition] Reproducible is not the same as predictable. A predictable result should also hint at possibilities the player has not yet tried.
+- [mechanism] Repeated random rolls pull results toward expected value, so single luck events matter less and the more skilled player wins over many games, though any player can win one game. When: Evaluating a competitive game that mixes luck and skill, or considering adding rolls. Why: Law of Large Numbers; luck adds variance per game, so skill advantage shows mainly across many games.
+- [mechanism] The same seed produces exactly the same sequence, so testers can reproduce a result precisely.
+- [mechanism] Results that land close to a win but miss, produced more often than chance predicts, raise excitement and keep players playing. When: reward displays in chance-based games. Why: Near misses feel like almost winning and encourage another attempt.
+- [mechanism] A single player overwhelmed by an endless sea of enemies can be used deliberately to create a sense of futility. When: Enemy numbers are intentionally unbeatable.
+- [mechanism] Removing randomness from outcomes makes results fully predictable, which lowers strategic value and player engagement.
+- [mechanism] In dice or card games, randomness usually sits in the roll or draw, while movement after the roll is deterministic.
+- [mechanism] Allowing limited rerolls of non-target dice lets players chase or avoid a bad result, producing repeated reversals of fortune within a turn. When: dice games with a risky result that players can influence by rerolling. Why: Players hope to avoid a costly outcome or add one more beneficial one.
+- [mechanism] When odds are known, players can make informed decisions, as in dice games where outcomes near the middle of a sum range come up more often than extremes. When: Designing randomness meant to inform strategy. Why: Known probabilities let players weigh options against likely results.
+- [behavior] Because people want to control fate, chance-driven games can feel like skill, and players keep engaging with no real choices, treating influence over outcomes as a puzzle. When: Games where results are predetermined or driven by chance. Why: Players perceive a puzzle in whether they can influence fate.
+- [behavior] Random group members have low tolerance for delay, since they may have joined for loot or an achievement or may have already seen the scene. When: random matchmaking groups. Why: Members have unrelated goals and little shared investment.
+- [behavior] Players optimize payoff relative to risk rather than fun, seeking the best reward-to-risk option they can find. When: Players facing a set of available actions in combat.
+- [behavior] Players may experience an outcome as random even when it is not truly random. When: when a system's causes are not visible to players.
+- [behavior] Randomness creates excitement and challenge while players still feel in control, but produces hopelessness and lost control when they do not. When: when random outcomes affect play. Why: Players' sense of control determines how randomness feels.
+- [behavior] Players often do not know the true chances of an action and form their own estimates, usually through trial and error. When: the real odds are hidden or unclear.
+- [behavior] Players rarely notice a change to a random range, but they readily notice a change to base damage. When: adjusting numbers that players see in play. Why: Random ranges are hard for players to perceive.
+- [behavior] Players perceive a game as chance-based when none of their decisions changes the odds, even if the operator profits over time. When: games with no meaningful player decisions. Why: players judge skill by their own influence on results.
+- [behavior] Players accept an improbable win as normal but resist an improbable loss, so self-serving bias works only in the player's favor.
+- [behavior] Casual players usually accept random results that are close enough to ideal rather than checking for bias. When: casual play.
+- [behavior] A sound, animation or effect that nearly matches a realistic representation but falls short is more distracting than one that is fully abstract or fully stylized. When: when an object is styled realistically but its reactions are not. Why: Partial realism breaks the player's belief in the world.
+- [behavior] A randomly generated line spoken during a dramatic moment can feel like an emotional exchange, though no system models its meaning. When: a dying character speaks during combat. Why: the player's mind supplies the emotional context.
+- [behavior] Random outcomes that let a lucky break reverse a defeat keep players starting new matches, since any match might bring a streak. When: competitive modes with random swings. Why: A single match can bring a large lucky result.
+- [behavior] Pure randomness makes outcomes feel like unfair losses or lucky wins, while predictable patterns let players plan. When: enemy or hazard timing and damage. Why: Players can only attribute outcomes to skill when they can anticipate threats.
+- [rule] Do not leave seed-based replay enabled by accident in the final release.
+- [rule] For networked games that cannot tolerate out-of-sync states, generate random results on a server so there is one authoritative game state. When: networked games needing a consistent state.
+- [rule] Give the house no independent choices; house actions should follow strict fixed rules. When: Games where a house or dealer acts against players. Why: Fixed rules keep outcomes predictable and the odds measurable.
+- [rule] Avoid expecting convergence into a single device by default; the exception is hardware people carry in a pocket. When: predicting how devices will evolve.
+- [rule] Any pairing system can be modified so no pair meets twice and no player receives two byes.
+- [rule] Lower luck by narrowing result ranges, using fewer die faces, rolling more dice, turning random events into choices, and limiting each event's impact; reverse these to raise luck.
+- [rule] Set-aside dice return to play only when every die rolled on a turn shows a 1; ignoring this changes the state transitions. When: modeling dice games where dice are set aside after rolling 1s. Why: the return condition alters which dice count carries into the next state.
+- [rule] Make events credible rather than realistic: signs, feedback, and form-follows-function still apply.
+- [rule] Warn players in advance that catastrophic random events may occur, without stating timing or severity, and give them ways to mitigate the damage. When: designing high-impact random events. Why: Warned players feel in control rather than cheated.
+- [rule] Balance surprise against player choice so that choices stay dominant; if every choice yields random effects, players feel their choices are meaningless. When: Adding randomness to player decisions.
+- [rule] Skilled players can exploit opponents' predictable random-generation biases, such as detecting a target mix that is actually played at a different rate. When: competitive games with mixed or random choices. Why: Human approximations of equilibrium deviate in detectable ways.
+- [heuristic] Analyze luck and skill directly rather than placing games on one continuum; do not assume casual games are luck-based while core games are skill-based. When: Classifying a game's luck and skill balance. Why: Games mix luck and skill in varied ways, so a single line or genre label misrepresents them.
+- [heuristic] Judge a random system's fairness by player perception as well as mathematics, since players may call sound mechanics unfair and perception drives trust. When: Designing random outcomes. Why: Perceived fairness can differ from underlying odds, and game balance depends on players perceiving the game as fair.
+- [heuristic] People judge probability by how easily examples come to mind, which is usually reasonable when common events are the most memorable ones.
+- [heuristic] Random bullet deviation on a precise aim feels like arbitrary punishment, so avoid it in skill-based shooters. When: Designing a skill-based shooter with aimed shots. Why: Players who aimed well feel the game stole a skillful kill.
+- [heuristic] When a game mixes randomness with choices, skill dominates only if players gain benefit from anticipating and reacting to the random elements; otherwise luck dominates.
+- [heuristic] Use random events with major, game-altering consequences very carefully, since players react strongly to them and trust can be badly damaged.
+- [heuristic] Treat ideal fair randomness as a target to approach, not a guarantee, when designing random systems.
+- [heuristic] Acceptable randomness depends on context: casual play, high-stakes competition and regulated gambling each tolerate different levels of deviation.
+- [heuristic] When balancing possibility against predictability, lean toward more possibility, scaled to the game's ambition. When: Designing open worlds or replayable games. Why: Predictable structures reduce replayability.
+- [heuristic] Make decision outcomes partly predictable, neither unknowable nor inevitable, so players can plan while still facing real uncertainty.
+- [procedure] 1) Take a tiny deck, such as three cards. 2) List every sequence of random choices the shuffle can make. 3) Count the resulting orders. 4) Compare them with all possible orders to see whether each is reached equally often.
+- [procedure] 1) Start with an ordered deck. 2) For each position i from the last down to the second, pick random r from 0 to i inclusive. 3) Swap the elements at i and r. When: producing a randomized ordering of a list. Why: one random draw and one swap per element gives a fair shuffle cheaply.
+- [procedure] 1) Define each state as the remaining counts of each card type plus the current streak length. 2) Assign probabilities as remaining count divided by remaining deck size for each draw. 3) Multiply probabilities along each path to a target state. 4) Sum the probabilities of all final states meeting the streak condition. When: computing the probability of a streak in a deck drawn without replacement. Why: tracking remaining cards makes draw probabilities depend on history.
+- [procedure] 1) Number rows 1 to 52 in one column. 2) Build item names in an adjacent column by joining rank and suit lists with CONCAT. 3) Place shuffled random ranks in another column. 4) Use VLOOKUP on each rank to return its name. When: Shuffling a set of named items from a numbered list.
+- [procedure] 1) List the 52 card names in A1:A52. 2) Enter =RAND() in B1:B52. 3) In C1, enter INDEX over A1:A52 using RANK of B1 within B1:B52 as the row and 1 as the column. 4) Fill C1 down to row 52.
+- [procedure] 1) Count results satisfying the condition. 2) Count all equally likely results. 3) Divide the first count by the second. When: Single random event with equally likely results. Why: Ratio of favorable to total outcomes gives probability.
+- [procedure] 1) Watch players' betting patterns for signs of tracking the deck. 2) Deal from a multi-deck shoe so the remaining composition changes more slowly. When: Casino-style games where hidden deck information can be exploited. Why: Makes tracking the remaining cards harder and less rewarding.
+- [procedure] 1) Choose a game with fairly simple rules. 2) Revise its rules so outcomes no longer depend on chance. 3) Describe how the change affects gameplay. When: when studying how chance shapes play.
+- [metric] A six-identical-outcome streak has about a 1 in 32 chance, so among 3.2 million players about 100,000 would see one in their very first game.
+- [tradeoff] Choosing a random alternative spawn when the spawn is blocked reduces the reason to camp, but adds an element of luck.
+- [tradeoff] Random attribute rolls force players to make the best of what they get, while point-buy lets players shape a character by spending a fixed pool of points. When: choosing how players assign attributes. Why: Random rolls remove player control; point-buy gives it.
+- [tradeoff] Output randomness adds excitement and quicker play and rewards risk assessment, but it can let luck dominate and make players blame dice for cheap losses. When: Using action-triggered randomness in a game. Why: Unpredictable results speed play and reward risk judgment, yet bad rolls can overshadow good decisions.
+- [tradeoff] Exposing random statistics lets players verify fairness, while hiding how the system works lets the community solve it through shared data, suiting community-focused games. When: choosing between transparency and concealment for a random system.
+- [tradeoff] Rolling at rates different from those displayed can match players' expectations, but it teaches them something false and conflicts with honesty.
+- [pitfall] Shuffles are not perfectly random: 52-card orders far exceed any 64-bit seed space, and machine bit width limits distinct orderings, so most permutations never occur. When: a shuffle must cover every possible permutation. Why: The number of permutations of a large list can exceed what the seed and word size can represent.
+- [pitfall] Players who believe they control chance can misjudge the real odds, so their perceived probabilities diverge from actual ones.
+- [pitfall] When the same input seems to give different results, players stop practicing and disengage, even if the controls are complex. Why: Random-seeming controls make practice pointless.
+- [pitfall] Adding randomness does not automatically make a game more accessible or better, especially if players lose meaningful choices. When: Considering whether to add randomness to improve a game. Why: Randomness removes player agency when it overrides decisions.
+- [pitfall] Equating random outcomes with luck-dominated play is a mistake when probabilities are exposed and escape options exist.
+- [pitfall] Random events that favor the player are generally fine, but random destruction causes confusion, a sense that play is pointless, and accusations of cheating.
+- [pitfall] If the RNG is re-seeded on every reload, a player can save before a risky roll and reload on failure until it succeeds. When: save-anywhere systems. Why: Each reload becomes a fresh attempt.
+- [fact] Real randomizers such as dice, coins, cards and spinners are not perfectly random and carry small physical biases that shift outcomes away from ideal probabilities.
+- [fact] Perceived odds can diverge from true odds through player psychology or through the computer's implementation of randomness.
+- [fact] Machines are fundamentally deterministic, but networking, clock reads, and thread timing can make a program non-deterministic.
+- [fact] True randomness needs special hardware that measures chaotic physical processes, which is outside typical computer use.
+- [fact] Third-party services can supply truly random numbers, but they are usually impractical for standard game use.
+- [fact] A single-pass swap shuffle of n elements needs n random numbers and n swaps, so its cost grows linearly with list size. When: estimating runtime of a shuffle. Why: the loop runs once per element.
+- [fact] A shuffled sequence of two outcome types can be encoded as a bit string, and the probability of a long run of one bit is a finite counting problem. When: analysing streaks in random sequences. Why: reducing the sequence to bits makes the counting uniform.
+- [fact] With three sequences, a perfect initial distribution has run counts equal to two consecutive Fibonacci numbers. When: polyphase sort with three sequences. Why: Perfect counts let merge passes finish without wasted partial passes.
+- [fact] Performance varies along a distribution, so extraordinary runs of success occur by chance and do not signal a lasting change in ability.
+- [fact] Random outcomes such as dice rolls and card draws can make games exciting and are widely used.
+- [fact] Calling a game deterministic is a description, not a judgment; deterministic games can stay popular for thousands of years.
+- [fact] Randomness makes games accessible and social because their emotional triggers are not decision-based, which is why many gambling and board games are starved on purpose.
+- [fact] Deterministic games can be memorized and played perfectly, while adding randomness to a system stops memorized patterns from working and forces players to respond to new ones.
+- [fact] In die-based combat, randomness appears in to-hit and damage rolls, spell or skill failure, saving throws against area attacks, and random stat gains on level-up.
+- [fact] Pips cut into a die's faces make the 1 face heavier than the 6 face, which can tilt results toward 6s.
+- [fact] Rounded corners or an oblong shape make some faces land more often; oblong d20s land on their flatter part more frequently.
+- [fact] Playing uniformly at random in Rock-Paper-Scissors yields equal wins, losses and draws, for a net expected score of zero.
+- [fact] Three pitfalls make results seem random: control ambiguity, state overwhelm and staging.
+- [fact] Identical events can carry different emotional weight depending on game state, such as losing a minor piece early versus the piece guarding a king late. Why: The value at stake changes with circumstances.
+
+## player experience
+- [model] Six mappings connect player, interface, and world: input to world, world to output, input to virtual interface, virtual interface to world, world to virtual interface, virtual interface to output.
+- [model] One playability model lists four components: gameplay, story, mechanics and usability.
+- [model] In an adjacent-challenge ladder, each player challenges only the player just above or below; a lower-ranked winner swaps places, and otherwise standings stay the same.
+- [definition] An experience-based theme aims to deliver a specific essential experience matching players' fantasies and desires; most game themes are experience based.
+- [definition] Satisfaction is how pleasant players find the product to use.
+- [definition] Experience points are awarded for completing game tasks, with the amount set in game data by designers, and experience levels are gained when a set total is accumulated.
+- [definition] Deep seeing covers an object's shape, color, proportion, shadow, reflection, texture, relation to its environment and users, function and meaning, not just its name.
+- [definition] Experience pillars are the core activities a game is built around, each challenging particular player skills such as attention, reflexes, coordination, or planning.
+- [definition] A UX mindset means thinking about humans first throughout development, aiming for games that are usable, accessible, safe, inclusive, and fun, using human factors psychology and the scientific method.
+- [definition] Depth means providing meaningful play at high skill levels, where players can keep making consequential choices.
+- [mechanism] Mastering a graded technique, such as consecutive hits without taking damage, gives players lasting feelings of power and control that carry into the rest of the game. When: when designing skill training within a game.
+- [mechanism] In a crowded market, a small usability problem in the purchase flow can meaningfully reduce revenue.
+- [mechanism] Products designed with UX in mind tend to be more satisfying, which can make them more popular and raise revenue.
+- [mechanism] Absolute clocks cap play by measured time, such as a sand timer, a game clock, or the fixed duration of an in-game action.
+- [behavior] Adding a visible change to a familiar enemy signals a threat that is both known and unknown, prompting players to investigate. When: enemy variants. Why: Familiar forms lower the cost of learning while the change keeps interest.
+- [rule] Define intended player feeling, such as compassion or moral dilemma, and what is fun; keep these as the guide and use psychology knowledge to identify variables producing the feeling. When: Conception phase or early design. (x2)
+- [rule] Design rules and pieces that produce emotional responses and a potential experience rather than controlling every outcome, since designers cannot create the experience directly. Why: Players' actions determine the actual experience.
+- [rule] Use UX practice to realize designers' intended vision, including hardcore difficulty goals and other deliberate intents, rather than diluting it into something easier or more standard.
+- [rule] Separate the sensory feel of a digital game from its core system and leave its refinement for later development.
+- [rule] Prioritize feedback that can be applied now over comments on features that will be redone soon.
+- [rule] When a feature returns for rework, retrieve earlier UX findings so the same mistakes are not repeated. When: Feature reworked.
+- [rule] Avoid the usability police role; keep UX concepts fun and do not report to management as an enforcer.
+- [rule] Refine audience-focused or technology-driven challenges into player experience goals before brainstorming on them.
+- [rule] Show the effect of a choice on secondary attributes and affected skills before the player locks it in, such as when a level-up adds to an attribute. When: Players make irreversible or hard-to-undo character choices. Why: Players who see effects only after committing may choose differently with full information.
+- [rule] Use and polish affordances to make the game more intuitive; the form-follows-function usability pillar relates to cognitive affordances.
+- [rule] Define clear player experience goals and test against the intended audience.
+- [rule] Build around the style of play your audience will enjoy.
+- [rule] Before choosing technology, test each part of the AI model against a set of questions about how characters should move, decide and coordinate.
+- [rule] Stay vigilant about violent content as technology enables more extreme play, since psychology cannot yet give a definitive answer.
+- [rule] Design around specific player types and skill bands rather than one average player, since a large player base contains many kinds of players. When: Designing or tuning for a large, varied audience. Why: An average player does not exist in a diverse population.
+- [rule] Let the intended player experience drive the formal structure, so the result may include familiar elements but still feels new. When: When defining a new game's formal structure.
+- [rule] Use player knowledge to entertain, never to exploit human limits for profit; keep player interest and well-being at the center even when profitability matters. Why: Using knowledge of human attention to exploit people is the opposite of a UX mindset, and studios still need profit.
+- [rule] Give goal-free systems learnable, nonobvious properties, because players will build their own goals from them. When: designing sandbox or toy-like systems. Why: self-made goals only sustain interest if the underlying system has depth.
+- [rule] Consider what players will consider doing and what they expect the game to do in response, not only what actually happens on screen.
+- [heuristic] Start with a grid for ease of implementation and debugging, and experiment with other representations once the core code is robust.
+- [heuristic] Keep UX feedback brief and direct, since busy developers need straight-to-the-point findings to make quick decisions. When: Production deadlines.
+- [heuristic] Auto-save writes backups in the background, and its frequency balances losing work against wearing out storage with constant saves. When: Designing periodic saving for user-created data. Why: Frequent saves reduce loss but add write load, and infrequent saves risk losing work.
+- [heuristic] Readability matters most when players choose between classes, abilities, skills or gear, especially when the choices are strategic rather than cosmetic. When: Presenting options that affect strategy.
+- [heuristic] Deliver an intended feeling through artwork, sound, or game rules, choosing the mechanism that conveys it best. When: designing for a specific emotional quality.
+- [heuristic] When a mapping feels good but play is aimless, add goals and constraints to focus the player's movement. When: the mapping feels good but play is unfocused.
+- [heuristic] Making the link between each player action and the turn outcome clear is often the hardest design problem, needing many revisions guided by tester feedback. When: designing turn-based feedback.
+- [heuristic] Give players details that their imagination can use and that spark fantasy; a single evocative detail can lead players to build much more themselves. When: When adding flavor or identity to game elements. Why: Concrete role-suggesting details help players grasp how elements work and invite imaginative play.
+- [heuristic] Deep, well-balanced interaction can carry a game's success even when its presentation is primitive. When: Deciding how much effort to put into visuals versus game systems.
+- [procedure] 1) Search for the layout that makes your AI take the most turns. 2) Use that layout to test other AIs. When: stress testing a guessing AI. Why: worst-case layouts can reveal weaknesses that average-case tests miss.
+- [procedure] 1) Split the game into its parts: controls, reaction, situational framing, finishing touches, symbolic imagery, and mechanics. 2) Notice what feels wrong and try implementations until the feel improves. 3) Record the small decisions and the principles behind them. When: when studying a game's feel in order to understand or recreate it. Why: Feel emerges from numerous minor implementation choices, not one single technique.
+- [procedure] 1) Form hypotheses about possible solutions. 2) Verify them through UX research. 3) Repeat the cycle iteratively.
+- [procedure] 1) Pick questions from the four affordance types: clickability, perceived feedback, item function from shape, enemy behavior from design, and next goal from environment. 2) Ask testers targeted questions, such as naming each HUD element from a screenshot. 3) Repeat during each testing phase. When: during the iterative testing phase, before engine implementation when possible. Why: Targeted questions find critical problems faster than open-ended testing, and early changes are cheaper.
+- [procedure] Designing for personality types: 1) Map your own personality type first. 2) Map three theoretical personality types. 3) For each, describe a game you would design for it, covering mechanics, theme, depth, and other design elements. When: designing games for different player types. Why: self-mapping and varied types expose design assumptions.
+- [procedure] 1) Identify what makes a game challenging for you. 2) State the game's premise. 3) Identify a story that moved you and why, or explain why no game story affected you. When: studying what makes a game engaging. Why: Links challenge, premise, and story to emotional response.
+- [procedure] 1) Describe how players start or join the game. 2) List the social, procedural, and technical steps involved. 3) Compare entry steps across games to find similarities.
+- [procedure] 1) Decide what players should feel, see, and hear. 2) Choose the means that produce that drama. 3) Direct the drama with numbers. When: Designing combat encounters.
+- [procedure] 1) Consider extrinsic rewards first. 2) Then add intrinsic motivation through competence, autonomy, and relatedness. 3) Then examine how the two interact. When: making a game more engaging. Why: the layers build on each other in order.
+- [procedure] 1) List the challenges players face in the prototype. 2) List the ways players express themselves through fantasy or play. 3) Describe how these elements interact to make the game fun. 4) Identify weak links to improve. When: auditing a prototype before adding more content. Why: Seeing which pleasures are supported exposes gaps and overlaps.
+- [procedure] 1) List the established rules. 2) Ask what would happen if players broke a rule to gain an advantage. 3) Note the dynamics that emerge. When: Designing mechanics before playtesting. Why: Players invent dynamics designers did not plan.
+- [tradeoff] Designing the user experience of a scripting tool is real work, and the resulting behavior must still be translated into lower-level bytecode for efficient execution. When: Building a visual scripting tool on top of a VM. Why: The friendly front end and the efficient runtime form are separate representations.
+- [tradeoff] Designed frustration from a deliberate challenge can support flow, while frustration from usability problems prevents it; removing the first or keeping the second both damage play. When: Evaluating player frustration in playtests. Why: Only deliberate challenge is part of the experience; usability friction blocks it.
+- [tradeoff] Focusing only on experience shows how something feels but not why or how to improve it. Focusing only on structure can yield designs that look sound but play poorly.
+- [pitfall] Assuming an interface element is obvious because developers understand it leads to missed usability problems. Why: Knowledge developers have is invisible to newcomers.
+- [pitfall] Overconfidence and cognitive dissonance lead developers to avoid uncomfortable user experience problems.
+- [pitfall] Small glitches such as a character's foot clipping through a stair break immersion, because real-world perception never shows such errors.
+- [pitfall] Defining play by pleasure, exhilaration, power and self-initiative is too broad, since an executive closing a contract can feel the same without playing.
+- [pitfall] Adding stimulation to a flat section can reduce the impact of the moments that follow it.
+- [pitfall] A loop that blocks while waiting for input cannot advance the game on its own, so the world freezes between player actions. When: Game loop waits for player commands. Why: Nothing updates while the loop is blocked on input.
+- [pitfall] A mechanic with utility is not necessarily good design, since one that teleports the player to the exit could trivialise the game. When: when accepting generated mechanics based on solvability alone. Why: Solvability measures function but not quality or player experience.
+- [pitfall] When flow breaks, the rest of the experience falls apart, so many problems with bad games trace back to broken flow.
+- [pitfall] Time spent eliminated between rounds can exceed the time the strategy decision needs, creating a long dull flow gap.
+- [pitfall] Menu transitions, movement animations and dialogue that block action create flow gaps, and attractive presentation weakens the decisions around them.
+- [pitfall] Very large decisions make players sit and deliberate for long periods, stalling the game.
+- [pitfall] Assuming the experience starts exactly where the designer defines it causes problems, because audiences arrive with context that spills in. Why: Experiences have no hard cutoff in practice.
+- [fact] Design thinking, UX research and analytics are tools for refining the UX approach to a specific game.
+- [fact] At the Self-referential stage, barriers are time, budget, and resources; user research on small projects or subtasks is the main tool, because it can show quick wins.
+- [fact] Games rely on a fixed menu of animations, such as walk, run, fight and open door; animations outside that menu, such as a kiss, are very expensive to create.
+- [fact] The reading nook is a quiet, comfortable, lean-back spot away from the TV, where calm, simple tablet games fit well. Why: Reading and similar relaxed activities suit this lean-back posture.
+- [fact] UX designers often use Plutchik's model to explore the range of human emotions.
+- [fact] The usability pillars are a practical framework rather than an exhaustive list, and emotions elicited by interaction are handled separately under engageability.
+- [fact] Presentation quality raises the perceived value of an identical item.
+- [fact] Player experience is shaped by marketing, onboarding, matchmaking, sound design, level design, music and community management.
+- [fact] Board and card games extend invitations socially, while digital games usually use a start button or entry screen.
+- [fact] A real experience cannot be copied perfectly in a game, and a good game does not need to copy it; the essence can take a very different form.
+- [fact] Games are autotelic, so engagement is their purpose, and the real design question is when engagement becomes excessive.
+- [fact] Alternating repetition, such as a level-then-boss cycle or a tense-then-release pattern, gives play a rhythm.
+- [fact] Classic arcade games were designer-led and were designed to last about three minutes per play session.
+- [fact] UX pillars overlap heavily, so strict categorization of a design issue into one pillar is difficult. When: Classifying UX problems. Why: Many elements affect several pillars at once.
+- [fact] Borderline play forms include solitaire, trivia, dexterity challenges, chance-based puzzles, and poll-based questions, which blur the lines between puzzles, games, and toys.
+- [fact] Curiosity alone does not make play; play also requires willful action that touches or changes something, and curiosity means seeking answers freely rather than from obligation.
+- [fact] In a game world, player intent comes from the designer, who creates goals that motivate action, rather than being fully innate. Why: Real-world motivation is hard to explain, so game intent must be built.
+- [fact] Perceptual illusions in art are acceptable when the illusion itself is the specific intent of the design.
+- [fact] Successful games can deliver very different numbers of core pleasures; one with few pleasures can still be highly addictive, so element count does not predict fun. When: auditing a prototype's pleasures. Why: Fun depends on the right combination of pleasures, not their quantity.
+- [fact] Game experiences vary widely in length, from about a minute in a fighting game to a hundred hours in an open-world role-playing game.
+- [fact] Games with layered, interacting lessons support lifelong learning, while games with few lessons are shallow.
+
+## design process
+- [model] Over thirty review questions can evaluate artwork rather than mechanics, covering emotion, surprise, curiosity, unification, resonance, challenge, reward, beauty, and physical and virtual interface. When: when evaluating or improving how a game looks and sounds.
+- [model] General health checks cover engagement (player count, session length, return frequency), progression (improvement, progress or winning, pacing), and diversity and challenge in play.
+- [model] Alignment objectives take two forms: arranging pieces in a spatial pattern, or creating conceptual matches between categories of pieces.
+- [definition] Essential features are the few traits that make an experience memorable; incidental features are details that could change without losing what made it memorable.
+- [definition] Bottom-up design starts from a robust, general physical simulation and then finds enjoyable play within it, instead of coding only the parameters one mechanic needs.
+- [definition] Good software architecture is judged by how easily the codebase accommodates change; if nobody modifies the code, its design matters little.
+- [definition] Level designers execute gameplay and design individual levels. Systems designers build systems such as combat, crafting and mini-games.
+- [definition] A domain-expert PCG system holds knowledge about games or players and uses it to critique or modify content, often within a tool or designer system.
+- [definition] A judgment call is a decision with no single correct answer, where the same choice can lead to disaster or triumph.
+- [mechanism] Recording decisions saves the team from solving the same problems again.
+- [mechanism] Alignment games are decided either by logic and calculation alone, or by chance combined with calculation.
+- [behavior] The brain categorizes objects before they reach conscious attention, so a label replaces the detailed view.
+- [behavior] Teams can agree on what to do now while the best long-term path is still debated, as captured by the phrase 'disagree and commit'. When: The best path is still debated but action is needed.
+- [rule] When selecting technologies, judge them by what they add to the experience and favor those leading toward a better world, not merely novel or exciting ones. When: When selecting technologies for a game. Why: Judging technology by excitement leads to poor choices.
+- [rule] Record design discussions in lasting media, such as notebooks, email, forums, mailing lists, fileshares, wikis, or printed documents, rather than relying on spoken words. Why: Spoken words are easily forgotten and misunderstood.
+- [rule] Keep written records of all publisher approvals and decisions, since they document what was agreed.
+- [rule] Answer player-type design questions at the concept stage, before layout work, once genre and target player type are known. When: concept stage of a multiplayer space.
+- [rule] Ask whether the design meets experience standards for beauty, engagement arcs, a theme that resonates, and balance tuning.
+- [rule] Check the mix of simplicity and power deliberately, since the combination is easily botched.
+- [rule] A choice must be understood when it is made, and its impact must be perceivable through the environment, AI agents, or audio-visual effects.
+- [rule] Do not change a game's feel just to suit the AI markup tool.
+- [rule] Take rules and examples from any creator of experiences, whatever their field. When: Seeking design principles. Why: Principles from one medium often apply to others, since all rest on the human mind.
+- [rule] Treat design approaches as tools in a toolbox, open-minded but practical, and judge them by whether they produce better experiences. When: Evaluating a borrowed design principle. Why: The test of a principle is the experience it produces.
+- [rule] Test whether indirect control produces the intended behavior and not unintended desires or expectations in players. When: After adding layout or setup meant to steer players.
+- [rule] Compare your production values with rivals and decide whether you aim to be top-tier or the cheaper option.
+- [rule] Use analytics to confirm the game meets its design goals, which for most games means being fun.
+- [rule] When only one feature or fix is possible, choose by its impact on the player experience as a whole. When: Deadline allows one change.
+- [rule] Use single player versus game when the system can supply challenge through puzzles or structure.
+- [rule] A flowchart must show every path through the game, every outcome, how a player wins or is eliminated, and what happens if a connection drops.
+- [rule] Base the gameplay overview on the physical or software prototype, which serves as the model for how the game plays.
+- [rule] Each designer should decide for themselves which values they believe in, rather than adopting a single prescribed set.
+- [heuristic] Trust introspection on how an experience feels and on subjective matters like ethics, drama, and mind, but not on physics or natural history. When: evaluating experience quality.
+- [heuristic] Record the design options you did not choose so you can test them later. When: Making numeric or design decisions.
+- [heuristic] Keep charts that justified a decision, since they later help you recall why the decision was made.
+- [heuristic] Check each of the eight pleasures against the game's aesthetics, mechanics, and experience to see which the design actually supports. When: reviewing a game design.
+- [heuristic] Repeat traits across related elements, such as a boss sharing features with its minions, to create pleasing, unifying echoes.
+- [heuristic] Inner contradictions, where a feature works against the purpose it serves, are a root cause of bad design; remove them rather than excusing them.
+- [heuristic] Check every use of a stat before calling it a dump stat, since an apparently irrelevant stat may control carrying capacity or access to obstacles. When: Evaluating whether a stat can be ignored.
+- [heuristic] In-game value reflects how much players care about succeeding, so it works as a diagnostic of their motivation.
+- [heuristic] Judge working definitions by whether they lead to better game designs, and drop those that give no useful insight.
+- [heuristic] Keep each technology forecast concrete and give reasons for it, since the reasons matter as much as the guesses. Why: Reasons build instinct for how technology fits the human mind.
+- [heuristic] Rapid technological change benefits game designers, because each new technology opens new kinds of games to make.
+- [heuristic] What a designer does with an idea after it emerges matters more than the idea's source.
+- [heuristic] Beginners often borrow elements from successful games, which is normal, but the aim should be to break conventions and innovate. When: early in a designer's career.
+- [heuristic] Playing games alone is not enough; analyze each game you play and identify one specific thing to learn from it.
+- [heuristic] Avoid adding an operation to the base class if only one or a few subclasses use it, since it adds complexity for every subclass. When: Deciding whether an operation belongs in a shared base class. Why: Unused operations bloat the base class and burden all subclasses, though consistency with other provided operations can justify it.
+- [heuristic] Judge a game by whether its systems keep generating intense moments, not by one authored highlight.
+- [procedure] 1) List every assumption about the game, such as where it is played, where the player looks, and how the player touches the device. 2) For each, ask how the design would work if it were false. 3) Pursue any broken assumption that yields a useful insight. Most assumptions still hold, but an occasional broken one can yield a key insight.
+- [procedure] Ask these questions of each candidate design: 1) Does it feel right? 2) Will the intended audience like it enough? 3) Is it well designed? 4) Is it novel enough? 5) Will it sell? 6) Can it be built? 7) Does it meet social and community goals? 8) Do playtesters enjoy it enough?
+- [procedure] 1) State the game's purpose. 2) State each subsystem's purpose. 3) Find anything that contradicts these purposes. 4) Change it so the contradiction is removed. When: reviewing a design for qualities that defeat its goal.
+- [procedure] 1) State the experience the player should have. 2) Identify what is essential to that experience. 3) Build that essence into the game, changing the game wherever the experience created differs from the target. When: Checking whether a game delivers its intended experience. Why: Knowing the essence shows which parts can change safely and which cannot.
+- [procedure] 1) Hold the four elements and the player experience in view together. 2) Identify which elements make the experience enjoyable and which detract from it. 3) Change elements to improve the experience. When: When reviewing how a game's structure produces the experience players actually have. Why: Structure and experience must be judged together to see what causes what.
+- [procedure] 1) Read the problem statement. 2) Identify which tetrad elements (technology, mechanics, story, aesthetics) it already fixes. 3) Build the remaining design from the unfixed elements. When: when reviewing a problem statement before designing. Why: a statement often decides some elements, leaving the rest open.
+- [procedure] 1) Pick a story you want to pursue or a mechanic you want to explore. 2) Treat that choice as the problem statement. When: when no design constraints exist.
+- [procedure] 1) List the basic actions. 2) List the strategic actions. 3) Compare the ratio of strategic to basic actions. 4) List actions players wish they had. 5) Enable wished-for actions as basic or strategic actions where feasible. When: when reviewing a game's action set.
+- [procedure] 1) List the challenges the game contains. 2) Judge each as too easy, too hard, or right. 3) Check it suits a wide range of skill levels. 4) Trace how difficulty rises with success. 5) Confirm enough variety and identify the peak difficulty. When: Reviewing a game's challenge structure. Why: Covers difficulty fit, scaling, variety and ceiling in one pass.
+- [procedure] 1) Name the fantasy your world fulfills. 2) Name who the player imagines being inside it. 3) Name what the player imagines doing there. When: Choosing the anchor for a world early in design.
+- [procedure] 1) Align everyone on the design as early as possible. 2) Use open, respectful debate to resolve differing visions of the same game. When: Passionate members hold different visions of the same game.
+- [procedure] 1) Start with a simple bulleted list of ideas. 2) Write down each question the ideas raise. 3) When a question is settled, record the decision and its reason. 4) Let the notes fall into sections over time. When: Beginning a design document with no formal structure. Why: Working on design mostly means answering questions.
+- [procedure] 1) Find close competing games that lack one key component you plan to provide. 2) Compare them with your game to show the gap. 3) Present the gap to money people. When: when justifying a game's market place.
+- [procedure] 1) Describe one game in detail for a newcomer. 2) Describe a very different game the same way. 3) Compare the descriptions, noting differing and similar elements. 4) Focus on underlying mechanics, not surface features. When: when learning what makes games share common structure.
+- [procedure] To find essential parts, remove one rule or procedure at a time and check whether the game is still playable. When: when analyzing a game's structure.
+- [procedure] 1) Begin with a start node. 2) Draw lines to each decision or condition, such as 'has key' and 'doesn't have key'. 3) Lead each outcome to the next event or to a node where further outcomes occur. When: mapping branching player choices.
+- [procedure] 1) Choose the abstraction: decide which data and properties matter to the task. 2) Choose a representation that encodes that data with the facilities available, suited to the operations applied to it. Why: The two steps are rarely separable, and the representation must fit the operations performed on the data.
+- [tradeoff] A stack ignores the weakest dependencies to focus on the strongest and most dangerous ones, but that omission can hide real risks.
+- [pitfall] Adding a new interaction to a puzzle late can require major structural changes to the puzzle.
+- [pitfall] Builds that seem viable early can become nonviable later, and testers may build strong characters that still prove nonviable.
+- [pitfall] The words positive and negative are loaded; systems design uses reinforcing and balancing instead.
+- [pitfall] Without a designer who keeps focus on the vision, gameplay decisions get lost among other production concerns.
+- [pitfall] Listing outcomes by hand is practical only for small counts, and double-counting or missing similar results is easy. When: Counting outcomes manually. Why: Long lists invite errors.
+- [pitfall] Design principles stay isolated because designers rarely publish findings and often know little about other fields. When: Looking for established design principles. Why: Knowledge does not circulate across disciplines.
+- [pitfall] Judging a game trivial because it looks simple overlooks that its design determines the experiences players value.
+- [pitfall] Falling in love with a proposed solution narrows the search, and assuming only one kind of solution is valid cuts off alternatives.
+- [pitfall] Hoping a team disagreement resolves on its own fails; unresolved differences must be addressed directly.
+- [pitfall] Pursuing flawed notions of realism distracts from entertainment and delight, and simulating reality for its own sake wastes effort.
+- [pitfall] Shipped game engines often contain excellent subsystem code while the architecture joining them is neglected, leaving heavy coupling and features bolted on wherever they fit. When: under intense production deadlines. Why: Deadline pressure favors fast feature insertion over structural design.
+- [pitfall] Building an entire character or system at once assumes a certainty the design does not yet have.
+- [fact] The engineering filter asks how the design will be built; technology limits may block an idea, but the question can also reveal practical new features.
+- [fact] Feeling that something is true from personal experience does not make it true, which is why scientists avoid drawing conclusions from introspection.
+- [fact] A clean game with minimal excess detail encourages players to experiment, while a dirty game with excess detail makes beginners suspect a hidden trap.
+- [fact] One decision can be informed, dramatic, weighted, immediate, and long-term at once, such as spending a scarce resource now that is needed later.
+- [fact] The gameplay section is the largest part of the outline and covers overview, controls, interfaces, rules, scoring and win conditions, modes and features, levels, flowchart, and any editor.
+- [fact] Batch programs take input, run to completion, produce output, and stop, while interactive programs give immediate feedback to a live user.
+- [fact] Letting players write assembly-like programs is rare and suits only games where that programming is the point.
+- [fact] Better authoring tools tend to produce better content, and many well-liked games have strong authoring tools behind them.
+- [fact] Fixed ratio and variable ratio are the two reinforcement schedules most important to game designers.
+- [fact] Everyday objects such as folders, tabs, cars, books, and backpacks are recognized instantly, so they can carry meaning to players quickly.
+
+## rewards and progression
+- [model] Progression has four kinds: power, difficulty, gameplay, and narrative.
+- [model] Every progression system has a motivator, then an arc or loop, then a reward that satisfies the motivator.
+- [model] Individual arcs are accomplishment and discovery; individual loops are difficulty, complexity, power and cosmetic content.
+- [definition] Progression is the rate at which a player moves through a game's power, difficulty, gameplay, or narrative ramp.
+- [definition] Progression feels well-paced when players are neither stalled nor hurried.
+- [definition] Gameplay progression is the player's wish to see something new, such as a mechanic, level, item, or enemy.
+- [definition] Progression systems can include experience points, experience levels, faction standing, skill levels, and ranks, and games without experience points may show growth through items, story, or abilities.
+- [definition] An access reward grants limited forward movement, typically through a single-use key or resource. When: When designing rewards that unlock progress. Why: Access rewards control where and when players can go.
+- [definition] Progression is an exchange in which the player gives time or effort in return for advancement in the game.
+- [definition] Active skills let a player take an action they otherwise could not take; passive skills apply constantly or trigger automatically in the right situations.
+- [definition] A skill tree starts the player with a small selection and unlocks more skills as earlier ones are taken, forming a directed acyclic graph rather than a true tree.
+- [definition] Player progression means skill improves while the game's content stays the same; it is typical of most shooters and classic board and card games.
+- [definition] A progression arc moves from one point to another once, while a progression loop repeats a cycle of challenges.
+- [definition] As a design tool, progression mainly serves to conclude the game within a reasonable time.
+- [definition] A permanent rank is usually a direct function of a lifetime rating, so it follows the rating across the player's whole history.
+- [definition] Non-contingent rewards are given regardless of behavior, such as an unexpected bonus; they are considered less controlling.
+- [mechanism] Skill levels rise the more a player uses that skill, and players can often spend points on skills when they gain a character level.
+- [mechanism] When progression stops mattering, after a level cap, full skill unlocks, or maxed stats, the player enters an elder game with a different goal. When: Progression has no further meaningful gains. Why: Once the progression reward runs out, the player needs a new motivation to keep playing.
+- [mechanism] Skill gating slows skill growth by offering progressively harder challenges with little teaching, so each completed challenge signals readiness for the next.
+- [mechanism] A reward space that advances a piece extra spaces can carry it straight into the goal, so one lucky roll can finish a piece.
+- [mechanism] Gating levels behind rare, powerful collectibles turns progress into a countable path, where each collected item is a measurable step toward the final goal.
+- [mechanism] Progression tied to weapon choice, with weapon energy earned from enemies and lost when hit, forces players to switch weapons and plan usage order. When: when designing weapon upgrade or resource systems. Why: Coupling energy gain and loss to combat makes choices matter at every fight.
+- [mechanism] Procedures that offer inefficient routes to the objective force players to use particular skills.
+- [mechanism] In team shooters that use a ticket count, completing objectives drains the opposing team's tickets. When: When designing objective-based modes with a ticket system.
+- [mechanism] A fixed ratio above one-to-one pays a batch of rewards on every Nth action, so most actions earn nothing.
+- [mechanism] When rewards match intrinsic desires exactly, extrinsic and intrinsic motivation add up rather than competing.
+- [mechanism] Tools that unlock harder resources widen a sandbox, and the player's goal shifts from fixed survival tasks to self-defined aims.
+- [mechanism] Random reward systems can feel like progress through near misses and hidden drops, even when each outcome is independent. When: Designing random loot or chance-based rewards. Why: Players perceive each failure as a step closer to the useful outcome.
+- [behavior] Loosely connected objects matter to an agent according to its current needs; a hungry character finds food sources interesting while a satiated one does not. When: when relationships depend on proximity or the agent's current needs. Why: the agent's current state changes which objects it relates to.
+- [rule] Grinding for growth is acceptable only while content keeps pace with rising experience needs and the core loop is enjoyable in itself. Why: Extra time spent on an enjoyable core loop is hardly felt as punishment.
+- [rule] Avoid extrinsic rewards in freedom, creativity, or exploration games, as they reduce intended play; for creative, exploratory, or social systems with undetectable achievements, use no reward system. Why: Extrinsic rewards reduce the play those games are meant to produce.
+- [rule] Digital explicit-future systems may need tools that log deals and flag them resolved, since players otherwise must recall promises.
+- [rule] Never let players lose progress without saving, warn about checkpoint distance, and warn players about the consequences of abandoning a multiplayer match. When: Designing save systems, checkpoints and multiplayer quitting. Why: Players lose trust and motivation when progress disappears unexpectedly, including when they quit by closing the console or window.
+- [rule] Allow players to reset skill-tree points so they can recover from a later-regretted decision. When: Designing skill trees or build systems. Why: Permanent choices with no reset increase frustration when players regret them.
+- [rule] Well-designed skill trees offer both competence and autonomy by showing progression toward clear goals and meaningful specialisation.
+- [rule] List the skills your game demands; most games require a blend of several, so a single-skill view is incomplete.
+- [rule] Verify that participants understand their next step and feel motivated to take it. When: Reviewing advancement systems.
+- [rule] Do not add rewards to every experience hoping for an easy motivation boost.
+- [heuristic] A resource list can be skipped for genres whose resource relationships are so standard that the balance patterns are well established. When: Genre has well-known balance patterns, such as RPGs with experience, levels, HP and gold. Why: Standard relationships are already known.
+- [heuristic] Unlock new content on a win or a death in games with much randomness or a harsh curve, so failed runs still feel like progress. When: Runs are often lost and progress would otherwise feel futile. Why: Visible unlocks give a sense of advancement even when the run itself is lost.
+- [heuristic] Rewarding returning players more for longer breaks is a way to encourage players to disconnect.
+- [heuristic] Each loop should carry several motivators at once rather than relying on a single one. Why: Reliance on one motivator leaves players without reason to continue if that motivator weakens.
+- [heuristic] Color-coding points by event prestige and requiring a minimum of high-prestige points for invitational events gates access by proven achievement. When: when designing invitational event eligibility.
+- [heuristic] Measure progress in several ways at once rather than relying on one system.
+- [procedure] 1) Identify a hard progression cap in a game. 2) Consider why the cap exists. 3) Imagine removing it. 4) List problems the removal would fix. 5) List new problems the removal would create. When: Evaluating whether a hard progression limit is justified. Why: Removing a cap reveals the purpose it serves and the costs it carries.
+- [procedure] 1) State the design goals. 2) For each progression system, check whether it improves engagement or only blocks access to the game's best systems.
+- [procedure] 1) For higher-rated, lower-rated, and equal-rated opponents, compute expected rating gain or loss using assumed win probabilities. 2) Compare the expected values to see whether players are pushed toward similarly rated opponents. When: when checking whether a point scheme creates the intended matchmaking incentive.
+- [tradeoff] An open-ended level system lets players keep growing indefinitely, but in competitive games it can let time played decide standing instead of skill.
+- [tradeoff] Allowing a player to misrepresent one card in a trade makes every trade carry risk, because any offer may hide a bluff. When: Trades where a player may lie about one item.
+- [tradeoff] Keeping all progression after a loss reduces the sting of death, but makes victories depend on time invested rather than skill. When: Deciding whether a defeat keeps experience, levels, and loot. Why: Persistence-based progress can make overcoming a challenge feel meaningless.
+- [tradeoff] Scoring a partial winner from game state can reward a player who builds a lead and then logs off before the opponent can answer. When: in two-player games.
+- [tradeoff] Giving all skills at once maximizes choice but can overwhelm new players, while linear unlocking gives designers control and easier balancing but reduces player ownership. When: Deciding when players gain skills.
+- [tradeoff] Tree branches create trade-offs between a strong skill that dead-ends and a mediocre skill that leads to a great one later. When: Designing skill tree branches.
+- [tradeoff] Character progression narrows the possibility space because players meet only the content provided, while player progression keeps it open through skill. When: choosing a progression type.
+- [tradeoff] Removing monster rewards faces a dilemma: monsters that do not respawn empty the world quickly, while respawning monsters without rewards stop being fought.
+- [tradeoff] Performance-contingent rewards are most controlling but give competence feedback that offsets control when progress is visible; completion rewards feel less controlling but give no sense of growing competence.
+- [pitfall] Rewards not tied to clear goals are less likely to motivate players.
+- [pitfall] Repeating the same core tasks for small gains feels grindy.
+- [pitfall] Free rewards for trivial actions, such as a first-login trophy, water down later achievements and suggest the game needs no effort. When: Adding early or easy rewards. Why: Arbitrary rewards reduce the sense of accomplishment that genuine achievements provide.
+- [pitfall] Using progression gates or loss threats to hold players in place when core gameplay is weak breeds resentment rather than engagement. When: Core interactions are missing their goals. Why: Artificial rewards or threats do not raise enjoyment when the core is weak.
+- [pitfall] Customization that players rarely see, such as avatar appearance in a first-person game, feels wasted and adds little value. When: Camera hides the customized element. Why: Players cannot enjoy or notice what they cannot see.
+- [pitfall] A game cannot simply promise a need; it must deliver fulfillment, or players who expect it will move to a game that does.
+- [pitfall] A dip in interest that is not followed by renewed rising interest can lead players to leave.
+- [pitfall] Protected saves erase the save on reload and may penalize resets, so honest players can be punished, for example when a power outage counts as a loss.
+- [pitfall] Many possible actions without worthwhile payoff feel tedious, and collectibles lose individual meaning when they are scattered without clear reward. When: when designing many collectibles or optional actions. Why: Actions without payoff lose the player's motivation.
+- [pitfall] Unadvertised milestones leave players unsure what they are striving for.
+- [pitfall] Tuning a game for motivation alone can produce a game whose players feel only regret for the time and money they spent.
+- [pitfall] A missing reward can feel like punishment; if a crowd ignores a heroic act, players feel disappointed.
+- [pitfall] A reward players do not understand feels like no reward at all. When: Designing reward feedback. Why: Players cannot value a reward whose meaning is unclear to them.
+- [pitfall] The perceived value of each scored action shifts as players gain experience, so reward balance is a moving target that needs continued checking.
+- [fact] Most game design targets the player level, where players understand the game and are immersed in mastering it.
+- [fact] Removing levels that players already earned is less acceptable to players than a cap set in advance.
+- [fact] Reaching new audiences requires new player experiences, as shown by demand for novel hardware and rhythm-based music games.
+- [fact] Reward-driven gamification is often shallow, but rewards work well when combined with other teaching models. When: When using rewards to motivate learning. Why: Rewards alone rarely produce deep learning.
+- [fact] Each new thing a player sees can serve as a reward in itself.
+- [fact] Progression-based games usually make older weapons obsolete by design.
+- [fact] Progression is only one small part of game design and may or may not suit a given game as a core or auxiliary system.
+- [fact] Adventure games usually do not let the character grow in wealth, status, or experience as role-playing games do, relying on inventory and puzzles instead.
+- [fact] Monetary rewards activate reward circuitry more strongly than verbal rewards, and higher monetary pay raises effort on simple tasks. Why: Students offered four dollars outperformed those offered ten cents on a repetitive dragging task, and brain-reward activity was stronger for money than for verbal reward.
+
+## matchmaking
+- [model] TrueSkill models each player's skill as a bell curve with a mean (μ) and an uncertainty (σ), and was one of the first rating systems to handle multiplayer matches directly.
+- [definition] An if-clause is a match object whose matching method takes the database and a bindings list; the list starts empty and is filled during matching.
+- [definition] Match Making Rating (MMR) is an internal skill rating per player, usually updated like Elo or TrueSkill, used to pair players of similar skill.
+- [definition] A ladder ranks players by their results in challenges, where players gain rank by beating those above them, making rank a separate system from rating.
+- [mechanism] When outcomes depend on skill, performance-contingent rewards and skill-based ratings such as star rankings convey real growth and signal progress. When: Performance or outcomes depend on skill rather than luck. Why: Rewards and ratings reflect the player's own improvement, showing competence growth.
+- [mechanism] Mixed messages from player feedback often cause sudden, dramatic worsening, and behavior may plateau or regress even while players expect improvement. When: Players give inconsistent feedback to a learning creature. Why: The network generalizes from conflicting lessons.
+- [mechanism] Matchmaking tracks each player's experience level and win rate and pairs players with similar records; the concept is simple but building it well is a major engineering challenge. When: online competitive games. Why: Pairing similar players reduces skill differentials.
+- [mechanism] Matchmaking that pairs players of similar relative skill reduces the effect of initial-condition differences.
+- [mechanism] In an adjacent-challenge ladder, games alternate so a player challenges upward in one game and downward in the next.
+- [mechanism] Once spending has occurred, rating-based or power-based pairing usually puts heavy payers against one another, cancelling what they bought.
+- [mechanism] Without a luck term, underdogs win more often than the rating predicts, so skilled players lose more points against weaker players than they gain. When: Rating systems applied to games with chance. Why: Ratings overestimate skill gaps when luck is ignored.
+- [mechanism] Teammates who have played together often may beat stronger teams of strangers. When: Team games where players repeatedly team up. Why: Familiarity improves coordination beyond individual skill.
+- [mechanism] Pairing each strength with a weakness, such as fast but fragile or strong uphill but poor in corners, keeps options competitive. When: Designing unit or vehicle traits.
+- [mechanism] Greater player skill can amplify an existing imbalance, because skilled players exploit it, rather than reducing it. When: games with a built-in imbalance. Why: Skilled players find and exploit the imbalance.
+- [mechanism] Skills that scale with an attribute, such as damage equal to twice Magic, give players reason to invest in that attribute above others. When: Linking skill power to attribute scores. Why: Scaling creates an incentive to raise the linked attribute.
+- [mechanism] The size of a TrueSkill rating change depends on the ratio of the players' σ values, so a high-σ player gains more from a match against a low-σ opponent. Why: High-uncertainty players gain more information from such a match.
+- [mechanism] TrueSkill rating changes also depend on the difference in μ, so an upset moves ratings more than an expected win.
+- [mechanism] A team's rating change is split among members by their σ, so more uncertain players change more. When: team matches.
+- [mechanism] With several players racing to a finish, the game ends when the first finisher arrives, so it tends to end sooner than a single player's typical finish time. When: Multiple players race on the same track and the first finisher ends the game. Why: The minimum of several independent finish times is earlier than a typical single finish.
+- [mechanism] Rushes are easy for novices to execute and hard for them to stop, while skilled defenders can stop them, so rushes become rare at high skill levels. Why: The defender's advantage grows with skill.
+- [behavior] When players choose their own opponents, they tend to pick the most favorable matches, which distorts rating gains. When: Unmatched, player-chosen challenges in rated play. Why: Each player gains from a match the other would prefer to decline.
+- [behavior] When players with different input precision or speed share a server, the faster or more precise group can dominate and the game is perceived as unbalanced. When: multiplayer games mixing platforms or skill levels. Why: Advantages in speed or precision compound in direct competition.
+- [behavior] A character can look dominant among beginners yet fall to mid-pack at higher skill, because skilled players learn to counter its most-used moves. When: Win rate is compared across rating bands. Why: Experienced players recognize and counter predictable tactics.
+- [behavior] A strategy degenerate for experts can be a mystery to novices, who have not discovered it or cannot execute it. When: When players differ widely in skill. Why: Access to strategies depends on skill.
+- [rule] In competitive multiplayer, group players of similar skill into lobbies or ranks. When: In competitive multiplayer matchmaking. Why: Being destroyed quickly or winning too easily is not fun; matching similar skill keeps outcomes driven by play rather than experience gaps. (x2)
+- [rule] Mitigate mixed-feedback problems in learning creatures by combining learning with built-in instincts, since no general procedure solves them. When: Designing player-taught creatures. Why: The problem is partly a weakness of the approach.
+- [rule] Use MMR when even matchups are the goal and matchmaking speed matters; automated queues are the usual approach.
+- [rule] To compare players without spreadsheets, have each play for the same set time and rank them by how far they progress. When: comparing players in a live idle game.
+- [rule] Give strong players only small, temporary bonuses from single successes. When: Rewarding player success.
+- [rule] When players of different skill levels play together, design deliberately for what keeps the game challenging and interesting for each of them. When: players of different skill levels play together.
+- [rule] In TrueSkill, a win always raises the player's mean μ and a loss always lowers it.
+- [rule] Results that are close enough may count as a draw, with the threshold set per game; racing games may disallow draws entirely.
+- [heuristic] MMOG AI uses largely the same technologies as shooters, but its implementation must handle many characters in a much larger world. When: Scaling shooter AI to MMOGs.
+- [heuristic] Testers who are unusually good at playing to win are very valuable for balance testing.
+- [heuristic] Player skill rarely stays fixed, so designers must keep supplying challenges that match the player's growing skill.
+- [heuristic] Free lobbies without ratings suit games played among friends, where rating integrity matters less. When: Unrated games. Why: No ratings means no incentive to exploit matchups.
+- [heuristic] Ask whether one strong player can carry a weak team and whether one weak player can sink a strong team, then choose weighting accordingly. When: Designing team rating weights. Why: Answers determine how members should be weighted.
+- [heuristic] Skilled opponents and traders tend to target a player who has bought a strong deck, which offsets purchasing power.
+- [heuristic] Split metrics by player rating before judging balance, since results can look different across skill levels.
+- [heuristic] Judge balance by how close matches are: blowouts suggest one unit is much stronger, while wins with almost no health left suggest evenly matched units.
+- [procedure] 1) Check whether the prototype has skill levels. 2) If it does, describe how they work and how they were balanced. 3) If not, decide whether to add them and predict how they would change play. When: Reviewing a prototype's difficulty.
+- [procedure] 1) Have each strategy play many simulated games against the others. 2) Compare win rates. 3) Discuss why the winning strategies outperformed the rest. When: evaluating competing decision formulas.
+- [procedure] 1) Take a recording of dense play. 2) Replay it at reduced speed. 3) Examine the decisions second by second. When: decision density is too high to analyze at normal speed. Why: Normal speed hides too many decisions to examine.
+- [procedure] 1) Determine the player's average damage output and how much damage the player can take. 2) Derive the character level from total XP of all enemies placed so far, using the level curve, plus other XP sources. 3) Use this power to set how many hits kill an enemy, enemy weapon power and expected survival time. When: In progression games where the character improves over time. Why: Encounter strength must match the character's current power.
+- [procedure] 1) Rank players by final standing. 2) Treat each player as having played one one-on-one game against every other player, N−1 games in total. 3) Count the better-ranked player as the winner of each such game. When: free-for-all matches with N players.
+- [metric] In one-on-one fights, a win rate above 50% means above average and below 50% means below average.
+- [tradeoff] Each team acts as one player; its rating may be the mean or weighted toward some members, whereas TrueSkill sums members' μ and σ. When: Team-based multiplayer rating. Why: Team strength depends on how members combine; TrueSkill uses the sum.
+- [tradeoff] Tighter matchmaking gives closer matches but longer waits; looser matching shortens queues but allows more mismatched games. When: Designing automated matchmaking. Why: Match quality and queue time compete.
+- [tradeoff] Skill-dominated games need opponents of similar skill; a small player base may leave some players without viable matches, while a large audience can be matched easily. When: Choosing how skill-heavy a competitive game should be. Why: Skill gaps make matches unenjoyable, and small audiences cannot supply evenly matched opponents.
+- [pitfall] Online learning can produce a bug that cannot be replicated without replaying the same play history.
+- [pitfall] A ladder has only one top spot and requires constant play to hold a position, so it can feel like a treadmill.
+- [pitfall] Climbing past the halfway point of a ladder is hard for most players, which can discourage them from trying.
+- [pitfall] Relying on matchmaking to rescue new players from difficult early matches does not solve their bad first experience.
+- [pitfall] Scenarios designed for one player count often do not scale; a balanced three-player scenario can be heavily unbalanced with six players. When: Games supporting varied player counts. Why: Balance depends on player count and no automatic scaling exists.
+- [pitfall] A large number of mediocre rated games can outscore a few wins by a strong player, so the total reflects experience as much as skill.
+- [pitfall] Most masterpoint systems ignore opponent strength, so a win over a novice earns the same as a win over an expert, favoring players who face weaker opponents.
+- [fact] Each matching behavior has an opposite that moves the character as far from matching as possible, such as avoid being the opposite of catch.
+- [fact] Some MMOGs have little AI, with only animals or occasional monsters, while players control other characters.
+- [fact] Most MMOGs add AI-based challenges similar to those in first or third person adventure games.
+- [fact] Matchmaking that pairs players of similar skill and racing-opponent adjustment are common uses of game AI.
+- [fact] Implicit difficulty selection through strategic options works in competitive multiplayer, where explicit difficulty selection does not.
+- [fact] Skill is hard to measure alone because performance mixes power and skill; playtesting and analytics such as death frequency, failure locations and first-encounter completion time reveal it.
+- [fact] A starting rating has no fixed meaning; it matters only relative to the ratings of other players.
+- [fact] Players are assumed to have skill within a range, so a balanced game does not present challenges far outside that range. When: When setting difficulty for a target audience.
+- [fact] Rating systems built for two players must be extended for multiplayer games, and the designer chooses how individual or team ratings predict outcomes. When: Free-for-all or team games. Why: Two-player formulas do not cover multiple competitors.
+
+## game mechanics
+- [model] A tool that turns high-level behavior definitions into stack bytecode bridges a low-level VM and non-programmer designers. When: Designers need to author behavior without writing low-level code. Why: A raw VM is harder to use than C++, so a translator is needed.
+- [model] The MDA framework treats games as systems with Mechanics, Dynamics and Aesthetics, where interaction between them builds player behavior.
+- [model] Core mechanics form the road of a game, the defining path. Content added to the game should decorate the road and never block or hinder core mechanics. When: Adding story or other content to a game. Why: Blocking the core damages the game's feel and idea.
+- [model] Mechanical criteria for judging a generated experience are accessibility, clarity of the interface, and depth.
+- [definition] Mechanics are procedures and rules defining a game's goal, player options and outcomes, and make a game a game; rulebook or code forms define them equally. (x2)
+- [definition] A core mechanic is the basic action, or set of actions, a player repeats throughout the designed game. (x2)
+- [definition] The core mechanic is the central activity of the game, and it should be understood before production begins.
+- [definition] Some rules define objects and concepts, such as a deck, draw pile, or weapon, and the rest of the design depends on these building blocks.
+- [definition] Medium-level rules give immediate meaning to specific objects, such as the flag in a capture-the-flag game.
+- [definition] Core pillars are the things players must learn and master in a game, and they indicate where players should be challenged.
+- [definition] A core mechanic summary names the repeated action the player performs and the goal that action drives toward. When: When describing a game's core gameplay. Why: Naming both the repeated action and the goal captures what drives play.
+- [definition] Mechanics are the rules players can act on, defining what they can do. Dynamics are the ways players use those mechanics to optimize their play and maximize their chance to win.
+- [definition] A multirole mechanic serves several distinct roles, such as offense, defense, scouting, or deception, so one tool creates more choices.
+- [definition] Core gameplay is the minimal set of mechanics at the bottom of a game's dependency stack that still makes the game worthwhile.
+- [mechanism] Jump height depends on how long the jump button is held: the initial impulse is fixed, but holding longer raises the peak up to a maximum. Why: Gives players fine control over the jump through timing.
+- [mechanism] An emergency teleport that sets position to a random location gives the player an escape that carries unpredictable risk. When: when designing a panic escape for a player craft. Why: Randomness makes the escape useful but risky.
+- [mechanism] Changing a system variable directly changes play, and only playtesting shows how much.
+- [mechanism] For each damage point, the opponent sends the topmost card of their draw pile to the discard pile.
+- [mechanism] Letting one verb act on many kinds of objects multiplies its meaningful strategic uses, even though the verb itself stays the same. When: Designing an action such as shooting. Why: Each new valid target creates new decisions for the player.
+- [mechanism] A mechanic causes certain dynamics, and those dynamics can carry story and involve the player. When: Designing rules that players will act on.
+- [mechanism] In an elegant design, mechanics interact tightly, so changing one mechanic ripples into many others.
+- [mechanism] Adding exceptions that hide targets from a clear detection signal turns that signal into a judgment, since players must keep estimating what the signal misses.
+- [mechanism] Mechanics such as who can be shot and who appears on the radar signal which characters the game values.
+- [behavior] Shooters often use ragdoll physics decoratively, so a struck enemy's body flies and lands in a way that adds visual impact. When: a hit enemy in a shooter.
+- [rule] Scripts that watch fast-changing events should restart from the beginning each frame rather than resume, to avoid acting on stale information. When: the script reacts to rapidly changing events.
+- [rule] Broadcast spell effects through the sense manager so that affected characters are notified, removing the need for spell-specific detection tests.
+- [rule] Give rotation a slight attack, a short ramp to full turn speed, because without it rotation feels stiff and robotic. When: when tuning how quickly a turning input reaches full rotation speed. Why: A small ramp softens the start of a turn and removes the robotic feel.
+- [rule] Visualize the game's mechanics in a flowchart that defines the relationship and purpose of each mechanic.
+- [rule] Derive operational rules from the foundational structure so that player actions match how game state actually changes.
+- [rule] State the specific change a game should produce and the method that causes it, such as a practice task, rather than vague goals like teaching math. When: at the start of designing a transformational game. Why: A solution cannot be designed until the needed change is clearly stated.
+- [rule] Enemies that need several stomps to defeat can add a layer to their difficulty, with each stage removing a distinct part. When: designing an enemy with multiple parts. Why: Staged defeats extend an encounter and communicate structure.
+- [rule] Let the core experience set priorities, since a feature that suits one game type, such as PvP, may not benefit a game built around teamplay. When: Choosing features.
+- [rule] Let mechanics grow out of the core idea, and learn from existing mechanics without copying them.
+- [rule] Label every button in the control scheme and mark unused ones as nonfunctional. When: documenting a digital control scheme.
+- [rule] Add a new mechanic only if it fills a role not already covered, and prefer mechanics that open strategies that did not exist before. Why: Variations on existing interactions add content without adding new choices.
+- [rule] Vary decision scope across a sequence, mixing compressed twitch runs, profound decisions and several tactical decisions rather than repeating one scope.
+- [rule] Alternate decisions of similar scope but different subject matter, since similar-scope choices such as moving an army and placing a building still feel different.
+- [heuristic] Strategy arises when basic actions interact with each other, objects and space; judge verbs by strategic yield, since one well-interacting verb beats several mediocre ones. When: Adding basic actions to a game or deciding whether to add a verb. Why: Interactions, not raw verb count, generate strategy; strategic yield per verb matters more than quantity.
+- [heuristic] Start game design from the verbs players perform, since each verb's basic action can become a core mechanic; common examples include jumping, exploring, rolling and flinging.
+- [heuristic] When building objects around a mechanic, not every object must use it; some can interact with it or act as soft counters that stay useful on their own. When: building a mini-expansion around a costed mechanic.
+- [heuristic] Use the game feel loop to locate where a design might be improved, and as a foundation for building game feel from scratch.
+- [heuristic] Use cooldowns on powerful actions that would be overused without a waiting period. Why: A waiting period stops a strong action from being used constantly.
+- [heuristic] Every single restriction buys a small near-term payoff, yet a pile of them may suffocate the game.
+- [heuristic] A competitive game can keep its players for over a decade when balance, pace, skill and decisions sustain play, rather than its setting.
+- [heuristic] Depth in a multiplayer shooter comes from many interacting variables such as grenades, stealth, noise, teammate communication, clock pressure and player fatigue, not from the number of options alone.
+- [procedure] 1) Strip away the surface features of two similar games. 2) List the rules they share. 3) Translate those shared rules into a playable paper format. Why: Shared rules are the core mechanics of the genre.
+- [procedure] 1) Pick two or three known games. 2) Write a short core gameplay description for each. 3) Sketch how their activities interrelate. 4) Repeat for your own concept, guessing where unsure. When: When learning to model core gameplay or starting a new concept. Why: Diagramming trains the designer to see how activities connect, and guesses improve through prototyping.
+- [metric] Four properties with three options each give 81 cards; removing a property with three options leaves 27; adding a three-option property multiplies the deck size by three.
+- [metric] After wall contact, players have about a fifth of a second to pull away from the wall and press jump.
+- [tradeoff] A mechanic may distort the story or muddy the marketing message.
+- [pitfall] Micromanagement arises when a task splits into many small, tedious decisions; with many nearly meaningless tokens to move, handling takes longer than thinking. (x2)
+- [pitfall] Designers who understand internal mechanics so well that they forget how players experience them can lose sight of what players feel.
+- [pitfall] Adding many verbs, especially ones that interact poorly with the rest, makes a game bloated and confusing. When: Expanding a game's action set. Why: Poorly interacting verbs add complexity without adding strategy.
+- [pitfall] Players can reject a mechanic because of its name or presentation even when its effects are sound; a neutral name can carry the same dynamic. When: naming or presenting a new mechanic. Why: Players respond to how a mechanic is framed as well as to what it does.
+- [fact] A single game element can serve several roles at once, such as short-term and long-term goals, risk pacing, score, and rewards.
+- [fact] The four action-card mechanics are costed similarly, yet their effects in play differ greatly.
+- [fact] Small rule variables such as grid size or win length can shift both game length and how interesting the game feels.
+- [fact] No universally agreed taxonomy of game mechanics exists, because even simple games have tangled mechanics.
+- [fact] A wall kick needs horizontal speed above a threshold, airborne state, wall contact within 20 ms, a quick stick pull away from the wall, and a jump press.
+- [fact] Micromanagement matters only when it affects the player's experience; it is not a problem in itself.
+- [fact] Mechanic roles include harasser, scout, disabler, and deceiver, and in fighting games punch, block, block breaker, and ranged harassment.
+
+## game theory
+- [model] Game theorists model a decision as a payoff matrix listing each player's result for every combination of choices.
+- [model] Reasons to build asymmetry include simulation, exploration, personalization, leveling the playing field, interesting situations, and customizable handicaps.
+- [model] A true dilemma requires the payoff order Temptation for defection, then Reward for mutual cooperation, then Punishment for mutual defection, then Sucker's payoff for unreciprocated cooperation; exact values do not matter. When: Designing a choice where cooperation and betrayal both feel tempting. Why: Only this ordering makes individually optimal play always pay less than cooperation.
+- [model] Matching pennies is the design pattern for asymmetrical interactions without a pure equilibrium: one side wants a match, the other wants a mismatch.
+- [model] A penalty kick is a matching pennies game with unequal payoffs: the goalkeeper wants to match the kicker's side, and the kicker wants a mismatch. When: analyzing one-shot side-choice duels. Why: Both players choose sides simultaneously without knowing the other's choice.
+- [definition] Perfect information means players know every game state element at all times and the outcome of every possible move from the start. Chess, Draughts, Go and Reversi are examples. (x2)
+- [definition] A stable strategy profile is one where no player can improve their result by changing only their own strategy.
+- [definition] A dilemma is a choice where every option gains something and loses something, so no option is clearly best.
+- [definition] A loophole is a flaw players exploit for an unfair or unintended advantage, and it blocks a game from being complete.
+- [definition] A ply is one player's turn, while a move is one round in which all players have taken a turn.
+- [definition] In imperfect information games, hidden randomness such as a dice roll determines which moves are legal, so players cannot know their options in advance. Backgammon is an example.
+- [definition] A disequilibrial outcome starts out even, and then one side wins and the other loses.
+- [definition] Incomplete information means players know which elements are unknown and their possible values; imperfect information means players hold some data that may be wrong. When: Designing hidden game state. Why: The two differ in whether players know what they do not know.
+- [definition] Skill in a game with a known optimal policy means executing a memorized, well-practiced strategy, not making adaptive decisions.
+- [definition] Game value is the expected net gain per game under optimal mixed play, so a value of 1/12 means one extra win per 12 games.
+- [definition] A dominated option is one that is never better than another option across all of the opponent's choices.
+- [definition] Dilemmas are choices whose good or bad consequences are uncertain.
+- [definition] The Prisoner's Dilemma is a non-zero-sum game in which each player's individually rational choice leaves both players worse off than mutual cooperation would.
+- [definition] Negative sum games shrink the total power in play over time.
+- [mechanism] A randomized mix that deviates from equilibrium proportions can be exploited by an opponent who always plays the countermove to the overused option. Why: The opponent gains an advantage from the predictable bias.
+- [mechanism] Equilibria are self-reinforcing because players have no reason to switch, while non-equilibrium configurations are unstable because someone gains by changing alone.
+- [mechanism] When players knowingly take risks, repeated rolls make a bad outcome eventually likely, even if each risk was reasonable.
+- [mechanism] Changing the value of one outcome shifts the optimal frequencies of all options, not only the changed one; making a winning throw riskier makes opponents use it less, so its counter is played more. When: Adjusting payoffs in a symmetric intransitive game. Why: A rarer option is less often countered, raising the value of the option that beats it.
+- [mechanism] Touching the same area repeatedly gives diminishing returns, and surface variation and movement speed raise difficulty. When: Rewarding repeated actions on a surface.
+- [mechanism] Raising the payoff for a favored outcome can turn a losing game into a fair or favorable one, so payoffs are a direct lever on expected value. When: Tuning rewards in a probabilistic game. Why: Expected value scales linearly with each outcome's value.
+- [mechanism] When each player's payoffs differ by side, the equilibrium is a mixed strategy in which both players randomize side choices in specific proportions, and deviating lets the opponent exploit it. When: two-player simultaneous choices with asymmetric payoffs. Why: No pure choice is stable when the opponent can always counter it.
+- [behavior] Because no pure equilibrium exists, a matching-pennies-style interaction stays interesting across many repeated games.
+- [behavior] In complex games payoffs are not given as numbers, so players must evaluate them in real time from costs, context, positioning, unit proportions, and skill. When: strategy games with unit or resource trades. Why: Unlike fixed-prize games, the payoff of each choice is hidden and must be inferred.
+- [rule] Enforce binding deals by blocking the forbidden action for the deal's full term.
+- [rule] Watch continuously for loopholes and remove each one when found; ignoring them lets griefers keep finding new ways to disrupt play.
+- [rule] Combine many microdecisions into one macrodecision, such as choosing a route instead of directing each step of a deployment.
+- [rule] Remove pure equilibria from a strategy interaction entirely, so that anticipating and deceiving the opponent always pays. Why: In a configuration with no pure equilibrium, one side always gains by switching.
+- [heuristic] Check whether any single strategy dominates: a dominant strategy is clearly superior to all others, solves the puzzle, and removes meaningful decisions. When: Auditing a game's decision space where options differ greatly in value. Why: A dominant strategy makes other options pointless.
+- [heuristic] Several effective counter-strategies are more fun than one. Alternatively, use many enemy types, each with one unique but strong counter-strategy. When: When designing enemy tactics. Why: Multiple answers keep play varied and interesting.
+- [heuristic] With more than two players, the best strategy may be to gang up on the strongest opponent rather than to make every opponent lose. When: more than two players.
+- [heuristic] Judge a challenge's replay value by whether it has a dominant strategy; do not fault a game for that when finding the strategy is its purpose. When: Evaluating whether a challenge stays interesting across repeated play. Why: A solved dominant strategy ends the challenge for most players.
+- [heuristic] Rock-paper-scissors counter relationships are a legitimate way to create variety, especially in RTS games where unit strengths are easy to read. When: Designing unit counters where strengths are easy to read.
+- [heuristic] When some strategies beat random play, an equal mix over all options is usually not optimal. When: a strategy beats random play more often than it loses.
+- [heuristic] If a payoff system has more equations than unknowns and yields contradictions, dominated options are likely present and should be removed. When: solving a payoff table that gives inconsistent results.
+- [procedure] 1) List one player's options as rows and the opponent's as columns. 2) Assign +1 for a win, -1 for a loss, and 0 for a tie or draw. 3) Treat the opponent's choices as probabilities and your options as payoffs equal to the probability-weighted sum of outcomes. When: Modeling a simultaneous-choice game as a payoff table or analyzing matchups between options. (x2)
+- [procedure] 1) Write the payoff matrix for the interaction. 2) Find the probability mix where every option yields the same average payoff. 3) Play that mix to remove exploitable bias. When: Interactions with no pure equilibrium.
+- [procedure] 1) Break the choice into simple moves. 2) List each player's options. 3) Diagram outcomes in a payoff matrix. 4) Check whether one option is clearly best.
+- [procedure] 1) Defuzzify to a single number. 2) Give each enumeration value a non-overlapping numeric range. 3) Map the number to the enumeration whose range contains it. When: Output options form an ordered series, such as ranked belts by skill. Why: Ordering lets a single numeric result select a meaningful rank.
+- [procedure] 1) List developments that are likely to happen. 2) Treat them as foundations for less certain forecasts. 3) Discuss your predictions with others and revise them. When: forecasting future game technology. Why: Likely developments give a sound base for speculative predictions.
+- [procedure] 1) Compare every pair of rows and every pair of columns. 2) Remove any option that is never better than another. 3) Repeat the comparison on the reduced table until no dominated options remain. When: before solving a payoff table for mixed strategies.
+- [procedure] 1) List each option and its payoff when the other player cooperates or defects. 2) Check that mutual cooperation gives the best joint outcome. 3) Check that cooperating alone gives the worst result for the cooperator. 4) Tie the dilemma to the main objective.
+- [pitfall] The equal-payoff theorem applies only to strategies actually used, so dominated options should be removed before applying it. When: Applying equal-payoff reasoning to an intransitive game. Why: A dominated option has a lower payoff and is never chosen.
+- [pitfall] Dilemmas disconnected from the game's main objective make choices less interesting.
+- [pitfall] Tuning exact payoff values while ignoring whether their order holds can silently destroy a dilemma.
+- [fact] Game theory is an abstract mathematical study of idealized games; its terminology is used in turn-based AI, but it applies only weakly to real-time games.
+- [fact] In perfect information games, choosing a move is still uncertain because the opponent's choice is unknown, but every option the opponent could take is fully known.
+- [fact] A balanced ratio is a long-term trend; the options need not be exactly equal at every moment. When: Evaluating random choices over many repetitions.
+- [fact] Game theory also covers sequential choice, negotiation and cooperation, which are outside the intransitive method described here.
+- [fact] With the double-Rock win rule, the three-player equilibrium is about 3:4:3, closer to 1:1:1 than the two-player equilibrium. When: double-Rock win rule is applied.
+- [fact] Dilemmas can drive both single-player and multiplayer games.
+- [fact] In a room with two doors, a defender wants to cover the door the attacker chooses while the attacker wants the other door, forming matching pennies.
+- [fact] A game can be positive sum overall while containing zero-sum parts, such as limited spaces or unique bonuses that only one player can hold at a time.
+- [fact] Poker is zero sum: whatever one player wins from the pot equals what the other players collectively lost.
+- [fact] When both units die in a fight, the net payoff is zero for both sides. When: fights between units of the same type.
+
+## puzzle design
+- [model] A pyramid puzzle is a series of small puzzles, each yielding a clue to a larger puzzle, which supplies short-term goals inside one long-term goal. When: Building a sequence of puzzles that must cohere. Why: Gradual difficulty and a single meaningful final goal hold the set together.
+- [definition] A puzzle is something fun with a right answer, separating it from games and toys; forms include abstract, word, action, story and simulation.
+- [definition] A riddle demands a single answer with right-or-wrong feedback; a puzzle demands an answer reached by manipulating something that brings the player closer step by step. Why: Incremental manipulation supplies a sense of progress that pure guessing lacks.
+- [definition] A puzzle is a miniature game with a dominant strategy, whose goal is to discover that strategy. Why: Once the dominant strategy is known, the challenge disappears, explaining low replayability.
+- [mechanism] Switching to another related puzzle and returning later renews energy for the stuck one. When: a player is stuck on one puzzle. Why: the change of task acts like rest.
+- [mechanism] Changing how elements are arranged changes results, with effects ranging from barely noticeable to catastrophic.
+- [mechanism] Puzzles create tension and give meaning to surrounding choices, since searching a chest gains meaning when it hunts for a key.
+- [mechanism] When measures share a scale, resources can convert into one another in almost every direction, creating many interactions without fiddly math.
+- [mechanism] In strong puzzle games, players learn how each piece moves and relates to the others before understanding the solution, and may struggle for twenty minutes or more.
+- [mechanism] Abilities that interact with geometry, such as hiding, leaning, or upgrades, turn a space into pieces the player can use in strategy.
+- [behavior] Puzzles requiring navigation of 3D spaces intrigue males but can frustrate females, and studies suggest males generally have stronger spatial reasoning.
+- [rule] Define exactly what counts as valid, such as shape, typeface and rules, since shapes readable as several answers let players dispute the intended answer. When: designing a puzzle with a right answer. Why: Ambiguous terms let players justify other answers.
+- [rule] Place readable signs at chamber entrances naming the mechanics used; players who see a sign then play the room learn which symbol matches which mechanic. When: designing puzzle chambers. Why: Players can plan before entering rather than discovering the mechanic by trial; repeated pairing of cue and outcome teaches the association.
+- [rule] Build player confidence that a puzzle is solvable by showing visible progress or by stating outright that a solution exists.
+- [rule] Make each puzzle's goal obvious to players. When: General audiences; hide the goal only when discovering it is the intended fun for puzzle-focused players. Why: Players unsure of the goal quickly lose interest.
+- [rule] Attach rewards for solving and punishments for failure to turn a puzzle into a dramatic element.
+- [rule] Weave puzzles into progress; if a puzzle does not enable progress, redo or remove it, though a puzzle can also reveal plot. When: Designing puzzles inside a game. Why: Puzzles that do not advance progress become distractions.
+- [rule] Build puzzles from well-understood mechanics that behave in obvious, consistent ways, so the player's decision is about choosing a path rather than guessing what the system allows. When: designing puzzles. Why: Players can only reason about systems they can predict.
+- [rule] Create risk by placing communicative symbols, which offer certainty, against new ambiguous challenges such as a dark cave or a hallway with unknown enemies. When: when designing risky encounters. Why: Known symbols give players enough information to reason about an unfamiliar space.
+- [heuristic] Draw puzzle ideas from beyond other computer games, such as puzzle books, mysteries, physical puzzles, science and mathematics, since imitating only seen puzzles limits invention.
+- [heuristic] A puzzle that starts solved and is scrambled by a short sequence the player can reverse is obviously solvable. Why: reversing the sequence restores the solved state.
+- [heuristic] Provide an in-game way to reveal answers for players who are truly stuck, rather than making them leave the game to search online. When: Genuinely stuck players, not as a default. Why: Answers are widely posted online anyway, so an in-game option keeps players in the experience.
+- [heuristic] Look for puzzle moments in action genres that designers do not label as puzzles, since they add mental variety to action play. When: Auditing action-based games. Why: Brief decisions that require thought function as puzzles.
+- [heuristic] Side view suits puzzle-heavy play, because limiting control to two planes keeps the challenge cognitive rather than mechanical. When: designing puzzle-focused games.
+- [heuristic] In multiplayer games, competition can supply conflict, so puzzles are less necessary there. When: Designing multiplayer games.
+- [heuristic] Check that scale matches across sizes, speeds, health, distances, money, energy, resources, time, and character counts.
+- [heuristic] Let players fully master a system's physics on a single screen before expanding the play space around it.
+- [heuristic] Keep each puzzle within one screen so the whole puzzle stays readable at a glance.
+- [heuristic] Tie puzzle elements such as switches, found items, and enemies to the same space so puzzles belong to the level's structure. When: Designing dungeons or levels with puzzles. Why: Puzzles integrated into the space feel like part of the level rather than an add-on.
+- [heuristic] Recurring layouts such as a deep pit, a wide canyon, or tilted wall panels can signal which mechanic a room requires. When: when designing rooms that require a specific mechanic. Why: Players learn to read the shape of a space as a cue for its puzzle type.
+- [procedure] 1) Offer an attractive goal. 2) Teach rules seamlessly. 3) Give feedback during play. 4) Provide appropriate rewards at the end. Why: These elements keep players in flow during puzzle play.
+- [procedure] 1) List every puzzle in the game. 2) Decide whether the puzzle count should rise or fall, and why. 3) Check which puzzle principles apply to each puzzle. 4) Flag puzzles that feel incongruous and integrate them better. When: Reviewing the overall puzzle content of a whole game, not a single puzzle. Why: A full-set audit reveals count, fit and principle gaps that single-puzzle review misses.
+- [procedure] 1) Make the goal clear. 2) Make the first move visible and obvious. 3) Let the player start manipulating without needing the full solution. When: Designing any puzzle that depends on manipulation. Why: A clear goal alone does not help if no starting move is visible.
+- [procedure] 1) Generate a random sequence of inputs. 2) Replay the sequence to the player. 3) Compare the player's presses in order against it. 4) Grow the sequence as the player succeeds. When: when building a memory-based sequence game.
+- [tradeoff] A large code space makes a logic puzzle hard, while a smaller puzzle space combined with chance, movement, and story makes deduction more accessible.
+- [tradeoff] Hints reduce the sense of solving a puzzle unaided, but a hinted solution is still more satisfying than quitting or copying an answer. When: Designing hint systems. Why: Some autonomy is traded for keeping the player engaged.
+- [pitfall] Players who suspect a puzzle is unsolvable feel their time is wasted and quit, and when the outcome seems uncontrollable the playful challenge vanishes, leaving a mere activity. When: a puzzle's solvability is in doubt. Why: they perceive wasted effort; without a solvable problem, the playful challenge disappears.
+- [pitfall] Parallel challenges that are too similar to each other give a stuck player little benefit.
+- [pitfall] Wraparound projectiles can let players hit targets from positions where they are safe, so wraparound needs exploit testing.
+- [pitfall] Scripting every encounter separately produces a predictable world that players quickly learn to anticipate.
+- [pitfall] Explicit puzzles that clash with the game world break the flow of play. When: Designing puzzles that sit apart from the game world. Why: Players lose immersion when a puzzle feels unrelated to its surroundings.
+- [fact] Puzzles occur in every genre, such as counter-strategy choices in fighting games, turbo timing in racing and enemy ordering in shooters; many games with other objectives mix in puzzle elements. Why: Any moment that makes the player stop and think is a puzzle. (x2)
+- [fact] Text adventures supported dozens to hundreds of verbs, but players could not tell which existed; frustration with unresponsive verb sets may have helped cause their decline.
+- [fact] Verbal puzzle audiences, such as crossword and word-game players, skew heavily female.
+- [fact] Puzzles span word, visual, and math types and can be graded from very easy to very hard.
+- [fact] Puzzles usually have little replay value because their goal is to find a single solution.
+- [fact] Adding a code position to a deduction puzzle multiplies the possibilities exponentially, while adding a symbol is a smaller but still significant change.
+- [fact] Side-scrollers offer a narrow range of outcomes: the player either completes the challenge or is stuck.
+- [fact] Action platform games often alternate running and jumping with short puzzles, and boss fights frequently combine puzzle-solving with quick, precise movement. When: When structuring a game that mixes dexterity and thought. Why: Alternation gives variety and pairs thinking with physical challenge.
+- [fact] The move from explicit to integrated puzzles came mainly from designers maturing and developing more fluid, continuous control schemes, not from changing audience tastes. Why: Better control schemes made environmental puzzles practical.
+- [fact] A hundred-puzzle set of increasing difficulty with hidden goals admired by puzzle fans sold poorly with general audiences. Why: Little guidance and differing goals per puzzle deter non-specialists.
+- [fact] Single-player design, lack of interactivity and fixed outcomes are weak grounds for excluding puzzles from the category of games. Why: Puzzles respond to the player and have conflict between player and system.
+- [fact] Ten puzzle design principles are: clear goal, easy start, sense of progress, solvability, gradual difficulty, parallelism, pyramid structure, hints, giving the answer, and perceptual shifts. Why: They form a strong foundation though not an exhaustive list.
+- [fact] Alignment games are often puzzle-like, requiring solutions to spatial or organizational problems.
+- [fact] Puzzle games come in four kinds: story-driven, action, strategy, and construction. Puzzle mechanics are common in casual design.
+- [fact] Mechanics such as long jump, triple jump and wall kick depend on physical interaction with environmental objects.
+- [fact] Integrated puzzles use natural parts of the environment, making solving them a direct goal of the avatar rather than a separate interruption. Why: Puzzles that belong to the world avoid breaking the flow of play.
+- [fact] Interactive features in intimate space sit within reach of inherent abilities, a reach that shifts as abilities expand, such as with a high jump.
+
+## information and uncertainty
+- [model] Players may be aware of the current iteration, foresight into the loop's outcome, near and far future loops, anchoring goals, and exits such as leaving for another system or quitting.
+- [model] Decision-relevant information can stay hidden in complete-information games in three ways: in future consequences, in an opponent's internal state, and through the speed of perception.
+- [definition] A fruitful void is a designed space, the intersection of rules and player personalities, that leaves room for them to interact and produce memorable, emergent play.
+- [definition] A hidden information structure withholds some data about opponents, so players know only partial information such as card counts or betting behavior.
+- [definition] Information can be public to everyone, shared by a subset of players, private to one player, known only to the game, or known only to randomness. When: Classifying a piece of game state. Why: Each category implies different player knowledge and strategy.
+- [definition] Uncertainty is when a player has no idea what to expect, so outcomes cannot be predicted from available information. When: when describing unknown outcomes in a game.
+- [mechanism] Withheld information, through hidden traitor allegiance or privileged knowledge, stops one player dominating co-op decisions, because others lack the shared knowledge to direct. When: When designing co-op games against the commander problem; when a co-op game has a hidden opposing player. Why: Hidden allegiance discourages sharing information that could be exploited; decisions need shared knowledge that privileged information withholds.
+- [mechanism] Players naturally filter, prioritize, and interpret incoming information, and noise appears when this natural process fails.
+- [mechanism] Hiding what each side offers or receives turns a trade into a contest of guessing and bluffing rather than a comparison of known values. When: Trades where one or both sides' contents are concealed. Why: Players cannot evaluate the exchange directly, so they rely on inference and deception.
+- [mechanism] Restricting communication so players cannot tell each other what to do forces each player to decide alone, though it can make players feel less like a team. When: When designing co-op games against the commander problem. Why: Players must act on their own when they cannot direct one another.
+- [mechanism] If players cannot see who leads, they cannot choose a target, so hidden scoring can stop coordinated takedowns of the leader.
+- [mechanism] In games that end, the possibility space shrinks as play proceeds until a winner is declared. When: Finite games with a win condition. Why: Each move eliminates reachable states.
+- [mechanism] Hidden opponent information supplies much of a game's luck, and revealing it would remove bluffing and much of the game's interest. When: Deciding whether to hide a game's state. Why: Concealment creates the uncertainty that bluffing and inference depend on.
+- [mechanism] Locking bets before the random reveal, with no later raise or fold, leaves players little chance to respond, so the result is mostly luck.
+- [mechanism] When one side knows the full game state while the other must deduce it from clues, unilateral play combines information imbalance with teamwork.
+- [mechanism] A procedural model can represent uncertainty in a system by letting players choose among actions whose outcomes vary, such as randomized assignments and optional evasion.
+- [mechanism] Removing information can create a decision where none existed, while a constant, complete display of threats removes tension and cat-and-mouse play.
+- [mechanism] Fully unpredictable outcomes make planning impossible and reduce play to fast reaction, while fully predictable outcomes remove thinking and leave only picking the best known option.
+- [behavior] With hidden trade contents, players treat opponents' trading behavior as evidence of what those opponents hold. When: Trading with concealed offers over several exchanges.
+- [behavior] Players who like a game write their own walkthroughs and post them online, revealing what they enjoy, which sections feel too hard, and which feel too easy.
+- [behavior] Players read physical feedback through their mind's model of cause and effect, so feedback should support that model rather than talk over it. When: when designing audiovisual feedback. Why: Players interpret physics through an internal model that noisy feedback disrupts.
+- [behavior] Reading an opponent's hidden plans and perceived weaknesses is among the most satisfying forms of victory, so hidden internal state adds real depth.
+- [behavior] In playtests, players dropped their current activity to deal with an enemy as soon as its distinctive sound was heard. When: a learned enemy sound signals high danger. Why: The sound signaled a high-priority threat.
+- [behavior] Players must mentally project multi-turn consequences because the board shows only the immediate result, and working this out takes real mental effort. When: In complete-information games like chess. Why: Future states are not visible.
+- [rule] Think about space in functional, abstract terms; this is an essential designer skill.
+- [rule] Avoid random deviations that the player cannot see or account for when they have clearly aimed well. When: Adding random elements to aimed actions. Why: Unseen deviation makes correct play feel punished.
+- [heuristic] Hide something, then reveal it: fog of war teases that something new exists without revealing it, luring players toward unforeseen areas and sustaining curiosity. (x2)
+- [heuristic] Use fractal interest curves: each long peak can contain a smaller copy of the overall pattern, repeating across as many layers as needed, since such curves carry echoes.
+- [heuristic] Ration information in a structured way, since tension can be generated through revealing or withholding when real value changes are hard to keep producing. When: When value changes are hard to sustain. Why: Denying and revealing information creates the same emotional shifts as changes.
+- [heuristic] Concealing ratings and reserving them for pairing lowers the stakes, since nothing visible is at risk of loss. Why: players with nothing visible to lose play more freely.
+- [heuristic] Treat dice as distinguishable, like one red and one blue, when counting combinations of multiple dice. When: Counting multi-die outcomes. Why: Prevents undercounting or double counting rolls.
+- [heuristic] In games with hidden skill, managing the opponent's perception of your skill is part of strategy, so design for players reasoning about each other's ability as well as odds.
+- [heuristic] When a symptom such as excessive player damage appears, consider all contributing causes, such as few healing items, slow enemy kills, weak weapons, or slow level gains, rather than assuming one. When: Diagnosing a balance symptom. Why: Several causes can produce the same symptom, and any one or several may be responsible.
+- [procedure] 1) Decide whether the space is discrete or continuous. 2) Count its dimensions. 3) Identify its boundaries. 4) Identify subspaces and how they connect. 5) Consider whether more than one abstract model fits. When: Judging a game's layout without aesthetic assumptions. Why: Stripping aesthetics first reveals the structure that actually governs play.
+- [tradeoff] Few players read rulebooks, since nonlinear play resists text, yet they read even minor item, codex or ability text closely, so well-written small text gets noticed. When: A game ships with a rulebook or documentation; a game has item, codex or ability text. Why: Play details are nonlinear and resist textual description. (x2)
+- [tradeoff] Public state reduces guessing and gives clear calculation but less room for bluffing; hidden state creates inference and bluffing but raises guesswork and frustration. When: Deciding the visibility of game state; choosing what players can see. Why: Each visibility level changes the kind of thinking players do; visibility determines which strategies are possible.
+- [tradeoff] Revealing hidden random results after each round builds trust against AI opponents, but against human opponents it can expose bluffing patterns and strategy.
+- [pitfall] Unflagged unreliability or hidden random adjustments breed distrust when discovered: players distrust all information and cannot plan around what they do not know exists. When: Designing information that can be wrong; using concealed random adjustments in a game. Why: Players who later discover unreliability distrust all information, not only the faulty piece; players cannot use information they do not know exists.
+- [pitfall] Hidden or unclear rules make beginners expect a gotcha, so they distrust the game. When: In games with unclear rules. Why: Players assume concealed traps exist.
+- [pitfall] Traitor mechanics can make players suspicious of one another, so bad luck and sabotage become hard to tell apart. When: In traitor games.
+- [pitfall] Action games that seem to test quick reactions may actually demand puzzle solving and memorization of enemy timing, which can feel more tedious than designers expect. When: Designing a game around reflexes. Why: Unlisted skills can dominate how players experience the game.
+- [pitfall] Making players track too many pieces or statistics confuses and overwhelms them.
+- [pitfall] State-dependent input meanings only add many responses if the player can clearly perceive which state applies.
+- [pitfall] Revealing a new area can delight engaged players while losing others who cannot see long-term goals.
+- [pitfall] Hidden information only creates tension when players understand the limited visibility as a condition of the game. When: introducing fog of war or hidden state. Why: Players who don't understand the limit feel the outcome is arbitrary.
+- [pitfall] Glut does not announce itself and rarely draws complaints, since smooth play hides it from testers, so designers must actively look for it.
+- [pitfall] Showing enough cards that winning options become obvious tips information into glut and removes the decision.
+- [fact] As competitive play grows, player-made proof of an advantage increasingly decides who wins. When: Competitive scenes with growing stakes.
+- [fact] Like perception and memory, attention is shaped by what a person already knows.
+- [fact] The most important cost of a mechanic is player attention: players have to read directions, err, fail and try again.
+- [fact] A deterministic game can still feel non-deterministic to a player when the opponent's move is unknown until it happens.
+- [fact] Motion can be relative to the avatar, relative to the camera, or relative to another point in the world.
+- [fact] Real degenerate strategies are rarely obvious; they hide in emergent interactions among tools and mechanics.
+- [fact] Real games have fuzzy edges: outcomes cannot be counted precisely, actions blend, and players lack full information or perfect randomness. When: comparing real games with game-theory models. Why: Messy boundaries let players slightly shift payoffs and learn more or less about opponents.
+
+## rule design
+- [model] Three rule levels combine to convey overall feel: high-level rules give objects meaning, medium-level rules give actions special meaning, low-level rules define physical properties such as mass and toughness. When: when analysing or designing how rules shape play and feel. Why: Each level shapes the play experience in a different way.
+- [model] Conditional rules follow the pattern: if a specified circumstance occurs, a defined result follows.
+- [model] Treat play boundaries as two sets: limits set by the design within the play space, and limits physical reality places on that space.
+- [definition] Rules are arbitrary relationships between abstract variables, such as a coin's value; out of context a rule makes little sense, but it gives objects and actions purpose within its system. Why: Objects have no value outside their game system; meaning comes from relationships within it.
+- [definition] Within a game, rules are the rigid structure and play is the player's freedom to act inside them, which is the source of emergent experience.
+- [definition] Game feel as a skill covers the progression from clumsiness with unfamiliar controls to triumph over challenge and the joy of mastery.
+- [definition] Situational reinvention begins once manual skills are mostly unconscious, and players then decide whom to target, when to act, and how to counter patterns; most players and most design sit at this level.
+- [definition] Serendipity is the positive form of an unknown unknown, such as players loving a minor character, inventing a new tactic, or finding emotion in an overlooked part of the game.
+- [mechanism] Economic rules shape how a game feels: scarce resources and winner-take-all auctions make play cutthroat, while constant trading and negotiation make play collaborative. Why: Rules change which actions are attractive, and those actions set the play style.
+- [mechanism] Identical mechanics can take different emotional labels depending on the fiction, such as terror in a zombie horror game or gritty determination in a military game. When: When pairing mechanics with a theme. Why: The fiction determines how the same arousal is interpreted.
+- [mechanism] Letting players watch a hazard from a safe distance, without interacting with it, lets them learn the threat before facing it. When: when a hazard could disorient or harm the player if met first. Why: observation teaches the threat at no cost.
+- [mechanism] A game rule that forces a response to a felt state, such as putting on gloves when hands get too cold, builds that feeling into play.
+- [mechanism] Constraints remove motions from the possibility space rather than emphasizing others, shifting which skills the challenge requires.
+- [mechanism] When each basic action changes which spaces are threatened or enterable, the effective game space shifts with every move, making new strategic actions likely to appear. When: Designing basic actions. Why: Changed constraints alter what other actions are possible.
+- [mechanism] Changing a single rule, such as a reward for collecting items, can alter game feel in subtle but measurable ways, including how collecting and steering through a level feels. Why: Rules shape the purpose and intent behind player actions.
+- [mechanism] When one option wins short fights and another wins long ones, players must forecast fight length, which makes the choice an emotionally meaningful judgment. Why: Each option's advantage depends on the condition.
+- [behavior] Players try hard to solve games but resent the designer once solved, since solved games lack uncertainty, victory, or defeat; play becomes following fixed steps to a guaranteed result.
+- [behavior] Rough, unpolished games often draw more honest player feedback than finished-looking ones. When: When testing early prototypes with caveats given up front. Why: Players feel free to criticize work that is visibly unfinished.
+- [behavior] Players exploit any rule that rewards them, so friendly fire invites trolling, body blocking lets players trap others, and loot for last hits encourages credit stealing. When: Designing multiplayer rules, rewards, or social channels. Why: Many players min-max, seeking maximum gain for minimum effort, sometimes at others' expense.
+- [behavior] Players who learn of a shortcut past a low-interest stretch tend to prefer it, as it seems more fun. When: when a dull stretch has an available shortcut. Why: the shortcut seems more fun than the dull stretch.
+- [behavior] Players do not expect perfect accuracy, and loopholes often prompt questions about why the real world differs, which can lead to deep insight. When: when a simulation departs from reality.
+- [behavior] Players who exploit save and reload follow the systems as designed but do not play the game as intended. When: save and reload exploitation. Why: The systems permit the behavior.
+- [behavior] Sparse spacing with no gameplay function can lull players into a zoned-out state and lead to disengagement. When: Objects are far apart and movement has no gameplay purpose. Why: Long stretches of purposeless movement remove the demand for attention.
+- [behavior] Safe settlements let new players assess their options before entering dangerous areas. When: A new player arrives in a hostile open world. Why: Protection removes the pressure to act immediately.
+- [behavior] Players expect fair resource spacing from design conventions and predict when supplies appear, so fiction implying long scarcity gaps often fails to create tension. When: fiction implies scarcity. Why: Players trust genre conventions over the fiction's logic.
+- [rule] Rules can be enforced by players' fair play, other players, an impartial referee, or code; traditional games rely on players or a referee, while computer games enforce rules themselves. (x2)
+- [rule] Enforce rules through the design of space, objects, and actions so that forbidden moves simply cannot happen.
+- [rule] Offer a short curated list of options that still lets players choose, rather than an open field or a long catalogue. When: Players may be overwhelmed or the designer needs predictable choices. Why: Short lists still feel like choice and steer players toward chosen outcomes.
+- [rule] Rules must be clear to players, or in digital games intuitively grasped, so the game feels fair.
+- [rule] Forbid actions that cause a player to lose by accident, such as moving one's king into check in chess. Why: Accidental self-defeat is unlikely to be the intended outcome of play.
+- [rule] Build designs by adding and removing constraints rather than editing raw geometry, so that edits stay consistent across the design.
+- [heuristic] Consider spectator modes when designing play, since many people enjoy watching others play.
+- [heuristic] Don't introduce two demanding mechanics back to back in the tutorial. When: ordering the tutorial sequence.
+- [heuristic] If players must decide how the rules apply, the system is probably not internally complete.
+- [heuristic] Technical limits can sharpen design focus, and some of the most inventive computer games were made on primitive systems.
+- [procedure] 1) Note any house rules or laws forming during development. 2) Check whether modes simplify or complicate the game. 3) Identify who enforces each rule. 4) If players are confused, decide whether to change the rule or explain it better. When: when reviewing a game's rule structure.
+- [procedure] 1) Define high-level rules that gate new areas and story to drive progression. 2) Define medium-level rules linking resources and combat choices. 3) Define low-level rules setting damage and health numbers. When: when layering a game's rules from progression down to numbers. Why: Layers work together to shape which skills players develop.
+- [tradeoff] A constrained possibility space offers mastery of a defined path, while a larger space offers more choice, creative solutions, and replayability that appeal to certain player types. When: choose based on whether the appeal is mastery or creative exploration.
+- [pitfall] Difficulty is multi-dimensional: one game may be hard for one player through reaction speed, for another through spatial navigation, and for a third through story comprehension.
+- [pitfall] Adding rules to fix a balance problem can substitute for understanding why the problem exists.
+- [pitfall] Breaking rules the designer has set damages the player's sense of the world more than having few rules at all. Why: Players build expectations from the rules and feel betrayed when they fail.
+- [pitfall] Unclosed loopholes let players exploit rules, so a rule may be needed to block an action that would otherwise defeat the game's intent.
+- [pitfall] A designer system must create a game's rules, not only its content, which makes autonomous design harder.
+- [pitfall] Changing rules constantly makes prediction impossible, so players cannot learn from earlier outcomes.
+- [fact] Most games are closed, formal systems that clearly separate in-game elements from outside forces; outcomes, including simulated destruction, have no real consequences outside them.
+- [fact] Rules alone do not explain a game's immersive effect; it comes from the human mind responding to the rules.
+- [fact] Medium- and high-level rules that assign meaning to objects and interactions can make everyday actions more rewarding throughout a game.
+- [fact] Rules and territorial limits act as boundaries, and a game without rules does not function as a game.
+- [fact] Rule design is usually harder than level design, and reusable rule sets can generate thousands of puzzles while some rule sets yield only one.
+- [fact] Rule authority rests on players' implicit agreement to submit to the experience; a player who ignores the rules is no longer playing the game.
+- [fact] A rule-based system has the same three parts as a blackboard: a database playing the blackboard role, rules acting as experts, and an arbiter.
+- [fact] Rules define a game's space, timing, objects, actions, consequences, constraints, and goals; the goals supply its purpose.
+- [fact] Rules change how players perceive objects, define challenges and modify the sensation of control; they are independent of the other metrics but reinforced by them.
+- [fact] Point-and-click adventure games lack a mechanical core because their experience is driven by content, making them exceptions to the core approach.
+
+## game rules and structure
+- [model] Type Object replaces a rigid class hierarchy with one typed-object class and one type-object class, where each type object is a data-defined type that typed objects reference.
+- [definition] Internal completeness means the rules address loopholes arising in play; gaps create dead ends, let players sidestep the intended conflict, or spark rule arguments.
+- [definition] Levels of scale means structures nested at several sizes, such as short, midterm and long-term goals that chain together.
+- [definition] Level design crafts a specific puzzle configuration within fixed rules, aiming for drama, coherence, and chosen difficulty. Rule design invents the overall rules, goal, and format.
+- [definition] Other rules limit player behavior and govern reactions to situations, such as requiring a player to give up every card of a requested rank.
+- [definition] Operational rules are the rules players use to play the game; knowing them is enough to play.
+- [definition] Low-level rules set the physical traits of single objects, like how much damage is needed to destroy an enemy.
+- [definition] Interoperability means content and identity work across platforms, similar to how email works across different providers.
+- [definition] A predictable system needs two properties: consistency, meaning it acts the same across situations so lessons carry over, and comprehensibility, meaning the player can grasp it.
+- [mechanism] Objects referencing the same type object behave as that type, so new types need only type-object data, not new classes; a large subclass family signals this fit. When: A family of subclasses grows into dozens or hundreds, or a type system is built from data instead of a class hierarchy. Why: Behavior follows from the shared type data rather than a language-level class; data-driven designs handle many variants without a class for each one.
+- [mechanism] Distinct movement rules for pieces on a shared grid give each piece a different role in play.
+- [mechanism] When objects are packed tightly, steering around them becomes demanding, and speed and turning radius matter much more.
+- [mechanism] A periodic hazard that removes pieces from the board forces each move to be weighed against the safety of a player's other pieces.
+- [mechanism] A rule that temporarily gives a specific object high importance, such as a health pack at low health, changes how players read a space and move through it. When: when a game needs a level's layout to drive player decisions in real time. Why: Placement alone is not enough; the rule adds meaning on top of position.
+- [mechanism] Layered rules at high, medium and low levels can reinforce one another to convey solidity and mass in a fighting game. When: when a game needs its characters or attacks to feel solid and heavy. Why: Each level supports the same impression, so the combined effect is stronger than any single rule.
+- [rule] Two units cannot occupy the same cell.
+- [rule] Explore the less-mapped areas of games as seriously as the well-structured ones.
+- [rule] Give terrain and board areas the same design attention as playing pieces, because they interact with other objects in the same way.
+- [rule] Identify the core mechanic first, meaning the actions a player repeats most while pursuing the goal, and build outward from it rather than designing the whole game at once. When: Before building any prototype. Why: Focusing on the repeated action loop keeps the design coherent.
+- [rule] Test a done flag in the main loop condition so the game can exit cleanly. When: Writing a game loop that must end. Why: Without a quit condition the loop runs forever.
+- [heuristic] Use reinforcing loops to create risk-reward and let choices drive unequal outcomes; use balancing loops to counter runaway advantage and extend play. When: Designing pace and outcome spread.
+- [heuristic] Creatures higher in a food chain should have simpler behavior, and by the top of the chain behaviors should be very simple. When: Designing predators the player influences only indirectly. Why: The player's control weakens with each intermediate level, so higher creatures need simpler logic.
+- [heuristic] Designers usually think in operational rules and shift to foundational rules when they want to change or improve the game. When: when a designer wants to change a game.
+- [heuristic] Catch-up mechanics, hidden information, or an earlier end condition can keep a PvP outcome open when one player is pulling ahead. When: when a PvP outcome is becoming certain. Why: These options restore uncertainty about who will win.
+- [heuristic] Organise character behaviour by state to achieve the target feel, keeping relationships between values intact matters more than internal structure. When: implementing a character with several movement states. Why: Consistent value relationships produce the intended feel regardless of code layout.
+- [heuristic] Apply game theory at the level of individual interactions such as a single exchange of attacks, blocks or throws, since it cannot analyze a whole match. Why: Designers often dismiss it as too abstract, but it works at this local scale.
+- [procedure] 1) List possible partners for a proposed mechanic: other mechanics, allies, multiple opponents, environment, morality, narrative, and player stats. 2) Count the realistic interactions with each. 3) Favor mechanics with many. Mechanics touching many systems tend to be elegant; those touching only one or two probably are not. When: before building or testing a mechanic. Why: Designers can judge elegance on paper before costly testing.
+- [procedure] 1) Identify each tool's essential properties. 2) Push them to an extreme and lock them. 3) Balance using only the non-essential properties. When: Balancing a tool whose role can be stated as a few essential properties. Why: Keeps tool roles distinct and consistent with the fiction.
+- [procedure] 1) Identify which parts of the game are so primal that an animal could play them. 2) Identify which parts could be made more primal. When: when aiming for intuitive, powerful play.
+- [procedure] 1) For each interaction pattern, list games you enjoy. 2) For any pattern with none, research and play several examples. When: when studying interaction patterns.
+- [metric] The first player to reach ten kills wins the match. When: when kill scoring is used.
+- [tradeoff] Isolated mechanics are easy to tune with no side effects but rarely produce much variety; connected mechanics create many play situations but resist simple fixes. When: choosing between one-off effects and systems of relationships. Why: Isolation makes tuning easy only because it limits how the mechanic interacts.
+- [tradeoff] Replacing conventional failure with a late, dramatic consequence breaks genre convention; a designer may accept that cost when the theme matters more than convention.
+- [tradeoff] Using different counts per object type (four to eight each) makes some objects rarer and builds in inequality that the design must then balance. When: Trading games where object scarcity should differ.
+- [tradeoff] One input driving both thrust and rotation is integrated control; separate inputs for each keep the dimensions independent.
+- [tradeoff] Isolated starting areas allow slow gearing up, while busy areas offer better upgrades but more rivals.
+- [pitfall] When rule sets grow so intricate that players can't sketch a basic mental model of operation, overwhelm follows.
+- [pitfall] Two modes that share one input channel can conflict, because one button or thumbstick ends up doing two jobs.
+- [pitfall] Treating combat purely as a math problem misses the uncertain space created by players, weapons, enemies and the possibilities between them.
+- [pitfall] Distant targets slow the firing rate and demand more precise aim, which can make shooting feel sluggish.
+- [pitfall] When roles overlap, the design pays for two mechanics to do one mechanic's work, making the redundant one dead weight.
+- [pitfall] Hard invisible blocks that the player can detect cheat within the game's own rules and undermine trust in the entire mechanical system. Why: players start thinking about what the designer wants rather than what the mechanics allow.
+- [fact] How the high, medium and low levels of game rules interact with one another remains under-explored in many games.
+- [fact] Keys are not inherently bad design; access rewards can go beyond lock-and-key mechanisms. When: When choosing an access mechanism. Why: Other gate types can serve the same progression purpose.
+- [fact] Every operational rule corresponds to a foundational rule that updates some game state.
+- [fact] Free-form games such as tag work with loosely defined boundaries without harming the experience.
+- [fact] Rescue or escape objectives are often combined with partial objectives that add puzzle-like goals on top of the overall goal.
+- [fact] The interaction set holds most operational rules, specifying what happens when two sprite types collide, such as death, teleportation, or score change.
+- [fact] A tower defense game's core needs a map, something to protect, towers, and enemies advancing toward that target.
+- [fact] Each stack element can hide several pages of interlocking design detail, so changing one interface can force redesign of a seemingly separate feature.
+
+## emergence and simulation
+- [definition] Emergence is complex, unpredictable collective behavior arising when simple rules or unique components interact, producing results that no single rule or element specifies or possesses. When: Once a game system is running. Why: Elements are interrelated and take on new dimensions in motion. (x3)
+- [definition] Local symmetry means many small internal symmetries within parts of a design, appearing in rooms, rule systems and balance, rather than one overall mirror image.
+- [definition] Innate complexity comes from many rules and exceptions, often from simulating a complex situation or adding rules to tune balance. When: When a ruleset has many special cases. Why: Complexity located in the rules themselves, rather than in their interaction.
+- [definition] Emergent complexity arises when simple rules produce intricate situations, as in Go, whose very simple rules create billions of complex positions. When: When evaluating how rich a game's play can become from few rules. Why: Interaction of simple rules generates varied situations.
+- [definition] An emergent reinforcement schedule is a reward pattern arising from the interaction of basic game mechanics, not from an explicit designer-set rule.
+- [mechanism] A single rule that makes invaders move faster as fewer remain produces both a slow start that speeds up as the player succeeds and targets that get harder to hit, without coding either property directly. Why: Both properties emerge from the one rule's interaction with play.
+- [mechanism] When a divergent goal stays close to the official goal, as killing usually helps capture an objective, the game is harmed but not broken.
+- [mechanism] Giving each player a unique power produces new interactions from combinations, so a modular game stays surprising across hundreds of plays.
+- [mechanism] Rule exceptions that differ between movement and capture can unlock emergent structures that simpler rules would never produce. When: Movement and capture rules differ.
+- [mechanism] Deep games sustain themselves by wrapping games inside games, revealing a deeper layer each time one is mastered.
+- [mechanism] In emergent systems, climaxes can recur at random, and predefined pacing cannot fully control them because decisions are generated on the fly.
+- [mechanism] Balanced complex strategies add depth because even very skilled players cannot execute all their contingencies perfectly.
+- [mechanism] Changing the lower-level mechanics that produce an emergent schedule changes the reward rhythm, even when no schedule rule is edited. When: when adjusting mechanics that generate rewards, such as in a generated dungeon. Why: Emergent schedules are products of rule interactions.
+- [mechanism] Designers cannot control what players do, but they control the rules of the systems players use; rich mechanics, objects and spaces that suit different play styles let emergent narrative grow.
+- [mechanism] Free interaction with a limited asset set produces emergent play, and linear introductions teach players how to use the assets first.
+- [mechanism] Customization can be layered across the community, the avatar, and the home, letting players shape each scope.
+- [behavior] Players find meaning in a game through experiences that emerge when they interact with its design. When: When players interact with a game's systems. Why: Experiences arise from interaction, so meaning comes from design.
+- [behavior] Players build stories from randomized dialogue and simple combat rules, even when the game models no meaning behind the events. When: observing autonomous fights between characters. Why: players interpret ambiguous events as meaningful.
+- [behavior] Actual play concentrates on equilibrium configurations, so most of a game's possible combinations never occur in practice.
+- [behavior] Systems balanced separately can interact in unplanned ways that often surface only at alpha. When: Multiple systems combine in play. Why: Each system is tuned alone, so combined effects go unseen.
+- [behavior] Emergent movement techniques that require mastery tend to add to competitive play. When: Players discover unplanned techniques. Why: Skill-based techniques reward practice and create depth.
+- [rule] Control an unwanted emergent dynamic indirectly by changing the mechanics that produce it, not by steering the dynamic itself. When: A player pattern emerging from systems is undesirable. Why: Dynamics cannot be controlled directly, only shaped through the rules that drive them.
+- [rule] Test for emergent interactions among tools and mechanics, not only obvious ones, because degenerate strategies are often hidden from designers.
+- [heuristic] Judge unintended strategies by impact: if an action is not game-breaking, it may become a secret worth keeping. When: players discover an unplanned strategy. Why: harmless discoveries can enrich play.
+- [heuristic] Fast action games may cap useful counter layers at two or three, since players cannot process more in time. When: Real-time or fast action games. Why: Reaction time limits how many layers players can act on.
+- [heuristic] A herding ecosystem should have about two predator levels above the herded creatures, plus possibly one level below, so predators can be countered by other predators. When: Designing a food chain where the player protects a vulnerable herded group. Why: Two levels let predators be countered by other predators; more levels risk the helpful predator being absent when needed.
+- [heuristic] Many interacting subjects with different roles make coordination and sacrifice possible; a game where all pieces follow identical rules tends to feel dull. When: Choosing how many distinct entities a game uses. Why: Varied subjects create varied strategic options.
+- [heuristic] High counts of verbs, objects per verb, goal routes and controlled subjects tend to produce emergent play, while low counts tend to produce predictable play. When: when reviewing a game's action and goal counts.
+- [procedure] 1) Count the player verbs. 2) Count how many objects each verb acts on. 3) Count the routes to each goal. 4) Count the subjects players control. 5) Check how actions change constraints as side effects. When: when judging whether a game leans toward emergence.
+- [tradeoff] Innate complexity suits faithful simulation or fine balance tuning but is hard to learn; emergent complexity keeps rules simple while producing rich play. When: When deciding how complex a ruleset should be. Why: Rule-heavy designs cost learnability, while simple rules can still yield depth.
+- [pitfall] Assuming that designing a game and seeing what emerges will reliably produce the intended feeling.
+- [pitfall] A long stretch of unchanging play means gameplay progression has failed.
+- [pitfall] Reading edges or folds differently can make several solutions valid, so a puzzle may have more than one answer unless its rules constrain interpretation.
+- [pitfall] Stacking many exotic AI techniques in one design is a sign the team lacks focus, and tends to hurt the result.
+- [pitfall] Rapid mass predation can melt down a level of an ecosystem, so unintended consequences must be checked during design. When: Tuning predator-prey rates.
+- [pitfall] Unplanned movement techniques can let players cross levels in ways not intended, altering level flow. When: Movement techniques skip designed routes. Why: Players reach areas the level layout did not anticipate.
+- [pitfall] Solving a payoff table that still contains dominated options can produce invalid probabilities below 0 or above 1.
+- [pitfall] Copying mechanics directly from a traditional or competitor's game makes a submission feel familiar and unoriginal.
+- [pitfall] Dynamics react unpredictably to rule changes, so a mechanic that removes one dynamic may let other dynamics emerge. When: Adding a mechanic to fix an unwanted dynamic. Why: Systems respond to rule changes in ways that are hard to predict.
+- [pitfall] Quick, local patches to a connected mechanic can break its relationships with other mechanics.
+- [pitfall] The most dangerous failure traps emerge from unplanned interactions between design elements, so they are hard to predict during design. When: When systems interact in ways nobody anticipated. Why: Unforeseen combinations, such as running out of ammo at a checkpoint, can make a challenge impossible.
+- [pitfall] Players who lack the cultural background for a convention may fail to read it, and may get stuck and quit. When: A convention relies on knowledge the player has not acquired. Why: Conventions only communicate to players who share the priming.
+- [pitfall] Without clear limits, a world's possibilities can grow too large for players to understand.
+- [fact] Different starting patterns in the Game of Life evolve in very different ways, and some produce moving structures that cycle through shapes across the grid.
+- [fact] Most strategic actions are not written in the rules; they emerge as players combine basic actions during play.
+- [fact] Interpretation and simulation are the two primary routes by which game feel will evolve, and processing power allows richer input parsing across time, space and state.
+- [fact] Before a game is played, its elements form a latent potential that becomes a working system only when played.
+- [fact] Memorable moments can emerge from physics, gravity, weapon tuning, map layout and multiplayer interacting, without being authored.
+
+## balance and dominance
+- [model] Games with several strategies or win paths also need checks on each strategy's use, improvement over time, win rate against others, and internal diversity and challenge. When: Game has several strategies or paths to victory.
+- [definition] A degenerate strategy succeeds in every situation, giving the best payoff for least risk, so it is obviously the best choice and turns the decision into a nondecision. (x2)
+- [definition] Non-zero-sum: gains and losses need not cancel, so totals may be above or below zero and all players may win or lose together; each should focus on own winning. (x2)
+- [definition] Degenerate strategies are hacks and loopholes that break a world's reality or give unfair advantages; some become accepted creative play within the rules.
+- [mechanism] Dominant strategies and overpowered objects beat all alternatives and shrink choice; once known, players stop using weaker options, making play a predictable exchange.
+- [mechanism] Intransitive counters act as an emergency brake: without any counter, a dominant strategy dominates the metagame and ruins balance, while with counters the metagame tends to correct imbalance.
+- [mechanism] Ignoring a god stat or investing in a dump stat weakens the character, even when the choice is made for role-play reasons. When: Character builds with stats that are god or dump stats. Why: Game systems score the build regardless of the player's intent.
+- [mechanism] A tiny advantage is amplified across a large skilled player base, and the most common best option comes to be treated as the true curve.
+- [mechanism] Extreme dominant strategies tend to fade as players tire of them and regular opponents refuse to face them. Why: Boredom and social pressure remove the strategy from play.
+- [mechanism] A poorly designed game tends to collapse into one dominant tactic, while a well-balanced design supports a large space of strategies. When: evaluating a game's strategic depth. Why: Imbalanced options let one choice outperform all others.
+- [behavior] Unequal sides with different win conditions provoke debate: novices spend much time testing whether one side has the advantage, while experienced players may judge it balanced.
+- [behavior] Novices know simple hard counters, while experts know the minimum force needed against arbitrary mixtures of units. When: games with blendable army compositions. Why: Knowledge of nuanced counters separates skill levels.
+- [rule] Pair invading targets with chaseable targets so both hunters and defenders have a role that fits their play style. When: combat games with mixed play styles.
+- [rule] In games with several paths to victory, each strategy should be viable and competitive against the others when played well. When: games with several paths to victory. Why: a strategy that beats the others while another cannot compete is an imbalance.
+- [rule] Penalize repeating a purely defensive action in consecutive turns when a safe option can be repeated and cause standstill matches. When: simultaneous-choice games with a repeatable safe option. Why: Defensive loops stop progress and leave matches stalled.
+- [rule] Cut a concept when it cannot be balanced without breaking its essential properties, especially when aiming for high-skill balance.
+- [rule] One-hit kills are acceptable when the player has a way to evade them, such as cover. Why: Evasion turns an instant death into a fair decision instead of an unanswerable loss.
+- [rule] When limiting player actions, use simple, obvious limits rather than attempts to disguise them.
+- [rule] If a degenerate strategy bypasses intended mechanics and blocks meaningful playtesting, apply blunt fixes to the obvious killer problems. When: early builds too unbalanced to playtest meaningfully.
+- [heuristic] Prefer natural balancing when one well-chosen rule can produce the desired difficulty curve, and be cautious of stacking rules to force a behavior. When: Tuning difficulty or behavior in a design. Why: Stacked rules make a design harder to understand and control.
+- [heuristic] Options that no build can viably use also signal imbalance. When: Reviewing a set of choices for balance.
+- [heuristic] Beyond stat sums, designer judgment about play styles settles the balance, and pure numbers stop being useful at some point. When: balancing asymmetric options.
+- [heuristic] Players call combat unfair when they have no means to counter or protect themselves. Check that every threat has a counter, and do so with a checklist suited to the game's movement model. Why: Players perceive unanswerable damage as unfair, so counters preserve a sense of fairness.
+- [heuristic] Multiple equilibria are better than one, since each player must think about what the other will do.
+- [heuristic] A broad imbalance that stems from core mechanics should be noted for later rather than fixed immediately at first playable. When: first playable stage.
+- [heuristic] When testing constructed decks, look for a deck so strong it dominates the format and forces others to copy it or build a counter.
+- [procedure] 1) Collect player-reported symptoms. 2) Trace each symptom back to the underlying systems, resources and their connections. 3) Treat the chain of connected issues as a whole rather than fixing one value in isolation. When: A game in production feels wrong after launch or in testing. Why: Players describe symptoms, but the designer must diagnose the systems behind them.
+- [procedure] Fix a nonviable build by changing its content, changing the attribute or skill system so the build works, or blocking the nonviable pick, such as granting essential skills automatically to a class.
+- [procedure] 1) Write the payoff table for one player. 2) Set each option's expected payoff to the game value X, with probabilities summing to 1. 3) Solve the linear system by triangular reduction or substitution for the opponent's mix. 4) Repeat from the other player's side. When: finding optimal probability mixes in a zero-sum game.
+- [procedure] If one unit dominates, adjust its cost or power, or adjust the others, then retest.
+- [procedure] 1) Identify any dominant strategy that limits player choice. 2) If none exists, list the viable strategies. 3) For each strategy, list the opposing strategies that counter it. When: Auditing a prototype's strategy space.
+- [procedure] 1) Identify the option that clearly outperforms the rest. 2) Change the rules so other options regain value. 3) Recheck that meaningful choice has returned. When: A dominant strategy has been found. Why: Restoring competing options brings back real decisions.
+- [metric] The farther a balance value sits from zero, the further the object is from balance in either direction.
+- [tradeoff] Counter cycles: in-game actions close at four layers (dominant, counter, counter-counter reverting to dominant, no further layer); fixed strategies such as custom decks close at three (dominant, counter, counter-counter class).
+- [pitfall] If one choice is always optimal over full play, players converge on it, the game plays out identically and feels flat, and the decision carries no meaning. When: two-choice situations. Why: A fixed best answer removes meaningful decisions. (x2)
+- [pitfall] Strategies that make one combat mode strong can undermine the other, so melee and ranged combat in one game often need balancing against each other. When: When a game combines melee and ranged combat. Why: Each mode's dominant tactics can erase the other.
+- [pitfall] Counters that roll over at a maximum value can expose exploits near that cap, so cap values need checking in testing.
+- [pitfall] If attacking gives no advantage, optimal play never ends an elimination game, and with two players the game can stall entirely. When: when a competitive game lacks reasons to attack. Why: Without benefit to attacking, players avoid conflict and the game stops progressing.
+- [pitfall] Combining systems at very different scales produces two games in one box, because one system's variables are irrelevant to the other. When: designing a game with systems at different scales. Why: Effort spent on one system is wasted during the other's sections.
+- [pitfall] Players lock onto one overpowered option and repeat it whenever possible, which bores the player using it and frustrates opponents.
+- [pitfall] Doubling or halving a value is a drastic change that can feel counterintuitive, so use it as a diagnostic rather than a final value. When: tuning with the doubling or halving method. Why: Large steps overshoot the eventual target.
+- [pitfall] Copying another game's balance math usually fits your design poorly, and such copying has led to legal disputes.
+- [pitfall] Degenerate strategies are often dull to play with or against, so the cards that enable them should be reduced or removed.
+- [pitfall] An overpowered unit gets mass-produced and makes the other units irrelevant, so keep unit power proportional to cost.
+- [pitfall] If one route to a goal is always easier, a dominant strategy emerges and everyone pursues it, collapsing the variety that multiple routes were meant to create. When: Offering several routes to one goal. Why: Players optimize for the easiest path.
+- [fact] Strategies that beat each other in cycles, such as the triangle, and asymmetrical structures like four-move castle battles lack pure equilibria; none dominates, so optimal play is a probability mix. (x2)
+
+## design principles
+- [model] Combat should present orthogonal dilemmas, each needing a different strategy, rather than contests over damage per second. When: Designing enemy and weapon sets.
+- [model] Basic delimitations set physical limits on the game, such as field dimensions, maximum team size, and required positions like a goalkeeper.
+- [definition] Basic actions are the base operations a player can perform directly, forming the fundamental verbs of a game.
+- [definition] Amplification is the sense of a small input commanding a large, complex response, and it is one of the main pleasures of play.
+- [definition] Big games take over public spaces for playful interaction, deliberately breaching the usual boundary between play and everyday life.
+- [mechanism] If quitting a mission through one exit path fires no event, that mission's completion rate may look inflated. When: when some exit paths are not instrumented. Why: abandonments through the uninstrumented path are never counted.
+- [mechanism] Weaker players can be attractive targets too, so not everyone must attack the leader.
+- [mechanism] Win and lose conditions are the main levers for game length: too short leaves no time for strategy, while too long bores players or discourages them from starting. When: When tuning how long a game lasts. Why: Conditions determine how many turns or moves a session contains.
+- [mechanism] Changing a tool to fix one situation also changes every other situation where that tool is used, so tuning for one case alters many others.
+- [rule] If the spark of fun is missing, decide whether to keep the idea or return to the drawing board. When: Core idea fails to engage.
+- [rule] Avoid mechanics that allow pilfering between players, unless the aim is an experience built for griefers that frustrates others.
+- [rule] Start design from the activity players perform moment to moment, rather than from content, narrative, or aesthetics alone. When: early design. Why: Games are dynamic systems of action.
+- [heuristic] Make every iteration loop count by assessing and mitigating the biggest risks in it. When: Planning each development iteration. Why: Targeting risk ensures each loop yields the most valuable learning.
+- [heuristic] Altering rules, such as handicapping a stronger player, can keep play fun for mixed-skill groups.
+- [heuristic] Designers should sometimes break their own rules, since this expands possibility and rewards players who test the limits of a world.
+- [heuristic] Use symmetry when players compete directly and results should reflect skill and strategy alone.
+- [heuristic] Timing often follows from difficulty or quantity, but can be off on its own when pressure arrives too fast or the player progresses too slowly.
+- [heuristic] Prefer integers that are simple to handle, compute and contrast; if values are fractional, multiply everything to make them whole. When: Choosing numeric values. Why: Players process whole numbers more easily than fractions and decimals.
+- [heuristic] When players plan around an effect, an unreliable benefit acts as a drawback, so it should be priced below half the value of a fully reliable version. When: Effects that players must plan around. Why: Unpredictability makes planning harder, which costs the player.
+- [heuristic] Color-code a balance column with two thresholds, for example one hue under zero and another over zero, to flag outliers quickly. When: scanning a balance column for values far from balance. Why: color makes off-curve values visible without reading every number.
+- [procedure] 1) List the main storyline as ordered sections the player must pass through. 2) Rate each section's difficulty 1-5. 3) Mark memorable high points with an x. 4) Record section name, rating, and x flag in a spreadsheet. When: Analyzing a game's pacing, using a walkthrough or memory of the game if needed. Why: Turns subjective impressions of slow and fast parts into comparable data.
+- [procedure] 1) Decide whether the game needs a macro-level or micro-level worldbuilding approach. 2) List the research topics that approach requires. 3) Only then begin research. When: starting worldbuilding for a game. Why: The chosen approach determines which topics to research.
+- [procedure] 1) Perform a design task by hand, without computer support. 2) Note what was easy, what was hard, and what you wished the computer could do. 3) Note what the computer could not help with. 4) If a tool is available, repeat the task with it and record the differences.
+- [procedure] 1) Subclass the base class. 2) Override the sandbox method. 3) Compose calls to the protected provided operations inside it. When: A new behavior is needed in a family that uses a sandbox base class.
+- [tradeoff] Only a system-level model reveals non-obvious effects of a change, while stories reveal only obvious and immediate ones.
+- [tradeoff] Marking every useful location gives good tactical behavior but costs the level designer a lot of time.
+- [tradeoff] Betting on an unproven platform can create a barrier, since early adopters benefit if its sales unexpectedly grow, but it carries risk.
+- [pitfall] Assuming the designer controls the player's perception or hardware leads to misplaced design effort, since both lie outside the designer's reach.
+- [pitfall] A well-built artifact does not guarantee the intended player experience, so problems should be diagnosed as either artifact faults or faults in the experience it produces. When: Evaluating whether a design works. Why: Designers can only hope players enjoy the experiences their artifacts generate.
+- [pitfall] Borrowing values from other professions without checking their fit to game design's task can be as mistaken as applying military values to scientific work.
+- [pitfall] Scenario-based games with random tiles, cards and dice can give one player a lucky or unlucky advantage, and some players may be eliminated early. When: Games with many scenario variants and random elements. Why: Layered randomness and uneven scenarios compound imbalance.
+- [pitfall] A unit missing the abilities that define its theme fails the theme criterion.
+- [pitfall] Lower bounds in a VLOOKUP threshold table must be in ascending order from the top, since the default match returns the largest bound not exceeding the key.
+- [fact] Designers first set both the position and the tactical data of each tactical location by hand.
+- [fact] Some official rules began as laws, such as the requirement to announce check in chess, and became part of the written rules over time. When: Explaining how rules come to be official. Why: Repeated clarifications eventually become standard rules.
+- [fact] Near transfer occurs between closely related domains, while far transfer to distant domains is rarely found.
+- [fact] Dropping inactive players from global ratings only partly solves the problem, since players then play just enough to keep their place.
+- [fact] Social interaction and physical exercise are enjoyable parts of many games but are not essential; removing problem solving turns a game into just an activity.
+- [fact] Every game is built from four basic elements, and these four form the starting framework for studying game anatomy.
+- [fact] Different designers can proceduralize the same source system differently, emphasizing different aspects of it.
+- [fact] Automatic game design is still exploratory, though prototype systems exist.
+- [fact] Some probability questions have outcomes that can grow without limit, so listing every case and dividing by the total is impossible. When: A chance process can repeat without a fixed upper bound on its result. Why: An infinite outcome space cannot be enumerated.
+- [fact] Some battle sizes cannot arise from a starting battle, because each roll removes at least two armies, so those states can be skipped in the grid. When: Building a recursive odds table for a dice combat with pairwise losses. Why: Losses come in pairs per roll, so parity constrains reachable army counts.
+
+## hidden information
+- [model] Game information falls into three categories: privileged, known to one player or a subset; common, known to all players; hidden, known only to the game or to no player. When: when examining a game's knowledge structure. (x2)
+- [model] Yomi rests on three basic tools: seeking information, denying information, and planting false information; layered deception emerges from combining them. When: designing or analyzing competitive information games. Why: Each tool changes what opponents believe and can be combined.
+- [model] Yomi layers model counters within counters: a dominant strategy needs about three layers of counter-strategies during play, and one fewer at the metagame level. When: Designing strategy balance in competitive games. Why: Each layer lets players counter the previous one, keeping options balanced.
+- [model] A Venn-style model maps which knowers hold each piece of information: fate or randomness, the game itself, and each player. Overlaps show shared or hidden knowledge. When: Designing hidden-information rules. Why: It clarifies who knows what before rules are written.
+- [definition] Information starvation: players lack information needed to predict outcomes, so the game is unplayable for anyone who does not already know it, even when its systems are consistent.
+- [definition] An open information structure lets players see the full game state, which favors calculation-based strategy.
+- [definition] A mixed information structure reveals some information while keeping other information hidden, changing as the game progresses.
+- [definition] Variables are the numbers that define game objects and settings, and changing one often forces changes to others.
+- [definition] Information balancing is designing what the player is shown or hidden so a decision is comprehensible but not obvious.
+- [mechanism] The same decision is incomprehensible with too little information, engaging with the right amount, and trivial with too much; balance fails through starvation (too little) or glut (too much).
+- [mechanism] Making enemies threaten a visibly valued resource, such as stealing treasure, raises the perceived importance of defeating them. Why: Players connect the enemy's action to a loss they can see.
+- [mechanism] The clearer players can see and anticipate consequences, the more meaningful their choices, especially for larger decisions. When: designing choices with significant outcomes. Why: Players can only weigh decisions whose effects they can foresee.
+- [mechanism] Once player counts exceed what people can model, the mind-game element fades and play becomes mostly mechanical. When: large-scale multiplayer design. Why: Players cannot track enough opponents to predict them.
+- [behavior] Hidden information, such as an unknown card mix, keeps players alert and makes the game feel vast and open-ended.
+- [behavior] When the full set of actions is hidden, players discover them by experimenting, and solving a puzzle may depend on guessing an unusual action. When: The available action set is unclear to the player. Why: Players must guess the interface's vocabulary, so discovery itself becomes part of play.
+- [behavior] Learning that a game secretly fudges results to make players feel skillful can change how players view that game's skill. When: Players discover hidden result manipulation. Why: Discovered manipulation undermines trust in the feeling of mastery.
+- [behavior] Players fill hidden information with assumptions about unseen opponents, teammates and the population's skill, then revise those assumptions as events occur. When: competitive games with hidden positions. Why: Partial knowledge forces players to infer the likely state of the world.
+- [behavior] Players guess hidden enemy positions by judging which team arrangements are unlikely, such as a whole team travelling one route together. When: enemy positions are hidden. Why: Unusual team behavior is treated as less likely.
+- [behavior] When lethal damage is fast, the decisive choices happen before players see each other, relying on sound, tracking and attack paths as the only information. When: Games where a kill takes one or two shots. Why: Whoever attacks from behind usually wins before the target can respond.
+- [rule] Yomi needs strategy interactions without pure equilibria plus a system with interesting fuzzy edges around them. When: designing competitive depth. Why: Without no pure equilibrium, one dominant choice removes prediction; without fuzzy edges, the game stays a solved abstraction.
+- [rule] Provide tools for seeking information, such as scans, sensors, or listening cues, and tools for denying it, such as smoke, jamming, or killing scouts. When: designing competitive games with fog or hidden state. Why: Both sides of information control create decisions about what to reveal or hide.
+- [heuristic] Knowing the limits of your understanding is valued above learning more, because it reveals how much lies beyond what you know. Why: it keeps designers alert to unknown risks.
+- [heuristic] Use open structures to reward careful calculation; use hidden or mixed structures when guessing, bluffing, or reading opponents should matter; use dynamic structures when information should change as players act.
+- [heuristic] Isometric view suits games where the player must track many units or much information at once, since it gives a god's-eye view.
+- [procedure] Classify a game's information structure as open, hidden, mixed, or dynamic; if the game is unfamiliar, substitute a known game.
+- [tradeoff] Spending deck or resource budget on gaining information competes with spending it on direct attack or defense.
+- [tradeoff] Less information means less-informed choices, a weaker sense of control, more chance, and more room for misinformation or deception.
+- [tradeoff] Open information lets players calculate ahead for deep planning, while limited visibility such as fog of war adds tension and forces decisions on partial, quickly outdated data. When: choosing how much game state to reveal. Why: Full visibility rewards calculation; partial visibility rewards anticipation under uncertainty.
+- [pitfall] Vague rules about what players may say about specific cards leave the line to players and can feel like an unclear kludge rather than a core mechanic. When: When restricting talk about private information.
+- [pitfall] A creature free to wander may meet a predator before the player arrives, so the player finds the flock already eaten. When: Creatures roam freely while the player is away.
+- [pitfall] Judgment that players do not trust or care about will not drive improvement.
+- [pitfall] Viewing artwork only through labels hides the detail that makes a world feel unique.
+- [pitfall] Vague forecasts that name no time frame or reason give no basis for planning.
+- [pitfall] Assuming that a game with all information visible has no meaningful decisions overlooks hidden future, internal, and perceptual information.
+- [fact] Players gather information from the scoreboard, the kill announcement feed, gunshots, and the equipment teammates carry.
+- [fact] Under time pressure, relevant information can be present yet effectively hidden, because searching for a missing detail costs time the player does not have. When: split-second decisions.
+- [fact] More information generally improves decisions, such as knowing which of two identical enemies is weakened, so the player knows which to attack first.
+- [fact] One game often mixes all three information categories, such as a player knowing their deck's contents but not its card order.
+- [fact] In the diamond layout of the elements, technology is least visible to players, aesthetics most visible, and mechanics and story fall between; other layouts are equally valid.
+- [fact] Many games hold internal state that the game knows but no player does, such as hidden pieces, a game master's notes, or most computer game variables. When: Designing information that players must not see. Why: Such state is hidden from every player by design.
+- [fact] Card games and guessing games such as poker or Battleship are built around hidden attributes that players must infer or conceal. When: Choosing a genre structure. Why: Hidden attributes are their central play.
+- [fact] Game state can include information not visible on the board, such as castling eligibility and whether a pawn just moved two squares in chess. When: Designing or analyzing games where hidden flags affect legal actions.
+- [fact] Isometric view is a 3D space without linear perspective that gives a god's-eye view, common in strategy, construction, and role-playing games.
+
+## aesthetics and atmosphere
+- [model] Meditative spaces are small, calm areas that give low-intensity moments between combat and platforming, either for enjoying avatar movement or for a restful atmosphere.
+- [definition] Aesthetics are how a game looks, sounds, smells, tastes and feels, relating most directly to player experience; early prototypes normally leave out its visual and aural dramatic elements. (x2)
+- [definition] Atmosphere is a diffuse emotional haze that permeates a game and is felt when nothing salient is happening, rather than being tied to specific events.
+- [definition] Beauty is not a property of any particular feature; something is beautiful when perceiving it is pleasurable.
+- [definition] Shade is diffused light filtered through screens, curtains, or stained glass.
+- [definition] Shadowspace is an area where the player can move undetected because shadow hides them, making one area read as separate spaces.
+- [definition] A gym level is a test room used to observe game feel, such as how fast players aim and whether they overshoot or fall short of a target.
+- [mechanism] Shadow is the absence of light caused by an obstruction; it hides occupants, letting them see without being seen, so moving from dark into light makes the player the watched one. When: in areas with mixed lighting. Why: Lit areas expose players to observers in the dark.
+- [mechanism] Switching a sound set when the player crosses a volume boundary suits sound changes at room thresholds. When: generating or designing rooms with different sounds. Why: sound changes at the boundary match the space the player enters.
+- [mechanism] Shadows cast perpendicular to the player's sight line form a repeating rhythm that pulls the player along the main path.
+- [mechanism] Shadow lines parallel to the player's sight line converge on a vanishing point, which can direct the player toward a destination.
+- [mechanism] Hazards such as projectile waves or obstacles timed to musical cues make the player's movement and the soundtrack line up, so play itself feels musical.
+- [mechanism] Moving static objects relative to the avatar's movement can create an impression of speed.
+- [mechanism] Atmosphere emerges from visuals, sound, music and mechanics working together, so each channel should reinforce the others.
+- [mechanism] Environmental reactions such as dust, debris, spray patterns and chunks breaking off reinforce the perceived force and material of the environment. When: Impacts on surfaces. Why: Each reaction is a visible clue to material and force.
+- [behavior] Ending a hazard's sound and its camera effects when the player leaves the area signals that they are safe.
+- [behavior] Levels look cluttered yet feel open when passable platforms act as resources rather than obstacles.
+- [rule] Treat aesthetics as a core part of the whole player experience, not as surface decoration added after mechanics are finished. Why: A designer shapes the entire experience, and visuals and sound affect how players engage with it.
+- [rule] Every room a generator creates should have room tone, since no space should be silent. When: procedurally generating rooms. Why: silence makes generated spaces feel unreal.
+- [rule] Check the radii of sound sources placed near walls, since each source can leak into neighbouring rooms. When: placing sound sources in generated or designed rooms. Why: sources leak through walls.
+- [rule] Use sound triggers for warnings or rewards, and toggleable sounds at objectives for gentle steering.
+- [rule] Treat lighting and weather as part of environment design rather than decoration, and include them from the start of a generated space. When: when designing or generating a natural environment. Why: weather and light make environments more convincing and dynamic.
+- [heuristic] Aesthetics layered over a simple model make digesting that model pleasurable, as in computer RPGs built on simple rule systems. When: when a game's underlying rules are simple. Why: Sensory pleasure offsets the effort of learning the model.
+- [heuristic] Once the abstract layout works, apply aesthetics to it, since aesthetics can bias an early view of the space. When: Shaping a game world. Why: A sound structure supports the look built on top of it.
+- [heuristic] Direct beauty toward a specific purpose rather than spreading it over everything. When: When deciding where to invest visual beauty. Why: Concentrated beauty serves the design more than uniform beauty.
+- [heuristic] Cover a whole area with one large reverb volume, then place smaller volumes inside it and give them higher priority. When: Designing reverb for an area with distinct sub-spaces.
+- [heuristic] Hint at a meditative space with music that fades in as the player approaches, since injured players will head toward the sound for safety. When: when a meditative space is hard to preview visually. Why: players in need of safety are drawn toward soothing sounds.
+- [heuristic] Environmental cues such as breezes, placed so players feel them during the relevant action, can reinforce a setting's feel.
+- [procedure] 1) Describe the game's mood without words. 2) List visual content that could deepen it. 3) List audible content that could deepen it. 4) Check that visuals, sounds, music and mechanics pull toward one mood. When: the world feels flat or lacks a distinct mood, or during aesthetic review. Why: atmosphere surrounds players and makes them part of the game world.
+- [procedure] 1) Use music. 2) Use slow-paced interaction. 3) Apply a fiction to flavor the mood. When: When building an atmosphere-focused game. Why: These elements together build a background mood that the fiction then colors.
+- [procedure] 1) Build the volume from a brush sized to the room geometry. 2) Snap it to the room with a mould command. 3) Enlarge it slightly so it is easy to select. 4) Hide BSP geometry if the volume is hard to select. When: Placing reverb volumes in an editor viewport. Why: A volume the same size as its room is hard to select while the room geometry is visible.
+- [procedure] 1) Place the one directional light at the angle each level needs. 2) Tune ambient color. 3) Tune light intensity. 4) Tune light color to vary the conditions. When: when only one dynamic light is affordable, such as on mobile. Why: One sun-like light plus ambient tuning can produce varied moods.
+- [tradeoff] Form-follows-function can be broken for gameplay reasons, but the resulting ambiguity must be weighed against the gameplay gain. When: A gameplay need conflicts with a clear visual signal. Why: Mismatched form costs player understanding.
+- [tradeoff] Atmosphere games de-emphasize individual emotional punches and let players sink into a thick mood, while punch-driven games deliver sharper moment-to-moment peaks. When: When choosing a game's overall emotional approach. Why: Focusing on mood spreads emotion thinly over time rather than concentrating it in peaks.
+- [pitfall] Fancy visuals can make a game's functional space look more complex than it really is, so model the space by which positions matter in play. Why: Visual detail does not change which positions and moves affect outcomes.
+- [pitfall] If a game's appearance suggests one balance of dexterity and thought but its play delivers another, both audiences may reject it. When: When a game's visuals signal a genre that its mechanics do not match. Why: Players who expect action or puzzles are disappointed when the other demand dominates.
+- [pitfall] Beauty clashes with grim themes such as depression, horror, or unease, so applying it there undermines the intended aesthetic. When: When designing games with dark or unsettling themes. Why: Pleasant beauty works against the feelings the theme aims to produce.
+- [pitfall] Calm views do not reliably preview meditative spaces, so these spaces work best as surprises or refuges rather than advertised destinations.
+- [pitfall] Tuning movement in an empty space makes jump height and speed hard to judge; add platforms and topology early.
+- [fact] Atmosphere is usually serene and contemplative, but it can also be negative, such as a sense of dread.
+- [fact] Sound can push players away from hazards as well as draw them toward objects of interest.
+- [fact] Levels communicate mainly through sight and sound, with little use of touch.
+
+## complexity and game systems
+- [model] Sandbox designs produce a shallow but wide hierarchy with many direct subclasses, so improvements to the base class benefit many classes at once. When: Applying subclass sandbox across many behaviors. Why: Wide trees with a central base make base-class changes widely useful, though base-subclass coupling remains real.
+- [definition] Simplicity means a virtual setting is less complex than reality, while transcendence means the player holds more power than in real life.
+- [definition] A cascade is a chain reaction in which cleared pieces cause falling pieces to form new matches.
+- [definition] A simple strategy uses one tool to solve one problem, such as placing defenders in front of an attacking unit.
+- [mechanism] A few simple rules applied equally to all pieces can produce vast ranges of positions; simple underlying rules do not imply simple outcomes, as interacting elements generate sophisticated collective behavior. (x2)
+- [mechanism] Few objects, few properties, a single behavior, and fixed relationships make a system easy to learn and fully solvable, but players lose interest once they learn the optimal move for each situation.
+- [mechanism] When the computer handles steering and aiming after a click, the player only sets destinations, so the game falls outside true game feel despite polish and simulation. When: units or avatars move automatically after player commands. Why: the player does not guide the journey.
+- [mechanism] Complex objects have many properties that change gradually during play, and objects with more such properties tend to have less predictable relationships with other objects.
+- [mechanism] A change to one design element forces rework in every element that depends on it, so an upstream change ripples through the whole chain of dependent work.
+- [mechanism] Rules produce emergence, with distinct play styles and unique occurrences, so games are more than containers for linear stories.
+- [rule] Choose any reliable AI technique for a game character regardless of whether it is bottom-up or top-down, instead of enforcing a single architectural philosophy.
+- [rule] Introduce enemy complexity in waves and layers, so new elements attach to a basic understanding the player already has. Why: Players absorb new elements more easily when they build on existing knowledge.
+- [heuristic] Keep rule count small so rich emergence comes from few rules; many explicit balancing rules can work against design. Balance those few well so the game feels calm. When: adding innate complexity to balance a game.
+- [heuristic] Connect each rule and element to its surroundings so it seems part of them; when all elements do this, the game gains a strong sense of wholeness.
+- [heuristic] When unsure which AI technique to use, check what similar genres commonly do, then consider doing it differently to fit your game. When: Choosing among AI techniques for a new game.
+- [heuristic] Aim for a simple ruleset that continually generates balanced surprises, and verify this only by playing and changing the game until surprises appear. When: When designing a core ruleset. Why: Emergent surprises can only be confirmed through extended play.
+- [heuristic] Choose a simple world model with a few rules and keep those rules consistent, since players learn a world's rules within minutes. Why: Consistency under exploration matters more than detail.
+- [heuristic] Detect special combined interactions between objects and reward each one as a distinct event.
+- [heuristic] Adding complexity to a reward system does not guarantee a better experience. When: When deciding how many reward types a game needs.
+- [heuristic] Building invests players in a world, while tearing it down offers a different kind of fun; offering both can help.
+- [heuristic] When artists condense loosely followed wireframe features, first check whether your design is convoluted before insisting on exact compliance.
+- [heuristic] A simple, elegant design is often the hardest to implement.
+- [heuristic] The simpler a game is, the better it serves as a social pretext, because added complexity competes with the conversation. When: designing games meant to enable conversation.
+- [heuristic] Elegance lowers a mechanic's learning cost as well as raising its benefit, so aim for designs that can be explained in a few sentences.
+- [heuristic] A simple, elegant design is the baseline, because easy-to-learn games move players past the skill barrier faster. When: designing competitive or cooperative games. Why: Lower learning barriers shrink skill gaps sooner.
+- [procedure] 1) List the innate complexity in the game, meaning complexity from explicit rules and content. 2) Ask whether any of it could emerge from interactions among simple parts. 3) If emergent complexity does not appear in play, work out why. When: deciding whether to add a new rule or let the desired behavior emerge from existing interactions.
+- [procedure] Build a matrix of properties and options to calculate a design's combinatorial complexity mathematically before playtesting.
+- [procedure] 1) Count how many distinct activities the player wants and what kinds they are. 2) Set the number of choices to match that count. When: Designing options for a player. Why: Matching choices to desires produces a feeling of freedom.
+- [tradeoff] A world simpler than reality pairs with a transcendent player power; increasing that power must not remove challenge from the game. When: after setting the world and the player's power. Why: Unchallenged power ends the sense of achievement.
+- [tradeoff] Obvious rules attract newcomers but offer less depth, while deeper rules with complex interactions reward study but deter beginners.
+- [tradeoff] Simplifying a bloated mechanic may lose some nuance, but it frees player attention for more efficient and explorable options.
+- [pitfall] Possibilities grow exponentially with each added property or option, yet a mathematically more complex system or one with more behaviors is not automatically more enjoyable.
+- [pitfall] Without clear purposes, a game's rules grow into a tangle that becomes more convoluted as the game evolves.
+- [pitfall] Innate complexity often earns a bad reputation because it is hard for players to learn. When: When a game's rules are numerous and full of exceptions. Why: Steep learning curves discourage players.
+- [pitfall] A toy with no learnable depth pushes players toward self-made goals that quickly become boring, so the design effectively fails.
+- [fact] Conway's Game of Life places cells on a grid as on or off. An empty cell with exactly three live neighbors becomes live; a live cell with fewer than two or at least four live neighbors dies.
+- [fact] Perfect information games are easier to analyze, and many turn-based AI techniques assume this property. The best known algorithms target two-player, zero-sum, perfect information games.
+- [fact] Computers take over rule bookkeeping and state tracking that would make a tabletop version of a complex game tedious.
+- [fact] Rule text signals innate complexity through exception words such as unless, except, but, and even if.
+- [fact] Games commonly hold resources such as currency, items, cards, mana, units, structures, upgrades, hit points, experience, and player time.
+- [fact] Very simple objects and procedures can produce extremely complex results, as chess and Go demonstrate.
+- [fact] Dependencies can be circular, such as walls depending on construction while construction depends on walls, and simple layered pictures tend to hide them.
+
+## tournament formats
+- [model] Single elimination pairs players and removes each player after a loss, so the field narrows until one winner remains.
+- [definition] A league groups players who compete regularly across an extended stretch, usually between one month and one year.
+- [definition] McMahon gives each player starting points based on rating, as if they had already won some games, so stronger players meet earlier. When: swiss events, as used in some Go tournaments.
+- [definition] A Swiss tournament pairs players each round against opponents of similar standing, so everyone plays the same number of games without elimination. When: large or long events.
+- [mechanism] Alliances can form when a leader wants to finish off a weakened opponent while others want to keep that opponent in play.
+- [mechanism] In double elimination, a main-bracket player must lose twice to be out, while a loser's-bracket player is out after one more loss.
+- [mechanism] At the end of a league period, players are ranked by overall performance and the winner is chosen from that total.
+- [mechanism] Swiss qualifying gives each entrant many games and results that help determine seeding for the final bracket.
+- [mechanism] In Swiss, removing a departed player from rankings and future pairings has little effect on others, but it can change who receives byes later. When: a player leaves a swiss event early.
+- [mechanism] When a Rock win counts double, a three-way round is no longer a draw; Rock gains a net point while Scissors loses one, so Scissors looks riskier and Rock safer. When: Scoring multiplayer rock-paper-scissors with a double-weighted Rock win. Why: Weighted wins change the net score of mixed rounds.
+- [mechanism] In a best-of-three round structure, only the first round lacks elimination stakes; after it, a fighter faces elimination, which focuses the player on each motion and control. When: when structuring a multi-round match. Why: Elimination stakes raise attention to every input.
+- [rule] Reward players for eliminating opponents only when they are strong enough to win outright. Why: Otherwise elimination becomes a shortcut that distorts play.
+- [rule] In a fixed-round tournament where byes earn points, set enough rounds that a player starting at zero could still win the event by winning every game. When: choosing the number of rounds for a bye-points tournament.
+- [rule] With an odd-sized field, one player receives a bye each round; the organizer must decide who gets it and how it counts toward ranking. When: odd-sized swiss fields.
+- [rule] When a round-robin player leaves early, either nullify their games or keep their earlier results as information for tiebreakers.
+- [rule] Swiss tiebreakers that examine opponents' results must define how to treat opponents who left early.
+- [rule] Define the dropout rule for each tournament format before the event starts, since every format needs one.
+- [rule] Do not reward win streaks; downplay them so players may not even notice, avoiding hot-hand letdowns when a streak ends.
+- [heuristic] Player elimination is a problem mainly when it happens early in a long game; very short games or late eliminations are less of a concern.
+- [heuristic] Leagues can use most tournament formats, but elimination is usually avoided because players are meant to play many games.
+- [heuristic] Use leagues or seasons when players should compete across a long period rather than on a single event day.
+- [heuristic] A bye in a late round is worth more than a bye in round one, because it skips what is likely a strong opponent.
+- [procedure] 1) Run the main bracket as in single elimination. 2) Each round, fill the loser's bracket with players who lost in the main bracket. 3) Keep playing both brackets until one player remains in each. 4) Those two players meet for the title.
+- [procedure] 1) Rank players by win/loss record. 2) For tied players, first use games between the tied players. 3) If still tied, or three or more are tied, compare results against the top-ranked opponent, then the second-ranked, and so on. 4) Otherwise use a playoff or shared standing. When: when players have identical records.
+- [procedure] 1) Group players by cumulative score. 2) Rank players within each group. 3) Pair the top half of each group with the bottom half in matching order, so rank 1 meets rank n/2+1. When: swiss events where strict score-group pairing is wanted.
+- [procedure] 1) Play a set number of Swiss rounds. 2) Take the top four, eight, or sixteen players by standing. 3) Seed them into an elimination bracket by Swiss rank and play it to a winner. When: events needing broad participation and an exciting climax.
+- [procedure] 1) Pair round one randomly or by seeding. 2) After each round, rank players by record, using tiebreakers for equal records. 3) Pair each player with a close-ranked opponent. 4) Repeat for the chosen rounds; the best final rank wins.
+- [metric] In a round robin with N players, each player plays N − 1 games.
+- [tradeoff] Double elimination softens one bad result, so strong players are less often knocked out by chance, but everyone plays at least one more game, lengthening events relative to single elimination. When: choosing double elimination, especially in games with a meaningful element of chance.
+- [tradeoff] Round robin is the fairest format but only practical for small fields, because game count grows quickly with each added player. When: when choosing a tournament format.
+- [tradeoff] Single elimination finishes quickly but removes half the field each round, so players who need many games get few. When: events that must end fast versus events where players need many games.
+- [tradeoff] Pick the method that yields strong early pairings when those matter; pick Dutch when strict score-group pairing is preferred. When: choosing between a strong-early-pairing method and Dutch pairing.
+- [tradeoff] Swiss gives many games per player without the length of a full round robin, but it is a poor fit when a dramatic final between the top two players matters. When: choosing an event format.
+- [pitfall] Masterpoint-style schemes reward participation yet treat accumulated experience as if it were skill, which weakens pairing.
+- [pitfall] McMahon's rating-based starting points can look like an unfair advantage to some players.
+- [pitfall] Other Swiss round counts usually leave several players tied at the top, so a tiebreaker decides the winner, which feels anticlimactic.
+- [pitfall] Swiss pairings must be recalculated after every round, which makes the system complex to run.
+- [fact] Triple or higher elimination formats add more loser brackets but are rare because their bookkeeping becomes unwieldy.
+- [fact] A two-player single-elimination event with N entrants needs about log2 N rounds: four entrants take two, eight take three, sixteen take four. When: two-player games.
+- [fact] An N-player Swiss event with log2 N rounds lasts as long as a single-elimination bracket, and N−1 rounds makes it effectively a round robin. When: choosing the number of swiss rounds.
+- [fact] Swiss-system tournaments typically award 1 point for victory, 0.5 for tie, 0 for defeat, though any running total, including in-game points, works.
+
+## balance and randomness
+- [model] Asymmetric objectives take five forms: ticking clock, protection, combined, individual-objective, and complete asymmetry. Each gives sides different victory conditions while remaining balanced.
+- [definition] Asymmetrical games hand opponents distinct abilities, resources, rules, or goals, creating a significant balancing task while still needing fairness. Asymmetry can model real conflicts; most digital games are asymmetrical. Why: Identical starting forces make many real conflicts implausible. (x2)
+- [definition] Artificial balancing adds explicit rules until a game behaves as wanted, whereas natural balancing lets the desired effect emerge from interactions among a few simple rules.
+- [definition] A balancing relationship is one where a change moves another element in the opposite direction, pushing the system toward equilibrium.
+- [definition] Asymmetric design means players differ in starting state, paths, rules, or character choices; any unmirrored element breaks symmetry.
+- [definition] Balance means the system has the intended scope and complexity, and its elements work together without undesired results.
+- [definition] Randomness is blind when the player has no clues, hidden when the player is unaware of it, and measured when players know the possible outcomes and their probabilities. When: Classifying how players encounter random outcomes. Why: The three differ in whether players can see or estimate the odds.
+- [mechanism] Balancing loops keep a game from resolving too quickly by counteracting runaway advantage.
+- [mechanism] Giving one roll value a choice between helping yourself or hindering an opponent creates player-to-player interaction.
+- [mechanism] Chance elements such as dice reduce the first mover's advantage. When: Symmetrical games with a first-move edge.
+- [mechanism] Giving one player a bonus payoff on one option shifts both players' optimal mixes and gives the bonus holder a positive game value. When: one side has an extra payoff option.
+- [mechanism] Adding a third option that beats one throw and loses to another, with a draw against the third, removes dominance and yields infinitely many optimal mixes rather than a unique solution. When: Adding an option to a symmetric three-throw game with no dominated option. Why: The payoff equations become dependent, so no single solution is determined.
+- [mechanism] Adding options to a symmetric intransitive game increases the number of equations but not the difficulty of the method. When: Extending a symmetric intransitive game to more options.
+- [mechanism] When a winning move ends the game regardless of its damage, the payoff of several moves can become equal, so asymmetric health states produce asymmetric payoffs and different optimal strategies per player. When: Scoring a game where a lethal hit ends the match. Why: Any outcome that ends the game pays the same win value.
+- [mechanism] Chance can alter relationships, and even removing one element from an ordered sequence can change the dynamics of the whole system.
+- [rule] Multiply probabilities of independent events that must all occur; add probabilities of mutually exclusive outcomes; subtract overlaps when outcomes can happen together. When: Calculating combined chances. Why: Correct operation avoids impossible totals or double counting.
+- [rule] Ban any character or option whose power makes choosing it almost guarantee a win, since that makes competition pointless. When: Running a competitive tournament with selectable options. Why: A dominant choice removes meaningful decisions.
+- [rule] Design weapons so that finding a new one does not make older ones obsolete. Why: Keeps every weapon useful for its own situation.
+- [heuristic] Make random elements feel like exercised skill, and make skilled actions feel like risks, to balance chance against skill. When: when designing the relationship between chance and skill.
+- [heuristic] Alternate chance and skill decisions, such as a random draw followed by a player choice, to create a pleasing rhythm of tension and relaxation. When: Designing turn or action sequences that mix randomness and strategy. Why: Alternation keeps players both relaxed by luck and engaged by decisions.
+- [heuristic] The right mix of skill and chance depends on the audience, since preferences vary with age, gender, and culture. When: Choosing how much randomness a game should include. Why: Players from different groups prefer different levels of chance.
+- [heuristic] A random-driven game stays skill-based when players can calculate their chance of success for nearly any action.
+- [heuristic] Use subclassing when variants differ in behavior that needs different code; avoid it when they differ mainly in data. When: Choosing between subclasses and data for variant types. Why: Data-only differences do not justify a class and a rebuild per variant.
+- [heuristic] Probability is tricky to reason about, since the math is hard and gut feelings are often wrong, so designers should shape chance on purpose.
+- [heuristic] Concealing luck can make a game feel more skill-based while still letting weaker players win some games. When: Balancing a game whose audience includes many weaker players. Why: Players who feel their skill matters stay engaged even when luck decides some results.
+- [procedure] Replace a random value with player choice, provided the options are balanced: 1) Give each player one card per possible result value. 2) Each card is played once. 3) Collect all cards back after use. When: replacing a random value with player choice.
+- [procedure] 1) Compute the probability that none of the events occur. 2) Subtract that from 1 to get the probability that at least one occurs. When: Probability of at least one of several independent events. Why: Negation is simpler than summing many cases.
+- [procedure] 1) Decide how much of the game is physical and how much is mental. 2) Identify the target market's preference. 3) Make the game's appearance signal that balance clearly. When: When designing the dexterity-to-thought mix of a game. Why: Mismatched appearance and play cause both audiences to stay away.
+- [procedure] 1) Pick a bias or fallacy that makes odds seem favorable to players. 2) Build the rules so the true odds favor the house. 3) Use only standard components. 4) Playtest to see whether intuition misleads players as intended. 5) Revise based on results. When: Designing a game where apparent odds differ from actual odds. Why: Testing confirms whether the intended misperception actually occurs.
+- [metric] Casino dice are machined to roughly 10 micrometers, with even paint and tight weight balance, yet tiny deviations still remain.
+- [tradeoff] Ban policies punish griefers but require policing and judgment about intent, whereas avoiding systems that griefers can easily exploit prevents the problem at its source. Why: Deciding whether an act was intentional abuse or harmless fooling around is costly.
+- [pitfall] Balancing unequal sides is difficult, and players may argue about their advantages for a long time.
+- [pitfall] Using balanced, fun, and fair as one word blurs the difference between balance as a method and the goals it serves.
+- [fact] Changing the narrative rarely breaks a game, while changing the resource economy often does.
+- [fact] Balance is contextual and applies to single cards, classes, units, levels or whole games, meaning different things for single-player, competitive and cooperative play.
+- [fact] A tossed coin tends to land on the side that was face-up when the toss began.
+- [fact] A spun coin is more biased than a tossed one, because uneven weight pulls its heavier side down.
+- [fact] In asymmetric games each player may have a different optimal mix.
+- [fact] A fully certain game with no unknown outcomes is hardly a game, but certainty can still shape a level's pacing. When: when considering how much outcome predictability a game should have. Why: Certain elements are a tool for pacing, not a replacement for uncertainty.
+- [fact] In a heavily luck-based game, a little luck early on can dominate play.
+
+## card and deck games
+- [definition] Set is a card game in which players find sets of three cards where each of four properties is all the same or all different, using an 81-card deck.
+- [mechanism] For each draw point, the player takes the topmost card of their draw pile into hand.
+- [mechanism] For each discard point, the opponent chooses one card from their hand and discards it.
+- [mechanism] One card can combine mechanics, such as drawing from your own pile while damaging the opponent, so both players' piles change in the same action.
+- [mechanism] Blind trades that announce only a count, not the cards, encourage frequent trading with many different partners. When: Matching-set trades where players hide exact cards and state only quantity.
+- [mechanism] Drawing turn order one token at a time from a bag lets a player take several turns in a row, early or late in the round. When: turn order is randomized by drawing tokens. Why: the draw does not enforce alternation between players.
+- [mechanism] When players know the situation in advance, as with sideboard cards chosen against an opponent, the option is used almost always when relevant, so its cost is mainly opportunity cost and metagame cost. When: players can swap in an option after learning the opponent's setup. Why: foreknowledge raises the probability that the option is used when it matters.
+- [mechanism] When cards can change game rules in different ways, the game system becomes expandable, since new cards add new rule effects. When: collectible or card-based game design.
+- [mechanism] Adding betting or draw rounds adds real information and decisions, whereas adding more cards to the deck adds variety without new information.
+- [mechanism] A counter-card aimed at one dominant card forms a rock-paper-scissors cycle: the dominant deck beats most decks, the counter beats it, and other competent decks beat the counter. Why: The counter is inefficient against decks other than the one it targets.
+- [behavior] Players include the symmetric effect that spares their own cards: a player without the targeted type takes the card hitting that type, while a player with only that type takes the card hitting the rest. When: Deck-based games with symmetric board effects or removal. Why: Players avoid self-harm and exploit the effect against opponents.
+- [rule] Write card text precisely so no two players can read it differently; ambiguous text gets read in whatever way favors the player, causing costly disputes. Why: Players favor advantageous interpretations, so ambiguity is a design risk.
+- [rule] If a player has no cards left at the start of Select, the player with more health wins, and equal health is a tie. When: Card duels where a player can run out of cards.
+- [rule] When one card's effect prevents what another card's effect does, state explicitly which one applies. When: two effects on different cards conflict, such as protection versus destruction. Why: Otherwise the interaction is open to dispute.
+- [rule] Treat each premade deck as one unit and tune matchups so any two decks split wins near evenly between equally skilled players. When: when balancing a set of starter decks. Why: matchup fairness depends on the whole deck.
+- [heuristic] Use conditional effects to add variety or correct drift, since triggers that don't always apply produce different outcomes across sessions; keep total rules few enough to understand. When: Designing rule sets.
+- [heuristic] Giving each player a distinct token or piece from a limited set is a simple way to let players express themselves. When: multiplayer games with several players at one table. Why: Each player gets a recognizable identity with little design cost.
+- [heuristic] Common cards should be simple but not necessarily weaker than rares; otherwise only wealthy or lucky players can build a decent deck.
+- [heuristic] Counter-cards with other useful effects, or designs where player choices matter more than deck contents, reduce the rock-paper-scissors problem.
+- [procedure] 1) Each player stacks three face-down cards. 2) Reveal the top card of each stack. 3) Resolve shots first, simultaneously. 4) Resolve turns, then moves, breaking ties by die roll. 5) Repeat for the next two cards.
+- [procedure] 1) List every object in the game and its properties. 2) Add each object's behaviors across different game states. 3) Describe relationships between objects and whether each is defined by position, power, value, or another factor. When: when analyzing a board game's system structure.
+- [metric] A closely matched collectible card game uses about 7 cards in hand, 20 starting life, 3 to 10 mana per turn, and creature power and toughness of about 1 to 8.
+- [metric] A board of 64 squares has 2,016 pairwise relationships among its squares.
+- [metric] Combined value before correction: ((Power-1)/5) × 3 + (Power/5) × Damage − Cost. When: Uniform 1-to-5 Power and Damage with average Damage 3.
+- [pitfall] Cards with different stats at the same cost can imply conflicting values for the same stat, so their equations cannot all hold at once.
+- [pitfall] Counter-cards aimed at each popular strategy push players toward narrow decks that refuse opponents holding answers to them.
+- [pitfall] A counter-card is weak when the opponent does not play the card it targets.
+- [fact] Cap collectible-deck builds with a fixed size and per-card copy limits so no single card dominates; for example, 50 cards with at most three copies of any one card.
+- [fact] Action cards use four core mechanics: Damage, Healing, Draw, and Discard. Each acts on a player's draw pile, discard pile, hand, or the opponent's cards.
+- [fact] The game has two card types: Power cards and Action cards.
+- [fact] In Set, for any two cards exactly one third card completes a set; if that card is absent from the deck and table, the two cards cannot form a set.
+- [fact] The Set deck has 81 unique cards, each with four properties (shape, number, pattern, color) and three options per property.
+- [fact] Keeping all of a card game's rules on its cards keeps it simple, but rules added outside the cards grow its complexity quickly.
+- [fact] A player's nine action cards are one each of Move 1 to Move 4, two Turn cards, and three Shoot cards.
+- [fact] In community-card poker, each player combines two private cards with five shared cards and uses the best five of those seven.
+- [fact] Board games usually define objects explicitly with simple, visible states, while digital games can track complex hidden variables that players never see or manage.
+- [fact] Board games are a strong source of inventive mechanics because their rules are visible on the surface, so they can be taken apart and analyzed.
+- [fact] Board games have changed little physically in about 200 years, yet their underlying concepts keep advancing and breaking old rules.
+- [fact] Card games share turn-based play and discrete units with board games, but usually have no board and often centre on imperfect information.
+- [fact] Board games suit rule generation because their structure is discrete and finite, and game design has a long tradition of inventing variants.
+
+## goals and objectives
+- [model] The paths-and-goals pattern, a network of paths linked to goals, draws players through a space and suits guiding them through a level. When: When planning movement routes through a level. Why: Paths linked to goals guide players naturally.
+- [model] Goals can be layered in three tiers: short-term (win the next match, catch a creature), mid-term (beat gym leaders, level up), and long-term (complete the collection, defeat the final challenge).
+- [model] Games set goals at three timescales: a long-term objective, short-term tasks along the way, and goals players set for themselves.
+- [mechanism] Goals give individual moves meaning; without clear goals, players cannot judge whether actions are useful, so they cannot become absorbed in the task. When: Designing the goal structure of a game. Why: Goals trickle down to make moment-to-moment actions meaningful. (x2)
+- [mechanism] Goals allow success, failure, partial failure and improvement over earlier attempts, which shapes how players judge their own skill.
+- [mechanism] The nature of a goal sets player focus: precise, specific goals demand precise movement, while broad goals allow broad movement.
+- [mechanism] Pairing an explicit goal, an implicit goal such as speed, and a fail-state constraint can turn a basic input into a precise, twitchy tool.
+- [mechanism] In a ticking clock, a weak defender holds out for a set time while a strong attacker must eliminate all defenders before time expires. When: Asymmetric objectives. Why: Time limits offset the attacker's strength against the defender's need only to survive.
+- [mechanism] Moving objective objects in a capture-the-flag level changes the centre of all action, so repositioning them alters the feel of the level. When: when designing a level with objective objects. Why: Each objective area becomes the focus of play, so location decides where fighting and movement concentrate.
+- [mechanism] A first objective that requires crossing the whole environment previews later challenges, and later visits go faster because players already know the layout.
+- [behavior] Games reach goals through indirect routes, such as knocking out an opponent or finishing under par, and these routes look inefficient outside the game. Why: the value of the goal inside the game makes roundabout methods worth playing.
+- [behavior] Players who can pause and resume quests at any time spread a single quest across many sessions and paths. When: the game lets players leave and return to quests freely. Why: players split play around their own schedules.
+- [rule] Set goals at three horizons, immediate, mid-range and extended, each with a meaningful reward attached.
+- [rule] Present overarching goals early and short-term goals throughout play. When: Designing goal structure and onboarding. Why: Players need to know both long-term direction and immediate next steps.
+- [rule] Establish short-term and medium-term goals that players reach more frequently than long-term goals, so progress feels faster.
+- [rule] Stop a helping move from carrying a piece directly into the goal, so it cannot bypass the main route to the goal.
+- [rule] Aim for powerful player experiences as the design goal, rather than personal artistic expression.
+- [rule] Make goals clear, meaningfully related, concrete, achievable and rewarding, balance short- and long-term goals, and let players choose some goals for themselves. When: when designing a game's goal structure.
+- [rule] State the game's goal simply and clearly, since it is the most important rule.
+- [rule] Set the intended drama and feel of combat first, then engineer code, art, audio and numbers to deliver it. When: designing or tuning combat. Why: A clear target gives tuning a goal and avoids slow number-first trial and error.
+- [rule] Have players apply the curriculum to goals they find interesting and meaningful within the game. When: when designing educational games.
+- [heuristic] Missing goals indicate a game design issue, unclear goal expression a usability issue, and goals that lack meaning an engageability issue. When: when players are not motivated by goals.
+- [heuristic] Balance short-term and long-term goals so players know what to do now and believe they will eventually achieve something significant. When: Structuring a sequence of goals. Why: Near goals give immediate direction, while distant goals give a sense of purpose.
+- [heuristic] Subgoals along the way keep players engaged through long games, as well as a single final goal. When: long games. Why: Intermediate targets give recurring progress.
+- [heuristic] When simplifying, keep the founding goal, what the player should feel, as the test for which elements stay.
+- [heuristic] Goals a scoring system cannot detect, such as racing, copying a sequence or maximizing damage, need special modes with their own win conditions. When: Players pursue goals outside the standard score. Why: Standard scoring cannot measure these goals, so separate modes give them alignment.
+- [procedure] 1) Draw a tartan diagram of a game's goal structure. 2) Note how short-term and long-term goals are spaced.
+- [procedure] 1) State the high-level goal. 2) Break it into sub-goals. 3) Keep breaking them down until each piece maps to a real-time control action.
+- [procedure] 1) Ask whether players can state their short-, mid-, and long-range objectives. 2) Check whether they see how a given item will raise their competence. When: when reviewing whether goals motivate players.
+- [procedure] 1) State the goal sequence explicitly. 2) Explain how each goal relates to the others. 3) Confirm players can see the path from current to final goal. When: Presenting a series of goals. Why: Clear relationships between goals keep players oriented.
+- [procedure] 1) Count the qualifying events. 2) Compare the count with a threshold. 3) Reset the count when a time window expires. 4) Announce the state as ready when the threshold is met. When: A special state should unlock after repeated actions in a short time.
+- [tradeoff] Loosely enforced goal order gives players freedom to choose or bypass goals, at the cost of firm control over progression.
+- [pitfall] Without a goal, the pleasure of control wears thin quickly and players explore only a small part of the possibility space.
+- [pitfall] Chasing too many goals can leave a product mediocre, without a compelling experience at any level.
+- [fact] Some games, such as many massively multiplayer worlds, simulations, and certain ranked card game versions, have no winner, no scoring and no end state, so groups may play for hours. (x2)
+- [fact] Clear experience goals focus the creative process from the start.
+- [fact] A game's basic purpose is to deliver enjoyment.
+- [fact] A termination set defines how a game ends, such as when all sprites of one type disappear or when two particular sprites collide.
+- [fact] A reward system can only pay for achievements it can detect; open-ended or procedural systems make player-invented solutions hard to detect.
+- [fact] Every design decision is shaped by the purpose a game is made to serve, such as profit, art, or self-expression.
+
+## play definition and theory
+- [model] Caillois's four types of play are competitive (agôn), chance-based (alea), make-believe (mimicry), and vertigo (ilinx).
+- [model] The play matrix plots games on two continua: skill versus chance horizontally, and mental calculation versus physical dexterity vertically.
+- [definition] Play is manipulation that indulges curiosity.
+- [definition] Play is free movement inside a more rigid structure, like the slack a steering wheel has before the wheels turn, existing only because the system does.
+- [definition] Toys are manipulable like puzzles but have no fixed goal, while stories involve fantasy play but cannot be changed by the player.
+- [definition] A toy is any physical object meant to be played with.
+- [definition] A good toy is fun to play with; being played with alone does not make something a toy, since nearly anything can be played with.
+- [definition] Primal actions are so intuitive that animals were performing them hundreds of millions of years ago.
+- [mechanism] Minimal or abstract representation leaves gaps that the player's mind fills, so the more abstract the representation, the more room there is for personal interpretation. Why: the imagination builds details that explicit visuals or sound would otherwise supply.
+- [behavior] Players may sacrifice a winning position to help a weaker player, a nurturing style that appears in group play. When: competitive games with uneven skill.
+- [behavior] In a prisoner's dilemma, players facing a stranger in a single round usually defect, while expecting repeated rounds with one partner raises collaboration, especially early. When: when players meet a partner once versus repeatedly. Why: Repeated contact creates a shared future that makes trust worthwhile.
+- [behavior] Players know an activity is a game yet still care about it as if it mattered greatly. When: while playing any game. Why: Motivation overrides the knowledge that the activity is trivial.
+- [behavior] Once a player judges an experience too intense, awareness that it is only pretend returns and works against the presence the designer builds. When: A player feels an experience has become excessive. Why: The mind reasserts that the threat is not real.
+- [rule] Set explicit play values before prototyping, such as broad audience appeal, low technology barriers, easy to learn but deep, intrinsically social, and fit with the platform's tone. When: at the start of a new game's design. Why: Play values give concrete targets for judging later design decisions.
+- [rule] Check which forms of play your game offers, and decide whether to add play types or deepen existing ones, since players differ widely.
+- [heuristic] When gameplay is built on the most fun parts of a toy, the toy's fun and the game's fun support each other.
+- [heuristic] When designing a good puzzle, build a satisfying toy first, so players enjoy manipulating it before they solve it.
+- [heuristic] Build a good toy first, with obvious manipulations that draw players to handle it, then turn it into a puzzle. When: Physical or mechanical manipulation is the main appeal. Why: Players who want to touch and play engage with the object even without intending to solve it.
+- [heuristic] Let the player experience story through play rather than exposition: play, don't tell, the game counterpart of show, don't tell. When: Designing how story reaches players.
+- [procedure] 1) Build an enjoyable interactive toy first. 2) Confirm it is fun on its own. 3) Design a game on top of it, adding goals and problem solving. Why: Playing the toy can suggest unexpected game ideas.
+- [procedure] 1) Ask whether the interaction is fun with no goal. 2) Ask whether people want to start interacting before they know what to do. 3) Change whatever makes the answer no. When: when evaluating an existing game or inventing new interactions. Why: Toylike qualities make a game more approachable and enjoyable to manipulate.
+- [metric] A survey of 1,178 U.S. youngsters, ages 8 to 18, found about 8% with pathological play patterns, and these children had poorer grades.
+- [pitfall] Labeling passionate play as pathological fuels moral panic and encourages unnecessary, costly treatment.
+- [pitfall] Designers often forget the toy perspective, focusing on goals before the underlying interaction is fun.
+- [pitfall] A set of small puzzles with no final goal lacks a point that holds them together. Why: Each puzzle stands alone rather than advancing a shared aim.
+- [fact] It is unknown whether group play tendencies are innate or learned, but understanding them helps designers include more players.
+- [fact] Play is the clearest intrinsically motivating activity because it is autotelic, done for its own sake.
+- [fact] Play lets people experiment with situations more complex than everyday life, and it contributes to building culture.
+- [fact] Play is especially important in childhood, when the brain is more malleable.
+- [fact] Frequent players spent longer on optional puzzles than infrequent players, even though they could skip them. Why: This correlational result does not show that games cause perseverance.
+- [fact] Humans also respond emotionally to music, philosophical ideas, humor, wit, and many forms of art.
+- [fact] Game rules create play only as players enact them, so play must be discovered through testing rather than predicted.
+- [fact] Tournament and league play with a fixed rule set is a traditional game, even though free-form play resembles role-playing.
+- [fact] Solving participatory play for large audiences would likely require very clever use of technology.
+- [fact] Defining play as manipulation that indulges curiosity also covers artists playing with color and scientists testing ideas, not only games.
+- [fact] Primal play includes gathering, fighting threats, finding one's way through unfamiliar terrain, and overcoming obstacles to reach a mate.
+- [fact] Persuasive games present the designer's subjective model of the world, and players compare it with their own to see where the two converge and diverge.
+- [fact] Video games with physical and skill demands cluster lower left; board and turn-based games cluster upper left; gambling games cluster upper right; games for very young children cluster lower right.
+- [fact] Play matrix placements are not absolute; differing placements are acceptable and the matrix serves as a discussion tool.
+- [fact] Physical play builds motor skills, pretend play builds language, and rule-based board games with numbers build math skills.
+
+## community
+- [model] Social progression includes influence, ranking, and guilds, where guilds grant rank, responsibility, privilege and prestige inside a group.
+- [definition] A virtual skill belongs to the character rather than the player, such as a character's level in a combat skill.
+- [definition] A social pretext game exists mainly to give people a reason to interact, so its own emotional content may be minimal.
+- [definition] Profound decisions take ten seconds or more and draw on broader knowledge; only elegant, subtle systems produce them.
+- [mechanism] Letting veterans recruit newcomers into their groups creates mutual reward: newcomers feel honored to be chosen, and recruiters gain followers.
+- [mechanism] Virtual skills can rise while the player's real skill stays the same, for example when repeated button mashing raises a character's skill level.
+- [mechanism] Custom homes that invite visits encourage gift-giving, so players help one another progress. When: Multiplayer spaces with player-owned homes.
+- [behavior] When players can build and sell objects, user-made content can support subcultures such as reenactments, art exhibitions, and sports.
+- [rule] Designers should create regular community events, such as competitions, practice sessions, or goal challenges, because they give players something to anticipate and share, even when players also organize their own. When: When building or sustaining a player community. Why: Events give players shared, memorable moments and a guaranteed chance to connect with others.
+- [rule] Make customized elements visible, for example by switching to third-person during emotes or adding replays that show the avatar performing combat moves. When: Players invest in avatar or base customization. Why: Visibility lets the investment pay off.
+- [rule] Designers who let strangers communicate must take responsibility for where that contact could lead, and cannot hand this off entirely to lawyers. When: games where strangers can talk to each other. Why: Legal review does not remove the designer's ethical responsibility.
+- [rule] Adopt blockchain mechanics only when they add meaningful gameplay.
+- [rule] Give players time and chances to get to know each other. When: multiplayer or social games.
+- [heuristic] Keep a constant flow of topics for conversation through shifting content, strategic depth, and events or rule changes over time. Why: Players need topics to discuss to keep relationships going.
+- [heuristic] Include an activity that players find hard to stop once started.
+- [heuristic] When a teammate resists, treat them with respect, ask why the point matters to them, and ask what it would take to bring them on board. When: A team member is stubborn about a decision. Why: Disagreement involves two people, and understanding the reason often helps others understand the point.
+- [heuristic] Consider multilateral competition when designing for a small group of friends who compete directly. When: when designing for a small group of friends.
+- [heuristic] If subclasses differ only by data, the base class can implement the behavior directly from its fields, and a sandbox method is not needed. When: All variants differ only in values such as sound, effect type, or movement. Why: Data-only variation does not require subclass code to express behavior.
+- [heuristic] Designers can build social interaction around specific events, such as one player defeating another or two players creating or learning something together.
+- [procedure] 1) Make inviting friends easy, such as importing social media contacts. 2) Let players join friends' matches or missions quickly. 3) Show friends' recent missions or rewards in the menu. When: Designing multiplayer or social game features. Why: Peer effects shape behavior, and friends are the main route into a game.
+- [procedure] 1) Find something in the current game the member can love. 2) Or propose a new feature that could take the game somewhere they would enjoy. When: A member loves a different kind of game than the one being made.
+- [procedure] 1) Do not vent after rejection. 2) Take the idea to someone who can use it, or 3) keep it ready for a later moment. When: after a rejection.
+- [procedure] 1) Ask honestly whether your game helps people, answering yes or no. 2) If yes, name the specific effect it has on players. 3) If no, ask whether the design could change to provide one. When: reviewing whether a game meets a designer's obligations.
+- [metric] Virtual sensitivity is a rough measure combining input device sensitivity with response sensitivity, useful for comparing games' expressivity though not a precise number.
+- [tradeoff] Targeting an overlooked segment can yield outsized success but cannot be measured reliably, so it suits designers who accept risk and do not need predictable returns. When: When a segment others have overlooked can be found. Why: Untapped segments have no references or established players, so their size is unknown.
+- [pitfall] A world whose rules contradict its economy feels hollow and fake.
+- [pitfall] Cramming every idea into one level delivers wish fulfillment without a good experience, since wish fulfillment alone does not make a level good.
+- [fact] The social and community filter asks whether the design meets goals for social play, virality, or a thriving community; design choices strongly affect these.
+- [fact] Attempts to make theater experiences where the whole audience takes part have had no long-term success so far.
+- [fact] Massively multiplayer games often move toward wide verb sets covering combat, crafting, and social interaction.
+- [fact] Behavioral rules shape a game's operational rules and show that every game is a social contract between its players.
+- [fact] Social skills include reading opponents, deceiving them, and coordinating with teammates.
+- [fact] Games with hidden information, bluffing, or teams lean heavily on social skill.
+- [fact] Human play tends to spend more time social than solitary, so games are expected to follow that pattern.
+- [fact] Remote viewing through streamed video is growing, so spectators deserve a place in design considerations.
+- [fact] Virtual worlds, now seen as a pastime, could become central to human experience if virtual reality makes sudden leaps forward.
+- [fact] Social sharing features include replay recording, community rating of videos, gift sending, shareable story albums, helper roles for a second player, and shared co-op play.
+- [fact] Virtual rewards come in three groups: character power-ups (experience, in-game money, equipment, abilities), story content (cutscenes, audio logs), and achievement records.
+- [fact] Professions carry distinct value sets: soldiers stress loyalty, honor and personal courage; scientists stress rigor, impartiality and integrity; industrial culture stresses hard work, forethought and doing one's part.
+
+## designer role and responsibility
+- [definition] The designer acts as a translator between programmers, artists and producers so that everyone works on the same game.
+- [definition] The game designer plans the objectives, rules and procedures that players set in motion, and is responsible for a compelling player experience.
+- [definition] A designer-style PCG system designs parts of a game, or whole games, autonomously; the limit case is a fully autonomous generator, usually within one genre.
+- [behavior] Constant-only scripts let designers set stats and trigger feedback without writing rules, yet the behavior remains a fixed list of values. When: Giving designers scripting before adding logic. Why: Without conditionals or computation, each script produces the same result every time.
+- [rule] Designers should learn at least one programming language, via a beginner book, class, or questions to programmers, even without plans to become programmers, to judge feasibility and speak engineers' language. Why: Shared vocabulary makes collaboration with engineers easier.
+- [rule] A good designer advocates for the player, judging each decision by what players will experience.
+- [rule] Ensure someone can focus on gameplay without too many other duties. When: Staffing game design.
+- [rule] Designers cannot force a specific trade or outcome; they can only make it possible and tempting.
+- [rule] Designers share responsibility for making games that fit into balanced lives. When: designing engaging games. Why: Engagement can harm players when it crowds out other life areas.
+- [rule] Design around predictable perception errors rather than blaming players for them.
+- [rule] Designers decide which behaviors are possible, rewarded, or punished, and are responsible for those choices.
+- [rule] Accept that players know outside information and design systems that still create the intended experience, using fair, gamelike threats and explicit, attainable goals. Why: Fear of threats the player knows cannot happen weakens tension.
+- [heuristic] Acting as a game designer, including saying so aloud, helps build the identity, since people tend to become what they act as. When: Confidence is low at the start. Why: Acting on a role reinforces it.
+- [heuristic] An efficient designer should understand scheduling and budgeting nearly as well as the producer, though not create or track those documents.
+- [heuristic] Accepting how little you understand is the most basic step toward becoming a skilled game designer. Why: it leads to more testing and fewer overconfident decisions.
+- [heuristic] Designers know their game deeply, so a goal that seems obviously valuable to them may not yet feel engaging to new players. When: Judging the value of goals or rewards. Why: Players lack the designer's knowledge of the game.
+- [heuristic] The designer is usually the best person to pitch the game, because they know it best and must believe in it to persuade others.
+- [heuristic] Designers need a genuine love of play, and it must be actively kept alive, because repeatedly testing one's own game can turn into work. When: during long development and repeated self-testing. Why: Repeated testing of one's own game can drain enjoyment.
+- [procedure] 1) Work in an isolated space. 2) Control distractors such as notifications. 3) Prevent interruptions during focused work.
+- [procedure] 1) Choose a game you find unfun. 2) List what you dislike. 3) Identify what its designers missed. 4) Propose concrete improvements.
+- [pitfall] Designers know their game better than players and cannot experience it as newcomers, so what is fun for them may be too hard or hidden for typical players, such as starvation. (x2)
+- [pitfall] Designers forget the player's perspective over time, so projecting into the player's view requires constant attention. When: Long design processes. Why: Familiarity with the design gradually replaces the player's viewpoint.
+- [pitfall] Holding to creative purity at the audience's expense leads to catering to an audience of one.
+- [fact] Level designers with coding skills can build basic logic, triggers or scripts that control AI.
+- [fact] Most designers build motivation systems mainly through instinct and experimentation rather than detailed knowledge of psychology.
+- [fact] Game designers usually work in relative obscurity and receive little public respect, and publishers often prefer they stay unknown. Why: Fame makes designers more expensive to employ.
+- [fact] Studios fall into three categories: standalone outfits, fully held subsidiaries, and part-owned affiliates.
+- [fact] Designers often cannot predict the commercial outcome of an unexplored concept; outcomes may range from very small sales to very large ones. When: When developing a game in a fully unexplored segment. Why: Without references, conventions, or players, the number of buyers is unknowable in advance.
+- [fact] Designers answer many questions and eliminate many uncertainties; the hard part is making interrelated mechanics, fiction, art, and technology work as one experience.
+- [fact] A designer's influence over game feel is limited to the computer, game world and output devices; human perception, muscles and input hardware are treated as fixed.
+- [fact] Core designer tasks include brainstorming concepts, creating and playtesting prototypes, writing concept and design documents updated throughout production, communicating the vision, creating or overseeing levels, and advocating for the player.
+- [fact] Game design draws on animation, anthropology, architecture, brainstorming, business, cinematography, communication, creative writing, economics, engineering, games, history, management, mathematics, music, psychology, public speaking, sound design, technical writing, visual arts.
+- [fact] Designers cannot observe player experiences directly because they occur inside another person and cannot be shared, so attentive listening to players is essential. Why: Experience is private and not externally visible.
+- [fact] Designers cannot touch experiences directly; they shape the game, and the game is what produces the player's experiences.
+- [fact] Companies exist to make money, so responsibility for making games beneficial rests with the individual designer rather than the company.
+- [fact] Creative people work differently: some generate many ideas, some dig deeply into one, some think alone, and others thrive bouncing ideas off groups.
+- [fact] Designers tend to see everyday situations as systems of goals, obstacles and rules, such as finance, courtship and workplace competition.
+- [fact] Designers can add richer emotional qualities to known games or invent new mechanics for games not yet made.
+
+## perception and feedback
+- [definition] Noise is any signal that adds no meaningful information to a player's mental model, not only static or random interference.
+- [definition] Poetry of presentation is the aesthetic quality of an experience, arising from artistry in writing, music, dance, acting, comedy, cinematography, and graphic design.
+- [definition] Synchresis is the brain fusing an object's look and sound into one event, so layered sounds can give a new character while seeming to come from the object.
+- [mechanism] Sound and music affect player mood and emotional responses to the gamespace, so deeper involvement of audio specialists can noticeably improve the player experience. (x2)
+- [mechanism] When a signal becomes noise, the player does not understand the event and cannot think about or respond to it.
+- [mechanism] Showing enemies only in periodic pulses forces players to infer movement between updates, and skilled players learn to move away from the last pulse.
+- [mechanism] Sound is closely tied to touch, so the mind uses hearing to help locate the body and judge the surrounding world.
+- [mechanism] Adding a sound to an attack can supply weight and violence that the animation lacks, so the animation does not need reworking. When: An attack feels lacking in impact. Why: Sound carries the impression of force that the visuals fail to convey.
+- [mechanism] Playing an impact sound when two objects cross can make them appear to bounce apart instead of passing through each other. When: Objects that visually overlap without physical response. Why: The sound supplies the missing collision cue.
+- [mechanism] Sound and shadow can make a space seem larger than the area around the avatar, suggesting movement beyond what is visible.
+- [mechanism] Ambient sound that turns into threatening voices as a horde approaches tells players how much time remains without a timer.
+- [mechanism] Sound effects provide feedback for mechanics and serve as rewards for completing important tasks.
+- [mechanism] A jarring audio burst that plays when a threat comes into view signals players to avoid its sight.
+- [behavior] Changing only a weapon's sound, not its stats, can make players feel the weapon was fixed. When: Responding to players finding a weapon weak. Why: Players perceive value through audio feedback.
+- [behavior] Players follow a distinctive 3D sound toward its source to discover hidden areas or learn new actions. When: early in a level, when a sound marks a new area.
+- [rule] Confirm player input with sound when the controller has no physical response, since the mind maps sound to touch and sound stands in for tactile feedback. When: when the controller has no rumble or physical response. Why: Virtual interfaces give little touch feedback; many controllers lack haptic feedback. (x2)
+- [rule] Present mechanical facts such as exact damage values directly when the fiction cannot convey them. When: Mechanics have no in-fiction representation.
+- [rule] Pair each colored input area with a light and a tone, so every press gives matching audio and visual feedback. When: when designing a set of input areas for a memory game.
+- [rule] In stealth games, make the player feel their actions can be heard, so they adopt sound-aware strategies. Why: Players only plan around noise if they believe enemies can hear it.
+- [rule] When a player delays a needed action, have the guiding voice nudge them with a timed prompt. When: a required action is delayed.
+- [rule] Introduce sound-linked enemies first in isolated or easy encounters, so players can see the effect and hear the warning before facing harder threats. Why: players learn the link safely.
+- [heuristic] Make positive and negative feedback sounds slight variations of a few source sounds, so they form a recognizable family. Why: Variations of shared sources read as one family rather than unrelated sounds.
+- [heuristic] When many effects fire at once, rank visual and audio feedback by importance and cut lower-priority cues, giving top priority to effects showing the player is being hurt. When: busy combat, especially multiplayer. Why: Showing every effect for every element becomes incomprehensible.
+- [heuristic] Tune relationships for what players perceive rather than strict realism; exaggerated motion, like squash and stretch in animation, reads more clearly.
+- [heuristic] Changing a game's point of view changes how the experience feels and what players can perceive, so view choice should be considered as a design decision. When: Evaluating or choosing a camera or perspective. Why: Viewpoint controls what players see and how they relate to the game world.
+- [heuristic] Let a threat be heard before it is seen so it feels like a constant presence and builds anticipation. When: when the threat is meant to feel omnipresent. Why: Sound signals presence before sight confirms it, so players stay alert.
+- [heuristic] Enemies whose attacks greatly weaken the player are worth giving a recognizable warning sound.
+- [heuristic] Sound can carry atmosphere when graphics are too limited to do so, letting simple visuals still feel tense. When: when graphics are simple. Why: sound conveys mood the visuals cannot.
+- [procedure] Check a VR or AR design by asking: Is the player feeling presence, and could it be stronger? What diminishes presence? What builds it? Repeat these questions as the design changes. When: reviewing any VR or AR design. Why: keeps the designer aware of where the player's mind and body really are.
+- [tradeoff] Perceptual-shift puzzles offer either a large reward or nothing, since players either have the insight or get no partial progress. When: Use sparingly in videogames, where players expect steady progress. Why: Such puzzles give no gradual difficulty ramp and leave non-insight solvers stuck.
+- [tradeoff] Digital play limits perception with fog-of-war or view-distance features, while a physical design can block the view directly.
+- [pitfall] Pairing realistic visuals with generic or cartoonish responses breaks the player's belief in the world; choose a consistent level of fidelity across visuals, sound and motion. When: when a realistic-looking object has unrealistic reactions. Why: Mismatched fidelity creates dissonance.
+- [fact] Effects that let players view others' hands or decks give limited access to information that is normally hidden or privileged.
+- [fact] For VR and AR, the feeling of presence rooted in proprioception matters more than the 3D images themselves.
+- [fact] Overhead view looks straight down, a somewhat unnatural angle, and is used for level maps and board-style games.
+- [fact] Separating sounds is usually harder than separating visual elements, and stereo sound can make it harder still.
+- [fact] Future interfaces are expected to use tactile feedback more, but sound is the best option until then.
+- [fact] Sound can draw player movement, set the atmosphere of play, reward achievements, and set the pacing of action.
+
+## design values and purpose
+- [definition] A personal theme is a private purpose behind a designer's work, which the designer identifies by looking inward.
+- [definition] Shared design terms give designers, evaluators and critics a common language for discussing design and critique.
+- [definition] A well-aligned game has a reward structure built around a meaningful core, so good design raises little ethical concern.
+- [definition] A value curve is a graph that rates several games across a set of market values, so overlaps and unique values become visible. When: When comparing a game against competitors. Why: A single curve says little; comparison across games reveals where a design stands.
+- [definition] A value reflects an affect-laden decision about the sort of person one aims to become, an ideal worth pursuing though nobody fully realizes it.
+- [mechanism] The value of versatility depends on foreknowledge (how far ahead a player can plan) and switching cost (how hard changing choices is), and foreknowledge's value is inversely proportional to switching cost. When: evaluating options that let players switch between modes or loadouts. Why: low switching cost makes advance knowledge less important, and vice versa.
+- [rule] Give clients a real creative role without giving up the design vision; this is about shared ownership, not deceiving the client.
+- [rule] Before other decisions, define the game's experience pillars and target audience.
+- [rule] Offer a virtuous option alongside harmful ones so players can make a moral choice.
+- [rule] Designers must sell the game to teammates, management and investors, using good language skills, a clear vision and a strong presentation. When: when seeking funding, approval or team buy-in.
+- [rule] Prefer short words, since they fit more easily in speech bubbles and in actors' mouths, whether the game is voiced or read.
+- [rule] Break conventions only when the fiction's harshness is the core experience and the audience accepts unfairness; otherwise keep conventions. When: the fiction's harshness is the core experience and the audience accepts unfairness. Why: Unfairness only pays off for audiences who accept it.
+- [rule] Only values that are better than every competitor, or that no competitor offers, are worth pursuing; values offered at a lower level than competitors add little. When: When choosing which values a game should emphasize. Why: Players have alternatives, so being merely comparable gives no reason to choose the game.
+- [heuristic] Ethical questions are hard; each studio should define its own code rather than assume settled answers.
+- [heuristic] Original games with new mechanics, interfaces, and worlds may need a planning horizon of a day or less. When: when the design is largely untested.
+- [heuristic] Use symmetry when players need obvious comparisons and a feeling that the field is balanced.
+- [heuristic] Knowing why a fun part is fun matters as much as identifying it, since the reason shows what to keep, strengthen, or copy.
+- [heuristic] Concept art does not always need polish, since rough sketches or models are often enough to do the job.
+- [heuristic] Before committing to a feature, mode, event, campaign or sale, ask why the target audience would care and whether it fits the core experience. When: when proposals come from the team or management. Why: unexamined additions dilute the core experience.
+- [heuristic] Use challenge where skill tests and mastery are central to the emotional goal, and do not assume it must be present in every design. When: When choosing emotional triggers for a design. Why: Challenge suits some emotional goals but not all.
+- [procedure] Use the usability pillars as a checklist and shared vocabulary across design, art, audio and user research.
+- [procedure] 1) At the end of each prototype or sprint, ask whether you are excited about the game. 2) If excitement has faded, try to recover it. 3) If it will not return, consider working on something else. When: after every prototype and every sprint, alongside risk review and planning. Why: Lost passion often signals the subconscious sees a problem, and it often predicts failure.
+- [procedure] 1) Ask whether the game feels magical. 2) Ask whether people get excited just hearing about it; if not, find out why. 3) Ask whether it advances the state of the art meaningfully. 4) Ask whether it makes the world better. When: When judging whether a project and its technology choices are heading toward a better world.
+- [procedure] 1) Map the market values your game could offer. 2) Estimate your team's resources. 3) Choose one or two values to be best at, or a single value if the team is small. 4) Cut the rest. When: When scoping a new game. Why: Matching ambition to resources keeps the chance of a clear winning value realistic.
+- [tradeoff] Each added market value costs development resources, dilutes the emotional purity of the experience, and may clash with other values, so teams must limit how many values they pursue. When: When deciding how many values a game will pursue. Why: Values compete for resources and can be logically incompatible with one another.
+- [pitfall] Overfocusing on one element (mechanics, gameplay structure, story, technology or aesthetics) neglects the others and the experience, which matters most; judging by one element skews review.
+- [pitfall] Designers tend to sand down ideas that seem too good or too bad, which balances the game but flattens it.
+- [fact] Game design is second-order: designers set rules and context but cannot fully predict or directly control how players behave, including in level design. Why: player behavior emerges from the rules. (x2)
+- [fact] The same design principles and process apply across board, card, dice, party, gambling, arcade, athletic and video games, since a game is a game regardless of medium. (x2)
+- [fact] Passion also means persistence and determination to ship a strong game regardless of obstacles, which backers need to see before entrusting you with funds. When: Pitching to funders. Why: Backers bet on people who will see the project through.
+- [fact] A personal theme often takes one of three forms: a vision that could change someone's life, a wonderful experience to share, or a terrible event to prevent for others.
+- [fact] Game systems leave room for imagination, fantasy, inspiration, and social skill within the game space.
+- [fact] All design principles are ultimately rooted in psychology and anthropology, so connecting principles across fields is a long-term goal.
+- [fact] Games are entered by choice, aimed at goals, built on conflict, governed by rules, and produce outcomes that can be a win or a loss.
+- [fact] Science and creativity are not opposed; games are art, and UX practice can serve artistic vision rather than limit it.
+- [fact] Playing violent games does not by itself cause real-world violence, but studios should still reflect on the content they normalize.
+- [fact] Knowledge and skill alone are not enough for exemplary game design; designers also need values to stay steady through daily turmoil.
+
+## ethics
+- [definition] Geopolitical review (GeoPS) checks a game's deep localization, covering regional dialects, cultures, taboos and how context changes the meaning of content.
+- [mechanism] In protection objectives, one side guards an object while the other tries to capture it. When: Asymmetric objectives.
+- [mechanism] Removing easy griefing opportunities reduces the need for bans and policing.
+- [mechanism] Protecting the early ranks from star loss lets evenly matched players advance over time.
+- [mechanism] If designers exclude a harmful action, such as harming bystanders, players cannot choose it, so the design determines whether that choice exists at all.
+- [mechanism] Reputation systems let players police one another, keeping order without separating player groups.
+- [rule] Check every in-game gesture against each target region, since the same gesture can mean something positive, rude or obscene elsewhere. When: A game uses gestures and ships to multiple regions.
+- [rule] Do not add frustration to push players toward purchases, because doing so is unethical.
+- [rule] Binding promises need reporting and dispute-resolution mechanisms.
+- [rule] A game that exploits a cognitive bias should also reveal that bias to players so they learn to recognize it, and it must still be fun. When: designing around a bias or fallacy. Why: awareness reduces later susceptibility to the bias.
+- [rule] Protect young players from disruptive behavior and shady monetization practices. When: The audience includes players under 18. Why: Children are more vulnerable to psychological pressure.
+- [rule] Give players ways to block people they do not want to meet again and ways to flag inappropriate behavior.
+- [rule] Explain to offenders why their behavior is unacceptable and give them a chance to make amends. When: for a first or minor violation.
+- [rule] Once a report is verified, tell the victim that their voice was heard and that action was taken.
+- [rule] Do not make gambling-style mechanics easily accessible to minors, since this crosses an evidence-based ethical line.
+- [rule] Make players protected by default and let them voluntarily opt into being attackable, rather than forcing risk on everyone.
+- [rule] Apply the griefing review early, before players find the weak points. When: during design.
+- [rule] Consider ethics throughout development rather than afterwards, because design choices always affect players.
+- [rule] Advocate for story across all disciplines: convey the narrative focus and make sure each discipline is invested in it.
+- [rule] Content is unethical when unethical actions are rewarded and their moral opposites are impossible; allowing both keeps a design out of that category. When: Evaluating whether a game's moral content is problematic. Why: Removing the moral alternative removes the player's ability to choose the ethical path.
+- [heuristic] Age-rating systems inform parents about content and suggest appropriate player ages; use them for games with violent content so parents can make informed choices. When: games with violent content. (x2)
+- [heuristic] If a game rewards meanness, players will exploit it, so test specifically for incentives that make players treat each other badly.
+- [heuristic] Understanding ethical challenges protects players and helps studios avoid fines and lawsuits.
+- [procedure] 1) Avoid dark patterns. 2) Avoid the attention economy. 3) Consider the moral values the game conveys. 4) Adopt a code of ethics to resolve grey areas. Why: Games are influential and part of culture, so studios carry responsibility for what they expose players to.
+- [tradeoff] When business goals conflict with players, prioritize accessibility, inclusion, ethics and early player-safety consideration, keeping profit from costing players; otherwise balance player interests against business goals.
+- [tradeoff] Ethical responsibility: companies must follow law but bear none, only individuals do; or studios should accept responsibility for game effects now, without waiting for an industry code.
+- [pitfall] A push mechanic can be used against inactive players, who get shoved into danger while away from their controls.
+- [pitfall] Blaming players for not following the intended design does not remove a degenerate strategy; designers must respond with restrictions or affordances.
+- [pitfall] Releasing a game far ahead of what players can accept has caused many game failures.
+- [pitfall] Focusing on profanity filters while missing predatory contact risk leaves the most serious danger unaddressed.
+- [pitfall] Blockchain networks have an environmental impact, which the choice of consensus method affects.
+- [fact] Technological progress is accelerating: a thousand years ago people could guess daily life a century ahead, while today even life ten years ahead is hard to predict.
+- [fact] Foul language is a matter of appropriateness rather than safety, so it is not the core safety concern.
+- [fact] In June 2020, a diabetes self-management title became the first game cleared by a US regulator to treat a medical condition, childhood ADHD.
+- [fact] Many multiplayer games use codes of conduct and temporary bans to manage antisocial behavior.
+- [fact] Unethical content does not prove a real-life harmful impact, but it still deserves ethical reflection.
+
+## game genres
+- [model] Play types ordered from most to least interactive: games, puzzles, toys, and stories. Games are rule-based systems where opposing players respond to each other; puzzles are rule-based with a solution goal rather than an opponent.
+- [definition] A creature-collecting RPG follows traditional RPG structure but lets players capture the opposing creatures they defeat and add them to their own team.
+- [definition] The metaverse is a fully immersive shared 3D world where users socialize, work, shop, and play through embodied avatars.
+- [definition] Alternate reality games combine real-world and online interaction to create gameplay.
+- [definition] Adventure games emphasise exploration, item collection, and puzzle solving, with the player cast as a character on a quest or mission.
+- [definition] Action-strategy hybrids combine physical dexterity with strategic decisions in one game.
+- [definition] A mixed game alternates compulsive grinding with fulfilling moments, a pattern often caused by craft mistakes that better alignment could fix.
+- [definition] Mode-first design builds one strong central gameplay mode and creates variety by changing the board conditions each time the mode is entered.
+- [definition] A metroidvania is an action game with a continuous, persistent space, platform-jumping movement, and items that expand the avatar's moveset.
+- [behavior] A design that cuts across traditional categories can draw a very large audience, combining newcomers seeking a low-pressure creative experience with hardcore players wanting a break. When: When a game does not fit one established genre or player type. Why: Crossing categories opens two audiences that existing games do not serve together.
+- [rule] Keep the number of modes as low as possible, since every added mode must be learned by the player.
+- [rule] Do not let genre labels drive core design; treat them as commercial tools, not creative limits.
+- [heuristic] A card game meant to be played in under an hour with a basic deck and expandable booster sets lets players buy and trade cards to improve their decks.
+- [heuristic] Follow the default control mapping shared by genre peers for common actions; departing from it makes learning harder and can drive players to quit. When: Designing controls for action games with aim, shoot, sprint, jump, crouch and reload. Why: Players carry learned mappings across games, so unfamiliar layouts raise the learning cost.
+- [heuristic] Blending genres and modes within one design can produce distinctive games that stand out and last. When: when seeking to differentiate a game.
+- [heuristic] Established genres are largely solved; unless you can ask new questions of a genre, pursue new gameplay territory instead. When: When an idea does not fit an existing genre. Why: Genre designers have already worked out many core gameplay issues.
+- [procedure] 1) Identify the non-negotiable mechanics of the genre. 2) Identify common mechanics you may change. 3) List what else must change to support each change. When: designing within an established genre.
+- [metric] Combat-focused campaigns commonly run 10 or more hours, RPGs often 30 or more, and older RPGs 50 or more. When: estimating target game length.
+- [pitfall] Recreating an existing game within the same genre gives players little reason to choose yours, so differentiation is required.
+- [pitfall] Genre pressure can steer designers toward tried-and-true gameplay, limiting originality.
+- [fact] Genres where gameplay centers on influencing character minds through AI, rather than physical action, have very few high-selling examples.
+- [fact] Online MOBA and MMO genres have remained in workbench spaces rather than moving to the hearth.
+- [fact] Some games switch into a separate mode with completely different rules and interface, almost like a separate game.
+- [fact] Most action video games and most sports run in continuous time.
+- [fact] Genre is usually settled before combat design begins; combat may be the whole game in one genre and one component in another.
+- [fact] Open-source platforms where anyone can run an instance are decentralized, unlike centralized, closed-source services.
+- [fact] Centralized platforms owned and controlled by one business, which allow user-generated content, are considered early proto-metaverses.
+- [fact] Whether an edge-case experience counts as a game is disputed, so categorization of such designs is contested.
+- [fact] Alternate reality games can send players to real-world locations and devices to find further instructions.
+- [fact] Early strategy games were turn-based; real-time strategy became popular in the 1990s.
+- [fact] A publisher's output can be concentrated in a few genres, with action, sports, and racing making up about 54% of one publisher's titles.
+- [fact] Each genre has standard concrete representations, such as a capture shown as removing a piece or hidden information shown by face-down cards.
+- [fact] Game experiences are always emotionally mixed, with several feelings occurring at once, such as hope and worry during a close match.
+- [fact] Strategy games, building games, economic simulations, and pen-and-paper roleplaying games usually represent elements through statistics and symbols.
+- [fact] Some critics also require RPG progression or 2D, but the style can be treated as a level design approach rather than a game genre.
+
+## serious games and education
+- [model] Schooling mirrors game structure: students are players, assignments are goals, due dates are time limits, and grades are scores.
+- [model] In schools, escalating challenges act as level progression, the final exam acts as a boss, and the honor roll acts as a leaderboard.
+- [definition] Serious games are games designed to educate, train, or persuade, using game elements to engage players with weighty real-world themes. (x2)
+- [definition] An indie game jam is a short shared weekend in which designers and programmers rapidly build experimental games on a common engine, offering a break from long, conservative commercial schedules.
+- [definition] A game is a system of knowledge, so the core design work is inventing and refining that knowledge, while implementation is secondary.
+- [rule] Teach preproduction skills through short hands-on workshops rather than lectures, because teams need practice and success to form lasting habits.
+- [rule] Analyze games by their underlying systems, breaking each into formal, dramatic, and dynamic elements, rather than listing top-level features or judging how cool they seem. When: When keeping a game journal or critiquing games. Why: Surface-level feature review yields little design insight.
+- [rule] Match a game program to your target role: programmers need strong programming courses, and visual designers need many visual design courses. When: Choosing an academic game program. Why: Role-specific coursework builds the skills that role uses.
+- [rule] Look for programs offering teamwork, rapid prototyping and iteration, serious student responsibilities, cross-discipline collaboration, and teaching that handles multidisciplinary work.
+- [rule] Combine a contextual review, practitioner experience, and a sample of games across platforms and genres when studying game environments.
+- [rule] When combat makes sketching impossible, keep a gameplay journal and write notes right after each session or level. When: during intense play. Why: Notes written soon after play stay accurate.
+- [rule] Serious games must be engaging and must enable transfer of learning, not only deliver rewards.
+- [heuristic] Write game-specific questions rather than relying on generic ones.
+- [heuristic] Before adopting learning, estimate total effort including data preparation and validation, not just the algorithm itself. When: Deciding whether to use a learning approach. Why: Hand-holding costs can make the project more expensive rather than cheaper.
+- [heuristic] An internship or apprenticeship shows real industry pressure and builds teamwork, communication, and professionalism. When: Evaluating a game program.
+- [heuristic] Use a short jam to generate and test ideas quickly when research time or budget is limited. When: Research time or budget is limited.
+- [heuristic] Include a short concrete gameplay example, such as a scene with a choice, to show how mechanics and story combine. When: Writing a game design document. Why: A concrete scene makes abstract systems easier to grasp.
+- [procedure] 1) Record a meaningful play moment in detail. 2) Note what you thought, felt and did. 3) Identify which rules and systems produced that moment. When: when keeping a designer's game journal.
+- [procedure] 1) Play games you know. 2) Analyze each using its formal elements. 3) Record the analysis in a journal to build understanding of gameplay. When: when beginning as a designer. Why: The journal builds the ability to articulate complex game concepts.
+- [procedure] 1) Play a game with a group. 2) Write a formal, dramatic, and dynamic analysis of it. 3) Watch a group that has never played it learn without explanation. 4) Note how they learn and what impressions they form.
+- [procedure] 1) Prepare a formal presentation of a game's elements. 2) Back it with a detailed walkthrough. 3) Present to an audience. 4) Lead a public discussion. When: When critically analyzing a game with peers. Why: Public debate sharpens critical skills and generates new ideas.
+- [metric] The American Academy of Pediatrics recommends infants avoid screen media other than video chat until 18 months, with about one hour per day of high-quality content for ages 2 to 5. When: when advising parents on children's screen use.
+- [pitfall] A weekend is usually too short to build deep, engrossing games, and many participants must return to their day jobs.
+- [pitfall] Assuming a serious game or gamification label guarantees both learning and fun is a mistake; some measured educational games are not fun enough to be called games.
+- [fact] Game programming stresses speed, borrows heavily from other disciplines, and modifies borrowed techniques substantially.
+- [fact] A game curriculum should cover seven areas: game design and programming; visual and audio design; interactive storytelling; production; the games business; critical game studies; and games in society.
+- [fact] Later jams added artists, sound designers, game theorists, and educators alongside designers and programmers.
+- [fact] Licensed projects offer a safe setting in which to learn production and narrative design.
+- [fact] Game development generates very large amounts of knowledge constantly, including tacit skill that practitioners cannot fully explain.
+- [fact] War games and simulations are central to military education because they make abstract concepts concrete.
+- [fact] Simulations act as final exams in emergency services, earth science, building design, and administration.
+- [fact] A meta-analysis found serious games produced a small but positive gain in science learning versus conventional teaching.
+
+## fun
+- [model] Four fun types double as playstyles: challenge-driven, effortless, meaning-driven, and social; each unlocks a distinct set of emotions. (x2)
+- [model] Interest in an experience comes from three factors: inherent interest in the events, poetry of presentation, and projection by the guest.
+- [definition] Fun is pleasure combined with surprise, a working definition that can be revised; a fun interface should provide both.
+- [definition] Fun is mostly emotional and dramatic appeal, which draws players in, keeps them trying, and keeps them playing.
+- [definition] Humor arises when two unrelated things are abruptly linked by a paradigm shift, often producing a bark-like laugh.
+- [definition] Fun includes sad or emotional experiences, not only laughter.
+- [definition] Interactive evaluation scores content from a human's interaction with it, so a player is in the loop; feedback is either explicit, asked for, or implicit, inferred from behaviour.
+- [definition] Depth measures the amount of material a game offers to learn; deep games keep revealing new lessons for years, while shallow ones are exhausted once their trick is known.
+- [definition] Fun has been defined as a mix of challenge, competition and interaction, as learning, and as a personal experience that varies by individual, and sources disagree.
+- [mechanism] Engaging a loop costs cognitive load, time, sometimes resources, and opportunity cost; these costs become sunk investment that players weigh against expected payout and alternatives. When: when deciding whether to keep engaging a loop. Why: Accumulated investment makes players reluctant to abandon a loop even when its payoff falls.
+- [behavior] Fun is partly a state of mind, so turning a tedious task into a game can make it enjoyable.
+- [behavior] Players tend to seek minimal workload, so motivation must be deliberately designed rather than assumed. Why: the brain prefers low-effort paths.
+- [behavior] Fatigue in interactive evolution comes from many selections, slow feedback, too much content on screen, or requests for very specific input.
+- [behavior] Clashing tones placed close together, such as tragedy followed by a bravado line, can produce unintended amusement. When: When an emotional beat is followed by a tonally mismatched beat. Why: The collision of incompatible feelings can strike players as funny.
+- [behavior] A humorous tone makes logical absurdities produced by emergence feel funny rather than wrong, so players accept them more readily. When: emergent events produce unrealistic results. Why: humor reframes incongruity as entertainment.
+- [rule] Keep eliminated players engaged: let them become NPCs or monsters that harass others, see all information in social deduction games, or keep doing tasks and chatting. Why: Eliminated players otherwise wait idle through the rest of the game.
+- [heuristic] Gameplay progression is balanced when interest is mostly sustained, because players vary in how much novelty they want. Why: interest varies between players.
+- [heuristic] Most jobs contain an element of fun that workers can find. When: when looking for ways to make routine work engaging.
+- [heuristic] Prefer generated games that a learner can improve at over time, not trivially won or unwinnable ones, since much of fun comes from getting better. When: when selecting generated games for players. Why: playing is a form of learning.
+- [pitfall] Pleasure classification lists have gaps and can miss subtle pleasures such as destruction and nurturing.
+- [pitfall] Limiting design goals to fun hides the wide range of emotions a designer can target. Why: fun became the default vocabulary, not a real limit.
+- [fact] Fun is a goal in nearly every game, yet resists analysis because it is subjective and its sources are not always easy to explain. (x2)
+- [fact] Games are voluntary, so a game without emotional appeal loses players or never gets them.
+- [fact] Fun is subjective and contextual, so no single taste defines it.
+- [fact] Play can take serious, aggressive, or fantastical forms, depending on the game and its players.
+- [fact] Many people who dismiss games as meaningless can name one that matters deeply to them, which shows games can carry real meaning.
+- [fact] No fun meter exists, so absolute interest is hard to quantify; designers judge relative changes in interest instead.
+- [fact] Successful games typically combine three of the four fun keys.
+- [fact] Fun is widely targeted but poorly defined; studies measure it as a function of player behaviour, as self-reported experience, or as predefined alternating challenge patterns that assume challenge drives fun.
+- [fact] No widely accepted, predictive theory of fun exists, and many enjoyment and flow frameworks are hard to unify or lack empirical validation.
+- [fact] Games are an interactive art form and a major entertainment source, and their impact is usually more modest than publicized and can be positive or negative depending on the game and how it is played.
+
+## engagement
+- [model] Engageability, the second game UX pillar, has three overlapping parts: motivation, emotion, and game flow. (x2)
+- [model] Players engage with games at three levels: spectator, participant, and transformational. Spectators watch others play with minimal risk, participants are actively involved, and transformational play can change how a player thinks or lives.
+- [model] Interest can be broken into three factors; the first, inherent interest, is a property of events on their own.
+- [definition] Engageability is whether a game holds player interest, covering fun, engagement, emotion, motivation, flow, and how players remember the experience. It fails when the game is too easy, too hard, or its goals stop exciting players.
+- [definition] Engaging players means making them feel mentally immersed in the game.
+- [definition] An interest curve plots a player's interest across an experience over time, showing where interest rises, dips, and peaks.
+- [definition] An interesting choice has upsides and downsides, often framed as risk versus reward, and changes the player's chance of winning.
+- [mechanism] Physical action alone does not engage the mind; engagement needs expectation, uncertainty, consequence and decision together.
+- [rule] Recommendations for children should rest on evidence specific enough to guide concrete action.
+- [rule] When the late stage feels rote, introduce mechanics reserved for that stage. When: when the end game feels repetitive. Why: late-only mechanics give the final phase its own identity.
+- [rule] Leave room for free play inside the rigid game structure rather than fixing every action.
+- [heuristic] Leave players wanting more: ending activities while players still want to continue makes timing feel right. When: Setting the length of play sessions or rounds. Why: Players return to a game that ends before they tire of it.
+- [heuristic] Inherent interest rises with risk over safety, fancy over plain, and the unusual over the ordinary.
+- [heuristic] Inherent interest can appeal to base instincts and to higher instincts; check which of each an experience reaches and whether it could reach more.
+- [heuristic] Decide whether an event's appeal comes from its content, its arrangement, or its presentation.
+- [heuristic] Check whether the rules produce stories with good interest curves, rising tension and payoff, rather than flat sequences of events. When: tuning rules for story output.
+- [heuristic] Consider how a game will affect people in the future, not only how it plays today.
+- [heuristic] Confusing the player with the interface can be acceptable when the confusion is part of the intended game experience.
+- [procedure] 1) List the questions the game puts in the player's mind. 2) Find what makes players care about each question. 3) Add elements that make players invent further questions. When: reviewing a game's curiosity hooks.
+- [procedure] 1) Identify what players value in the game. 2) Find ways to make that value greater for them. 3) Examine how in-game value relates to players' motivations. When: reviewing a game's valued items.
+- [procedure] 1) Identify which parts of the game are fun and why. 2) Identify which parts need more fun. 3) Find weak parts where sections fail to give the same pleasure or surprise. When: reviewing a game for fun.
+- [metric] Engagement in educational games can be measured with questionnaires built around game flow.
+- [pitfall] Prototypes described as not fun often lack meaningful choice between safe and risky options. When: Diagnosing why a prototype feels dull. Why: Without a real decision, players only repeat the same action.
+- [fact] A game that is easy to use but boring will not be played, so engagement matters as much as usability. Why: Games are autotelic, played for the pleasure of playing rather than an external end. (x2)
+- [fact] Player experience can be annotated by self-reports (free response during play or forced questionnaire data) or by third-person experts and external observers.
+- [fact] Games are interactive, have challenge (too little or too much makes them bad), and create their own internal value.
+- [fact] Many commercial games fail to engage or retain players even with large budgets, and educational games usually have smaller budgets, making engagement harder.
+- [fact] Engage-ability is harder to define than usability, because player motivations are not fully understood and no solid guidelines exist yet.
+- [fact] Engagement is preferred over fun or immersion as a term, because it can be broken down more objectively. Why: Fun means different things to different people.
+
+## game design process
+- [model] The six numbered mechanics are space, time, objects, actions, rules, and skill.
+- [definition] Skin is the player's experience of a game; skeleton is the set of elements that make the game up. Designers need both views.
+- [definition] A system is a tool for analysis and discussion rather than a fixed object, so its boundaries are chosen by the analyst.
+- [definition] Games engage players in structured conflict shaped by formal and dramatic elements; challenge can come from the system, other players, or both.
+- [definition] A system is an integrated set of interacting elements that together form a whole with a shared goal or purpose.
+- [definition] The four basic system elements are objects, properties, behaviors, and relationships.
+- [mechanism] Single-screen display limits forced designers to adapt tabletop and sports rules, simplifying them to fit the view.
+- [rule] Explain the reasons behind anything players must do or learn, and pair those reasons with clear signs and feedback. When: Introducing actions, systems, or items. Why: Players perceive an element as intended when its purpose is clear.
+- [rule] Direct players' mental effort toward the core experience and intended challenges, and remove unintended friction such as confusing controls, menus or icons. When: designing game workload. Why: Cognitive load is limited and no precise measure exists, so the balance is approximate.
+- [rule] Study classic games first to learn design craft, then try to improve on them.
+- [heuristic] Do not treat system boundaries as rigid: a resource can belong to one system yet appear in another, like hit points in character and combat systems, hiding cross-system effects. When: Classifying resources into systems. Why: Rigid categories hide cross-system effects.
+- [heuristic] Test whether a game's objective is clear by stating it in one sentence. When: reviewing a design's goals.
+- [heuristic] Well-structured performance programs add inherent interest, while music evoking another place or empathy for the performer adds projection.
+- [heuristic] Study how hits in your market and demographic succeeded, to learn what players reward. When: preparing a design or pitch. Why: Shared knowledge of hits builds credibility with funders.
+- [heuristic] For truly original concepts, look at the world rather than only at other games. When: when seeking original concepts.
+- [heuristic] Teams with fewer resources should focus on one or two values, because being best at one thing beats being mediocre at many. When: When team size or budget is limited. Why: Only a focused design has a realistic chance of being superior on at least one value.
+- [procedure] 1) Pick an activity from everyday life. 2) Sketch a plausible core game structure for it.
+- [procedure] 1) List elements with no clear purpose. 2) Remove the least important element and test whether the game still functions. 3) Check whether it stays complete and balanced. 4) Repeat removal until the game stops functioning. 5) Ask whether extraneous elements remain.
+- [procedure] 1) List the objects in the system. 2) List its behaviors. 3) List its relationships. 4) Work out exactly how each element interacts with the others. When: when analyzing any system for design ideas.
+- [procedure] 1) Sketch the core actions on paper or a whiteboard. 2) Connect each action to its meters and rewards. 3) Spot features disconnected from the main loop. 4) Redesign to integrate them. When: During early design, before formal modeling. Why: Rough sketches expose balance and feedback problems early and reveal features that do not connect to the main mechanics.
+- [tradeoff] Synchronized loops that conclude together produce total completion and a drop in ongoing cognitive load, and placed regularly they give natural breakpoints; staggered loops keep players hooked. When: When choosing how progression loops end. Why: Synchronization ends engagement cycles, while staggering sustains it.
+- [tradeoff] A small-scope RPG keeps its focus on stats, sheets and inventory in a tiny space, but gains market traction only with a large explorable world behind the story.
+- [pitfall] Copying a reference game's surface reproduces technique but not the feeling behind it, so the copy looks flat; ask what questions its designers answered instead. When: studying reference games. (x2)
+- [fact] A system's behavior arises from how its elements are arranged and interact, so studying each element alone does not reveal it.
+- [fact] A game combines interacting mechanics, hardware built from billions of transistors, foundational technologies, human players, and culture and markets, so no one fully understands it. Why: each layer interacts with the others.
+- [fact] Strategy games can be split into combat, magic, and resource management subsystems, each part of the whole game.
+- [fact] CD-ROM storage made photographic-quality imagery possible, far beyond what pixel art allowed.
+- [fact] Systems well suited to simulation include the circulatory system, city traffic, a nuclear reactor, a cell's workings, endangered species ecology, and atmospheric heating and cooling.
+
+## tabletop design
+- [model] Herding games often set up species within a predator-prey web, with the player working to keep one or more prey species safe.
+- [model] A text adventure's core is a loop that reads a command, handles it, and repeats, doing nothing while it waits for the next command. When: Structuring an input-driven game.
+- [definition] A herding game moves a group of characters through a usually hostile world.
+- [definition] The theater venue gathers a crowd to share one sequence of events, such as plays, films, concerts, sporting events, or planetarium shows.
+- [definition] Graphical-logic games are built from 2D elements that move, collide, appear, and disappear, typically with a player-controlled avatar.
+- [mechanism] A hazard that holds a piece until its owner's next turn cancels the advantage of a high roll that lands there.
+- [mechanism] A special piece that is harder to create but easier to use, and that clears scattered pieces, makes further chain reactions more likely.
+- [behavior] Focusing play on a separate handheld screen visible to only one player keeps play away from the shared room and weakens group appeal at the hearth. When: Designing hardware or features for shared home play. Why: Shared rooms need action that others can see and join.
+- [heuristic] Games entertaining several people at the hearth work through shared play or by being watchable, while designs that cut off most of the room from the action fit poorly. When: Designing for shared living-room play. Why: Privacy supports immersion, but the hearth is a shared social space.
+- [heuristic] Take a medium's power seriously and use it deliberately to nurture its audience rather than merely to entertain or dismiss it.
+- [heuristic] Virtual content placed in ordinary real-world locations can make everyday surroundings feel like a game. When: Blending virtual and real space.
+- [heuristic] Strong feature concepts can combine elements from several existing genres or media, such as a game, a talent show, and a video-sharing site. When: When pitching a new feature for an existing game.
+- [fact] Extending miniature battles into character-based play created paper and digital RPG lineage; character systems, card rules and persistent worlds from tabletop design shaped digital RPGs and collectible games.
+- [fact] Pen-and-paper RPGs often tie each turn to in-game time, so one choice may represent a fixed span of game-world seconds regardless of real time taken.
+- [fact] Future trades are more common in tabletop games than in digital games.
+- [fact] Simple herding simulators have existed since the 1980s, and a few newer games have advanced the technique.
+- [fact] Real herding competitions require years of training, so a game should not demand that level of skill from players. When: Designing herding difficulty.
+- [fact] The gaming table is a face-to-face venue for intense small-group play with board, card, and dice games, and upright digital screens are the main reason digital games have rarely settled there. When: Designing for face-to-face small-group play. Why: Vertical screens do not suit a shared table.
+- [fact] Cheaper large touch screens and augmented reality glasses could bring digital games to the gaming table venue. Why: These technologies remove the vertical-screen barrier.
+- [fact] The hearth is the shared living-room venue where games suit groups, either because they allow shared play or because they are fun to watch. When: Designing for group or spectated play at home. Why: Television has taken over the role of the family fireplace in this venue.
+- [fact] Physically active games that are entertaining to watch, and singing and dancing games, suit the hearth venue. Why: They engage several people in the shared room.
+- [fact] Predictions that new technology will end the shared hearth are overstated, since the hearth has persisted since the dawn of humanity. Why: Shared home gathering places have endured across technological change.
+- [fact] Actual museums increasingly add gameplay to explain what visitors are viewing.
+- [fact] Processing power, audio delivery and other hardware factors differ widely between VR systems.
+- [fact] Riddles, crosswords, chess, poker, tag, and soccer predate computers, and most new designs recombine well-known game elements.
+- [fact] Early adventure games were text-driven, using rich descriptions in place of graphics; later graphic adventures and modern titles blend in action.
+- [fact] Graphical-logic games differ from board games in near-continuous positions, short time steps, several moving NPCs at once, hidden state, and physics that keeps running when the player is idle.
+- [fact] A generated grid game runs for a fixed count of time steps; the player wins by reaching a set score threshold.
+
+## combat and shooter mechanics
+- [model] Combat is first a drama, and designers should script that drama deliberately, then tune it with math rather than leaving it to chance.
+- [model] The combat loop is a short, repeatable section of play that must be varied across environments, weapons, and enemies to stay fun. When: Designing core combat repetition. Why: Repetition without variety becomes tedious.
+- [model] Combat volume can be the whole game, share the stage with exploration and story, or sit alongside other systems such as building. When: deciding where combat fits in the game.
+- [model] Combat is defined by seven pillars: genre, time, pacing, feel, participants, progression and volume.
+- [model] The shoot, look and move core is three actions whose combination underlies many successful games.
+- [definition] An equipment slot is a fixed place on a character that accepts only one type of item, so a weapon cannot fit a helmet slot.
+- [mechanism] When players have matched skill, firing position and weapon quality decide duels. When: competitive shooter with even skill levels.
+- [mechanism] A shot hits a unit on the imaginary line in the shooter's facing direction; a wall or empty line means the shot misses.
+- [mechanism] Looking or shooting alone offers little breadth, but joining them creates tension between aim and awareness, and movement multiplies options.
+- [rule] Plan how often combat occurs across the whole game; it may be less frequent early and more frequent later, whether player-led or AI-led. When: pacing a game's combat schedule.
+- [rule] Do not allow a dive attack to follow a triple jump or a long jump.
+- [rule] Let a jump press during crawling go straight to a jump, then keep running while the duck button is held, returning to ducking only when it is released. When: Jumping out of a crawl.
+- [rule] Map a short-range stationary attack and a high backward somersault to the two action buttons while ducking; the somersault gives the highest jump with little horizontal travel but moves backward relative to facing. When: Character is ducking and an action button is pressed. Why: Gives ducked state its own distinct moves.
+- [heuristic] With no purchase cost, differentiate weapons through ammo, reload time, fire time, effective range, and placement in the level. When: weapons or items have no price.
+- [procedure] 1) Pick a game where combat is part of the experience. 2) Imagine a version with nearly all combat and one with none. 3) Describe play in each. 4) List the combat and other system changes each would need. When: testing how central combat is to a design. Why: Shows which systems depend on combat.
+- [procedure] 1) Describe a game's combat pillars: genre, time, pacing, feel, participants, progression and volume. 2) Repeat the breakdown for another title sharing that genre. 3) Compare where the pillars differ and how that changes play. When: analyzing games in the same genre.
+- [procedure] 1) Set vertical velocity to zero instantly. 2) Add a forward force. 3) On landing, enter a slide state. When: attack pressed at maximum running speed.
+- [metric] Bursts of dense combat decisions should last only about 10 seconds, since longer bursts become exhausting. When: games where weapons are highly lethal. Why: Long bursts exhaust the player.
+- [tradeoff] Leaving spawn camping as a feature creates a game within the game for competitors, but many players find it frustrating.
+- [pitfall] Because shots resolve simultaneously, two players can hit each other in the same round.
+- [pitfall] Giving enemies many hit points and no counters creates bullet sponges, which leaves no room for mastery. Why: Without counters, the only tool is brute force, so skill has nothing to express.
+- [fact] Shoot-em-up games evolved into bullet hell, where the player dodges dense bullet patterns.
+- [fact] In first-person shooters, match length is often player-set, measured by frag count, most frags within a time limit, or map size.
+- [fact] Three quick presses of the same button can chain a punch into a kick, though players rarely use such chains.
+- [fact] Side-scrolling shooters need continuous time and entities such as terrain, enemies, lives and spawn points in their encoding.
+- [fact] Different evolved particle weapons suit different tactics, such as a multi-speed weapon for offence and a particle wall for defence.
+- [fact] Typical decisions in a round-based competitive shooter include reload timing, movement, advance, retreat or hold, committing to an objective, and purchases with earned money.
+
+## failure
+- [definition] A dead end occurs when a player cannot reach the objective no matter what they do.
+- [definition] Failure can come in degrees rather than as a binary end of play, so a mistake can slow progress without stopping the game. Why: Degrees of failure stretch the success-failure spectrum in both directions.
+- [definition] A failure trap is a long stretch of play in which failure is guaranteed and the player cannot escape it.
+- [mechanism] Because losing the avatar halts play, designers can tap survival instincts as a motivator.
+- [mechanism] Forcing a card draw and a play every turn, with passing disallowed, makes most cards harm opponents, which pushes players to attack soon. When: in card games that disallow passing. Why: harmful cards make inaction impossible to sustain.
+- [behavior] Players keep retrying after failure when they attribute it to correctable personal mistakes and sense a real chance of success. When: When players fail a challenge. Why: Self-attributed failure implies the challenge is fair, and a perceived real chance keeps players willing to retry. (x2)
+- [behavior] Entertaining failure reduces frustration and eases learning. Players enjoy failure with escalating, humorous consequences that open new states, and may deliberately trigger failures for amusement. When: When players fail repeatedly, or when failure leads to dramatic or humorous outcomes rather than dead ends. Why: Fun failure makes repeated attempts less frustrating, and interesting new states make failure rewarding in itself. (x2)
+- [behavior] Failure that costs resources but keeps the player in a new situation, rather than restarting, keeps play moving and avoids repetition. When: When a failed attempt would otherwise restart the same situation. Why: A changed situation gives the player a new approach to try.
+- [rule] Let players fail and be penalized only by events they can understand and prevent, so they can improve next time; random, unstoppable penalties feel unfair and drive players away. When: When designing penalties for failure. Why: Losing all sense of control makes the game feel unfair, and players seldom return. (x2)
+- [rule] Judge fairness by viewing the game from each player's position and confirming each has a winning chance that feels fair for their skill.
+- [rule] Make hit zones and collision forgiving, for example smaller than the visible model, and use coyote time and air control in platformers. When: Designing character collision and platforming controls. Why: Forgiving physics prevents errors that come from imprecise input rather than poor skill.
+- [heuristic] Gameplay, not graphics, story or new features, keeps players staying, so aim for an experience that holds attention as long and as intensely as possible. (x2)
+- [heuristic] A penalty that players find a nuisance can be reframed as a benefit, such as a need that instead grants a temporary boost when satisfied. When: A realistic survival mechanic is disliked because it only punishes neglect. Why: Players respond much better to rewards for upkeep than to penalties for forgetting it.
+- [heuristic] Show players something new, or let them do something new, to capture their interest immediately. When: when judging whether events are interesting on their own.
+- [heuristic] Failure states deserve design effort because players spend a large share of their time in them.
+- [heuristic] Mechanics that stun the player can frustrate, so their design uncertainty is high.
+- [heuristic] Begin a physical game with a hard break from everyday reality, and end it with a structured off-boarding.
+- [pitfall] A stated play time can hide long stretches of repetitive grinding, so the value delivered is smaller than the claim suggests. When: in story-heavy RPGs. Why: padding does not count as real content.
+- [pitfall] A demanding activity requirement alienates casual players whose schedules rarely allow frequent sessions.
+- [pitfall] Emotional benefits can backfire if the game is as frustrating as real life. When: a game causes repeated frustration. Why: The game then repeats the stress it was meant to relieve.
+- [pitfall] A hook without good gameplay yields only a gimmick.
+- [pitfall] Forcing players to repeat content after each failure turns punishment into a petty waste of their time.
+- [fact] In modern games failure is usually temporary and followed by retrying; limited lives and restarts feel frustrating, while in school failure can make children feel not smart enough. Why: Games frame failure as a step toward winning rather than a judgment. (x2)
+- [fact] Dead ends appear as missing items in adventure games, depleted forces in strategy games, and inescapable spaces in FPS games.
+- [fact] Online identities and social networks raise questions about what happens when players die, such as online memorials or avatars passed to descendants.
+- [fact] Grinding known skills takes time without adding difficulty, so friction and difficulty do not map one to one. Why: Time investment adds friction that is not difficulty.
+- [fact] Some failure traps are so deeply built into a design that they cannot be solved cleanly, as racing and sports games have not fully solved the dead-man-walking trap.
+
+## visual art direction
+- [model] Designers create four kinds of reality: logical (cause and effect), spatial (movement through space), proprioceptive (where the body feels it is) and social (how people interact).
+- [model] In a facade variation, the base class hides the entire game engine from its subclasses, so subclasses reach engine services only through it. When: Base class is designed to shield subclasses from engine internals.
+- [definition] Concept art explores potential looks, palettes and styles, and shows intended look and feel before building; art alone does not convey story, so pair it with design documents. (x2)
+- [definition] Contour drawing traces the edges of forms to show where objects sit in space, and it is useful for quick field documentation.
+- [mechanism] Animation placed over an unchanged random process makes outcomes appear more legitimate to players without altering the underlying odds.
+- [rule] Make sure visual beauty does not hide features; players must be able to find what they need.
+- [rule] Overshoot line ends slightly past corners so that lines meeting at a corner cross, producing clean, closed joins in level sketches. When: drawing straight strokes in architectural or level sketches. Why: Overshoot makes corners read as deliberately joined rather than gapped or fuzzy.
+- [rule] Use full-color renderings when the game's true feel must be shown. When: a rough sketch cannot convey the game's feel.
+- [rule] Keep assets consistent so players learn which surfaces are solid, which harm or slip them, and which items, gates and puzzle elements matter.
+- [heuristic] Players perceive whole objects by filling in gaps, so negative space can work in both art and game design. When: Designing shapes, icons or art with gaps. Why: The mind completes partially drawn forms.
+- [heuristic] Show a character in close-up at the start, then reduce it to a small sprite for the rest of the game. When: Presenting a character with limited on-screen detail. Why: The early close-up lets players imagine the character's detail later.
+- [heuristic] A composition should keep the eye moving rather than settle on one image.
+- [heuristic] Choose a noise-minimizing art style early when many entities must be read quickly at once. When: Starting art direction for a fast multi-entity game. Why: Style decisions made late are costly to change and affect readability across the whole project.
+- [heuristic] Three adjacent colors on the wheel form an analogous group that creates a harmonious mood, such as cool, somber tones. When: setting a calm or somber mood.
+- [heuristic] Complementary colors, opposite each other on the wheel, make contrasting elements stand out.
+- [heuristic] Stylized, cartoony characters generate empathy easily and avoid the uncanny valley more reliably than attempted realism. When: Choosing a visual style for characters, especially when realism is not achievable. Why: Stylized forms stay on the safe side of the empathy curve.
+- [procedure] 1) Draw a reference square. 2) Add horizontal and vertical midlines. 3) Draw arcs between the midpoints of the square's sides to form the circle. When: sketching circles by hand. Why: The square and midlines give the arcs accurate reference points.
+- [tradeoff] Familiar physics costs nothing to learn, while invented physics, such as gravity that repels, allows novelty but is much harder for players to understand. When: Choosing between conventional and invented physical rules.
+- [pitfall] LOD based only on distance can misallocate detail, since distant hills may deserve more detail than flat ground beside the player. Why: Noticeability matters more than distance alone.
+- [pitfall] Fictional cues about physical properties, such as whether a material stops bullets, are read as mechanics, so they mislead players unless the game enforces them.
+- [fact] Art direction, including menu and UI presentation, has a non-negligible effect on players' overall appreciation of a game.
+- [fact] Better storage and scanning let game landscapes move from block pixels to detailed digitised paintings, raising visual quality in the 1990s.
+- [fact] Digital art programs add colour, lighting and atmosphere to level plans, sections and perspectives, and layers let designers show or hide notes.
+- [fact] Game designs are abstract while illustrations are concrete, so concept art can ground a design at the very start of a project.
+- [fact] Concept art can supply a unifying vision of the experience.
+- [fact] Players accept cartoon physics, such as exaggerated jiggly collisions, in iconic games when volume is maintained through principles of animation. When: when designing iconic or cartoon-styled motion. Why: Stylized motion is acceptable if it still reads as coherent.
+- [fact] Colors carry learned associations, such as black for death or blue for cold, which metaphors can imitate to communicate meaning.
+
+## input and control design
+- [model] An input can map to avatar position, rotation, spawned entities, animation playback or simulation variables, possibly several at once; assuming it only controls position overlooks these.
+- [model] The control path runs from device signal, through optional filtering, into a simulation layer, and out as a response; a raw signal may skip the simulation and map directly to output.
+- [model] Moves map from input through four kinds of condition: basic presses, multi-button chords, time-sensitive inputs and state-sensitive inputs; each adds forces to a simple simulation.
+- [model] Input interpretation gives one input different meanings depending on time, space or avatar state: time-based, spatial and state-based interpretation.
+- [definition] Mapping is wiring an input signal to a game parameter.
+- [mechanism] The physical input to world mapping sets run speed, acceleration, deceleration, and whether a double-tap triggers a dash.
+- [mechanism] When a thumbstick controls turn rate, a partial push turns slowly and a full push turns quickly, so deflection scales speed rather than setting a position.
+- [mechanism] Releasing the jump button sets upward speed to a low value that continues for a fixed delay under gravity before the apex.
+- [rule] Resolve jump, ground pound and backflip inputs with deterministic priority so the same input sequence always produces the same result. When: Multiple actions share overlapping button combinations. Why: Consistent outcomes preserve player control and trust.
+- [rule] Keep provided operations high-level, and move code duplicated across subclasses into a new base operation. When: Several subclasses repeat the same sequence of calls. Why: Higher-level operations reduce duplication and keep subclass code short.
+- [rule] Mark provided operations protected, and usually non-virtual, to show they exist for subclasses to call. When: Designing the base class interface for subclasses. Why: The access level and lack of overriding communicate the intended use.
+- [heuristic] When a design list grows beyond about ten items, regroup the ideas, since the list may still be incomplete.
+- [heuristic] Each new iteration of a series tends to pair a new input design with a more sophisticated simulation.
+- [heuristic] Let the interface and controls follow from the game's formal elements and purpose, rather than borrowing them from a successful game. When: designing an original game's interface. Why: Borrowed interfaces yield clones, while purpose-driven ones suit the concept.
+- [procedure] 1) Pick the control scheme you intend to employ. 2) Shape the game around that scheme's strengths and limits. When: Starting a VR or AR project. Why: A game designed around one input system is strong on that platform.
+- [tradeoff] Restricting control creates challenge: turn-based games limit options, and that constraint shapes difficulty, while high freedom and real-time movement suit spontaneous action. When: Give high freedom when spontaneous action is the appeal; restrict control when challenge should come from constrained options.
+- [tradeoff] Ignoring the interface reaches more buyers but tends to yield dull play; building the core around a platform's unique qualities can justify dropping other platforms.
+- [tradeoff] Input randomness adds replayability while keeping strategy meaningful, but without other depth, optimal strategies become evident and the game can be solved at the table. When: Using only starting-setup randomness in a game. Why: Varied setups add replay, but limited decisions let strategy become obvious.
+- [tradeoff] Low input with low response gives stiff, grid-like control; low input with high response feels organic and smooth; high input with low response is natural but lacks a sense of mass; high input with high response rewards mastery.
+- [tradeoff] A high-sensitivity input with low-sensitivity response, or a low-sensitivity input with high-sensitivity response, can each yield expressive control, so the balance between them varies by game.
+- [tradeoff] Responsiveness offers the greatest potential for improving game feel, since games can simulate complex phenomena such as fluids, gases and flocks.
+- [pitfall] Chasing realistic input removes amplification, and direct mapping alone does not guarantee play unless the input connects to a rich system.
+- [fact] Input hardware largely defines a VR or AR experience, more than most other choices; gamepads, motion-tracked hand controllers and empty-hand tracking each create very different experiences.
+- [fact] A backward somersault can grab a ledge only if the character is facing it. When: Ledge grab after a backward jump. Why: Backward motion relative to facing means the grab depends on orientation.
+- [fact] Restrictions can cap jump distance, room height, cast size, resource quantity, dialogue length, inventory capacity and vehicle size.
+
+## mechanic and interaction patterns
+- [model] Very different games share underlying elements that make them feel like games; comparing them reveals common requirements and forms a basis for studying game design.
+- [definition] A mechanic is one complete loop from player input, through the programmed response, back to the player.
+- [mechanism] Objects give motion meaning: movement abilities like wall kicks or long jumps lose their meaning without objects to interact with, and motion is hard to perceive without a backdrop. Why: A moving avatar needs things to pass or bump into.
+- [mechanism] When non-binding plans are revealed simultaneously, betrayal becomes nearly required for strong play.
+- [mechanism] Changing a single core action can produce a completely different game.
+- [mechanism] When both sides act at the same time, neither can react to the other's choice, even if one acts a few milliseconds earlier. When: Simultaneous-move designs. Why: Each side's action is hidden until resolution.
+- [mechanism] In a game the player perceives the game state, compares it to an internal ideal and acts to close the gap, on the same roughly 240 ms cycle. When: Real-time control in games. Why: Game control reuses the same perception-thought-action loop as physical movement.
+- [mechanism] Simultaneously active mechanics can combine into more than the sum of their parts.
+- [mechanism] Feel can emerge from seemingly arbitrary but interdependent relationships among variables, such as gravity roughly doubling at a jump's apex, creating a self-consistent physical world. When: Tuning a physics-based character controller. Why: Consistent internal logic makes odd rules feel natural.
+- [mechanism] Once controls are mastered, sensitive controls enable improvisation, with fluid new motion combinations that react to the environment.
+- [mechanism] Threats and challenges in mechanics produce raw arousal, especially when play is fast, decisions are tough, and stakes are high. When: When designing core mechanics meant to excite. Why: Fast, high-stakes decisions generate arousal in the player.
+- [rule] In a light-touch game, keep contact on the surface without breaking it, without stopping, and without a discernible pattern. When: Designing a continuous light-touch mechanic.
+- [heuristic] A small game with rich object interactions is better than a large one with weak interactions.
+- [heuristic] The order of existing content can matter as much as its quality, and reordering alone can change how an audience responds.
+- [heuristic] Change a curated option list often so that offerings do not go stale. When: Options are offered repeatedly.
+- [heuristic] Describe mechanics as verbs by asking what the player is able to do.
+- [procedure] 1) Select: each player places one card face down. 2) Reveal: cards flip and each player loses health equal to Cost. 3) Battle: the lower Strength card is discarded; ties keep both in play. 4) Damage: cards in play deal Damage to the opponent. 5) Cleanup: discard cards in play; each player draws one if the deck is not empty. When: Each round of a simultaneous-reveal card duel.
+- [procedure] 1) Open with a strong, attention-grabbing piece. 2) Follow with a smaller, calmer piece. 3) Build to a grand finale.
+- [fact] Converting turn-based moves to simultaneous moves requires extra rules for handling collisions.
+- [fact] Some board games use sand timers to limit turns, and some blend turn-based play with real-time minigames.
+- [fact] The most common form of time manipulation in games is rewinding, where dying returns the player to an earlier checkpoint.
+- [fact] Simple objects have few properties, and those properties stay fixed during play; for example, a piece's color never changes.
+- [fact] A mechanic can interact with itself, as when arrangements of identical pieces create different structures that claim territory.
+- [fact] In a linear progression, a player at a given level has usually mastered the skills taught in earlier levels.
+- [fact] The best-feeling games often have their mechanic and spatial context created at the same time.
+
+## rewards and scoring
+- [model] Good tutorials mix reward types (glory, access, narrative, sustenance), even within short stretches; giving every reward one type, such as prizes for the right action, limits motivation. When: When designing reward structure for early play, or when every tutorial reward has the same form. Why: Mixing reward types keeps early play satisfying and tied to mechanics; a single reward type gives players only one kind of motivation.
+- [definition] Rewards alignment is how closely the activities a reward system encourages match those the player would pursue without it.
+- [definition] Risk is uncertainty where the player knows what kind of unknown lies ahead, giving incomplete information that can be used to infer what to do. When: when describing uncertainty that players can reason about. Why: Partial knowledge lets players make informed decisions despite the gap.
+- [mechanism] When points come only in a few rounds and later rounds are worth more, the mid-game leader is not necessarily in control.
+- [mechanism] A high-skill option can yield greater benefit than a simple option when used well, but penalizes poor execution. When: Choosing between a demanding control scheme and an automatic one. Why: Higher reward for skilled use rewards mastery while keeping the simpler option viable.
+- [mechanism] Game systems can attach auxiliary rewards to dull, repetitive factual material, carrying learners through drilling. When: content is inherently repetitive, such as times tables or state capitals. Why: Rewards make repetition worth doing.
+- [mechanism] Granular scoring always leaves a reachable small improvement, so players at every skill level have a next goal.
+- [rule] Avoid hidden achievements, since players cannot demonstrate the rewarded skill without outside hints. When: Designing achievements that reward skill. Why: Players who never learn the condition must rely on a guide or FAQ.
+- [rule] Reward attacking by tying income, card draws and bonuses to conquest, so that holding territory and winning fights pays off. When: in territory or conquest games. Why: gives players a reason to act instead of hiding.
+- [rule] Celebrate civil players by letting others express sympathy toward them or by offering benevolent teammates a desirable ranking status.
+- [rule] Rewarding perseverance and thanking players for engagement, such as with a daily chest, is an acceptable retention approach.
+- [rule] Use rewards as feedback on performance and progression, not as the main source of engagement.
+- [rule] Describe scoring and win conditions separately for single player, multiplayer, and each competitive mode.
+- [heuristic] Rewarding many metrics attracts a broader audience than rewarding only the most competitive players.
+- [heuristic] A simple scoring rule that gives +1 per opponent beaten and -1 per opponent lost to matches more complex rules in plain multiplayer rock-paper-scissors, but diverges once outcomes are weighted unequally. When: Scoring a multiplayer intransitive game. Why: Unequal weights change net scores in mixed rounds.
+- [heuristic] Award points for damage the player's own vehicle takes, so hitting obstacles feels rewarding instead of penalized.
+- [heuristic] Non-zero-sum games often use subtler gradations of reward and loss, such as ranking systems, player statistics, or multiple objectives.
+- [procedure] Place fixed level transitions first, then scatter power-based rewards through the stretches between them. When: Planning reward timing across a game. Why: Fixed transitions are easy to plan, while power rewards can fill the gaps.
+- [pitfall] Treating skill as one score hides how games differ in kind and in skill cap. When: Rating or comparing game skill. Why: A single number merges unlike skills.
+- [pitfall] Rewarding an immoral act while making the virtuous alternative impossible raises ethical concerns, especially when the act echoes real-world violence.
+- [pitfall] Haphazardly applied rewards can corrupt, warp, and ruin the central essence of play, leaving behavior without the feeling it should carry.
+- [fact] Progression rewards can be power gains, access to new areas or levels, or story advancement.
+- [fact] Games with near-identical mechanics but public versus hidden scoring differ sharply: with hidden victory points players disagree about standings and coordinated attacks on leaders are much rarer.
+- [fact] Games use ten reward types: praise, points, prolonged play, gateway, spectacle, expression, powers, resources, status, and completion. Why: Each type fulfills a different player desire, and most games combine several of them.
+- [fact] No scoring system is perfect or balanced in an absolute sense; changing it alters emphasis and does not make the game wrong.
+
+## formal game elements
+- [model] Every game is built from four equally essential elements: mechanics, story, aesthetics and technology. None outranks the others, and each can be shaped to support the others.
+- [model] The essential formal elements of games are participants, goal, methods, constraints, assets, opposition, limits, and outcome.
+- [model] A game's underlying system is formed by how its formal and dramatic elements interact, and this interaction strongly shapes the player experience.
+- [definition] Elegance is efficiency: a simple-to-learn system yielding rich emergent complexity, strong emotional impact and wide play variety, with low player comprehension demand and developer effort. (x2)
+- [definition] A game is a self-contained, rule-bound system that draws players into structured conflict and ends in an unequal result. It is recognized once its formal elements are combined and set in motion. (x2)
+- [definition] Easy but deep means a game takes minutes to learn and a lifetime to master. Making it easy to learn is the easier half of design; creating depth is harder.
+- [definition] Game anatomy is the internal structure of a game: how its pieces fit together and produce its behavior.
+- [definition] Formal elements are the structural parts of a game; without them, a game stops being a game.
+- [mechanism] Choosing one tetrad element constrains the others: mechanics need supporting technology, aesthetics that show them clearly, and a story that makes them sensible.
+- [mechanism] Many different combinations of formal elements are possible, and each combination can produce a different play experience.
+- [rule] Let form signal function: give different functions different forms, so an armored enemy with a weak back signals slowness and a weak point. When: Adding items, weapons or interface elements that differ in behaviour from existing ones. Why: Similar-looking elements with different meanings lead players to mistakes.
+- [rule] Make deliberate decisions about all four elements for every game, because each requires conscious design choices. When: when planning or reviewing a game's design.
+- [heuristic] An elegant game allows few basic actions but many strategic ones.
+- [heuristic] Make each element of a game as beautiful as it can be, since individually fine elements can still leave the whole feeling flat. When: when reviewing presentation quality.
+- [heuristic] Elegance comes from removing excess, as a sculptor carves away material, rather than from adding more features.
+- [heuristic] Elegant designs often look plain, because their strength lies in the possibility space that emerges in play rather than in flashy features.
+- [heuristic] The best way to widen a skill range is an elegant system with depth squeezed from each simple mechanic. Why: Simple systems are easy to learn and hard to master.
+- [procedure] 1) List every purpose a single game element serves. 2) Count those purposes; an element serving more purposes indicates a more elegant design. When: judging whether an element earns its place in the design.
+- [procedure] 1) List which of the four element categories the design uses. 2) Assess each element on its own for strengths and weaknesses. 3) Assess all four together for harmony and a shared theme. When: When reviewing a whole game design. Why: Judging from one element alone produces a skewed review.
+- [procedure] 1) List all game elements. 2) For each, count its purposes. 3) Combine or remove elements serving only one or two purposes. 4) Extend elements serving several purposes to take on more. When: A game feels cluttered or several elements do similar jobs. Why: Reducing redundant elements makes the design cleaner and more coherent.
+- [procedure] 1) Identify players: number, requirements, roles and special knowledge. 2) Identify objective, procedures, rules, conflict, boundaries and possible outcomes. 3) Note dramatic elements: challenge, play, premise, character and story. When: when analyzing a game's formal and dramatic elements.
+- [procedure] 1) Define the conflict. 2) State the rules and procedures. 3) Define each player's goal and win condition. 4) Identify the most important player action and how it works. 5) Map a typical turn, ideally as a flowchart. 6) Define player count and interaction. 7) Record the working title, audience, platform, and restrictions. 8) Include only the most critical rules at this stage. When: After choosing a concept and before prototyping. Why: Outlining the formal system pins down mechanics before detailed work begins.
+- [tradeoff] Elegance must be balanced against character: an over-honed design becomes elegant but boring, and over-cleaning strips memorable qualities, so keep purposeless oddities that can make a game memorable. When: When simplifying or optimizing a design solely for clean structure. Why: Over-cleaning strips qualities players remember and enjoy; memorable qualities often lie outside pure function.
+- [fact] Formal-element question themes include the objective and its clarity, the choices made, the winning strategy, loopholes, and interaction with others.
+
+## innovation
+- [model] Innovation is judged by three overlapping criteria: feasibility (what production allows), viability (a self-sustaining business), and desirability (what audiences value).
+- [definition] Derivative games reuse the action set of earlier games, while innovative games introduce new basic or strategic actions.
+- [definition] A market value is a facet of a game that draws a particular audience in a particular way.
+- [mechanism] Success adds shareholder expectations, larger staff, entrenched habits and bureaucracy, which can drain a studio's willingness to keep innovating. When: a small studio becomes successful. Why: Pressures from success make risky creative choices harder to sustain.
+- [mechanism] Changing story details and core ideas too often teaches developers that nothing is stable, so they stop investing themselves and creative vibrancy fades. When: When core ideas change frequently during development. Why: Developers withdraw commitment when they cannot rely on the direction of the work.
+- [behavior] Successful studios often shift to defensive cash-cow milking, stretching an initial hit indefinitely, which leaves them vulnerable to newcomers with bold ideas. When: an established studio's flagship product stops evolving. Why: Complacency replaces the risk-taking that produced the original success.
+- [rule] Know the game inside and out, and locate its faults by watching it being played, as a mechanic finds faults by listening to an engine. When: Evaluating a game in development. Why: Problems show up in how the game is actually played.
+- [rule] Do not judge a prototype by its visual polish or technical performance; judge the fundamental mechanics. When: When evaluating an early prototype. Why: Polish and optimization are not meaningful until the core mechanics are proven.
+- [rule] Ask whether the game contains something players have not seen before, since novelty is subjective but important.
+- [rule] Invent new gameplay by recombining formal elements and considering new ways to combine them. Why: Understanding how elements work together enables new designs.
+- [heuristic] A prototype can fail as a game yet still teach something, so judge it by what it reveals rather than whether it is fun.
+- [heuristic] Judge interest by experiencing the work with your whole self, combining analytical and intuitive skills.
+- [heuristic] Keep far-fetched ideas rather than discarding them, and learn when to stand by an odd concept; that judgment is part of the craft. When: when an unusual concept seems unlikely to work.
+- [heuristic] Innovation sells best when placed on top of a proven genre, which balances the risk of the new element.
+- [heuristic] Innovation often thrives at the edges of an industry rather than in its established center.
+- [procedure] 1) Identify what the game judges about its players. 2) Examine how the game communicates that judgment. 3) Check whether players find it fair. 4) Check whether players care about it. 5) Check whether it makes players want to improve. When: when evaluating whether a game judges players well.
+- [tradeoff] Pursuing breakthrough player experiences risks time and money; internalizing a playcentric method is presented as the way to balance both.
+- [tradeoff] Incumbent leaders must choose between abandoning the flagship product to keep innovating or holding on and waiting for someone else to innovate. When: judging a large competitor's response to a challenger. Why: Both options carry costs, and the choice often determines whether the incumbent is displaced.
+- [pitfall] Underinvesting in input, whose benefit is unseen, can undermine the whole game without anyone identifying the cause; input investment is almost always worth its cost. When: Under tight budgets or deadlines. Why: Input affects every moment of play, but teams cut it first since it is invisible.
+- [pitfall] Judging a feature only by its own certainty overstates its chance of survival, since its foundations also carry uncertainty. When: Assessing how stable a planned feature is. Why: Dependencies multiply the risk beyond the feature's own design.
+- [pitfall] Games with too many pieces, too many rules, or extraneous components are not feasible to produce and get rejected.
+- [pitfall] Judging a decision only by its design effects misses costs that appear in schedules, relationships and team morale. When: When evaluating a design decision.
+- [pitfall] An innovative idea can fail the business filter, so novelty does not guarantee commercial viability.
+- [fact] Innovation areas are unique mechanics beyond existing genres, reaching non-hardcore players, emotionally rich gameplay, games and learning, and what games are and do.
+
+## objectives and goals
+- [model] Goals can nest: a short-term task, such as retrieving a required item, unlocks a mid-term objective, which contributes to the longest goal.
+- [definition] Narrative goals give actions flavor, while gameplay goals such as high scores or access items shape how play feels.
+- [definition] Obstacles are physical, such as hazards or bumpers, or mental, such as puzzles.
+- [definition] Objective categories group game goals by what players do: capture, chase, race, forbidden act, construction, exploration, solution, and outwit.
+- [definition] An objective gives players something to strive for and defines what they are trying to accomplish within the game's rules.
+- [definition] Partial objectives, or miniobjectives, are smaller goals that help players reach the main objective.
+- [mechanism] When the goal can be reached in many ways, it is unclear which player is furthest along, which weakens targeting of the leader.
+- [mechanism] When a goal can be reached only one way, players will not look for unusual interactions. Offering several routes to the same goal encourages players to explore unexpected ways of solving it. When: Designing goals such as boss defeats. Why: A single route gives players no reason to search for alternatives.
+- [mechanism] The chosen objective sets a game's tone; a goal of capturing an opponent feels very different from a goal of spelling longer words.
+- [rule] Give everything players must do or learn a clear meaning, including purpose, value and visible impact.
+- [rule] Set objectives that feel challenging yet achievable.
+- [heuristic] Pair each desired behavior with a suitable algorithm, since the obvious choice is often not the right one. When: when choosing the technique for a character behavior.
+- [heuristic] Use achievements with measurable physics thresholds, such as holding balance for ten seconds or throwing an object a set distance, to give long-term goals.
+- [heuristic] Offering several paths to victory makes players reweigh their choices, which increases replayability. When: Designing goals for replayable games. Why: Different routes change which options players consider worthwhile.
+- [heuristic] Rewards align easily with goals that are easy to measure, such as completion time in a timed challenge.
+- [procedure] 1) Decide whether objectives must be explicit. 2) Decide whether players can determine them. 3) Define how multiple objectives interact.
+- [tradeoff] Games often mix objective categories, which can split player focus; real-time strategy blends war and construction and appeals to different player types.
+- [fact] No single algorithm beats all others on every problem; an algorithm outperforms others only by specializing in a narrow set of problems.
+- [fact] Restarting from a random state every iteration is optimal only when all states and actions are equally likely.
+- [fact] Specialised game AI fails on rules it did not know in advance, so general game-playing research needs games whose rules are unknown beforehand.
+- [fact] Some stealth and action games let players finish without entering combat, offering a route that avoids fights entirely.
+- [fact] Films and books give objectives only to their characters, not to the audience, whereas games hand the objective directly to the player.
+- [fact] Obstacles matter most in single-player games.
+- [fact] Different players can have different objectives, players can choose among several, or they can form their own goals.
+
+## competition and cooperation
+- [model] Place a game on a scale from pure competition to pure cooperation, check whether players can choose their mode, identify the audience's preference, and decide whether team competition suits the game. When: Positioning a game's social structure. Why: The spectrum clarifies how players relate and whether mode choice is needed.
+- [model] Competition offers a level playing field, a worthy opponent, a problem to solve, a way to measure skill against peers, and strategy and psychology from a thinking human opponent.
+- [definition] Competition can be direct, as in multiplayer play against other players, or indirect, through leaderboards, rankings and comparison with other players. (x2)
+- [mechanism] Making coalitions hard to form, as in long games or fast free-for-all shooters, removes the ability to gang up on the leader.
+- [mechanism] Players can pursue the highest relative score, which beats the other player, or the highest absolute score, which beats the game. Cooperation often yields higher absolute scores when players coordinate and protect each other. When: Two-player games where players share an arena and can also attack each other. Why: Scoring structure determines whether players see each other as opponents or as partners.
+- [mechanism] In a closest-match ladder, a lower-ranked winner takes the higher spot and everyone between them drops one place; a higher-ranked winner changes nothing.
+- [rule] If PvP is central to the design, restrict it to specific zones or conditions, which makes griefing harder.
+- [rule] When the field is not a power of two, give byes to the highest-ranked players in round one, because this skews results least. When: fields that are not a power of two.
+- [rule] Use player-versus-player for a focused, head-to-head contest. When: when designing a direct duel.
+- [rule] Use individuals versus game when you want a social, low-pressure experience.
+- [heuristic] Use an arena-style setup when competitive outcomes should be visible to spectators. When: designing competitive play.
+- [metric] Direct-competition board games have been tuned over generations for about three to six players. Why: This suggests a strong social force favoring that group size.
+- [tradeoff] Shutting down communication forces independent decisions but can weaken team feeling, so it works best combined with other mechanics. When: When choosing how much to restrict communication.
+- [pitfall] Definitions built on a contest of powers do not clearly fit single-player games, so they have limits.
+- [fact] Common player experience goals include strategy over chance, team roles, and more interaction such as negotiation.
+- [fact] Competitive games count as play, so excluding them from play is too extreme a view.
+- [fact] Games built around opposition outnumber those built around teamwork, yet cooperative titles with real appeal do exist.
+- [fact] Collaboration enables actions and strategies impossible for one person alone, and brings the pleasure of group problem solving and of being part of a successful team.
+- [fact] Most collaborative games are team sports, which deliver collaboration and competition at the same time.
+- [fact] Collaborative play against an automated opponent feels experimental rather than established.
+- [fact] As platforms go online and connect players, games without a multiplayer component are becoming rare again.
+- [fact] Combining two opponents into one yields nine throw combinations, which reduce to six distinct pairs; pairs with different throws count twice.
+- [fact] Rock-paper-scissors tournaments with qualifiers and large prizes exist, showing that a game with purely random equilibrium can still have skill. When: games whose equilibrium is pure randomness. Why: Skill lies in predicting and exploiting opponents' non-random tendencies.
+
+## rewards and quests
+- [definition] Facility rewards add a new capability, such as a new weapon or ability, expanding the player's moveset; they may or may not open new areas.
+- [definition] Glory rewards are the sense of achievement from overcoming a challenge or winning, and they are not always part of the mechanics.
+- [definition] Sustenance rewards keep the avatar going by restoring health, ammunition, or magic.
+- [definition] Access rewards unlock previously blocked areas, often as one-use items such as keys, and can also be narrative items or out-of-game extras.
+- [mechanism] A chain of rewards leading to a major payoff steers players toward chosen actions and makes the skills they require feel valuable. When: when wanting players to practise a specific set of skills. Why: Rewards make the target actions worth repeating.
+- [mechanism] Attaching a rule that some instances of a repetitive action yield rewards can make the action engaging even when the action itself gives little feedback. When: when the core action offers little physical satisfaction, such as cutting grass with no resistance. Why: The reward gives the action meaning and keeps the player repeating it.
+- [mechanism] A reward gained earlier can change the strategy needed in later levels, keeping challenge fresh.
+- [mechanism] Designs encourage behaviors by rewarding them and discourage others by punishing them, so unanticipated antisocial behavior can emerge and should be monitored. Why: Rewards and punishments are the mechanisms that steer what players do, so no design is neutral.
+- [behavior] Without a central plot, players judge larger quests as more important, and repeatable small tasks can feed a bigger goal. When: multiplayer quests lacking a central plot.
+- [rule] When removing an item that serves as a quest reward, supply a replacement reward for that quest. When: an item used as a quest reward is removed. Why: otherwise the quest loses its payoff.
+- [rule] Make rewards deepen immersion by increasing capabilities or expanding customisation. When: Designing progression rewards. Why: Meaningful rewards extend engagement beyond the immediate reward.
+- [rule] Ask why each mechanic exists and why one moment of play stands out while another does not. When: when reviewing play experiences.
+- [rule] Make sure players always know what a quest will give them; advancing the story is a reward, and experience or money makes it more attractive.
+- [rule] Pair the removal of rewards for harmful play with rewards for the cooperation you want, so the desired behavior becomes the better option. When: when designing player-to-player interaction. Why: players repeat rewarded actions.
+- [rule] Make the time players invest return real value, since games cost players time rather than money and taking time creates an obligation to give something back.
+- [rule] Reward only activities the player already wants to do, because this leaves the core experience least damaged. Why: Rewarding wanted activities does not displace intrinsic motivation.
+- [heuristic] Avoid stacking a level transition, plot advancement and power increase at the same moment; reserve such overlap for major dramatic moments. When: Scheduling different reward types. Why: Players perceive different reward types similarly, so simultaneous rewards blur together.
+- [heuristic] Reward reinforces behavior more effectively than punishment, so prefer rewards to punishments where possible. When: When choosing how to shape player behavior. Why: Rewards encourage repeated behavior without the frustration punishment creates.
+- [heuristic] Occasionally offering a hard, risky, high-reward target makes each appearance a difficult choice and keeps repetitive play engaging. When: Designing a repeated core action that risks becoming tedious. Why: Rare high-risk options break monotony and create tension.
+- [heuristic] Check reward systems against actual fun, because rewards can drive behavior that players do not enjoy. When: when designing loot, kill counts or other reward systems. Why: Reward-driven behavior can persist without enjoyment.
+- [heuristic] Use reward anticipation when players must persist through difficulty to reach triumph, social connection, or artistic satisfaction.
+- [heuristic] Most games fall between easily measured and hard-to-detect goals, so reward design is a craft of detecting and rewarding what players already want.
+- [procedure] 1) State what the player will feel rewarded for. 2) Confirm the player can influence the outcome. 3) Confirm the reward follows a deliberate action. When: Designing a new goal or achievement.
+
+## design validation and testing
+- [behavior] When a subject is vague in the public mind, audiences bring their own associations, which a designer can build on. When: Adapting a familiar place, film, or idea that lacks a clear theme. Why: Audiences already hold a loose sense of what the subject means.
+- [rule] Generated content must be playable: a level must be finishable, a staircase climbable, and a weapon usable.
+- [rule] Keep generated gaps no wider than the blocks a player can jump over, and keep pipes no taller than the player can pass. When: Generating platform levels with random gaps and pipes. Why: Ensures a path from start to end exists.
+- [rule] Filter out rule sets that draw more often than not, favour one player, give a serious first- or second-move advantage, or run too short or too long on average.
+- [rule] Write reachability constraints recursively, so that connectivity follows from a base case and a step rule.
+- [rule] After each human edit, test the level's playability and regenerate the affected parts so the level stays solvable and playable. When: when a human edits a generated level in a mixed-initiative tool. Why: Edits can break solvability, and regeneration restores a valid level.
+- [rule] Match a generator's path structure to the intended experience, since labyrinth and maze structures create different gameplay.
+- [rule] Show an obscene message only to its sender and filter it for everyone else, so the griefer cannot tell whether the filter worked.
+- [rule] When a feature pleases one group of players and frustrates another, offer variants so each group can get a suitable experience.
+- [heuristic] Use a reference solution to prove by existence that a level is solvable, avoiding a separate search algorithm.
+- [heuristic] Decide whether generated spaces use discrete level boundaries or seamless traversal, since this structural choice is separate from level structure.
+- [heuristic] Players learn a space's possibilities through its rules and symbols, so any generated layout must make those rules readable. When: generating layouts that players must navigate and understand.
+- [heuristic] Examining why a wrong prediction failed shows what you misjudged and improves later forecasts. When: after a forecast turns out wrong.
+- [heuristic] Test first in monetizing regions similar to the target but outside the core audience, favoring low acquisition cost, similar play patterns, and high language competency.
+- [heuristic] Test themed restrictions, such as decks limited to one card type, to see whether the card pool supports them at competitive strength. Why: Restrictions reveal gaps in the card pool.
+- [heuristic] Use repeated simulation when the theoretical math is too complicated or when hidden factors may change the results.
+- [tradeoff] Raising the required pass proportion removes false links but can greatly increase analysis time.
+- [pitfall] Leaving cheating loopholes open harms a game even if players rarely exploit them, because the possibility alone creates stress.
+- [pitfall] Designers and players often assert answers, especially on forums, but hunches are not evidence; many detailed questions need analytics to answer.
+- [pitfall] Assuming what players learn in one part of a game will transfer to another context without testing it.
+- [pitfall] Reward values set generously for testing can remain in the live game and must be reduced before launch to avoid breaking the economy. When: Testing with generous rewards. Why: Generous testing values inflate player resources after release.
+- [fact] Real-time control is one of three components, so a generated level can be fully playable yet lack game feel if avatar movement is not continuous. When: generating levels for real-time control.
+
+## game endings
+- [definition] Dying world: very old and ending, unlike the hopelessly struggling fallen world; heroes may save its people but cannot delay its end. Why: Confusing dying and fallen worlds leads to the wrong tone and conflict.
+- [definition] The ending is the moment play completely resolves, not the moment the player dies.
+- [definition] A destroyed world is annihilated or beyond recognition, and its story focuses on rebuilding or moving on.
+- [definition] A fallen (dystopian) world has lost all hope, with suffering and war as the usual state of life.
+- [mechanism] Being eliminated from play leaves a long idle gap until the next round, whereas surviving keeps decisions arriving at least once per second in a short intense fight. When: round-based competitive play with elimination. Why: Eliminated players make no decisions until the round resets.
+- [mechanism] When one enemy remains it moves very fast, and any enemy reaching the bottom ends the game regardless of lives left.
+- [mechanism] Map layout, weapon tuning, and matchmaking together shape the pattern of end-of-match rewards such as kill counts. When: in competitive multiplayer modes.
+- [mechanism] When a story advances only after a level succeeds, failure replays the level until success and the plot stays frozen in place. When: story is gated behind level completion.
+- [mechanism] A fail/good/better/best outcome scale can mask linear structure, since success levels alter the enemy count in the subsequent mission and their equipment quality. When: Linear missions should feel responsive without branching.
+- [mechanism] A hazard trapped in a state that changes in a later level foreshadows its release when that state changes.
+- [behavior] Players trained to value progression can find the shift to the elder game jarring, and some never reach it because they lack patience for the grind. When: Players approach the end of progression. Why: Long grinding stages filter out players who value progression rather than the later goals.
+- [behavior] Players who reach an ending often suspect it is not the real one, and then stop experiencing the story to wonder what they should have done. When: a game offers multiple endings. Why: Uncertainty about the correct path breaks immersion.
+- [behavior] Players forgive choices that are not honored when the story order is free, though designers should still offer choices. When: In open narratives with free ordering. Why: The order is free, so players accept the design.
+- [rule] Competitive strategy games should offer a surrender mechanism so that a hopeless player can end the match and reach the next game sooner. When: When a match is clearly lost. Why: Ending a hopeless match escapes a failure trap.
+- [rule] Give endings the same care as the rest of the game, since the journey is often what players remember when they do not reach the end.
+- [heuristic] If novices have very short games and feel frustrated, add a grace period during which the player cannot lose. When: Early prototypes end too quickly for new players. Why: A protected opening gives players time to learn before real risk begins.
+- [procedure] 1) Conclude play once one participant drops out. 2) Award victory to the participant in the best standing at that point. 3) For a gentler variant, grant remaining participants a few turns or a short time before finishing.
+- [procedure] 1) Watch for stalemate, where players avoid each other. 2) Add a timed trigger that forces a conclusion. 3) Move survivors into a space where the match resolves quickly. 4) Guarantee a single winner within a fixed time. When: A competitive match risks becoming boring through avoidance. Why: Forced endings prevent endless stalling and keep the game length bounded.
+- [pitfall] If any drop ends the match, large team games often never reach a result. When: in large team games.
+- [fact] PvE games with no defined end, such as MMOs, life simulators, tabletop campaigns and idle games, rely on progression mainly as a reward and teaching structure. When: Designing games with no fixed ending.
+- [fact] Game endings must satisfy gameplay, cinematic, and narrative needs at once, often requiring new mechanics, trailer-worthy cutscenes, memorable boss fights, and a satisfying conclusion. Why: Endings are hard because several departments need different things from them.
+- [fact] Senior leadership sometimes sets the ending before much of the game is built, which can limit narrative designers' influence over it.
+
+## metaphor and abstraction
+- [model] Game metaphors draw on three sources: real-world objects, cultural archetypes, and game conventions or clichés.
+- [definition] An interface metaphor is a visual symbol that helps players navigate a system, such as a desktop with folders and trash cans, or a backpack for carried items.
+- [definition] A metaphor gives a new thing the appearance of a familiar thing so people grasp it quickly.
+- [rule] When a custom physical interface is impossible, use a metaphor that links physical inputs to the game world.
+- [rule] Teach players to read fictional cues, and establish a consistent metaphor vocabulary in each game so players can tell which elements are mechanical. Why: Consistency lets players learn which cues are real.
+- [heuristic] Make interfaces resemble familiar things; use familiar symbols and controls from other games, real life, or cultural archetypes, giving players a shortcut to meaning. (x2)
+- [heuristic] Need not represent the real world to be meaningful and fun; explore iconic, surreal or abstract concepts via metaphor, like controlling a fluid or giant worm, not just visuals.
+- [heuristic] Metaphors need not simulate perfectly; games omit many borrowed-object properties, like cars never needing oil changes or food never spoiling, so closeness suffices for meaning to come across.
+- [heuristic] Aim for interfaces that feel magical, not merely intuitive, since players respond strongly to that feeling.
+- [heuristic] Simple, iconic visuals set few expectations about how an object should behave, giving designers freedom in its motion. When: choosing the visual metaphor for a game object. Why: Fewer realistic expectations leave room for stylised movement.
+- [heuristic] A metaphor works when the new thing's structure resembles the familiar one, even if the materials or substance differ. When: Choosing a familiar object to represent an unfamiliar system.
+- [procedure] 1) Identify what each object represents to the player. 2) Determine expected behaviors, effects, animations, motion, interactions and sounds, since visuals alone miss these channels. When: when auditing or measuring a game's metaphor. Why: Expected behavior is the basis for judging feel; expectations come from all sensory and behavioral channels.
+- [procedure] 1) Check whether the interface already borrows from a familiar real-world object or idea. 2) If it does, judge whether the borrowing clarifies or gets in the way. 3) If it does not, ask whether a familiar metaphor would make it more intuitive. When: reviewing how easily players will understand an interface.
+- [procedure] 1) List candidate metaphors for the interface, such as a farm, road map, shopping mall, or railroad. 2) Free-associate on each for about five minutes. 3) Keep the metaphor whose associations match the game's procedures, rules, and boundaries. When: choosing an interface metaphor. Why: Associations that match the system communicate it; mismatched ones confuse players.
+- [procedure] 1) List what each game object represents. 2) Place its visual treatment on the realistic-iconic-abstract spectrum. 3) List the behaviors, animations, sounds and interactions the player should expect. 4) Check whether actual behavior matches those expectations; if not, adjust the metaphor or the element. When: during design reviews once each object has a clear representation and treatment. Why: Metaphor mismatches make game feel dissonant.
+- [metric] Metaphor fit is a soft metric: it measures how response, context and polish align with expectations the metaphor creates, not objective reality. When: when evaluating whether a game's feel matches its metaphor. Why: Players perceive according to their expectations.
+- [tradeoff] Established input conventions and technical limits keep designers from exploring a device's full input space, but trying new mappings carries risk. When: when choosing control schemes.
+- [tradeoff] Detailed resource diagrams capture every resource and interaction but grow complex, while abstract diagrams stay simple and hide detail. When: modeling a game's resource flow as a diagram.
+- [pitfall] A metaphor misleads when its extra associations conflict with how the system works, or when the features that matter are not conceptually similar to the borrowed object. (x2)
+- [pitfall] Inconsistent conventions force players to relearn rules in different parts of the game.
+- [fact] Removing representation and treatment leaves core systems functional but weakens the game's identity, so metaphor affects identity rather than mechanics. When: when testing how much a game depends on its metaphor. Why: Core functionality is independent of presentation.
+- [fact] Many PCG systems fit more than one metaphor, but few show all of them equally.
+
+## turn structure and timing
+- [definition] Beyond game length, time shapes turn timing, time to level, action points, effect timers, build times, and movement speed, each affecting how gameplay feels and interacts with other resources.
+- [definition] Turn-based combat runs in rounds: everyone acts in initiative order, usually set by a speed or agility stat, and the round ends when all have acted.
+- [definition] Turn-based strategy games are usually adversarial and military-themed, with players managing resources and moving units across a board.
+- [mechanism] Pacing depends on time pressure, not the label: turn timers, including idle-advancing ones, add pressure to each decision and make turn play intense; real-time matches can be pre-planned.
+- [mechanism] Restricting communication to set times, such as for alibis or accusations, limits discussion so a single player cannot direct the whole group. When: When a hidden-role game needs controlled talk. Why: Scheduled talk prevents one player controlling discussion.
+- [mechanism] Pickups that add or subtract seconds from a timer make collection a choice between rewards and penalties to remaining time. When: when pickups change a countdown.
+- [mechanism] Time-based interpretation changes an input's meaning according to its timing, as in combos and timed jumps.
+- [mechanism] A timed threat, such as an approaching horde, forces players to finish gathering before it arrives, adding urgency to exploration.
+- [heuristic] Alternate intense moments with breathers, which let players appreciate accomplishments and anticipate what comes next. Why: Peaks lose effect without valleys.
+- [heuristic] Long deliberation on big decisions suits chess-like games but can kill the experience in many-player or fast-paced games. When: In multiplayer games or games meant to be fast. Why: Waiting for slow deliberation hurts pace.
+- [procedure] 1) Draw phase: draw two cards. 2) Power phase: play one Power card, otherwise discard one card. 3) Action phase: play one Action card whose power requirement is satisfied, otherwise discard one card. 4) Alternate turns until one player loses.
+- [procedure] 1) Identify what sets the length of each activity. 2) Check whether players are frustrated by early endings or bored by long ones. 3) Test whether clocks, races, or time limits would help or irritate. When: Reviewing the pacing of gameplay. Why: Each check targets a common cause of poor pacing.
+- [tradeoff] Undo is costly unless core; add targeted undo for common regrets, like a recent shop purchase or sale, and include undo in turn-based games where players may roll back moves. When: Deciding whether to add undo to a system. Why: Undo deeply integrated into state is costly, but targeted undo covers common regrets cheaply. (x2)
+- [tradeoff] Turn-based time makes real-time pacing irrelevant to the rules, while continuous time makes timing part of the mechanics. When: Deciding whether a game's clock should affect its rules.
+- [pitfall] Effect wording such as opponent loses next turn can be misread as a far stronger effect than intended. Why: Ambiguous timing words make a card's power easy to misjudge.
+- [pitfall] Sources use 'move' inconsistently: some mean a full round, while strategy games usually mean a single turn. When: reading AI or game design sources. Why: terminology differs between fields.
+- [fact] Timed effects such as poison, sleep, and invincibility last for a designed duration.
+- [fact] Game drama depends on uncertainty renewed in every play, whereas a familiar film's outcome is already known to a repeat viewer.
+- [fact] Changing turn structure, such as requiring two placements per turn in different columns, alters strategy and can change balance.
+- [fact] Time can matter without a clock, since very long play can exhaust participants.
+- [fact] Some games make manipulating time their central mechanic rather than an occasional feature.
+- [fact] Turn-based board games advance time in discrete alternating turns, and play consists of moving pieces around the board.
+
+## movement and controls
+- [mechanism] A loop where players gather valuables while evading a threat creates tension between reward and risk.
+- [behavior] Players may solve puzzles by using an input device's physical features in unanticipated ways, and they enjoy the discovery rather than treating it as an error.
+- [behavior] Input rules that look messy in code are acceptable because their complexity costs designers and programmers, not players, when the interface disappears. When: When the rules stay invisible and serve control feel. Why: Players cannot sense the rules, so they add no burden to play.
+- [rule] Designers should understand and control how the illusion forms in the player's mind, since a well-made experience can feel as real as reality or more real. Why: The player's perceived experience is the product.
+- [rule] Steer players toward chosen actions indirectly, through breadcrumb rewards, rather than telling them what to do. When: when guiding player behavior among many possible actions. Why: Indirect guidance keeps choice meaningful.
+- [rule] Trigger a Triple Jump only when moving faster than about half of top speed, at the walk-to-run animation switch; below that the third press produces a basic jump. When: Third jump input during a jump chain.
+- [heuristic] A tactile control can map input strength to finger curl and position to a mouse, or use a small pressure window that the mouse keeps light. When: Mapping pressure-sensitive touch to devices.
+- [heuristic] Input responses tend to evolve step by step by adding states, time-sensitive moves and chords rather than changing the underlying approach.
+- [heuristic] Each added degree of failure headroom and success legroom spares another group of players from either a frustrating failure or a boring ceiling.
+- [heuristic] Physics-driven locomotion is high-risk because it is hard to implement and hard for both AI agents and players to handle.
+- [procedure] 1) State the ideal behavior you want from players. 2) Test constraints, goals, interface, visual design, characters, and music or sound in turn. 3) If none fit, find another method that steers without reducing freedom. 4) Check the design does not induce unwanted desires. When: Planning how to get a behavior without forcing it.
+- [procedure] 1) While thrust is held, grow thrust speed by thrust acceleration each frame, up to max thrust speed. 2) Build a thrust vector along the heading using thrust speed. 3) Add that vector to ship velocity. When: thrust input is held. Why: Ramping thrust over time and adding it as a vector along the facing direction gives gradual, direction-independent acceleration.
+- [procedure] 1) Cancel horizontal momentum in the air. 2) Freeze briefly. 3) Drop under stronger gravity. 4) On impact, shake the screen and spawn particle effects.
+- [tradeoff] Games can emphasize physical dexterity or thinking; many blend both or alternate between them, and the right mix depends on the target market. When: When deciding how much of a game demands physical skill versus thought. Why: Audiences differ in whether they want dexterity or puzzle-solving.
+- [pitfall] Without a speed cap or drag, a character driven by seek accelerates indefinitely.
+- [pitfall] A hard-to-control scheme frustrates players even when it is novel, especially when it is bolted onto a mini-game with awkward constraints.
+- [fact] A trigger's cylinder shows its collision radius, and the player can interact with it only inside that cylinder. Collision Height and Collision Radius are set in the trigger's cylinder component.
+- [fact] A ground pound gives landing precision that air steering cannot, though very small targets remain fiddly to hit.
+- [fact] A time-insensitive jump arc stays predictable, so players judge landings reliably. Ranking a jump second-highest and second-longest among moves creates clear tiers. Why: Fixed arcs make landings easy to judge.
+- [fact] Unconventional controlled roles such as weather, fear, a disease or a city can be used in games, with physical interaction represented within a world not bound by natural law.
+- [fact] Gesture-based core mechanics can replace point-and-click and drag as a game's central interaction.
+
+## game design theory
+- [model] Most games are sets of interrelated subsystems rather than a single system, so they can be broken into discrete functional units.
+- [definition] Good shape is a pleasing form, found in visuals and level layouts; a well-shaped level feels solid and has a graceful curve.
+- [definition] Gradients are qualities that change gradually, such as a challenge curve that rises slowly or smoothly shaped probability curves.
+- [definition] High-level rules set broad goals and govern systems such as health and damage.
+- [definition] An idea is a loose concept stated verbally or in a short description, while a design is a detailed execution of that idea.
+- [mechanism] Listeners judge ideas by how useful they are to them right now, not by overall merit, so good ideas can be rejected for timing.
+- [mechanism] Implementing a generator exposes the affordances and constraints of a design problem, and better generators and better design understanding reinforce each other.
+- [behavior] Players generalise from similar forms, expecting similar things to behave alike; once they learn a rule, they apply it to new items that look alike. When: Introducing new items, weapons or mechanics. Why: Players rely on visual resemblance to predict function, so learned rules transfer to look-alike elements.
+- [heuristic] Attach experience rewards to encounters in game data and track faction or rank levels separately from character levels. When: When generating content with a progression system. Why: Separate tracks keep each kind of growth independent.
+- [heuristic] Making predictions forces you to study historical trends, which often yields correct insights about the future.
+- [heuristic] Short handle phrases that summarize a game, such as a genre blend in a few words, help listeners remember and repeat it. When: Naming and describing a game. Why: Compact phrases travel easily between people.
+- [heuristic] Complex imperative behavior is harder to express as data, so it favors code-based subclasses over a data-driven approach. When: Deciding how to define behaviors with branching logic. Why: Arbitrary control flow is awkward to capture in data definitions.
+- [heuristic] Economic, political, biological, or psychological systems can be used as metaphors if players already understand them, such as supply and demand or forming relationships.
+- [pitfall] Designs that depend on imagination to solve a problem fail when imagination cannot actually solve it, so designers must know its limits. When: when a design relies on players imagining a solution. Why: Imagination cannot solve every problem.
+- [pitfall] A consistent system the player cannot understand is no more predictable than a random one, and its threats and opportunities stay hidden.
+- [fact] Hobbies such as trading collectibles, drafting teams from statistics, or a designer's childhood collecting can supply structural ideas for collectible card games or core concepts adapted to interactive media. (x2)
+- [fact] Modes on separate input channels can overlap and switch independently without conflict, such as movement on a thumbstick and spells on a button.
+- [fact] Finite state machines have a limited number of states, but the idea extends to infinitely many states, as in a spell whose damage grows through a chain of states.
+- [fact] General system theory, developed in the 1940s, studies how interacting elements behave across many disciplines.
+- [fact] A mechanic used only once is a gimmick; it may be worthwhile but cannot be elegant.
+
+## design trade-offs
+- [definition] Turtling means avoiding combat, building defenses, and then swooping in to attack opponents who have been weakened.
+- [definition] An uninformed decision is arbitrary because the player does not know how strong each option is.
+- [definition] Twitch decisions take under a second and need simple conscious reasoning, such as punch or kick; action games are built largely on them.
+- [definition] Tactical decisions take one to five seconds, engage conscious thought and use more information, including past outcomes, such as choosing equipment or units.
+- [mechanism] When killing an NPC costs almost nothing in resources, the act feels like a mercy rather than a choice that deserves reflection. When: NPC death carries no resource cost.
+- [rule] Explain each design decision by naming the trade-off it accepted and its effect on player experience. When: explaining or reviewing a design decision. Why: Every design involves trade-offs, and their cost to the player is what determines whether the choice works.
+- [heuristic] Stay with 2.5D for most cases, since its algorithms are simple and fast, and the up vector can stay fixed for orientation. When: Developing most steering systems.
+- [heuristic] Use a simple count threshold to decide whether to trust a prediction, unless a measured gain justifies formal confidence calculations. When: deciding whether an N-gram prediction is reliable. Why: A more complex confidence measure gave no measurable prediction improvement, and its mathematics is costly.
+- [heuristic] An element that serves fewer than two purposes is a candidate for cutting, a rule of thumb borrowed from screenwriting.
+- [heuristic] Giving a weaker option a secondary benefit, such as a chance to heal, turns a simple strongest-pick choice into a judgment about what the player values. When: When options differ only by a single stat and one option dominates. Why: A clearly dominant option removes meaningful choice.
+- [heuristic] Cutting a tool is often better than weakening it, since a slow, pointless version harms the game more than having no version. When: A tool's key properties cause imbalance.
+- [heuristic] Most interesting decisions are tradeoffs between resources, such as gold for an item, mana for a spell, real money to speed a unit, or hours for high-level play.
+- [heuristic] In turn-based games players control pacing, so designers still must manage decision scope, because the size of each decision drives tedium or stalling. Why: Players set their own timing, but consequences of decision size remain.
+- [procedure] 1) Ask whether the script can implement an established AI technique. 2) If not, decide whether a dedicated C++ implementation, alongside or instead of scripting, would be more practical. When: When deciding how to implement a character behavior.
+- [procedure] 1) Anticipate how each disruptive behavior could be rewarded within the game and its ecosystem. 2) Change the rules or rewards so that behavior no longer pays. 3) Recheck the design for new exploits. When: Designing multiplayer systems. Why: Antisocial behavior is permitted by the design, so the design decides what it rewards.
+- [procedure] 1) Do characters need level-scale understanding? 2) Must they act in sequence or timing with each other? 3) Can they decide individually yet produce group behavior, or must some decisions be made for the group?
+- [procedure] 1) Identify what the player must understand to play. 2) Decide whether imagination can convey it more easily. 3) List high-quality realistic details to provide. 4) Let imagination fill gaps left by low-quality details. 5) Reuse details that imagination can extend. 6) Keep only details that inspire rather than stifle imagination. When: Deciding how much detail a game should show versus leave to the player's imagination. Why: Well-chosen detail supports understanding while imagination carries the rest.
+- [tradeoff] Use the closed-form drag solution when the model matches and accuracy matters; use an iterative simulation otherwise, and the closed form does not apply when squared-speed drag is present. When: Choosing a projectile drag solution. Why: The closed form only holds for purely linear drag.
+- [tradeoff] Beauty costs production time and artistic skill, and it may not fit the game's tone. When: When deciding how much polish to invest in visuals. Why: Beauty demands time and skill and can clash with the intended mood.
+
+## game definition
+- [model] A game is not one-way communication: the designer prepares the setting, and the experience is realized only when players arrive and act.
+- [model] Five domains of play are novelty, challenge, stimulation, harmony, and threat.
+- [definition] Games are problem-solving pursued with a playful mindset, and that mindset is what separates them from work.
+- [definition] A game system is a designer-made group of mechanics and resources that controls a related set of gameplay behaviors toward a specific outcome, and can be understood mostly in isolation.
+- [definition] A game is a voluntary control system: a contest between powers, confined by rules, that produces a disequilibrial outcome.
+- [definition] A game is an interactive system whose meaning comes from within, asking players to strive toward an objective.
+- [definition] A game is a system whose purpose is entertainment; it structures conflict and gives players an engaging process for resolving it.
+- [definition] Each game generator is a runnable miniature theory of game design, usually simplified or exaggerated.
+- [definition] Games are engineered systems that produce experiences: designers build mechanics, wrap them in fiction, and play yields events triggering emotions that fuse into one integrated experience.
+- [rule] Let players speak to each other freely, since designs relying on nonverbal play to build bonds have failed to form communities.
+- [heuristic] Frame an item's purpose as a situation the player faces, such as being hurt and needing to heal, rather than as a bare function like regenerating health. When: Introducing items or systems. Why: A situational reason gives the element value in the player's context.
+- [heuristic] When comparing control across games, the output envelope is sufficient; the underlying simulation matters mainly for craft, not for measurement. When: comparing control across games.
+- [heuristic] Stories and movies are weak metaphors for games because they lack dynamic interaction between mechanics; think of a game as an engine of experience instead. Why: Stories and films have no dynamic interaction between parts.
+- [pitfall] Defining a game as a problem-solving activity is too broad, because work also involves problem solving, such as cutting production costs. Why: Problem solving alone does not separate games from work.
+- [fact] Early board games served religious, military and cultural purposes as well as entertainment.
+- [fact] Game terms evolve as technology changes, so definitions must be revised continually and no dictionary can be final.
+- [fact] Claims that a young medium is too primitive for depth tend to fade as its technology matures, as happened with early film.
+- [fact] A technology is foundational only if the whole design is built around it; added later to an existing design, it is decorational.
+- [fact] Online persistent worlds and life simulations sit at the edges of the working definition of a game.
+
+## intransitive mechanics
+- [model] Game properties, objects, systems or mechanics can be classed as transitive, intransitive, or mixed.
+- [model] Games occupy different triangle positions; a position indicates how much physical accuracy the game must deliver, not its artistic quality. When: when using triangle placement to plan a game's physics. Why: Position determines which behaviors must be physically accurate.
+- [definition] Transitive balance: if A beats B and B beats C, A beats C; options rank clearly and stronger ones cost more or carry drawbacks. Intransitive balance drops this ranking.
+- [definition] Intransitive balance: no option beats all others; each beats some and loses to others, so strength depends on the opponent's choice.
+- [definition] A transitive mechanic is a system where better items, actions or rewards cost more or demand more effort, so cost and benefit rise together.
+- [definition] Triangularity is balanced asymmetric risk, where a safe small reward competes with a dangerous large reward. Why: The tension between the two options creates meaningful choice.
+- [definition] In three-player rock-paper-scissors, one player's two opponents can be merged into a single combined opponent for analysis.
+- [mechanism] Intransitivity does not change the actual possibility space, but it makes the right choice harder to see, so the perceived space of options feels larger. Why: Players must work out relative strengths, which makes the options feel more varied.
+- [mechanism] Three mutually countering options give more strategic variety than one dominant strategy, and players can adapt their choices during play, sometimes in real time.
+- [heuristic] In an intransitive game like Rock-Paper-Scissors, the best long-term approach is to play each option equally, a 1:1:1 ratio, because favoring any one lets an opponent exploit it. When: Intransitive games with a counter for each option. Why: A predictable bias gives an opponent a winning counter strategy.
+- [heuristic] When two choices give equal win chances, no choice is optimal and the decision becomes a matter of player psychology rather than odds. When: switch and stay odds are equal. Why: no mathematically better option remains.
+- [heuristic] Use intransitive design when outcomes of player strategies are hard to predict or balance changes will be hard to make after release. When: Predicting or patching a balanced game is difficult.
+- [pitfall] Matching pennies is rarely named, so designers may build it without recognizing the mind game they have created.
+- [fact] A relation is transitive if A relates to B and B relates to C the same way, so A relates to C; equality and less-than both behave this way.
+- [fact] Rock-paper-scissors is intransitive: rock beats scissors and scissors beats paper, yet rock does not beat paper.
+- [fact] RPG power is mostly transitive: higher character level, costlier items, or higher player level usually means more power.
+- [fact] Fighting-game matchups are often intransitive, and civilization games are intransitive in their civilization powers but transitive in unit cost and strength.
+- [fact] Intransitive relationships appear in fighting games, RTS unit counters, layered counter systems, vehicle and weapon matchups, RPG class matchups, trading card counter-decks, and combat with first strike or bluffing under hidden information.
+- [fact] Combat genres use a counter loop: block beats strike, grab beats block, strike beats grab; strategy genres use spearmen beating cavalry, archers beating spearmen, cavalry beating archers.
+
+## platform and venue design
+- [definition] The arena is a specialized, usually large, outdoor and public field for competitive play, where winners and losers are a matter of public record.
+- [definition] Play space design is the practice of shaping the space where play happens, and it falls under the broader umbrella of experience design.
+- [definition] A platform experience hosts many different stories, so the designer cannot know in advance which content will be played.
+- [mechanism] A platform network can thrive by dominating a venue that rival platform owners leave unfocused. When: rival platform owners focus on other venues.
+- [mechanism] An arena tends to attract a surrounding theater of spectators, so one place hosts two venues at once.
+- [rule] An action card's power requirement may name specific types, generic power, or both. Specific types are covered first, and any other power fills the generic part.
+- [rule] Choose the venue by considering setting (classroom, on the go, reading nook), whether players are alone or with others, time limits, and whether a helper is present. When: before finalizing the design. Why: Context strongly affects whether transformational goals are met.
+- [heuristic] Building a game's core design around a platform's distinctive hardware strength, such as very fast scrolling, can make the game feel new. When: the platform has a distinctive hardware capability.
+- [pitfall] Debates about the best platform often overlook that successful technologies do not last forever.
+- [fact] Arenas, card tables, stages, and courts of justice are examples of playgrounds set apart from ordinary space by special rules.
+- [fact] Anywhere venue games, such as paper puzzles and smartphone games, fit into spare moments, are interruptible, have simple interfaces and stories, and are played in short bites. When: Designing for spare-minute play. Why: Players use these games in brief, interruptible sessions.
+- [fact] The playground is any open space for children's improvised outdoor play, such as backyards, streets, vacant lots, or caves, and this venue has been largely ignored by the games industry. Why: Building games for it has not been feasible with past technology.
+- [fact] Some activities, such as pinball in a restaurant, bowling, or casino play, fit several venues at once and are hard to place.
+- [fact] A portable collectible card game built on a video game's core rules, sold cheaply, appeals especially to children and suits trading with peers.
+- [fact] A platform that was mainstream can become fringe within a year after a rival platform becomes good enough.
+- [fact] Pocket-carried devices, such as smartphones, tend to converge many technologies into one for convenience. Why: Carrying one device is more convenient than carrying several.
+- [fact] A platformer can work without jumping, with a grappling arm as its main way of moving through the level.
+- [fact] In 2021 a major PC game storefront banned games that allowed exchanging cryptocurrencies or NFTs.
+- [fact] Platform levels share free space, walls, collectibles, enemies and traps with dungeons, but gravity limits movement, so platforms and gaps become the core vocabulary.
+
+## stats and attributes
+- [definition] A dump stat can be safely ignored, so investing points in it is wasted.
+- [definition] Static attributes never change during play, while dynamic attributes change during play and matter most to design.
+- [mechanism] Stacking several triggers that drive the same feeling pushes the experience toward one emotional peak that no single trigger could reach alone. When: When designing for a single dominant emotion. Why: Each trigger adds to the same emotional direction, compounding intensity.
+- [mechanism] Personality labels earned from events, such as marriage or winning battles, can grant bonuses and weaknesses, tying flavor directly to the systems.
+- [rule] Every character has every stat, so each stat should be meaningful for all viable builds.
+- [rule] Keep variant stats out of compiled code so numbers can change without recompiling the game. When: Designers tune numeric values for many variants. Why: Recompiling for each change makes programmers a bottleneck.
+- [heuristic] Leave players unable to max every stat; aim for one or two exceptional stats, several high, most mid-level, and one low, so choices stay meaningful. Why: Maxing every stat removes the meaning of choosing between them.
+- [heuristic] A dull skill can be made engaging by framing it as a virtual skill and giving it the right challenge. When: when a required skill feels tedious.
+- [heuristic] Successful small games usually concentrate on one or two values that rise sharply above competitors, forming tall narrow spikes on a value curve. When: When evaluating a design's value profile. Why: A spike shows a clear, superior reason to play; flat profiles offer none.
+- [heuristic] Use the dependency stack to decide what to build now and what to postpone, as a practical decision tool rather than an academic exercise.
+- [heuristic] As a starting point, set single-class power at 1.5× dual-class power, then tune through playtesting. When: versatility is valuable but not certain.
+- [metric] Dual-class power per class ranges from half of single-class power, with no foreknowledge, to equal power, with complete foreknowledge; real cases fall between.
+- [pitfall] If one attribute is clearly stronger than the rest, players concentrate their points in it, so the relative power of attributes must be checked. Why: Players optimize toward the strongest option.
+- [fact] Slots take many forms: RPG gear such as weapons, armor, and magic items, FPS main weapons, sidearms, and gear or grenade slots, and limited equipped skills from a larger pool.
+- [fact] Stat setters that take a target index and a value, for health, wisdom and agility, cover a surprisingly wide range of magical effects. When: Designing spell effects that modify character stats. Why: Few primitives can express many distinct effects when combined with varying values.
+- [fact] Different design details produce different valid dependency stacks for the same game.
+- [fact] The dependency stack method can be applied to one system or subsystem, not only to a whole game.
+- [fact] In a creature set, power plus toughness often equaled total mana cost plus a fixed constant, with a few exceptions. When: creature sets with a consistent design pattern.
+- [fact] In CRPGs, player power rises faster than player skill.
+
+## technology in game design
+- [definition] Technology is any material or interaction that makes a game possible, from paper and pencil to lasers, and it enables some things while preventing others.
+- [definition] For a game designer, technology is the physical medium a game is made of, such as a board and dice or a computer and screen, not only electronics.
+- [definition] A true metaverse is a shared 3D world that is persistent, decentralized, interoperable, and built on user-generated content.
+- [mechanism] Custom hardware built for a game can make mechanics possible that a standard platform would not easily support.
+- [mechanism] Technology can remove creative pressure: a game that needs nothing more to excite players becomes a technology demo that works only for a while.
+- [rule] New technologies open up new forms of play, so designers should grasp both the constraints and the capabilities of each tool. When: Designing with new or existing technology. Why: Innovation depends on knowing what a technology can and cannot do.
+- [rule] Use new technology to unlock new interactions; it can enable design leaps but cannot produce them by itself.
+- [heuristic] The shape of future games follows from technology combined with human psychology, so forecasts should consider both.
+- [heuristic] Look for technologies on the verge of breaking through; designing for them can yield unexpected success if they are foundational to the game. When: choosing which emerging technology to design around.
+- [procedure] 1) State how the technology will look in two years and why. 2) State how it will look in four years and why. 3) State how it will look in ten years and why. When: planning around a technology's likely state at future dates. Why: Reasons build instinct for how technology fits the human mind.
+- [procedure] 1) List the technologies that will deliver the experience you want. 2) Check whether each is used foundationally or decoratively. 3) If a technology is not foundational, question whether to use it at all. 4) Ask whether it is as impressive as you think and whether a disruptive alternative fits better. When: selecting technologies before committing to them. Why: Keeps the choice tied to the experience rather than to excitement.
+- [pitfall] Treating technology as the goal, not the play it serves, is a pitfall; building mainly around new technology can fail as both the imitated medium and as a game. Why: early full-motion video games on CD-ROM were among the worst ever made. (x2)
+- [pitfall] Novelty wears off fast, so a game depending on new technology looks poor within a few years.
+- [fact] In build-up strategy games, a large technology lead lets the more advanced side's units attack the rival's older units when armies first meet. When: armies first meet after a long build-up.
+- [fact] Telepresence, where the body goes to a real distant place, is rarely used in games.
+- [fact] Much of the near future of technology and games can be guessed by reasoning carefully, even though fast change discourages many predictors.
+- [fact] Technologies tend to diverge into separate devices over time rather than merge into one device.
+- [fact] Technology is the most volatile tetrad element; many new physical media appear within one career, and many can support new kinds of games.
+
+## action and combat design
+- [definition] Animation actions range from primitive feedback such as particle effects and recoil to large sequences such as cutscenes driven by a camera on a predefined track. When: Classifying AI actions. Why: Animations provide the visual feedback that makes actions readable to players.
+- [definition] Action games are real-time games that test reaction time and hand-eye coordination.
+- [mechanism] Long action animations let normal players catch up with perfect play, lowering the skill ceiling, while fast action and precise controls raise it and keep players striving.
+- [mechanism] With a small cap on active shots, projectiles that must cross the screen block new fire, so usable fire rate falls as target distance grows. When: a cap on simultaneous projectiles. Why: New shots cannot fire until an earlier one leaves the screen.
+- [mechanism] The same airborne attack button triggers different moves depending on whether the jump began below or at maximum running speed.
+- [mechanism] Leaving the ground locks facing direction, and air steering becomes lateral and at a reduced rate rather than rotational.
+- [mechanism] Once upward speed reaches zero, a much stronger gravity pulls the character down quickly, so jumps have little sustain.
+- [mechanism] A narrow line-shaped attack is strong when enemies line up and weak when they surround the unit, so its value depends on enemy geometry.
+- [mechanism] Circular area attacks rarely hit their full area, and they offer fewer situations than directional attacks.
+- [mechanism] A slower attack rate allows shoot-and-retreat tactics that frequent attacks make impossible.
+- [rule] Never place a player in a state where death is certain and no response is possible; deaths should trace back to mistakes or unnecessary risks.
+- [heuristic] Build boss fights as choreographed stages tied to a play style that reveal the boss's vulnerabilities, so players learn weaknesses mid-fight; a single boss can take 20 to 30 minutes. When: designing bosses. Why: Scripted phases let players learn the weakness during the fight.
+- [heuristic] Choosing which actions exist is the most fundamental design decision, and small changes to actions can have large ripple effects on emergence or predictability.
+- [procedure] 1) Name the intended combat feel. 2) Choose the trigger: every turn, passing another player, or landing on a set space. 3) Define mechanics that support core play. 4) Define outcomes and effects on each participant. 5) Write clear rules that feel native to the game. When: designing house rules for a game without combat.
+- [metric] Limited ammunition that drops by one per shot, refilling only after a unit spends a full turn on a supply tile, creates a firing-versus-resupply trade-off.
+- [tradeoff] Arcade racing targets a broad audience with accessible handling, while simulator racing targets enthusiasts with realistic driving.
+- [fact] Action games can increase visual attention and the number of objects a player can attend to at once.
+
+## art and visual style
+- [mechanism] When environmental symbols are distinct and repeated, prefabricated objects become a visual language that players gradually learn to read.
+- [heuristic] Distinctive work often lies in its rhythm, patterns, and style rather than in the specific moves or techniques.
+- [heuristic] When your visual look is distinctive and attractive, consider building your games around it.
+- [heuristic] Order, complexity, repetition, and visual rhythm, such as similarly scaled repeated elements, help players sort visual information and make a space easy to categorize. When: When arranging objects within a scene. Why: Consistent patterns reduce the effort needed to read a space.
+- [heuristic] Vertical structure can carry symbolic meaning, such as linking earth and heaven or enclosing a sacred interior, and can shape how occupants feel about a space. When: Designing sacred, monumental or emotionally charged spaces. Why: Verticality communicates meaning and mood beyond its practical function.
+- [heuristic] Realistic scenes of animals and conquering armies at an entrance warn visitors of the consequences of defying power before they go in.
+- [heuristic] Tall pointed arches and vertical linear elements can suggest power and a mythical presence in a level.
+- [heuristic] Toy boxes need no polished environment art, since players never reach them.
+- [heuristic] A limited or dominant color palette can produce a moodier look than full color, and can imitate shade in 2D games. When: in 2D or retro-style visuals. Why: Restricted colors shape atmosphere and suggest shadow.
+- [procedure] 1) Assign a material palette per level or stage. 2) Choose natural, homely materials for safe areas. 3) Choose rough, machine, or hazardous, damaged materials for dangerous areas, so progression is readable at a glance. 4) Apply via tile sets and color maps. When: When varying generated or authored spaces along a multi-level quest journey. Why: Material change signals progression at a glance.
+- [procedure] 1) Find a vista that shows a significant part of a world. 2) Diagram the visual forces that draw the player's eye. 3) Look for environment art assets arranged in triads. When: When analyzing or designing a wide view in open-world or roleplaying games. Why: Visual forces guide attention across a vista.
+- [procedure] Draw everyday objects using measuring and referencing for proportion, varied line weight for depth, and shading or hatching for lighting; finish with a hierarchical drawing that directs attention to key objects. When: practicing sketch fundamentals.
+- [pitfall] Camouflage depends on material pattern tags that designers must set for every material, so its quality depends on the level's markup.
+- [fact] A casual doodle can sometimes become the central theme of a game.
+- [fact] Symbolic containers such as crates or pots signal expected items, prompting players to search a space. Why: players associate containers with items.
+- [fact] Style and form carry a game's visual language, communicating with players about the space.
+- [fact] In Western culture, red suggests passion or love, blue suggests sadness or tranquility, and yellow suggests happiness.
+
+## emotional design
+- [model] Players use games for five emotional purposes: venting frustration, cheering up, gaining perspective, building confidence, and relaxing.
+- [model] The emotion pillar comprises game feel, presence, and surprises.
+- [definition] Fiero is the feeling of personal triumph over adversity, arising from frustration followed by a sharp shift to feeling very good.
+- [mechanism] Games produce fiero directly through the player's own choices, which films cannot do.
+- [mechanism] More compelling games generate more internal value, so players care about outcomes without needing external stakes.
+- [behavior] When difficulty adjusts subtly, players feel success comes from their own skill, while novices keep a real chance to win. When: Games with adaptive difficulty or rubber-band opponents.
+- [behavior] Players attribute emotions like fear or boredom to simple game pieces even when the rules define no such states. When: pieces behave in ways that look like choices. Why: apophenia projects feelings onto behavior that looks purposeful.
+- [behavior] When players can communicate and negotiate in a dilemma, they can both deceive and cooperate, unlike in fixed-rule versions. When: dilemmas with communication. Why: Negotiation opens room for trust and deceit.
+- [rule] Aim for a broad picture of emotional response that serves design goals rather than trying to separate exactly which effects come from emotion and which from cognition. When: Designing for player emotion.
+- [rule] Identify the essential features of a memorable experience and build them into the game, leaving out incidental details. When: recreating a real-world experience in a game. Why: players respond to the essential features, not incidental ones.
+- [rule] Apply the same care to players that you would put into a gift, so they feel someone considered how the game will make them feel.
+- [rule] Build emotions on purpose: fear needs time and space to grow, and planning needs information and a place to plan.
+- [rule] Show progression clearly, through skill growth, levels or progress bars, so players feel their competence grow. Why: competence is a core intrinsic motivation need.
+- [pitfall] Placing two clashing emotions side by side can cancel both out rather than producing a blended or interesting effect. When: When designing juxtaposed emotional moments. Why: Juxtaposition and antagonism lie on a fine line, and an attempt can annihilate both feelings.
+- [fact] Emotion drives player engagement, and designers can add it through narrative and NPC relationships.
+- [fact] Emotion-focused design can inspire the team, widen the audience, and give a competitive edge.
+- [fact] The games industry usually addresses emotion through visual aesthetics, music, and narrative, while game feel is often overlooked.
+
+## real-time combat and space
+- [model] A two-by-two grid crosses real versus simulated with here versus there: AR brings simulation to the body's location, VR sends the body to the simulation.
+- [definition] Real-time combat unfolds as it happens; it is standard in shooters, many strategy games and some RPGs.
+- [definition] A rescue or escape objective requires moving a defined unit or units to safety.
+- [mechanism] Real-time mechanics leave no time for one player to make everyone's decisions, so each player must act on their own. When: When designing co-op games against the commander problem. Why: Time pressure removes the opportunity for one player to direct all moves.
+- [mechanism] A unit removed by a shot returns at a spawn point its player chooses at the start of the next round.
+- [mechanism] Each fire input creates one projectile that moves at a constant, predetermined speed in the facing direction.
+- [mechanism] Ranged attacks enable cover use, elevated firing positions, and support roles, while short-range attacks cannot use cover.
+- [mechanism] A slow power cycle, such as a weapon that fires only every few seconds, creates a flow gap whenever the player has no other meaningful action to take in between.
+- [behavior] A game's effective skill range can shift as its player base changes, so a game feels easy when most players are new and hard when most have years of practice. When: When the player population's experience changes over time. Why: Newcomers versus veterans set the perceived difficulty.
+- [rule] In a melee-focused game, ranged tools must feel rewarding without becoming a degenerate strategy that removes the fun of melee. When: When adding ranged tools to a melee game. Why: Degenerate ranged play undermines the core mode.
+- [rule] Grant respawned players a short invisibility window, about two to three seconds, so they can fight back.
+- [rule] Judge real-time control by whether the player steers continuously rather than issuing discrete commands; turn-based play does not qualify. When: classifying a game's control.
+- [heuristic] Include places where players can relax their thinking and simply play, and add puzzle elements where more intellectual engagement would help. When: Pacing a game's mix of mental effort and rest. Why: Alternating demanding and easy moments keeps engagement without exhaustion.
+- [heuristic] Exaggerate distinctive props or silhouette elements so a character stays recognizable from the back of a large audience. When: Staging a character for a live performance or a distant audience.
+- [tradeoff] Real-time and turn-based designs differ in how turn length is set, and changing between them alters the whole feel of the game. When: When deciding turn structure.
+- [tradeoff] Aim for a wide skill range when a game should offer years of learning. A narrow range can suit a short experience that relies on art and narrative. When: When deciding target range width. Why: Long-lived games need depth; short story-driven games do not.
+- [pitfall] Respawn speed affects how often kills happen, so it is part of the design and can change scoring outcomes. When: when designing free-for-all scoring.
+
+## simulation and movement
+- [definition] A rotation can be represented as a 3D vector whose direction is the rotation axis and whose length is the angular speed in radians per second.
+- [definition] The ship simulation is driven by rotation, position, velocity, thrust speed, thrust acceleration, thrust velocity and max thrust speed, with thrust velocity added to velocity while thrust is held. When: building a thrust-driven ship simulation. Why: Separating these named values lets rotation, thrust and velocity be tuned independently.
+- [definition] Simulation and building games manage resources to grow a company, city, or other system, focusing on growth rather than conquest.
+- [rule] Choose one key transformation and execute it especially well rather than spreading effort across many goals.
+- [rule] Aim simulation at an interesting, self-consistent and stable result that serves entertainment, not at realism for its own sake. Why: Players judge realism by consistency and stability, and reality itself is rarely fun.
+- [heuristic] Simple Boolean buttons with a clear mapping to movement are satisfying and easy to follow, and using several inputs at once keeps players engaged. When: designing a control scheme for a small set of actions. Why: Clear one-to-one mappings are easy to learn, and multi-finger coordination adds challenge.
+- [heuristic] In physics-driven games, most of the feel comes from the underlying simulation, so tune it before adding content.
+- [heuristic] Simulating muscles rather than arbitrary forces is an unexplored option for building complex physical responses in games.
+- [tradeoff] Visual-only simulation changes how a game looks, while mechanic-linked simulation changes play; simulate detail only where it affects play, since non-gameplay destructible scenery adds little. When: when deciding how much physics a game needs or scoping physics simulation. Why: Only mechanic-linked simulation alters decisions and outcomes.
+- [tradeoff] A simple, internally consistent model works better than a detailed model whose rules conflict with each other. When: When choosing how much detail a game world simulates. Why: Inconsistent detail breaks trust in the rules.
+- [pitfall] Learners may adopt a technique that works only inside the simulation and fail when applying it in reality. When: simulation used without debrief. Why: Simulation flaws can make a technique look valid.
+- [fact] A simulation's construction determines which tunings are possible; tuning values alone cannot produce a different structure.
+- [fact] Simulated inertia, where thrust adds force along facing and turning sets orientation directly, gives a ship a flowing feel that can outsell simpler designs.
+- [fact] Holding the run button does not raise top running speed in this design; speed is set by the simulation rather than button duration.
+- [fact] The side somersault reaches about five times the character's height and keeps the character airborne for more than one second.
+- [fact] Mario-style games simulate Newtonian forces only to the extent their mechanics need, which is top-down design rather than physics-game design.
+- [fact] A football game can model movement mechanics, play strategy, and individual athletes' performance, while a city simulator can model residents, workers, the economy, crime, and pollution.
+
+## competitive play and strategy
+- [definition] In player-versus-player play, two players compete directly against each other.
+- [definition] An outwit objective rewards gaining and using knowledge to defeat other players, using either extra-game knowledge or in-game knowledge.
+- [mechanism] Longer games dilute the first-move advantage, while very short games like tic-tac-toe let a rational first player always win or tie. When: Symmetrical turn-based games.
+- [mechanism] A fine-grained scoring system that measures each turn, flip, grind and jump, and scales with trick line length, rewards actions that closely match what players would do unrewarded, making high scores enjoyable to pursue. When: Designing a score system for chained-action or trick-based games. Why: Fine-grained rewards align with how players judge impressiveness, so pursuing scores feels like pursuing play.
+- [rule] Finals should be decided in play, so the eventual winner wins matches rather than winning by tiebreaker.
+- [heuristic] If an unintended strategy is more fun than the intended one, make it the core of the game and add variations to keep it interesting.
+- [heuristic] Exploitable rules get exploited, so designers should anticipate how a rating system could be abused.
+- [heuristic] Reduce first-move advantage with weak openings, compensation such as komi, a swap rule, long games, or chance elements. When: Symmetrical games where the first player gains an edge. Why: Each method dilutes the advantage of moving first.
+- [heuristic] If a successful throw deals double the damage of a successful attack or block, a balanced design needs about double the number of attack attempts compared with throws or blocks. When: Tuning damage in a rock-paper-scissors-style fighting game.
+- [procedure] 1) Score kills and deaths in each match. 2) Group players into matches of the game's size. 3) Break ties on tournament score. 4) Justify fairness through analysis or argument. When: when designing a Swiss tournament for a free-for-all game.
+- [procedure] Model a fighting game as a symmetric counter game by listing each move, its damage, and which moves counter it, then solve for the optimal first move at equal health. When: Designing or analyzing a small fighting game with a fixed set of moves.
+- [procedure] 1) Keep mind-game interactions within small groups. 2) Isolate groups with special mechanics or map structure. 3) Let fights involve only a few players at a time. When: large multiplayer games where yomi is wanted. Why: Small interacting groups keep modeling tractable even with many total players.
+- [tradeoff] Tuning only for experts loses newcomers, while a single dominant strategy at high levels can drive skilled players away. When: Deciding difficulty and strategy diversity for a competitive game. Why: Both newcomer retention and expert engagement depend on the balance between them.
+- [pitfall] If experienced players solve the largest decisions, they lose flow even while the game stays playable.
+- [fact] Dominant strategies discovered by players are called exploits because they are shortcuts the designer did not intend. When: Players find unintended dominant options. Why: Exploits arise from unintended gaps in balance.
+- [fact] A fighting game's core needs movement, a punch, a block, and a throw.
+
+## conflict and objectives
+- [model] A conflict theme can be stated as one force that wants to destroy something, which must survive.
+- [model] Conflict has three classic sources: obstacles, opponents, and dilemmas.
+- [definition] Conflict is the tension between players' objectives and the rules, procedures, or situations that stop them reaching goals directly, forcing them to work around the blockers.
+- [definition] A construction objective requires building, maintaining, or managing objects, in either a direct or indirect competitive setting.
+- [mechanism] Combined objectives pair a protected objective with a timer, and teams swap roles to try to beat the time. When: Team-based asymmetric maps.
+- [mechanism] In a conflict theme, each side fights with tools that express its nature, so the opposing force uses its own items against the playful side. When: When designing the opposing sides of a conflict-based game. Why: Tools that match each side's nature reinforce the theme.
+- [mechanism] Without human opponents, a single-player game must create conflict entirely through designed puzzles and structures.
+- [mechanism] Chase outcomes can be decided by speed or dexterity, by stealth and strategy, or by logic and deduction, depending on how the chase is designed.
+- [mechanism] Construction games often use resource management or trading and are decided by strategic choices rather than chance or dexterity.
+- [mechanism] When captures compete with a line-completion win, an attack can run out of steam in ladder-like sequences, which shapes the flow of play.
+- [heuristic] Pair the experience a game offers with its natural opposing force, so the theme becomes a conflict between the two. When: When a game's subthemes describe a pleasant experience but lack tension. Why: Conflict gives a theme power that subthemes alone lack.
+- [heuristic] Let a wider range of clashes emerge organically from the game's systems, instead of relying solely on scripted confrontations. When: designing rules for a story-generating game.
+- [procedure] 1) Identify each player's objective. 2) Identify the rules that block it. 3) Note whether players oppose one another. Compare these across games to see how conflict differs.
+- [procedure] 1) Identify the conflict in the game. 2) Classify its source as obstacles, opponents, dilemmas, or a combination. When: when analyzing a game's conflict.
+- [fact] Capture objectives require taking or destroying the opponent's terrain or units while avoiding one's own capture; this objective is found across chess, checkers, shooters, and strategy games.
+- [fact] Chase objectives require catching an opponent or escaping capture; chases may pit a player against the system, against other players, or one-sided, and players may chase and be chased simultaneously.
+
+## game objects and state
+- [model] PvP games often split into three stages: opening, middle and final. Designers can identify, design, measure and adjust these stages to fix dull or dragging sections.
+- [model] Isolating and abstracting subsystems with defined inputs and outputs supports functional independence, so changes elsewhere can be traced, much like object-oriented programming. When: Designing large-scale systems.
+- [definition] A game's objective is a clear goal players work toward; it is a key structural element, and without it the experience loses much of its shape.
+- [definition] A game keeps its result uncertain until the end, then resolves it into a measurable, unequal outcome such as a single winner.
+- [definition] Game mechanics are the rule-based interactions that remain once aesthetics, technology and story are stripped away.
+- [definition] Foundational rules are the abstract formal structure of a game: a mathematical representation of its state and of how and when that state changes.
+- [definition] A game state is everything describing a game in progress at one instant, including whose turn it is; it is what would be saved to resume the game later.
+- [definition] A game rule is an arbitrary, designed relationship between abstracted variables: arbitrary because no higher order dictates it, and designed because a designer creates it deliberately.
+- [definition] A forbidden-act objective makes players try to get competitors to break a rule, such as by laughing, talking, letting go, or making a wrong move.
+- [definition] Game objects are abstractions defined by rules, such as a poker straight or a chess king, and exist only within the game's system rather than as real-world things.
+- [definition] Game objects can be physical, abstract, or both, and include playing pieces, players, avatars, terrain, and in-game concepts such as a bank.
+- [definition] Every alteration to the available controls creates a new game state; a game where you steer a vehicle, pilot an aircraft, or pedal a bicycle has three states.
+- [definition] A game object is a visual representation paired with scripted behavior, and repeated pairing lets players read the object as a symbol of its mechanic. When: when objects are consistently linked to the same behavior. Why: Players learn the association through repeated use, so the look comes to signal the function.
+- [rule] Define every game object, concept, and behavior, and describe how they relate to one another.
+- [fact] Final states have no outgoing transitions, and a state machine may have none.
+- [fact] Forbidden-act games often have a physical component involving stamina, flexibility, or chance, and they are rare in digital games. Why: Digital games have limited direct competition and fair play is hard to monitor.
+
+## objects and world design
+- [definition] Objects are game mechanics' nouns (characters, props, tokens, scoreboards); properties are attributes describing them, each holding a state, often several values such as rank, color, location. (x2)
+- [definition] The museum venue is any place where people examine unfamiliar things for variety, knowledge, and a fresh view of daily life.
+- [definition] Object complexity is measured by the number of an object's properties and how much those properties vary.
+- [definition] A game level combines a mission, which lists what the player can or must do to finish it, and a space, which is the geometric layout where those actions happen.
+- [mechanism] Large objects that move slowly are easy to predict, while small objects that move quickly are much harder to dodge. When: when mixing object sizes and speeds in a hazard field. Why: Speed and size together determine how readable a threat is.
+- [rule] Define each game object's purpose before setting its numbers, such as whether a class deals damage, protects allies, or boosts loot. When: when starting content creation. Why: gives the numbers a target to aim at.
+- [rule] Define each game object's nature, complexity, evolution, and availability timing so players can learn how it behaves.
+- [rule] Build worlds from modular, richly interactive assets, varying them as a communicative system players learn to read. When: players must learn a system of meaning quickly.
+- [heuristic] Giving each object many possible interactions creates expressivity, which players experience as freedom and personal style. When: Designing objects the player can act on in traversal or combat. Why: Multiple valid ways to use one object let players express individual play styles.
+- [heuristic] Use the museum venue for experiences that present a range of things to examine and compare, rather than one sustained session.
+- [heuristic] Do not force an activity into a single venue when it clearly spans several.
+- [procedure] 1) Give each object type a small set of behaviors. 2) Define rules for how objects interact. 3) Let encounters emerge from these interactions instead of scripting each one. When: Designing interactive worlds with many objects. Why: Emergent interactions often produce creative and unusual results.
+- [pitfall] A space with no nearby obstacles offers no challenge and nothing to measure skill against, however good movement feels.
+- [fact] The museum venue covers zoos, aquariums, city sightseeing, and browsing unusual shops.
+- [fact] A single portable device can serve several venues, from the hearth and reading nook to the gaming table and anywhere else.
+- [fact] In open spaces such as fields or streets, player behavior is hard to predict unless other control methods are added.
+
+## physics and physical play
+- [definition] Orientation is the direction a character faces; rotation is the active process of changing orientation.
+- [definition] A physics game is one where the player mainly engages with the rules of a sophisticated simulation, built on a full model rather than only the parameters a mechanic needs.
+- [mechanism] Physical laws built into a game can implicitly limit actions, so the rules need not state every restriction, as gravity limits where pieces can be placed in Connect Four. Why: Built-in constraints compress the amount of explicit rule text needed.
+- [rule] Minimise physical load, meaning the gestures and button presses required, unless physical effort is the core challenge. When: Designing input for games that are not built around physical activity. Why: Excess physical demand causes discomfort and reduces accessibility.
+- [heuristic] Decide whether players want mindless action or intellectual challenge, and check whether success can come from dexterity or from clever strategy needing little physical skill. When: Positioning a game on the physical-to-mental spectrum. Why: Matching the mix of dexterity and thinking to the audience keeps the challenge suited to them.
+- [heuristic] A physics-driven character's response to player input can become the core of puzzle design rather than only a visual effect. When: a companion character responds to every player movement.
+- [heuristic] Physical constraints shape procedures, so seek creative, elegant solutions that are intuitive and easy to remember.
+- [heuristic] Give players a physical artifact, such as a printed score with initials, to take home from the experience.
+- [procedure] 1) Build a general, robust physics simulation. 2) Play within it to find interactions that are enjoyable. 3) Emphasise those interactions as the core gameplay.
+- [pitfall] Making every physical interaction perfect can remove the skill players are meant to learn and master. When: Tuning physics-driven movement systems. Why: When technology handles the difficulty, the physics no longer offers a skill to master.
+- [fact] Boards, dice, chips, and health meters are physical or visual ways of tracking foundational game state.
+- [fact] Physical skills include strength, dexterity, coordination, and endurance; their demands vary with the input method, from a controller to full-body motion tracking.
+- [fact] A new physical board feature can enable previously impossible mechanics, such as taking an opposing counter by pushing it over the rim.
+- [fact] Every game world needs a believable physical reality, where events feel credible, feedback reflects player actions, and objects and AI react to the world, each other, and the player.
+- [fact] Board and card games can gain similar expressive depth from physical components such as cards, dice, and tokens.
+
+## progression and items
+- [definition] A level cap stops character growth at a set point, keeping experience needs in line with content and preventing indefinite grinding.
+- [definition] Inventory is a general term for collected objects that are neither power-ups nor units, such as armor and weapons.
+- [definition] A loadout is the specific set of equipment chosen for a build.
+- [rule] Layer short-, medium- and long-term goals, each tied to a meaningful reward, so players always have a nearby objective and a distant one. Why: Keeps players motivated across stages of play. (x2)
+- [rule] Classify items by how they behave in play, not by how they look, since a quest item can resemble a permanent item or a consumable.
+- [rule] Every skill or gear piece should support at least one workable or best-in-class build where it shines, linked to a playstyle.
+- [heuristic] Use intermittent rewards to enrich gameplay; the same scheme may not raise engagement in unrelated settings such as paid work. When: enriching gameplay.
+- [heuristic] Use item-based growth, such as permanent stat boosts, when a level cap or the absence of an experience system fits the design better. When: When the game has a level cap or no experience system.
+- [heuristic] Use a level cap when the game needs a defined endpoint or when content must stay ahead of progression, and avoid an open-ended cap when standing should depend on skill.
+- [heuristic] Intermediate rating tiers reward partial success, so the top tier can stay demanding without being the only reward. When: a task has a hard perfect-performance goal. Why: Without partial tiers, most players face an out-of-reach goal.
+- [pitfall] Repetitive actions can mask real progress, so players feel no movement.
+- [fact] Item restrictions often bar trading achievement rewards, flagged untradeable items, and progression values such as experience, levels, or stats.
+- [fact] A hardware link between two devices can let game items or creatures travel between players' copies of a game.
+- [fact] Linear story-driven RPGs are the narrowest case of character progression, so designers must supply variety and challenge throughout.
+
+## zero-sum and win conditions
+- [definition] Zero-sum game: one player's gain is exactly the other's loss; payoffs are negatives summing to zero, so one value X describes both sides and winning equals opponent losing. (x3)
+- [definition] Even a game with no board and no movement can be modeled as a space, because its information must reside somewhere, so a single point can serve as one.
+- [mechanism] Over many rounds, winners are the players who gain most from their wins and lose least from their losses, not those who win single rounds. When: games where one round is mostly luck. Why: round-level luck is mostly averaged out across many rounds.
+- [mechanism] Systems check at defined intervals whether a winning state has been reached; if a winner is found, the game resolves.
+- [rule] A game should appear winnable to all players while never being truly winnable, so continuing motivation is sustained. When: When designing a continuing challenge. Why: Perceived winnability keeps players trying, while true winnability ends the challenge.
+- [rule] Change the victory condition so players focus on scoring rather than elimination, for example a race to a set number of victory points.
+- [rule] Keep ratings zero sum: features that add points from nowhere, like a minimum rating or bonuses for specific modes, invite farming. When: when designing a competitive rating. Why: points created from nothing can be exploited.
+- [rule] Use a zero-sum outcome when a single winner must be decided by a finite judgment. When: a single winner must be decided.
+- [heuristic] Keep the win condition separate from intermediate warning states, treating warnings as signals of danger rather than as the goal itself. When: when a game has warning states such as threats or alerts.
+- [procedure] 1) Pick two zero-sum examples and two non-zero-sum examples. 2) Identify the main difference in outcomes between the two groups. 3) Explain how that difference affects gameplay. When: when comparing game outcome types.
+- [metric] In a zero-sum win-loss scheme, a win counts as +1 and a loss as -1, so all outcomes sum to zero.
+- [tradeoff] Treating a multiplayer game as zero-sum simplifies analysis but ignores that its outcomes need not balance. When: analyzing a game with more than two players.
+- [pitfall] Losing for an entire game is frustrating, so hide standings or add other systems that keep trailing players engaged. When: when a positive feedback slide decides the game early. Why: a visible hopeless position drives players away.
+- [fact] Several players can reach an objective, yet the outcome still singles out one winner, with the rules handling special cases such as ties.
+
+## games as media
+- [model] Games are assemblies of designed parts like machines, but game mechanics interact in specific complex ways, while machine parts move in intricate but fixed patterns.
+- [definition] A game is an observable artifact that enables an experience, while the experience itself is private to each player and is what designers are actually judged on. Why: Designers never see the experience directly; they only build artifacts likely to produce it.
+- [definition] Games differ from productivity tools: they entertain, are enjoyed, and are an art form meant to evoke emotion.
+- [definition] The immersive fallacy is the belief that a game's meaning comes entirely from fiction and that players lose track of the game; no player forgets they are playing a game.
+- [procedure] 1) Ask what the player's role is. 2) Ask what goal the player has. 3) Ask what obstacles stand in the way. 4) Ask what resources the player has. When: When defining core gameplay from game verbs.
+- [fact] Games can combine text, images, video, sound, and music, and any other medium can be placed inside a game.
+- [fact] Games offer players far fewer verbs than books or films do, because stories are authored in advance while game actions must be simulated during play.
+- [fact] Games serve as a vehicle for crafting experiences; because life consists of experiences, games can meaningfully influence how people live.
+- [fact] Games are argued to be a medium that will eventually subsume all other media.
+- [fact] Games can move people beyond what traditional media achieves.
+- [fact] A good game is not necessarily a successful one; success also depends on understanding the game's purpose and its market position.
+- [fact] Games are enjoyed for their own sake, and immersion in a game resembles its play equivalent of immersion in an artwork.
+- [fact] Game spaces act as self-contained immersive systems, but they depend on players, which makes them systems for metacommunication.
+
+## repetition and replay
+- [definition] The possibility space is the set of motions a player can perform, not the motions they will perform; each reachable motion has its own aesthetic character.
+- [definition] The possibility space is the set of all game states that could ever arise in a game, and is usually a theoretical concept because listing them all is impractical.
+- [definition] A possibility space offers compelling problems within a narrative, creative options for solving them, and responses to player choices with meaningful consequences.
+- [behavior] When players repeat the same task, they feel stuck; varying action types and showing how each action advances toward victory helps.
+- [rule] Craft the possibility space as carefully as possible, then playtest it rigorously, since outcomes cannot be fully predicted in advance.
+- [rule] Forbid moves that recreate an earlier state to prevent endless loops of play, as Go does with repeated board positions. Why: Without this limit, play can cycle indefinitely.
+- [heuristic] Use expected recurrence as a quick elegance check, since repetition does not guarantee elegance but elegance is impossible without it. When: choosing between candidate features. Why: Recurrence is easier to judge than the nuance of a mechanic's interactions.
+- [tradeoff] Larger possibility spaces generally add replayability and unpredictability, but more outcomes do not always improve a game; constrained spaces can sustain challenge if difficulty matches and grows with player ability. When: Comparing replayability across games, or deciding how many outcomes to allow. (x2)
+- [tradeoff] Seasonal resets provide progression and a fresh chance for players who felt they had peaked, while a stable lifetime rating can stagnate. When: when choosing between permanent and seasonal ranks.
+- [pitfall] Small pauses that seem harmless still cause boredom and frustration when they repeat across a session.
+- [fact] An endless stream of simple, repeated events offers scant space for intrinsic appeal or artistry of presentation.
+- [fact] The size of a possibility space depends on scope: all possible games, a match between two chosen decks, and a match 15 minutes in each form a progressively smaller space. When: Defining what set of states is being analyzed.
+- [fact] In games, replay is common while redo is uncommon.
+
+## character and class design
+- [definition] In a classless design, labels such as healer or fighter are player descriptions rather than game rules, and any skill is open to any character.
+- [definition] A character build is a specific combination of attributes, skills, and equipment, and popular builds tend to suit particular play styles.
+- [definition] Character progression converts experience points into levels, and levels into skills, abilities and performance gains.
+- [definition] A state is a set of rules describing how a character responds to input, so the same input can yield different responses in different states. When: designing character movement with multiple modes. Why: States explain why identical controls can feel different in different situations.
+- [rule] Check whether a class locks players into one role or supports several play styles. When: reviewing a class design.
+- [rule] Specify each character type as its own object with properties, traits, behavior, and AI. Types include player characters, enemies, friends and allies, neutral characters, and others.
+- [heuristic] When two elements each serve one purpose and both are needed, combining them into one can save introduction time and budget. When: time or budget is tight.
+- [procedure] 1) Find strange features players talk about with excitement. 2) Identify funny or unique qualities. 3) Keep flaws that players actually like. 4) Check these remain after an elegance pass. When: After simplifying a design to confirm its memorable qualities survived. Why: Cleanup can remove the traits that make a game distinctive.
+- [procedure] 1) Decide the experience you want the player to have. 2) Find how characters can help create that experience while keeping their in-world goals intact.
+- [tradeoff] A class specialized for stealth excels at sneaking but struggles in open fights against many enemies, so each class trades strength in one situation for weakness in another. When: designing class roles. Why: Specialization makes each class strong only in some situations.
+- [fact] Classic tabletop-style RPG systems use six core scores: charisma, wisdom, intelligence, constitution, dexterity and strength.
+- [fact] Classes usually add attribute bonuses or penalties and class-only skills, with class-specific skills as the main differentiator that steers characters toward roles.
+
+## learning through play
+- [definition] Edutainment combines learning with entertainment across reading, writing, arithmetic, problem solving, and how-to topics, serving children and adults building skills.
+- [behavior] Children discovered geometry rules by trial and error when programming a turtle to draw things they cared about. When: when learners program toward personally meaningful goals. Why: Wanting a personal outcome motivates testing and refining rules.
+- [rule] Make rules discoverable through play rather than requiring players to memorize them.
+- [rule] Do not accept claims that a single brain hack produces large effects with little effort; prefer complex, evidence-based explanations. When: judging design advice or persuasion claims. Why: Real cognitive effects are small, context-dependent, and rarely produced by one easy trick.
+- [heuristic] Spread teaching over time rather than massing it, pacing how many elements are introduced at once based on complexity and early UX tests. When: Planning how many elements to introduce. Why: Distributed learning beats massed learning.
+- [heuristic] Decide what players already know before writing a tutorial, using target audience and game references, then verify those assumptions through playtesting rather than trusting them. When: During tutorial planning and early design. Why: Wrong assumptions about prior knowledge waste time teaching known skills or leave players lost.
+- [heuristic] A playful learning environment built around meaningful activities works better than adding rewards to a boring task. When: when designing educational or gamified products. Why: Learning tied to meaningful activity is more effective than rewards alone.
+- [pitfall] Dismissing fixed-answer challenges as non-games leads to excluding many acclaimed adventure games. Why: Fixed input-to-output mapping describes many well-regarded games.
+- [fact] Play-based education has been proposed as the best preparation for children in the twenty-first century.
+- [fact] Only a few educational games have been scientifically tested with measured learning gains; most commercial games labeled educational lack such evidence because the label is uncertified. Why: No certification process exists for the educational label.
+- [fact] Exergames, which require physical interaction, can encourage exercise.
+- [fact] Play lets the brain experiment with new and complex situations, so it functions as learning, and it matters most in childhood because young brains are more malleable.
+
+## venues and vr platforms
+- [definition] The workbench is the quiet, private, often messy work area of the home, such as a desk, workshop, or sewing corner, rarely seen by guests.
+- [definition] A venue is a persistent place where people use devices to play, and is a framework for understanding what gameplay fits where.
+- [rule] A video pitch follows the same rules as a live pitch: get to the point, seem organized, and show rather than tell. When: Making a video pitch. Why: The audience judges a video by the same standards as a live presentation.
+- [heuristic] Use the workbench for challenging, long-session games played alone or with dedicated online peers; avoid it for casual family or group play. When: choosing a venue for a game.
+- [heuristic] Learn venues and their properties, not just games and platforms, to see past current technology.
+- [procedure] 1) Identify which venue best suits the game. 2) Identify any special properties of that venue that will shape the game. 3) List which game elements harmonize with the venue and which do not. When: Checking that a design responds to where it will be played. Why: Places people play strongly influence what works in game design.
+- [fact] As of 2019, head-mounted VR displays, which favor intensity and privacy, seemed better suited to the workshop than to the living room. When: as of 2019.
+- [fact] The venue system has gaps and overlaps but has repeatedly proven useful for deciding which gameplay works best in which setting.
+- [fact] Venues change very little, while games and technologies change constantly.
+- [fact] Few VR experiences port easily to other input systems.
+- [fact] VR and AR aim to deceive proprioception as well as vision, so the body feels present inside the simulation.
+- [fact] Under age 2, children have trouble relating video content to the real world, the video deficit, and learn better from adults.
+
+## fun, beauty and spectacle
+- [definition] Submission is entering the magic circle of a new set of rules and meaning, where disbelief is suspended easily; a game's success depends on players' willingness to pretend its goals matter.
+- [mechanism] Watching a game can create social connection without everyone playing, and a compelling spectacle can win over non-players in a shared room. When: when some people in a group would rather watch than play.
+- [rule] To perceive more detail, suspend label-making and let detail-oriented perception take over. When: looking at an object to draw or design it.
+- [heuristic] Favor preserving the spirit of play over trying to gamify every activity.
+- [procedure] 1) Ask whether the game is interesting to watch and why. 2) Identify changes that would make it more interesting to watch. When: when spectators matter, such as onlookers in a room or remote viewers of streamed play.
+- [tradeoff] Spectacle is cheap to make, since a large blast suffices, while learning, social and character triggers need interrelated mechanics or characters. When: choosing emotional triggers.
+- [pitfall] Defining play as aimless release of surplus energy is outdated and wrongly claims that play has no goals. Why: The surplus energy theory no longer explains play.
+- [fact] Spontaneity often marks play but is not always present; a planned game of softball is still play.
+- [fact] Stereoscopic 3D images date back to 1838, so 3D imagery alone is not what makes VR new.
+- [fact] Beyond challenge, games have further sources of fun: play, fantasy, social interaction, exploration, collection, stimulation, self-expression, and construction or destruction.
+- [fact] Games can offer beauty through detailed characters, graceful motion, and well-chosen color compositions.
+
+## pacing, sessions and seasons
+- [definition] A season is a league in which a new one begins as soon as the previous one ends.
+- [mechanism] A sharp transition appears when a discrete change, such as regions with different scoring or rounds with distinct feels, marks the phase boundary.
+- [mechanism] A seasonal reset puts everyone back on equal footing, so each new season gives every player a similar chance to rise. When: when a ranked system resets each season.
+- [mechanism] Decision scope and decision pace are independent: a large decision that takes long fills the timeline smoothly, while a large decision made in an instant produces a sharp spike.
+- [rule] Let sessions start quickly, support different playing styles, and help players form an emotional connection with the world and character. When: Designing session entry and overall player experience. Why: Quick starts reduce friction and varied styles broaden the audience.
+- [heuristic] The right match or session length depends on the experience the designer intends, not on a fixed number.
+- [heuristic] Match the mix of decision scopes to the intended pace: many twitch decisions suit frenetic action, while profound choices suit slow strategy.
+- [fact] Questioning the convention that each play session stands alone can produce a design with persistent consequences.
+- [fact] Online seasons are usually treated independently, though winners may receive a small starting bonus in the next season.
+- [fact] Seasonal play is common in online player-versus-player games.
+- [fact] Many social and mobile games are built for sessions of ten to twenty minutes, so a long cutscene could take up an entire session.
+
+## skill ceiling and range
+- [model] Skill ranges can be stretched by reinvention, elastic challenges, training, emotional life support, and difficulty modification.
+- [definition] A game's skill range is the span of skill levels at which it offers meaningful challenge, often through twitch, tactical or profound decisions.
+- [definition] A skill-only arcade challenge gives no power gain, so the goal is to survive as long as possible rather than to finish.
+- [definition] The skill ceiling is the highest level of performance a player can reach, beyond which no way to improve exists.
+- [definition] Skill challenge requires new ways of playing, such as smarter enemy AI, new challenge types, or puzzles that combine several skills. Why: New skill demands raise difficulty beyond raw power.
+- [definition] A game's skill ceiling is set by the scope of its largest decisions.
+- [rule] Aim for a skill that is intuitive and easy to learn yet deep, expressive and fresh across many challenges.
+- [procedure] 1) Identify the lower skill limit, below which the game becomes frustrating. 2) Identify the ceiling past which play turns tedious. 3) Decide whether and how to widen these limits to include more players. When: When analyzing a game's target audience.
+- [procedure] 1) Let players practice solo before group play. 2) Ensure newcomers never hold critical group roles early. 3) Offer single-player modes where failure harms no one. When: games with group roles or skill-sensitive team play. Why: Players learn where failure hurts no one before facing skilled peers.
+- [tradeoff] A deliberate skill plateau suits games meant to be learned fast or dropped after learning, while a rising skill curve suits games meant to be mastered.
+- [fact] Chess is probably limitlessly deep, since human-computer teams beat human grandmasters, while tic-tac-toe has a low ceiling because perfect play is easy to learn.
+
+## skill versus chance
+- [model] Although thousands of skills exist, they group into three categories: physical, mental, and social.
+- [model] Skill and luck are two independent axes, not opposite ends of one line; a game can have much or little of each.
+- [mechanism] When success depends on player skill, the player works out how to defeat the challenge, producing a sense of personal accomplishment.
+- [heuristic] Casual, luck-based games tend to be shorter, while deep strategic games can sustain longer play. When: when setting game length. Why: depth of skill gives play more room to extend.
+- [heuristic] Balance skill and chance for the target audience, and replace tedious or overly random parts with skill or strategy so players feel in control. When: Tuning how much outcomes depend on skill versus luck. Why: Players feel more in control when outcomes depend on skill, and chance can liven tedious sections.
+- [heuristic] The skills that make a design entertaining can equally be used to exploit players. Why: the same techniques serve delight or manipulation.
+- [procedure] 1) List the skills the game requires. 2) Check for missing skill categories. 3) Identify dominant skills. 4) Check whether skill gaps make the game feel unfair. 5) Check that players can improve and reach mastery at a suitable challenge level. When: when reviewing a game's skill demands.
+- [tradeoff] Games of skill feel like contests that identify the best player, while games of chance feel relaxed because fate decides much of the outcome. When: Choosing the balance between player skill and randomness. Why: Each emphasis creates a different experience and suits different players.
+- [pitfall] Too much chance negates the effect of player skill, and too much skill negates the role of chance. Why: Each force weakens the other when either dominates.
+- [fact] A character may lack a skill entirely, while every character has a score in every attribute.
+- [fact] Skill and luck are often inversely correlated across games, but not always.
+
+## solvability and puzzles
+- [model] Games are trivially solvable (a human can solve them in play or by memorizing best moves), theoretically solvable (a human could in principle, but time or space size prevents it), or computationally solvable (only a computer can). When: Classifying a game's solvability before judging its balance. Why: The type determines which balance evaluation methods are feasible.
+- [definition] A game is solvable when one best action is knowable in every state, even if it does not always succeed; deterministic, perfect-information, transitive games are at least theoretically solvable.
+- [definition] Solvability does not require an action to always succeed; a game is solved when one action succeeds more often than any alternative, and the solution may state that probability. When: Non-deterministic games.
+- [definition] A solution objective rewards solving a problem or puzzle faster than competitors.
+- [procedure] 1) Assign each option its own fuzzy set. 2) Compute each set's membership. 3) Output the option whose set has the highest membership. When: Output options are unrelated categories, such as eat, sleep or watch. Why: Unordered options have no numeric scale, so comparing memberships directly picks the strongest choice.
+- [procedure] 1) Build the payoff table. 2) Remove dominated rows and columns by pairwise comparison until none remain. 3) Find intransitive loops by following best responses and drop options outside loops. 4) Write payoff equations, setting payoffs equal for each player and summing probabilities to 1. 5) Solve for every unknown. 6) Keep probabilities between 0 and 1 that are uniquely determined as the optimal mix. 7) Sum player values to classify the game as zero-sum, positive-sum, or negative-sum. When: Solving a finite intransitive game with a payoff table.
+- [procedure] 1) Write one payoff equation per throw. 2) Eliminate one probability using the sum-to-one constraint. 3) Substitute into the remaining equations to get a single-variable polynomial. 4) Solve it and reject any root that gives a negative probability. Why: probabilities cannot be negative.
+- [pitfall] Once a dominant strategy is found, players stop making real decisions and the game's puzzle is solved. When: A dominant option goes unaddressed. Why: Removing the need to decide ends engagement.
+- [pitfall] Defining games by strict closure excludes open-ended designs, so a game definition should allow for them. When: when defining or categorizing game designs. Why: Not every game has strict closure.
+- [fact] Tic-tac-toe has a very small game tree: with optimal play, the first player can always win or tie, and the second player always can at least tie.
+- [fact] Turn-based strategy games often exceed what tree search handles alone, so they need supplementary techniques.
+
+## surprise and reward pacing
+- [model] Stagnation has four patterns: repetition, balance of power, loops, and no progress, each with a remedy. When: Diagnosing why players feel stuck.
+- [behavior] A surprise outcome can reinvest players, such as an unexpected companion that proves more valuable than the promised reward.
+- [rule] Alternate suspenseful slow planning with short bursts of rapid choice, and add enforced breaks between rounds, to sustain interest. When: the design needs both tense, slow planning and bursts of rapid choice. Why: Varied pace sustains interest across a play session.
+- [heuristic] Lengthen the middle phase and shorten the final phase by tuning feedback loops or the total power in play. When: when the end game drags. Why: loops and total power shift where phases transition.
+- [heuristic] Frame resources that enemies drop as content the player will need later, so sustenance rewards gain meaning. When: When introducing collectible resources early. Why: Explaining future use gives the reward a purpose now.
+- [heuristic] Generating new problems over time, rather than offering only fixed goals, is what keeps players returning to a game. Why: Fresh problems give players reasons to continue.
+- [heuristic] Break an established rule in a way that keeps the game's logic coherent while offering discovery.
+- [procedure] 1) Check story, rules, artwork and technology for unexpected elements. 2) Check whether the rules let players surprise each other. 3) Check whether the rules let players surprise themselves. When: when reviewing a game for surprise.
+- [pitfall] Tying rewards to win streaks can make the eventual end of a streak feel like a setback that taints the whole streak experience.
+- [pitfall] Rewarding only rare special targets, such as floating hoops, makes players ignore everything else and drains life from the core action system. When: Adding bonus objectives to a core action system. Why: Players optimize for the only rewarded goal and neglect the rest of the mechanics.
+- [fact] Games often encode the hot-hand idea by giving players on a streak temporary performance boosts and visual effects.
+
+## game classification and scope
+- [model] Game boundaries are either physical, enforced by space and code such as level architecture, or conceptual, sustained by social agreement among players.
+- [model] Games are classified by three properties: the number of players, the goals of those players, and the information each player has.
+- [model] Games lie on a spectrum from well-aligned fulfilling play to pure compulsion, with three parts: well-aligned, mixed, and compulsion machines.
+- [definition] Boundaries separate what happens inside a game from everything outside it, both formally and emotionally.
+- [definition] Game clichés are conventions reinforced across many games, arbitrary in form but useful for systems that have no real-world counterpart.
+- [heuristic] Ask whether non-game human activities could benefit from good game design principles.
+- [procedure] 1) Estimate a game's typical length from memory. 2) Look up its published play time, or check several rules sites for folk games. 3) Compare the listed time with your estimate. 4) Decide whether that length suits the game and propose changes that lengthen or shorten it while keeping core play. When: when evaluating a tabletop game's length. Why: perceived length often differs from listed length.
+- [fact] Games can differ in medium, cost, real-time versus turn-based play, and how their rules are stored, yet all still count as games.
+- [fact] The difference between games and puzzles lies mainly in goal structure rather than mechanics, so many puzzles can become games and vice versa.
+- [fact] ESRB and PEGI ratings flag inappropriate content rather than a target age, so a rating does not mean a game is made for a specific age.
+
+## game data and tooling
+- [heuristic] Unusual edits to a prototype often reveal the most about its mechanics.
+- [heuristic] Prefer rewording a card over adding long exception text to the rules. Why: Long rule additions to fix each ambiguity make the game harder to learn.
+- [heuristic] Use the Update Method for many live, mostly independent entities that must be simulated over time; it fits poorly to abstract turn-based games like chess.
+- [heuristic] Wide inheritance trees are easier to work with than deep ones. When: Choosing an inheritance shape for a family of classes. Why: Shallow hierarchies avoid long chains of overrides and dependencies.
+- [heuristic] Use Type Object when many kinds are needed, when the types are not known up front, or when designers must add types without code changes. When: Choosing a type system for a game with many or unknown kinds. Why: Hard-coded language types are too rigid for open-ended or data-authored content.
+- [pitfall] Automated chat filters based on forbidden or allowed word lists can be circumvented, since human pattern recognition finds workarounds faster than machines.
+- [fact] Voice chat is harder to filter than text, though voice recognition is making automated voice filtering possible.
+- [fact] Turn-based games where clock time does not affect mechanics are often recorded as simple lists of moves with no timing.
+- [fact] An update method often doubles as a sandbox method.
+- [fact] Independent design parts can be built in any order, while interdependent parts must be built in dependency order.
+
+## level and environment design
+- [definition] A dungeon is a maze-like space of connected challenges, rewards and puzzles, paced so the player moves through it in sequence.
+- [mechanism] Weather, light and terrain shape emotion: enclosed darkness that opens into bright light can mark progress and produce a strong emotional payoff. Why: Contrast between confinement and open light is felt as freedom and accomplishment.
+- [behavior] Open-world creatures can change with the day/night cycle and weather, which makes the world feel reactive over time. When: open worlds with day/night or weather systems.
+- [rule] Give players several ways out of bad situations, such as healing, teleporting dangerous enemies away, protecting against deadly status effects, and scouting traps and monsters before entering danger.
+- [rule] Games should support good environmental practices or at least avoid promoting harmful ones.
+- [rule] Let players choose among dungeon paths while keeping pacing strict, so no challenge exceeds the player's current skill level.
+- [heuristic] Judge a game's setting by how it makes the player feel, since environment can carry much of the game's emotional impact beyond its combat or roleplay systems.
+- [fact] The environment can either facilitate or obstruct learning.
+- [fact] Between a dungeon's entrance and exit sit treasure, monsters, rescued characters and traps.
+- [fact] A dungeon crawler's core needs a character, a dungeon, a hero, monsters, and leveling up.
+
+## problem solving and learning
+- [model] Games are predigested models with simple rules that are easy to absorb and manipulate, which is why they feel relaxing compared with reality. Why: Simple rules lower the effort needed to understand the system.
+- [mechanism] Playing games with simpler models lets players practice digesting and experimenting, preparing them for more complex models later. When: when a game is used to build skills for complex situations. Why: Practice on simple systems transfers to harder ones.
+- [rule] Use existing or new games as tools for specific lessons or learning and health goals, not as complete replacements for a course. When: planning educational use of games. Why: Games work best as tools within education rather than as full systems. (x2)
+- [rule] Use games for practice where learners must combine several skills and techniques in an integrated way. When: training skills that must work together. Why: Games demand integrated application of skills.
+- [heuristic] Games can teach players patience, perseverance and resilience.
+- [heuristic] Games can let players manipulate things impossible in real life, such as time or space, to teach concepts.
+- [heuristic] Game engineering faces four recurring challenges that make patterns especially useful: time and sequencing, compressed iteration with many programmers, tangled behavior from many interacting parts, and critical performance. When: designing game architecture. Why: These pressures recur in game code more intensely than in typical business software.
+- [fact] Any game with a goal presents a problem for players to solve, such as beating opponents or completing a level.
+- [fact] Games offer concrete situations and problems to solve, which makes them useful for creating teachable moments.
+- [fact] The claim that complex games improve players' problem-solving ability remains unproven.
+
+## strategy game design
+- [model] The number of strategic actions scales roughly with subjects, verbs, and objects multiplied together, so growing any of the three multiplies the emergent possibilities. When: Estimating a game's strategic depth. Why: Each combination of subject, verb, and object can yield a distinct action.
+- [model] Simple patterns like rock-paper-scissors and matching pennies form a skeleton, while yomi adds the deceptive prediction layer that makes the game feel alive. When: analyzing competitive game depth. Why: Abstract structure alone does not produce mind games.
+- [definition] Strategic actions are specific plans built from basic actions toward a goal; they range from simple to complex and are meaningful only within the larger picture of play. (x2)
+- [definition] Strategy games centre on tactics, planning, and managing units and resources, often with themes of conquest, exploration, or trade.
+- [mechanism] When strategies can be mixed in fine increments, the strategy space becomes nearly continuous, and each blend requires a precisely fitted response that only experts can find. When: games with fine-grained unit or resource counts. Why: Fine increments make the number of possible strategies nearly infinite.
+- [metric] Comparing strategic moves against routine moves gives a loose, judgment-based gauge of how much emergent play exists.
+- [pitfall] Requiring every version of every strategy to be equally strong is a mistake; viability is judged between strategies played well.
+- [fact] Most turn-based strategy titles hold imperfect information because actions involve skill checks or combat randomness.
+- [fact] A game's list of strategic actions is usually longer than its list of basic actions.
+- [fact] Strategies learned in playful contexts were more likely to transfer to other contexts than strategies learned in formal instruction.
+
+## abstraction and problem solving
+- [definition] Solving a problem with a computer begins by choosing an abstraction: the subset of data relevant to the task, keeping properties that matter and ignoring peripheral ones.
+- [mechanism] Each yes/no question halves the remaining possibilities, so twenty well-chosen questions can single out one answer among over a million. When: Turning a guess-only riddle into a puzzle with progress. Why: Two to the power of twenty exceeds one million.
+- [mechanism] An abstract variable gains meaning only through the goals and relationships a designer defines, such as a collectible that matters because it restores health or counts toward a goal.
+- [heuristic] Games need not follow physical laws, so designers can distill physical interaction into abstract forms and use rules that manipulate arbitrary relationships between variables to widen expression.
+- [heuristic] Changing the abstract relationships between objects can alter the meaning of their spatial relations, giving rules a human meaning beyond challenge. When: Seeking expressive depth beyond triumph, collection and challenge. Why: Spatial meaning comes from the rules linking objects, not only from their positions.
+- [heuristic] Modeling even a seemingly trivial space abstractly can reveal surprising design insights. When: A game appears to have no space.
+- [heuristic] Represent elements abstractly to leave room for players' imagination; concrete detail, as in shooters and sports games, rarely supports rich player-spun stories. When: the goal is for players to generate their own stories. Why: distant representation invites players to fill gaps.
+- [heuristic] Change how a decision feels by revealing or hiding existing information before reworking systems, since information changes are usually quicker and easier.
+- [fact] A clear problem statement widens the creative space, gives a standard for judging ideas, and aligns team members who might otherwise solve different problems.
+
+## dependencies and systems
+- [model] A dependency stack arranges elements in layers, with each element depending on the layers beneath it.
+- [definition] A dependency links two design parts so that a change in one forces changes in the other; it does not mean the foundation must fail.
+- [definition] Deep interlock means two elements define each other, so removing one changes what the other is, as a piece's meaning depends only on opposing pieces.
+- [definition] The critical path is the set of missions, narrative and gameplay elements required to finish the game.
+- [mechanism] In highly interconnected designs, changing one part ripples into others, e.g. changing jump height can affect level geometry, enemy behavior, animation, sound, and story. When: When changing a core design value after it has been planned. Why: Every system built on the original value must be revisited. (x2)
+- [rule] Design systems that generate events rather than authoring the events directly, since mechanics and players together produce the play sequence.
+- [heuristic] A weak element often suggests a useful change in another element, so look across categories for improvements rather than fixing one element in isolation. When: When a design has a clear weakness.
+- [procedure] 1) Break the game into elements such as mechanics, controls, interfaces, and subsystems. 2) Identify key dependencies among them. 3) Draw the relationships as a layered graph.
+- [fact] In a game, level appearance depends on layout, layout depends on the player's tools, and the tools depend on the basic interface.
+
+## design exploration
+- [definition] An exploration objective asks players to explore areas; it is nearly always paired with a goal that is more competitive.
+- [behavior] Unlike passive viewing of a film, a game demands exploration, and that exploration is central to how players perceive game feel.
+- [rule] Encourage learners to explore, discover and experiment, and give immediate feedback about success and failure. Why: active experimentation with prompt feedback supports learning.
+- [heuristic] Experimental designs at the edges of the game definition may point toward new forms of play and interactivity. When: when exploring new forms of play.
+- [heuristic] Technology can enable previously impossible designs, but many of the greatest designs come from tireless experimentation rather than technical advance alone.
+- [procedure] 1) Temporarily set aside craft constraints. 2) Ask extreme questions, such as invincibility, very fast movement, or infinite resources. 3) Keep any experiment that reveals a missed opportunity or emotional moment, incorporating its lesson rather than simply reversing it. When: Design feels flat or over-smoothed.
+- [procedure] 1) Pick an experience from your own life you would want to share. 2) Distill its core feel into a small, concrete element. 3) Draw sources from outside games and your own genre. 4) Shape a tetrad element with the inspiration, from one source or blended sources.
+- [procedure] 1) List the key moments of the game, checking which ones players would name among their top ten. 2) Make each moment as powerful as possible. 3) Chart the strengthened moments on an interest curve. When: before drawing an interest curve.
+- [procedure] 1) List the game's elements. 2) Remove one element at a time until the game becomes trivial. 3) Restore the last removed element; what remains is the core. When: Identifying the core of a game you know.
+
+## difficulty recovery
+- [mechanism] When players see too little hidden state, play degrades into reactive thrashing, low skill, and mostly random choice, such as when they see only their own hidden cards and current bets. When: Players cannot see enough of the game state.
+- [mechanism] Sparse save points force long stretches of play between saves, which makes optimizing every action impractical.
+- [rule] To fix a slow opening, temporarily add positive sum rules, start players at a higher power level, or offer more engaging early choices. When: when the opening feels slow. Why: more power or meaningful choices make the opening engaging.
+- [rule] Use a time or turn limit that declares the leader at that point the winner to stop a negative feedback stalemate. When: when negative feedback can stall the game. Why: it forces a result without a decisive finish.
+- [rule] Make early failures survivable, show clearly that an action failed, and let players retry at once, rather than punishing them with unfair deaths. When: Players are still learning a mechanic. Why: Unfair deaths during learning feel unfair and drive players away.
+- [rule] Detect when a player is stuck, then give just enough help to pass the obstacle without destroying its challenge.
+- [rule] Use small setbacks such as lost resources, a lost ally, missed content, or lost information, so the game continues along a new path. When: When failure should cost something without stopping play. Why: Setbacks keep play moving.
+- [heuristic] Some starvation is easy to fix by increasing sight radius or revealing more information, such as more cards.
+- [tradeoff] Reduce cue salience or add lookalike decoys when uncertainty is part of the challenge; decoys that resemble enemies create false alarms. When: uncertainty is intended as challenge. Why: Lookalikes raise uncertainty but can cause players to attack innocent objects.
+
+## game architecture and scripting
+- [model] In Subclass Sandbox the composing method lives in the derived class and primitive operations live in the base class; in Template Method the base class holds the method and derived classes implement the primitives. When: Comparing the two patterns that both build behavior from primitive operations. Why: The placement of the method is the only structural difference between the two patterns.
+- [mechanism] When a game system changes, only the base class may need edits, not every subclass, because coupling is confined to the base. When: An engine subsystem's interface changes. Why: Subclasses depend on the base's operations rather than on the engine directly.
+- [behavior] Sandbox games offer more player agency, but it is still bounded by what designers planned, so some actions are possible while their moral opposites are not. When: Designing open-world or sandbox games with morally charged actions. Why: Designers choose which actions exist, which limits how players can express their values.
+- [rule] Store shared attributes in the type object and per-instance state in the typed object. When: Designing typed objects that share a type. Why: Shared values need one copy per type, while current state varies per object.
+- [heuristic] Subclass Sandbox suits a base class with many derived classes whose shared behavior should be reused, when the base can supply every operation they need. When: Many subclasses share behavior and coupling to the rest of the program should be minimal. Why: Without the needed operations in the base, subclasses cannot compose their behavior.
+- [procedure] 1) Make the needed operations protected methods of the base class. 2) Add an abstract protected virtual sandbox method that subclasses must override. 3) For each new subclass, inherit from the base, override the sandbox method, and compose calls to the provided operations. When: Building a base class whose subclasses assemble behavior from shared operations. Why: Subclasses then need no engine headers, and engine coupling stays inside the base class while subclasses define only the composition.
+- [procedure] 1) List the system's parts and their dependencies. 2) Rate each part's uncertainty. 3) Identify the core parts. 4) Iterate the core a few times before adding any backlog ideas. When: A character or system is too large to analyze at once.
+- [fact] Scripting separates behavior design from the engine so designers can change behaviors without programmer involvement, and also supports modding, level logic, interface code, and rapid AI prototyping.
+- [fact] Scripts can be handled as data files, and a language simple enough lets level designers or technical artists write behaviors.
+
+## genres, market and platform
+- [definition] A rush is an early attack launched before any military units are built.
+- [definition] A rhythm game requires players to input actions in time with a track. Rhythm games evolved from earlier call-and-response toys that asked players to repeat sequences.
+- [definition] Rhythm means elements or movements recurring at set intervals, a principle that organizes games, buildings, and music alike.
+- [mechanism] A shared item that works only if both players buy it creates a cooperation dilemma, since buying alone can cost more than it saves. Why: Lone buyers gain nothing and pay extra.
+- [tradeoff] Designing around one input system gives strong quality on that platform but makes the game hard to port to others. When: Quality on one chosen platform matters more than reaching many input systems.
+- [pitfall] Judging a design only by what happens on screen misses the emotion created by possibilities that were never realized.
+- [fact] Real-time strategy is a small share of total game sales but one of the strongest genres on PC.
+- [fact] More rugged and mobile technology is likely to make games for outdoor playground play feasible. Why: Feasibility, not demand, has kept the industry away from this venue.
+- [fact] Rhythm supplies structure to games and buildings through pacing, column spacing, and beats, and it shapes people's cognitive responses to them.
+
+## narrative and identity
+- [definition] The game world is the computer's internal model of the game's reality, which the computer updates by integrating input.
+- [definition] A game's theme is the central idea that ties the whole game together and that every element must support.
+- [behavior] When story and gameplay decisions conflict, gameplay usually wins; narrative designers have more rule-level influence only when story is a central pillar. When: Conflicts between narrative and system decisions. Why: Gameplay drives most design decisions.
+- [rule] Identify the top moments of an experience before arranging them; a team that cannot name them has no basis for a curve. When: at the start of design work. Why: arranging moments into a good shape requires knowing what they are.
+- [rule] Combat should produce heroic moments at certain points without scripting every move of the whole game.
+- [heuristic] Simple iconic, surreal visuals that are neither realistic nor abstract lower player expectations about real-world physics, making unrealistic or stylised movement acceptable. When: when the game uses physics or stylised movement that differ from real-world expectations. Why: Players judge motion against the style's expectations; a consistent, minimal style does not invite comparison with realistic physics, so a stylised look permits stylised physics.
+- [heuristic] Props built from materials that fit the setting, such as nets used as bags, reinforce the setting more convincingly.
+- [fact] Iconic characters are simple, speak little, and look nonthreatening.
+- [fact] Games author mechanics that yield different events each session, whereas film, novels and dance author a fixed event sequence that plays out identically every time.
+
+## novelty and technology
+- [behavior] The first games using new technology gain an emotional rise from some players simply because the technology is new. Why: novelty itself excites, but only temporarily.
+- [rule] Keep controls and outcomes predictable; add occasional novelty via mountains of varied content, mechanics introduced over time, and more sophisticated physics simulation. Too much novelty at once overwhelms, exhausting attention. (x2)
+- [rule] When meeting a new technology, ask how it could become foundational to your game instead of only polishing an existing design. When: evaluating a new technology.
+- [heuristic] Networked multiplayer remains manageable when rapid-fire machine guns are avoided. When: when designing weapons for networked multiplayer.
+- [heuristic] Successful games combine novel elements with familiar ones, so players have anchors while still encountering something new.
+- [pitfall] Early sales come from novelty, yet a game lacking solid play loses its players just as rapidly.
+- [pitfall] Chasing what technology can do can distract designers from their real goal, a great game; engineers are especially prone to this. Why: Novelty can replace the purpose of the game.
+- [fact] New technologies create new accidental harms, not only the harms that existed before.
+- [fact] Newer controllers such as dance footpads, handheld touch screens, and motion remotes have expanded game audiences beyond traditional players.
+
+## roles and character design
+- [model] Roguelikes combine character leveling with arcade-style punishment, so power resets each run while player skill accumulates across runs.
+- [definition] Role-playing games centre on creating and growing characters within rich, quest-driven stories.
+- [mechanism] Changing which role the player controls can transform a familiar game concept into a new kind of game and unlock new gameplay areas. When: when rethinking a game concept.
+- [heuristic] To push an object toward its role, raise the stats that serve that role and lower the stats that work against it; a glass cannon maximizes damage and minimizes damage-soaking. When: once the object's role is defined.
+- [procedure] 1) Give each character exactly three attributes. 2) Ensure every attribute has some value to all three roles. 3) Describe each attribute's general effect, not exact numbers. When: Designing attributes for a multi-role team game. Why: Every attribute stays meaningful across roles.
+- [procedure] 1) Take a familiar game concept. 2) Ask what would happen if the player controlled a different entity in it. 3) Define that entity's goal. 4) Test whether the new role yields new play.
+- [pitfall] An attribute that boosts only one role becomes a god stat for that role and a dump stat for the others, breaking role balance. When: Designing attributes for distinct team roles.
+- [fact] Role-playing games offer roles such as healers, fighters, and magic wielders that define basic abilities, and players often create several characters to try different roles.
+- [fact] Traditional RPGs are expected to offer a vast realm to explore.
+
+## cheating and balance
+- [mechanism] Catch-up mechanics let trailing players overtake the leader by other means, so attacking the leader is not necessarily the best move.
+- [rule] Some advantage is normal; close only loopholes that ruin the experience for others, without removing emergent play.
+- [heuristic] Automated pairing and partial anonymity between players make collusion harder to organize.
+- [heuristic] Good games often show the eventual winner trailing for several turns before recovering, a sign of drama that designers aim for.
+- [procedure] 1) List how players can cheat in the game. 2) For each method, judge whether anyone would notice it. 3) Decide whether players trust the game enough to keep playing. When: when competitive or multiplayer play could be undermined by cheating.
+- [metric] A competitive game should measure skill fairly, make winning something players want and feel proud of, let novices and experts each compete meaningfully, and ensure experts usually beat novices. When: Evaluating a competitive game's design. Why: Fair measurement and meaningful competition across skill levels sustain motivation to win.
+- [pitfall] One caught cheater at a big event erodes players' confidence in the entire rating system.
+- [fact] Single-player dominance in videogames came partly from the novelty of interactive worlds and partly from technical limits of software and hardware.
+
+## problem solving and framing
+- [rule] State a design problem as a goal plus constraints, and check whether each constraint is truly needed. When: when framing a design problem. Why: unneeded constraints can rule out good solutions; a clear problem statement lets design proceed much faster.
+- [rule] Craft a satisfying resolution, usually measurable and unequal, since players invest emotion in the outcome.
+- [rule] If the real problem becomes clear only after exploring ideas, go back and restate the problem clearly. When: after exploring ideas reveals the true issue.
+- [rule] A design X must work as a feature filter (razor) and as a memorable slogan; a slogan that cannot guide feature decisions is weak. When: When writing the core statement of a game. Why: A vague slogan like a generic achievement phrase cannot decide which features belong.
+- [procedure] 1) List the explicit problems the game asks players to solve. 2) Identify hidden problems that arise during play. 3) Check how new problems appear over time to draw players back. When: when reviewing a game's problem structure.
+- [procedure] 1) State the problem and a clear goal. 2) Set boundaries, problem space and allowed methods as rules. 3) Build a simplified internal model with only needed relationships, which can be manipulated. 4) Pursue the goal through conflict. 5) Absorb attention so the outside world fades. 6) Give objects importance when they advance the goal. 7) Win by defeating the problem or lose to it.
+- [procedure] 1) State the problem the game must solve. 2) List assumptions about the game that are unrelated to that purpose. 3) Check whether a game is truly the best solution, and why. 4) Define how you will know the problem is solved.
+- [tradeoff] A problem stated too narrowly rules out clever solutions, while one stated too broadly yields designs that miss the real goal. When: when wording a design problem. Why: scope determines which solutions remain possible.
+
+## procedural rhetoric
+- [model] A video game models the behavior of a source system, such as traffic or football, by writing code that simulates the behavior the designer wants to focus on.
+- [model] Most games share four procedure types: starting actions that put play into motion, progression actions that are ongoing, special actions available only under certain conditions, and resolving actions that close play.
+- [definition] Procedural rhetoric: a game's rules form a communication system that persuades through how it works, especially when a claim depends on system behavior under varied conditions. (x2)
+- [definition] Procedures are the actions and methods of play rules allow players to pursue objectives, such as dealing cards or walking and shooting, guiding behavior into interactions unlikely outside the game.
+- [definition] Procedurality is a computer's ability to execute rule-based behavior, and video games are a form of procedural representation.
+- [procedure] 1) Identify the starting action that puts the game into play. 2) Identify the progression of ongoing actions. 3) Identify special actions available only under certain conditions. 4) Identify the resolving action that brings play to a close. When: Analyzing how a game's procedures are structured, board or digital. Why: Comparing procedure lists across games reveals differences in special actions and in whether the system or players resolve the game.
+- [procedure] 1) Ask who can use the procedure: one, some, or all players. 2) Ask what exactly the player does. 3) Ask where it occurs and whether location limits it. 4) Ask when it occurs and whether turns, time, or game state limit it. 5) Ask how players access it: physical, indirect controller, or verbal command. When: Describing or designing a game's procedures. Why: Answering these five questions makes each procedure's scope and access explicit.
+- [pitfall] Players who reason directly toward the goal will find some required procedures inefficient, and that friction is intended by the rules.
+
+## strategy and chess
+- [model] Three mechanical fixes for the commander problem are real-time play, privileged information and restricted communication, and they can be used alone or together. When: When one player dominates decisions in a co-op game.
+- [definition] The commander problem, also called the alpha player problem, occurs when one player takes over decisions and directs others by rote in a multiplayer co-op PvE game.
+- [definition] A complex strategy is a set of contingencies, with a planned response for each reaction an opponent might make.
+- [mechanism] The commander problem only arises when every player knows the same game-state information, because private information leaves no one able to decide for others. When: When designing co-op games with shared state. Why: Shared knowledge lets one player direct others.
+- [mechanism] Competition for status combined with complex strategies leads players to share and discuss tactics, so rivalry can deepen community. When: when a game pairs competitive ranking with deep strategy.
+- [mechanism] Each race should keep only units that are meaningful and distinct, rather than filling it with 20 to 30 units; races can share some unit types but should differ in how they use them. When: designing multiple playable factions or races. Why: Too many similar units dilute each race's identity and make balance harder to control.
+- [fact] Chess is negative sum: it has no reinforcements, captures are the only way pieces leave the board, and equal trades give a mild edge to the side ahead.
+- [fact] Each chess unit has a color, rank, location, and set of behaviors, and every move changes unit locations so relationships between units change constantly.
+
+## systems thinking in games
+- [definition] Systems are used to control a significant group of related gameplay toward a specific outcome, which is what makes them the unit for balance work.
+- [definition] A system needs all its elements; if removing a component leaves function unchanged, the set is merely a collection.
+- [definition] In that definition, system means interrelated elements, formal means clearly defined by rules, and closed means the system has boundaries.
+- [mechanism] Game elements are interdependent, so one change can ripple through many other elements and alter the whole system. Why: Games are fragile systems.
+- [rule] When studying any activity, look beneath the surface for its objectives, rules, procedures, resources, conflict, and skills to learn.
+- [heuristic] Understanding a game as a system, rather than a single story, lets designers predict how a change will affect other experiences.
+- [tradeoff] Systems range from precise and predictable, with one or two outcomes, to varied and unpredictable, with countless outcomes. The designer chooses where a game sits on this range. When: when setting how many outcomes a game can produce. Why: more possible outcomes add variety but reduce predictability.
+- [fact] Emergence is crucial to how game systems become meaningful, since complex systems let things happen that designers did not expect.
+
+## elder games
+- [model] Elder games take five forms: a harder game, governance privileges, the joy of creation, guild management tools, and a chance to teach.
+- [model] Elder game forms vary by genre: artistic expression in sim and social games, raids, PvP, guild leadership and new content in MMOs, and ending a campaign satisfyingly in tabletop RPGs. When: Designing post-progression content.
+- [model] Endless games, including tabletop RPGs, MMOs and some free-to-play titles, can be modeled with a final elder game phase whose start depends on progression length.
+- [definition] An elder game is a post-progression activity that keeps veteran players engaged after a leveling game stops offering new discoveries.
+- [rule] If players quit at the elder game, soften the transition with expansions that raise the level cap, multiple replayable builds, or an elder game that appeals to progression-oriented players. When: when subscribers churn at the elder game transition. Why: an abrupt transition ends engagement early.
+- [heuristic] Give experienced players a meaningful role, such as hiding or creating challenges for others; they take pride in it and enjoy the status it brings.
+- [pitfall] Granting elders too much control, such as governance privileges, carries risk.
+
+## game purpose and purity
+- [rule] Purity of purpose: each game component should be clearly defined, have a reason to exist, and have a single mission, doing only one job.
+- [heuristic] Good goals are concrete, achievable, and rewarding: players must understand them, believe they can reach them, and find the reward satisfying at the right challenge level. When: Designing player goals. Why: Each quality keeps players motivated to attempt and complete the goal.
+- [tradeoff] Pursuing purity can strip out depth, while adding depth without clarity confuses players; balance the two.
+- [pitfall] Counting purposes is only a rough guide to elegance, because part of elegance resists measurement.
+- [pitfall] Asking players to practice a skill with no threat or target makes the instruction meaningless.
+- [fact] Some games are pure mechanics with abstract representations, such as poker, soccer and tile-swapping puzzles, yet still create tension, doubt and triumph.
+- [fact] Designing decisions is the purest form of game design, since story, visuals and sound are not required for a game to exist.
+
+## game structure and engine
+- [definition] An event is any occurrence during play, like one piece taking another or a character hitting a wall and rebounding off it.
+- [rule] When errors cannot be prevented, provide recovery through undo, retry from a nearby checkpoint, or resetting decisions. When: Designing systems where players may make regrettable choices. Why: Recovery options relieve players and reduce frustration from mistakes.
+- [tradeoff] Charging extra costs for acting early offsets the benefit of a random early turn, so players weigh a tempo gain against its price. When: designing a turn-order system with random streaks. Why: costs keep early and late turns from being uniformly advantaged.
+- [fact] Exceptions added to movement rules, such as a two-square first move or diagonal-only captures, make the rules complex but balanced and interesting.
+- [fact] Engine distance units are roughly 2 cm each, but game distances differ from real ones, so reference sizes matter more than the nominal conversion.
+- [fact] Most games are not event-driven in the GUI sense, so an event loop is not the default game structure.
+- [fact] Engine and scripting limits such as rendering distance, NPC animation triggers and quest branching can constrain what a world design can include.
+
+## realism and skill
+- [definition] A real skill is an ability the player must actually possess and exercise, such as pressing the right buttons at the right time.
+- [rule] A game whose visuals look realistic must deliver realistic physics; if visuals promise more than physics deliver, players lose faith in the world's fidelity. When: when a game's visual realism exceeds its physical behavior. Why: Broken visual promises erode player trust.
+- [rule] Make sure player choices are real and the player is not railroaded; when unsure, ask what the player knows or wants right now. When: reviewing choice points.
+- [rule] Skill tests must include real failure, and that failure must not destroy the experience when it happens.
+- [heuristic] Aim for a balance of real and virtual skills rather than relying on either alone.
+- [tradeoff] Realism works against amplification, while a game can offer a clean, simple-to-learn version of a complex system.
+- [pitfall] Realistic characters pushed toward human appearance without matching motion and detail can fall deep into the uncanny valley. When: Realistic or mimetic game characters. Why: Imperfect human likeness in motion looks wrong even when single frames look natural.
+
+## context and meaning
+- [definition] Context gives immediate spatial meaning to actions, while rules give longer-term, sustainable meaning.
+- [mechanism] An input's meaning can depend on the avatar's location, and this dependence can be continuous, such as a response that scales with distance to a point.
+- [heuristic] Background elements set the spatial setting, and active threats give meaning to the player's motion. When: designing the context around a movement-based game. Why: Threats make movement purposeful, while the setting frames where it happens.
+- [heuristic] Architectural knowledge and understanding of spatial activity, flow and balance can change how players feel about a space. When: when designing game environments.
+- [fact] Specific devices are ephemeral, while the places people use them persist and are easy to overlook.
+- [fact] A ship's feel depends on combining its physics with the right spatial and rule context, not on physics alone; earlier attempts with similar physics did not achieve the same feel.
+
+## decentralized and multiplayer worlds
+- [definition] A decentralized world is run by independent servers and people rather than owned and controlled by a single business.
+- [mechanism] Device-to-device data exchange lets players visit one another's towns, trade items, and send gifts.
+- [pitfall] In decentralized spaces where anyone can create content, hateful content and disruption of others create trust and safety problems.
+- [fact] Decentralized proto-metaverses aim for blockchain interoperability and have their own currencies and content creation and monetization tools, but items made on one cannot yet be used on another.
+- [fact] Items and avatar identities bought or earned on one centralized platform generally cannot be used on another platform yet.
+- [fact] Cross-promotional events between platforms and franchises are not interoperability, which requires items and identities to work across platforms.
+
+## game feel and timing
+- [definition] Harmony means each element's response, context and polish agree with one cohesive promised perception of a unique physical reality; it does not mean emulating real-world physics. When: when judging whether an element's feel fits its design. Why: Consistency with promised behavior matters more than realism.
+- [mechanism] Phases can shift gradually with no explicit rule change as the power balance drifts; each side then tries to stretch or shrink phases, which creates strategy. When: when rules stay fixed but the balance of play shifts. Why: players compete over when phases start and end.
+- [mechanism] Immediate feedback in games helps players adjust or keep their actions, which supports learning through play.
+- [heuristic] Start with stark, uniform boundaries and let them gradually break down during play to pull the audience into a mystery. When: when a space-based experience needs to build curiosity. Why: The contrast between order and disorder draws players in.
+- [heuristic] Introduce choice gradually: limit options early, then expand the play space as the player learns the systems.
+- [fact] Games let players manipulate time in ways impossible in real life, including stopping, speeding, and rewinding it.
+
+## player expression
+- [definition] Expression is the pleasure of creating and self-expression, such as custom characters or shared levels, and it was long neglected in design.
+- [definition] Expressive design means that architecture, products, and games express stories, emotions, and cultural ideas through their form and mechanics, not only their function.
+- [heuristic] Expression features may not advance a game's core goals, so justify them against the game's aims before adding them.
+- [heuristic] Review expression together with beauty and status, since these overlap with it.
+- [heuristic] Expressive behavior emerges from recombining simple rules rather than being explicitly defined, so global rules should leave room for player improvisation.
+- [procedure] 1) List the channels, such as avatars, chat styling, items and creative play, that let players express themselves. 2) Look for overlooked outlets, including those in offline games. 3) Check whether players display their identity with pride; if not, ask why. When: reviewing a multiplayer design.
+
+## sports game design
+- [definition] Sports games simulate real sports, usually following real rules, and often include team, season, and tournament modes.
+- [mechanism] Switching a turn-based or sequential contest to real time makes reaction speed decide the result.
+- [fact] Sports games cover a wide range, from large franchises to simulators of single sports such as pool.
+- [fact] Competitive play has used specialized fields for thousands of years, including chariot racing, boxing, team sports, and courtrooms.
+- [fact] Newer sports games take more creative liberty with real rules and formats.
+- [fact] Traditional sports can contain degenerate strategies too, not only games designed for play.
+
+## ai and stealth
+- [mechanism] Strong guards make player fighting in a settlement far less likely, though determined groups can still take it by killing every guard. When: Guards are strong and numerous. Why: An attacker must defeat all guards before fighting inside.
+- [mechanism] A player hiding with two entrances must guess which one the opponent will use, and their choice of watching direction determines whether an entering opponent is killed or gains the first shot. When: Positional standoffs with multiple entry points.
+- [pitfall] Players will look for tricky ways to avoid punishment, so consider how they might dodge a penalty before adding it. When: When designing a harsh penalty such as permanent data loss. Why: Severe loss states give players a strong incentive to find workarounds.
+- [fact] In the early and mid-1990s most game AI was hard-coded, and hard-coding remains common on modest platforms such as handhelds, PDAs, and mobile phones.
+- [fact] Designers' ideas about character behavior are rarely fixed, and some hard-looking features are simple while some simple-looking ones are hard.
+
+## conventions and standards
+- [rule] Design a game meant for conventions to play quickly with minimal equipment. Why: Quick, low-equipment play suits convention settings.
+- [tradeoff] Breaking conventions is usually a mistake since players rely on learned expectations; a deliberate break with precise intent can add challenge, while unintended inconsistency only confuses. When: Considering a mechanic that deliberately violates players' expectations. Why: Unexpected behaviour adds difficulty, but unintended inconsistency only confuses players, and conventions carry learned expectations players rely on. (x2)
+- [tradeoff] A departure from a familiar control convention can serve the design but requires players to relearn, so it needs a clear design reason and an expected adjustment period. When: Considering a non-standard control scheme. Why: Breaking habits costs players time and can frustrate them even when the new scheme is intentional.
+- [pitfall] Early VR and AR often copy conventions from console, PC and mobile games, which neglects presence as the new core.
+- [pitfall] Copying a pattern's form without its purpose misses the point, because each pattern exists to solve a specific experience problem.
+
+## digital game design
+- [rule] Tune a digital multiplayer game to produce the social interaction of a three-to-six person board game.
+- [fact] Digital games often leave the resolving action to the system rather than stating it as a player action, because the program adjudicates the end of play. When: Comparing board and digital game procedure lists. Why: Players in digital games do not perform the closing action themselves.
+- [fact] Digital games are not automatically more complex than nondigital games; complexity depends on design choices rather than the medium.
+- [fact] Digital games consist of three technical parts: input, output, and AI. Controls form the input part.
+- [fact] Digital games have no set boundaries in virtual space but hard boundaries in physical reality.
+
+## feedback and systems
+- [model] Systems are fractal: a subsystem can be as small as one resource and one mechanic, while the whole game economy is the largest system, so analysis can target any scale. When: Choosing the scope of analysis.
+- [definition] In systems terms, feedback is a direct link where an output changes another element of the system, unlike the everyday sense of any information returned to a player.
+- [mechanism] Play is a continuous cycle in which information flows from player to game and back, and this cycle generates the player's experience.
+- [heuristic] Metaphors built on systems players already know, such as Newtonian physics, electricity, or fire, need almost no learning burden. Why: Players bring prior knowledge of these systems.
+- [fact] Feedback calls such as playing a sound or spawning particles do not change game rules but strongly increase how intense an effect feels. When: Designing scripted effects. Why: Presentation calls shape player perception without altering state.
+
+## kingmaking and fairness
+- [model] Kingmaking needs three conditions: a player recognizes they cannot win, the losing player recognizes they can support any leader, and the losing player chooses a leader to help.
+- [definition] Kingmaking happens when a player who cannot win decides which of the other players wins.
+- [behavior] Kingmaking can happen directly through trades or negotiation, or indirectly when a required move clearly helps one player over another.
+- [rule] Cap daily trades, or block trades once a player is eliminated, so eliminated players cannot hand resources to favorites.
+- [fact] Kingmaking is usually undesirable because the winner seems to have won by favor rather than skill.
+
+## removing before adding
+- [rule] If a design feels wrong, consider removals alongside additions, and look for single-purpose elements that could be combined. When: a design does not feel right.
+- [rule] Remove inner contradictions in a design instead of tolerating them or making excuses, such as a simplifying device that is hard to use or a fun game that is boring. When: A design has elements that work against its own purpose. Why: Inner contradictions are the core source of bad design.
+- [rule] Remove options that appear in no intransitive loop before solving, since they are strictly inferior and cannot be in the optimal mix.
+- [heuristic] Remove a hero or unit whose role is already covered by another faction's existing unit, since the overlap adds nothing to the roster. When: trimming a roster of heroes or units. Why: Redundancy dilutes the distinct identity each faction needs.
+- [procedure] 1) Alter up to three rules of a pure-luck game: insert, delete, or modify. 2) Remove as much luck as possible. 3) Add as much skill depth as possible. When: converting a pure-luck game into a skill game.
+
+## skill and control
+- [definition] Movement actions are larger requests such as running for cover or chasing a target, staged into primitive actions like applying a force that physics or an animation controller executes. When: Classifying AI actions. Why: High-level movement goals decompose into low-level primitives executed by other systems.
+- [heuristic] Use fine-grained interaction when you want players to outdo each other in precise knowledge rather than memorized counters, since this raises the skill ceiling. When: designing games meant to deepen with mastery. Why: Precise, continuous choices reward understanding over memorization.
+- [procedure] 1) Should characters be individuals or only group effects? 2) Must movement look realistic, or can characters be placed directly? 3) Is physical simulation needed? 4) Must they plan routes, or only wander, follow paths or chase? 5) Do they need formations or coordination?
+- [tradeoff] Muscle-based control is a largely unexplored model because it is hard to design for and hard to play, which limits its adoption.
+- [fact] Mental skills include memory, observation, and puzzle solving.
+
+## special pieces and rules
+- [mechanism] Special-piece explosions often scale with the number of pieces they clear, so setups that clear more pieces are rewarded.
+- [rule] Projects with special purposes need extra filters; an educational game must also check that it actually teaches what it is meant to teach. When: projects with goals beyond entertainment.
+- [tradeoff] A force field around each spawn blocks entry and destroys lingerers, making spawns safe, but several campers can still wait nearby.
+- [pitfall] Patching a problem with special-case rules to protect a favored idea produces inelegant design.
+- [fact] Longer matches create stronger special pieces: four in a line, five in a T or L shape, and five in a straight line each yield a different special piece.
+
+## ai techniques
+- [behavior] A simple predator can wander, chase prey when it sees them, and return home when prey is absent. When: Designing a basic predator's state logic.
+- [heuristic] Use the simplest technique supporting the required behavior; simple techniques do most game AI work. Add a specialized technique only when a specific AI-based gameplay effect requires it.
+- [procedure] Seek: 1) compute the vector from character to target; 2) normalize it; 3) scale it to maximum acceleration; 4) output as linear acceleration with zero angular component. Flee uses the same calculation with direction reversed.
+- [fact] Seek runs in constant time and uses constant memory.
+
+## business and audience
+- [rule] Check business appeal: theme and story attract buyers, the game is explainable at a glance, it stands against genre and rivals, production is affordable, business model makes sense.
+- [rule] Avoid artificially gating content behind other modes, such as locking multiplayer mini-games behind story mode. When: Designing mode and content unlock structure. Why: Gating frustrates players who want to share content with friends right away.
+- [heuristic] Campaign videos should show a short taste of gameplay; long talking videos are harder to fund. When: Producing a crowdfunding video. Why: Viewers respond to seeing the game in action more than to extended talk.
+- [heuristic] Choose consoles when the design targets a broad living-room audience and production values matter. Why: Consoles reach that audience but bring licensing obligations.
+
+## gamification
+- [definition] Gamification means applying game-design elements and principles in non-game contexts.
+- [pitfall] Attaching points and badges to an activity to gamify it can backfire by draining the enjoyment players already had. When: when adding rewards to a fun activity. Why: Extrinsic rewards can displace intrinsic motivation.
+- [pitfall] In practice gamification often reduces to adding extrinsic rewards and progression metaphors to boring activities.
+- [fact] Common gamification frameworks, including self-determination theory, the MDA framework, HCI principles, and player taxonomies, are mostly not empirically validated.
+
+## interactivity design
+- [procedure] 1) Player forms an intent. 2) Player sends input. 3) Computer reconciles input with its internal model. 4) Player perceives the result. 5) Player acts again.
+- [tradeoff] Games give players control over pacing and sequence and add random events, which makes the experience harder to predict but enables feelings like choice, freedom, responsibility, and accomplishment. Why: Those feelings are rarely available in linear media, so designers accept the loss of predictability.
+- [fact] Linear media maps creator output fairly directly onto audience experience, whereas interactive games widen the gap between the artifact and the experience players have. Why: Player control over pacing and sequence, plus random events, make experiences less predictable.
+- [fact] Interactivity is often modeled as turn-taking conversation, a metaphor that fits real-time control poorly.
+
+## player behavior steering
+- [rule] When players do not use a system as intended, add restrictions and affordances that steer them toward the intended play. When: Players exploit an unintended strategy.
+- [heuristic] Offer ways to show status within a group, and reward prosocial acts such as gifting and tagging items for teammates, since these can prompt others to try. When: Designing social progression or cooperation. Why: Visible status confirms competence socially and teases others into pursuing it.
+- [pitfall] Relying exclusively on metagame correction as the only balance tool is poor design.
+- [fact] Techniques from mind-influencing genres may spread to more games, or similar AI algorithms may be applied directly to mainstream genres.
+
+## ranks and subjective scoring
+- [mechanism] In star-based ranking, each win adds a star, and filling a rank's required stars advances the player to the next rank.
+- [mechanism] Losses remove a star only below a threshold rank, and streak bonuses add stars only for wins, so a loss costs at most one star per game.
+- [pitfall] A source system never exists in pure form, and a procedural model reflects the designer's subjective choices rather than a neutral copy; each person's view of it is subjective.
+- [fact] In some professional sports, rankings are subjective, assigned by expert judge panels who may use their own systems.
+
+## sandbox and subclass design
+- [model] Subclass Sandbox has a base class define one abstract protected sandbox method plus protected provided operations, so derived classes implement behavior using only those operations. Why: The pattern concentrates coupling to outside systems inside the base class.
+- [heuristic] Give the base class protected getters for the state a sandbox method needs, so the method can branch on game state. When: Subclass behavior depends on current state such as position. Why: Getters let the composed method use real control flow instead of only fixed data.
+- [pitfall] Modeling each variant as a subclass with hard-coded stats forces a code change and recompile for every number tweak and makes designers dependent on programmers. When: Variants differ mostly by numeric data and are each a separate class. Why: Stats are compiled into code, so every balance change needs a programmer.
+- [fact] Subclass Sandbox is closely related to Update Method and Template Method, and to Facade; Template Method reverses which class holds the composing method.
+
+## spatial and temporal design
+- [definition] A discrete game space has only certain positions that matter, while a continuous space has meaningful positions throughout its area.
+- [definition] Discrete game time advances in turns with no meaningful time between them, while continuous time is measured by real clock time.
+- [procedure] 1) Check inventory breadth: does the player have several options? 2) Check cover: can the player block, hide, or retreat? 3) Check movement: can they reach cover quickly without lag? 4) Check each enemy has a counter or protection. 5) Check options exist at close and long range. 6) Check threats are predictable enough to plan against. When: grid-based or discrete-space games. Why: These checks catch missing counters in turn-based and tile-based combat.
+- [pitfall] Moving from 2D to 3D expands movement and camera options, so a few variable changes can yield very different experiences; treating the shift as minor underestimates its design impact.
+
+## cosmetics and customization
+- [behavior] Options that differ only in name, or that nobody would pick, give players no real choice. When: Many options exist but outcomes are identical or one dominates. Why: Players sense that the decision has no effect.
+- [heuristic] When a board loops, model it as a sequence of discrete points; cosmetic corner size and piece placement within a square carry no meaning.
+- [fact] Cosmetic choices with identical effects can still carry emotional value. When: Choices that differ only in appearance.
+
+## information and communication
+- [definition] A dynamic information structure changes what players can see during play, for example when a fog of war reveals areas only while a unit occupies them.
+- [mechanism] When each player holds vital information that only others can act on, players must communicate constantly to succeed. When: When designing cooperative multiplayer gameplay. Why: Information that only others can use creates a constant need for communication.
+- [mechanism] Dynamic information structures shift the balance between knowledge-based and cunning-based strategy, and have been practical mainly in digital games that can manage complex information exchange.
+
+## magic circle
+- [definition] The magic circle is the temporary space set apart from ordinary life where a game's rules apply; inside it, thoughts, feelings, and values differ from outside. When: A player accepts the game's rules or is invited to play. Why: The agreement separates play from everyday life, so the game is temporary and players can leave it; the rules gain their power inside. (x2)
+- [definition] The magic circle is the closed internal problem-solving system a game creates, which works well even though its mechanism is poorly understood.
+- [fact] Playing suspends everyday rules in favor of the game's rules, and finishing returns the player to ordinary life.
+
+## standalone and solo modes
+- [rule] Each combat mode should feel fulfilling on its own, so a player who never switches still has a satisfying experience. When: When designing a game with melee and ranged combat.
+- [pitfall] A multiplayer game that a single player can master alone diminishes the value of community. When: When a multiplayer game lets individuals succeed without others.
+- [fact] A stripped-down mode that keeps only one core element can remain popular, suggesting the core itself can carry the game's appeal.
+
+## stun and status effects
+- [rule] Let enemy abilities respond to situation, such as healing when health is low. Why: Situational abilities reward players who read the state of the fight.
+- [heuristic] Stun must be meaningful, and the stunned player's flow must survive it; fully disabling input creates a gap players resent even when the stun is fair and fictionally sensible. When: When designing stun or disable effects. Why: Stunned players cannot decide anything, which breaks their flow.
+- [fact] Stun effects appear across many genres, from fantasy spells and nonlethal grenades to webs and physical blows, and they vary combat pace and enable follow-up attacks.
+
+## relationships and objects
+- [mechanism] Larger possibility spaces come from adding objects with defined relationships, as in life simulations, real-time strategy titles, and massively multiplayer worlds.
+- [fact] Tuning becomes very difficult as a system's relationships grow into the hundreds or thousands.
+
+## training as challenge
+- [heuristic] Training sequences can double as elastic challenges that reward speed or skill, so novices learn the lessons while experts treat them as a challenge. When: When designing a training sequence. Why: One activity serves both learning and skill expression.
+
+## treatment placement expectations
+- [mechanism] A realistic treatment implies physical behavior, an iconic treatment allows cartoon physics, and a non-iconic treatment leaves expected behavior open. When: when choosing where an object sits on the triangle. Why: Each position sets different expectations of motion.

@@ -1,0 +1,886 @@
+# ux-ui
+
+## input devices
+- [model] Controller rumble can be extended along three adjustable dimensions: rapidity of shake, motion type, and softness, combining into many distinct sensations. Why: Current rotating-weight rumble is essentially on or off at a set rhythm, so it offers little expressive range.
+- [model] Input devices can be measured at three levels: micro (individual inputs), macro (whole device, layout and implied actions), and tactile (how construction affects feel). Why: Lets game feel be compared across devices.
+- [model] Continuous inputs can be classed by motion type (linear or rotational), sensitivity type (position or force), dimensions of motion, direct or indirect input, and boundaries on motion.
+- [model] The analog thumbstick is the only continuous input, sending two float values on X and Z axes, each from -1 to 1 by displacement from center. When: Reading analog stick input.
+- [definition] Reading a button's binary signal over time gives four states or signals: up, pressed, down and released.
+- [definition] Discrete inputs, such as keys and buttons, send momentary signals; continuous inputs, such as joysticks, mice and steering wheels, send ongoing signals.
+- [definition] Sensitivity is roughly the number of states an input can occupy, a soft metric; signal format is a hard, exact metric.
+- [definition] A paddle is a bounded, one-axis rotary input turned by a knob, returning a signed float from -1.00 to 1.00 with 0.00 at centre.
+- [definition] A standard button moves along one linear axis between two hard stops and has exactly two states, ON or OFF.
+- [definition] A thumbstick moves on two linear axes at once, is spring-loaded back to centre, and is bounded by a circular housing.
+- [definition] A trigger moves along one linear axis with a graded zone between its ends, returning a float from 0.00 to 1.00 under spring return.
+- [definition] Rate-based analog control maps stick displacement to movement speed rather than to acceleration.
+- [definition] Standard mapping relies on conventions players already expect, like a wheel turning a vehicle, a pointer driven by a mouse, or WASD keys moving an avatar.
+- [definition] The goal of input design is synchronization between a player's intent and the resulting in-game action.
+- [definition] The input device is the player's organ of expression: every intent passes through it, and its affordances, constraints and physical feel shape the experience.
+- [definition] The control-display ratio sets on-screen movement per unit of physical movement, applied as simple multiplication, such as two units on screen per unit of hand movement.
+- [definition] A handheld portal is a device whose screen shows a first-person view that moves one-to-one with the device's physical movement, so the device acts as a window into the game world.
+- [definition] Input is how the player expresses intent, and the physical properties of the device set its sensitivity, from a two-state button to an unbounded mouse.
+- [mechanism] Spring tension and mechanical travel determine whether a press feels tight or loose, quick or sluggish, so small differences can make the same game feel different across platforms.
+- [mechanism] Adding side-to-side, forward-back and up-down weight movement alongside spinning lets rumble convey direction, not just intensity and rhythm. When: when the controller uses multiple actuators or moving weights.
+- [mechanism] A device's total sensitivity depends on how its inputs combine and are laid out, not only on each input alone; combinations can give a low-sensitivity device more range than its parts.
+- [mechanism] Mutually exclusive directional inputs, where opposing directions cannot be pressed together, reduce a device's sensitivity.
+- [mechanism] Button combinations laid out for use by both thumbs multiply possible input states, raising a device's sensitivity above what any single button offers.
+- [mechanism] Spring resistance on a paddle's rotation gives it a force-based feel and high sensitivity along its single axis.
+- [mechanism] A thumbstick returns two float values, one per axis, updated continuously as the stick moves.
+- [mechanism] A thumbstick often maps directly or nearly directly onto in-game motion, so how far and how fast it is pushed sets the motion's character.
+- [mechanism] A game may register inputs to the millisecond and know their exact order, while players perceive no consistent order between them.
+- [mechanism] Lower control sensitivity weakens attachment to the avatar, while direct one-to-one mapping of input to rotation leaves almost no barrier.
+- [mechanism] While a rotate button is held, a fixed small amount is added to the ship's heading every frame, with no acceleration or damping, so it turns only while held. When: ship rotation controlled by a held button. Why: Fixed per-frame increments make turning direct and precise, with rotation stopping immediately on release.
+- [mechanism] A stiffer, longer spring makes the stick need more force to move, giving players physical resistance that helps them sense positions between fully pressed and fully released. When: analog stick input with spring return. Why: Resistance gives proprioceptive feedback for fine control.
+- [mechanism] Small differences in input, such as a slightly different angle, can produce noticeably different outcomes, which adds expressiveness.
+- [behavior] If firing requires releasing the accelerator, players lose momentum while shooting, so a fire action that interrupts a core action gives rivals an advantage. When: Binding a secondary action to a button used for a primary action. Why: Interrupting the primary action has a real cost.
+- [behavior] Critics dismiss a new input technology that merely imitates an old control scheme, and opinion shifts once games are designed to need it. When: a new input technology copies an existing control scheme. Why: Imitation hides what the technology can add that old controls cannot.
+- [behavior] Players can feather or flick a thumbstick, which makes it a highly sensitive input.
+- [behavior] Players hold a trigger partway down, at about a quarter, half or three-quarters, without pushing it to either extreme.
+- [behavior] Large, springy buttons that give a clear click and sit near flush with the surface make pressing feel satisfying. When: when designing physical buttons for an arcade-style controller. Why: Tactile cues confirm each press.
+- [rule] Count a part as an input only if it can physically move and send a signal to the computer.
+- [rule] Let players hold a button to sustain an action, such as sprinting or galloping, instead of requiring repeated presses. When: Designing continuous actions. Why: Holding a button reduces repeated physical input.
+- [rule] In fast-paced games, make frequent actions such as grenades, weapon swaps and equipping take as few inputs as possible. When: Designing actions performed often during combat. Why: Each extra input on a frequent action adds up to significant physical and attention load.
+- [rule] Bind steering and throttle to separate keys, each mapped to its own input axis, rather than one combined control.
+- [rule] Identify unintended input ambiguities, especially simultaneous or near-simultaneous combinations, and resolve them so that input feels consistent.
+- [rule] A force-feedback device should be holdable like a controller while still pushing back, rather than using a thick grip that feels unnatural. Why: Thick or awkward grips weaken the illusion of touching something.
+- [rule] Describe the controls tools and their function, flagging any unusual input device that needs special programming.
+- [rule] Add sensitivity between input and response so that subtle, nuanced control becomes possible.
+- [heuristic] Use a rotational one-axis control when the in-game action is a turn or sweep along a single dimension. When: the action is a turn or sweep along one dimension.
+- [heuristic] Use a button for a simple yes-or-no event such as fire or jump, not for expressive continuous control.
+- [heuristic] Use a thumbstick for proportional movement or aiming, where smooth direction and magnitude both matter.
+- [heuristic] Use a trigger when a graded amount of force matters, such as acceleration or throttle.
+- [heuristic] Relying on button states rather than chords suits simple pads, as platformer input often does.
+- [heuristic] Accept roughly away-from-wall stick input and a jump press close in time to it, so chained moves stay forgiving.
+- [heuristic] Map a wall jump to pulling away from the wall toward the desired direction plus a button press, a mapping that feels natural.
+- [heuristic] Motion hardware tuned to the movement the theme implies, such as a rocking vessel, makes the physical experience feel more authentic.
+- [heuristic] Prototype feel with a well-built controller rather than a keyboard, since build quality changes perceived feel. When: When judging control feel during prototyping. Why: Build quality affects feel, all other factors being equal.
+- [procedure] 1) For digital games, identify the input and output devices, such as a keyboard and mouse or a proprietary controller. 2) Design procedures that suit those devices before finalizing them. When: when designing digital game procedures.
+- [metric] The first measurable property of a device is its number of separate inputs; a modern gamepad may have around fifteen.
+- [metric] An ideal motion controller tracks absolute position and rotation in three dimensions and can reduce to two or one dimension when needed. When: when designing motion input hardware. Why: Relative sensing limits how precisely a gesture maps to a position.
+- [metric] From the exact centre of the screen, the avatar can move about one-sixth of the total screen width before the camera begins panning. When: Horizontal dead zone is one-third of screen width, centred. Why: Half of the one-third zone lies on each side of centre, giving one-sixth of screen distance of free movement.
+- [tradeoff] Command-bound buttons let players remap controls by swapping commands, while hardwired input checks are simpler and fine when mappings never change.
+- [tradeoff] A trigger is more graded than a button but far less sensitive than a thumbstick or mouse, so it suits coarse analogue control over precise positioning.
+- [tradeoff] A few-button pad limits wrong presses and keeps each thumb's task small, while a keyboard allows opposite directions and multi-finger input, changing control feel.
+- [pitfall] Directional pads often cannot register opposite directions together, unlike keyboard keys, so games feel different; a direction may combine with A or B and one other direction, not its opposite.
+- [pitfall] Tiny screens or complex fine motor control frustrate players aged 50 and older, because eyes and hands decline with age. When: Designing interfaces for older players. Why: Declining vision and dexterity make small targets and intricate inputs hard to use.
+- [pitfall] Promising a broad set of actions that responds to few inputs frustrates players, since each supported action implies many rejected ones. Why: Players expect the stated freedom and feel cheated when most inputs fail.
+- [pitfall] A two-state button conveys very little on its own, so nuance must come from how the game responds to each press.
+- [pitfall] Tight, multi-input timing windows can be demanding enough to strain players' hands.
+- [pitfall] High input sensitivity paired with few response animations makes precise gestures earn nothing and play feel like imprecise flailing. When: when mapping fine motion to actions.
+- [pitfall] Some motions suit an input device better than others, so ignoring a device's constraints distorts the perceived feel of the controls.
+- [pitfall] Guiding an avatar indirectly through a pointer or stylus lacks real-time control, even when every stroke responds instantly.
+- [pitfall] A stick that feels loose at rest and gritty in travel undermines confidence in precise input.
+- [fact] On a classic pad, each button signal is discrete: one moment, on or off, no intermediate states, so each button has low sensitivity.
+- [fact] Two-state buttons send ON, OFF and HELD signals rather than continuous values, giving Boolean input values and making discrete state changes easy to detect. When: Reading input from digital buttons.
+- [fact] A paddle has hundreds of distinct states between its two hard stops, which are set by a catch at each end of rotation.
+- [fact] Paddle controllers have largely fallen out of use in modern games.
+- [fact] Keyboard keys, mouse buttons and controller shoulder buttons share standard button behaviour, though shoulder buttons travel only a tiny distance.
+- [fact] A thumbstick's positions are effectively infinite, so counting discrete states is not meaningful; players experience fluid, accurate positioning.
+- [fact] A controller trigger has roughly four or five usable states, including fully off and fully on.
+- [fact] A directional pad plus two action buttons on a simple pad can still cover six low-sensitivity inputs used in active play.
+- [fact] This classic home console controller has fourteen discrete inputs: A, B, four C-buttons, four directional-pad directions, Z, left and right shoulder buttons, and Start.
+- [fact] A spring-loaded stick measures force rather than position, making it an indirect control unlike a touchscreen where the user touches the target directly. When: Choosing between stick and touch control schemes. Why: Indirect control changes how players map input to motion.
+- [fact] Force feedback pushes back against player controls and is common in simulation hardware, but is usually used as a blunt special effect rather than to convey subtle ongoing state.
+- [fact] All control over virtual objects is mediated by an input device, which makes input the starting point of game feel.
+- [fact] Output bandwidth from computer to user is typically much greater than input bandwidth from user to computer.
+- [fact] Existing devices can sense inputs that games rarely use, such as swapping controller ports, opening a DS lid, or the thumbstick's sensitivity.
+- [fact] Analog inputs can read exact stick angle and graded trigger depth, not just on or off, and a single button can act on press, release, or hold.
+- [fact] Players express intent via key presses, thumbsticks, controller pads, touch surfaces and motion detectors; no one of these suits every task equally well. When: Choosing input devices for a game. Why: Each input type suits certain tasks more naturally, so a single device rarely serves all intent well.
+- [fact] On a typical gamepad, the shoulder bumper and trigger sit beside each index finger, so pressing them together is awkward. When: Assigning inputs on a standard gamepad. Why: Index finger reach restricts pressing bumper and trigger at the same time.
+- [fact] Input devices differ widely in sensitivity: a button has two states, a trigger four to five, a paddle hundreds, a thumbstick thousands and a mouse millions. When: Comparing input devices. Why: Sensitivity determines how finely a device's input can be read.
+- [fact] Button, trigger, paddle, thumbstick and mouse are all indirect inputs, since the player does not touch the screen. When: Classifying input devices. Why: Direct input, such as touch screens, lets the player touch the screen itself.
+- [fact] Feel depends heavily on available inputs, so the same game can feel very different on keyboard and mouse than on a motion-controlled device.
+- [fact] A discrete input such as a single strum responds quickly but lacks continuity, while a continuous input such as a bar that varies a value gives ongoing control.
+- [fact] A device's layout, materials, weight and spring strength all affect how it feels to use.
+- [fact] Ranked by expressiveness, a thumbstick is more expressive than a trigger, which is more expressive than a standard button.
+- [fact] A mouse tracks movement on two axes, making it far more sensitive than a single button.
+- [fact] A fluid swing can be delivered on low-sensitivity controllers, so input precision is not the only source of movement feel.
+- [fact] The controller has ten standard buttons, a directional pad and one thumbstick.
+- [fact] Shoulder buttons and the bottom button reach their pressed state faster than the front face buttons on the same controller.
+- [fact] Under the Weber-Fechner law, the input change needed to notice a difference on an analog stick scales with the intensity already applied.
+
+## control mapping and remapping
+- [model] Indirect control has three methods: nudging, priming and social imitation.
+- [model] Control mapping involves four relations: response gradual or immediate; movement relative to screen or avatar; rotation or translation; forward speed versus turning speed.
+- [definition] Natural mapping means on-screen motion matches the physical input controlling it, such as a thumbstick moving an on-screen ship in the same direction. When: designing control mapping. Why: Matching motion makes the control feel direct and intuitive. (x2)
+- [definition] Control ambiguity: near-simultaneous inputs resolve in an order the player cannot perceive, making press order a hidden variable, so outcomes look random and cannot be learned. When: when multiple buttons, such as jump-related ones, are combined or pressed closely together. Why: Ambiguous input resolution breaks the player's sense of control.
+- [definition] Direct control means acting on the element itself, while indirect control means influencing elements one step removed, such as changing prices or ride design to attract guests.
+- [definition] Natural mapping links a display to a familiar physical pattern, so players read its meaning from cultural expectations about direction or rising bars.
+- [definition] Control exclusivity describes physical relationships between controls and which combinations can be used at the same time. When: Mapping controls on a gamepad or device. Why: Physical layout determines which inputs a player can press together.
+- [definition] Control mapping is the relationship between physical controls and the actions they trigger; good mapping lets players predict an action from the control used.
+- [definition] Indirect control steers player behavior by arranging information in ordinary ways so players take the intended path without noticing the guidance.
+- [definition] Controls are the means by which players invoke a game's procedures, so a digital version needs controls for each allowed action.
+- [definition] Friction is the resistance between the player and the reward, and it mixes player skill, luck, and time investment. Why: Friction is the basis of progression, since without it no progression system exists.
+- [definition] Flight and other simulations recreate real activities such as flying or operating vehicles, demanding mastery of realistic controls rather than twitch play.
+- [mechanism] Control layouts that differ across platforms or machine variants force players to readjust, causing errors even among highly trained operators. When: when a game ships on several platforms or machine variants. Why: Readjustment increases player errors. (x2)
+- [mechanism] Each mapping transforms data rather than passing it through unchanged, so each can be designed and tuned separately.
+- [mechanism] Displayed values' placement, color, font, and effects such as pulsing or sound when very low determine how state is conveyed.
+- [mechanism] Placing inputs far apart on a physical controller turns control into a two-handed task, which can make play demanding yet engaging. When: when designing a physical control layout. Why: Spacing forces both hands to participate.
+- [mechanism] A ship faster than its hazards, with screen wrap applying to both, makes every hazard feel unsettling because the ship can reach danger quickly and hazards can reappear close by. When: when the player's craft is faster than the hazards around it. Why: Wrapping space keeps all objects close and unpredictable.
+- [mechanism] When a hazard breaks into smaller pieces that inherit the parent's velocity and receive extra random force, the pieces usually move faster and the field becomes more cluttered. When: when designing hazards that split when destroyed. Why: Inherited velocity plus random kick raises average speed with each split.
+- [mechanism] A continuous jump stays time-sensitive: releasing the button early cuts it short, and it shares the apex and release gravity changes of the basic jump. When: Continuous jump is airborne.
+- [mechanism] Well-chosen mapping relations yield graceful, lyrical motion, while poor ones yield jarring or nauseating motion.
+- [mechanism] Changing one parameter or movement speed affects the character's interaction with the space on many levels at once.
+- [mechanism] Response is the mapping connecting input signals to game parameters and defining how those parameters change over time.
+- [behavior] When two actions must be performed at once with the same hand, players struggle if the controls force an awkward grip; a comfortable input layout must be found and then practiced. When: Mapping several frequent actions to one controller. Why: Awkward physical demands add a skill players must learn separately from the game's logic.
+- [behavior] First person limits what the player knows, which allows tension and surprise, while also creating immediacy and empathy with the character.
+- [rule] Keep controls and menu navigation behaving the same throughout the game and across its states, mapping similar functions to the same button. Why: Players build procedural memory for control mappings, which is hard to unlearn and frustrates them when it changes; similar controls reduce wrong actions in new states. (x2)
+- [rule] Support both WASD and arrow-key movement, because many players will try either scheme. When: designing keyboard movement. Why: players bring different habits.
+- [rule] Consider mapping both mouse buttons to the same action in any game needing only one button, especially for young players. When: players may click the wrong button. Why: small hands often press the wrong button.
+- [rule] On PC and console, offer full control remapping and a reset button; on mobile, offer as many control schemes as possible. When: Designing control options by platform. Why: Remapping lets players fit controls to their hands and needs.
+- [rule] Follow platform and genre conventions, such as a magnifying glass meaning search or a circular back button on a console.
+- [rule] Map controls to the things they affect so each control's position or motion matches the result, as with a stove knob lined up with its burner. Why: Natural mapping makes the correct action obvious.
+- [rule] Make actions that users are expected to want easy to reach using Fitts's law. When: Designing interface controls.
+- [rule] Keep input-output predictable and feedback clear and immediate; build gym levels to test this with task analysis.
+- [rule] Document controls and their procedures with tables, flowcharts, and written descriptions together.
+- [rule] If a game fits an established genre, use the genre-standard control scheme. When: the game belongs to a known genre. Why: Players already know the genre's controls, so they start with lower learning cost.
+- [rule] Map exclusive controls to actions that are also exclusive in the game, and if the mapping cannot change, add a game restriction that mirrors the physical one. When: Assigning actions to controls with physical conflicts. Why: Matching exclusivity avoids awkward input and makes the restriction feel natural.
+- [rule] Make each control resemble its effect, using spatial, shape, color or motion similarity, so the mapping works as a built-in memory aid. When: Designing input layouts or button assignments. Why: Similarity lets players infer the link without memorizing abstract symbol-to-action pairs.
+- [rule] Use a clear snapping system, since it prevents overlap and sliver bugs and shows art at its best. When: choosing or evaluating an editor's snapping.
+- [rule] Design so players exercise a skill, take risks, and work a strategy at all times, since any risk-taking involves chance. Why: Constant engagement of skill and strategy keeps decisions meaningful.
+- [rule] Allow a second jump press shortly after landing to trigger a continuous jump with higher initial thrust, a taller stretched animation and a higher, longer arc, at any speed. When: Within a short window after landing. Why: Rewards rhythmic re-jumping with extra height.
+- [rule] Set sensible default values, leave only the most important decisions to players, and automate chores like resource management.
+- [heuristic] Realism is not automatically better than abstraction; what matters is whether the control fits the intended experience.
+- [heuristic] Frame or label an item and show the button that activates it, so players are reminded which input controls that item. When: when items are controlled by buttons.
+- [heuristic] Custom physical interfaces are often judged infeasible, but specially crafted ones can give old gameplay new life.
+- [heuristic] Keep a control scheme small for average players, and add detail or custom options mainly for expert players. When: designing controls for a broad audience. Why: Average players are frustrated by many options, while experts want depth.
+- [heuristic] Use the full range of an input only where skilled players gain value from fine control, and let novices safely ignore most of it. When: designing mechanics on continuous or multi-state inputs. Why: Expressive range rewards mastery without forcing beginners to manage it.
+- [heuristic] Use 60 fps for shooters, racing and fighting games, which need rapid input; 30 fps suits art- or narrative-focused games and skill games without rapid input. Why: Rapid input genres punish added latency most.
+- [heuristic] Input mapping and polish effects change how responsive a control feels, so timing thresholds serve as a baseline rather than a final verdict.
+- [heuristic] Tune console shooters through acceleration between targets and aim stickiness. When: console shooters.
+- [procedure] 1) Start with a motionless rectangle centred on screen, all parameters at zero. 2) Add horizontal motion. 3) Add vertical motion, keeping the two systems mostly separate. When: when building a platformer character controller from scratch.
+- [procedure] 1) Measure the input space of one device. 2) Compare it meaningfully with another device. 3) Examine how the physical construction of each device affects feel.
+- [procedure] 1) Hold up a hand. 2) Treat each finger as an axis of motion. 3) Compare how the input moves with how the controlled object moves, to judge whether the mapping feels natural.
+- [procedure] 1) List the interface elements that show game state. 2) For each, identify a familiar physical pattern it could mirror. 3) Sketch how the element would change as the state changes. When: auditing an interface for natural mapping.
+- [procedure] 1) Classify each control method as direct or indirect. 2) Classify it as real time or turn based. 3) Note any cases where these distinctions are mixed.
+- [procedure] 1) Check hindsight: does the player learn from a hit? 2) Check threats are predictable with enough lead time to react. 3) Check evasion is possible for each threat. When: continuous-movement games such as platformers and bullet hell. Why: Real-time games punish unreadable or unavoidable threats more harshly than turn-based ones.
+- [procedure] 1) List the procedures from the physical prototype, such as moving, turning, firing, and changing weapons. 2) Map each procedure to a control. 3) Group detailed controls under a menu or visual device reachable by one control or a small set. 4) Record each control and its procedure in a table with one column per control and one for the procedure. When: translating a physical prototype into a digital control set. Why: The table confirms that no procedure is missed and no control is unused.
+- [metric] Control can be compared with three hard metrics (controlled object count, per-avatar motion dimensions, type and frame, and per-input ADSR envelope) and one soft metric, overall sensitivity.
+- [tradeoff] Giving hardcore players fine control over details can burden or alienate average players, so balance must be found through heavy playtesting.
+- [tradeoff] Giving a key role to less action-oriented players needs intuitive controls; the cost is that they may steer poorly, but more players can take part.
+- [tradeoff] Letting players customize controls can help or hurt, so its effect should be tested rather than assumed.
+- [tradeoff] Very close motion-based mapping attracts casual players but costs much more in hardware than conventional button controls. When: Choosing between motion controllers and standard controllers.
+- [tradeoff] A first-person view with no visible avatar is argued to maximize projection, while a visible avatar lets players feel its injuries and relief directly. When: Choosing a camera and avatar presentation.
+- [tradeoff] A fused all-in-one device forces replacement of the whole device for each new feature, while separate devices let you mix, match and adopt new features independently. When: choosing between one combined device and several separate devices. Why: Technologies advance at different rates.
+- [tradeoff] Choosing a frame rate trades graphical richness against responsiveness: higher frame rates reduce latency but leave less processing time per frame.
+- [pitfall] Copying a physical interface, or porting a prototype to a new platform without fresh design, is a common trap, since input and access differ by device. When: when copying a physical interface or porting a prototype to a new platform. Why: Controls and interface need fresh design rather than reuse, because the physical interface does not carry over. (x2)
+- [pitfall] Light guidance on core controls can make a game look broken to newcomers, even when the audience is expected to be experienced. When: a game gives little control guidance. Why: newcomers lack the assumed knowledge.
+- [pitfall] Mapping exclusive controls to nonexclusive actions forces players to stop moving to change tools when both controls sit under the same thumb. When: Assigning movement and action controls on one hand. Why: Conflicting physical reach prevents combining actions the game allows together.
+- [pitfall] Defining play as free movement within a rigid structure is so open that it covers light on a wall and a child scrubbing a floor.
+- [pitfall] Treating cursor clicking as real-time control mistakes a transparent interface to choices, closer to browsing a page, for continuous steering.
+- [pitfall] A fast-turning ship still cannot escape an incoming hazard unless the player plans ahead, so the feel of quick turning can mislead players about reaction time. When: when a craft turns quickly but must still be steered with foresight. Why: Turn speed does not replace positional planning.
+- [pitfall] Accepting a default viewpoint without asking what the player needs to know can misalign information access with the design.
+- [fact] An input device defines a possibility space, and its physical construction partly determines which actions a player can perform and expects to perform.
+- [fact] Control follows physical design: board and card games manipulate pieces directly, computers use keyboard, mouse, or joystick, consoles use proprietary controllers, and arcades use game-specific controls.
+- [fact] Mapping game information onto channels and dimensions is the heart of interface design.
+- [fact] Target platforms differ widely, including touch, motion, mouse and keyboard, gamepad, and mixed reality headsets, each with different input qualities.
+- [fact] The Enter key's effect varies by program: some move the cursor down one cell, while others keep it on the current cell.
+- [fact] A mouse is an indirect device whose desk movement maps to scaled on-screen movement set by the control-display ratio, while touch screens have control-display unity.
+- [fact] Controllers range from keyboards, mice, and gamepads to steering wheels, plastic guns, guitars, touch screens, motion sensors, data gloves, and VR headsets, though many are impractical for general play.
+
+## spreadsheet editing
+- [definition] A cell address combines a column letter, lettered across the top, with a row number, numbered down the side.
+- [definition] The fill handle is the small square at a selected cell's bottom-right corner. Dragging it continues the pattern of the selected cells.
+- [mechanism] Ctrl with an arrow key from a blank cell jumps to the next non-blank cell in that direction, or to the sheet edge if no data remains. When: Navigating long sheets with gaps between data.
+- [mechanism] Ctrl with an arrow key from a non-empty cell moves to the last non-empty cell in that direction, reaching the edge of the current data block. When: Locating the boundary of a contiguous block of data.
+- [mechanism] A graphical script editor can disable invalid options or supply defaults so that programs stay valid at all times. When: Authoring scripts through a visual interface. Why: Constraining input at the interface makes invalid programs impossible to create.
+- [mechanism] Restricting the view through a physical scope makes the display a deliberate boundary that controls what the player perceives.
+- [rule] Format computed cells distinctly from tunable inputs and treat computed cells as read-only; use one such color scheme across all sheets. When: Designing spreadsheets that others or future you will tune. Why: A consistent scheme shows at a glance which cells to change; treating computed cells as read-only prevents accidental modification.
+- [rule] Use right-side borders between adjacent columns and thick outlines to isolate blocks; the border tool outlines selections or draws a divider along one side of a row or column.
+- [rule] Insert whole rows or columns only when the entire line must move; to move part of a row, select those cells and use copy and paste. When: only some cells in a row need to move.
+- [rule] Format whole cells when all their text should look the same; edit the cell's text when only part of it should be emphasized.
+- [rule] Use the fill handle for quick simple lists, and use formulas when the sequence follows a rule the fill handle cannot infer. When: Choosing how to generate a list of values. Why: The fill handle can misread complicated patterns.
+- [rule] Use borders instead of merged cells to separate regions of a sheet, since borders keep each cell distinct and its structure intact. When: Several tables or regions share one worksheet and must look distinct. Why: Merging can break formulas and sorting that depend on individual cells.
+- [rule] Shade formula cells in pale grey and use charcoal lettering to signal they should not be edited.
+- [rule] Style input cells with bright yellow or a thick border so they stand out as fields meant to be edited.
+- [rule] Divide a sheet into functional sections with shading and borders, using shades of one color for related groups.
+- [rule] Apply data validation to input cells that have a few valid options or a reasonable range, to prevent typing mistakes.
+- [rule] Fill every cell in a decorative area with a background color so the gridlines no longer show. When: building a decorative spreadsheet layout.
+- [heuristic] On large sheets, the row and column headings of the active cell are highlighted, which helps you locate your position quickly. When: working on a large sheet.
+- [heuristic] Practice moving between cells and entering text before attempting formulas or complex operations, especially if you are new to spreadsheets. When: new to spreadsheets or returning after a break. Why: basic navigation underpins later skills.
+- [heuristic] To insert many rows at once, select as many row headings as you need first, then insert; the number inserted equals the number selected. When: adding a large number of rows. Why: inserting one at a time is tedious.
+- [heuristic] Shade entire rows or columns to cluster related categories: for instance, use one tint for expenses and restrictions, another for advantages and strengths. When: A sheet holds several categories of related entries. Why: Grouping by color makes categories visible without restructuring the data.
+- [heuristic] Data validation can also check a calculated field that must stay in a known range, such as a probability between 0 and 1.
+- [heuristic] Large cells holding documentation or rules text are best read with word wrap and wider columns. When: cells containing long documentation or rules text.
+- [procedure] 1) Insert a top row and merge cells to group categories. 2) Color-code each group. 3) Put object names in column A and freeze column A and the header rows. 4) Format numeric columns as integers, fractions, decimals or percentages. 5) Apply tiers or a gradient to the balance column. 6) Sort by the balance column without sorting header rows. When: Building a cost/power spreadsheet for game balance. Why: Grouping and highlighting make off-curve objects easy to spot.
+- [procedure] 1) Select a cell. 2) Type its content. 3) Press Enter or Tab to commit; Tab also moves the cursor one cell to the right.
+- [procedure] 1) Select the row. 2) Right-click its row heading. 3) Choose delete, which sits just below insert. Rows beneath it shift upward.
+- [procedure] 1) Right-click a row heading. 2) Choose to insert a row above or below it. Column insertion works the same way from column headings, and the Insert menu offers the same actions.
+- [procedure] 1) Double-click the cell to edit its text. 2) Select the words to change. 3) Apply the formatting to that selection. When: only part of a cell's text should be emphasized.
+- [procedure] 1) Place the cursor in one corner of the block. 2) Press Shift and Ctrl with the arrow keys to extend the selection to the opposite corner. When: Selecting a large rectangular block quickly. Why: Keyboard extension is faster than dragging across thousands of rows.
+- [procedure] 1) Type the starting number in a cell. 2) In the cell below, enter a formula adding 1 to the cell above. 3) Fill Down from there to build the sequence. When: Filling a column with consecutive numbers such as 1 to 20. Why: A formula avoids typing each value and reduces mistypes.
+- [procedure] 1) Copy a formula cell. 2) Select the blank cells below it. 3) Paste. Each pasted cell updates its references as Fill Down does. When: Filling a column with a formula without using the fill handle.
+- [procedure] 1) In the conditional formatting panel, choose a color scale. 2) Pick two or three colors. 3) Set each anchor as a fixed number, the range minimum or maximum, or a percentile. When: Shading cells by their value across a range.
+- [procedure] 1) Select the cells. 2) Open Data > Data Validation, or right-click the cell and choose it. 3) Set the criterion, such as a number range or a list. 4) Choose a warning or outright rejection for invalid entries. 5) Save.
+- [procedure] 1) Choose the list criterion. 2) Enter comma-separated items, or point to a range of cells in the sheet. 3) Check the in-cell dropdown option so the cell shows an arrow.
+- [procedure] 1) Merge the cells that will hold the word. 2) Turn on word wrap. 3) Insert a line break after each letter so the word stacks vertically.
+- [procedure] To show all text in a cell, widen its column, merge it with neighboring cells, or turn on word wrap so the row grows tall enough. When: a cell's text is cut off by a neighboring value.
+- [metric] A 1,600 by 1,200 screen offers roughly 1.9 million cursor positions, though small targets cannot be reliably hit.
+- [tradeoff] Clearing empties cells and leaves others in place; deleting removes cells and shifts remaining cells up or left to close the gap, changing other cells' positions. When: choose clear for blank cells in place, delete to close the gap.
+- [tradeoff] A square grid pushes designers toward boxy, right-angled buildings because those are easiest to make; hard off-grid editing discourages interesting shapes. When: choosing grid or free placement in an editor.
+- [pitfall] Clicking another cell while still editing inserts that cell into your entry as a reference; press the cancel button to undo it. When: editing a cell and clicking elsewhere.
+- [pitfall] Committing an entry overwrites whatever content the cell previously held.
+- [pitfall] Blank spacer rows or columns added for visual spacing break Ctrl-arrow jumps and slow navigation on long sheets. When: Laying out data on large sheets. Why: Blank cells stop the jumps, unlike whitespace in a text document.
+- [pitfall] Retyping the same formula many times risks one mistyped copy, which can throw off every value below it. When: Building long columns by hand.
+- [pitfall] Very long wrapped text can make a row taller than the screen, and widening the column usually reduces that height.
+- [pitfall] Unsorted x values produce a tangled line, since the chart connects points in the order they appear; sort by the x values or force ordering with the aggregate option. When: Building a line graph from unordered data. Why: Connecting points in input order scrambles the line.
+- [pitfall] A parser that only knows it hit unexpected punctuation gives poor feedback to the user.
+- [fact] Some spreadsheet formula bars have X (cancel), check mark (commit without moving cursor) and fx (functions) buttons; some web-based programs omit the X and check mark.
+- [fact] While typing, the entry shows up in the cell and also in the formula bar above the grid.
+- [fact] Arrow keys move the cursor one cell at a time, clicking jumps to a cell, Tab moves right, and Shift+Tab moves left.
+- [fact] Deleting a column shifts all content to its right one column to the left.
+- [fact] The Edit menu can also delete the row or column where the cursor currently sits.
+- [fact] Row and column insertion always affects the entire row or column, never only part of one.
+- [fact] Some spreadsheet programs have a simpler Insert Row or Insert Column command that inserts at the selected position and pushes other content down or right.
+- [fact] Selection methods: Shift with arrow keys or click-drag selects a rectangle; Shift+click selects non-adjacent cells; heading clicks select rows or columns; corner click or Ctrl+A selects the whole sheet.
+- [fact] With cells selected, Ctrl+C copies, Ctrl+X cuts, and Ctrl+V pastes; the same commands appear in the Edit and right-click menus.
+- [fact] Shift+clicking an already selected cell removes it from the selection. When: a cell was selected by mistake.
+- [fact] Ctrl+B bolds, Ctrl+I italicizes, Ctrl+U underlines, and Alt+Shift+5 strikes through the selected cells' content.
+- [fact] Formatting applied to selected cells affects every selected cell and the entire contents of each.
+- [fact] Cell background colors are cosmetic and have no effect on how formulas calculate.
+- [fact] Shift with an arrow key extends the selection one cell at a time, which is useful for copying, pasting or deleting.
+- [fact] The midpoint of a three-color scale can be any value chosen to match the curve, not necessarily the mean or median of the column. When: Setting up a three-color scale for deviations from a target.
+- [fact] Holding Alt while pressing Enter inserts a paragraph break inside a cell in Excel.
+- [fact] Cell formatting covers number format, font and size, text styles, text and background colors, alignment and wrapping, and borders.
+
+## ux roles
+- [model] Four design groups: dark pattern (deceives for company gain), nudge, bad UX (confuses without intent), good UX (respects users, serves business). Grouping depends on intent and consequences, not design alone. (x2)
+- [model] UX, introduced in the 1990s, covers the whole journey, from first hearing of it: discovering it, forming expectations, buying or installing, using it, and getting customer support or community help. (x2)
+- [model] A five-stage UX maturity model: Unintentional, Self-referential, Expert, Centralized, Distributed. Each stage has a typical barrier and a main advancing tool. Why: Locates a studio's current UX level and picks the next tools.
+- [model] UX can expand in steps: dedicated test space, UX lab with one-way mirrors, hiring UX designers, dedicated UX team, integrated UX process, analytics coordination, and a voice at upper management.
+- [model] AI in UX has three uses: analyzing user data to predict behavior and personalize; automating routine design tasks with real-time optimization; supporting usability evaluation via video analysis and automated feedback.
+- [model] AI and UX have a two-way relationship: AI can improve user experience, and UX quality affects how effective the AI is.
+- [model] Two core UX questions: can users reach their goals with ease, and is the experience enjoyable?
+- [definition] UX practitioners rely heavily on cognitive science and the scientific method to anticipate issues developers did not intend, rather than offering opinions.
+- [definition] User research uses qualitative data from small observed lab sessions; its strength is showing why behavior happens, such as players failing because a required item is hard to find.
+- [definition] The UX manager's main goal is to support production and help the team reach business goals with the right tools, at the right time, for the right people.
+- [definition] UX is a mindset that serves both player experience and business results by reducing friction and reaching a broader audience.
+- [definition] User researchers study the product with a small, representative sample of the target audience, during development and after launch.
+- [definition] User experience is not a fixed property of a product; it is relative to end users, so teams must verify what those users actually experience.
+- [definition] UX broadly means how it feels to interact with software and how engaging that interaction is.
+- [definition] The goal of UX is to improve people's lives with technology, including games.
+- [definition] Efficiency is how fast players perform tasks once they already know the product.
+- [definition] UX design draws on human factors and ergonomics, improving products and services through repeated scientific iteration on how people experience them.
+- [definition] Bad UX is unintended friction in a product.
+- [definition] UX is a philosophy rather than a discipline: shifting from an ego-centered to a player-centered view using empathy, generosity, and a scientific approach.
+- [definition] Initiative has three components: task initiative (choosing topic and problem), speaker initiative (deciding when each party speaks), and outcome initiative (deciding how to solve the problem and who does which task).
+- [definition] UX designers shape interactions and information architecture, such as how a purchase flow works and where information appears.
+- [rule] Judge the product from the target audience's perspective, not the makers', aiming for the best experience across the whole journey. (x2)
+- [rule] UX manager should bridge analytics, game and publishing/BI teams to keep the player central, not only business goals; coordinate UX with analytics and other UX-focused teams to improve studio communication.
+- [rule] A similar group can assess games in development and live games, with members concerned about user experience.
+- [rule] Explain what UX is and debunk misconceptions by letting developers experience the limits of their own perception. When: Building UX understanding.
+- [rule] Present UX as helping the team reach its goals with science, not as designing the game for the team.
+- [rule] Set up a UX plan for individual projects, covering the production workflow, and another for the whole studio.
+- [rule] Start any product by understanding users: their problems, their needs, and what they already know.
+- [rule] Bring usability specialists in early in development, not only at the end, so findings can still change the design. When: during development. Why: Changes are still possible early, before shipping.
+- [rule] When a user's mental model does not match the system's behavior, fix the design so the system behaves as the user expects, rather than blaming the user. Why: Norman argues the design model is at fault when it diverges from the user's model.
+- [rule] Prioritize users' best interests, with inclusion, accessibility and ethics as central concerns.
+- [rule] UX professionals should have a seat in AI product decisions, since they are often left out of them. When: When AI features are planned or built for users. Why: Human-centered AI needs UX expertise to shape outcomes.
+- [rule] Use a UX framework as a starting point and adapt it to your own challenges, not as a fixed rulebook.
+- [heuristic] Plan player-facing decisions with UX goals in mind, treating UX strategy as central to development. Why: UX strategy shapes how players experience the game from the start.
+- [heuristic] Hiring UX designers can make the design process more efficient.
+- [heuristic] No game has perfect UX, so tradeoffs between usability and other goals should be decided by the intended experience.
+- [heuristic] Designing with usability guidelines from the start gives a better starting point for later usability tests.
+- [heuristic] The core mechanic is the action players repeat most; if it is hard, unintuitive, or unenjoyable, players may quit.
+- [heuristic] Bottom-up design is necessary for novel gameplay and can reveal new ways to play even with conventional gameplay.
+- [heuristic] Use AI to flag common usability issues or to speed up iterations on prototypes. When: Early or frequent design iteration where fast feedback helps.
+- [heuristic] The interface and underlying technology depend heavily on whether users are professional designers or players with no design experience.
+- [procedure] 1) Listen to developers' needs, challenges, and problems. 2) Only then introduce UX processes. When: Starting as a lone UX practitioner.
+- [procedure] 1) List the information the player needs. 2) List the input and output channels. 3) List the dimensions involved. 4) Design the interface from these lists.
+- [procedure] 1) Test a design element such as icons with players. 2) Highlight usability issues so the designer can iterate. 3) Retest the revised version. When: Working alongside developers.
+- [metric] Reaching stage 7 of the eight-stage UX maturity model was estimated to take about 20 years, and stage 8 about another 20. When: Organizational UX maturity.
+- [tradeoff] Automating routine design work frees time for ideation, but it also encourages automation bias, which lowers the detection of errors. When: When routine design or evaluation tasks are handed to automated tools. Why: People reduce their own checking when a tool handles the task.
+- [pitfall] Treating UX as only UI leaves out many elements that shape the player experience; many game UX jobs titled UX/UI reinforce this front-end view.
+- [pitfall] Expecting upper management to fund UX before any live evidence exists leads to disappointment.
+- [fact] Anyone on a team can hold a UX mindset, and UX is everyone's concern in a team and company, while UX practitioners supply the tools and process. (x2)
+- [fact] UX tests estimate attention from three sources: eye tracking, behavioral data such as speed and success, and survey answers.
+- [fact] UX practitioners work with developers to define the intended experience, with marketing and consumer insights to understand users, and with publishing to understand business goals.
+- [fact] Built from over ten years of collective practice across organizations; its visual form clarifies benefits and barriers at each level.
+- [fact] UX return on investment can be estimated, but it is not easy to calculate.
+- [fact] Usability specialist duties include heuristic evaluation of interfaces, writing user scenarios, recruiting target-market subjects, conducting sessions, and reporting findings with recommendations.
+- [fact] Some companies provide visual tools that let designers assemble scripts from visual components instead of text. When: Designers authoring coordinated AI scripts. Why: Visual assembly lowers the barrier for non-programmers.
+- [fact] Core user-experience positions include interface behavior planner, information structure architect, and usability researcher.
+- [fact] A practical UX framework can combine brain and behavior research, usability heuristics, and less-studied concepts like game feel, without being empirically validated.
+- [fact] Conflicting user desires can be handled by showing an error, picking one at random, or offering several plausible answers; most tools keep the user's final say.
+- [fact] Early visions of human-computer symbiosis criticized systems where the human supplied all initiative, direction, integration and criteria, and proposed sharing initiative with the computer.
+- [fact] The gap between the intended level and the built level is largely set by the tools used, and this holds for other disciplines too.
+
+## feedback design
+- [model] A visual hierarchy shows all information at once but assigns each item visibility matching its importance, so players notice the most important items first. When: ordering information in a dense interface. Why: Humans unconsciously ignore the least visible parts of an overloaded signal, and bigger, closer, brighter and faster items are noticed first.
+- [definition] Signs are visual, audio or haptic cues informing players about game state or inviting action; feedback is a sign reporting the system's reaction to a player action.
+- [definition] Feedback is information the game returns to the player, and its quality strongly affects understanding and enjoyment.
+- [definition] Signs and feedback are all stimuli players perceive, including the responses a game gives to their input.
+- [mechanism] Complex, striking art buries mechanical cues such as facing, movement and held items, plus nuanced sound and animation, making the game state harder to read. When: When visual richness competes with gameplay readability. Why: Excess visual intensity hides needed information; in a gray world every shape has mechanical meaning, so no mental sorting is needed.
+- [mechanism] If mockup geometry is hard to texture, players cannot tell rocks, grass, water or lava apart in playtesting; varied solid colors can serve instead. When: mockup and playtest stages.
+- [mechanism] Slow or awkward texture scaling limits what gets built. When: evaluating editor texturing tools.
+- [behavior] Players look away, get distracted or control the camera, so they miss signals; testing must confirm they understand the game. Why: Players control their view and attention in interactive play, unlike in a film where everything important is on screen. (x2)
+- [behavior] Visual scale and appearance signal threat: a larger enemy suggests danger and length, and visible effects hint at abilities. When: enemy design. Why: Players infer behavior from appearance before they test it.
+- [behavior] Waiting feels shorter when a progress bar is animated, accelerates rather than slowing and stalling, and players have something to do. When: loading or waiting screens.
+- [rule] Give every player action immediate feedback confirming it was accepted, with different responses for different outcomes, such as different impact effects for a damaging blow and a parried one. Why: Delayed feedback lets attention drift and makes focus hard to maintain. (x3)
+- [rule] Show progress made, what remains (e.g. quest items left) and goals close to completion; let players compare results and avoid unnecessary memorisation. When: Designing progression displays and results screens. Why: Clear progress information is critical to feeling competent; visible progress and comparison motivate players and reduce memory load; counts of remaining goals let players learn the game's rhythmic system. (x2)
+- [rule] Menu sounds should signal forward or backward movement, accept or decline choices, and each button gaining focus should have a distinct sound. (x2)
+- [rule] Prefer diverse redundancy over plain repetition, which can grate; use simple repetition only when the game cannot know whether a message was received. When: Announcements or messages with no feedback on receipt.
+- [rule] Match visuals to behavior: similarly acting objects should share an appearance, and visually different objects should behave differently unless their sameness is intended. Why: Players assume looks signal differences in speed, scoring or other properties.
+- [rule] Avoid autoplay, and make replaying a match an opt-in choice.
+- [rule] Turn voice and text chat off by default and let players opt in. When: Designing multiplayer communication settings. Why: Enabled-by-default chat can expose players to hate speech and toxic behaviour.
+- [rule] Show players which inputs a crafting or combining action requires, so they avoid mistakes. When: Designing crafting, equipping or combining systems. Why: Visible requirements prevent players from attempting invalid combinations.
+- [rule] Tell players that customisation options exist, since most players do not explore menus before starting the game. When: Designing first-launch experience. Why: Players who never see options cannot use them.
+- [rule] Make an unavoidable input delay visible as a process, such as a signal traveling from control to target with a matching sound, so the wait reads as cause rather than fault.
+- [rule] Reassess feedback continuously during play, asking what players need, want, and feel at that moment. Why: Feedback needs differ across situations.
+- [rule] Units should telegraph what they can do through distinct visual signatures, and key attributes such as health and max health should always be visible.
+- [rule] Give players feedback that tells them whether they did it right or have room to improve, so they can learn.
+- [rule] Show an accurate progress indicator wherever the challenge allows it. When: challenges where progress can be measured. Why: A visible measure of progress corrects players' linear-progress assumption.
+- [rule] Show a visible cue when a character changes state so the changed response does not feel jarring. When: a character enters a state with different response rules. Why: Players who see the cue can understand why controls changed.
+- [rule] Make teaching meaningful and repeat it across different contexts and activities.
+- [rule] Draw attention explicitly to important changes, for example by blinking the element or adding a sound effect. When: a change matters to the player. Why: players may miss it otherwise.
+- [rule] Warn players about what could hurt them in the next few turns, so the system reflects the reason behind actions. When: turn-based strategy.
+- [rule] Use surface finishes as material cues, so players can tell which surfaces accept an interaction and which do not. When: when an interaction works on some surfaces but not others. Why: A consistent finish lets players predict whether an interaction will succeed.
+- [rule] Show interface pop-ups only when context requires them, and let allies or objects in the world signal the next action instead.
+- [heuristic] Send critical information through several channels, with at least one visual and one audio cue; different forms get through under pressure better than repetition, and this aids accessibility. When: Designing tutorial or alert cues; critical instructions where delivery matters more than economy of signals. Why: Relying on one channel leaves players who miss it without information; each channel can be missed independently, so more channels lower the chance of total miss. (x2)
+- [heuristic] Confirm dramatic or irreversible actions, such as deleting a long-invested character; use undo for less precious items. When: Actions such as deleting a character or selling items; actions with serious consequences that cannot easily be undone. Why: Confirmation adds physical load, so reserve it for costly errors; the extra step prevents accidental loss, matching the error prevention guideline. (x2)
+- [heuristic] Use visual feedback for precise information such as exact resource levels or unit locations, since sound alone leaves players guessing. When: presenting exact status information. Why: Visual channels convey exact values that sound cannot.
+- [heuristic] Feedback can support play without changing the rules, for example by making a scored event visible and audible to all observers. Why: Clear feedback makes outcomes legible without altering mechanics.
+- [heuristic] Player confusion signals unclear design; respond by stacking several cues, such as particles, sound, and character flashes. When: players misread a game signal. Why: one cue is easy to miss.
+- [heuristic] Keep the core status display visible on every screen and in every mode so players always see essential information. When: when the game has multiple screens or modes.
+- [heuristic] Trigger dynamic tutorial tips when a required action goes unused for a while, since they work better as reminders than first teaching. When: a required action is neglected.
+- [heuristic] The computer should appear intelligent and ideally explain its actions; meta-level communication about design tasks and outcomes remains largely unexplored.
+- [heuristic] Use lighting, floor lines and prominent button cues to draw players toward the intended path or action. Why: Cheap visual cues guide choices without restricting options or changing incentives.
+- [heuristic] Show secondary and tertiary messages only when the primary message fails to achieve its goal, such as a timed action the player missed. When: The cost of extra messages is high and success of the primary action can be checked. Why: Backups stay dormant unless needed, which avoids clutter.
+- [heuristic] Detail and dark values draw the eye, so background areas can be simplified using loose scribbles or coarse outlines. When: composing a sketch so attention goes to key elements. Why: Viewers are drawn to the most detailed and darkest areas.
+- [procedure] 1) Identify the player's goal at this moment. 2) Choose feedback that helps them reach it. 3) Decide what players should feel now and how feedback can create that feeling.
+- [procedure] 1) Display the randomizer on screen, such as dice or a deck. 2) Animate the roll or shuffle. 3) Animate the drawn result moving to the player's hand or board. When: when a game generates random results by computer.
+- [procedure] 1) Determine what the player must learn from feedback. 2) Choose a channel for each item: aural, visual, or tactile. 3) Match the channel to the kind of information. When: planning feedback for a game. Why: Matching channel to information type keeps status clear.
+- [metric] Design redundancy so that a player who misses about half the content still receives the critical parts.
+- [tradeoff] Give every feature state and interaction its own sign, since unsignalled ones leave players unguided; yet not every state change needs showing, only crucial ones must be communicated. When: Feature states and interactions versus general state changes. Why: Unsignalled feature states and interactions leave players unguided. (x2)
+- [pitfall] Silent failure of a natural player action is a strong immersion breaker in VR. When: VR with natural actions. Why: The player receives no feedback, so presence breaks.
+- [pitfall] Play lacking feedback frustrates and confuses players.
+- [pitfall] Over-communicating is a common trap, but leaving players to die without any indication of why is equally harmful. When: Designing feedback on failure.
+- [pitfall] Status cues that players do not share, such as unfamiliar symbols, fail because natural mapping depends on shared expectations.
+- [pitfall] Assistance the player can detect may feel unfair or misjudge intent, so assistance must stay hidden to work. When: Implementing any assistance system. Why: Visible help breaks the sense of player skill and can act against what the player meant to do.
+- [fact] Player information travels as signals across channels such as screen regions, the avatar, sound effects, music, the screen border, a character's body, speech bubbles, and haptic feedback. (x2)
+- [fact] Well-designed feedback helps ensure clarity, challenge, and reward in play.
+
+## usability testing
+- [model] Usability in games stands on seven principles: signposting and feedback, clarity, form that follows function, consistency, low effort for body and mind, mistake avoidance with recovery, and adaptability plus access. (x2)
+- [model] Usability observation draws on three sources: playthrough playtests, expert usability evaluations by HCI specialists, and broader general user research.
+- [definition] Usability testing, borrowed from software design, has realistic users attempt key tasks on the interface and controls, checking they understand core concepts; it returns interface knowledge, not play-experience knowledge. (x2)
+- [definition] A usability test has players play parts of a game to check usability and engageability, usually with about six participants playing at the same time.
+- [definition] A pipeline overview lists the do's and don'ts artists must follow for their assets to display correctly in the game.
+- [definition] UX researchers help a team decide by analyzing player experience, not by offering subjective opinions or designing the game in the team's place.
+- [definition] A UX framework's main purpose is communication and collaboration between team members, respecting the capabilities and limits of both player and designer brains.
+- [behavior] Males often prefer learning by experimenting over reading directions, so interfaces that reward experimentation suit them, linking to the pleasure of mastery.
+- [behavior] Players cannot enjoy a game they cannot understand, so the wording of tutorials and manuals matters.
+- [behavior] Observers that receive a state change often just update a UI element to match, repeating the same update pattern. When: Observers feeding display elements. Why: Each display needs the same mirror-the-value code.
+- [rule] Minimize cognitive load (attention, memory) and physical load (button presses) for non-core tasks; show information when needed and let common actions take few inputs. When: especially during onboarding. (x2)
+- [rule] Test iconography and HUD configuration early, for example with surveys, to confirm players perceive what the designer intended. Why: form follows function.
+- [rule] Test with real people who are not industry professionals, not only experts, to produce a game almost anyone can pick up. When: aiming for accessibility to new players. Why: Industry testers do not represent the broad audience.
+- [rule] Test interfaces with real people as early and as often as possible, since no interface is clear, empowering, and fun on the first try. Why: New games need new interfaces that cannot be assumed to work.
+- [rule] Make controls customisable with industry-standard defaults, give immediate feedback, and apply pacing pressure without frustrating the player. When: Evaluating game usability. Why: These are established usability heuristics for games.
+- [rule] Praise small achievements with specific feedback that informs skill, such as 'Perfect move!' rather than 'well done!'. When: for small achievements. Why: Specific praise tells players what they did well.
+- [rule] Remove points of confusion so that the game is easier to learn and more intuitive. Why: Understanding how learning works reveals where players get stuck.
+- [rule] Do not use AI as a replacement for usability testing with real users, including users with disabilities. Why: AI cannot reveal how real and diverse users actually experience a design.
+- [rule] Integrate explicit questioning into play so it does not pause the session or break immersion.
+- [rule] Check five qualities in research: usability, pleasure, accessibility, inclusion and safety; when one fails, find its cause and fix it efficiently.
+- [heuristic] Test usability early, since it is mostly tested in early development; test engageability once critical systems exist, since it is harder to measure.
+- [heuristic] Test the interface in all situations, including high speed and tight corners, since it may confuse players in some cases.
+- [heuristic] When players are confused, identify which of the six input-output mappings the confusion occurs on to locate the problem.
+- [heuristic] When users repeatedly err, check the design for inconsistency before blaming the user. When: when users keep making the same mistake. Why: Errors often come from inconsistent design rather than user failure.
+- [heuristic] Learn how players navigate the interface and struggle with controls, since this observation improves your design judgment.
+- [procedure] 1) Run usability tests. 2) Record common errors. 3) Treat repeated errors as a sign that the design encourages them and revise it. When: Evaluating a playable build. Why: Repeated player errors indicate design problems rather than player fault.
+- [procedure] 1) Observe players for errors. 2) Check what players understand about the game and its objectives, using established human factors principles. When: Assessing usability.
+- [procedure] 1) Record the participant's hands on controls and facial reactions with separate cameras. 2) Have the participant think aloud over the game audio. 3) Run a detailed test script while observers watch behind one-way glass. 4) Have participants complete tasks. 5) Record task success and rate each finding's severity in a report. When: Testing a game's usability with professional methods. Why: Combined recordings reveal both behavior and reasoning.
+- [procedure] Testing an interrupting tutorial: 1) Observe player reactions to tutorial interruptions. 2) After play, ask how the player felt about the interruptions. When: evaluating a tutorial that pauses play. Why: reactions reveal whether interruptions help or annoy.
+- [procedure] 1) Write each item on a paper card. 2) Have players group the cards into categories. 3) Review the groups to reveal players' intuitive structure before building the feature. When: before implementation, when organizing categories. Why: matches the team's organization to players' thinking.
+- [procedure] 1) Build a rapid paper or interactive prototype. 2) Test it internally, or with the target audience when possible. When: Pre-production.
+- [procedure] 1) Run task analyses as features arrive. 2) Run short usability tests in gray box and gym levels. 3) Tune game feel and the 3Cs from results. When: Feature implementation.
+- [procedure] 1) Watch or take part in a third-party usability test session. 2) Note the tasks subjects were asked to complete. 3) Record whether each task succeeded and identify why or why not. 4) Consider how the findings help the software's designer.
+- [metric] Start to Crate (StC) measures seconds from game start until the first crate appears; across 26 games, only five took over 10 seconds and ten showed one at zero seconds. Why: Quantifies how quickly games fall back on cheap fiction shortcuts.
+- [pitfall] Bringing in a usability expert does not make a game more fun by itself.
+- [pitfall] Some designers wrongly treat usability testing as focus testing or marketing, which hides its real purpose.
+- [pitfall] Judging the clarity of your own game by your own impression misses how newcomers will actually read its icons and interface.
+- [pitfall] Improving business metrics at users' expense is not the purpose of UX.
+- [fact] Fitts's Law was first formulated for arm reach, later shown to apply to moving a mouse cursor to on-screen objects, and is a well-studied HCI model verified across many studies.
+- [fact] Nielsen's ten usability heuristics are rules of thumb that help evaluators spot friction, anticipate common problems and fix them faster, not design standards or replacements for detailed guidance.
+- [fact] Professional usability labs record controls, facial reactions and spoken thoughts; HCI usability methods are well established in software, and the games industry has adopted them more slowly.
+- [fact] Usability testing focuses on interface and controls, while playtesting focuses on core gameplay; the two are separate activities.
+- [fact] Many studios hire third-party usability firms for a series of late tests, while some publishers run in-house usability labs integrated from start to finish.
+- [fact] Usability sessions produce data from video, audio, task success or failure, and questionnaires, which specialists analyze before recommending changes.
+- [fact] Game usability is organised into seven high-level pillars that give a studio a shared vocabulary for improving player experience; usability means intuitive, effective, efficient and satisfying play for the target audience.
+- [fact] Card sorting is a common method for designing website category structures.
+- [fact] Early testing of a mixed-initiative rule-building system showed it was far from easy to use.
+- [fact] Design can be treated as a reflective conversation between designer and medium, in which computer support can join as a participant.
+
+## hud design
+- [model] An allocentric map keeps a fixed orientation, usually north up, while an egocentric map rotates so the player's facing direction points up.
+- [definition] Mixed-initiative dialogue has two properties: context, so questions stay relevant to the discussion so far, and relevancy, so answers contain only information relevant to the question.
+- [mechanism] Shooter HUD elements can be tuned to their importance: health and ammo grow more visible as they become critical and quiet down when the state recovers. When: designing shooter HUD indicators. Why: Visibility matched to current criticality keeps the signal meaningful without constant clutter.
+- [behavior] Players notice a peripheral element as something popping in but cannot identify it until they move their gaze to fixate on it. When: When an important element appears in the periphery during play. Why: Peripheral vision lacks the resolution to identify detail, so a saccade is needed.
+- [behavior] Third-person views let players see where the character will land, and a shadow under the character helps in 3D platforming.
+- [rule] Remove irrelevant information, especially from the HUD and home screen, and avoid HUD clutter and overload, for example by making HUD elements context-sensitive.
+- [rule] Show control mappings or contextual action prompts persistently on the HUD when players would otherwise have to memorise them, so attention stays on movement and play. When: Designing complex control schemes with many actions; remembering is not the challenge. Why: Removing the need to remember mappings frees attention for the activity itself; players never need to memorize them.
+- [rule] Keep the default interface lean, displaying just the controls players require right when they require them; advanced users can attach extra panels and extensions. When: Designing default HUD and interface layouts. Why: A minimal default serves most players, while optional additions serve power users.
+- [rule] Make a cue salient against the environment when players must attend to it, so it is not missed. When: players must notice the cue. Why: A critical sign that blends into the environment will be missed.
+- [rule] At critical health, avoid visual effects that intensify danger and punish players already in trouble; encourage narrow escapes instead.
+- [rule] Layer the interface with modes and submodes so rarely used functions sit behind a secondary control, keeping the main interface simple.
+- [rule] Present stat effects as base values plus bonuses rather than as penalties below an average, so equivalent options are not avoided. When: designing how stat values appear. Why: Framing changes perceived value.
+- [rule] Give players the information they need to act, and show accurately what just happened; decision-relevant info should be visible or within easy reach such as a hover.
+- [rule] When sizing a score display, plan for top-end outliers, since leaderboard analysis is dominated by the highest scores. When: deciding how many digits a score display needs. Why: Extreme top scores set the maximum width required.
+- [rule] Keep peripheral cues simple and easily distinguishable, especially when they affect gameplay. When: When peripheral cues affect gameplay.
+- [rule] UI icons are often too small to be accessible, so enlarge them, though not every HUD element must grow.
+- [rule] Display the relevant interaction prompt when a player approaches an interactable object.
+- [rule] Place key information at the start and end of a sequence, where recall is strongest, such as in marketing trailers. Why: primacy and recency effects.
+- [rule] Place complicated features less prominently in the UI so only more committed players find them, following the 80-20 Pareto principle.
+- [rule] Give items and abilities functional text stating how they are used, required skills, damage dealt, or health restored. When: writing item and ability descriptions. Why: Players need functional information to make choices.
+- [rule] Only relative visibility matters: assign each element visibility proportional to its importance, since players perceive items roughly in that order as skill rises. When: deciding visibility levels across interface elements. Why: Players perceive items in roughly the order their visibility implies.
+- [heuristic] Obscure HUD functions are acceptable if players can learn them and they do not mislead.
+- [heuristic] Menu items anchored to a screen edge are effectively very large and quick to reach, needing few correction cycles.
+- [heuristic] With first- or third-person cameras, prefer an egocentric minimap, because a fixed map forces players to mentally rotate and adds cognitive load. When: Designing minimaps for first- or third-person games. Why: Mental rotation adds effort and slows navigation.
+- [heuristic] Group items that share a display format, such as short numeric counters, so players read them as one set. When: when laying out a status display.
+- [heuristic] Tiers suit players outside the top group, giving them something to work toward without making them feel weak. When: when displaying rank to most players.
+- [heuristic] Bold outputs and use conditional formatting to recolor them by value, such as red for an item far off a cost curve. Why: draws the viewer's attention to results.
+- [heuristic] Avoid on-screen information that conflicts with the task being performed, since conflicting distractors add workload and slow or degrade performance.
+- [heuristic] A minimal display can mirror the layout of the physical input it pairs with, keeping the interface readable at a glance.
+- [procedure] 1) List all information the player needs. 2) Sort it into three groups: needed every moment, glanced at from time to time, and needed only occasionally. 3) Keep frequent items on top and put rare items behind secondary controls before building layers. When: At the start of designing an information display.
+- [procedure] 1) Present the main advantages of an item as bullet points. 2) Keep text short, since most players skip long sentences. 3) Organize items so they can be compared side by side. 4) Show strengths and weaknesses as infographic bars.
+- [tradeoff] Egocentric minimaps rotate with the player's facing direction and avoid mental rotation, while allocentric maps fixed to the world suit large maps. When: Choosing minimap orientation. Why: Egocentric views reduce mental work for immediate navigation, whereas allocentric views give global overview.
+- [tradeoff] Ammo can be shown at increasing loudness: small corner text, bullet icons nearer center, crosshair display, half-screen flashing icons, then a spoken count after each shot. When: choosing how prominently to show ammo. Why: Each step trades attention cost against how quickly the player can read the value.
+- [pitfall] Designers tend to write too much item text, and dedicated UX writers are rare in the industry.
+- [pitfall] Removing the HUD entirely increases friction and memory load, because players must open menus to find information, pulling them out of the game world.
+- [pitfall] Dense but complete information, such as long skill descriptions or small percentage modifiers on wide damage ranges, may be ignored entirely by players. When: Presenting numeric or descriptive detail to players. Why: Completeness does not guarantee that players read or process the information.
+- [pitfall] Displaying important gameplay information in small or cluttered peripheral positions.
+- [pitfall] Relying on one sensory modality, such as vision, to convey important information makes it easy to miss.
+- [pitfall] Reducing UX to interface work or aesthetics ignores most of what the experience is.
+- [fact] Interface elements connect players to in-game data such as ammo counts and enemy information.
+- [fact] At any moment the player's attention roams over a small area of the level, which deserves the most effort.
+- [fact] Game state can be displayed on in-world objects, such as a weapon, instead of only in standard interface areas.
+- [fact] To remain equally legible in peripheral vision, elements must grow larger with distance from the fovea.
+- [fact] Screens and speakers are narrow output channels, and a game usually has more happening than they can carry at once, so designers must structure and sequence information. When: Presenting multiple simultaneous events. Why: Limited output bandwidth forces prioritization of what reaches the player.
+
+## affordances and signs
+- [model] Visual representation sits on a triangle with three corners: realism, iconic simplification and non-iconic abstraction. Written language marks the most abstract corner that still conveys meaning. When: when placing an object's visual treatment. Why: Position signals which behaviors players will expect.
+- [model] Hartson's framework defines four affordance types: physical, cognitive, sensory, and functional.
+- [definition] An affordance is the relationship between an object's properties and an agent's capabilities, such as a handle affording a grip, so its form can communicate how it should be used. When: Designing interface and object forms.
+- [definition] A clarity failure means players do not perceive an element's form; a metaphor failure means they perceive the form but misread its function.
+- [definition] Informative signs describe what is happening, and inviting signs encourage a specific action.
+- [definition] Iconic visuals abstract reality through simplification while still conveying meaning, whereas non-iconic abstraction uses shapes, colors and lines that represent nothing. When: when classifying a visual style. Why: Iconic and non-iconic styles set different expectations.
+- [definition] Cultural affordances are learned conventions, like a ladder signaling a vertical path; defined affordances are explicit markers, like strong paint in complex 3D spaces.
+- [definition] An affordance lets people perceive how an object can be used; the signifier is its perceivable part, and it should be polished so players perceive it correctly.
+- [mechanism] An informative sign turns inviting when its state needs immediate attention, such as a low health bar that turns red and flashes. When: state needs immediate attention.
+- [mechanism] Intuitive affordances need less learning and memory, and so less attention, which reduces the explanation needed and improves usability and flow.
+- [mechanism] Real-world textures and shadows help users understand early touch interfaces, and the cue can be dropped once users know the medium. When: early touch interfaces. Why: A major mobile OS moved to flat design in 2013 because users had grown familiar with touch.
+- [rule] Make sure players perceive signs and feedback as the developers intended, and test key elements with the target audience. Why: to avoid confusion. (x2)
+- [rule] Make an item's or icon's appearance accurately convey its function, designing for affordance so form follows function and its purpose is apparent.
+- [rule] If most players misread an icon's function, replace it with a different metaphor.
+- [rule] Use language and metaphors familiar to players, such as presenting inventory as a backpack.
+- [rule] Place informative signs such as health bars, ammo counts, cooldowns and minimaps where they are easy to perceive without distracting from the main action, usually in peripheral vision on the HUD.
+- [rule] Make inviting signs, which persuade players to act, salient against the game world, such as a yellow exclamation mark above an NPC.
+- [rule] Use defined affordances such as strong visible markers when a realistic, complex 3D environment becomes too hard for players to read. When: complex realistic 3D environments. Why: players can be overwhelmed.
+- [rule] Use button labels, icon shapes, and metaphors so players can learn and decide what to do.
+- [rule] Support tasks with functional aids such as inventory sorting, item comparison, filtering, and pinning a crafting recipe to the HUD.
+- [rule] Make similar signs and feedback behave alike, and make elements that cannot be used look different from usable ones.
+- [rule] In environment-heavy games, separate gameplay symbols from pure scenery so players can tell which elements matter for play. When: when environment art is dense or detailed. Why: Players cannot read functional symbols if they blend into decoration.
+- [heuristic] Avoid figure/ground ambiguity and multistable images in icons unless the ambiguity is intentional, because players may misread them. When: Designing icons and UI graphics. Why: Ambiguous images can be read in unintended ways, and once seen that reading is hard to undo.
+- [heuristic] A good metaphor explains a mechanic, gives immediate feedback, and reinforces the game's theme all at once.
+- [procedure] 1) Select the important HUD and UI icons. 2) Ask players what each icon depicts. 3) Ask players what function each icon performs.
+- [tradeoff] Explicit indicators make mechanics clear, but constant overlays obscure the fiction and become tiring for players. When: Deciding how to mark interactive elements.
+- [pitfall] Icons, objects or signs whose look or meaning suggests a different function than intended cause player confusion.
+- [pitfall] False affordances, where elements look interactive or reachable but are not, such as invisible walls, unclimbable ladders or unreachable map areas, frustrate players and break trust in game signals. When: Elements that look interactive but are not. Why: Players act on the visual promise and are blocked, which breaks trust in the game's signals.
+- [pitfall] Using one look or control for two different functions confuses players, such as a close button later reused to delete items.
+- [pitfall] Icons based on obsolete objects, such as a floppy disk for saving, carry no meaning for players who never used them, so their function must be learned.
+- [pitfall] Sending visual or audio cues is not enough, because a deeply focused player may never perceive them.
+- [pitfall] Ads imitating system elements, like fake hair on a screen, trick users into unintended swipes that lead to advertisers. Why: users act on familiar interface cues.
+- [pitfall] A cue that changes its appearance between areas undoes the vocabulary and forces players to relearn it.
+- [fact] Signs must be perceptible before they can be read, since a low-contrast sign is simply missed.
+- [fact] Well-designed signs teach rules without tutorial text, which reduces localisation work and helps players return after a long break.
+- [fact] Doorframe colours show direction: green leads forward, red leads back, blue leads forward into annex rooms, and yellow leads back from annex rooms.
+- [fact] After flat design, interfaces returned to shadows and gradients that signal which areas are interactive.
+
+## dark patterns
+- [model] Four categories of game dark patterns: temporal (wasting time), monetary (overspending), social-capital (exploiting obligation or standing), and shades of gray (cognitive-bias tricks).
+- [definition] A dark pattern is a deceptive interface or product design that tricks users into actions benefiting a business at their expense, frequently on purpose, usually to maximize profit. (x2)
+- [definition] The attention economy describes products that use bottomless scrolling, autoplay, and push notifications to keep people engaged beyond their original intent. Why: Attention is scarce and valuable to these platforms.
+- [definition] A nudge is a well-intended design that guides people to choices benefiting their health, money, or society.
+- [definition] Associative advertising shows an appealing context and leaves the product use to the viewer.
+- [definition] Demonstrative advertising shows a product in use and how it helps, and game versions show features in a list.
+- [mechanism] Dark patterns exploit limited attention and cognitive limits, so users miss the costs they incur and business goals are favored over users; intent is not strictly required. (x2)
+- [mechanism] When business goals outrank human goals, the UX mindset disappears and practices like dark patterns can take over.
+- [mechanism] Players can plant false information using normal mechanics, such as an action that suggests one plan while the real plan differs, not only through explicit lying tools. When: games with readable actions and hidden intent. Why: Opponents read actions as evidence about intent, so misleading actions shape their beliefs.
+- [behavior] Players who learn a predictable dynamic difficulty system may play poorly to stay behind, then exploit the benefits of trailing to win late. When: When DDA is predictable and players understand it. Why: Players optimize against the rule rather than the intended challenge.
+- [behavior] Few players compute the effective per-unit price of in-game currency, and fewer compare bulk purchases or sale events. When: players buying currency bundles with real money. Why: Irregular bundle sizes and conversion rates make the math tedious.
+- [rule] Print dots on number tokens equal to each outcome's expected count in 36 rolls, letting players compare odds at a glance. When: tokens representing dice-sum outcomes.
+- [rule] Do not reframe negative emotion caused by bugs or usability problems; remove the cause instead. When: negative emotion comes from a bug or usability problem. Why: reframing hides a problem that should be fixed.
+- [rule] Make an element hard to perceive only when difficulty perceiving it is the intended challenge; otherwise it damages usability.
+- [rule] Restrictive nudges need public debate and inclusive design, since they can exclude users with mobility limits, temporary injuries, or heavy loads.
+- [rule] Game studios that respect their audience should not use dark patterns.
+- [heuristic] An unclear element is better than a misleading one, because players who hold a wrong belief become more frustrated than puzzled.
+- [heuristic] An item on a dark-pattern list is not automatically a dark pattern; context and audience decide, and the list is not exhaustive.
+- [procedure] 1) Stress that the team can win the next round. 2) Highlight what the player did better than the winning team. 3) Point out personal improvement on a metric compared with earlier play. When: showing a loss to a player. Why: reframing around progress softens negative emotion.
+- [tradeoff] Top-down design saves time and feels familiar but risks a clone look; small changes accumulate until the interface looks distinct.
+- [pitfall] Forbidding cash trades only through terms of service is weak, because tracking and banning violators costs support effort and banned players often cause public backlash.
+- [pitfall] Some engagement techniques are unethical and may count as dark patterns, and it is not always easy to tell when a feature has moved from good UX into a dark pattern.
+- [pitfall] Tracking alone does not create hand presence, because interactions must also feel meaningful. When: Hand tracking is added without meaningful object manipulation.
+- [pitfall] Pre-ticked opt-out boxes, such as newsletter sign-ups, are dark patterns because they favor the company over users who never noticed.
+- [pitfall] Assuming users will adopt a new interaction without verifying it through testing.
+- [pitfall] Treating a current design trend as permanent, since interface trends come and go.
+- [pitfall] Treating a UX framework as scientifically validated overstates its evidence, since its own author states it has not been empirically tested.
+- [pitfall] A large primary button with a tiny opt-out link, plus hard-to-find cancellation, can trap users in unwanted recurring memberships.
+- [pitfall] Ads disguised as debris on the screen can open a store when users try to swipe them away.
+- [pitfall] Dark patterns rely on users not noticing them, so they are hard to spot without deliberate review.
+- [pitfall] Users may buy a product twice when the interface does not clearly show that the first purchase succeeded. Why: Missing success feedback leaves users unsure whether the action worked.
+- [pitfall] Designers often cannot tell a missed message from a deliberately ignored one, so failure-triggered backups can feel like nagging to players who chose to ignore the first prompt.
+- [fact] The term dark pattern was coined in 2010; a catalogue of 16 types, from fake scarcity to trick wording, has been compiled.
+- [fact] Scams, false advertising, and possibly propaganda also count as dark patterns, not only interface tricks.
+- [fact] Dark patterns are incompatible with the UX mindset because they exploit users for the company's benefit.
+- [fact] Regulators are increasing scrutiny; deceptive designs that cause unintended purchases have led to very large fines.
+- [fact] Some dark patterns are subtle, such as the decoy effect in pricing.
+
+## vr and ar interfaces
+- [definition] Physical input is how the player touches a device to change the game world, such as a controller, keyboard, mouse, or moved board pieces.
+- [definition] Physical output is how the player perceives the game world, through a screen, audio, or other sensory output.
+- [definition] Proprioception is the body sense of where the body is and how it is posed, such as sitting, standing or crossing a leg.
+- [definition] In games, natural input means relationships that feel instinctive, not input that copies real-world physical interaction.
+- [definition] Augmented reality overlays virtual elements on the real world, spanning a continuum from assisted reality to mixed reality, on phones, headsets, or glasses.
+- [definition] A 3D underlay is a simple 3D scene painted over in an image program, letting an artist produce many looks from one scene.
+- [mechanism] A controller or prop built for one task invites only that task, while a generic controller invites wider guesses about what else is possible. When: Choosing physical controllers or props.
+- [mechanism] When virtual head height does not match the player's real posture, the player feels they float or that the world has shrunk. When: A seated player is given a standing-height viewpoint. Why: The mind knows the virtual scale is impossible for the real body.
+- [mechanism] The strongest hand presence comes from natural, meaningful manipulation of the environment, not from hand visibility alone.
+- [mechanism] VR cybersickness arises when visual and auditory cues show body motion while the vestibular and proprioceptive systems sense a stationary body.
+- [behavior] A seated player in a walking-based VR game perceives the scene as fake because the body and the experience disagree. When: Player posture differs from the posture the game assumes.
+- [rule] Use gesture recognition when measured detail such as rotation and speed can shape the response, layering subtle measures; avoid it when the result collapses into a single binary outcome. When: the device reports detailed motion data. Why: Shaping outcomes with measured detail makes results more satisfying than binary responses.
+- [rule] Make the physical objects players touch more pleasing, and make the mapping from physical actions to world actions as direct as possible.
+- [rule] Consider whether a physical output device would make the game world feel more real to the player.
+- [rule] Hide the player's hands while they hold a tool, since attention shifts to the tool tip and most players do not notice. When: A tool is held in VR. Why: The mind focuses on the tool tip rather than the hands.
+- [rule] Design scenarios such as a desk or a car interior for seated players when the player will be seated during play. When: The player sits during play. Why: The body's posture matches the virtual setting.
+- [rule] Place frequently used objects where a real person naturally reaches, such as over the shoulder for arrows stored in a back quiver. When: Players must retrieve items repeatedly. Why: The movement matches natural body motion.
+- [rule] Make physical actions easy: use large buttons for cursor or finger input and place common commands near the thumb on mobile, as Fitts's law supports.
+- [rule] Make signs and feedback noticeable, discernible, legible, and audible, for example with legible font sizes.
+- [rule] Use AR in restricted, controlled environments and avoid requiring screen focus in open, hazardous spaces such as busy streets. When: When designing where and how AR play takes place. Why: Minimizing cognitive load and keeping players safe depends on the environment.
+- [rule] For VR sessions longer than roughly 15 to 20 minutes, allow seated play with arms on the lap and use a physical controller instead of gestures.
+- [rule] At minimum, give 2D UI in VR depth and place it inside the 3D environment.
+- [heuristic] A familiar gesture, such as pinch-to-zoom, may make its VR equivalent easier to adopt, but that assumption must be tested. When: when moving a known interaction to a new platform.
+- [heuristic] Physical actions such as one unit attacking another are clear and need no interpretive symbols, so mechanics built on them are easy to learn and read. When: choosing core interactions for readability. Why: this clarity explains why violence recurs across many games.
+- [pitfall] Gesture that merely substitutes for a button wastes sensing detail, feels unsatisfying, and removes the skill that gives mastery its value. When: mapping an action to a motion gesture.
+- [pitfall] Letting virtual objects pass through the player's body disconcerts players and eventually breaks presence, because bodies resist being penetrated. When: Player walks through a virtual table or similar object.
+- [pitfall] Visible hands or feet that are not where the real ones are break presence faster than any other avatar error. When: Avatar limbs are shown in VR.
+- [pitfall] Overlaying AR on the open real world without considering hazards has been linked to large numbers of traffic accidents and deaths. Why: Distraction from screens in public spaces causes measurable real-world harm.
+- [fact] Seeing and meaningfully using one's own hands strongly builds presence in VR and makes the virtual world feel solid and stable.
+- [fact] Augmented reality overlays digital information on real places by recognizing images and pairing them with data, and waypoints can guide players to social locations. When: Designing location-based games.
+- [fact] A wider field of view on AR displays could change how much sickness AR causes.
+- [fact] Screen games largely ignore proprioception, but VR depends on it, so a mismatch in posture breaks presence.
+- [fact] Looking at a world differs greatly from reaching out and touching it.
+- [fact] As foot and full-body tracking become standard, body alignment will matter more and can produce stronger presence.
+- [fact] First-person views are better suited to aiming and to some line-of-sight relationships than third-person views.
+
+## color and symbol design
+- [definition] A channel conveys a stream of information to the player through attributes like digits, hue, scale, and typeface, each carrying part of the message.
+- [definition] Legibility is the organization that lets observers understand a space, and it is the goal for sandbox gamespaces.
+- [mechanism] When many irrelevant elements are red, a new red warning becomes harder to detect because the red noise competes with the signal. When: many game elements are red. Why: Irrelevant red elements hide the relevant red signal.
+- [mechanism] Different shades of one color can create distinct characters while still signaling the same category, such as friendliness. When: when a color code must distinguish several entities in one category. Why: The shared hue preserves the category while the shade differentiates members.
+- [mechanism] Grunge textures showing wear and damage mark areas that were once safe and are now corrupted, contrasting with clean, inviting spaces. When: Showing that a formerly safe area has become corrupted.
+- [behavior] Simple, familiar visual patterns match the brain's internal models, so they feel natural at first glance and look wrong only on reflection. When: when designing characters or icons with exaggerated or abstract features. Why: Familiar patterns match stored models before analysis begins.
+- [behavior] A visual cue showing an enemy is unaffected by one action steers players toward the alternative action. When: two actions can defeat an enemy. Why: the cue removes the ineffective option.
+- [rule] When two modes conflict on one input, move one mode to a separate input, such as a second thumbstick, if the interface offers one. When: The physical interface has a spare input channel.
+- [rule] Apply a strict color code, such as making one color always mean friendly, so players can read abstract shapes reliably. When: when a game uses abstract or minimal art. Why: Consistent color meaning makes abstract shapes readable as game information.
+- [rule] In indoor levels, mark pathfinding nodes with tactical information during node placement, using Dirichlet domains for quantization.
+- [rule] Decide which scenery is a gameplay symbol and which is only environment art before styling objects. When: during level art planning. Why: Unclear roles make it hard to apply distinct styling correctly.
+- [heuristic] Reserve red for immediate threats, being hurt, or low health, and use orange for enemy markers such as outlines or health bars. Why: Orange marks enemies without causing red overload.
+- [heuristic] Colored translucent overlays can add color cheaply when screen zones match the layout, with one color assigned to each functional area. When: When a fixed-layout display has zones that map to gameplay roles.
+- [heuristic] Allocate display space in proportion to importance; the most critical status element can take a large share, such as close to a third of the dashboard.
+- [heuristic] Color theory, contrast, and related principles help symbols stand out from other information in a level.
+- [heuristic] Red, red-orange, and orange together create a warm or hot feeling.
+- [heuristic] Hazardous shortcuts that give faster times to players who master them reward skill and create optional risk. When: Designing track or level routes. Why: Skilled players gain an advantage that others can pursue.
+- [heuristic] Green often marks alien creatures or monsters, through links to toxic materials or swamps.
+- [heuristic] Use distinct color for hazards, such as red explosive barrels versus silver strong enemies, so players can judge risk before engaging. When: when planning encounters with varied threats. Why: Visual contrast lets players assess danger at a glance.
+- [procedure] 1) Identify what data must travel to and from the player. 2) Rank which data matter most. 3) List the channels that can carry it and which suit which data. 4) List each channel's dimensions and decide how to use them. When: when laying out an interface.
+- [procedure] 1) Teach players a symbol's meaning through demonstration and reinforcement. 2) Keep showing the symbol while adding obstacles between it and its payoff, or subvert its convention. When: when designing symbol-based communication in games. Why: learned symbols can be varied once players understand them.
+- [tradeoff] A noise-minimizing art style, such as cartoon look with simple textures inside exaggerated silhouettes, aids readability and gives a distinctive look, but it constrains realism. When: Choosing an art direction where many entities must be read quickly. Why: Simple shapes and textures reduce visual noise and solve several problems at once.
+- [pitfall] Setting text color and background color to the same value makes the text invisible.
+- [pitfall] Subverting a visual convention can mislead players, but it gives them choices that depend on whether scenarios match the game's visual language. When: when a game's visual language is established. Why: players trust conventions and subversion tests that trust.
+- [fact] Red is the traditional colour for danger and damage, so it often signals damage taken or a threat and stands out when contrast is high.
+- [fact] Assigning information to channels relies on instinct and experience, but mostly on trial and error through many sketches that get reworked.
+- [fact] The text color tool changes a cell's font color, which can draw attention to a value or help distinguish groups of cells.
+- [fact] Rendered plans and sections can show atmosphere and its progression across a level, which perspectives alone cannot convey.
+- [fact] The additive model mixes red, green, and blue light, which combine into white; each screen pixel uses these three elements.
+- [fact] The subtractive model uses RYB or CMY; combining these forms black, with CMY common in printing and RYB giving the familiar color wheel.
+- [fact] Games reuse color associations, such as red or green for health items and blue for magic or mana.
+
+## interface consistency
+- [definition] The interface is the narrow boundary where player and game world meet; its job is giving players a sense of command over their experience. Why: Failure of the interface loses the experience of interacting with the game.
+- [definition] An interface mode is a change in one of the six input-output mappings, so the same input produces a different effect.
+- [definition] Top-down interface design starts from a successful genre interface and adapts it to the game's unique features, saving design time and feeling familiar.
+- [definition] HSB describes a color by hue, saturation (purity), and brightness (how much black or white it contains).
+- [mechanism] Pressing inputs together can yield a response that neither produces alone, letting a few buttons map to many actions.
+- [mechanism] Holding a modifier button to change what the directional pad does creates a chorded input that adds actions without new buttons.
+- [behavior] Under stress, players fumble controls and miss crucial information when the interface is hard to use. When: when the interface is hard to use under pressure.
+- [rule] Design the interface so players stop noticing it; good input leaves players attending only to the game, not the controls. An interface that buries the game communicates nothing. When: Designing UI and HUD. Why: Visible interface draws attention away from the game events it should convey.
+- [rule] Keep interface design uniform within a title and across a series, use plain vocabulary, and block errors that don't stem from the gameplay itself. When: Designing interface language and layout. Why: Uniform wording and layout lower confusion and slip-ups.
+- [rule] Place waypoints on the map and show them on the radar to reduce the need to remember routes. When: Designing navigation aids for objectives. Why: Waypoints offload route memory to the interface.
+- [rule] Design the interface to be robust, powerful and as invisible as possible; treat looks and smooth motion as welcome but secondary to feeling in control. Why: Player control, not aesthetics, is the core function of the interface.
+- [rule] Check that the interface does what players expect when they use it, and if it does not, find out why.
+- [rule] Theme interface artwork to match the rest of the game and review it for visual consistency, even when a different artist creates it.
+- [rule] Keep each interface element in the same place across screens and areas, and do not move features when the screen changes. When: designing multi-screen interfaces. Why: Moved controls cause frustration and confusion.
+- [rule] Provide a wireframe for every interface artists must build, describe each feature's function, and detail every interface state.
+- [rule] Design text syntax as user interface: a grammar easy for a parser is easy to write, but one suited to users is hard to design.
+- [rule] Encode weapon category in preview shape: long thin parallel lines for long range, a short wide cone for short range, and a circle for area effect. When: Designing weapon or ability previews that share one visual style. Why: A shared visual treatment with shape-coded categories lets players identify the category at a glance.
+- [rule] In conception, use UX to develop personas and help the core team explain its plan to stakeholders. When: Conception phase.
+- [heuristic] Use a color gradient when the size of a deviation matters, not just whether a value is above or below a target, so larger deviations show deeper colors. When: Highlighting how far values sit from an expected curve. Why: A gradient shows magnitude, which a binary highlight cannot.
+- [heuristic] Group related interface features together, such as several health meters or all combat controls, so players know where to look. When: laying out a game interface. Why: Players scan for related information in a predictable place.
+- [heuristic] Combine an automated chat filter with a way for players to report rude behavior; this combination works best.
+- [procedure] 1) Draw the interface as a flowchart with rough sketches. 2) Test the screen flow in a lightweight prototype. 3) Implement only after the flow works.
+- [procedure] 1) Group players into rating ranges or percentiles. 2) Assign each group a tier label for low-granularity display.
+- [procedure] 1) Identify what is special about the core concept. 2) List the properties of the core conflict and its elements. 3) Assign properties to elements and let them interact. 4) Let the interface evolve from these needs rather than designing it first. When: developing an original game's controls and interface. Why: The interface then expresses the game's tension instead of generic conventions.
+- [tradeoff] Platform-native UI frameworks are often tied to one operating system, while cross-platform toolkits can feel foreign on every platform.
+- [pitfall] When modes look identical and give no feedback, players cannot tell what their inputs will do and trigger wrong commands. When: Modes share visuals and the game gives no indication of the current mode.
+- [pitfall] Changing a working convention without good reason adds learning cost for players with no payoff.
+- [pitfall] Copying a successful game's interface and controls while only changing the theme produces a clone with little originality.
+- [fact] Event designs of this kind mirror the mouse, window, and key press messages used by many windowing toolkits.
+- [fact] Many states multiplied by per-button actions and chorded inputs can map dozens of moves onto each button.
+
+## accessibility design
+- [definition] Accessibility means a game works on its own, letting players understand and play it without the designer present to explain the rules.
+- [mechanism] Including everyone brings more ideas to choose from, quickly weeds out flawed ideas, exposes the game to many perspectives, and gives everyone a sense of ownership.
+- [mechanism] Each added seat dilutes every person's interactivity, leading to either tiring play or a theater too small to be profitable. When: participatory play for a large crowd.
+- [rule] Design for all players, including disabled players, so games are inclusive and accessible and do not add unnecessary barriers. (x2)
+- [rule] Do not rely on colour alone to convey meaning; add text labels or notes so the information survives printing and colour-blind viewing; about 8% of males are colour blind. When: Using colours to mark categories, cell roles or colour-coded information. Why: Colour is not the only way to convey information, and a significant share of male players cannot reliably distinguish certain colours. (x2)
+- [rule] Let users tailor the interface: offer full control remapping, subtitles and colour-blind modes so players face no unnecessary barriers. (x2)
+- [rule] Make colour indicators perceivable to colour-blind players through accessible palettes or options-menu display modes, since otherwise they are left without cues.
+- [rule] Prefer sans serif fonts, use at most three fonts and colours, avoid long all-caps text except for short headings, and place text over a contrasted overlay rather than bare game world. When: Designing in-game text and interface typography. Why: Creative fonts are hard to read and difficult to verify as readable.
+- [rule] Account for motor differences such as left-handedness, temporary injury, permanent conditions and situational limits like holding a baby. When: Designing input schemes. Why: Players differ in physical ability, both permanently and temporarily.
+- [rule] Treat accessibility as critical as the other design goals, since a fun game that players cannot access may go unplayed.
+- [rule] Games aimed at young audiences should encourage breaks and varied play, since good sleep matters for them.
+- [heuristic] The more customisable a game is, such as in control mapping, font size and colours, the more accessible it is to varied players. When: Designing options for controls, text and visuals. Why: Customisation lets players adapt the game to their own abilities and needs.
+- [heuristic] A larger font for emphasis works best when columns are widened or rows are made taller to fit it. When: emphasizing a heading or key value.
+- [heuristic] Very young children cannot sustain attention through long games, while busy adults may prefer quick, short-burst sessions. When: when choosing a target game length. Why: attention and available time vary by audience.
+- [heuristic] Familiarity with many kinds of games, from simple party games to large commercial titles, supplies raw material for new designs. When: Generating new design ideas. Why: Wide exposure gives more patterns to recombine.
+- [procedure] 1) Define screening criteria such as no prior retail game experience and basic computer operation. 2) Recruit testers matching those criteria. 3) Observe them complete the tutorial and play. When: recruiting testers for a game meant for nongamers.
+- [procedure] 1) Pick critical areas such as starting the game and key choices. 2) Write a short script leading testers through those tasks. 3) Recruit 3 to 5 objective, never-played testers per market segment, eight preferred. 4) Test one-on-one and have a note-taker sit outside the participant's view or record. 5) Revise and retest until most target players complete the critical tasks. When: checking whether new players can understand and reach the core of a game. Why: Designers who know the game cannot easily predict where newcomers get stuck.
+- [procedure] 1) Ask how players will know how to begin. 2) Check whether it needs explaining or is self-evident. 3) Check whether it resembles something players already know, and if so highlight the similarity; if not, help players understand it. 4) Check whether it invites players to touch and manipulate it, and if not, change it to do so. When: Early design of any puzzle or game, and when reviewing how it opens. Why: Clear first steps and familiar behavior let players start without help.
+- [metric] Movement time depends on device start/stop time a, device speed b, distance D to the target, and target width W along the axis of motion.
+- [pitfall] Fixed controls, fonts and colors exclude players with specific needs.
+- [pitfall] An interface can silently rule out activities the designer did not mean to exclude, and players often do not notice those activities are missing.
+- [pitfall] Force that fights the player makes the device an obstacle rather than an amplifier, and actuated devices cause fatigue that limits how long players use them.
+- [pitfall] Oversensitive inputs frustrate players, because small unintended movements produce large effects.
+- [fact] Frequent eye movements between screen areas can be physically tiring, especially in first- and third-person action games. When: In first- and third-person action games. Why: Repeated saccades cost physical effort.
+- [fact] Even without a retro reference, the core audience suggests what skills players will bring to the game. When: When no classic reference exists. Why: Audience expectations still predict baseline skills.
+- [fact] Most players want several market values at once, so audience segments overlap heavily and one game can serve many of them.
+
+## game ux
+- [model] A practical game UX framework has two pillars: usability, meaning ease of use, and engageability, meaning how enjoyable, captivating and emotionally resonant the experience is. (x2)
+- [model] Game UX rests on four pillars: human-centered, grounded in science, collaborative, and benevolent.
+- [model] Game user research combines two tools: knowledge of cognitive science, HCI, human factors, and heuristics, and the scientific method as methodology.
+- [model] Game UX evaluates the experience players will have, how they sense and act in the game, and which feelings and involvement follow, measured against design intent.
+- [definition] Game UX applies the UX mindset to games, putting the player's actual experience, perception and interaction first from development through post-launch. (x2)
+- [definition] Game studios balance fast turnaround against scientific rigor, so research is often run to a looser standard that is still better than deciding without data. When: Studios working under deadlines. Why: Deadlines limit the time and participants available for rigorous studies.
+- [definition] A heuristic evaluation has one or more UX experts assess usability and engageability against rules of thumb, then report findings to the team. When: Evaluating a game without player testing. Why: Expert review gives fast feedback when participants are unavailable.
+- [definition] Game user research evaluates a game's ease of use and its ability to engage players, finding usability and engageability issues with fix suggestions while respecting design intent and business goals.
+- [definition] Game UX covers usability plus emotion, motivation, immersion, fun and flow.
+- [definition] Homogenous redundancy repeats the same message in the same form, and can be hidden, such as an audio log placed in several locations that stops appearing once heard.
+- [mechanism] Rule gaps cause arguments in board games and loopholes, dead ends, or system breakdowns in software.
+- [mechanism] Because games are interactive, art that conflicts with perception principles or usability principles can keep players from fully experiencing it.
+- [mechanism] Good UX respects users and avoids major friction, so satisfied users make the product profitable in a win-win.
+- [rule] Gamified, educational, health, and social change games need the same UX mindset and framework as entertainment games.
+- [rule] When existing references miss the target look, gather your own real-world material, such as physical samples, to build the palette.
+- [heuristic] Use heuristic evaluation early, when a game is too rough for participants or testing is not possible. When: Early development stages. Why: Rough builds may not be ready for real players.
+- [heuristic] Hiring UX people for interface work is useful, but a global UX strategy for the game and studio has the biggest impact.
+- [heuristic] A highly innovative game can survive usability problems because players accept extra effort, but this should not be relied on.
+- [procedure] 1) Identify information players must remember across activities. 2) Check whether it is visible only in a distant mode or screen. 3) Move it to an always-accessible log or menu. When: Players fail to act on requirements they were shown earlier.
+- [pitfall] Heuristic evaluation cannot replace user testing, since most real usability issues only appear when the target audience tries to work out the game. When: Deciding whether expert review is enough. Why: Experts evaluate against rules, while players reveal actual confusion.
+- [pitfall] Assuming a learner will save work without counting the hand-holding can make the project more expensive, not less. When: Planning a project that relies on learning. Why: Data preparation, validation and testing add effort.
+- [fact] A game's experience happens in players' minds, so teams can design for it but cannot design it directly; many developers craft it under system and production constraints. (x2)
+- [fact] The core purpose of game user research is to verify that the intended experience is the one players actually have, and if not, to understand why and find ways to fix it.
+- [fact] Many user research methods exist, and the right one depends on the development cycle stage and the research question.
+- [fact] Game UX is gaining traction in the video game industry but is not yet well formalized, and no clear definition of its roles and responsibilities exists.
+- [fact] Some game UX models list four experience factors: ease of use, fun, challenge and pace.
+
+## usability principles
+- [model] A compelling game user experience needs two components: usability (ease of use) and engageability (ability to engage).
+- [model] Usability has seven pillars: status cues and responses, legibility, form matching purpose, uniformity, minimum workload, error prevention and recovery, and flexibility and accessibility.
+- [model] Usability has five components that can be assessed separately: learnability, efficiency, memorability, errors, and satisfaction.
+- [model] Flow-based heuristics break the experience into eight groups: focus, difficulty level, skill capability, sense of control, explicit goals, responsive feedback, absorption, and social interaction. When: Evaluating game flow in design. Why: Researchers adapted flow-theory components to games.
+- [definition] Usability covers how players perceive, understand and interact with a game, and how well they attain set targets, judged by effectiveness, efficiency and satisfaction within a given context.
+- [definition] UX concerns usability, meaning ease of use, and pleasure of use, which is called emotional design.
+- [behavior] Players who struggle with simple tasks may quit, and severe usability problems can make a game unplayable.
+- [rule] Once unintended friction is found, fix it without dumbing the game down, since left unfixed it becomes a dark pattern; intentional challenge should be kept. Why: Usability targets friction that ignores perception, cognition and motivation, not designed difficulty.
+- [rule] Let players undo actions and change their minds.
+- [rule] Usability design should account for human limits in memory, perception and attention, anticipate likely player errors, and match players' expectations and abilities.
+- [rule] Implement stuns by impairing precision, perception, or control mapping, such as slowed turning, screen whiteout, or scrambled inputs, rather than removing the player's ability to act. When: When a stun should hurt without freezing play. Why: The impaired player still decides and acts.
+- [heuristic] Usability heuristics help teams interpret what user researchers report about a game. When: when reading researcher reports.
+- [heuristic] Solving problems users never state, including missing progress feedback, can turn a dull chore into an enjoyable activity.
+- [heuristic] Keep subgames short enough that players can still recall their goal in the main game.
+- [metric] Usability error assessment covers how many errors occur, how severe they are, and how easily players recover from them.
+- [tradeoff] Designing for every skill level dilutes the core experience, while choosing a minimum skill level deliberately keeps it clear, though some overflow is then accepted.
+- [pitfall] Motivation often fails because goals and progress are unclear in the UI and game world, not because goals are missing. When: Designing goal and progress display. Why: Players cannot pursue goals they cannot read.
+- [pitfall] Friction from poor usability rather than meaningful challenge makes a game frustrating, while pushing input toward maximum naturalness can erase the challenge that makes play rewarding.
+- [pitfall] Frustration caused by poor usability is often blamed on gameplay, and in the worst case it leads to rage-quitting.
+- [pitfall] Usability frustrations produce negative emotion and should be avoided.
+- [fact] Ctrl+Z undoes the last change, and Ctrl+Y redoes a change that was undone.
+- [fact] Human capabilities and limitations change slowly, so core UX principles stay constant even as products and technologies change.
+- [fact] Mixed initiative is often described as turn-taking, but speakers can interrupt or speak twice in a row.
+- [fact] Game-specific usability heuristics have been published since the early 1980s and proliferated in the 2000s, covering controls, goals, feedback, pacing and consistency.
+
+## charts and data display
+- [definition] Error bars show the standard error on each data point, indicating how reliable that value is.
+- [definition] A scatter plot shows (x, y) pairs with no required order, while a line graph connects points in succession along the x-axis.
+- [rule] Give every chart a title and label each axis with its quantity. For charts with several curves, name each curve in the legend or remove the default legend. Why: Labels let readers identify what each curve and axis represents, and a chart copied elsewhere loses its surrounding context.
+- [rule] To compare curve shapes, chart one column at a time and leave out text label columns, since labels would be the horizontal axis entries. When: Comparing the growth shape of several numeric columns. Why: Plotting one series at a time keeps the shape readable and avoids a cluttered axis.
+- [heuristic] Use simple, pre-sorted visuals when the goal is to make content quick to absorb. When: when speed of comprehension matters most. Why: Pre-sorted visuals require less processing effort.
+- [heuristic] Reinforce one fact by changing several dimensions of a channel together, so the meaning still reads if the player misses one dimension. When: when a fact is important or must be read quickly.
+- [heuristic] Encode different facts on different dimensions of one channel, such as allegiance on color and remaining health on size, so one channel carries several meanings.
+- [heuristic] Overlapping error bars generally suggest two data points are not significantly different, though this is a rough guide rather than a formal test. When: Comparing two data points on a chart with error bars.
+- [heuristic] Small error bars indicate reliable data, while large error ranges mean reality may differ substantially, so the data should not be trusted much. When: Judging confidence in a chart's data.
+- [heuristic] Use a line graph to track change over time or against level, and a bar graph to compare several data sets point by point at each x value. When: Choosing a chart type for game metrics.
+- [procedure] 1) Open the chart editor from the chart's Edit option. 2) Select the series to modify, or add a new series. 3) Set the cell range the series draws from. When: Chart shows wrong data or needs an added series.
+- [procedure] 1) Choose the chart type. 2) Open the chart's Series customization. 3) Add error bars, either as a percentage of each value, a constant, or another option. Works for line and column charts. When: Showing data reliability on a chart.
+- [procedure] 1) Compute the standard error. 2) Enter it as a constant error bar value. When: The standard error is already known.
+- [procedure] 1) Highlight the data in one row or column. 2) Choose Chart from the Insert menu. 3) Select the line graph type. When: Plotting a single data series over time or level.
+- [procedure] 1) Include a header row or left column holding the x values alongside the data. 2) Mark that row or column as headers or labels when creating the chart. When: Charting data that needs labeled x values.
+- [procedure] 1) Arrange every series as a separate row or column. 2) Highlight all of them together when creating the chart. When: Plotting several data sets on one chart.
+- [tradeoff] High granularity shows an exact position, clarifying standing, while low granularity shows broad tiers, creating a general sense of progress. When: when choosing how precisely to display rank.
+- [tradeoff] Sparklines give a compact view of many rows but lack titles, axis labels and error bars, which full charts provide. When: you need a bird's-eye view of many rows versus a detailed chart. Why: Sparklines are small by design, so they omit labelling features.
+- [pitfall] Multiple rank lists are beneficial but can confuse players about which list is official.
+- [pitfall] Default chart axis ranges may not fit the data, so set them manually; data ranging from 0 to 1 may otherwise get an axis running to 1.2. When: Charts whose default scaling looks wrong.
+- [fact] Number formats can display cell values as currency, percentages, decimals with a chosen number of places, or dates and times.
+
+## interface layout and grouping
+- [definition] Hatching uses parallel lines where closer lines give darker tones; crosshatching adds a second crossed set for still darker tones. When: shading sketches.
+- [mechanism] Elements placed closer together are perceived as one group, and added empty space separates them into distinct groups. When: Laying out menus or interface elements. Why: Proximity is a strong grouping cue that can replace lines or arrows.
+- [mechanism] Interface patterns such as hamburger menus and swipe gestures become user expectations once smartphones and apps popularize them. Why: Repeated exposure turns a pattern into a learned expectation.
+- [rule] Keep options and information visible in the UI instead of requiring players to remember them, e.g. breadcrumb trails or a controller image highlighting the required button. When: Whenever players would otherwise have to remember information. Why: Working memory is small and easily overwhelmed.
+- [rule] In nondigital games, make procedures easy for players to remember. When: when players have no digital reminders. Why: Players cannot rely on software to recall procedures.
+- [rule] Use the thickest lines on outer edges that touch no other object, and very light lines where objects meet. When: inking sketches to communicate spatial distance. Why: Line weight conveys which edges are in front and which sit against other forms.
+- [rule] Pair pop-up text with voice, animation or in-world presentation carrying the same information when the information is complex. When: the taught information is complex.
+- [heuristic] Apply Gestalt grouping laws such as proximity to organize UI elements and icons, and avoid ambiguous iconography (multistability) unless the ambiguity is part of the challenge. When: Organizing interface elements and icons. Why: Ambiguous icons confuse players unless ambiguity is intended.
+- [heuristic] Players group elements that share color or shape, and group matched symmetric pairs such as brackets, so use these cues to organize UI. When: Organizing UI and map icons. Why: The mind groups similar and symmetric elements automatically.
+- [heuristic] Use Gestalt principles, affordances, and iconography to shape how inputs are read, applying each where it fits the situation.
+- [heuristic] Apply the Hick-Hyman law to reduce interface complexity, since decision time grows with the number of options. When: Designing menus and choices.
+- [procedure] 1) List every problem users have with the existing way of doing a task, including unstated ones. 2) Design a new solution for that list rather than only refining the existing tool.
+- [procedure] 1) Take a screenshot of an existing game screen. 2) Use a painting program to find the pixel ranges of each element. 3) Rebuild the layout in grid cells using color, text and borders.
+- [tradeoff] Players want many options while designers want a simple interface, so the two must be balanced rather than maximized.
+- [pitfall] Placing skill nodes so that vertical proximity suggests a different unlock direction than the actual rule adds friction; spacing and shape changes can correct it without extra space. When: Designing skill trees or progression menus. Why: Proximity cues override small arrows, which players may not notice.
+- [fact] Gestalt principles describe how the mind organizes visual input, including figure/ground, multistability, closure, symmetry and similarity.
+- [fact] The mind stores far more detail about heads and faces than other body parts because they carry most emotional information, so exaggerated heads are accepted while small heads with large feet look absurd. Why: Faces are the main source of emotional information.
+- [fact] Board game procedures appear in the rule sheet, while digital game procedures usually appear in the manual's controls section because players access them through controls.
+- [fact] Unlike true axonometric views, this perspective camera makes changes in height easy to perceive.
+
+## touch input
+- [model] The virtual interface sits between physical input and output and the world, holding input elements such as menu choices and output elements such as score displays and floating numbers.
+- [mechanism] Virtual cursor speed does not match physical movement, so cursors need full-deflection speed boosts and sticky target areas. When: Designing thumbstick or gamepad cursors and cursor-based menus in games. Why: Mismatch between hand motion and cursor motion makes precise targeting tiring.
+- [mechanism] World changes such as score or energy changes appear in the interface, and can trigger pop-ups or mode changes.
+- [mechanism] A target at a screen edge is easier to hit because the cursor stops at the edge, so the target effectively extends without limit in that direction. Why: The cursor cannot overshoot the edge, so users need not slow down near it.
+- [rule] Consider how players hold the device and which thumb reaches which area: place frequent controls within easy thumb reach and rarely used controls, such as settings, in hard-to-reach corners. When: Designing mobile control and menu layouts. Why: Grip and thumb reach determine ease of use; buttons far from the thumb take more time and effort to reach.
+- [rule] Place frequent or costly actions close to the expected cursor or thumb path, and use larger targets for them. When: Designing menus, cursor-driven interfaces and touch layouts. Why: Distant or small targets add time and effort to every use.
+- [rule] Match the virtual interface style to the physical input device, since some styles, such as pop-up menus, suit a gamepad poorly.
+- [heuristic] Exact combination counts are rarely useful; rough sensitivity gaps between devices, such as a six-button pad versus a mouse, suffice to guide design decisions. When: choosing intended feel for a target device. Why: Exact counts add effort without changing design choices.
+- [heuristic] Use Fitts's Law to judge how quickly users can reach controls and to compare how target size and distance affect pointing speed.
+- [heuristic] Place interactive targets far enough apart that a small pointing error does not hit the wrong one, because close targets raise mis-click risk. When: Designing button layouts. Why: Pointing error is common, so close targets are easily confused.
+- [procedure] 1) Identify information the player needs that is not obvious from the world. 2) Decide when it is needed: constantly, occasionally, or at certain points. 3) Deliver it without blocking world interaction. 4) Check whether some world elements are easier to act on through a virtual element.
+- [pitfall] Very high pointing sensitivity is not fully usable: targets below a certain size cannot be reliably hit. When: designing clickable targets. Why: Precision limits the usable part of the input space.
+- [pitfall] Virtual elements add abstraction, which tends to weaken the emotional connection to content, so the virtual layer needs careful handling.
+- [pitfall] Weak virtual interfaces turn into a barrier that separates players from the game world.
+- [fact] The virtual interface can be almost nonexistent or very dense with buttons, sliders, displays, and menus.
+- [fact] Skillful use of a touch interface can be a major factor in a mobile game's commercial success.
+
+## error prevention and recovery
+- [rule] Ask for confirmation before harmful or irreversible actions, such as salvaging or destroying rare items, and offer undo so players can recover from regret. (x2)
+- [rule] Give invalid actions plain-language feedback explaining why and a fix, e.g. 'Out of ammo!', not just a negative sound; or a short sound, flashing cooldown icon and pop-up.
+- [rule] When a natural action fails, give feedback that acknowledges the attempt and guides the player onward, rather than failing silently. When: VR, a natural action is not supported. Why: Acknowledgment softens immersion loss, though it is only a mild fix.
+- [rule] Give clear negative feedback on a failed action, such as a missed jump, and let the player recover and retry locally rather than restarting the level. When: during onboarding.
+- [rule] Design out predictable errors unless the error is part of the challenge, by spacing opposite controls apart and avoiding accidental triggers. When: Placing opposing actions such as confirm and cancel. Why: Close opposite controls raise the chance of accidental clicks, following Fitts's law.
+- [rule] Signs should explain why an action failed, since otherwise players are left guessing.
+- [rule] Anticipate likely player errors and prevent them for non-core tasks.
+- [rule] Let players undo or recover from mistakes wherever applicable.
+- [rule] Restrict each outcome entry cell with data validation so it accepts only Heads, Tails, H or T, using rejection or a dropdown. When: spreadsheet cells where players enter outcomes.
+- [rule] Handle syntax and semantic errors well, since users make errors constantly and the tool must guide them back; this is among the most important and difficult parts.
+- [rule] Do not use emotional pressure such as guilt in confirmation steps, because that turns helpful friction into a dark pattern. Why: Emotional manipulation serves the company rather than preventing the user's mistake.
+
+## human factors foundations
+- [model] Ergonomics has three areas: physical ergonomics (anatomy, fatigue), cognitive ergonomics (mental processes, limits of perception, attention and memory), and organizational ergonomics (process optimization). (x2)
+- [definition] Human-centered design puts people at the core of the design process; UX studies end users' interactions and the emotions and behaviors they produce.
+- [definition] Human factors psychology and ergonomics designs machines around human capabilities, performance and limits, drawing on disciplines such as psychology and physiology.
+- [rule] Put people before business goals, and treat ethics as a critical part of the approach.
+- [fact] Human-computer interaction emerged in the 1980s as computers entered homes and has established principles for interfaces. (x2)
+- [fact] HCI focuses on usable, pleasurable interfaces rather than the full product journey, so the broader term user experience was introduced in the 1990s. (x2)
+- [fact] A technology can exist for decades and still be dismissed as too expensive or unreliable until a design makes it good enough.
+- [fact] Human factors and ergonomics was firmly established during World War II, when psychologists were hired to reduce machine-related errors in military equipment.
+- [fact] Human-centered design began after wartime aircraft errors, when designers shifted to shaping machines around human bodies and minds rather than the reverse.
+- [fact] HCI principles also apply to digital products like websites and games, improving how easy and enjoyable interfaces are to use.
+
+## system status and transparency
+- [definition] A transparent interface gives players the right information at the right time without getting in the way, keeping their imagination inside the game world; it does not require removing the HUD. (x2)
+- [mechanism] Stale observers of closed UI screens keep updating hidden elements and may trigger sounds, wasting CPU time and producing visibly wrong behavior. When: A UI screen is closed without unregistering its observers. Why: Each reopening adds another live observer to the subject's list.
+- [behavior] An interface feels transparent when players read information effortlessly, and becomes noticeable only when it is hard to use.
+- [behavior] Players form expectations about what they can do from the interface without questioning it, because they expect interfaces to be transparent.
+- [rule] Show which actions are possible through signifiers, and give fast feedback, such as a pressed button lighting up or a Play button showing that loading has started.
+- [rule] Test that players can do what they want, use the interface without thinking after practice, find it intuitive as newcomers, and stay immersed while using it.
+- [rule] Show status the player checks often in a form readable at a glance, using cues the player already knows. When: displaying quantitative game state during play. Why: Players process quantitative information quickly during play.
+- [pitfall] States that were never listed tend to ship without any signal, leaving players confused about what is happening. When: Features with several states, such as locked, available, owned or overheating. Why: Without an enumerated state list, no team member is assigned to communicate it.
+- [pitfall] Assuming players will notice a new menu promotion or a newly unlocked HUD element.
+- [fact] A compact top dashboard can carry seven kinds of information: counters, keys, health, distant surroundings, equipped weapon, equipped item, and consumables.
+
+## text and screen presentation
+- [mechanism] Text longer than its cell spills into blank cells to its right; once a neighboring cell holds data, the display is cut off but the full text remains stored.
+- [rule] If the engine forces timed pop-up text, require players to acknowledge it with a button press rather than letting it disappear automatically. When: Displaying important timed pop-up text. Why: Auto-dismissed text is easily missed.
+- [rule] Make subtitles legible and ideally on by default, since they help deaf players, players with sound off and non-native speakers. When: Designing subtitle options. Why: Subtitles serve several player groups who cannot rely on audio.
+- [rule] Consider viewing distance and resolution: a screen seen up close and one seen several feet away support different procedures.
+- [heuristic] Use leftover space on a secondary screen to show instructions for using its contents. When: when a secondary screen has unused room.
+- [heuristic] Choose a text authoring language when users are programmers comfortable with text and command-line tools; non-technical users often find strict text off-putting.
+- [heuristic] On small screens and in gameplay-heavy games, plan for a finite space and fit short bits of story into it rather than building a full world. When: small screens or gameplay-heavy games.
+- [pitfall] Relying only on interface pop-ups reduces complex information to simple labels, so players are underserved on how the system actually works.
+
+## mode and state signaling
+- [rule] Make each mode visibly distinct so players can identify their current mode at any moment, especially after dramatic mode changes. Why: Players cannot act correctly in a mode they cannot identify.
+- [rule] Distinguish modes by changing a large visible on-screen element, the avatar's action, on-screen data, or the camera perspective.
+- [heuristic] Organize modes as one main mode with several submodes.
+- [heuristic] A button can switch to a secondary display area with its own dashboard, moving rarely needed information out of the main view. When: when the main view must stay uncluttered.
+- [procedure] 1) Decide which modes the game needs and why. 2) Collapse or combine modes where possible. 3) Give overlapping modes different input channels. 4) Communicate each mode change in more than one way. When: when reviewing an interface with modes.
+- [tradeoff] Packing several facts into one channel is efficient and elegant, but players must learn what each dimension means, and some will struggle to remember it.
+- [fact] A button that switches a thumbstick from moving an avatar to aiming a tool changes the mapping from physical input to the game world.
+
+## monetization and social design
+- [behavior] Free-to-play players who have invested no money may quit within minutes or seconds over small frustrations, and confusing purchase flows can reduce revenue. When: Free-to-play games. Why: Players have no sunk investment holding them in the session.
+- [heuristic] Showing only a rank, not the total player count, keeps the population size private.
+- [procedure] 1) Identify the tiles adjacent to a candidate site. 2) Add their dot counts. 3) Compare the totals across candidate sites to judge which is likely to produce most. When: comparing placement options using printed odds.
+- [pitfall] A hidden rule that repeatedly punishes players, such as an undisclosed damage trigger, can become a major cause of quitting.
+- [pitfall] Making the unwanted option large and prominent while the real path is small and text-like leads users into paid subscriptions they did not intend. When: checkout and sign-up flows. Why: attention goes to the prominent button.
+- [pitfall] Social mechanics whose events combine in many ways are hard to show: text cannot cover every case, and arbitrary symbols must be learned by rote. When: designing social or multi-factor mechanics for a camera view. Why: events combine too many ways to script, and symbols rarely make intuitive sense.
+- [fact] Intuitive displays of odds let players judge fairness and make decisions without statistical training.
+
+## pointer and mouse targeting
+- [mechanism] Poor snapping forces filler to cover gaps, causes hidden overlaps, and leaves slivers that let players walk through walls into the void. When: editor snapping is weak.
+- [rule] Use relative pointer input when precise pointing across a large space matters.
+- [pitfall] Players who misread a targeting input may conclude the game is broken and warn others away, so target-based actions need clear cues. When: attacks require clicking a specific target. Why: a misreading can spread to other players.
+- [pitfall] Small targets and deeply nested submenus need more correction cycles to hit, slowing how fast users acquire them.
+- [fact] A mouse reports displacement on two axes each frame, not absolute position; lifting and replacing it leaves the cursor where it was.
+- [fact] A mouse has no spring return and no physical boundary; its effective limits are the desk surface, rarely reached, and software-enforced screen edges.
+- [fact] In PC mouse games the left button is the main button, and the right button should do nothing unless the game is in a special mode.
+
+## form and function
+- [rule] Visual and audio form should reveal function: icons, characters and items look like what they do, e.g. drop shadows signal pressability, green cross suggests health, threatening look signals harm. When: Designing interface elements, objects and visual elements representing gameplay functions. Why: Players read affordances from form, so visual style also determines usability; intuitive forms need no learning, reducing cognitive load and tutorial text. (x2)
+- [rule] A form signals function only if the form is clearly identifiable and accurately conveys the function. When: Evaluating whether a visual element communicates its function. Why: Ambiguous or misleading forms fail to communicate.
+- [procedure] 1) Show one element per page in randomised order. 2) Ask a representative sample what they see. 3) Ask what the element does. 4) Compare answers to locate where the design fails. When: when testing icons or other visual elements.
+- [pitfall] The shape of a thumbstick's housing changes its feel; square or grooved casings feel different from round ones.
+- [fact] Tools shape how people create, so the physical constraints of the medium appear in the finished work.
+
+## human cognition and mental models
+- [definition] The system image is what players perceive and interact with; it shows how clearly the system conveys its meaning and use, forming players' mental models.
+- [behavior] People interpret icons and symbols through their knowledge, expectations and culture, so a symbol may be meaningless to people without that background. When: When designing icons or symbols for varied audiences. Why: Perception is top-down, shaped by prior experience.
+- [rule] Make every state of a feature distinguishable to players, and verify with usability tests that players read each sign as intended. When: Designing state indicators for features such as skills or weapons. Why: Players must tell states apart, and testing reveals confusion between them.
+- [pitfall] Too many modes confuse players.
+- [fact] Reference information a player must recall should be placed where it can be accessed on demand rather than only in a distant location, because players forget it during other activities. When: Information needed for a later action is only visible in a separate mode or place. Why: Players must hold it in working memory while doing other tasks, and overload causes them to forget it.
+
+## audio and game feel
+- [rule] Build interface sounds from the game world, such as armour and sword sounds for fantasy and electronic sounds for sci-fi.
+- [procedure] 1) Open the UI movie. 2) Fire interface events that play sounds, or 3) attach sounds to interface elements through a sound theme.
+- [fact] Audio and visuals should share one stylistic language; a stylized look paired with realistic sound, or the reverse, creates mismatch that weakens the player's sense of the world. When: when choosing sound and art direction for a game. Why: Mismatched sensory styles break expectations the visuals set.
+
+## latency and performance
+- [mechanism] Input latency between a player's action and in-game feedback is a major contributor to cybersickness, so performance problems raise the risk.
+- [mechanism] Immersion can overwhelm an already limited attention system, making attention management harder than in traditional games.
+- [pitfall] Ignoring hardware limits such as controller type or viewing distance makes procedures harder for players to access.
+
+## game ai and events
+- [rule] Events and generated rooms matter only if players perceive and understand them; an event never communicated effectively has not happened for the player, so generated content needs clear communication. When: Designing game events and feedback; generating rooms or events procedurally. Why: Emotional impact depends entirely on what the player can perceive; unperceived content contributes nothing to the player's experience.
+- [fact] Game AI needs environment knowledge, and where it is produced determines run-time cost and reuse. In a toolchain approach, the content team supplies it, often via offline processing of raw level data. Why: Environment knowledge saves run-time processing, a scarce resource in games with many tracked things.
+
+## user experience goal
+- [rule] The main goal of user experience design is to make the player's mental model match the developers' intended model.

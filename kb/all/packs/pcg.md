@@ -1,0 +1,881 @@
+# pcg
+
+## generated content evaluation
+- [model] Direct evaluation comes in two varieties: theory-driven, built from qualitative theories of player experience and intuition; and data-driven, approximating content-to-affect mappings from questionnaires or physiological measurements.
+- [model] Evaluation functions fall into three classes: direct, computed from content features; simulation-based, scored by AI agents playing the content; and interactive, with a human in the loop.
+- [model] Aesthetic measures for generated games fall into three groups: intrinsic (from rules alone), playability (from self-play outcomes), and quality (from trends in play). The system used 57 measures.
+- [definition] A direct evaluation function computes a quality value straight from features extracted from the generated content.
+- [definition] An evaluation function maps a generated artefact to a number indicating its quality, such as playability, intricacy or aesthetic appeal.
+- [definition] Simulation-based evaluation runs AI agents through generated content and scores it using statistics of their behaviour.
+- [definition] Static evaluation keeps agent behaviour fixed during play, while dynamic evaluation uses an agent that adapts as it plays.
+- [definition] An intensity map is a two-dimensional matrix of real numbers where each cell's value sets the brightness of the matching pixel.
+- [definition] A rule set is fit if playing it against itself over many trials produces a non-trivial and interesting contest.
+- [mechanism] When several players rate the same population, each candidate's fitness is the average of all players' scores, which smooths individual taste. When: when multiple raters share one population.
+- [mechanism] Simulation-based generation starts from a base environment, such as a landmass, and runs processes like erosion and climate to shape its geometry.
+- [behavior] A level judged well in isolation can still fail in a full game, such as walls placed over the player's start point, so combined games need evaluation through automated playouts. When: when assembling separately generated level components into a game. Why: Component quality does not guarantee the components cooperate.
+- [rule] Choose qualities to optimise and how to formulate them; building an evaluation function is hardest, since a poor one makes search optimise the wrong thing or find no good content.
+- [rule] Give generated levels and content a written description that other team members can check against, since level designers use the document to see how each level fits the overall structure. When: Content is produced by a generator.
+- [rule] Generated content should not look machine-made; aim for believable output.
+- [rule] Measure expressive range by a quality relevant to player experience, not by raw counts of possible configurations.
+- [rule] Evaluate generated rule sets as whole games, using evaluation functions or constraints, rather than judging isolated artefacts.
+- [rule] Evaluate an evolved content generator using many samples of its output, not a single artefact. When: evolving generators with highly variable output. Why: One sample can miss the generator's real range.
+- [rule] Everything a human can produce must also be something the computer can generate alone, so the set of available choices must be meaningful.
+- [rule] Include designer constraints, hard or soft, in quality evaluation of generated content.
+- [heuristic] Playthroughs can show whether procedurally generated levels sustain engagement over a full run, and telemetry paired with them can explain patterns in generated content.
+- [heuristic] A section of a generated dungeon can be tested with about six players at once to check its usability and pacing.
+- [heuristic] Denial-and-reveal tests can be run on generated layouts to check whether players actually find and follow hidden rewards. When: validating a generated layout. Why: generated layouts need the same behavioral checks as hand-built ones.
+- [heuristic] A generator that produces challenges the player cannot judge, or responses that arrive late, works against the conditions for flow. When: generating content for real-time play.
+- [heuristic] Test generated room layouts in gym-style rooms to see how quickly players reach or aim at exits.
+- [heuristic] Card sorting can show how players group generated items or rooms, helping define those categories.
+- [heuristic] A required pass proportion of zero is common, so one passing check suffices and the search can stop early; if one check passes, most others usually pass too.
+- [heuristic] Judge a procedurally generated game by how many interesting stories it produces, and improve it as a story generator. When: Evaluating procedural generation.
+- [heuristic] Randomly generated layouts and placements can coexist with skill-based play when players can see the odds and have ways to respond. When: designing procedurally generated dungeons.
+- [heuristic] Prefer direct evaluation when relevant features can be extracted cheaply from the content; data-driven variants first require player data to build the mapping.
+- [heuristic] Measure dungeon quality directly by counting unreachable rooms.
+- [heuristic] Judge personalised content with several evaluation functions based on the imitation agent's performance statistics, checking challenge and diversity for that player.
+- [heuristic] Useful map checks include base fairness between players, room to grow each base, and equal access to nearby resources.
+- [heuristic] Genre knowledge tells the evaluator what to measure: board games are judged on balance and multiple nontrivial strategies, shooters on pace, wave patterns and difficulty progression.
+- [heuristic] Keep a human as judge when quality is subjective, unknown in advance, or too hard to formalise, and let the computer produce variants quickly.
+- [heuristic] Combining top-down statistics with bottom-up player evaluation gives a fuller picture of what a generator does and whether it suits the designer's purpose.
+- [heuristic] Examine the generator's output distribution to claim variety, and include players to claim that they find the experience more engaging.
+- [heuristic] Judge a generated dungeon by how often it presents meaningful choices, treating decision density as a design goal for flow-sustaining games. When: evaluating generated dungeons for flow-sustaining play. Why: Flow depends on a steady supply of decisions.
+- [heuristic] Evaluate generated spaces by what the player actually sees, treating a visible view as the unit of analysis.
+- [procedure] Use steering behaviors, a wander behavior plus obstacle and wall avoidance, to cover the level automatically, restarting from random locations and running only briefly. When: Generating log data automatically. Why: Explorers often get stuck and repeatedly cover a small region; restarts reduce stuck errors.
+- [procedure] 1) Pick a random sequence from a precomputed table. 2) Compute the maximum streak of it and of a human-entered sequence. 3) Guess that the longer-streak sequence is the random one. 4) Break ties arbitrarily. When: judging whether a human-invented sequence looks random.
+- [procedure] 1) Generate a level that fits a design theory. 2) Let the designer edit it. 3) Let the designer add constraints. 4) Regenerate only the affected portions of the level.
+- [procedure] 1) Generate a candidate. 2) Test it against the criteria. 3) Repeat until a satisfactory solution appears.
+- [procedure] 1) Run generated code and catch runtime exceptions. 2) Give mechanics that throw errors a zero or low fitness. 3) Test the remaining mechanics on a level that is unsolvable without them. When: when evaluating automatically generated game code. Why: Catching errors lets the search continue past broken mechanics.
+- [procedure] 1) Pick metrics as axes. 2) Generate many pieces. 3) Score each piece on the chosen metrics. 4) Plot the results as a histogram or heatmap.
+- [metric] Of 1,389 evolved games, only 19 were judged playable and two were of exceptional quality, so most evolved output must be filtered out.
+- [tradeoff] Expressivity and diversity compete with reliability, since broader output makes consistent quality harder to guarantee, and measuring expressivity is non-trivial.
+- [tradeoff] Input-linked metrics only confirm a generator honours its parameters; independent metrics can reveal emergent behaviour but are harder to choose, so pick them as far from inputs as possible. Why: Metrics that mirror inputs only confirm what was built in, while independent metrics can reveal emergent behaviour.
+- [tradeoff] Direct evaluation is fast and often easy to implement, but some aspects of content are hard to express as direct features.
+- [tradeoff] Some map objectives conflict, so no single map maximises them all, yet certain objective combinations still give interesting, reasonably fair maps.
+- [tradeoff] Direct evaluation is fast, simulation-based evaluation needs an AI to play part of the game, and interactive evaluation needs a human in the loop.
+- [tradeoff] A representation must be expressive enough for truly novel games yet searchable, with local neighbourhoods and a density of good games; more expressivity makes search harder.
+- [tradeoff] Expressive range heatmaps support claims about variety, bias, and frequency, but they are aids for understanding and not perfect proofs of variety.
+- [pitfall] Minimal variation yields non-expressive output, while random assembly of components yields senseless, unplayable content.
+- [pitfall] Automatic generation can yield compelling play while producing content with weak visual appeal.
+- [pitfall] An accessibility fitness that rewards smooth, vehicle-traversable ground drives evolution toward completely flat maps unless it is balanced by other measures. Why: Counterbalancing terms such as obstacle edge length stop flatness from dominating.
+- [pitfall] Many evolved card game candidates turn out unplayable, so playability must be enforced in the encoding or the evaluation.
+- [pitfall] Measures computed from rules alone did not improve agreement with human rankings, because a game's true character appears only in play.
+- [pitfall] Quality estimates from play trends are less reliable than playability measures, so they should not be trusted on their own.
+- [pitfall] Treating connectivity alone as a sign of level quality is a mistake, since connected levels can still be poor.
+- [pitfall] Choosing a gameplay metric imports the designer's assumptions into evolution, and different metrics, such as survival time or shots fired, favour different content.
+- [pitfall] Assuming human and computer always have equal say is naive, because initiative is usually distributed unevenly.
+- [pitfall] Distance-based fitness prediction depends on how distance is defined, which biases the search, and long sprints amplify the error.
+- [pitfall] Using a metric highly correlated with an input parameter, such as difficulty as both input and metric, gives only confirmatory results and a false sense of insight.
+- [pitfall] A hot spot in an expressive range chart reveals a generator bias, but the designer must still ask why the bias exists.
+- [pitfall] Implicit quality estimates assume that content which is selected, used, experienced or altered more during play is more valuable, which may not hold.
+- [fact] Eight evaluation functions covered base positioning, resource positioning, and routes linking bases.
+- [fact] Fractal methods are usually judged on efficiency because they allow little interaction, while agent methods let designers evaluate aesthetics of the output.
+- [fact] Early systems scored terrain by user preference, while later work used direct fitness functions.
+- [fact] A board game generator can score candidate rule sets by letting computer agents play them many times and measuring how close each side's win rate is to 50/50. When: when outcomes are hard to predict from rules alone and many playouts are affordable. Why: Simulation can stand in for an evaluation function that is too complex to specify directly.
+- [fact] Expressivity metrics are domain specific: linearity and leniency suit 2D platformer levels but not weapons for a space shooter.
+- [fact] Top-down evaluation uses expressivity statistics on content, while bottom-up evaluation has players experience content and assess its quality.
+- [fact] Bottom-up assessment of generated content can use user studies, crowd-sourced data, and annotations from designers or experts.
+- [fact] Quality of content can be assessed along axes like originality, practicality, enjoyability, and credibility.
+- [fact] Quality of content may be encoded as a category, a scalar or vector (such as continuous annotation across a level), or as a relative preference.
+- [fact] A crowd-sourced study can supply enough data to machine-learn content evaluation functions.
+- [fact] Producing any content is trivial, while producing valuable content for a given goal is hard, and producing content that is both valuable and novel is harder still.
+- [fact] Evaluating generated content is difficult because players are subjective and diverse, designer intents vary, and algorithmic randomness and human unpredictability both affect quality.
+- [fact] Generators are evaluated to understand their capabilities, confirm guarantees about output, iterate toward the programmer's intent, and compare with other approaches.
+- [fact] Generated content can produce discoveries nobody scripted, as randomly generated dungeon games showed with emergent stories and unplanned reward scheduling. When: when designing procedurally generated content.
+
+## dungeon layout and structure
+- [model] A procedural dungeon generator usually has three elements: an abstract topology model, a construction method, and a geometry method, kept separate so each can be tested and changed alone.
+- [model] A level can be a grid of rooms with start and end rooms, where adjacent rooms are joined by corridors.
+- [model] Rooms are tile matrices drawn from predefined templates, where marked slot positions are replaced by multi-tile obstacles such as spikes or traps.
+- [model] The FRP generator builds adventure modules in five stages: designer-required content, map search filling the rest, room detection, room graph construction, and room population. When: generating pen-and-paper style adventure maps. Why: Separating stages lets each be replaced by another method.
+- [definition] Binary space partitioning recursively divides an area into smaller units, then connects them in order to form a dungeon.
+- [definition] Separate-pass generation adds different content types in successive passes, each using simple rules with probabilities.
+- [definition] Space partitioning subdivides a two- or three-dimensional space into disjoint cells, each point in exactly one cell, and applies the subdivision recursively to form a tree.
+- [definition] A space tree is a discrete graph of location types that records the world's size, the number of unique locations, and which locations are adjacent.
+- [mechanism] Weighted nodes enlarge a node's region so that it attracts more volume.
+- [mechanism] The number of exits a room offers directly shapes where players go next, since they choose among those exits. When: Generating rooms and their connections.
+- [mechanism] Forcing unavoidable time in each gameplay state produces hidden rooms off the main path that were not written in directly. When: when the level must force detours or backtracking.
+- [mechanism] Distances between checkpoints are computed with dynamic programming, and the fitness function scores the level using them. When: fitness based on inter-room distances. Why: Shortest-path distances capture navigational structure of the level.
+- [rule] Avoid narrow corridors and corners in generated dungeon layouts when camera collision is a concern. When: camera collision is a concern.
+- [rule] Stage generated dungeon content in passes: outline the dungeon, describe it, lay out its map, then fill the map with content. When: Generating a dungeon.
+- [rule] Procedural generators should enforce minimum passage widths and place light sources, so generated spaces stay navigable.
+- [rule] Forbid walls on tiles two steps from an altar, and give each altar four adjacent tiles.
+- [rule] In the positive wall representation, keep maximum wall length small, around 5, since walls near the level diameter rarely give connected levels.
+- [rule] Once a square is marked as part of a room, it is no longer empty, which keeps rooms disjoint. When: detecting rooms in a grid map. Why: Marking prevents a square from belonging to two rooms.
+- [rule] Use vertical elements such as columns or doorframes to frame generated room entrances and exits. When: when generating room entrances and exits. Why: Framing makes openings readable as transitions.
+- [heuristic] RPG dungeons need lock-and-key puzzles, bonus objectives, multiple paths, and dead ends with ability-gated areas, which graph structures express more easily than strings. When: when generating explorative adventure or dungeon levels. Why: Explorative games depend on branching and gated progression. (x2)
+- [heuristic] A fixed set of same-size tiles can be combined to form maze-like layouts. When: Generating or assembling maze layouts. Why: Uniform tile sizes make the pieces interlock predictably.
+- [heuristic] Generated levels must provide connected spaces that characters can traverse, because movement AI depends on that connectivity to reach targets. When: Procedurally generated levels with AI characters.
+- [heuristic] A hub with landmarks pointing in several directions sends players outward toward several rooms or corridors. When: Laying out a central area with multiple exits.
+- [heuristic] Room and corridor dimensions relative to avatar speed change the feel of control, so generated layout sizes matter. When: When generating spaces for an avatar with a set movement speed.
+- [heuristic] A procedural dungeon fills rooms with many monsters, items and encounters, so the variety of behavior these patterns address applies directly.
+- [heuristic] Use agent digging when organic, chaotic or cave-like layouts are wanted, or when the player should not easily predict the layout.
+- [heuristic] Use topology-first, two-stage generation when the room layout should be fixed before geometry is produced.
+- [heuristic] Use separate generation passes when content types can each be added with simple probabilistic rules.
+- [heuristic] Generated spaces feel insubstantial without goals and context, so a generated dungeon may need a quest or story reason for its layout and encounters. When: Generating dungeons.
+- [heuristic] Use required content when the designer must guarantee specific rooms, such as a boss area, inside a generated level. When: designer needs fixed areas in generated dungeons. Why: Required blocks keep key rooms while search fills the rest.
+- [heuristic] Place exits to the next level in the last layer of a breadth-first room traversal. When: populating a dungeon graph with a multi-level structure. Why: The deepest layer is the furthest point from the entrance.
+- [heuristic] Using see-through partitions between rooms lets a generated layout show a goal while still requiring the route to it. When: when generating room layouts.
+- [heuristic] Hexagonal or obtuse-angled rooms can break the blocky grid that engines and level tools impose, making generated layouts less obviously grid-based. When: when generating room layouts.
+- [heuristic] Place dungeon entries at recurring intervals in an overworld loop, since players learn the spacing and come to anticipate each dungeon. When: games with overworld task cycles. Why: regular spacing becomes a rhythm players learn.
+- [procedure] 1) For each room, paint outward into all adjacent empty squares until none remain. 2) Record rooms reached as neighbours of the focus room. 3) Erase the paint before the next room. When: computing room adjacency in a grid map. Why: Painting one room at a time avoids wrong adjacencies. Painting all rooms at once can produce wrong adjacencies where empty space touches more than two rooms, because paint from different rooms merges.
+- [procedure] 1) Generate corridors with a maze method. 2) Carve out rooms from the maze. When: a non-search baseline for dungeon layout. Why: Gives a constructive comparison point for search-based generators.
+- [procedure] 1) Start at a random tile with a random direction. 2) Turn each dug tile into a corridor. 3) At each dug tile, possibly turn or place a room, decided by probability rules.
+- [procedure] 1) Start with the whole dungeon area as root. 2) Pick a random leaf and split it on a random vertical or horizontal line. 3) Repeat until cells fall below a minimum size.
+- [procedure] 1) Give each final cell one room with randomly chosen corners inside the cell. 2) Connect sibling cells bottom-up through the tree until the root's children connect.
+- [procedure] 1) Lay out rooms from templates with an entrance and exit. 2) Place obstacles with an agent that follows heuristics. 3) Place monsters with a second agent.
+- [procedure] 1) Fix the grid width and define tiles with an adjacency relation linking tiles one step apart. 2) Place the start tile at (1,1) and the finish tile at the far corner. 3) Let each tile hold at most one of wall, gem, or altar. 4) Require exactly one gem and one altar.
+- [procedure] 1) Start from the rooms containing the entrances. 2) Traverse the room graph breadth-first. 3) Place lesser challenges such as traps and small monsters in the first layer. 4) Place tougher monsters in the next layer. 5) Place treasure not carried by monsters in the layer after that. When: populating a dungeon graph with encounters. Why: Layering by graph distance gives a difficulty progression from entrance inward.
+- [procedure] 1) Build a solution path from start to the level's end. 2) Add dead-end rooms around the path. 3) Place enemies and hazards after the layout is set.
+- [metric] In a blind digger, the chance of changing direction starts at 5% per dug tile and rises 5% per step in the same direction; a turn resets it to 0%.
+- [metric] In a blind digger, the chance of placing a room starts at 5% per dug tile and rises 5% per tile without a room; placing one resets it to 0%.
+- [metric] Rooms placed by a blind digger are randomly three to seven tiles wide and long.
+- [metric] Walls covering at least half of the map is a style threshold for dungeon layouts.
+- [tradeoff] Blind digging gives organic, hard-to-predict layouts but can produce dead-end corridors and overlapping rooms.
+- [tradeoff] Bridge length and branching factor are set by the designer or by a player model, controlling how long and how branched the open-ended travel between islands is. When: Tuning open-ended travel.
+- [pitfall] Digger generation halts when no room or corridor fits without intersecting existing content, even if much of the area remains empty.
+- [pitfall] Agent-digger output gives no guarantee of non-overlapping rooms or full area coverage, and its parameter effects are hard to predict.
+- [pitfall] Blind-digger randomness can suit caves but may make maps unplayable, so parameter balance matters.
+- [pitfall] When level structure and enemy placement are stored in separate maps, both must be filled consistently or they conflict.
+- [pitfall] Isolated rooms reached only by breaking walls with limited bombs can be unreachable without that resource, so the supply must be designed for.
+- [fact] Assigning each side different starting abilities, combined with randomized maps and opponents, produces varied matchups.
+- [fact] Indoor visibility is typically easier to cull than outdoor visibility, so visibility analysis of generated indoor layouts is cheaper. When: generating dungeon-style levels.
+- [fact] Procedurally varied layouts with no fixed sequence face the same difficulty of shaping interest curves.
+- [fact] Dungeon-based games built on repeated exploration loops depend on generated space to supply new areas to explore. When: When designing a dungeon generator for an exploration-driven game. Why: Repeated exploration needs a continuing supply of traversable space.
+- [fact] A grid dungeon phenotype is a 2D matrix where each cell is free space, wall, start, exit, monster, or treasure.
+- [fact] Besides layout and connectivity, dungeons also contain non-player characters, decor, and gameplay objects.
+- [fact] Dungeons usually consist of rooms joined by hallways, though they may also be caves or man-made structures.
+- [fact] A sketch-based generator with playability checks has been applied to roguelike dungeons as well as strategy maps.
+- [fact] In a dungeon crawler the dungeon is a core element at the base of the dependency stack, so anything that generates it sits low in that stack.
+- [fact] Spaces formed between solid forms can work as rooms, corridors and places to hide or chase, mapping onto room and corridor generation. When: when generating dungeon rooms and corridors.
+- [fact] Subtractive operations can produce secret passages and alcoves, while additive placement builds masses inside negative space. When: when generating hidden spaces in dungeons.
+- [fact] A dungeon can serve as the teaching level, introducing mechanics before the wider world opens.
+
+## terrain generation
+- [model] Terrain generation has two remedies: make terrain smooth by construction, or define a smoothness criterion and optimise the terrain against it.
+- [model] Terrain generation methods include gradient-based (slopes first, then heights), fractal or noise-based (heights at several scales), agent-based (multiple feature types), and search-based (constraint satisfaction).
+- [definition] A heightmap is a two-dimensional matrix of real numbers where each cell stores one number giving the terrain height above a baseline at that point.
+- [definition] 1/f noise sums noise at frequency f, plus half of the noise at 2f, a quarter at 4f, and so on.
+- [definition] Fractional Brownian motion is a random walk with specified statistics, used as the underlying concept for fractal terrain, and practical methods approximate it. Why: Exact random walks are too expensive to compute directly.
+- [definition] Genetic terrain programming evolves an expression tree that maps each map coordinate to a height value.
+- [definition] Gradient noise assigns random slopes rather than random heights to lattice points, and derives heights from those slopes.
+- [definition] Noise adds small variations to a surface, such as cloud cover, settled dust, water, fire, or skin and fur colouring.
+- [mechanism] Terrain with detail at only one frequency looks artificial; generating heights at several scales looks more natural, as in diamond-square.
+- [mechanism] Larger roughness values produce rougher terrain and smaller values produce smoother terrain, because roughness sets the magnitude of the random offsets. Why: Roughness scales every random value added in the diamond and square steps.
+- [mechanism] Mountain agents act only on terrain above a threshold, raising V-shaped ridges along random paths that turn within 45 degrees, producing zigzag ridgelines.
+- [mechanism] Mountain agents also build perpendicular foothills off their ridges.
+- [mechanism] Fractal terrain sums noise layers at increasing frequency, and layers at larger scales get larger amplitude. Why: Large features such as mountains rise more than small features such as boulders.
+- [mechanism] An expression-based terrain can be enlarged or zoomed by querying the program at new coordinates, with no change to the program.
+- [mechanism] Peaks and valleys emerge from rising and falling slopes rather than sitting on lattice points, so gradient noise looks more organic and shows no grid pattern.
+- [mechanism] Smoothing the rate of change of gradient noise gives an extra level of smoothness compared with smoothing heights directly.
+- [mechanism] Bilinear interpolation produces straight-line slopes and sharp peaks and valleys, which look like a child's drawing of mountains.
+- [mechanism] Mountains bound traversable space and block line of sight, so terrain shapes where players can go and what they can see. When: Open-world terrain with both aesthetic and mechanical roles. Why: Elevation features act as walls and occluders.
+- [mechanism] Each added feature triggers a local adaptation step that blends it with its surroundings, such as clearing trees off a generated road route or laying a connecting road for a generated bridge.
+- [behavior] Terrain can be a visual backdrop with little mechanical effect, as in flight simulators, or a constraint on movement and course of action, as in shooters. When: Deciding how much gameplay weight terrain should carry. Why: The genre sets whether terrain mainly serves realism and scale or guides player choices.
+- [rule] A cell turns secure when four or more of its eight neighbors already are, or when half of its neighbors are secure at map edges. When: smoothing irregular zones on a grid. Why: It turns irregular zones into more convex shapes, which suits an attacking side.
+- [rule] Quantize real-valued data into categories before applying a cellular automaton, using enumerated types or by binning numbers.
+- [rule] Enforce a minimum river length: retry river placement several times, and abandon the river if the length requirement is still not met.
+- [rule] Generated plants must be similar yet recognisably varied, because copy-pasted trees are easy for players to spot. When: when populating a game world with many plants. Why: Repeated identical instances break the illusion of a natural environment.
+- [heuristic] Use layered fractal noise when terrain must look natural at several scales rather than repeat a single frequency. When: Terrain must look natural at several scales.
+- [heuristic] Use gradient noise when terrain should look organic without rectangular grid patterns while keeping the efficiency of lattice-based generation. When: Terrain must look organic without grid patterns.
+- [heuristic] Because noise and terrain share the matrix representation, a noise technique can usually generate terrain and the reverse also holds, though not equally well.
+- [heuristic] Use bilinear interpolation when speed and simplicity matter more than natural slopes, and avoid it when straight-edged stylised terrain is unwanted.
+- [heuristic] Treat a landscape as a natural pattern interpreted as 3D elevation, so the same solutions used for 2D textures apply.
+- [heuristic] Interpolating between sampled height values greatly improves terrain quality, though methods differ in quality and computation time.
+- [procedure] 1) Apply the vertical filter vector to each column, storing results in a temporary array. 2) Apply the horizontal filter vector to the temporary array to produce the output. When: filter is separable, such as a Gaussian. Why: Reduces work per location from O(whs²) to O(whs).
+- [procedure] 1) Generate mountain ridges with mountain agents. 2) Apply a smoothing step to blend the ridges. 3) Add noise to recover the detail lost in smoothing.
+- [procedure] 1) Start a river at a coastline point and a ridge point. 2) Climb toward the mountain by following the gradient. 3) Descend to the sea, digging a widening wedge as it goes.
+- [procedure] 1) Wander randomly across the map. 2) Revisit the starting point a set number of times. 3) At each visited cell, set its height to a weighted average of nearby heights.
+- [procedure] 1) Loop over every heightmap cell. 2) Query the evolved program with the cell's x and y values. 3) Store the returned value as that cell's height.
+- [procedure] 1) Assign a random two-dimensional gradient to each lattice point and set lattice heights to zero. 2) For a point between lattice points, compute each surrounding lattice point's gradient dot its offset vector. 3) Interpolate the four contributions bilinearly or bicubically.
+- [procedure] 1) Generate random values on a coarser lattice of peaks and valleys. 2) Fill the in-between heights by interpolating so they connect the lattice values smoothly.
+- [procedure] 1) Take a weighted average of the surrounding lattice values along one axis. 2) Take a weighted average along the other axis. The order of the two passes does not change the result.
+- [procedure] Convert terrain into a graph by separating walkable, impassable and water areas, with each graph node covering a fixed block of tiles that is referenced for object placement. When: Building a navigable abstract graph from tile terrain. Why: Objects can then be placed in the correct region.
+- [metric] A lattice value's weight equals one minus the cell's fractional distance to that lattice point, so a cell one tenth of the way gets 0.9 and 0.1. When: Lattice spacing is ten cells.
+- [tradeoff] Heightmaps store one elevation per point and are cheap, while voxel grids can represent caves and overhangs but need much more storage. When: Use a heightmap when no caves or overhangs are needed; use a voxel grid when they are required and the storage is acceptable.
+- [tradeoff] Terrain that must satisfy gameplay needs requires high controllability, while terrain with little mechanical role is judged mainly by visual realism and scale. When: Terrain must support mechanics such as traversal, line of sight or roads. Why: Mechanical constraints must be enforced by the generator, whereas a backdrop only needs to look believable.
+- [pitfall] Filling each heightmap cell with an independent random value produces random spikes, not terrain, because neighbouring values must be related; randomised heights alone look unnatural.
+- [pitfall] Sharp peaks and valleys from bilinear interpolation make collision detection unreliable, and characters can get stuck on them.
+- [fact] Fractal and noise methods are fairly random and expose few global, unintuitive parameters, and fractal and agent methods struggle to encode constraints such as maximum altitude variation or reachability.
+- [fact] A bell-curve quantity is described by its mean, which gives the peak, and its standard deviation, which gives the spread.
+- [fact] Drawing tiles from a bag, dealing face-down tiles onto a board, and drawing colored balls without replacement all follow the same dependent-probability model as a shuffled deck. When: Analyzing odds for tile, token, or urn-based draws. Why: Each draw removes an unseen item, so later draw odds depend on earlier ones.
+- [fact] All sequences of ten Heads/Tails flips form a table of 1024 rows, since each flip has two outcomes.
+- [fact] Fractal and noise algorithms generate terrain, and can also drive search-based and agent-based landscapes.
+- [fact] 2D platform roguelikes can vary their levels automatically between runs.
+- [fact] Procedural terrain and texture generation can make each replay of a simple mobile 2D game look different.
+- [fact] Fractal landscapes can also serve as generative material for designers.
+- [fact] Real-valued vectors can be read as control points of B-splines, which are chains of Bézier curves, giving smooth candidate shapes for evolution to search.
+- [fact] Mountain shape is controlled by slope limits, maximum altitude, width, slope, agent count, steps, and foothill length and frequency.
+- [fact] Hill agents resemble mountain agents but work at lower altitude, use smaller ranges, and build no foothills.
+- [fact] Fractal terrain methods fall into five categories, and all of them are implementations of fractional Brownian motion.
+- [fact] The genotype is an evolved expression tree and the phenotype is a heightmap, so this indirect encoding is compact.
+- [fact] Typical function sets include arithmetic, trigonometric, exponential and logarithmic functions, and terminals include x and y coordinates, Perlin noise and distance from the map centre.
+- [fact] Terrain phenotypes can include resource and base locations, and conflicting goals such as map symmetry can be optimised together by a multi-objective evolutionary algorithm.
+- [fact] Real elevation is statistically correlated across nearby points, so a point near a peak is likely high and a point on a plain is likely low.
+- [fact] Almost every three-dimensional game has ground to stand or drive on, often with vegetation and elevation variety.
+- [fact] Minor topological variations of the ground can be treated as noise, linking terrain generation with noise generation.
+- [fact] Plants are self-similar, with the same shape recurring in their sub-branches, as seen in ferns and Romanesco broccoli.
+- [fact] Procedural vegetation is regarded as a success story of PCG, and a well-known commercial foliage tool is cited as used in dozens of AAA games.
+- [fact] Terrain-editing decisions affect a space's usability as well as its appearance.
+
+## procedural content generation overview
+- [model] As a generator, the designer authors boundaries and tendencies, while the interplay of mechanics, player choices, and chance determines each specific plot at run time. When: designing systems that produce story content.
+- [model] PCG systems fall into four approaches: simulation-based, constructionist, constraint-driven, and optimization-based.
+- [model] A PCG system can be framed through four metaphors: as a tool, a material, a designer, or a domain expert.
+- [model] Four gamespace generators of emergence are multiuse spaces, close proximity of functional spaces, spaces for different styles or factions, and accommodation of player density.
+- [definition] A PCG method is an algorithm that produces game content, run by a computer alone or with human help.
+- [definition] A PCG system is a larger system containing a PCG method, such as an adaptive game or an AI-assisted design tool.
+- [definition] Game content spans characters, vehicles, weapons, music, quests, items, stories, textures, rules, maps and levels.
+- [definition] Generic PCG produces content without considering player behaviour; most commercial games work this way.
+- [definition] Deterministic PCG reproduces the same content from the same starting point and method parameters; stochastic PCG usually cannot.
+- [definition] Multi-level, multi-content PCG aims for one generator that produces all of a game's content at high quality, with the pieces fitting together coherently.
+- [definition] Procedural content generation uses algorithms to build parts of a game, including its environments.
+- [definition] In PCG-based game design, PCG is so central that removing it leaves nothing recognisable of the game.
+- [definition] A fluid pattern admits many implementations, such as a moving platform over a pit or an area outside a searchlight's view.
+- [mechanism] Rising hand-made content cost and growing team sizes make fewer games profitable and reduce studios' willingness to take creative risks. When: commercial games with large teams.
+- [mechanism] If content is generated as fast as the player consumes it, the game need not end.
+- [mechanism] Generating several versions of one level improves replayability for players who have already seen the dungeon. When: players replaying a generated dungeon. Why: Different layouts from the same specification feel fresh.
+- [rule] Repeated props in a generated dungeon, such as pillars or torches, can be drawn with instanced rendering: one shared model and varying per-instance placement data. When: Many identical props are placed in a generated level. Why: Shared model data is sent once.
+- [rule] Components the designer constrains stay fixed while the system evolves the rest of a complete level.
+- [rule] Define each level design pattern by the negative player experience it fixes.
+- [heuristic] Present procedural generation as augmenting designers and artists rather than replacing them, because replacement framing threatens the people whose work it would automate. Why: Replacement framing creates resistance from designers and artists.
+- [heuristic] Keep generation stages and content rules decoupled so that a rule change touches few files. When: building a procedural dungeon generator whose requirements will change. Why: Frequent requirement changes are cheap to absorb when stages are independent.
+- [heuristic] Building generators for narrowly defined tasks is as worthwhile as pursuing the ambitious long-range visions.
+- [heuristic] Complex level-design properties tend to arise from combining simple rules and constraints.
+- [heuristic] Repetition hurts when generated chunks ignore player needs, but it helps when each chunk addresses a player need.
+- [heuristic] Decide growth caps or scaling before content runs out, since unbounded growth eventually serves repeated enemies at high player levels. When: When generating content with unbounded growth.
+- [heuristic] Fix a generator's overall scale before filling in its rooms and paths, since the world's scope is set before its detail. When: When designing procedural generation for dungeons or levels. Why: Scope set early keeps later detail consistent with the whole.
+- [heuristic] When a fixed world does not fit a story plan, generate the world itself so that it supports the plan's events. When: a fixed map conflicts with the story plan. Why: plan events need matching locations.
+- [procedure] 1) Store each authored event as a self-contained object with its script and art. 2) Shuffle the events like cards. 3) Spawn them at developer-defined intervals.
+- [procedure] 1) Name the problem a level design pattern solves. 2) Judge whether the pattern can be read in many ways or only a few.
+- [tradeoff] Faster generation often costs output quality, so speed and quality are a common tradeoff.
+- [pitfall] Identical behavior patterns shared by many generated objects, or identical copies of a level pattern shown repeatedly, make the generation visible and the pattern predictable. When: when many procedurally generated objects use the same motion or reaction. Why: Repetition makes the generation visible. (x2)
+- [pitfall] Writing each character's AI data by hand gains nothing over writing separate AI code for each character.
+- [pitfall] Judging randomness by which sequence has the longer maximum streak is only a rough guess, not proof that either sequence is random.
+- [fact] Storage limits on early home computers drove many early PCG techniques, as early games generated most content procedurally to fit limited storage, so data-driven content has a long history. When: when considering content generation approaches. Why: storage limits forced compact generation. (x2)
+- [fact] PCG is motivated by cutting development time and content cost, augmenting designers, enabling new kinds of games, supporting player-adaptive play, increasing replayability, sparking creativity, and understanding design.
+- [fact] Procedurally generated levels are an established use of AI-driven generation, producing game worlds rather than hand-authoring each one. Why: Predictable rule-based generation keeps the output within the intended experience.
+- [fact] Commercial PCG since the early 1980s has often been peripheral or narrow, while academic research pushes both the scope and quality of generated content.
+- [fact] Ideal PCG solutions are fast, reliable, controllable, expressive and creative, but these properties usually need tradeoffs against each other.
+- [fact] A detailed taxonomy of a PCG solution helps reveal its strengths and weaknesses.
+- [fact] PCG draws on many fields, so its methods are diverse.
+- [fact] Some generators guarantee quality criteria while others produce output without checks; reliability matters most for content whose failure breaks play.
+- [fact] The PCG definition is deliberately fuzzy at its edges, and some people use 'generative methods' for a wider set of methods.
+- [fact] A tool that only places or removes items by hand does not count as PCG, because it generates nothing.
+- [fact] Traditionally, designers mostly tuned algorithm parameters, and the main goal was endless variations of playable content.
+- [fact] PCG taxonomy dimensions are continua rather than binary choices, so a method usually sits between the ends of each one.
+- [fact] The long-range PCG visions are not achievable with current technology and may never be realised exactly as stated, but they expose current limitations.
+- [fact] Card games have a limited vocabulary and small branching factor, which makes them easier to play automatically and attractive for generation research.
+- [fact] Generating playable, interesting, original first-person shooters is an open problem, and which game traits make games easier to generate remains unknown.
+- [fact] Earlier methods generate content, such as levels or weapons, for a fixed game, whereas rule generation treats the game's own rules as the thing generated.
+- [fact] Formalising rules defines the space of candidate rules more precisely than prose descriptions can.
+- [fact] The rule aspects chosen for formalisation determine what a generator can vary and what it treats as worth exploring.
+- [fact] The generator targets small heroic-fantasy adventure modules played with a human referee rather than a computer.
+- [fact] Player experience models serve as measures of content quality, so the game can produce personalised or player-adapted content.
+- [fact] Mixed-initiative game design tools draw on three threads: mixed-initiative interaction, computer-aided design, and creativity support tools.
+- [fact] Most current PCG algorithms seem to show skill but not creativity; exploratory creativity (novel combinations within a constrained space) and transformational creativity (breaking design boundaries) are distinct.
+- [fact] Procedural generation reduces level-design workload and increases replayability.
+- [fact] A generator can hold pedagogical expertise, constraining levels so they meet educational goals.
+- [fact] PCG system is a generic term, and systems differ in how they are used and how they relate to design.
+- [fact] Recurring level patterns have been catalogued across action, strategy, role-playing, adventure and sport games.
+
+## mixed-initiative co-creation
+- [model] Mixed-initiative systems form a sliding scale: computer-aided design has the human leading, interactive evolution the computer leading, and generators where users only set desired properties sit at the far end.
+- [model] A time-limited, location-based event that disappears if not reached in time is a timing and distance constraint a generator can model. When: Designing generated content with deadlines. Why: Deadline and distance together define a reachable region the generator must respect.
+- [model] Generation can be controlled by a random seed, by parameters along several dimensions, or by a feature vector.
+- [model] In chunk assembly there are no explicit control parameters; chunk library contents and their probabilities act as the controls.
+- [model] In mixed-initiative level design, a constraint-based generator keeps levels playable while the human edits geometry and pacing, with generator actions interleaved with designer edits in real time.
+- [definition] In mixed-initiative PCG, a human and software both take initiative and both shape the result, with the human cooperating with the algorithm to produce desired content.
+- [definition] Control is the set of options a designer or adaptive mechanism has to specify output aspects such as handling, mood or shape, together with the effort that steering takes.
+- [definition] A generative space is the set of all games a rule encoding can express, and it can be explored by scoring and evolving games or by carving out a subset.
+- [definition] Designers can sculpt a generative space by including or excluding games according to explicit criteria, instead of receiving one game rated as best.
+- [definition] A design amplifier is a tool that helps non-expert designers, such as homeowners, produce valid designs with computer support.
+- [definition] In computer-aided design, the human directs the process and the computer acts only when asked and as specified.
+- [definition] Mixed-initiative interaction is dialogue in which either party may ask questions or lead, rather than only the human or only the computer.
+- [mechanism] Local cellular automaton rules can produce global behavior: mutually dependent locations may oscillate, and some rule sets keep changing the whole map endlessly.
+- [mechanism] A constraint satisfaction algorithm can fill in the unspecified parts of a partly drawn level while keeping it playable.
+- [mechanism] In interactive sketching of worlds, edits are kept consistent with the world model, so designers can change results without breaking them.
+- [mechanism] A feature vector can steer generation toward output that meets stated feature specifications.
+- [mechanism] Parameters such as average movement complexity let a user shift generated output somewhat, without fully controlling it.
+- [rule] Keep generator parameters in a file read when the program starts so they can be adjusted without changing code. When: procedural generation tuning.
+- [rule] Proposals for generated content should describe how the player interacts with that content, since system designers ask this first. When: Proposing generated content.
+- [rule] Generators must respect the intended mechanics, opportunities and limits of the game they serve. Why: This is what separates PCG from generative art and most computer graphics.
+- [rule] Express soft preferences with a minimize statement and hard requirements as integrity constraints.
+- [rule] Constrain the whole space of play when the goal concerns how the player experiences a level, not one specific layout.
+- [rule] A level authoring tool should offer complete generation, input of full or partial designer designs, automatic playability checks, and optimisation of designs for playability.
+- [heuristic] A generator's difficulty must keep rising with the player's growing skill, or the player slides out of the flow channel. When: generating content for a player who improves over time.
+- [heuristic] Derive the number of floors, encounters, and enemy types from a target session length using the same planning arithmetic. When: When generating dungeon content for a session of set length.
+- [heuristic] Expose effect durations and cooldowns as parameters rather than fixing them, since they are design variables. When: When generating content that uses timed effects.
+- [heuristic] A generator's random number source is a natural candidate for locator access, since random numbers are needed across most of a game.
+- [heuristic] Tune a generator's environmental details to a documented historical reference so its tone matches a real setting. Why: One primary-research detail can set the tone of a whole content layer.
+- [heuristic] Good generator control gives consistent results, such as playable levels, while keeping variety.
+- [heuristic] Place special content by hand first and let the algorithm fill the rest when key moments must be authored.
+- [heuristic] Apply each graph rule once to one location at a time, and split broad rules into narrower ones, to keep generated missions controllable. Why: Indiscriminate application gives no clear stopping point.
+- [heuristic] When designing a generator, ask how you would build the level by hand and whether those changes can be captured by transformational grammars. When: when deciding how to model level generation. Why: Modelling manual design steps keeps generated levels close to designer intent.
+- [heuristic] A generated dungeon framework is an outline whose many details depend on the rules system it is joined to. When: integrating a level generator with a tabletop ruleset. Why: Content semantics come from the rules layer, not the layout.
+- [heuristic] Keep designer control through required content and an encounter database, while the generator fills in the rest. When: generating adventure content. Why: Designer-fixed content guarantees key areas and the database controls encounter quality.
+- [heuristic] Keep the occupancy of a fixed grid-indexed table below a chosen threshold so that lookup cost stays bounded during generation. When: a procedural generator places entities into a fixed hash-indexed grid. Why: expected probe count rises as load factor approaches 1.
+- [heuristic] If a generator removes rooms or tiles during rework, prefer chaining or a tree structure, because open-addressed deletion is awkward. When: entities are removed during generation. Why: deleting from an open-addressed table breaks probe sequences.
+- [procedure] 1) Choose input parameter settings to vary. 2) Generate expressive range charts for each setting. 3) Compare the charts to see how the output space shifts.
+- [metric] Acceptable generation time ranges from milliseconds to months, depending on whether content is generated during play or during development.
+- [tradeoff] Changing L-system fitness weights gives fairly precise control over plant type; but when user choices act only through weights, their link to output is indirect and hard to predict. When: Evolving L-system plants with weighted fitness.
+- [tradeoff] Grammar-based gameplay control gives designers strong steering, but the graph and shape rules needed are far from intuitive for most designers.
+- [pitfall] Event weights set by hand must be tuned manually, so the frequencies of gaps, hills and enemies depend on tuning effort.
+- [pitfall] Pushing mixed-initiative too far turns generation into manual construction and loses the benefits of procedural generation.
+- [pitfall] Without a reference solution, styled maps can have no path from gem to altar or from entrance to exit.
+- [pitfall] A constraint on touch counts in one solution looks equivalent to a concept requirement but does not force time to be spent, so wandering stays possible.
+- [pitfall] Every creation tool pushes an agenda, often unintentionally: even a tool that never overrides the human shapes the work through what its generator can produce.
+- [fact] A mixed-initiative level tool can complete unfinished designs, suggest modifications unprompted, give quality-metric feedback, enforce constraints and test playability.
+- [fact] Until reliable exploring AI exists, hand optimization is still needed for consistently usable log-based graphs.
+- [fact] Terrain generation with agents has three phases: coastline for the outline, landform for mountains, beaches and lowlands, and erosion for rivers, with one agent per river.
+- [fact] Earlier rule generators output complete rule sets without human input, whereas mixed-initiative rule tools let the human and the system both shape the result.
+- [fact] In an interactive rule-building tool, pressing a consequence button applies its effect immediately.
+- [fact] Creativity support tools aim to augment a human creator, keeping the human in charge while the computer defers to human decisions.
+- [fact] True mixed-initiative interaction, long studied in HCI and AI, has rarely been applied to game content generation.
+- [fact] Mixed-initiative procedural content generation handles just some of the work, requiring more human input during generation than fully automated approaches.
+- [fact] Generators show highly emergent behaviour, so it is hard to predict what a given algorithm will produce.
+- [fact] Other AI uses in UX include synthesizing survey answers, finding behavioral patterns in telemetry, and evaluating prototypes against design and usability guidelines.
+- [fact] Different participants can hold different initiative types at once, such as one raising the problem while another assigns the follow-up work.
+
+## level representation
+- [model] The world is a 2D tile grid of screen-sized blocks, with each location spanning a small grid of screens, so world size and location size are set in tiles and screens. When: Realizing a space tree as tiles.
+- [definition] Content encodings range from direct, where genotypes resemble phenotypes, to indirect, where genotypes are much smaller than the outputs they produce.
+- [definition] A tile grammar rule has one left-hand side and one or more right-hand side alternatives, may use wildcards, cannot change the tile count, but can stack tiles instead of replacing them.
+- [definition] A level is a two-dimensional matrix of ASCII characters, and the level mapping says which sprite type each character stands for.
+- [definition] In a neural network, each neuron's activation applies an activation function to the weighted sum of its inputs.
+- [definition] A negative representation starts from a grid of filled squares, and loci define room corners, lengths and heights that are carved out; corridors are rooms with one side of length one.
+- [definition] A binary bit-grid encoding stores each map square as 1 for full or 0 for empty, optionally preceded by loci that place designer-specified blocks.
+- [definition] A positive representation describes walls by start position, direction and maximum length, plus a 0/1 control: 0 stops a wall at the first wall it hits, 1 lets it grow through.
+- [definition] A symmetric bit-grid encoding stores one quarter of the level, with each bit setting four rotationally symmetric squares at once. When: dungeon with enforced rotational symmetry. Why: Encoding only a quarter guarantees symmetry in the full map.
+- [definition] The flower CPPN takes polar radius r, angle θ, a layer input L and a bias, and outputs RGB colour plus a maximum-radius value. When: evolving radially symmetric shapes with CPPNs.
+- [definition] Non-spatial elements such as enemies are components of procedural systems that add variety to generated levels.
+- [mechanism] Tile grids can store pointers to a few shared terrain or tile objects, such as grass, hill, and river or floor, wall, water, and trap, which carry properties like movement cost. Why: Properties live in one object, so each tile reaches them through a shared reference.
+- [mechanism] A group of characters can be stored as a count plus a statistical distribution for each value, then regenerated into individuals when a high-importance LOD needs them. When: Background populations where individual identity does not matter. Why: Keeps the population's overall shape while discarding per-character data.
+- [mechanism] Negative room encodings tend to produce mine-like layouts. When: dungeon encoded as carved rectangular rooms. Why: Carved rooms and corridors from a solid grid resemble mine tunnels.
+- [mechanism] Binary bit-grid encodings tend to produce cave-like systems. When: dungeon encoded as a per-square bit grid. Why: Independent square decisions yield irregular, organic open areas.
+- [mechanism] Positive wall encodings resemble building floor plans, and restricting walls to four directions makes the output look more like buildings. When: dungeon encoded as growing walls. Why: Walls that stop on contact and run axis-aligned mimic architectural plans.
+- [mechanism] Representation affects how well the search explores and biases it toward some regions of the content space over others. When: search-based content generation. Why: Only encoded regions are reachable with ease, so the encoding shapes exploration.
+- [rule] When generating levels from random tiles, each tile's scenes must stay individually interesting and readable, because tiles combine unpredictably.
+- [rule] Choose the content representation so it both defines and limits what can be generated and still allows effective search.
+- [rule] Encode only the mechanics relevant to the content you want to generate.
+- [rule] Change the representation to improve search speed, to obtain useful secondary content properties, or to fit existing computational infrastructure. When: designing a search-based generator. Why: Encoding choice can serve performance, content quality, or integration needs.
+- [heuristic] Choose the genome encoding to match the desired visual style, since fitness alone does not set the look; encoding changes shift layouts among mine-, cave- and building-like. When: designing an evolutionary dungeon generator. Why: Style is strongly set by representation, and the encoding biases which layouts the search can easily produce.
+- [heuristic] In a large generated tile grid, measure terrain lookup speed before committing to a pointer-based flyweight design. Why: Large grids magnify any cache-miss cost of indirection.
+- [heuristic] Three-dimensional dungeon generation would likely need a much larger chunk library than two-dimensional platform levels.
+- [heuristic] Feed the angle into the network as sin(Pθ) rather than raw θ, which makes radial symmetry easier to produce, with P setting the petal count. When: generating radially symmetric shapes with CPPNs. Why: A periodic input repeats the pattern and sets the number of repetitions.
+- [heuristic] The encounter database needs many more entries than any single generated level will use. When: building an encounter database for generation. Why: Repetition across levels is avoided only when the pool is large.
+- [heuristic] A small set of reusable tiles can produce many layouts, so a tile system supports building varied spaces from pieces. When: when building varied spaces from pieces.
+- [heuristic] Tag level elements with both functional need and theme, so generated placement matches the area's requirements and its story. When: An element's placement depends on both function and theme.
+- [heuristic] Variety in chunk-based generation comes from enemies, surrounding geometry and theme, not only from the chunks themselves.
+- [procedure] 1) Compute tileX as floor(x / tileSize). 2) Compute tileZ as floor(z / tileSize). 3) Use the tile's centre as its representative point for localization. When: Mapping positions to square tile nodes. Why: Floor division gives each position a unique tile index.
+- [procedure] 1) Make each terrain type an immutable object with const accessors for its properties. 2) Store one instance per type. 3) Point each tile at the shared instance for its type. Why: Replaces scattered switch statements with per-type data.
+- [procedure] 1) List the objects and mechanics of a game in natural language or bullet points. 2) Encode that list in the game description language. 3) Run the encoded game and compare its behaviour with the list.
+- [procedure] 1) Traverse the space tree depth-first. 2) Place each child next to its parent. 3) Randomize the order of cardinal directions. 4) Backtrack when placement fails. 5) If no mapping exists, discard the space tree and search for the next best one. When: Mapping a space tree onto a grid. Why: Randomized directions avoid a bias toward growing the world one way.
+- [procedure] 1) Give each non-root tile exactly one parent among its four neighbours (up, down, left, right). 2) Define a recursive linked predicate: the root is linked, and any tile whose parent is linked is also linked. 3) Add an integrity constraint rejecting any unlinked tile.
+- [procedure] 1) Split each level into tiles about one city block in size. 2) Load the tiles when the mode starts. 3) Load the next tile when the player reaches its exit.
+- [tradeoff] Very general encodings yield mostly non-games or unrunnable games, very narrow ones too few interesting games; smaller spaces are denser in playable candidates, larger allow more varied designs.
+- [tradeoff] Eager creation of all flyweights up front is simpler; lazy creation needs a lookup, a way to judge two requests identical, and a pool, adding structure. When: Choosing how to instantiate flyweights. Why: Eager creation avoids the extra machinery but only works when the needed set is known and small.
+- [tradeoff] Direct representations keep genotypes close to phenotypes and give more control; indirect representations shrink genotypes far below phenotype size, cope better with dimensionality, but give less control and possibly sparser coverage.
+- [tradeoff] A rigid representation of rules can reflect too many of the designer's own preconceptions, which limits the surprise a generator can produce. When: when designing a representation for automatic game generation. Why: Fixed structures encode the designer's assumptions about what games look like.
+- [tradeoff] Direct representations are simpler and usually give higher locality, while indirect representations yield smaller search spaces. When: choosing a search encoding. Why: Direct encodings are easy to map but large; indirect ones compress the space.
+- [tradeoff] To-scale mapping lets designers analyze how levels account for character metrics, and generated layouts can be checked against the same kind of to-scale map. When: testing a generated or hand-built layout against character size.
+- [pitfall] Direct representations are not automatically best, since large direct genotypes can be too hard to search because of dimensionality.
+- [fact] Representation is one of two main problems in search-based PCG: it determines what content can be generated, whether search works at all, and affects search performance and appearance. Why: Search operates on encodings rather than on the content itself.
+- [fact] In tile-based worlds, tactical labels can be attached to corresponding tiles, so a grid-based generator can assign them per tile.
+- [fact] Machine learning is a route to procedural content generation, including game levels and music.
+- [fact] Candidate representations for a dungeon include a grid of cells, a list of walls with position, length, and orientation, reusable patterns with their distribution, a list of desired properties, and a random seed.
+- [fact] In a direct level representation, each genotype variable corresponds to one content tile, such as a brick or a question block.
+- [fact] A real-valued vector can be decoded partly as positions and partly as parameters for drawing structures such as walls.
+- [fact] Content can be encoded as typed design elements placed on 2D maps and evolved with a genetic algorithm.
+- [fact] The same set of outputs can be encoded in many different genotype spaces, so the encoding is a design choice.
+- [fact] A multi-wall encoding can generate two paired mazes at once, each tuned for a different player movement ability.
+- [fact] Room adjacency can be stored as neighbour lists or as an edge list.
+- [fact] Separate level tiles can be presented as one continuous overview map, so independent sections read as a single world.
+
+## encounter and placement
+- [definition] Each required block entry gives its dimensions and a pattern where 0 or 1 squares are forced, 2 squares are left to the search, and 3 squares are empty checkpoints for distance measurement. When: designer-specified blocks in a bit-grid dungeon.
+- [definition] The chromosome holds two integer loci per required object, taken modulo the side length to give candidate corner positions. When: encoding placement of required blocks.
+- [mechanism] Characters can be spawned as the player moves, based on general area properties and time of day, a basic form of group LOD.
+- [mechanism] Nearby weapons, shops, and upgrade options at a spawn point shape a player's early strategy.
+- [rule] Place healing opportunities where the player is likely to need them, and keep difficult encounters from appearing before the player is ready. When: When generating encounters and healing for a dungeon.
+- [rule] Assign rarer good item drops to stronger encounters, so a generator can use difficulty to set reward quality. When: Generating item rewards for encounters of varying difficulty. Why: Keeps rewards proportional to challenge.
+- [rule] Place a level-one building on empty land bordered by one water neighbor and one tree neighbor.
+- [rule] In generated layouts, place encounters so that combat amount and spacing are both right, since correct totals with poor placement still cause fatigue. When: Generating levels with encounters. Why: Placement, not only quantity, determines whether players feel fatigue.
+- [rule] Set a range for how many enemies spawn at a location, and test the maximum against player survivability. When: generating encounters. Why: Generated sizes must remain within what the player can handle.
+- [rule] Set dungeon penalties such as level drain with awareness that they shape how carefully players approach encounters, especially when placing dangerous monsters. When: placing dangerous encounters in dungeons. Why: Penalty severity changes how players treat the same monster.
+- [rule] Content a generator places should enrich the core loop rather than obstruct it. When: Generating content around core mechanics. Why: Obstructing the core harms play.
+- [rule] Necessary content, such as a level's main structure or required items, must always be correct; optional content can be discarded or swapped.
+- [rule] Penalise undesired structures, such as a corridor attached to a room corner, or a room linked to excessive corridors.
+- [rule] After a rare entity spawns, set its spawn probability to zero to guarantee only one per level. When: Random spawning of unique entities.
+- [rule] Rejecting every world where the completed predicate fails leaves only playable, styled maps.
+- [rule] Protect required content from the search's variation operators so that mutation and crossover cannot remove it. When: evolutionary generators with fixed content. Why: Variation would otherwise destroy designer-specified areas.
+- [rule] If required objects overlap, assign the worst possible fitness to that chromosome. When: placing multiple required blocks. Why: Overlap makes the layout invalid, so it is penalised heavily.
+- [rule] Tag required content for a special population engine, such as a boss room or a themed area. When: populating a dungeon with designer-fixed areas. Why: Themed rooms need encounters that differ from generic ones.
+- [rule] Keep a trigger, its target, and the resulting unlock within one screen in early generated rooms. When: when generating early rooms that teach a trigger mechanic. Why: Players can connect cause and effect when all parts are visible together.
+- [rule] Mark spawn points with a distinct token, since units reappear there after being removed.
+- [rule] Place spawn points so players can refresh before energetic battles.
+- [heuristic] Worth can be a difficulty level for a wandering monster, so the same above-or-below test can sort monsters by difficulty.
+- [heuristic] Use a consistent reward rhythm in generated dungeons so players have a clear expectation to pursue. When: generating a dungeon. Why: expectation gives direction to exploration.
+- [heuristic] Hazard placement logic should consider how a hazard reshapes its nearby area, not only its location. When: generating or placing moving hazards in a procedural layout. Why: A hazard's motion changes the usable space around it, so location alone misrepresents its impact.
+- [heuristic] Layout that produces panic can be intended, so judge a layout element's placement against the emotion the game aims for. When: when placing obstacles or threats in horror levels.
+- [heuristic] A generator can vary parameters such as a trap's fire delay per placed entity, giving each instance its own tuning.
+- [heuristic] Check that a room fits without intersecting existing rooms before placing it; this is a direct way to avoid overlaps.
+- [heuristic] After layout, scan for spots that suit a monster, such as a wall tile with empty space behind it.
+- [heuristic] A well-designed fitness function keeps encounters in an acceptable difficulty order even in branching levels, which supports replayability. When: populating branching dungeons. Why: Good ordering keeps difficulty sensible across varied layouts.
+- [heuristic] Dungeons that place many chests, enemies and resources across the layout so a reward is always nearby apply overlapping reward schedules and keep players motivated. When: Generating dungeon layouts with reward placement. Why: A nearby reward is always close to its payoff, which covers motivation dips.
+- [heuristic] In single-player games, a prospect can serve as a boss room where abilities give no advantage, forcing a fight against a powerful foe.
+- [heuristic] Place a strong special enemy in narrow spaces and regular encounters, not only as a finale, so it is harder to avoid throughout the level.
+- [procedure] Tactical locations may come from a tile grid or from prefabricated sections containing tactical points, but each generated location still needs its properties computed.
+- [procedure] 1) Place locks and keys randomly between the entrance and goal, making the first task a key and the last task a lock. 2) Assign lock-and-key relationships, allowing one lock to need several keys and keys to be reused. When: when generating a dungeon with lock-and-key progression. Why: Separating placement from relationship assignment lets two simple grammars cover many variants.
+- [procedure] Prune obviously unwanted candidates, such as silent audio or meshes with disconnected triangles, before showing them to the user; pruning helps but does not guarantee wanted content.
+- [procedure] Check that a generator's reward placements provide at least one of four things: resources, access, abilities, or achievement. When: when designing reward placement for generated dungeons. Why: the four reward categories cover what a reward can give the player.
+- [metric] Taller building tiers appear where a square borders two, then three, then four buildings one size smaller.
+- [tradeoff] Spawn size: large intimate spawns let players gather resources before rejoining battles; small spawns near action with few weapons suit fast deathmatch shooters, where players lack time to linger. When: when sizing spawn points. Why: Size sets whether players pause to gather or return to action quickly.
+- [tradeoff] Removing every overlap between chunks produces flat, uninteresting levels, so some overlaps such as hills of different heights and coins placed with hills should be deliberately allowed. When: when designing a generated level's chunk conflict rules. Why: Overlaps that create variety in height and placement make levels more interesting.
+- [pitfall] Building a typed encounter database that enforces mood and style is a critical and substantial task. When: planning a populated dungeon generator. Why: Typed content must cover many cases before generation is credible.
+- [fact] Pruning removes almost all false connections, except those without an intermediate navigable region, such as a large vertical gap, which still need hand fixes.
+
+## grammar generation
+- [model] Grammars expand an axiom through production rules to generate plant structures, action-adventure levels, physical structures and missions; the grammars themselves can be evolved.
+- [model] A design grammar specifying the type, position and properties of items or level components can be evolved with grammatical evolution for a more expressive representation; a readable, editable grammar lets designers adjust generation.
+- [model] A hierarchical game grammar with options for board layout, movement, capture and win conditions can generate chess-like games by stochastic sampling.
+- [model] Large patterns break into chunks, and chunks break into components, so generation can work at the matching scale.
+- [definition] A generative grammar is a finite set of recursive production rules that expand an axiom into larger structures until only terminal symbols remain; sampling it yields new instances.
+- [definition] A graph grammar applies generative grammar rules to graphs with graph nodes as terminal symbols; each node on a rule's left side is matched and replaced individually.
+- [definition] A formal grammar consists of rules that rewrite strings beginning at a start symbol; each rule swaps a left-hand side pattern for a right-hand side.
+- [definition] A deterministic grammar has exactly one applicable rule per symbol, while a nondeterministic grammar may have several, so a selection method such as random choice, per-rule probability, or parameters is needed.
+- [definition] An L-system is a grammar that expands all symbols simultaneously, producing strings with repeating structure.
+- [definition] A mission graph grammar alphabet includes a start node as axiom, entrance nodes, task nodes, goal nodes that end the level, lock nodes needing a key, key nodes, and non-terminal task nodes.
+- [definition] An axiom is the seed string from which an L-system begins its rewriting.
+- [mechanism] If existing buildings never degrade on their own, the layout stays fixed until the player removes buildings. When: building systems with growth but no decay.
+- [mechanism] Bracket symbols act as ordinary symbols during rewriting but as stack operations during drawing: [ saves the turtle's position and heading, and ] restores the most recent saved state. When: Drawing branching L-system strings with a turtle. Why: The stack is last-in, first-out, so branches return to the most recent fork.
+- [rule] Design a game description language expressing whole games in a few lines, covering known games and unexplored ones between them, so search reaches new designs.
+- [heuristic] Generative grammars can capture higher-level dungeon design aspects.
+- [heuristic] Use grammar generation with gameplay-concept control when designers should steer dungeons through difficulty, fun or player actions rather than geometry alone.
+- [heuristic] Use bracketing when a shape branches and cannot be drawn as one continuous line.
+- [heuristic] Use nondeterministic grammars with probabilities when output variation is wanted; use deterministic grammars when output must be fully predictable.
+- [procedure] 1) Designer writes constraints in a vocabulary of player actions. 2) Constraints become a generative graph grammar. 3) Sample a player-action graph. 4) Map it to a dungeon layout. 5) Generate room and hallway geometry.
+- [procedure] 1) Add symbols that rotate the turtle around its drawing axis. 2) Keep bracket push and pop behaviour unchanged. 3) Draw the expanded string in three dimensions. When: Extending a bracketed L-system to 3D.
+- [procedure] 1) Write an L-system whose rules encode branching structure. 2) Expand it to the desired depth. 3) Interpret the resulting string as drawing instructions. When: when generating a tree or bush procedurally. Why: Drawing instructions turn the symbolic string into visible plant geometry.
+- [pitfall] Hand-written, ad hoc grammar rules and parameters must be rewritten for each new game, so they do not transfer easily.
+- [pitfall] Applying L-system rules sequentially instead of in parallel gives a different result, so the rewriting order must match the intended model. When: when expanding an L-system string. Why: Sequential updates let newly written symbols be rewritten again in the same pass.
+- [pitfall] A single grammar that generates everything at once is hard to design and nearly impossible to debug and maintain. When: when generating expressive content with many interacting elements. Why: All decisions are tangled together in one rule set.
+- [pitfall] Loosely written constraints can yield locally plausible levels that are nonetheless unplayable.
+- [fact] Mission grammars were the first grammar approach to give dungeon generation gameplay-based control.
+- [fact] A player-action grammar approach was shown on a single game to produce playable three-dimensional dungeon levels.
+- [fact] Changing rule details or turn angles generates different but still plant-like forms from the same grammar structure.
+- [fact] Evolved L-system plants can be scored by height (phototropism), symmetry, exposed surface area, structural stability, and proportion of branching points.
+- [fact] By convention, uppercase symbols are nonterminals that are rewritten further, and lowercase symbols are terminals that are final.
+- [fact] Graph grammars and space grammars extend grammar-based generation beyond strings to level structures and quest structures.
+- [fact] A grammar-based level generator gives a simple way to describe level structure, open-ended size, exploration beyond designer imagination, built-in domain knowledge, and easy generalisation to other games.
+- [fact] L-systems were introduced by a biologist in 1968 to model the growth of plants and algae.
+- [fact] A two-rule yeast-growth L-system produces strings whose lengths follow the Fibonacci sequence, with each string being the concatenation of the two strings before it.
+- [fact] Even very simple L-system rules yield highly complex yet regular strings, which makes them useful for procedural content generation.
+- [fact] Starting from axiom F, replacing each F with F+F-F-F+F repeatedly and reading the result as turtle commands draws a snowflake-edge fractal curve.
+- [fact] L-system strings grow quickly with each expansion, so the first expansion of the Koch rule already exceeds a dozen symbols.
+- [fact] Patterns are interchangeable spatial solutions to human experience problems, which suits them to procedural assembly.
+
+## search-based content generation
+- [model] Search-based PCG has three core parts: a search algorithm, a content representation that can be sampled effectively, and evaluation functions that separate good content from bad.
+- [model] Feasible-infeasible two-population search keeps infeasible candidates that fail rendering, physics or balance constraints out of the user's view while pushing them toward feasibility. When: when generated content has hard validity constraints.
+- [definition] Solver-based approaches, such as Answer Set Programming, specify logical conditions that content must satisfy.
+- [definition] Search-based PCG treats content creation as search: a stochastic optimiser repeatedly modifies candidate artefacts and keeps changes that raise an evaluation score.
+- [definition] Optimization-based generation uses end-user input, such as play or ratings, to decide what to generate next.
+- [mechanism] Evolving content such as weapons from a player's earlier use and preferences yields items tailored to each player.
+- [mechanism] A representation with few parameters limits generation to the range those parameters allow; looser structures impose fewer constraints and give a wider range.
+- [mechanism] Searching over grammar rule choices for ones that match target difficulty, fun and size steers the generated topology toward those goals without generating geometry. When: Topology is generated by a graph grammar.
+- [mechanism] Search-based terrain generation gains controllability because constraints can be written as objectives that the search optimises.
+- [mechanism] A map search fills unspecified space so that distances between designer-required objects match the designer's specification. When: designer places required blocks in a generated level. Why: Fitness measures inter-object distances, pushing the fill toward the specified layout.
+- [mechanism] With similar fitness, different encodings can yield very different dungeons. When: comparing evolutionary dungeon generators. Why: Fitness does not fix the structure of the output; encoding does.
+- [rule] Initialise random dungeon populations with a filled-square probability of 0.2 (20% ones, 80% zeros) so most starting levels are connected; crossover and mutation raise the fraction of ones. When: when starting evolution of random dungeon populations or a bit-grid dungeon. Why: Sparse starts keep early maps open and let search add walls gradually.
+- [heuristic] Use search-based terrain generation when terrain must satisfy explicit constraints or gameplay requirements such as traversability. When: Terrain must meet explicit constraints, gameplay requirements or traversability requirements.
+- [heuristic] Use exhaustive search when the search space is very small and generation time is not a constraint.
+- [heuristic] Use random search when good content is easy to find and variety matters more than optimising.
+- [heuristic] Simple evolutionary algorithms often work well enough as the search engine in search-based content generation.
+- [heuristic] Restrict the candidate space to a size that allows exhaustive search when every candidate must be evaluated by simulation. When: when each candidate needs a full simulated evaluation.
+- [heuristic] Stronger local search, such as Monte Carlo tree search over rule choices, is a proposed way to find nearby good designs that mutation misses.
+- [heuristic] Use ASP when you want the generator's declarative specification kept separate from the search algorithm.
+- [procedure] 1) Generate a highly randomised graph. 2) Restructure it into something that fits the game. Each step acts as one stage of a design process. When: when generation must yield coherent, expressive structures. Why: Simple steps are easier to design, debug, and reuse than one large grammar.
+- [procedure] Search space trees with any optimisation algorithm, scoring on bridge length, bridge branching factor, side-path length, and how closely adjacent transitions match the transition graph's probabilities. When: Fitting a space tree to designer parameters.
+- [procedure] Evaluate generated content offline using logical operations, constraint satisfaction and simulated AI agents, without player input.
+- [tradeoff] Sparse starts give mostly connected levels, but these are overly connected and poor in quality, so search must improve them.
+- [pitfall] Evolution may miss a nearby strong design when the needed change is one specific mutation that is never tried, and one unhelpful attribute can ruin an otherwise good rule set.
+- [pitfall] Without a reachability rule, random parent choices produce disconnected components and parents outside the grid.
+- [pitfall] A parameter change that looks harmless can drastically alter a generator's output space in some configurations, so check the full set of configurations rather than a few.
+- [fact] Search-based PCG is popular in academia, and a few complete games have shipped using it.
+- [fact] Choosing both the target variable and its value from all variables in the game code, via reflection, lets a generator produce mechanics that a hand-built representation would not offer. When: when a generator is given access to the engine's code. Why: Open access removes the designer's preconceptions from the representation.
+- [fact] In multiplayer, the usage rates of all players together determine which content evolves.
+
+## rule-based generation
+- [model] A touch(Tile, State) predicate traces a player path through three states: before the gem, after taking the gem, and after placing it in the altar.
+- [definition] Symbolic rule expressions can be stored as trees, which makes standard crossover and mutation directly applicable to rule sets.
+- [definition] A formal rule encoding defines a space of possible games and records what its designer considers interesting.
+- [mechanism] Within a state the player may touch any adjacent tile; touching the gem advances to state 2 and touching the altar in state 2 advances to state 3.
+- [mechanism] Adding or removing rules from a rule-based generator changes the shape of its generative space.
+- [rule] For specific patterns with few spatial forms, vary materials, assets or themes so repeats feel fresh; use rule-based components for fluid patterns that combine into many forms. When: Specific patterns with few spatial forms.
+- [rule] Increment a location's category when two or more neighbors are higher, and decrement it when no neighbor is as high.
+- [rule] Require each wall to have at least two wall neighbours and each gem to have at least three wall neighbours.
+- [heuristic] Prefer a single neighbor-count threshold over a band of counts; bands behave unpredictably, while a single threshold tends to fill or settle the map. When: designing cellular automaton rules.
+- [heuristic] Simple cellular automaton rules are often enough in games, because changing game state already supplies dynamism.
+- [heuristic] Test core generation rules in a prototype before building content pipelines around them. When: Building a procedural dungeon or level generator. Why: Early testing exposes flaws before dependent content work is built.
+- [heuristic] A generated mechanic has utility if it makes a previously unsolvable test level solvable, offering an affordance the player lacked. When: when screening generated mechanics by simulation. Why: A pass-or-fail solvability test gives the search a usable signal in an unpredictable state space.
+- [heuristic] A state-based touch model is a reusable template for checking solvability of levels with keys, items, and exits.
+- [procedure] 1) Record every consequence-button press along with the history of actions. 2) Learn why each press was made. 3) Infer the game the player is building. 4) Induce that game's rules.
+- [procedure] 1) Choose a rule representation first. 2) Search that representation for good rule sets. 3) Evaluate candidates on game-theoretic and aesthetic qualities, not only on correctness.
+- [tradeoff] Two simple grammar steps can produce many relationship variants, whereas explicit rules for each variant would need many more rules that are harder to maintain. When: when a generator must support many structural variants. Why: Rule count grows much faster than the number of variants a composed approach covers.
+- [tradeoff] A rule representation trades expressivity against density of feasible rules and against compactness and readability; gaining one can cost another.
+- [pitfall] Current rule generation is simplistic, so generating complete games remains far from solved.
+- [pitfall] An unconstrained add-task rule can produce anywhere from one task upward without limit, since it stops growing only when the start node is removed. When: Applying growth rules to mission graphs without control.
+- [fact] Because each update depends only on the previous iteration's values, locations can be updated in any order.
+- [fact] Code models a set of potential outcomes that all follow the same general rules, so one rule set yields many outcomes.
+- [fact] Formal description languages such as the Video Game Description Language let algorithms generate game rules, not only content.
+- [fact] Simple movement and collision primitives still support a large range of games, making this domain a natural target for automatic rule generation.
+- [fact] N-in-a-row win conditions dominated evolved rule sets and appeared in the strongest ones.
+- [fact] High-level rule descriptions can be recognised without learning the system, and rule sets can be edited as conceptual units, as humans think about games.
+- [fact] Judging rule quality is harder than judging other generated content, because it must measure game-theoretic and aesthetic properties beyond correctness.
+- [fact] Search-based and constraint-satisfaction methods, including answer set programming, have been used to generate board and arcade game rules.
+
+## room and partition layouts
+- [definition] Binary space partitioning splits space into two parts per step, quadtrees split 2D space into four quadrants, and octrees split 3D space into eight octants.
+- [mechanism] Recombining the same prefabricated pieces into different arrangements produces different implied stories, so modular layouts can yield varied narrative content. When: generating levels from modular prefab pieces.
+- [mechanism] Joining sibling cells bottom-up means siblings connect before their parents, so corridors follow a natural order through the tree.
+- [rule] Introduce each obstacle alone in early generated rooms, then combine obstacles in later rooms. When: when generating rooms with a difficulty progression. Why: Isolated introduction lets players learn each obstacle before combinations appear.
+- [rule] Repeat a small set of room and building types so generated spaces stay readable at large scale.
+- [heuristic] Size rooms, doors and gaps to the character's measured size and jump distance, and leave enough horizontal and vertical space for movement; a room one screen wide can break traversal. When: generating or sizing rooms, doors and gaps; procedurally generated rooms with movement-heavy mechanics. Why: Measured character metrics give a fixed baseline for fit; movement mechanics need horizontal and vertical space to function. (x2)
+- [heuristic] Room-and-portal layouts can serve as a coarse top-level planning graph, with finer routes computed inside each area.
+- [heuristic] Use space partitioning when rooms must not overlap and the layout should look structured and orderly.
+- [heuristic] Breaking a level into reusable modular units is the same kind of decomposition a dungeon generator uses when assembling layouts. When: designing layouts for procedural assembly.
+- [procedure] 1) Create rooms first. 2) Connect them with corridors. When: a non-search baseline for dungeon layout. Why: Gives a constructive comparison point for search-based generators.
+- [procedure] 1) Randomly choose quadrants to split. 2) Mark each final quadrant as empty or as a room. 3) Connect all rooms.
+- [procedure] 1) Place one room of any size, smaller than its quadrant, in each leaf quadrant. 2) Connect the rooms afterwards without using the tree. When: Avoiding symmetric quadtree layouts.
+- [procedure] 1) Find room-sized open spaces, including required rooms. 2) Number each room. 3) Save the numbered map for the referee. When: after map generation in a room-based generator. Why: Numbered rooms let a referee and later stages refer to each area.
+- [procedure] 1) Treat each room as a vertex. 2) Connect rooms that are adjacent into an adjacency graph. 3) Pass the graph to the population stage. When: after rooms are detected. Why: Population needs room connectivity to decide placement order.
+- [procedure] 1) Start a room counter at zero and scan the map in reading order. 2) When an empty 3x3 block is found, mark it as the next room. 3) Repeatedly absorb empty squares with three neighbours inside the room. 4) Increment the counter. When: turning a bit-grid map into rooms. Why: Growing from seed blocks yields disjoint room regions.
+- [metric] Stop splitting cells once they fall below about a quarter of the area's width and height. When: Stochastic BSP partitioning of a dungeon area.
+- [tradeoff] Partitioning lets the root control the whole layout, but its neatly ordered results can look predictable.
+- [pitfall] Randomly chosen quadtree splits can produce highly symmetric square dungeons unless the leaf rule is relaxed.
+- [pitfall] Required-content rooms that do not satisfy the room-detection definition will be missed as rooms. When: combining required blocks with room detection. Why: Detection uses an implicit definition that custom blocks must meet.
+- [fact] Portal-based engines often assign one cluster per room, which suits room-based dungeon layouts.
+
+## agent-based generation
+- [model] Agent categorical parameters are move style, trigger state, boundary behaviour and action type. When: encoding level-generating agents.
+- [definition] Agent-based digging carves corridors and places rooms by moving a digger agent through a dungeon area, producing organic layouts.
+- [definition] Agent-based landscape generation grows terrain through the actions of software agents, allowing finer control than fractal methods.
+- [mechanism] In city-building games, a building's state can change with its surroundings, so a building surrounded by run-down neighbors may decline.
+- [mechanism] Beach agents follow the shoreline in random directions and flatten sandy areas near water, with a narrow height range giving flat beaches and a wide range giving bumpy ones.
+- [mechanism] Coastline generation starts with the whole map below sea level, and a single agent may split into many until each covers a small part of the map.
+- [heuristic] Use agent-based methods when designers must shape the output and control how much agents change the environment.
+- [procedure] 1) Define areas such as squares, industrial, commercial and residential zones. 2) Have agents build the road network. 3) Use extenders to search for unconnected areas. 4) Use connectors to add highways and direct roads. When: Generating a city with agents.
+- [procedure] 1) Take a seed point on the edge with a direction and a token budget. 2) If the spot is already land, search along the direction for a new start. 3) Generate an attractor and a repulser point. 4) Score candidate points, favouring those nearer the attractor. 5) Raise the top-scoring point above sea level.
+- [metric] Agent numeric parameters include spawn time 0 to 200, period 1 to 5, tokens 10 to 80, and spawn radius 0 to 60. When: encoding level-generating agents.
+- [fact] Beach agent parameters are flattening depth, total steps, working altitude limit, and height range.
+- [fact] Five agent types run concurrently and can sense and change the environment; designers set each type's count and its lifetime measured in actions.
+- [fact] An agent's move style is either a line in one of eight directions with a step size, or a random step. When: encoding level-generating agents.
+- [fact] An agent's trigger state can be always, terrain hit, area full or empty, or a probability. When: encoding level-generating agents.
+- [fact] An agent's boundary behaviour can be bounce, return to start, or stay within an area. When: encoding level-generating agents.
+- [fact] An agent's action type can be a single tile, a rectangle or circle outline, a filled rectangle, a platform, or a cross. When: encoding level-generating agents.
+
+## answer set programming
+- [model] Game logic for ASP generation has two parts: structure (grid tiles, walls, items) and mechanics (movement, item pickup, breaking barriers).
+- [definition] In answer set programming (ASP) you declare constraints and logical relations, and the solver returns every configuration that satisfies them, with each answer set treated as one content artifact.
+- [definition] In AnsProlog, a fact is an atom, either atomic or with parameters, that holds unconditionally.
+- [definition] In AnsProlog a rule has the form head :- body, variables begin with a capital letter, and each rule is implicitly universally quantified over its variables.
+- [rule] A choice rule can bound how many facts it selects, such as requiring between 5 and 10 walls.
+- [heuristic] Use ASP when many desired properties are hard constraints that depend on game mechanics.
+- [procedure] 1) Write a choice rule that defines the broad design space of possible content. 2) Add integrity constraints, which are rules with an empty head, to reject unwanted choices.
+- [tradeoff] Search-based PCG pairs an encoding with a numeric evaluation function, whereas ASP states game logic and constraints explicitly in a symbolic language and hands them to a solver.
+- [pitfall] Optimising solvers emit several answer sets before reaching the optimum, so an optimum must be verified if it is strictly required.
+- [pitfall] ASP does not specify the order in which answer sets are produced, so results should not be assumed to follow any ordering.
+- [pitfall] Constraints over all solutions need an extended disjunctive solver and are far more expensive than standard ASP.
+- [fact] Stopping an optimising ASP solver early yields an approximately optimal answer rather than the true optimum.
+- [fact] ASP-based generation can enforce solvability and pacing through constraints, building up from perfect mazes to styled, playable dungeons.
+- [fact] AnsProlog resembles Prolog syntactically but has different semantics, closer to SAT and MAX-SAT.
+- [fact] Quantifier-free conditions over all solutions of a level can express Sigma-2-P problems, which are widely assumed harder than NP.
+
+## progression design
+- [rule] A story plan used for space generation must be fully ordered, so its events read as a sequence of locations, each becoming an island with a type from the domain's initial state. When: Converting a story plan to islands. Why: A sequence of locations is needed to place islands in order.
+- [rule] Walls cannot be touched, and the finish must be touched in state 3, enforced by an integrity constraint on the completed predicate.
+- [rule] Plan encounter spots as part of the room layout, since enemy placement is a spatial decision. When: when generating rooms with enemies.
+- [heuristic] A generator placing encounters can alternate combat rooms, which add pressure, with navigation rooms, which let players set their own pace. When: when generating dungeon layouts. Why: Alternation varies pressure across the play session.
+- [heuristic] Assign one collectible piece per dungeon level in a generated campaign to give players a clear progression marker. When: generating multi-level campaigns.
+- [heuristic] A generated dungeon's layout should create unease, discovery, and choice, using atmospheric cues, branching paths, and side routes that players can explore or skip. When: when generating dungeon layouts for exploration-driven play. Why: Players experience exploration as an uncertain, mysterious space.
+- [heuristic] Only a genuinely single resource, such as a file handle, may justify a singleton in a level generator. When: Building a level or dungeon generator.
+- [heuristic] Rewarding a narrow area on the shortest path between two bases creates a choke point that a skilled player could use for defence.
+- [heuristic] Editing pacing directly as a structural layer, such as adding, removing or lengthening beats on a timeline, can be applied to dungeon sequencing.
+- [heuristic] A single player plan can hold attention for a long stretch, so generated content should track how each event changes that plan. When: designing generated encounters that shape player plans. Why: Changed circumstances are what raise decision pace.
+- [heuristic] Generators should produce situations that create choices rather than script each choice individually. Why: Scripted choices lose their emotional force.
+- [heuristic] When generating dungeons, treat each dungeon as one tier in a goal hierarchy that also includes the main quest and smaller item goals. Why: dungeons gain meaning from their place among larger and smaller goals.
+- [procedure] 1) Build the physical structure. 2) Compute candidate positions on platforms. 3) Place each enemy in one candidate position. When: Adding enemies to a generated platformer level.
+- [tradeoff] Puzzle-driven dungeon rewards build discovery and cleverness but offer less power growth; stat-driven rewards build progression but weaken puzzle-driven discovery. When: when deciding how a generated dungeon should reward progression.
+- [fact] A pairwise collision effect can be nothing, one or both objects die, or one or both teleport; a parallel matrix sets score changes.
+
+## seeded generation
+- [mechanism] A seeded generator lets you rebuild the exact same generated run when testing or debugging.
+- [mechanism] If a generated layout is tied to a saved seed, the layout becomes predictable after every reload.
+- [mechanism] Storing a seed number and regenerating content from it lets a small program produce a very large set of worlds without storing them. Why: Only the seed must be stored, not the generated content.
+- [mechanism] Once the seed is saved, the game becomes fully deterministic, so a player who knows exactly how an enemy acts can optimize every choice.
+- [rule] With save-anywhere, limit exploitable payoffs such as high-payoff gambling, or block saving in a radius around such areas. When: save-anywhere is kept.
+- [procedure] 1) Take a gameplay matrix and a difficulty value. 2) Use a random seed for variation. 3) Scale the number, frequency and types of obstacles and enemies. 4) Output the level structure and enemy placement. Why: Gives infinite, tunable variation.
+- [procedure] 1) Show individuals only every 5 or 10 generations. 2) Predict unseen individuals' fitness from the closest seen neighbour, scaled down with distance. 3) Run short offline evolutionary sprints between shown generations. Why: Reduces the number of user selections needed.
+- [tradeoff] Placing a save just before a very hard challenge invites seed exploitation, while placing it far back makes repeated failure frustrating.
+- [tradeoff] Full guidance on save spacing and dangers removes surprise and can make the game feel too easy, while less guidance leaves players guessing.
+- [pitfall] Saving the seed blocks simple rerolls, but it is a weak barrier: other random actions such as random-heal items, tiny wagers or changing action order still allow rerolls. When: the seed is saved with the save file.
+- [pitfall] A player can manipulate the past by rerolling or the future by foreknowledge; no fully deterministic save design avoids both.
+- [fact] A procedurally generated world seed is one instance within the space of every world that could be created, and stores block states, items, structures, and entity data. When: Procedurally generated worlds with saved changes.
+- [fact] Seeding can come from entry ratings or rankings, from preliminary rounds, or from random assignment when no performance data exists.
+- [fact] Save points suited early games with limited storage, because storing a few locations keeps save files small.
+
+## game rules and mechanics generation
+- [model] A gameplay matrix stores statistics from a player test session, such as jumps, running time, items collected and enemies killed, to drive level generation.
+- [model] A video game description has four parts: a level mapping, a sprite set, an interaction set, and a termination set.
+- [definition] Generating complete games means a generator also creates rules, reward structures and graphical representation, not only levels and characters.
+- [definition] Each ludeme is a discrete piece of game information, and board game rules can be encoded as symbolic expressions assembled from ludemes.
+- [mechanism] Changing board conditions each time a mode is entered is generated variation, since the same mode rules yield different spaces each time.
+- [rule] A generator's rule set requires the same specification as defining every object, behavior and relationship; designers author the rules that produce rooms and encounters, not the encounters themselves. (x2)
+- [rule] Build description languages for other game types, and generators that account for each type's design affordances and challenges.
+- [heuristic] A generated level needs placement rules for demonstrations and triggers, since hand placement cannot be assumed. When: when generating levels that use scripted demonstrations. Why: generated levels lack hand-placed triggers.
+- [fact] Hand-set costs are rare for geometric graphs because distance is trivial to compute.
+- [fact] Generated rules are mechanics the team controls; the dynamics players build on them cannot be set directly. When: Procedurally generating rules.
+- [fact] Generate-and-test can produce a complete playable game design, such as a two-player board game, with no human authoring of the game.
+- [fact] Generators that output graphical-logic game descriptions are still preliminary, and they do not yet produce good games for humans to play.
+- [fact] Generation of graphical games has so far targeted classic arcade games and early home console games.
+
+## chunk and asset authoring
+- [mechanism] Recombining hand-authored content through a simple system adds replayability while every piece stays authored.
+- [rule] Any pixel on a tile flagged as connectable can serve as an attachment point for the grapple. When: Tile is flagged connectable. Why: Per-pixel attachment makes connectability a data decision that defines valid hook surfaces.
+- [heuristic] Use chunk assembly when a library of hand-authored pieces should be combined into varied levels.
+- [heuristic] Assemble tiles from smaller scenes rather than repeating whole tiles to add variation.
+- [procedure] 1) Pick a random potential player location. 2) Select a library chunk compatible with the surrounding context. 3) Integrate it with existing geometry. 4) Repeat. 5) Post-process to place objects such as power-ups. When: Combining pre-authored chunks into levels.
+- [procedure] Write a custom probability function giving the chance of each decoration at each tile, shaping structure, such as building blocks, streets, and perimeter towers in a town. When: Placing decorations with designer control.
+- [tradeoff] Asset granularity ranges from large chunks to single art assets; coarse systems need whole sections authored, fine ones need individual assets with rules.
+- [pitfall] Context-free grammars place chunks without regard to neighbours, so they can collide; conflicts arise when chunks share a height and overlap horizontally, and must be resolved afterward. When: when chunks are placed by a context-free design grammar. Why: Context-free grammars let chunks be placed independently, so they can collide.
+- [pitfall] Chunk assembly needs a minimally interesting chunk library, otherwise the generated levels lack versatility.
+- [pitfall] Chunk assembly can be inefficient, since specific levels may need a lot of manual authoring work.
+- [pitfall] Chunk-based generation has inherent weaknesses, and repeated geometry is one of them that enemies and theme must offset.
+- [fact] Decorations are sprites such as grass, trees, buildings, or paving stones, chosen by environment type.
+
+## content representation and encoding
+- [model] Level representations, from most direct to most indirect, are a level map, an entity list, a pattern repository, desirable properties, and a random seed.
+- [model] A candidate map can be encoded as about 100 real numbers: some give base and resource positions, others drive a turtle-style procedure that draws impassable regions.
+- [model] A grid game encoding has six parts: game length, score threshold, object count per colour, movement pattern per colour, a collision-effect matrix, and a score-change matrix.
+- [model] A map can be encoded by the positions of all its objects, and constraints then limit which maps are permissible.
+- [definition] A genotype is the encoding used for search and evaluation; a phenotype is the actual content decoded from it, and it is the phenotype that gets evaluated.
+- [definition] Some representations use a multi-step genotype-to-phenotype mapping, which is itself a procedural generation algorithm. When: indirect encodings.
+- [rule] Design a game representation so that small mutations reach nearby games, and keep its descriptions compact and readable by humans.
+- [heuristic] Restrict the encoding to one genre so the generator can take shared elements as given, which raises the share of playable candidates. When: when a high share of playable output matters more than variety. Why: Genre structure supplies rules the generator would otherwise have to discover.
+- [tradeoff] Indirect representations give less control and possibly sparser coverage, but cope better with the curse of dimensionality.
+- [tradeoff] Features may be represented as frequencies, accumulated times, or ordered sequences; the representation shapes which experience dimensions can be captured and the search space and efficiency of content creation.
+- [fact] A generated two-dimensional cell array is converted into a valid game map.
+- [fact] A heightmap's matrix width and height correspond to the x and y extents of the rectangular surface it describes.
+
+## pathfinding and maze graphs
+- [definition] The Moore neighbourhood, radius one, includes the eight adjacent cells; the von Neumann neighbourhood, radius one, includes only the four orthogonal ones.
+- [definition] A perfect maze is a spanning tree embedded in a grid: every tile is reachable from the root and there are no closed loops.
+- [mechanism] Point-based nodes each hold a representative point, and a line-of-sight check between each pair creates a connection when it passes; this can produce vast numbers of connections.
+- [rule] On irregular grids or at map edges, use the proportion of a larger neighborhood instead of fixed neighbor counts, such as a 25% threshold. Why: Fixed counts treat edge and irregular locations inconsistently.
+- [heuristic] Limit nodes to at most two children so each node has at most three neighbours, making collisions between placed locations less likely. When: Mapping a space tree onto a grid.
+- [heuristic] The parent-pointer and linked-reachability pattern can enforce connectivity of rooms in dungeon layouts.
+- [procedure] 1) Build the level. 2) Place a character under player or AI control. 3) Log its position continuously. 4) Turn high-density log locations, typically junctions and thoroughfares, into nodes; aggregate nearby points by condensation or by counting points per floor polygon and using its center. Turn logged direct transitions into connections. When: A pathfinding graph is needed without reachability geometry. Why: The character uses real legal moves, so the log reveals reachable locations.
+- [procedure] 1) Choose sample points within each pair of regions. 2) Run line-of-sight checks between them. 3) Add a connection when the required proportion of checks passes. When: Bounded regions must be linked automatically.
+- [procedure] For Dirichlet domains, place a node at each movement-density peak: set a node count in advance and pick that many peaks that are not too close together. When: Using Dirichlet domain nodes with logged movement data.
+- [metric] The number of neighbourhood configurations equals the number of states raised to the power of the neighbourhood cell count.
+- [fact] Region node links are made by hand or by the tool, and costs can be set manually or generated from geometric properties of the node boxes.
+- [fact] Mesh representations need no mining because polygons are the nodes; mining of general bounding regions is an open question.
+
+## level topology and connectivity
+- [model] Designers place points, often invisible tagged helper objects, which become graph nodes; each node owns the locations closer to it than to any other point.
+- [model] A topology graph has rooms as nodes and adjacency as edges; generating it before geometry settles room connectivity first. When: Generating dungeons in two stages. Why: Connectivity is fixed before spatial detail is built.
+- [definition] The most general graph form uses designer-placed bounding regions as nodes; its contents count as one planning node, and it avoids the constraints of Dirichlet domains and floor polygons.
+- [definition] An environment transition graph holds designer beliefs about likely transitions between environment types, with a probability on each edge, and supplies the types used for bridges.
+- [mechanism] Constrained evolution with two populations can keep vital components, such as bases and resources, connected by passable paths.
+- [rule] Treat generated levels with no exit or entrance as catastrophic failures, unlike cosmetically odd content, which is a minor problem.
+- [heuristic] Anchor a setting in a single named place with a clear scale to define a bounded world before building generated content. When: Defining the scope of a generator's world. Why: A bounded world sets limits that generated content must respect.
+- [heuristic] A search agent that must reach the exit from the start works as a simulation-based reachability check for a generated dungeon.
+- [metric] Most automatic graph costs are distances: point-to-point distance, centers of adjoining triangles for polygon meshes, and center-to-center distance for regions.
+- [pitfall] Random dungeon generation often lacks an entrance-to-exit path: filling binary-map squares with probability 0.5 almost never connects them, and random carved negative-representation rooms often fail to connect without search. Why: Random carved rooms often fail to connect.
+- [pitfall] Mapping a player-action graph to a level needed a specialised generator for each game.
+
+## cellular automata generation
+- [model] Simple neighbor-based cellular automaton rules can produce plausible-looking patterns, useful for smoothing zones, growing buildings, and laying out bases.
+- [model] A cellular-automaton cave generator has four parameters: rock percentage, number of generations, neighbourhood threshold, and neighbourhood cell count.
+- [definition] A cellular automaton is a grid of cells that update in discrete steps, each cell's next state depending on its own and its neighbours' previous states. (x2)
+- [heuristic] Use cellular automata for fast, organic cave layouts generated at runtime without storing a large map, when few intuitive parameters are an advantage.
+- [procedure] 1) Set each cell to rock with probability r. 2) For n steps, make a cell rock if at least T neighbours are rock, otherwise free space. 3) Label rock cells bordering empty space as walls.
+- [procedure] 1) If no opening connects the largest empty areas, drill a tunnel at the point of least separation. 2) Run two more automaton iterations over all rooms to smooth edges.
+- [pitfall] Edge locations have fewer neighbors, so unhandled edges make cellular automaton results differ at the map border.
+- [pitfall] Cellular automata cannot directly enforce room counts or connectivity, so such dungeon-level constraints need a separate mechanism.
+- [pitfall] Each cellular-automaton parameter affects several map features at once and links to gameplay loosely, so its effects are found by trial and error.
+- [fact] Cellular-automaton caves can be generated fast enough for runtime use, producing nine 50-by-50 rooms in under a millisecond on a modern computer.
+
+## interactive evolution populations
+- [mechanism] When powerups change game variables and exact values are evolved, the system can make fine distinctions, such as jump heights of 120 versus 121 pixels. When: when generating numeric game variables by search. Why: Evolving exact values rather than choosing from hand-picked options allows very fine tuning.
+- [heuristic] Treat how often players choose an option as revealed preference, so usage counts can guide which content evolves. When: when selecting content from player behaviour. Why: Players are assumed to use options they dislike less.
+- [heuristic] Start interactive evolution from a saved good candidate or a small seed network, so the user begins in a good region of the search space.
+- [heuristic] Limit interactive evolution populations to about 10 or 20 individuals to speed convergence and reduce fatigue.
+- [heuristic] Prune generated content with selection mechanisms before players see it, since treating players as random evaluators is a limitation.
+- [procedure] 1) Define a base breed with shared attributes. 2) Define variant breeds that inherit unchanged attributes and override only what differs. 3) Edit the base to update the whole family. When: generating or authoring families of related enemy types. Why: Shared tuning lives in one place, so one edit propagates to all variants.
+- [procedure] 1) Represent tracks as segment lists with smooth curves joined at control points. 2) Let players play and rate a population each generation. 3) Use ratings as fitness and evolve the next generation.
+- [pitfall] A computer that speaks is not thereby mixed-initiative; PCG systems give it only speaker initiative, none sharing task or outcome initiative, so humans keep control of problem and solution.
+- [pitfall] Showing only the highest-fitness items in interactive evolution causes stagnation, so display should keep variety.
+- [fact] Suggestions can be evolved to maximise balance and exploration objectives, or to diverge from the current sketch through feasible-infeasible novelty search.
+
+## randomness and sampling
+- [mechanism] Randomness in agent start positions and behaviour makes the same generator produce a different level on each run. When: agent-based level generators. Why: Each genome defines a distribution of levels, not a single recipe.
+- [heuristic] Random events in a design make the resulting player experience harder to predict, so generated content needs review of the experiences it produces. When: Designing procedurally generated content. Why: Randomness widens the gap between what is built and what players feel.
+- [procedure] 1) Fill two adjacent columns with pseudorandom numbers for about a thousand rows. 2) Plot each row as an x,y point. 3) Regenerate and see whether clusters move. 4) Judge no visible pattern as passing a quick check. When: casual check that a generator shows no obvious structure, or relying on a visual check of generator output. Why: a scatter plot exposes gross patterns cheaply but cannot establish the exact level of randomness, since subtle statistical biases are invisible in it.
+- [procedure] For finite generators, count all variations; for infinite ones, increase the sample size until the charts match the previous smaller sample.
+- [pitfall] Fully random placement of monsters and traps gives variety at the cost of designer control.
+- [pitfall] Sampling a grammar spreads output across the space rather than searching it, so quality is controlled only implicitly.
+- [fact] Quantities where most individuals score low and a few score high usually follow a power law, controlled by a single exponent that sets how flat the curve is. Why: Money among people is a typical example.
+- [fact] RANDBETWEEN(min,max) returns a whole number from min to max inclusive, so RANDBETWEEN(1,1024) selects one row of a 1024-row table.
+- [fact] Random-number formulas such as RAND() and RANDBETWEEN() re-roll every time the sheet updates, so one roll must be pasted as values to keep it. When: Generating random content in a spreadsheet. Why: Recalculation regenerates random formulas on each update.
+- [fact] Players can be served a sequence of games sampled from one constrained space and work out the shared rules behind them.
+
+## sketch and symmetry methods
+- [model] A two-mode sketch world builder has a landscape mode, where a 2D brush grid encodes elevation and soil materials, and a feature mode, where specific features such as cities and rivers are added.
+- [definition] Turtle graphics reads an L-system string as drawing commands: a turtle moves across a plane holding a pen and traces its path, so expanded strings become geometric patterns.
+- [definition] Self-similarity means natural variation at small scales resembles variation at larger scales, and it is the basis of fractal terrain.
+- [mechanism] Favouring symmetry produces organism-like structures, and favouring bilateral symmetry produces animal-like forms. When: Weighting symmetry in evolved L-system plants.
+- [rule] Enforce symmetry by encoding one side's rules and mirroring them to the other player, so any rule change applies to both sides.
+- [rule] Let users sketch a coarse abstraction of a level and render it at high resolution, since a coarse sketch reduces user fatigue and the cost of evaluating candidates.
+- [procedure] 1) For each angle, query the network at radius zero to get the maximum radius. 2) Query every polar coordinate from zero to that maximum to get colour values. When: generating radially symmetric outlines and surfaces with a CPPN. Why: Separating outline from colour lets one network define both shape and surface.
+- [pitfall] Turtle interpretation without branching only traces figures drawn in one continuous line; branching shapes require bracket symbols. When: when interpreting L-system strings as drawings. Why: Without brackets the turtle cannot save and restore its position and heading.
+- [fact] A map sketch tool can test playability, display navigable paths, evaluate gameplay properties, and convert sketches into playable levels.
+- [fact] Sketch-based 3D world builders let non-specialists create complete virtual worlds by sketching, with surroundings adjusted automatically as each feature is added.
+
+## adaptive pcg
+- [definition] Experience-driven PCG treats game content as the building block of experience, adapting it with learned player-experience models to guide generation, aiming at experience rather than only difficulty.
+- [definition] Adaptive PCG analyses player interaction and creates content from previous behaviour; it is also called personalised or player-centred.
+- [mechanism] Adaptive PCG can adjust pacing based on the player's emotional intensity to keep them engaged.
+- [mechanism] Adaptive generation can supply more of the content kind a player seems to enjoy, not only tune difficulty.
+- [mechanism] Encounters are drawn from opponent, trap and treasure databases scaled by difficulty. When: populating dungeons with difficulty tiers. Why: Scaling lets the same database serve different difficulty layers.
+- [rule] Effective content adaptation should be tailored to individual players' experience-response patterns, fast, yet not necessarily noticeable, and rich in game context, adjustable elements and player input.
+- [rule] A player experience model for level fitness takes content features computed from each generated level and gameplay features estimated from the player's behaviour on a test level.
+- [procedure] 1) Train a model predicting an experience aspect (challenge, frustration, engagement, spatial involvement) from content. 2) Use it as the scoring step in search-driven PCG and in co-creative, human-tool PCG.
+- [procedure] 1) Elicit emotion through varied content types. 2) Integrate content into computational models of user affect. 3) Use the content to adapt the experience.
+
+## agent playtesting and logs
+- [rule] Map each log entry to its node by localization and add a connection where the log shows direct movement between two nodes; points-of-visibility is faster but can miss links around corners.
+- [rule] Characters that can jump or fly must use their full movement range, or the log will miss areas.
+- [heuristic] Attention is limited, so generated content competes for the small share of focus a player can spare.
+- [heuristic] A generator service can be wrapped in a logging decorator to log its activity on demand, without editing the generator's call sites.
+- [procedure] Combine automatic wandering with player-recorded logs for difficult areas; this hybrid works in practice. When: Some areas are hard to cover automatically.
+- [metric] Automatic explorers are run only a couple of game minutes at most because they get stuck.
+- [metric] Coverage is large in scale: an average level, crossed in about 30 seconds at full speed, may need millions of log points.
+- [tradeoff] Locator-provided shared logger suits cross-cutting logging in deep generator steps, but hides dependencies, making bad layouts hard to trace. Use locators only for shared facilities, not generator-specific logic. When: Logging from deeply nested dungeon or level generator steps; debugging a generator through globally reached state.
+- [tradeoff] A human player combines moves well and needs fewer samples, but exhaustive exploration takes a long time, so hand creation of the graph is faster.
+
+## constraint-based generation
+- [definition] Constraint-driven generation places assets by designer-defined relationships, such as chairs placed around tables.
+- [mechanism] A level is rejected if any alternative solution uses the same level-design atoms but fails the concept condition.
+- [mechanism] When a generator guarantees every output is playable, playtesting can shift from checking reachability to judging fun. When: when the generator enforces playability constraints.
+- [rule] Constrain generated rules to forbid unwinnable states, such as losing all objects of one kind while others remain, and to require winnable interactions.
+- [rule] Write theming and consistent design rules into the generator so procedurally placed elements stay architecturally coherent rather than purely random. Why: Purely random placement can break architectural coherence.
+- [procedure] 1) Sort chunks by priority, coordinates, and type. 2) When two chunks overlap, keep the higher-priority one and remove the other. 3) Priority order is hills with bill blasters or piranha plants, blank hills, platforms with enemies, blank platforms, then coins and blocks. When: when post-processing a generated level with overlapping chunks. Why: Ordering by priority gives a deterministic way to remove conflicts.
+- [fact] Many content generation tasks, such as puzzle levels, can be framed as constraint-solving problems and encoded in Answer Set Programming as logical rules a solver satisfies.
+- [fact] The game engine and non-player character behaviour are excluded from what counts as content.
+- [fact] A constraint solver returns rule sets that satisfy hard constraints, rather than maximising an evaluation score.
+
+## generated object and asset design
+- [mechanism] When found items supply most of the power, the base values of items a generator places largely set the power curve. When: generating items for a progression game. Why: Generated base values are the main source of power differences.
+- [mechanism] A Gaussian distribution clusters decorations near a location's centre, so neighbouring locations blend into each other. When: Placing decorations in a location.
+- [rule] Give each procedurally generated object category a representation and treatment that together imply its behavior, and check each category's behavior against that implication. When: when a generator produces multiple object categories. Why: Each category sets its own expectations; unstated behavioral expectations lead to dissonance.
+- [rule] Generated assets should share one stylistic language across visuals and sound so procedural content feels like part of one world. When: when generating visual and audio assets procedurally. Why: Consistent style across senses keeps generated content believable.
+- [rule] Set a generator's reward density deliberately, because randomly generated spaces with frequent loot drops are a direct source of the acquisition emotion. When: When generating dungeons or levels with loot. Why: Reward density directly shapes the feeling of acquisition.
+- [rule] Give generated interactive objects a look distinct from static walls and props so players can identify them. When: when generating dungeon or level content.
+- [heuristic] A generator needs to supply only the details a player cannot reasonably infer from what is already present. When: when generating content for a player to experience. Why: Players fill unstated gaps themselves, so surplus detail is wasted effort.
+- [heuristic] A generator that creates many variants from one base type should keep variant stats in data rather than in a separate subclass per variant. When: Producing many monster or content variants procedurally. Why: Hard-coded per-variant classes would reproduce the recompile bottleneck at generation scale.
+- [procedure] 1) Draw the outermost layer first. 2) Draw each inner layer on top, scaled by depth. 3) Use one network for all layers so they share regularities. When: generating multi-layer shapes with one CPPN. Why: Shared network regularities mirror how real layered structures relate.
+
+## constructive generation methods
+- [definition] Constructive generation makes content in one pass, producing one output per run in a fixed, usually short time without evaluating or regenerating the output.
+- [rule] Author hand-designed scenes as modular pieces for a constructionist generator to assemble at random into varied levels.
+- [heuristic] Most constructive methods are simple to implement and can often be adapted from dungeons to other content types.
+- [heuristic] Constructive methods suit roguelikes and certain platformers where predictable, short runtime matters.
+- [tradeoff] Constructive methods run in predictable, short time but offer limited control, making output hard to steer toward specific design goals, unlike search-based methods that evaluate and regenerate output.
+- [fact] Cellular automata and other constructive algorithms can generate roguelike dungeons and similar 2D navigation levels.
+- [fact] Constructive dungeon methods form five families: space partitioning, agent-based digging, cellular automata, generative grammars, and separate passes of probabilistic rules.
+- [fact] Constructionist generation pairs well with architectural pattern languages, since both assemble reusable spatial units.
+
+## cppn indirect encoding
+- [model] A CPPN maps inputs such as position and distance from the source to outputs such as velocity and colour, and NEAT evolves its structure. When: when generating evolved projectile or particle properties.
+- [definition] A CPPN is a pattern-generating neural network mapping position to properties such as intensity, colour, direction or particle property; it is both a content generator and an evolvable representation.
+- [mechanism] In a CPPN, a periodic sine gives segmented repeating patterns, a Gaussian gives symmetric patterns, and linear functions give straight lines.
+- [mechanism] Querying a CPPN over many input coordinates and drawing each output as ink intensity produces an image.
+- [rule] Choose a CPPN's activation functions deliberately, because the set strongly determines which patterns appear.
+- [fact] CPPNs are mainly pattern generators rather than controllers, so their terminology and use differ from ordinary networks.
+- [fact] Because a CPPN is a composition of functions, it can be sampled at any resolution.
+- [fact] CPPNs have been applied to generating images, 3D objects, and musical accompaniment.
+
+## town and region generation
+- [behavior] Procedurally generated worlds can feel meaningless to players unless relevant story is generated along with them. When: Generating worlds procedurally. Why: Players look for purpose in space, and without story the space seems arbitrary.
+- [rule] Vary the size, shape, cover, lighting, and angles of enemy approach across locations. When: designing or generating combat spaces. Why: Varied spaces change how the same enemies must be fought.
+- [heuristic] Reusable building-type assets let generated towns communicate function, and generated buildings read as their type when they include consistent functional props such as anvils or counters.
+- [heuristic] To differentiate generated areas, assign each a theme signalled through archetypal visuals, sound and lighting.
+- [fact] Location tracking may be less necessary when levels are procedurally generated. When: when levels are procedurally generated.
+- [fact] Generators can determine a map plus the kinds, counts and locations of items and monsters.
+- [fact] Later city systems added agents for main roads and small streets.
+
+## platformer level generation
+- [model] A platform level is a grid of cells, each holding either empty space, a coin, a hostile character, or a solid brick block.
+- [model] Rhythm-based generators expose a general path, rhythm kinds, geometry types and frequencies, coin distribution, and per-group parameters such as jump frequency.
+- [rule] Constrain vertical positions and heights to jumpable ranges, for example y from 3 to 5 and height 3 to 4, so items stay reachable and a start-to-end path exists. When: Bounding generated platformer geometry. Why: Jumpable limits keep the path from start to end playable.
+- [heuristic] Traversal behaviour is controlled by a small set of per-tile flags, so changing one flag changes how a whole structure can be used. When: Generating or authoring tile-based levels with grapple traversal. Why: Flags act as a compact control surface over movement across many tiles.
+- [procedure] 1) Make passes over the level from left to right, adding one element type per pass: ground height and gaps; background hills; static enemies such as pipes and cannons; moving enemies; unconnected horizontal blocks; coins. When: Generating platform levels in separate content passes. Why: Each pass adds one content type using weighted random choices.
+- [procedure] 1) Choose player actions for each small rhythm group. 2) Choose geometry that realises those actions. 3) Combine many candidate levels. 4) Let critics select the best one. When: Generating platform levels from rhythm groups.
+
+## roguelike and runtime generation
+- [definition] Online generation happens during play, giving endless variation, high replayability and room for player-adapted content.
+- [definition] Offline generation happens during development or before a session and suits complex content such as environments and maps.
+- [rule] Generate and display alternatives in real time from a population seeded by the user's sketch, so the sketch's integrity is preserved.
+- [heuristic] A single pass with one random draw per element is cheap enough to produce randomized orderings at runtime. When: generating randomized sequences during play. Why: linear cost with one draw per item keeps per-frame work low.
+- [fact] Roguelike games procedurally generate dungeons at runtime, randomizing layout, monster and treasure placement, so each game start yields new levels and high replayability. (x2)
+- [fact] Letting players enter their own seed lets them share or replay a specific generated layout.
+
+## data structures and implementation
+- [definition] Factory Method hides an object's constructor behind an interface that performs the lookup and returns the appropriate instance. When: Used with lazy flyweight creation. Why: The interface can return an existing shared instance instead of always constructing a new one.
+- [mechanism] A direct-access frequency scheduler groups behaviours into one set per frequency, with one list per phase value, so each frame only the due list is run without testing each behaviour. Why: Lookup by bucket avoids per-behaviour checks, trading memory for speed.
+- [heuristic] Pass a generator's random source or layout cache explicitly rather than reaching it through a singleton, so generation stays reproducible and testable. When: Building a dungeon or level generator. Why: Explicit inputs keep results reproducible and testable.
+- [heuristic] Open addressing with quadratic probing can store placed room or tile records in one flat array, resolving position collisions without dynamic allocation. When: Generating content placed at grid positions. Why: Fixed storage avoids allocating a node per placed element.
+- [procedure] 1) When a flyweight is requested, search the pool for an identical existing instance. 2) If found, return it. 3) If not, create it, add it to the pool, and return it. When: The set of flyweights needed cannot be predicted ahead of time. Why: Creating only what is actually requested avoids building unused shared objects while still sharing identical ones.
+
+## procedural visuals and animation
+- [mechanism] Generative material produced in real time stays valid when a designer edits it, because its output is re-derived from its rules each time.
+- [rule] Place procedurally generated visual content deliberately on the realistic-iconic-abstract spectrum, since that position determines the behavior players expect. When: when generating visual content. Why: Placement sets player expectations.
+- [heuristic] Embed placement rules in individual assets, such as requiring each lamp to sit across from another, so composed layouts follow the pattern.
+- [fact] Procedural animation can animate player-created content without hand-animating each creation.
+- [fact] Per-pixel random values look like television static, which is wrong for natural surfaces such as rock.
+
+## board and card game generation
+- [procedure] 1) Restructure data so each deal and its outcome sit in a single row. 2) Fill down formulas for as many rows as there are initial deals. 3) List every distinct initial deal, one per row. 4) Sort rows by win probability. 5) Pick the deal(s) whose win probability is nearest 0.5. When: Designing a deal for a fair two-player card game whose outcomes can be enumerated. Why: Each distinct deal is equally likely, so enumerating all deals gives exact win chances and lets a balanced deal be chosen by hand.
+- [procedure] 1) Encode each complete game as a string read into rules by a compact description language. 2) Play it with a minimax agent whose evaluation function is tuned for that game. 3) Measure game length, draw rate, and rule count. 4) Combine these with a weighted sum whose weights come from successful games. When: evolving complete game rule sets.
+- [fact] No graphical game generator yet produces novel, high-quality games comparable to the best generated board games.
+
+## dungeon information and exploration
+- [heuristic] When a generator accepts a partial map, fixed tiles must stay consistent with every constraint, not only the style rules. When: Filling a partially specified dungeon.
+- [heuristic] Rationing what the player learns about a generated dungeon, such as enemy positions or unexplored room contents, builds suspense. When: When generating dungeons or levels where the player explores. Why: Withheld information creates anticipation of change.
+- [heuristic] A generated space's perceived options matter as much as its actual outcomes.
+
+## evolved mechanics and balance
+- [procedure] 1) Encode strategy games in a description language paired with a playable engine. 2) Use genetic programming to evolve unit damage values toward balanced unit sets. 3) Evolve full unit logic that stays balanced while units differ in function.
+- [fact] Evolutionary design can produce unexpected yet valid solutions that human designers would not imitate, so it can extend creativity beyond human habits.
+- [fact] Evolved unit logic can produce mechanics that no designer planned, where unit abilities depend on relative positions.
+
+## generated characters and narrative
+- [heuristic] A generated system of interacting entities can produce character stories without a script, so generated inhabitants can carry emergent narratives. When: When generating populated worlds with autonomous inhabitants. Why: Entity interactions create stories that no one scripted.
+- [heuristic] A generated level can vary emotional valence as well as tension and release, moving the player through different emotional flavors. When: When generating levels meant to shape emotional progression. Why: Valence adds variety beyond intensity alone.
+- [fact] Characters produced by a generator can draw player empathy as readily as hand-made characters. When: Generating characters procedurally. Why: Empathy is triggered by the model of a character, not by whether a designer made it.
+
+## learnability and fitness
+- [mechanism] Levels forecast to be more absorbing, irritating or demanding for a given player receive higher fitness when experience predictions feed the fitness function.
+- [metric] Rate generated games by learnability: low if random play wins, high if an evolved learner raises its score; fitness reflects how well and how fast it learns.
+- [metric] A level fitness function can be a weighted sum of two normalised measures: distance of the placed-chunk count from a maximum threshold, and the count of conflicting chunks. When: when evaluating generated levels with a search-based generator. Why: The two measures partly conflict, since adding chunks raises the chance of conflicts.
+
+## game description languages
+- [definition] A strategy game description language encodes turn-based strategy games, and a companion engine lets a human or a computer play any game written in it.
+- [definition] A video game description language is a compact, Python-like language for arcade-style graphical games, kept separate from its engine, metrics and generator.
+
+## carving rule spaces
+- [procedure] 1) Specify properties that generated games must have or must avoid. 2) Solve for rule sets that meet those constraints. 3) Refine the constraints iteratively to narrow the space toward interesting regions.
+
+## look-ahead digger
+- [procedure] 1) Check whether a room fits at the position without intersecting existing rooms; if it fits, place it. 2) If no room fits, dig a corridor of three to seven tiles in a direction that avoids existing geometry.

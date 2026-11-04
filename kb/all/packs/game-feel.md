@@ -1,0 +1,627 @@
+# game-feel
+
+## game feel
+- [model] The game feel model is a cycle that combines the building blocks of game feel, the five experiences of game feel, and the three human processors.
+- [model] The game feel loop has seven elements: the human processor, muscles, input device, computer, game world, output devices and senses.
+- [model] Game feel is analysed through six metrics: input, response, context, polish, metaphor and rules. Input is the physical device carrying player intent; response is how the system processes that input in real time; context is the effect of simulated space, including collision and level design, on control; polish is effects that artificially enhance an impression of physical reality; metaphor is how representation shapes expectations about object behaviour; rules define relationships between variables.
+- [model] Game feel can be analysed through seven aspects: input, response, simulation, context, polish, metaphor and rules, with separated thrust and rotation as the core of a loose feel. When: analysing why a game's controls feel the way they do. Why: Checking each aspect shows which layer produces a given sensation.
+- [model] Game feel can be analyzed in layers: input device, what each input modulates, simulation over time and space, spatial context, polish effects, metaphor and rules. When: Analyzing why a movement system feels good. Why: Each layer contributes to the overall feel.
+- [model] Six designer-controlled elements of game feel are input, response, context, polish, metaphor and rules. When: Analysing the computer side of the Game Feel Model. Why: These are the parts of game feel a designer can change directly.
+- [model] A feel prototype needs three foundations: mapping inputs to motion, a basic layout giving motion a frame of reference, and camera behavior. Why: without all three, feel cannot be reliably tested.
+- [model] Three blocks combine into seven kinds: true game feel (all three); raw (control, simulation); aesthetic control (control, polish); vicarious (simulation, polish); naked control; naked simulation; naked polish.
+- [model] Game feel is placed on a three-part diagram: real-time control, simulated space and polish, each checked on its own.
+- [model] Context has three levels: high (space, speed, motion and size), medium (immediate space and object avoidance), and low (tactile collision between objects).
+- [model] Avoidance feel is tuned with two sets of knobs: the programmed response to input and the spacing of objects, with feel tuned mainly where they meet.
+- [model] Polish analysis has three angles: 1) individual free-standing effects, judged by motion, size, shape and nature; 2) groups of effects that convey general perceptions; 3) physical properties such as mass, material and texture inferred from those perceptions. When: Analyzing or designing polish.
+- [model] Game feel has six components: input, response, context, polish, metaphor, and rules; input, response, and context are the core focus.
+- [definition] Game feel is the satisfaction of interacting with the game system, shaping players' emotions; it covers the camera, controls and characters, called the three Cs. (x2)
+- [definition] Game feel is an impression formed in the player's mind, mainly a property of their perception of movement, so improvements must be judged by how they are perceived.
+- [definition] Polish is non-simulated, layered-on effects that enhance impression of physical reality, making objects seem solid, heavy or elastic, such as squash, particles, sound and rumble, without changing simulation. Why: A rebound between solid objects is simulation, while the sparks and dust around it are polish.
+- [definition] A game has game feel only when real-time control, simulated space and polish all meet; lacking any one places it outside the definition.
+- [definition] Sensation is pleasure from the senses, delivered mostly by aesthetics.
+- [definition] Classifying a game by feel describes the medium only; it is not a judgment of quality, so games outside true game feel can still be excellent. When: classifying a game by its feel. Why: classification measures the conditions of the medium, not how good the game is.
+- [definition] Metaphor is how representation and treatment shape player expectations about objects.
+- [definition] A system is juicy when it shows much second-order motion that is easy to control and gives players power and rewards.
+- [definition] Juiciness is the intensity of sensory feedback, such as music, sound, particles, screen shake, glow, and flash, that signals progression. Why: Feedback shapes how large players perceive a gain to be.
+- [definition] Game feel is the sense of responsive, real-time manipulation of digital objects in a simulated space, enhanced by polish.
+- [definition] Treatment is how the art is executed, and it sets player expectations about how objects behave.
+- [definition] Low-level context is the intimate, tactile interaction between objects, mainly collision detection and collision response.
+- [definition] Game feel is the composite aesthetic experience of how a control scheme and simulation respond, built from many small, interacting decisions.
+- [definition] Representation is what an object appears to be, and treatment is how its art is executed, ranging from highly realistic to highly iconic or abstract.
+- [definition] Game feel is the real-time handling of digital objects in a virtual environment, with polish making each interaction stand out.
+- [mechanism] Removing all polish leaves gameplay and functionality unchanged, but makes the experience less convincing and appealing, altering how players perceive objects' physical reality. Why: Polish is nonessential to function yet carries perceptual clues.
+- [mechanism] Slowing the world during a turn lets a turn-based player react in real time, such as dodging, which adds drama.
+- [mechanism] Combat feel comes from repeated playthroughs in which the designer tweaks and tests changes.
+- [mechanism] With an auction time limit, the highest bid when time runs out wins, which makes exact value calculation harder and adds last-minute tension. When: An auction has a fixed end time.
+- [mechanism] Intense feedback at level-ups, chests, or new zones makes the gain feel larger, especially when it follows smaller gains. When: rewarding progression moments. Why: Contrast with smaller gains amplifies perceived size.
+- [mechanism] Polish cues convey material properties such as heavy, light, soft, sticky, metallic or rubber, shaping how players judge what an object is made of.
+- [mechanism] Changing only the represented object, while keeping structure and tuning identical, can change how control feels. Why: The represented object sets player expectations.
+- [mechanism] Polish changes how solid, heavy or elastic objects seem without changing the game's rules or functionality.
+- [mechanism] The overall structure of a space sets a general feel of open or closed, which can be catalogued but not measured in finite numbers.
+- [mechanism] As more processing power goes to polish, effects can support increasingly advanced simulations and better game feel. When: as hardware budgets grow.
+- [behavior] Rigid, slow-steering motion confined to one screen edge feels stiff compared with a ship with flowing inertial motion. When: when comparing constrained movement with inertial movement. Why: Limited range and slow steering reduce the sense of flow.
+- [behavior] Recasting sword fights as contests of insults and comebacks, rather than pure combat, can make a mechanic one of a game's most popular features. When: When designing duel mechanics in a comedic adventure game. Why: Film sources suggested swordplay could be about talk more than fighting.
+- [behavior] Players describe game feel with vague words such as floaty, loose, tight and responsive. When: Gathering player feedback on control. Why: Feel is perceived subjectively and has no standard vocabulary.
+- [behavior] Input sensitivity and tactile feel affect player feel mostly subconsciously. When: Evaluating input device feel. Why: Players sense these qualities without consciously noticing them.
+- [behavior] Small, easy interactions that give a continuous flow of visible reward make even a plain tool feel playful and satisfying to use. When: when a system is juicy. Why: Continuous reward follows from little effort.
+- [behavior] Good physical feel can arise from polish effects alone, even with an invisible avatar, if the camera keeps tracking the avatar and stops to show collisions. When: Avatar is hidden or absent. Why: Players read camera motion and collision stops as physical contact.
+- [rule] Design game feel from first principles and compare games by criteria, not copying; identify feel system parts and their relationships to build by understanding, not emulation. When: Building or evaluating a game's feel, or recreating a classic feel in a new design. Why: Criteria let designers compare and reason about feel; understanding structure supports original design instead of imitation.
+- [rule] Add polish to emphasize physical interactions and appeal only after the underlying simulation exists; without it, sounds and particles suggest physical reality that motion fails to match, creating dissonance. When: designing feedback for interactions.
+- [rule] Do not restructure data for cache locality in advance. Apply it only to measured hot paths where cache misses cause the slowdown. When: Code is rarely executed or is slow for reasons other than cache misses. Why: Optimizing unneeded code adds complexity and reduces flexibility.
+- [rule] Use the six game feel elements as a checklist when analysing a mechanic or a game's feel system. When: Analysing a mechanic's feel. Why: The checklist covers every designer-controlled source of feel.
+- [rule] Measure game feel with both soft and hard metrics, and aim for general principles rather than guessing or copying another game's tuning. When: Evaluating game feel. Why: General principles transfer to new designs, while copied tuning does not.
+- [rule] Build a game-feel palette suited to interaction rather than copying film or animation; borrow film or animation conventions only where they fit how the player interacts. Why: Film and animation conventions often do not match interactive control.
+- [rule] Design games that feel good in their own right, instead of imitating real-world things that feel good.
+- [rule] Mechanics change during play, so evaluate those that are gained, upgraded or removed later, not only the starting set.
+- [rule] Aim game feel at simplification rather than simulation, and design the software and the input device together.
+- [rule] Be ready to change any part of a movement system to improve feel, not only to make its physics more accurate.
+- [rule] Choose camera, controls and character behavior deliberately to match the emotional tone the game intends.
+- [heuristic] Postpone a costly design decision when a wrong choice would be expensive and the current information is thin. When: the cost of a wrong choice is high and information is limited. Why: waiting gathers information before committing.
+- [heuristic] Make opposites strongly contrasted, such as opponents, controllable versus uncontrollable factors, and reward versus punishment; sharp contrast makes play feel more meaningful and powerful.
+- [heuristic] A game that is too perfect loses character; leave handmade touches, such as player-made house rules, so the game feels alive.
+- [heuristic] Make character roles recognisable by silhouette alone, so teammates can coordinate roles at a glance. When: Designing character classes in team-based games. Why: Distinct silhouettes communicate role without reading or inspection.
+- [heuristic] Designers should be prepared to argue for no music, because silence can be as powerful as sound. When: Deciding whether a game needs music. Why: Absence of music can carry emotional weight equal to its presence.
+- [heuristic] Treat the seven game feel principles as a starting checklist rather than a complete specification, since the list may be incomplete. Why: The principles resemble well-proven animation principles but are not guaranteed exhaustive.
+- [heuristic] Use scaffolding to raise difficulty gradually, and juicing when asset budgets are small and mechanics need many uses.
+- [heuristic] Tune feel for each skill level by knowing which skills the player has mastered, which they focus on, and which they have not yet met.
+- [heuristic] Stylized representations, such as exaggerated cartoon deformation, can be equally believable and have more leeway in behavior than photorealistic ones.
+- [heuristic] Consider tactile feel when players report that cross-platform versions of a game feel different despite identical game logic. When: cross-platform versions feel different with identical logic.
+- [heuristic] Emulating reality is not the most efficient route to perception; stylized squash and stretch can make an object look more physical than a rigid, realistic one. When: Designing how an object's contact and motion look. Why: Stylized deformation communicates weight and elasticity more clearly.
+- [heuristic] Effects should be simple, cohesive and self-consistent, and matched to the processing power available. When: choosing visual or audio effects under hardware limits. Why: Cohesive simple effects read clearly and fit performance budgets.
+- [heuristic] Feel-driven hacks, such as setting jump velocity mid-jump, can beat a strict physical simulation when players find them better.
+- [procedure] 1) Play the game and note each observed effect, treating each animation as its own. 2) Sort each effect into animation, visual, sound, cinematic or tactile. 3) Group effects into perceptions such as weight, speed, material or friction. 4) Infer the physical properties behind each perception, such as mass, gravity, friction, material, shape. When: Analyzing how a game's polish builds its feel or communicates its physics. Why: Sorting and grouping reveals which perceptions the polish builds; combining clues reveals the physical model players perceive.
+- [procedure] 1) The human processor produces motor instructions. 2) Muscles execute them. 3) The input device converts movement into signals a machine can interpret. 4) The computer integrates input with game state. 5) Output devices turn the updated state into perceivable signals. 6) The senses take in sight, sound, touch and proprioception, closing the loop.
+- [procedure] 1) Ask how you want players to feel in combat. 2) List the mechanics, space, audio and pacing that produce that feeling. 3) Change or cut anything that works against it.
+- [procedure] 1) Populate a test space with many different objects. 2) Space the objects at varied intervals and try a range of shapes and configurations. 3) Tune the mechanic against all configurations, not one test case.
+- [procedure] 1) List the game's mechanics as player verbs. 2) Test each against the real-time control thresholds. 3) Check the whole system sustains them together. 4) Check simulated space. 5) Check polish. Why: Judging the whole game at once makes the thresholds hard to apply.
+- [procedure] 1) List each individual effect. 2) Sort it by the physical impression it supports, such as weight or mass. 3) Check whether any effects contradict each other or the intended impression. When: An intended impression such as size or weight is not coming across. Why: Clashing effects convey something other than the designer intended.
+- [procedure] 1) Decide which physical sense the game should convey. 2) Check that it fits the metaphor. 3) Check that it matches the simulation. 4) Build effects around that sense.
+- [metric] Roughly 70% of a game's quality comes from the last 10% of development. Why: Attributed to an industry producer's estimate.
+- [metric] The three computer thresholds for real-time control are motion above 10 fps, response within 240 ms, and continuity at 100 ms or less.
+- [tradeoff] If inexperienced decision-makers must be involved in graybox review, premature production may be needed despite its cost. When: When experienced graybox evaluators are unavailable. Why: Higher-fidelity art can prevent the halo effect from distorting judgment, at higher expense.
+- [tradeoff] Photorealism requires every detail to behave realistically under scrutiny, while an iconic, cartoony style lowers expectations and makes harmony easier to achieve.
+- [pitfall] Polishing visuals, art and audio before the core action is proven wastes effort; it gives short-term emotional lift but recurring rework whenever mechanics change. When: early prototyping; polish added to an unfinished design before the next tests need it. (x2)
+- [pitfall] Making a prototype look like a finished game defeats its purpose, since the goal is answering a question, not presentation.
+- [pitfall] Tuning fun while the game is still incomplete or unbalanced splits focus and slows progress. When: During the formal details stage.
+- [pitfall] Polishing the parts of a game you feel confident about, while ignoring potential problems, delays discovery of the game's real risks.
+- [pitfall] Balancing before core mechanics are settled wastes effort, because mechanic changes discard much of the earlier balance work.
+- [pitfall] Polish can become a development rabbit hole because there is always another effect to add, so focus on the overall perception being built. When: Adding polish effects during development. Why: Endless effects waste time without strengthening the target feel.
+- [pitfall] Testing too early produces feedback that is not needed.
+- [pitfall] Starting the outline and text too early skips the step that forces the team to think through the full player experience.
+- [pitfall] Adding branches before a solid core story exists increases scope without improving the narrative. Why: Complex structures risk scope creep.
+- [pitfall] Copying a successful design tends to produce only timid, incremental improvements. When: Designing mechanics from an existing successful game. Why: Imitation limits exploration of the underlying feel principles.
+- [pitfall] Designers often overlook juiciness, even though it strongly affects how fun a system feels.
+- [pitfall] A dry, painful interface placed before a fun game undermines the game, so the interface itself should be rewarding.
+- [pitfall] Juice cannot be tuned by adjusting numbers in a spreadsheet and must be judged by feel. When: tuning feedback. Why: Sensory intensity has no direct numeric equivalent.
+- [pitfall] Polish alone gives only indirect perceptions of interaction, so it cannot replace a simulated space.
+- [pitfall] Meeting the numeric thresholds does not guarantee good feel: 10 fps motion can look stilted and 200 ms response can feel sluggish. Why: Thresholds are a baseline, and the player's impression is the final judge.
+- [pitfall] Polish is often dismissed as cosmetic, but it strongly affects whether the game world feels convincing and consistent.
+- [pitfall] Assuming a simple-looking game has simple feel leads to overlooking the many details that shape its movement.
+- [pitfall] Adding gloss to every interaction distracts from the physical sensation being conveyed and makes it hard for players to understand what is happening physically. Why: Excess effects compete with the physical cues the player needs to read.
+- [pitfall] When visuals approach photorealism but behaviour does not, the mismatch creates an uncanny valley of game feel. Why: Players bring real-world knowledge that the behaviour fails to match.
+- [pitfall] Game feel is often overlooked as an emotional concept, even though it strongly affects engageability.
+- [fact] Polish includes feet particles, impact sounds, camera shake on heavy hits and keyframed squash and stretch; impact polish can combine debris, sparks, smoke, skid marks, positional audio and controller rumble.
+- [fact] Feel comes from many trivial-seeming decisions adding up; no formula produces the right control feel, so designers make hundreds of small decisions and judge the result aesthetically.
+- [fact] No agreed definition of game feel exists; designers rely on informal vocabulary, and attempts to define it unravel into lists of best practices and personal experience.
+- [fact] Polish is hard to measure: player perception is relative and hard to aggregate across players, so polish metrics are approximate.
+- [fact] One full cycle of the game feel loop takes about 240 ms, so it repeats four to five times per second.
+- [fact] The game feel loop can be used to tell games that have game feel apart from games that lack it.
+- [fact] Sensory pleasure cannot rescue a poor game but can noticeably improve a good one.
+- [fact] The seven principles of game feel are: reliable outcomes, immediate reaction, accessible yet deep, novelty, appealing feedback, organic motion, and harmony.
+- [fact] Input and response suit hard, data-driven metrics, while metaphor sits on the softer, impression-based side. When: Choosing how to measure a game feel element.
+- [fact] No settled thresholds separate real-time control or simulated space; games with heavy clicking and indirect collisions remain hard to classify.
+- [fact] Collisions feed back into the simulation, while polish is separate and only enhances how an interaction looks, sounds or feels.
+- [fact] Designers' accounts of game feel name four facets: intuitive controls and learnability, physical impact and timing, realism or immersion, and aesthetic appeal from layered effects.
+- [fact] The hard problem is unity: how separate facets of game feel combine into one experience.
+- [fact] Game feel has no standard measures, so a shared vocabulary of measurable elements is needed to compare the feel of different games.
+- [fact] Games that look alike on the surface can feel very different, and measuring feel helps explain why.
+- [fact] Every game uses its own units, so a stated speed value does not correlate across games, even within one genre.
+- [fact] Polish grounds players in unfamiliar game spaces and physics, helping them understand how unfamiliar topologies and objects behave.
+- [fact] A realistic visual metaphor combined with unrealistic collisions causes dissonance, even when other systems are well executed. When: A game aims for realistic physics. Why: Players judge the whole interaction against the realism promised by the visuals.
+- [fact] Game feel covers the sense of skill or awkwardness in control, the physical-feeling connection to objects, and how the avatar moves, how other characters behave, and the ambience and art direction.
+
+## platformer movement and jumping
+- [model] Special jumps are triggered by button combinations, button sequences, wall contact, or speed after a landing, and keep steering at the reduced air rate relative to takeoff facing.
+- [model] Ledges fall into three tiers: reachable by a basic jump, reachable only by a special jump, or out of reach without another route.
+- [model] Use both horizontal and vertical planes: vertical forces act as landmarks, horizontal forces lead across the ground, and diagonal forces lead upward and outward from the view.
+- [model] A velocity diagram plots linear against angular velocity, with regions for stand still, creep, walk, run, shuffle turn, and turn on the spot.
+- [definition] Time between encounters serves two purposes: building anticipation for the next combat and letting players recover from the last one. Both can happen together, so empty space can serve both. When: Designing space between encounters.
+- [definition] An existential foothold is a point of attachment that lets people dwell in a place; players need one in a level to feel attached and return to it.
+- [mechanism] Pressing the action button at full run speed triggers a slide that adds forward force, damages enemies it touches, and can be cancelled with a small hop.
+- [mechanism] Releasing movement input halts a character immediately, so accidental falls off open platforms are rare and running feels safe. When: relative to running speed. Why: Instant stopping keeps running within the character's control.
+- [mechanism] Keeping core controls constant while changing ledges, cover and open arenas yields very different challenges from the same mechanics. Why: Terrain features change the problem the same controls must solve.
+- [mechanism] A jump taken while moving faster than walking speed receives a small extra initial velocity, a binary boost that depends on whether the threshold is exceeded at takeoff. When: jump initial velocity should reward running speed. Why: A binary threshold rewards running speed without scaling jump height continuously.
+- [mechanism] Without a speed cap, velocity grows without bound under constant acceleration, so a maximum speed is needed. When: a character accelerates under held input with no speed limit. Why: Constant added acceleration keeps increasing velocity until it is clamped.
+- [mechanism] A narrow vertical dead zone governs the camera only while the avatar moves vertically; he falls through the zone with the camera still, then tracking begins at the zone edge at his speed. When: Avatar falls or swings vertically. Why: Vertical movement needs a separate, much narrower threshold than horizontal movement.
+- [mechanism] A vertical hook that latches pulls the avatar straight up along a predetermined animation, which the player starts but does not control. When: Grapple fires straight up and latches. Why: Fixed animation makes the vertical pull rigid and predictable.
+- [mechanism] A small hop cancels a slide, and a slow stand-up animation after landing makes the landing feel like a crash.
+- [mechanism] High friction ends a slide quickly on flat ground, so low-speed slides are brief and return the character to crawling.
+- [mechanism] When sideways friction is much higher than forward friction, the vehicle arcs through turns instead of spinning on its axis.
+- [behavior] Releasing upward inside a thick connectable platform and reconnecting higher lets the avatar climb through it; detaching at a high enough point snaps him onto the nearest valid ground above. When: Swing carries avatar partway into a thick connectable platform. Why: Connectable-only tiles can be penetrated in the air, enabling reattachment above them.
+- [rule] Cap falling speed at a hard-coded terminal velocity; once reached, effective gravity is zero, so the falling character stops accelerating. (x2)
+- [rule] A jump input during a slide should emphasize horizontal distance with added vertical and horizontal force, have no timing window, and stay air-steerable. Why: Rewards committed slides with distance without precise timing.
+- [rule] An attack input during a slide should add horizontal force, bounce the character up and down twice, count as an attack, and be cancelable by a small hop.
+- [rule] Include a few areas with less safe ground that demand exact footing to raise challenge within otherwise open layouts.
+- [rule] Place gaps only where ample take-off and landing space surround them, so the approach's weaknesses are not exposed. When: Designing gaps for jump detection.
+- [rule] Tune gap sizes so jumps are easier at maximum speed, rewarding bold, fast play.
+- [rule] Size and space platforms and objects to fit the height and distance of avatar jumps, so every challenge matches what the avatar can do.
+- [rule] Set basic-tier ledges below the apex of a basic jump so many jumps can land on them.
+- [rule] Some velocity combinations have no matching animation and should be used only briefly.
+- [heuristic] Tune horizontal movement with separate acceleration, max speed and deceleration values for each direction, and separate values for running and air, since states change how responsive input feels. When: setting up a character's horizontal feel, especially when it moves in several states like ground and air. Why: Separate parameters allow each aspect of movement to be tuned independently.
+- [heuristic] Size a gap to a specific jump tier: if a gap looks exactly right for the longest jump, it almost always is meant for that jump. When: platformer gap design.
+- [heuristic] Harder challenge usually comes from longer, more precise horizontal jumps.
+- [heuristic] Give a presence-triggered platform a return path so players can get back across.
+- [heuristic] Stretch platforms horizontally to absorb overshoot, since the jump is imprecise.
+- [heuristic] Use fixed platform spacing when movement speed is predictable and the design aims at continuous forward play.
+- [heuristic] Let the environment's physics stop the player so the limit feels self-caused, a victimless blame shift that signals good level design. When: Designing a barrier or limit. Why: Players accept blame they can understand.
+- [heuristic] Precise landings on small targets are hard in 3D, so avoid stomp challenges or add a ground shadow to help players judge landing position. When: 3D platforming. Why: Depth makes exact landings hard to judge.
+- [heuristic] Whether movement stores acceleration and velocity or only updates position changes how the movement feels.
+- [heuristic] A frictionless tile system suits a loose feel; add friction only where grip matters, such as vehicles that turn.
+- [procedure] 1) Start the jump with full initial upward velocity. 2) While jump is held, keep applying upward force for a limited time, up to a maximum height. 3) If jump is released while upward velocity exceeds a threshold, set velocity to a fixed low value close to zero but not zero. When: jump height should depend on how long the button is held, with minimum and maximum heights. Why: The early-release clamp gives a range of heights while keeping every jump's descent shape the same. (x2)
+- [metric] Space platforms about four tiles apart vertically, under the five-tile maximum jump height, so landings occur on the shallow part of the arc.
+- [metric] Pit widths of two to six tiles cover the usable range, and a six-tile pit already feels quite risky.
+- [metric] A full-speed run can clear about 10 tiles, but levels rarely demand it because it is so hard to execute.
+- [metric] Landing targets narrower than about five avatar widths are rarely enjoyable, so avoid them. Why: Smaller targets feel too hard to enjoy.
+- [metric] Keep gaps narrower than the avatar's full jump distance; a gap wider than that requires an intermediate platform. Why: Otherwise players cannot cross the gap.
+- [tradeoff] A low terminal velocity feels like an artificial clamp the player notices, while a high one makes falls from height feel wrong.
+- [pitfall] Leaps of faith that hide the far side force players to jump without seeing where they will land. When: side-scrolling levels.
+- [pitfall] In games, separating zones or forcing long trips between them isolates players, for example through distant ammunition or chore-like routes between shops, quests, and training. Why: Long empty travel makes the space feel isolated and tedious.
+- [pitfall] Rotation with no attack ramp feels stiff and inorganic, even when the rest of the simulation is correct. When: direct heading changes with instant full speed. Why: Instant rotation lacks the slight inertia that makes motion feel natural.
+- [pitfall] A fixed jump arc and a single movement speed make a platformer feel stiff.
+- [fact] A slide starts from ducking at speed, sliding back down a too-steep hill, or running onto a steep downhill.
+- [fact] Even basic running speed and turning have no meaning without a real setting for the player to move through.
+- [fact] Sparse environments convey vast openness, while densely packed ones make objects seem to rush at the player.
+- [fact] Chunks about one screen in size are common in procedural platformers, where they carry the core mechanics.
+- [fact] Elements such as columns, stairs, shadows, doorways, and terraces generate movement and a sense of continuity.
+- [fact] A single jump button can produce rich control feel when press length, non-constant gravity, and forgiving input rules are combined. Why: Each rule is small, but together they make controls satisfying.
+
+## camera behavior
+- [model] Third-person cameras come in rotating, behind, and over-the-shoulder forms; behind cameras hold a fixed point behind the player.
+- [model] A camera avatar follows the character beyond a radius, pulls back slowly when the character runs toward it, and freezes at close range while tracking from a fixed position. When: Designing a follow camera for a third-person character.
+- [mechanism] While the avatar moves right past the dead zone, the camera scrolls at its speed, holding it at the same screen position, locking the view to forward motion. When: Avatar has moved beyond the horizontal dead zone edge. Why: Tracking at matched speed keeps the avatar's screen position constant while the world scrolls.
+- [mechanism] A camera that collides with walls and surfaces stops its motion in that direction.
+- [mechanism] Pushing toward a camera while directly beneath it makes the character run in circles under camera-relative control.
+- [mechanism] Changing a sport's viewpoint or dropping one of its rules shifts the core challenge to a different skill.
+- [mechanism] Camera position and how it moves relative to the avatar together shape the player's impression of speed.
+- [mechanism] Effects applied to the camera, such as shake, view-angle change, motion blur and slowdown, change perceived force and speed without altering the objects themselves. Why: The camera is the player's view of the world, so its effects shape how players read the objects they see.
+- [mechanism] Inside the slow zone, the camera speeds up gradually as the avatar accelerates from a standstill, giving a progressive response.
+- [mechanism] A horizontal dead zone covering about one-third of the screen, centred, keeps the camera still while the avatar moves inside it, and only horizontal camera motion is affected. When: Camera tracks a side-scrolling avatar in running state. Why: The camera stays steady near centre and only pans once the avatar crosses the threshold.
+- [mechanism] A very narrow field of view with a tilted horizon can make players feel claustrophobic, which suits horror survival games but not relaxed exploration.
+- [mechanism] Well-designed control and camera build physical presence, and strong spatial design such as VR supports it.
+- [behavior] In third person, visual character design and interface hints can signal abilities, so players need little exposition. When: when the camera shows the player-character. Why: The character is seen directly, so visual cues carry the information.
+- [behavior] The camera often stops at the moment the grapple attaches, which reinforces the sense that the grapple anchors the avatar. When: Grapple connects to a surface. Why: Stillness at attachment ties the camera's motion to the anchor point.
+- [rule] Hold the camera still while the target stays near screen center, and pan only when it nears an edge.
+- [rule] Map stick input relative to camera orientation, so a push moves the character relative to the view rather than a fixed world axis.
+- [rule] Choose the camera view, whether it is still or scrolling, how it follows the character, and its field of view deliberately.
+- [rule] Choose the viewpoint by first deciding what information the player should have, not by habit. When: selecting a camera viewpoint. Why: Habitual choices often mismatch what the player needs to know.
+- [rule] Keep the horizon level and avoid virtual rotation where the camera turns apart from the player's head; let players look around with real rotation.
+- [rule] The camera should show the player the target, reticle, and tracked enemy, and should be judged by where it looks, how it moves, and whether the player can still act.
+- [rule] Keep camera shake subtle: use small roll and small field-of-view bumps, and move the camera while the aiming point stays where the player wants it. When: Adding camera shake. Why: Strong shake disrupts aiming.
+- [rule] Widen the view progressively or on a turbo boost to suggest speeds faster than the display can show, when the feel of speed matters more than accuracy. When: Boost or high-speed moments. Why: A widened view creates a sense of speed beyond what is displayed.
+- [rule] Rotate the camera on sideways movement without moving it, first tracking the exact position then gradually leading ahead of the character. When: Character moves sideways relative to camera.
+- [rule] At rest, slowly orient the camera toward the character's facing direction, and let manual camera pushes drift back slowly. When: Character stopped or camera manually adjusted.
+- [rule] Make camera control removal easy for players to anticipate, otherwise they feel controlled and lose autonomy.
+- [heuristic] Placing a small character at the bottom of the frame conveys insignificance, and first-person views can produce a similar feel. When: Choosing camera framing to convey scale. Why: Framing position affects how small or large the character appears.
+- [heuristic] Rapid, repeated camera scrolling is a likely cause of motion discomfort, so keep the camera steady during frequent vertical movement.
+- [heuristic] Settle camera placement by testing it in the real engine rather than relying on design documents alone. When: choosing camera placement. Why: Playing in the actual view reveals navigation and selection problems that documents miss.
+- [heuristic] Use third-person views for acrobatic platforming and brawler-style melee that moves in and out of enemy groups.
+- [heuristic] Measure jumps and distances in the character's own height, which keeps the unit consistent on screen regardless of camera position. When: Designing jump and distance values.
+- [heuristic] In first-person games, lens effects, blur, shake, movement bob, crosshairs, and visual cues matter more because the player tracks their own view. When: Designing first-person camera feedback. Why: The player's view is the only aiming reference.
+- [procedure] 1) Decide how much game state the player must access. 2) Decide how close the player should feel to the character and other objects. 3) Choose the viewpoint that matches both, and explain its effect on formal and dramatic elements. When: choosing a viewpoint for any game. Why: A deliberate choice matches information access and drama to the design.
+- [procedure] 1) Move the camera no more than necessary. 2) When it must move, move it smoothly. 3) Give the player control when programmed camera behavior fails to produce a good result. When: designing camera behavior.
+- [tradeoff] Views sharing the character's movement and limited knowledge heighten tension and closeness; views showing more of the world, even close outside ones, reveal environment and clues but feel less close. When: choosing a camera viewpoint. Why: Viewpoint controls both what the player knows and how near they feel to the character.
+- [pitfall] Camera problems are most noticeable in open terrain, while following the character around a tall spire or pillar keeps the camera reliable. When: Designing a third-person camera for level geometry.
+- [pitfall] A virtual camera that moves while the player's eyes and head stay still creates the visual-vestibular mismatch that drives sickness.
+- [pitfall] Expecting players focused on the screen center to grasp animated elements in their peripheral vision.
+- [pitfall] Camera AI is hard to code well, and cameras that work against the player are a common problem.
+- [pitfall] Jarring camera motion or sudden frame-rate drops can cause nausea and make the game feel awful, as visuals seem to break down.
+- [pitfall] Relying on Doppler shift or screen blur for core speed feel misses the layout and visual cues that actually carry it, since both are polish that leaves the simulation unchanged.
+- [pitfall] A camera that stops when the player moves left can feel oppressive and abrupt.
+- [pitfall] A camera that tracks the avatar at all times during pendulum motion causes nausea and can make the game nearly unplayable. When: Avatar is swinging on the grapple. Why: Constant lively camera movement during pendulum swings induces motion sickness.
+- [pitfall] A camera stuck in geometry makes players feel unskilled.
+- [pitfall] Camera shake can disturb players and cause sickness, especially in VR; shaking the UI instead is one alternative.
+- [fact] This camera view uses three-point perspective, with edges meeting at horizontal vanishing points and one vertical vanishing point below the level.
+- [fact] The camera supports both a detailed 3D environment and reveals of hidden information the character cannot see.
+- [fact] Third-person cameras keep the full 3D spatial toolkit of first person, including complete environments and sight lines.
+- [fact] Many engines offer view-angle options that can produce warped, stylized perspectives.
+- [fact] Digital games commonly use five viewpoints: side, overhead, third person, isometric, and first person. Each trades how much of the world the player sees against how close they feel to the character.
+- [fact] A fast object seen from a great distance appears slow, so distance reduces apparent speed.
+- [fact] The camera is indirectly controlled: it follows the avatar and scrolls farther than in comparable platformers, supporting a sense of unbounded motion. Why: Extended scrolling distance makes the level feel larger than the visible screen.
+
+## animation and motion
+- [model] Animation principles such as squash and stretch and overlapping action are broadly applicable standards for conveying physical interaction.
+- [definition] An animation action plays an animation and updates game state; it is often the only primitive several characters can perform together, tagged with unique identifiers showing joint versus parallel action.
+- [definition] Second-order motion is motion produced by the player's action beyond the direct input, such as a tool head swinging widely from a small wrist turn.
+- [mechanism] Animating a simulated object, including the body's response to a heavy attached object, conveys weight and presence the simulation lacks; the player perceives that weight as part of the motion. Why: The animated visual becomes the object in the player's mind.
+- [mechanism] Identical animation repeated many times becomes tiresome and erodes control even when quality is high, because real motion is never exactly repeated and recurrence without subtle variation looks wrong.
+- [mechanism] Continuous distances and speeds from animations create a state graph with infinitely many connections, since each distinct value is a separate state. When: movement planning uses animation-driven transitions.
+- [mechanism] Animation can impose speed ranges, such as walk at 0.8 to 1.2 m/s and jog at 2.0 to 4.0 m/s, with no speeds available between them. When: Character movement is driven by discrete animations. Why: Only the animated speed bands are reachable.
+- [mechanism] Playing an animation faster covers slightly faster motion, but beyond a point the movement looks unbelievable. When: scaling playback rate of a locomotion animation. Why: Each animation is authored for a particular speed range.
+- [mechanism] A walk can change into a run only at suitable points, so transition timing constraints give each movement a natural length.
+- [mechanism] At 60 fps, fast-moving on-screen motion visibly breaks into discrete positions instead of looking smooth.
+- [mechanism] Keyframe animation governs perception until a stronger force, such as a tackle, hands control to the physics simulation, as in ragdoll solutions. When: Blending keyframed animation with physical simulation. Why: Whichever source is driving the motion determines what the player perceives.
+- [mechanism] Changing animation alters perceived speed without changing actual velocity, so slow-feeling backward movement can be fixed through animation.
+- [mechanism] Vivid animation of small-scale actions, such as a unit consuming a target, makes early scenes satisfying and gives them strong game feel.
+- [rule] Suggest eased pendulum-like motion with predetermined frames spaced closer at the apex, easing out there and reversing with a snappy turn, instead of simulating physics, to convey weight.
+- [rule] Emphasize good motions by attaching goals to them and remove bad motions with constraints. When: Exploring a new control mapping. Why: Goals reward good motion while constraints prune poor ones.
+- [rule] Make second-order motion produced by player actions powerful and interesting to watch and to control.
+- [rule] Model the avatar as a non-rotating rectangle moving freely on a 2D plane, so its local and global movement are identical.
+- [rule] Make dropped pickups bounce on decaying parabolic arcs that slow at the top, so they read as physical objects.
+- [rule] When a single frame's direction change exceeds about 90 degrees, stop the character briefly, play a foot plant, then move in the new direction. When: Sharp reversal while running. Why: A plant sells the weight of a hard turn.
+- [rule] Let a jump press during a foot plant convert it into a special somersault move. When: Character is in a foot plant state.
+- [rule] Sync character animation to speed, jumps and landings, with leaning into turns and planting feet, so motion reads as a physical body.
+- [rule] Animate a near-opposite input with a planted foot and slight slide before reversing, while the underlying motion stays unchanged. When: near-opposite directional input. Why: Animation supplies physical weight without changing the simulation.
+- [rule] Layer baked-on animation, such as squash and stretch, and secondary effects like dust onto simple movement to increase its appeal.
+- [rule] Long easing or release phases are acceptable only after an immediate initial visible reaction to the input.
+- [heuristic] Organic, complex, fluid motion following curved arcing paths rather than rigid straight lines tends to feel more appealing than simple, uniform motion.
+- [heuristic] Convey much of a character's behavior through animation rather than complex cognition.
+- [heuristic] Adventure game AI relies more on animation than on other cues to show what a character is doing. When: Adventure game enemies.
+- [heuristic] When the scales tip late in a game, let the win be dramatic and wrap it up quickly. When: Outcome becomes clear late in play.
+- [heuristic] Make object motion consistent and predictable first, since motion carries more weight than other cues in building a convincing physical world. Why: Motion has the strongest effect on perceived physicality.
+- [heuristic] In emergencies, cut a full animation short for a rapid turn and blend a couple of frames into the new animation to avoid a visible jump. When: Interrupting character animations abruptly. Why: Abrupt animation switches look jarring without blending.
+- [heuristic] Animation should enhance and emphasise the simulation rather than drive it. When: designing character animation for physics-based movement. Why: Keeping the simulation authoritative prevents animation from breaking the feel of motion.
+- [heuristic] Use a few key poses to set both the path a body moves along and its shape, so slowing, reversal and return read with very few frames.
+- [metric] A mechanic that locks input for about 900 ms while an animation plays fails the real-time control response threshold.
+- [metric] A character's standing-to-full-run transition can take about 900 milliseconds when driven by animation, which players feel as sluggish. When: animation-driven movement.
+- [tradeoff] Scaling playback to simulated speed conveys speed without changing physics and prevents foot slip, but dynamic matching can cause skating when playback and ground movement fall out of sync. When: Locomotion animation driven by object speed. Why: Players read footing against the ground, so mismatched playback looks wrong.
+- [pitfall] Smooth animation, metaphor and input mapping can hide short control breaks, but a game may look fluid while failing real-time control tests because it masks unresponsive control.
+- [pitfall] Acrobatic enemy movement is hard to keep synchronized with animation.
+- [pitfall] A single canned failure animation that plays back identically every time quickly loses its appeal.
+- [fact] Movement requests become visible action through animation or physics simulation, and animation is normally part of the graphics engine rather than AI code.
+- [fact] Characters have sets of animations, such as walk, run, sprint, and turns made while walking, on the spot, or crouched.
+- [fact] Each animation suits only a range of velocities; a walk cycle needs a matching travel rate or the feet appear to slide.
+- [fact] The range of believable combinations of position and orientation is much smaller than the range of believable velocities.
+- [fact] Procedurally generating animations to fill gaps is an open problem, so most developers rely on a modest set of authored animations.
+- [fact] Momentum in many games exists only within animations rather than as a simulated property.
+- [fact] Most natural actions follow an arc or slightly circular path, like a swinging pendulum, including arm movement, head turns and eye movement.
+- [fact] Hybrid models let animation drive ragdolls and ragdolls drive animation, so colliding characters can transition into believable active ragdolls. When: for humanoid collisions.
+
+## combat and weapon feel
+- [model] A minimal combat prototype needs a player, one or two weapons, a space and an enemy.
+- [mechanism] An avatar with no attack and no release moves at constant speed as soon as input activates.
+- [mechanism] A long attack feels floaty or loose, and players can enjoy this in motion meant to feel floaty.
+- [mechanism] A long attack that begins with a rapid initial rise gives an immediate response while keeping a loose, organic feel.
+- [mechanism] A short attack feels tight and responsive, and a curved rather than straight short attack keeps an organic feel.
+- [mechanism] A very short, purely linear attack from off to on feels twitchy, and can feel stiff.
+- [mechanism] Control with no release feels abrupt when the input ends.
+- [mechanism] Weapon swings convey their character through arc size, pre-swing pause, follow-through and sound: huge ponderous arcs read heavy, while quick swings with blur read light. When: Designing melee weapon feel. Why: Each timing and visual choice signals mass and speed to the player.
+- [mechanism] A very short attack ramp smooths rotation input so full rotation speed is reached over about a third of a second, which reads as slight inertia before the ship turns. When: rotation input passes through an attack curve. Why: The brief ramp softens the start of turning without adding the looseness of acceleration.
+- [mechanism] A layered visual reaction, such as a brief jiggle, can show impact without moving the object's position, and contrasting reactions for different sizes convey relative mass. When: a solid object is struck by a character. Why: Visual contrast signals strength while leaving the simulated world unchanged.
+- [mechanism] Without an early-release clamp, even short hops rise high because full force still applies for a time, which narrows the range of jump heights. When: jump height depends on hold duration. Why: Clamping upward velocity on release is what makes short taps noticeably lower than full holds.
+- [mechanism] Attaching the grapple and starting a swing greatly enlarges the horizontal dead zone, so the avatar can swing almost to the screen edge before the camera moves. When: Grapple attaches and a swing begins. Why: A larger dead zone lets the swing play out without constant camera motion.
+- [mechanism] Collision is turned off while swinging; a horizontal arc entering an impassable tile bounces the avatar into a state where the grapple cannot fire until he touches solid ground. When: Avatar swings into an impassable tile. Why: Disabling collision during swings means impassable geometry must be handled by a bounce state.
+- [mechanism] A short attack that includes a small forward lunge adds emphasis to the hit.
+- [mechanism] Targets with no health, knocked out by one hit, make the attacking vehicle feel much more massive than its targets. Why: A single hit shows the attacker overwhelming the target.
+- [behavior] The player chooses swing arc size by timing when to fire the grapple between connections, so firing at the wrong moment gives a swing too small or large for the next target. When: Player fires grapple between connection points. Why: Arc size depends on fire timing, not on a separate control.
+- [behavior] Releasing from the grapple lets gravity take hold gradually, so the release feels organic and the flight follows a graceful arc. When: Avatar releases a swing. Why: Gradual gravity build-up after release reads as natural motion.
+- [rule] Choose a weapon sound system based on the weapon's nature: single shot, retriggered, looping for speed, looping for consistency, or another approach. When: Starting weapon sound design.
+- [rule] Decide whether the weapon should give the player audible feedback before choosing its sound layers.
+- [rule] Treat weapon fire, flybys, impacts and ricochets as one related sound system rather than as separate assets.
+- [rule] Each weapon needs a crisp, distinct sound, especially in its first microseconds, since sound shapes how powerful a weapon feels. When: Designing weapon audio. Why: Players judge weapon value partly by sound.
+- [rule] Make weapon sounds convey force and kind, so shots bang, rockets explode, and blades ring out.
+- [rule] Check that a weapon's look and sound match its gameplay purpose and the situations where it is best used. When: evaluating or designing a weapon. Why: A mismatch weakens players' reading of what the weapon does.
+- [rule] Exaggerate weapon carry and recoil animation, and pair it with recoil effects and crisp audio, so weapons feel heavy. Why: Visible and audible weight makes the weapon feel powerful to the player.
+- [rule] Show the path of shots, such as with tracers, so players can see where their attack went. Why: Visible trajectories confirm player agency and aiming accuracy.
+- [rule] Celebrate player victories through audio and animation, from a weapon flourish to a victory dance. Why: Positive feedback after combat reinforces the player's sense of accomplishment.
+- [heuristic] Let weapon sound convey condition, such as a fire sound that changes as the clip runs low, wear from overuse, or a clip-ejection sound when empty. When: During combat, when the player needs weapon condition without checking the HUD. Why: Players in combat rarely watch the HUD ammo counter.
+- [heuristic] Give powerful enemies, or enemies placed in key spots, unique sounds to add tension to encounters.
+- [heuristic] Mirror attack and release times, so slowing to zero takes as long as reaching top speed; this soft release keeps the loose feel.
+- [heuristic] When ramming targets is the goal, make contact carry the target along the vehicle and into nearby objects, so the hit feels physical and satisfying.
+- [heuristic] Superficial visual damage such as dents on panels, paired with strong sound, can stand in for full deformation when deformation is not modeled. When: no full deformation model. Why: Cheap cues can carry much of the impact feel.
+- [metric] A full swing cycle can be animated with about ten frames, and combined with attachment to any point this carried the game's feel.
+- [tradeoff] Tracers confirm shot paths for the player but can reveal the shooter's position to opponents in multiplayer. When: multiplayer shooters. Why: Feedback meant for the shooter also gives information to enemies.
+- [pitfall] Relying on visuals alone to convey weight or power fails, since people judge these mostly from sound.
+- [pitfall] Leaving button presses unconfirmed leaves players unsure whether their input registered.
+- [pitfall] Impact that undersells the action weakens the whole combat loop. Why: Players feel the hit only through its feedback, so weak feedback reads as weak combat.
+- [pitfall] Vertical and horizontal hooks feel plain, rigid and dull, so the diagonal swing must carry the expressive feel of the movement. When: Designing grapple firing modes. Why: Non-swing hooks lack the varied motion that makes swinging engaging.
+- [fact] A weapon's sound set can include fire, alt fire, raise, lower, equip, put-down and pickup cues, which weapon scripts reference through separate properties.
+- [fact] Instant-hit weapon impact sounds belong in attachment scripts, projectile impacts in projectile scripts, and handling sounds in weapon scripts.
+
+## input latency
+- [model] Each input is described by its number of states, its degrees of freedom and whether its range is bounded.
+- [definition] Input is the hardware design of the apparatus by which player intent gets to the system.
+- [definition] Response is how the system processes and modulates input in real time.
+- [mechanism] With a fixed per-frame turn amount, a brief tap makes small adjustments while a sustained hold reaches full turn speed.
+- [mechanism] Because pushing a stick outward takes time, a character appears to speed up slightly as the stick travels from center.
+- [mechanism] A simple input device can feel very sensitive when the system responds with nuanced real-time reactions such as gradual acceleration, variable jump height, and different behavior on ground versus air. When: tuning movement feel. Why: Nuanced responses convey control even from a low-resolution input.
+- [behavior] Unintended ambiguities, such as unexpected responses, make players feel the game is not responding to their input.
+- [behavior] When input gets no immediate feedback, players repeat or hold presses and watch for results anxiously. When: A delayed response gives no acknowledgment.
+- [behavior] Longer input latency demands more player skill and makes the game feel less synchronized.
+- [rule] Accept player input at all times, not only when the player is actively giving it, so the game never ignores an input the player is already making. Why: The player's processors run concurrently and may change input at any moment.
+- [rule] Choose which inputs the game uses, such as thumbsticks, buttons or both, because that choice sets the sensations of control available. When: The designer usually cannot choose the device itself.
+- [rule] Make input feedback immediate, since a slow response feels sloppy.
+- [heuristic] Ramp the input scale over the first milliseconds to give a responsive control a slightly soft attack, changing the input without altering the simulation. When: A responsive control should feel slightly soft.
+- [heuristic] A short input lockout is tolerable if a continuously controllable mechanic remains available alongside it. When: A brief lockout such as an attack animation. Why: The continuous mechanic keeps real-time control available.
+- [heuristic] Transform raw input before it drives a response; mapping it directly gives up control over game feel and is rarely done.
+- [heuristic] Judge responsiveness by the perceived delay to the first visible result, not by the total length of an action, which may last several seconds.
+- [procedure] 1) For each input, record dimensions, movement types, position or force sensing, direct or indirect action, boundaries, and signal format. 2) Count the device's inputs and their combinations. 3) Record resistance, springiness and overall tactile feel. When: Measuring an input device before comparing two devices or versions. Why: Hard metrics are countable and soft metrics are felt, and both shape feel.
+- [procedure] 1) Add small dead zones to remove noisy input. 2) Smooth inputs over a few frames. 3) Buffer early presses briefly and use them when the action becomes possible, discarding them if another press arrives first. When: Improving input responsiveness. Why: Each step makes input feel more intentional without the player noticing the processing.
+- [procedure] 1) Count the frames of pipeline latency and multiply by frame length. 2) Add display lag. 3) Fire that total time before the target reaches the crosshair. When: Aiming at moving targets in games with input lag. Why: Firing when the target appears aligned lands after it has moved past.
+- [metric] A visible result or perceived response delayed beyond about 100 ms after input feels unresponsive and bad, so players sense something is wrong. (x2)
+- [metric] Respond to input with a visible result within roughly 70 to 100 ms, inside one perceptual cycle, so the player senses causality even if full motion lasts longer. Why: The player senses causality when the response falls inside one perceptual cycle.
+- [metric] The game must update faster than the player's perceptual processor; slower updates skip perceptual frames, letting perception separate input from result and breaking the feeling of control.
+- [metric] A response within about 50 ms feels instantaneous, a lag above 100 ms is noticeable but ignorable, and a response at 200 ms feels sluggish.
+- [metric] Response lag between trigger and feedback of 50 to 100 ms feels tight and responsive, and controls grow gradually sluggish above that range.
+- [metric] At 30 fps with four frames of pipeline lag and 50 ms of display lag, total input latency is about 183 ms.
+- [pitfall] A game that responds only some of the time breaks the flow of control, even when its average response figures look acceptable.
+- [pitfall] Even at 60 fps a delay of about three frames is nearly unavoidable in a game, unlike in physical reality where response is continuous.
+- [pitfall] A mechanic can respond instantly yet lack real-time control if input is locked out after one press or cut off until an animation ends.
+- [pitfall] Rapidly alternating between two directional inputs can create an attack overshoot above the sustain limit, letting players exceed intended top speed.
+- [fact] A button returns a binary signal, a trigger or paddle returns one float, and a thumbstick or mouse returns two floats. When: Comparing input devices.
+- [fact] A button and trigger have two hard boundaries, a paddle two hard rotational limits, a thumbstick one round boundary, and a mouse four soft boundaries. When: Comparing input devices.
+- [fact] Button, trigger and paddle move along one axis, while thumbstick and mouse move in two; buttons, triggers and thumbsticks sense force against spring resistance, the paddle senses torque, and the mouse senses position change. When: Comparing input devices.
+- [fact] A button has two states on one axis, a trigger has hundreds of discrete states, and a thumbstick moves on two axes within its casing.
+- [fact] Inputs can be scaled by a multiplier, divided, added to, or multiplied by themselves to produce a different value range.
+- [fact] A stiff, long thumbstick on an older console can need roughly twice the force to displace compared with sticks on later consoles.
+- [fact] Laggy or unintuitive controls can make a strong game feel unplayable, much as a fuzzy picture ruins a good film.
+
+## movement speed
+- [model] Movement feel is built from thumbstick mapping (direction and rate), terrain incline and friction updating ground sense, and button-driven state switches such as ducking and jumping. When: Analyzing a character movement system.
+- [definition] Max speed sets the sustain level of an envelope: the constant speed reached after the attack phase.
+- [mechanism] Adding acceleration to velocity each frame gives static inertia: speed persists unless another force acts; drag after release gives smooth attack and release. Why: Momentum is conserved between inputs, so the object keeps moving without thrust.
+- [mechanism] Movement speed affects both game feel and gameplay, and timing in action games can make or break the experience.
+- [mechanism] If an envelope drives avatar motion, its shape determines how players experience control.
+- [mechanism] Very low damping lets an accelerated ship keep moving for several seconds before coming to rest, producing a frictionless, spacelike feel. When: ship velocity decays with little or no friction. Why: Minimal drag means momentum persists, and players associate this with space.
+- [mechanism] Separating thrust from rotation lets the ship turn freely regardless of its velocity, creating a loose, floaty feel. When: a ship can thrust in its facing direction while moving another way. Why: Velocity and heading are independent, so turning does not disrupt momentum.
+- [mechanism] Reversing direction emerges from opposing acceleration that counteracts velocity until the object stops and moves the other way, without a separate canned animation. When: a physics-driven character is pushed opposite to its movement. Why: Letting physics produce the reversal keeps motion consistent with the simulation.
+- [mechanism] Replacing single-speed movement with stopped, walking and running states, plus a slide to a halt, gives a character inertia and a fluid feel.
+- [mechanism] Ducking switches state as soon as the button press registers, with a short standing-to-ducking transition of about a tenth of a second. When: Duck button pressed. Why: Immediate response keeps input feeling responsive.
+- [mechanism] Ducking while running above a certain speed makes the character slide rather than stop. When: Character ducks during a run.
+- [mechanism] Pushing a control to its maximum can switch it into an acceleration mode where input passes beyond its usual range. When: Designing input ranges for racing or shooter controls. Why: Extending input beyond its normal range gives extra response at full deflection.
+- [behavior] After turning to a new heading, a velocity-based ship can take nearly three seconds for its velocity to align with its facing direction. When: thrust is additive and the ship has built up velocity in another direction. Why: Existing velocity persists, so the new thrust direction gradually bends the motion.
+- [behavior] A run feels fast only in contrast with the walk, so the gap between walk and run settings drives the sense of running. When: when tuning walk and run speeds. Why: running reads as fast only against a slower walk.
+- [behavior] A run button that can be pressed partially lets players reach many speeds between standing, walking and running. Why: the button can be pressed at any moment, so players can feather it.
+- [rule] A held run button raises both acceleration and max speed, including from a standstill, producing a faster run state. When: a run button changes horizontal movement. Why: Scaling both values together makes running feel faster in the same way.
+- [rule] Scale walk and run values together, keeping their ratio, to preserve the feel when units or overall speed change.
+- [rule] Do not set velocity directly to the desired value on landing. Let tire friction close the gap so the vehicle catches as it touches down. When: vehicle lands with a gap between desired and actual speed. Why: Snapping velocity directly feels artificial to players.
+- [heuristic] Remove movement exploits that give skilled players an overwhelming advantage, since they break the intended speed limit.
+- [heuristic] Instant horizontal movement cannot carry a game alone and works only in combination with other movement types. When: Designing a game around instant horizontal movement. Why: Stiff horizontal motion lacks the variety needed to sustain play by itself.
+- [procedure] 1) Each frame, add acceleration in the held direction to velocity. 2) Clamp velocity to a max speed for each direction. 3) Update position from velocity. 4) When no direction is held, reduce velocity using a separate deceleration value. When: a character moves horizontally under gradual acceleration. Why: Separate acceleration, speed cap and deceleration let speed ramp up, stay bounded and stop cleanly.
+- [metric] A slide started at full running speed lasts just over one second. When: slide started at full running speed.
+- [tradeoff] Low creature inertia is easier for players to control and lets creatures stop and redirect, though less believable than high inertia. When: Choosing creature inertia for herding the player must redirect. Why: High inertia spreads one decision across many frames and the whole group.
+- [tradeoff] Zero acceleration and deceleration give instant start and stop, easing precise per-pixel positioning but producing a stiff, robotic feel unlike physical motion. When: Choosing horizontal movement tuning for a character positioned by set position per frame. Why: Instant starts and stops are unlike physical motion, so players read the movement as mechanical; zero acceleration makes exact positioning easy.
+- [tradeoff] Slow, precise crawling with looser direction control and no foot plant trades speed for precision, letting players take risky thin paths over drops as a risk-reward choice against faster running. When: Low-speed movement while ducked.
+- [pitfall] Overwriting velocity directly with thrust makes a ship carve circles with perfect grip, losing the floaty feel and resembling a remote-controlled car. When: thrust sets velocity to the facing direction instead of adding to it. Why: Direct overwriting removes inertia, so the ship no longer drifts.
+- [pitfall] Omitting deceleration leaves a character sliding indefinitely once it has moved, because it can never come to a stop. When: horizontal movement stops when input is released. Why: Without a stopping value, velocity never returns to zero.
+- [pitfall] Stepping off a ledge that sets fall speed high at once feels strange, because the avatar falls at a speed that should have built up over time. When: Avatar walks off a platform edge. Why: Skipping the build-up from zero makes the fall read as unnatural.
+- [fact] Changing a character's movement speed may require new animations when the animation system cannot stretch existing ones, which raises production cost. When: movement speed is tied to animation. Why: existing animations cannot be scaled to the new speed.
+- [fact] Grid, tile and hexagonal movement use space abstractly and do not count as literal simulated space.
+- [fact] The envelope idea comes from sound design but applies equally to how game control changes over time.
+- [fact] An envelope can come from the simulation or from filtering the input before it arrives, and both shape how control feels.
+- [fact] Absolute speed and turn-rate values carry no meaning until they are tied to a layout of curves and obstacles.
+
+## haptics
+- [definition] Force feedback applies active resistance to pushing, pulling or rotating a controller, on top of the springs that hold it neutral.
+- [definition] Visual effects appear briefly at points of interaction and seem caused by an object without being that object, such as sparks from a scrape or splinters from a crate. Why: They emphasize motion at the moment of interaction.
+- [mechanism] Muscles execute motor commands and also send touch and position-sense signals back to the perceptual processor, closing the hand's part of the loop.
+- [mechanism] A trigger wired to a toggleable ambient sound lets the player press E to switch the sound on, and press E again to switch it off. When: player interacts with a trigger that controls a sound.
+- [mechanism] Tactile artifacts such as dust puffs or star sprays on collision convey an object's weight and mass.
+- [mechanism] Constant low rumble during grinding correlates the feel of the interaction with a third sense, touch, when used judiciously. When: Sustained contact in a game. Why: Tactile cues tied to an action reinforce the sense of that interaction.
+- [mechanism] Tying a sound to an action that can repeat binds the two tightly in the player's perception, strengthening agency and game feel.
+- [behavior] Players rarely treat physical actions as input until a game uses them, and when a game does, players often find the interaction refreshing. When: when a game uses an unusual physical input.
+- [behavior] A distinctive physical component can make buyers pick up a game before they know how it plays. When: When a game is first seen on a shelf or in a showcase.
+- [behavior] Players perceive a heavier, more solid controller as higher quality, and that can make the actions it drives feel weightier and more satisfying. When: when choosing or tuning a physical controller.
+- [behavior] Surface materials shape how players feel about the controller and, through that, about the game they play with it.
+- [behavior] Snapping an airborne pickup to the attachment point after a proximity check makes the grab feel tactile, like catching a dropped ball. When: grabbing items in the air with an attachment. Why: The attachment acts as a surrogate hand.
+- [rule] Shake the controller in the direction of a directional impact on the avatar so the vibration matches what happened in the game. When: when the avatar receives an impact with a clear direction.
+- [rule] Give levers and heavy doors sounds that convey their weight, since satisfying feedback makes these interactions feel substantial.
+- [heuristic] Input conventions differ by platform, so a hold-button action common on consoles may be unfamiliar on PC. When: Porting or designing input prompts across platforms. Why: Players carry platform-specific expectations about input.
+- [heuristic] Passing objects back and forth between two people adds further presence.
+- [heuristic] Feedback that spreads a gradient glow from the contact point shows the player exactly which area they have touched. When: Showing touch locations.
+- [heuristic] Multidirectional vibration can let players sense textures by moving a hand across objects, which could serve as a core mechanic. When: when advanced rumble hardware is available.
+- [procedure] 1) Link each sound's Finished output back to its Play input. 2) Optionally add a randomized Delay to control retriggering timing. When: Keeping a looping sound layer playing continuously. Why: Finished events fire the sound again when it ends.
+- [tradeoff] Haptic feedback strengthens the sense of a physical object but adds fatigue to the arms, wrists and hands, which is one reason it has not caught on. When: Choosing between haptics and simpler rumble. Why: The sensation gain is offset by physical strain on the player.
+- [tradeoff] Grooves snap a stick toward eight directions, easing cardinal aiming but lowering precision between grooves and feeling jarring when rolled in circles. When: choosing analog stick housing design. Why: Detents guide input at the cost of fine control.
+- [pitfall] Avoid particles on contact without a clear physical reason: they add clutter and suggest stored energy that serves no purpose. Where simulation conveys an interaction, let physics carry feedback.
+- [pitfall] Advanced multidirectional haptic hardware is still too expensive or fragile for mass production.
+- [pitfall] Strong visuals cannot compensate for thin sound and implausible, inconsistent prop motion, which breaks the impression of physicality.
+- [pitfall] A controller that is too light feels cheap, and one that is too heavy is also a problem for feel.
+- [fact] A player experience model takes three input kinds: gameplay behaviour, objective bodily measures, and game context, which must be combined because any one alone can mislead.
+- [fact] A controller gives no proprioceptive feedback from the avatar's body, but the player's thumbs and hands still receive proprioceptive feedback from the controller.
+- [fact] Current controllers mostly use rumble from weight-loaded motors, which is always rotational and therefore somewhat blunt. Why: The motor spins an off-center weight, which limits the kinds of sensation it can produce.
+- [fact] Controller shape, weight and texture affect how good the input device feels in the hand.
+
+## control feel
+- [model] The correction cycle has three processors in a closed loop: perception tracks the target, thought compares position to goal and plans a correction, and motor execution carries it out.
+- [model] The computer accepts input, processes it and returns changes through output devices such as monitors, speakers and rumble motors, and this response must feel instantaneous to close the loop.
+- [definition] An uninterrupted correction cycle is a repeated loop of perceiving, thinking and acting, lasting about 240 ms, letting people track and hit goals beyond one action; central to game feel.
+- [definition] Aesthetic sensation of control is the pleasure of tinkering in empty space and seeing things react to button presses, before any challenge, regardless of context.
+- [definition] In a game, frames are states generated in response to input rather than a fixed sequence played back in order.
+- [definition] Crossover sensation is whether separate mechanics seem to obey the same physics and belong to one world; a mechanic that breaks this, like floaty swimming, feels out of place. When: Designing multiple movement states such as running, swimming and flying.
+- [definition] Control feel describes the instant-to-instant sense of conveying intent through an interface. When: Designing responsiveness of player input. Why: It describes how input translates to felt action during play.
+- [definition] Control latency is the lag from the moment a game takes in a player's input until the resulting change appears on screen.
+- [mechanism] Each pass of the correction cycle improves precision, and the cycles needed depend on distance and target size.
+- [mechanism] Game control amplifies space: small real movements of the thumbs produce large reactions in the game.
+- [mechanism] Releasing on a fixed apex frame gives every launch the same slightly upward horizontal trajectory.
+- [mechanism] A steering response that turns faster the larger the angle between the target direction and current facing gives an immediate, visible reaction to input. When: When a player redirects a steered object toward a new direction. Why: A large angle produces a fast initial turn, so the reaction is instantly visible.
+- [rule] Check whether controls feel good to you and to friends, and whether they fit the game idea.
+- [rule] A release clamp may look like a hack on paper, but it should be chosen for feel rather than physical accuracy. When: a gameplay mechanic departs from physical realism to improve control. Why: Players judge jumps by how they feel, not by how closely they match physics.
+- [procedure] 1) List which inputs change which parameters. 2) Describe how those parameters relate to one another. 3) Judge feel from those relationships rather than individual mappings. When: Analysing or designing the control feel of a mechanic. Why: Feel emerges from relationships between parameters.
+- [procedure] 1) Measure frame rate, response time and continuity. 2) Compare each against the thresholds of 10 fps, 240 ms and 100 ms. 3) Use the results as a baseline classification of real-time control. Why: Known cycle times let a game be classified, leaving player perception as the remaining variable.
+- [metric] Keep the computer's response within one perceptual cycle of about 50 ms; beyond it players notice lag, and beyond a full correction cycle real-time control breaks. When: When judging whether a game's response is perceived as immediate.
+- [metric] Real-time control needs at least 10 fps; about 20 fps gives smooth motion, about 30 fps looks pleasingly smooth, and most games aim for 30 fps or more. Why: Images shown at these rates fuse into motion.
+- [tradeoff] A designer may lock control for a long time on a chosen, powerful move; players tolerate the loss of control when they chose the move and it suits the character. When: Heavy moves that exceed the correction cycle threshold. Why: The player accepts the risk-reward exchange, so the lock feels earned rather than broken.
+- [pitfall] A wind-up animation lasting a quarter to half a second before a jump delays the visible response and frustrates players. When: Animation anticipation precedes an action that must feel responsive.
+- [fact] Real-time control breaks from frame rate drops, delays between computer and display, and an overloaded processor.
+- [fact] Control feel techniques are many and varied and appear across racing, fighting, action and shooter genres. When: Designing control feel for any genre. Why: Different genres rely on the same family of hidden input adjustments.
+
+## impact feedback
+- [model] ADSR envelope: four phases after an input: attack (rest to peak time), decay (peak down to sustain level), sustain (level held while input active), release (return to rest).
+- [mechanism] Removing debris from destroyed objects makes them simply vanish, which makes smashing feel unsatisfying.
+- [mechanism] Moment-to-moment game feel is the lowest-order feedback loop; if it does not feel good intuitively, players stop playing.
+- [rule] Make hit effects meet or exceed what players imagine the weapon does. Why: Players judge a weapon by the impact they expect from it, and undersized feedback weakens the loop.
+- [rule] Save the most intense feedback for rare, significant milestones such as major puzzles or the hardest areas cleared. Why: Reserved feedback keeps milestones feeling significant.
+- [rule] Show impact damage as deformation, such as compression or mushing, while the object keeps moving, so visible damage does not stop motion. When: A near-frictionless collision response is in use. Why: Deformation conveys impact without adding friction that disturbs control.
+- [rule] Give impacts three tiers, light, medium and hard, each with its own animation, visual effect and sound, scaled up with impact force.
+- [rule] Show ground contact with dust puffs on slides and foot reversals, and an expanding dust wave on heavy ground impacts.
+- [rule] Play slow motion and zoom the camera toward the point of impact when the vehicle hits a character, emphasizing the collision.
+- [rule] Show physical impact consequences, such as gradual cracking then breaking with particles, and visible damage to objects after collisions.
+- [heuristic] When giving a reward, deliver it through several channels at once, such as a visual reward object with a celebratory fanfare, and add more channels where possible. Why: Rewards are often multimodal. (x2)
+- [heuristic] Add dust particles, lens distortion, screen shake and strong sound to events to build a compelling sense of physicality.
+- [heuristic] A pause of roughly 20 milliseconds on a hit emphasizes its severity. When: Strong hits in action games.
+- [heuristic] Layer sound, particles, a ragdoll-style reaction and slow motion on hits and long jumps, so the impact itself reads as satisfying feedback.
+- [procedure] 1) Add small detail particles for immediate feedback. 2) Add larger, longer-lasting volumes for weight. 3) Play fast impact effects at double or triple the normal rate so they feel instant. When: designing hit effects. Why: Layering short and long effects gives both immediacy and substance.
+- [tradeoff] Effects should explain physical cause and effect, e.g. a slide puff; but on high-speed collisions, spray particles may lack physical basis because violent motion conveys force. When: when designing feedback for a physical action. Why: Readable cause-and-effect aids understanding; violent motion can justify stylized effects.
+
+## speed perception
+- [model] Real-world cues that build the impression of speed are object size, relative motion against nearby objects, and changes in sound.
+- [definition] Staging means presenting an input's result so clearly that the player understands it and can reproduce it on purpose. Why: Results that happen too fast or are lost among other motion look random.
+- [mechanism] Speed is perceived relative to surrounding objects: an empty stretch removes the sense of speed, and fast apparent motion of richly textured static background objects carries most of it.
+- [mechanism] Speed is conveyed through view-angle changes (suggesting increasing speed), motion blur (conveying speed as a real camera would), sound and fast-moving nearby objects.
+- [mechanism] Peripheral visual cues strongly affect the sense of motion, so removing side cues from a display can change how much a player feels movement.
+- [mechanism] Camera distance, viewing angle, object size and relative object speeds change perceived speed, regardless of the simulated speed. Why: Perspective alters how fast motion appears to the player.
+- [behavior] Players who see movement faster than they have seen before perceive the game as new and exciting. When: a game delivers an unfamiliar speed of movement. Why: Unfamiliar speed is novel, and novelty drives excitement.
+- [rule] Motion, sound and particles must all agree on a large object's scale; scaling up size without scaling motion makes it feel small, and polish cannot fix it. When: Making a creature or object appear larger or massive. Why: Speed of motion carries most of the sense of size; if one channel conveys smaller size, the object feels smaller despite its simulated mass.
+- [rule] Judge a game's speed by comparison with nearby objects and real-world analogues rather than by the speed value stored in code. When: Tuning how fast movement feels. Why: The player's impression, not the internal value, determines perceived speed.
+- [heuristic] In third-person games, a lock-on feature keeps a target tracked, without which players must consciously manage their aim. When: Designing third-person combat targeting. Why: Lock-on removes the burden of manual tracking.
+- [metric] Widening the view angle beyond 90 degrees exaggerates the distance travelled and the perceived speed. When: Applying a wider view to suggest speed. Why: The enlarged angle stretches apparent motion.
+- [metric] A slowed-scroll zone runs from about 25 percent of screen width, measured from the left edge, to the centre.
+- [tradeoff] Vignette the edges during intense focus on a destination to limit peripheral motion cues, but a vignette at the wrong moment distracts and breaks presence. When: the player concentrates on reaching a specific destination. Why: limits peripheral motion cues that trigger discomfort.
+- [fact] Staging principles depend on controlled camera behavior, so they transfer to games less directly than other animation principles.
+- [fact] Falling reads as faster than any other movement, and at long grapple length horizontal swing reads faster than vertical pull.
+
+## vehicle driving feel
+- [mechanism] With physics simulated, the rear of the car slides out slightly, producing a power slide naturally.
+- [mechanism] A direction change snaps instantly at zero speed, but at nonzero speed the heading blends toward the desired direction each frame, producing a carving turn whose rate depends on speed. When: Character turning from a stick input. Why: Frame-based blending avoids a stiff, robotic feel.
+- [mechanism] A large gap between desired and actual velocity makes the tires break loose and slide, like a peel-out. This also applies when a vehicle lands sideways while spinning. When: large velocity gap. Why: The difference overwhelms tire friction, so the tires lose grip.
+- [behavior] Holding a direction during a swing can feel like nudging the arc, though input only counts on the two apex frames. When: while swinging on a predetermined arc.
+- [rule] When direction input changes quickly, let the character arc toward it with a slight lag rather than tracking the input one-to-one. When: rapid direction changes. Why: An arc reads as a physical body turning.
+- [rule] Spawn a ground tire mark when the friction on a wheel exceeds a set threshold during a hard turn.
+- [rule] Drive passenger animation from gameplay parameters such as steering and reversing, so the character reacts to vehicle state without bespoke clips.
+- [heuristic] Use a non-linear stick steering curve that raises the steering ratio as deflection grows, giving small turns at small deflection, sharper turns at full deflection, and less twitchiness.
+- [heuristic] Tune vehicle forward speed, turning, sliding and friction slip only with a track and surrounding terrain present.
+- [metric] Moment-to-moment steering corrections occur about every 240 ms, nested under higher goals.
+- [tradeoff] A realistic driving model rewards precise control but makes unrealistic crash reactions conspicuous, while a stylized model with a special slide button keeps control accessible and forgiving. When: Choosing the handling model for a racing game. Why: Each approach sets different player expectations for handling and collisions.
+- [pitfall] A realistic vehicle in a stylized world creates a visual disconnect that a playful tone can help offset.
+- [fact] Dust particles kicked up under moving wheels show that the vehicle is in motion and in contact with the ground.
+
+## collision response
+- [mechanism] Deformation polish alone can change an object's perceived substance without any change to its physics.
+- [mechanism] Collision response is part of context: an object the player passes through does not change the feel, however many such objects there are.
+- [mechanism] Collisions that return energy with rebound and visible reaction make a space feel interactive, while dead collisions with no rebound make it feel empty.
+- [mechanism] On the ground every tile is solid, including connectable tiles, but in the air collision loosens so a swing can carry the avatar partway into a tile. When: Avatar is on the ground versus in the air. Why: Air collision is relaxed, enabling penetration of connectable tiles during swings.
+- [heuristic] Make hits feel like personal injury and grabs feel like reaching into the game, and use polish and simulation to make these interactions precise. When: designing interactions with objects or enemies.
+- [heuristic] Collision feel can be described and compared by matching it to everyday objects, such as soft springy objects or rigid solid ones.
+- [tradeoff] Near-frictionless contact keeps driving precise; high friction makes vehicles stick, roll or crumple and disrupts control, yet zero friction leaves jump force unslowed against walls, feeling loose and slippery.
+- [pitfall] Matching collision code to another game does not reproduce its feel; movement tuning drives the result. When: Porting a platformer's collision to a new game. Why: Identical collision logic can produce different movement depending on tuning.
+- [pitfall] Head-on collisions still stop the character, and blocky hard-edged geometry does not produce the same edge-sliding flow as rounded or angular passages. When: Designing collision shapes and level geometry.
+- [pitfall] Clipping, and objects flying off on slight touches, erode the sense of a cohesive world, and frequent occurrences may drive players to quit.
+- [fact] Most racing games use a near-frictionless collision response, so a vehicle that hits a barrier deflects off it and keeps moving.
+- [fact] Bounce is conveyed only by objects given explicit bounce behavior; other surfaces read as hard and slick.
+
+## feedback and polish
+- [definition] A continuous feedback loop has input and response flowing without breaks, allowing ongoing correction cycles.
+- [definition] Decay occurs when speed just after an input change is higher than the sustain level, so the value drops toward it.
+- [mechanism] Feedback such as particle effects, screen shake, and sound makes actions feel satisfying and reinforces the play they reward. When: When rewarding a correct player action. Why: Sensory feedback signals success and encourages repetition.
+- [mechanism] Without polish, collisions still convey physical interaction, but much of the game's appeal is lost. When: control and simulation present, polish absent. Why: polish carries much of the appeal.
+- [behavior] Polish the player causes through their own actions is more powerful than passive effects they only watch.
+- [behavior] Animation and trail effects that point to different physical properties make a character feel unclear: a floating trail with foot slides that look like swimming undermines a sense of weight. When: A character has a trail effect plus stylized locomotion. Why: Clashing effects convey something other than the intended impression.
+- [rule] Give continuous feedback for every player action, and if it is missing, identify why.
+- [rule] Acknowledge each input immediately, even if the full result takes longer, so players feel informed and in control.
+- [rule] When a result is hard to perceive because it is fast or buried in motion, give clear immediate feedback, often exaggerated with particle effects. When: Result is fast or visually buried. Why: Players must tell what their input did to repeat it at will.
+- [heuristic] Make every effect push toward the same impression, such as heavy mass, high friction, or sturdy form, so visuals, sound, motion, simulation and rules support one cohesive, unique physical reality. When: Designing a character's feedback. Why: Consistent cues make the object read as one coherent physical thing.
+- [pitfall] When decay is present, the player must keep pressing to hold top speed, which fatigues the hands and is almost never desirable.
+- [fact] Most games use visual feedback as the core channel, adding sound and rumble as polish.
+
+## jump mechanics
+- [mechanism] Jumps following predetermined positions feel crisper and more precise than jumps produced by a simple simulation.
+- [mechanism] Pressing jump sets upward velocity to a high value at once, and gravity then reduces it each frame, so the rise is an arc from a limited impulse.
+- [mechanism] Gravity can be low during ascent and roughly triple after the apex, so the jump floats up and then falls quickly. Why: A changing gravity curve gives a jump a responsive, weighty arc.
+- [mechanism] A jump started while running is higher than one started from standstill, because the horizontal speed carries into the jump's height.
+- [behavior] Harder pressing has no effect on jump height, yet a short release window can make jumps feel responsive to emphasis.
+- [rule] Buffer a jump press for a few frames before landing so the jump fires the instant the character touches down. When: A player presses jump slightly before landing. Why: Forgiving timing makes the jump feel responsive even when the press is early.
+- [heuristic] Tune platformer movement through inertia, ground friction, and whether air control is allowed. When: platformers.
+- [fact] A platformer with no jump button can still have excellent game feel when its core traversal is a grappling swing.
+- [fact] Horizontal control while airborne is weaker than control on the ground.
+
+## enemy and crowd weight
+- [mechanism] Carrying an object slows movement, and a weighed-down animation signals the object's mass.
+- [behavior] Characters that barely react to being shot make the player perceive them as bulky, reinforcing their sense of mass. When: Enemies or characters that are meant to feel heavy. Why: Lack of visible reaction signals high mass and toughness.
+- [behavior] Enemies that die in one or two hits feel fragile and insubstantial next to a boss that needs three hits. When: enemies shown alongside bosses. Why: Hit-count contrast sets perceived weight.
+- [rule] Tune herding steering to be less fluid than animation steering, so the player can react to flocks that start to separate. When: Designing creature movement for player herding. Why: Fluid animation-style steering is too fast for a player to react to.
+- [rule] Increase creatures' desire to form cohesive groups to support herding. When: Designing flock behavior the player herds.
+- [heuristic] Enemy interaction rules can signal a hierarchy of mass and power, such as enemies that leave a shell suggesting more mass than those that vanish. When: designing enemies with different weights or defeat methods. Why: Differing outcomes communicate relative size and strength to players.
+- [heuristic] Enemies that take several hits should make a different sound when struck, adding a sense of mass and solidity. When: Enemy requires multiple hits to defeat. Why: Distinct impact sounds communicate toughness and weight to the player.
+- [heuristic] Make boss hits feel heavy by delivering them through the environment, such as launching the enemy into hazards.
+
+## air control and gravity
+- [model] Horizontal and vertical motion form two mostly separate subsystems, and their interplay produces much of the expressive feel.
+- [mechanism] Slower air movement with retained control gives precise adjustment for landing on small platforms. When: A character moves differently on ground and in the air. Why: Reduced air speed with some steering lets players aim landings without full mobility.
+- [rule] Use stronger gravity whenever the character moves downward, including at the jump peak, after walking off a ledge, and after a ceiling hit. Why: Using the same gravity for rising and falling makes jumps last too long and feel light and out of control.
+- [rule] Trigger slow motion when a vehicle rises above a set height, so airborne stunts are emphasized.
+- [metric] Near the apex, raise gravity to roughly three times normal to shorten the hang time of the jump.
+- [fact] In the air, horizontal acceleration uses separate values, the run modifier has no effect, and steering is reduced while running speed can carry through a jump. When: a character is airborne with horizontal momentum. Why: Airborne control is intentionally limited, and existing speed persists.
+- [fact] A character can be clumsy on the ground yet expressive in the air, letting airborne traversal carry most of the feel.
+
+## character animation and weight
+- [mechanism] Squash and stretch can make a soft object read as soft rather than rigid, like stone, with no change to its behavior.
+- [mechanism] Short cables play the same animation frames as long ones, but horizontal distance between frames shrinks in proportion to cable length, so a short swing takes the same time and covers less ground. When: Grapple attaches to a nearby connection point. Why: Fixed animation timing with scaled spatial distance preserves rhythm while changing arc size.
+- [heuristic] Spurted movement gives creatures a furtive, nervous air, which may suit the game. When: Choosing creature movement style.
+- [heuristic] Traits should show in movement and animation as well as in dialogue, for example a sneaky character's jump or a depressed character's walk. When: When animating characters. Why: Movement reveals character as much as speech does.
+- [heuristic] Add small weight-shift cues, such as raising a back foot to counterbalance a launch and planting it on attachment, so the body feels solid.
+- [procedure] 1) Make creatures move in small spurts with pauses. 2) Use spurts rather than reduced speed so chased creatures can still run continuously. When: Slowing creature movement for player control. Why: Pauses give the player time to circle creatures, and uniform slowdown looks artificial.
+- [metric] Weight-shift cues can be tiny, around three pixels of movement, and still read as physical weight.
+
+## grapple mechanics
+- [mechanism] Without a jump, a grapple fired vertically, horizontally, or diagonally gives all the avatar's upward movement; only the diagonal shot starts a swing, which drives the swing feel. When: Avatar has no jump and relies on a grappling launcher. Why: Firing direction determines whether the movement is a pull, a hook, or a swing.
+- [mechanism] The cable length equals the distance to the connection point, so far connection points give a large sweeping swing arc. When: Avatar swings on a grapple cable. Why: Longer cable radius produces a larger arc.
+- [mechanism] A grapple swing continually works against gravity, with the player timing each release at the last possible moment to keep momentum.
+- [behavior] When traversal relies on a grapple, swinging feels expressive and liberating, while ground movement feels rigid and heavy. When: when a grapple is the main traversal method.
+- [pitfall] Adding many avoidable objects during a focus-demanding movement adds load, since the movement already takes much of the player's attention. When: swinging or similar demanding movement.
+- [fact] Once released from a swing, the player can attach immediately to the next connection point. When: Avatar is airborne after a release.
+
+## real-time control
+- [model] Real-time control rests on a human correction cycle of about 240 ms, and the computer must meet three thresholds: motion, instantaneous response and continuity.
+- [definition] Real-time control is continuous, uninterrupted avatar control where input and result feel simultaneous; numeric thresholds are necessary, but overall player impression decides if it feels real.
+- [definition] Intuitive controls translate player intent into game outcome with near-perfect fidelity, so the avatar feels like an extension of the body.
+- [behavior] Controlling a moving thing has an intrinsic, aimless pleasure, and players describe the result as smooth, floaty or stiff.
+- [procedure] 1) Build a real-time avatar prototype in a space with varied objects. 2) Ask questions the space provokes, such as reaching, flying or jumping. 3) Let skills and challenges emerge from exploration. 4) Keep the best-feeling motions. 5) Constrain motions that feel bad. When: Early development, when the desired control feel is not yet known. Why: The answer to a good feel often emerges through experimentation.
+- [fact] Establishing real-time control is the largest part of game feel analysis; the remaining checks are simulated space and polish.
+
+## sensing and kinesthesia
+- [definition] Kinesthesia, often used interchangeably with proprioception, is the subconscious sense of body position in space, weight, and movement of muscles, tendons and joints.
+- [definition] Kinesthetics are the feel of a game: how its controls respond and how the interface feels to the player.
+- [mechanism] The inner ear senses changes in speed rather than steady velocity, so accelerating virtual motion causes discomfort.
+- [fact] The screen, speakers and controller extend the player's senses, so the player perceives the game world only through them.
+- [fact] Immersive graphics, sound, and motion or other controllers add to a game's fun through sensory stimulation.
+
+## size and spatial judgment
+- [mechanism] A large slow or distant object reads massive, a small fast one reads small; motion speed carries most size impression, sound, particles and screen shake only support it. Why: Size and motion are perceived together, so motion signals scale.
+- [behavior] Players judge object size and distance mainly from visual cues, while sound and rumble signal contact with objects. When: moving near objects of varying size. Why: vision is the primary perceptual channel.
+- [rule] For a large object, keep the camera aligned along the line from the avatar to the object and widen the view angle to exaggerate distance and reinforce its height. When: Conveying the scale of a giant or large object. Why: Aligned framing and a wider angle make the object seem to tower over the player.
+- [tradeoff] Balancing a character's size against its speed defines much of a fighting game's feel. When: Designing character stats in fighting games. Why: Larger characters are easier to hit but move differently than smaller, faster ones.
+- [fact] Spatial reference during play comes only from impassable tiles, enemies and enemy projectiles.
+
+## visual depth and rendering
+- [definition] A particle is a 2D textured plane placed in 3D space that billboards to face the camera, and it usually ignores lighting and forces.
+- [mechanism] A volume such as a smoke column can be built from many planes with painted depth, and because they are never seen at an angle they blend into one pillar. When: Building volumetric-looking effects cheaply. Why: Viewing angles that would reveal the flat planes are never shown.
+- [heuristic] Motion matters more than texture for effects: fading, blasting particles feel satisfying even when their color or form makes no physical sense. When: Designing particle effects for power. Why: Players perceive power through motion, not realism.
+- [heuristic] A full simulation can be shown by visualizing only object interactions, letting the player build a picture of the world through contact. When: World is simulated but visually sparse.
+- [fact] Many polish effects are camera-facing particle sprites played with randomized frames.
+
+## hazard warnings
+- [mechanism] A health-damage warning that repeats faster and faster as the player stays in a hazard signals rising danger without stating it, letting the player read their state from the sound alone. When: Player is in a continuous damage area and needs to know their health is falling. Why: Accelerating repetition conveys increasing urgency through rhythm, which the player perceives directly.
+- [mechanism] Small rewarding interactions, such as a block jiggling or a coin popping out, cushion early failure and make playing badly feel acceptable. When: early play with unfamiliar controls. Why: reward offsets frustration from errors.
+- [rule] Leave a usable escape window between the final warning cue and lethal damage; warnings with too little time to react arrive too late to change the outcome. When: Designing escalating hazard feedback that ends in damage or death. Why: Without a reaction window, the warning informs the player only after the outcome is already decided.
+- [heuristic] Map a player's health to audio or haptic intensity, such as heartbeat volume or loop speed, to convey health without a HUD. When: Designing health feedback that supports or replaces a visual readout. Why: Players can monitor an audio rhythm that tracks health continuously.
+
+## motion timing and limits
+- [rule] Treat the sustain level as a true hard limit on the modulated value, such as a top speed, so attack overshoot cannot exceed it.
+- [rule] Teleport sparingly in VR. When: designing VR locomotion. Why: teleportation drains presence.
+- [heuristic] Gestural input and animation playback can smooth the player's impression of motion and response when raw numbers fall short.
+- [pitfall] Easing in too slowly makes controls feel unresponsive, even when the final motion is correct.
+
+## haptics and rumble
+- [rule] Give constant rumble for continuous actions such as sustained fire and a single rumble for discrete actions such as a single shot. When: Mapping rumble to firing or repeated actions. Why: Matching the rumble pattern to the action's timing keeps it legible.
+- [rule] Use rumble judiciously, because rumble applied everywhere loses its meaning.
+- [heuristic] Rumble works best when tied to a metaphor, and gun recoil is a strong match. When: Designing controller feedback for an action. Why: A clear physical metaphor makes the vibration read as meaningful.
+
+## context in game feel
+- [definition] Context is the simulated space, including object layout, collision code and level design, which gives meaning to avatar motion and real-time control and shapes game feel. Why: Avatar motion and control have little meaning without a space to act against.
+- [rule] Judge context by player impressions rather than hard measurements, since its effect depends on subjective perception. When: Assessing the feel of a game's space or spacing. Why: Context has no finite numeric measure that captures how space feels.
+
+## carving tire tuning
+- [rule] Set tire sideways friction well above forward friction to get a carving turn rather than a floaty, sliding one.
+
+## contact behavior feel
+- [mechanism] Contact behaviors such as sliding versus sticky surfaces and instant versus delayed explosions change how a game feels.

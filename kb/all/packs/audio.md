@@ -1,0 +1,1074 @@
+# audio
+
+## dialogue and speech
+- [model] Informational dialogue conveys what the player must do and is clear, articulate and complete. Character dialogue conveys thoughts and emotion and sounds naturalistic, with emphasis on how words feel. When: Classifying a line before deciding how to record and play it back. Why: The two kinds have different goals, so they need different delivery and playback treatment.
+- [model] Sports commentary has two types: play-by-play reflects the specific action as it happens, and color commentary offers background, analysis or opinion, usually during lulls. When: Designing commentary systems for live sports. Why: Each type serves different moments of play and needs different timing.
+- [model] Verb-driven story choices are structurally a dialogue tree, with fixed options and responses, differing only in how the choice is expressed.
+- [definition] ADR (automated or automatic dialogue replacement, also called looping) re-records dialogue that has unusable quality, with actors syncing to their original performance on screen.
+- [definition] Combat barks, also called soundsets, are short callouts directly tied to combat, and may carry variables controlling how often and when they play.
+- [definition] Subtext is an unspoken feeling conveyed through indirect words, which the audience understands but the character does not state.
+- [mechanism] More game conditions tracked allow more specific dialogue lines to be chosen.
+- [mechanism] Letting the player pick a character at the start multiplies the number of lines needed across the game, such as doubling it for a male or female choice. When: Scoping dialogue production for a game with selectable characters. Why: Each selectable speaker needs its own version of every line.
+- [mechanism] A voiceover keeps playing when enemies return mid-speech, so the player can keep fighting without gameplay being interrupted.
+- [behavior] Barks often signal a change in AI state, such as hearing something, so players read them as information about what the character perceives. When: NPC reacts to a stimulus.
+- [behavior] Players notice when a line plays back identically, even hours later, and this can pull them out of the game. When: A short line repeats across a play session. Why: Identical audio is easy to recognize and breaks the illusion of a living world.
+- [behavior] Each escalating line paired with a matching sound effect conveys the character's anxiety. When: when a character's emotional state changes in play.
+- [behavior] Players can listen to voiceover while fighting, but reading text does not combine well with combat, so voiceover suits action moments. When: during combat. Why: Reading competes with shooting for attention, while listening can happen alongside it.
+- [rule] Localized audio files must match the exact length of the English assets, since length differences change the total asset size. When: Producing foreign-language versions of existing audio. Why: Size and timing of each file are tied to the asset budget.
+- [rule] Use interactive dialogue when the design needs player-responsive dialogue or dialogue that must set variables affecting future events, alignment or approval scores.
+- [rule] Do not begin dialogue production until the story, characters and mission details are complete and signed off by all parties.
+- [rule] Keep pitch variation subtle for natural ambience, and avoid pitch modulation on voices. When: randomizing pitch of ambient sounds. Why: audible pitch shifts on voices sound unnatural.
+- [rule] Have a programmer call sound cues from a database rather than wiring each branch by hand in visual scripting. When: Large branching dialogue systems. Why: Hand-wired branches become unmanageable.
+- [rule] Foreign-language lines for cut scenes and FMVs must sync to the existing English animation, since reanimating for new timing costs too much. When: Localizing dialogue tied to animated or filmed sequences. Why: Re-animating for different line timing is expensive.
+- [rule] Record several takes of frequently used lines, and give each character who may speak a line its own version; record at least two versions of every line. When: Planning how many recordings a game's dialogue needs. Why: Common situations recur and identical playback is noticed.
+- [rule] Assign priorities and expiry times to queued commentary lines; drop a line when a newer event has overtaken it or it has waited too long. When: Queuing commentary lines for fast-moving game events. Why: Fast play makes queued lines stale and misleading.
+- [rule] Urgent events should override color commentary, and each interruption point needs a recovery line to resume the topic naturally. When: A commentary line is interrupted by an urgent event. Why: Human commentators return to topics with fresh phrasing, and a game needs equivalent recovery lines.
+- [rule] Batch-convert script lines into separate audio files so you can prototype them and estimate the likely size of final assets.
+- [rule] Place the script on a stand just below head height so the actor projects forward instead of bowing the head. Why: Bowing the head reduces forward projection.
+- [rule] Process indirect dialogue, such as overheard comments and radio lines, to match its playback medium before playing it.
+- [rule] Balance the levels of every sound source in a room so that dialogue in it stands out. When: You control all sound sources in the room.
+- [rule] During busy moments such as battle, route dialogue cues into a dedicated speech audio group that boosts them above the mix. When: Busy action where speech must cut through.
+- [rule] Record actors for good performances, then process the speech files to suit the game.
+- [rule] Raise vocal pitch with jump height so the audio rises with the motion, which feels subconsciously satisfying to players. When: jump and fall states with vocal feedback. Why: Matching audio to motion reinforces the jump.
+- [rule] Suppress tutorial lines once the player has already performed the action, so experienced players do not hear instruction they have mastered.
+- [rule] When one box is too full, split information across sequential boxes: the first introduces the scenario and characters, the next lists objectives and rewards.
+- [rule] Leave room in character limits for translation, since some languages expand lines considerably.
+- [rule] Outside speech scenes, keep dialogue terse and action-oriented; a speech can work if trimmed to a few opening or closing lines.
+- [rule] Give actors notes covering pronunciations of foreign or fantasy words, meanings they may not know, and plot facts that shape delivery. When: writing voice-over comments. Why: Actors record lines out of order and often without seeing the game.
+- [rule] Make each voice-over comment mean one clear thing and describe the specific tone, rather than using a vague label like sarcastic. Why: Vague labels can be read as anything from cruel to affectionate.
+- [heuristic] Prototype dialogue before final recordings exist using self-recording, the built-in speech synthesizer, or downloadable text-to-speech programs. When: before final voice recordings exist.
+- [heuristic] Cast voices that are distinctive and easy to tell apart, since characters often speak off screen; a supporting voice too like the lead confuses listeners.
+- [heuristic] Use a professional director when possible; if directing yourself, know what you want, communicate it clearly and keep the actor relaxed.
+- [heuristic] Frequently triggered barks need the most variants; coordinate with programmers to learn how often each cue fires, or leave slots empty where cues are not called. When: Designing NPC barks or voice lines that play often. Why: Frequent repetition of few variants becomes obvious to players.
+- [heuristic] Sometimes breaths are part of the performance, so leave them alone and adjust the expander threshold instead. When: Breaths carry performance meaning.
+- [heuristic] Use the English recordings as a timing template so local actors can match the original pacing; actors experienced in dubbing film match rhythm to visuals well. When: Recording localized dialogue for fixed visuals. Why: Matching the original rhythm keeps lip movements and cuts aligned.
+- [heuristic] After the first mention, refer to a player by pronoun and reintroduce the name later. When: Writing repeated commentary references to a player. Why: Natural speech avoids repeating names and sounds less mechanical.
+- [heuristic] Use a second mic placed further away to capture lines meant to sound distant. When: when a line needs a distant-sounding delivery.
+- [heuristic] Spoken dialogue is written more sparsely than on-screen text, and narrative designers must plan for that difference.
+- [heuristic] Each line of dialogue should express one or more character traits, rather than only conveying situation information. When: When writing character dialogue. Why: Lines that express traits reveal the speakers, not only the plot.
+- [heuristic] In games, answer how and what questions in plain text, and answer why questions, such as motivation and feeling, with subtext. When: Writing dialogue that must also convey information. Why: Clarity usually outranks expressive quality in games.
+- [procedure] 1) Learn which animators will work on the scene. 2) Confirm they will invest time, assets and effort in any needed visual or spectacle. 3) Keep continuous dialogue between narrative design and the cutscene team. Why: The story is only realized as intended through continuous coordination.
+- [procedure] 1) Write a cutscene for your own game. 2) Use an existing sample script as a reference. 3) Format it to match your team's tools or the traditional screenplay layout. When: practicing script writing for your own game. Why: Matching the reference and team format makes the script readable and usable by others.
+- [procedure] 1) Record stage dialogue even if it may be unusable. 2) Play back the scratch track for actors. 3) Use it to recall the performance and sync any ADR re-recording. When: recording dialogue on a motion-capture stage. Why: the scratch track helps actors recall and sync their performance.
+- [procedure] Reduce overemphasized sibilant consonants such as s and z with a de-esser, which is a compressor that responds only to sibilant frequencies. When: Recorded dialogue has harsh sibilance.
+- [procedure] 1) Record the opening phrase, the item or name variants, and the joining words as separate sound cues. 2) Combine them at runtime from variables that select each variant. 3) Check that each stitched line sounds smooth when joined. When: Building a recap line from recorded fragments such as shot targets and scores. Why: Stitched fragments can sound disjointed unless each piece is recorded and checked as part of the full line.
+- [procedure] 1) Have actors project as if outdoors, not in a studio voice. 2) Lower the actor's own voice in headphones or play wind ambience they must shout over. 3) Avoid proximity effect and experiment with mic distance and angle in an acoustically dead, treated room. When: Recording dialogue meant to sound outdoors. Why: Studio rooms and close mics remove the acoustic space and projection that outdoor speech carries.
+- [procedure] 1) Connect a delay to a set sound mode action that lowers effects and ambience but leaves dialogue alone. 2) After the dialogue finishes, return the mix to default.
+- [procedure] 1) Trigger a short attention-drawing line as the player approaches a quest giver. 2) On interaction, play a voiceover explaining the situation instead of text. 3) Accept the quest on click, with no confirmation, and update the journal. When: when the game should avoid interactive dialogue.
+- [metric] A good dialogue editor should match a recording rate of 50 to 100 lines per hour.
+- [metric] A 20-team league with home and away games gives 38 games per team, so an opening sentence needs 760 versions to cover every match. When: Recording sentences with variable names.
+- [metric] Speech such as radio dialogue carries most of its power between about 500 Hz and 4,000 Hz, so the notch is placed in that range. When: Notching a mode for speech.
+- [tradeoff] Play informational lines 2D, center-channel-only or radio-processed so they stay audible at any distance; spatialize character lines whose meaning lies in emotion. When: Choosing playback treatment for a dialogue line; informational lines must be understood more than spatialized. Why: Distance attenuation can push a needed line below audibility; routing speech to the center keeps it intelligible, while emotional lines work best in place. (x2)
+- [tradeoff] Synthesized speech is cheap and needs no storage, but it makes characters sound robotic and undermines seriousness. Subtitles can work better because players imagine a richer voice. When: When deciding how to deliver spoken dialogue. Why: Players' imagined voices usually exceed what synthesis can produce.
+- [tradeoff] Keeping breaths makes dialogue feel more intimate, while removing them makes it sound more formal or official. When: Editing dialogue breaths.
+- [tradeoff] Boosting a speech class lets dialogue cut through a busy mix, while balancing levels alone is enough when you control every source in the room. When: Choosing how to keep dialogue audible.
+- [tradeoff] Writing many variants of a line is tedious, while hearing one line repeated constantly costs players patience and annoys them. When: Deciding how many variants a bark set needs.
+- [pitfall] Stitching separately recorded words or fragments produces audible seams, tonal jumps and unnatural sound, because pitch flow and word spacing vary between takes, worst in fast or excited speech. When: Assembling sentences from separately recorded words or name fragments. Why: Speech joins depend on phonetic and prosodic continuity that separate takes rarely share.
+- [pitfall] Dialogue that contradicts the situation, such as calm chatter during a pitched battle or ignoring a nearby crash, makes the AI look stupid and breaks believability. Why: Dialogue reveals the AI's state to the player.
+- [pitfall] A naturalistic informational line can be missed at a distance because it lacks the clarity needed to be understood. When: Delivering instructions through casual or conversational speech. Why: Natural speech is less articulate and attenuates faster than clear, deliberate delivery.
+- [pitfall] A translation longer than the English delivery will not fit existing animation without careful adjustment, and close-up faces make sync harder. When: Localizing lines for close-up or fast-paced sequences. Why: Extra syllables must fit a fixed visual timing window.
+- [pitfall] Relying heavily on dialogue to instruct the player can make the speech sound less realistic.
+- [pitfall] When voices are recorded after characters are modeled and animated, actors imitate visible motion rather than expressing the character's feelings, losing emotional power. When: Production order places voice recording at the end. Why: Actors must fit lines to pre-made animation instead of driving the performance.
+- [pitfall] Dialogue that refers to a game state, such as an empty weapon, fails when no animation or interface exists for that state.
+- [pitfall] Token-filled lines may grow longer in languages that mark gender in word forms, and can then exceed character limits. When: Localizing token-based dialogue. Why: Grammatical gender adds words that English does not need.
+- [pitfall] Stale voice-over notes left on changed lines confuse actors and directors and can ruin a performance.
+- [fact] Recording game dialogue is very labor-intensive, with scripts of tens of thousands of lines, hundreds of thousands of processed lines, and many takes per line.
+- [fact] Dialogue affects several departments beyond narrative design, including editing, localization and translation, and audio when the game has voiced lines, so writers should keep them in mind while drafting. Why: Each department shapes how the final words reach the player.
+- [fact] Ambient chatter establishes location or situation, so its atmosphere matters more than the information in its words.
+- [fact] Nonspeech vocals such as pain, dying and screaming are unpleasant to edit, a practical cost to plan for.
+- [fact] Game squads usually get international or clearly localized accents even though a real platoon might share one region.
+- [fact] Adding player counts and events such as passes, tackles and fouls multiplies recording combinations further, and large rosters create the same problem.
+- [fact] Full-motion video dialogue is handled like linear film, usually panned to the center speaker, though some panning may suit the scene.
+- [fact] Dialogue varies widely in dynamic range from whisper to shout, so its levels need processing.
+- [fact] Sound cues are stored in packages separate from their wav files, and each language version of the wav package takes a three-letter language code suffix that the game selects from its language setting. When: Organizing localized audio in a game engine. Why: Separate packages let the engine load the correct language version at runtime.
+- [fact] Non-word vocals such as screams and pain sounds may not need replacing in localization, though preferences vary by region. When: Deciding which audio needs localized versions. Why: Non-verbal sounds carry little language meaning.
+- [fact] Face animation to dialogue is normally the animation department's job, and facial animation assets can be created from a skeletal mesh.
+- [fact] A table read is even better when it includes the actors, the VO director, or the audio designers, because it makes the voice actors' work easier.
+- [fact] Written forms such as graffiti can replace dialogue or cutscenes, and narrative designers are often pressured to use as little text as possible.
+- [fact] Text dialogue lacks voice, accent, inflection and emotion, so writers must convey emotion and personality through context and formatting.
+- [fact] Games played on phones and in group settings can feature spoken roles, player decisions and rich narratives, yet compact displays restrict available text space.
+
+## adaptive music transitions
+- [model] Each game state has a loop. A combat intro leads into an action cue, and an end cue returns to the state's loop. When: when structuring adaptive music across game states.
+- [model] A music change request carries a cue index and a timing choice. The timing choice selects which pulse lets the request reach the cue switch. When: when routing music change requests through a timed switch.
+- [model] Music can sync to a scene in four ways: hitting the action, playing the emotion, playing the meta-emotion, or counterpoint against the emotion. When: when deciding how music responds to on-screen events.
+- [model] A transition cue can be an end cue for the outgoing piece, an intro for the incoming piece, or both in sequence, such as CueA, EndCueA, IntroCueB, CueB.
+- [definition] Vertical recombination layers musical parts that fit together harmonically, so any subset of parts played at once still sounds coherent.
+- [definition] Music transitions can switch immediately, crossfade, wait for the end of the current cue, or switch at the next measure, beat, or beat-aligned position.
+- [definition] Vertical layering keeps several aligned tracks, called stems, playing together and changes intensity by raising or lowering their mix instead of switching between separate pieces.
+- [mechanism] Scaling the distance to an enemy into a fade level raises bass and bell stems as the player approaches, making tension rise continuously. When: Layered music reacting to enemy proximity. Why: Stem volume follows a continuous scaled value rather than switching on and off.
+- [mechanism] Knowing the music's position and time to its next transition point lets the game start a change immediately or hold it until a more musical moment. When: when the game controls when a music change happens. Why: timing information lets the game choose between instant and musically aligned changes.
+- [mechanism] A cue change made on a beat resets the measure counter, so the next measure restarts at beat one. When: when a cue changes on a beat rather than a bar. Why: the bar count must align with the new cue.
+- [mechanism] Muting and unmuting stems from a gameplay timer makes the mix respond to how much time the player has left. When: when a timer is a gameplay variable.
+- [mechanism] Checking a state variable at fixed intervals and unmuting the stem whose range contains its value lets interactive music change intensity while stems stay time-aligned. When: stems are kept aligned in time and played together. Why: aligned stems sound correct when unmuted partway through.
+- [mechanism] Muting all but one track of a set of aligned stems yields an ambient version of the piece, while playing all tracks yields the most intense state.
+- [mechanism] Crossfading between sound cues across ranges of a game variable, such as speed, makes the sound follow that variable.
+- [mechanism] Music built from two-, four-, or eight-bar segments that fit together in any order can be chained at random for variety from few assets. When: limited music assets. Why: Random order multiplies combinations.
+- [mechanism] When failed inputs alter playback, the track plays incorrectly, so the player effectively controls the background music. When: rhythm games where failed inputs change the track. Why: playback depends on the player's timing.
+- [behavior] Looping menu music behind lobby or pause screens is interactive, because players can stop it at any moment to enter or leave the game. When: Music plays during menus or pause screens. Why: Players can exit at any time.
+- [behavior] Musical motifs that appear unexpectedly stand out in memory more than music that closely tracks each scene.
+- [rule] Cancel or drop secondary feedback when a more important event occurs, such as cancelling a reload animation when the player starts moving.
+- [rule] After a faded-out track ends, music should restart only when a state change selects a different track. When: Designing music that has faded out due to inactivity. Why: Prevents the faded track from restarting without a meaningful change.
+- [rule] Compose tracks that end cleanly on a bar, and switch between them only at bar ends instead of crossfading.
+- [rule] Set a fade in and fade out length for every music playback so that transitions between states are smooth.
+- [rule] Write a separate melodic stinger for each harmony, and choose among them by tracking the current position in the music.
+- [rule] Store switch markers as metadata in the file header rather than chopping the audio file into pieces. When: Making a commercial track interactive. Why: The full file stays intact, so the programmer can still apply a fade-out envelope.
+- [rule] Fade out menu and pause music rather than cutting it off abruptly; a short fade is the minimum acceptable treatment. When: Music stops when the player leaves a menu or pause state. Why: An abrupt cut is jarring and seen as a serious lapse.
+- [rule] Make death and idle cues reachable from every music state, so they can interrupt any section. When: when designing music state transitions.
+- [rule] End a boss fight with a triumph cue that replaces the combat music. When: when the main threat is defeated.
+- [rule] Set each music transition's timing point to the next beat, the next bar, or the end of the current cue when mapping gameplay triggers to cues. When: when mapping gameplay triggers to music cues.
+- [rule] Start all stems together, and retrigger them all when the first stem finishes, so the layers stay in sync. When: when playing several looping stems as one piece. Why: separate sounds drift apart without a shared restart.
+- [rule] Stop in-world music when the player leaves its room, so it does not carry into the next area. When: when the player exits the room.
+- [rule] Decide with the designer what each game variable means emotionally before mapping it to music. When: when choosing which game variables drive music.
+- [rule] Pitch-shift interface sounds into the key of the menu music, or choose tones that suit the background music.
+- [rule] Lead into a big audio event with a quiet section where possible, since the contrast gives the event more impact than a preduck. When: Designing the timing of a loud sound event. Why: Contrast from silence or low level is the strongest route to impact.
+- [heuristic] Place a dramatic sound event such as dialogue, an alarm or an explosion at a music switch point, since listener attention goes to it and hides the join. When: A switch between two music pieces is needed and a dramatic event naturally falls at the switch point or the story provides one. Why: A simple swap between pieces can sound clumsy.
+- [heuristic] Use a consistent, explicit link between game state and music when players need that information to play well; avoid it when you want players to be less predictable. When: when choosing how predictable a music response should be.
+- [heuristic] Replace a looping music bed with a beat counter that restarts the music at the bed's length in beats to limit timing drift. When: Music must stay synchronised with beat-timed events over long play. Why: Looping sound drifts relative to the beat over time.
+- [heuristic] Crossfades work best with music lacking strong directional melody or phrasing, since the player can interrupt any arc at any time. When: Choosing crossfades for game music. Why: Directional music loses its arc when the player can break it at any moment.
+- [heuristic] Raise a boss's music intensity as its health falls, and add short stingers on each hit. When: when a boss fight is underway.
+- [heuristic] Decide whether music scores what is happening now, what has already happened, or what is about to happen. When: when planning a music response to a scene.
+- [heuristic] Transition cues ease intensity changes by leading down, building up, or managing tempo, and can also act as stingers that highlight an action.
+- [heuristic] Use sudden volume changes, break expectations by varying repeated sounds, place sources to unnerve, move sources, and add low-frequency sound for threat. When: When designing unsettling mood.
+- [heuristic] Announce-then-recede layering applies to many sound elements beyond weapons and helps thin busy mixes.
+- [procedure] 1) Start the first cue at its timing point. 2) Trigger each next sound from the previous one's Finished output or a remote event sent when it ends. 3) Edit tracks so starts and ends line up. 4) Let play-once tracks stop at natural ends. When: when chaining music tracks so a second cue follows a first without gaps.
+- [procedure] 1) Compute beat length in seconds as 60 divided by tempo in BPM. 2) Convert it to a float. 3) Send a beat pulse from a delay into a gate. 4) Open the gate on the trigger event so the next beat plays the stinger, then close it. When: Playing a stinger on the next musical beat after a game event. Why: Musical events land on the beat instead of at an arbitrary time.
+- [procedure] 1) Record save point positions and how often players restart a level. 2) Ask whether music should repeat exactly each time. 3) Monitor each player's playing style over time. 4) Let the adaptive system respond to that style. When: When tuning adaptive music for a level. Why: Restart and save data show where music timing matters, and style tracking lets the system adapt per player.
+- [procedure] 1) Discuss with designers the roles music should play and the emotion or goal of each scenario. 2) Identify the events that need music and their start and end points. 3) Map the music to gameplay variables such as player health or enemy health. 4) Obtain access to the gameplay data needed to turn values into emotional meaning. When: When deciding where and how music appears in a game. Why: Game composers often work from text design documents, so spotting requires active discussion.
+- [procedure] 1) Place a touch trigger that fires a sound-playing action aimed at the player. 2) Create a cue with a Random node of sounds, an Attenuation node and a Speaker node. 3) Attach it to that sound-playing action and preview. When: Building an event-driven randomized sound. Why: Triggers play variety on each event.
+- [procedure] 1) Place an ambient sound at the source. 2) Crossfade several sound layers over distance with a distance crossfade node. 3) Set each layer's fade-in start and end so all are at full volume at the source. 4) Match the attenuation to the farthest layer. When: Building a large source whose detail should appear as the listener approaches. Why: Layers that fade in at different distances reproduce how real large sources sound.
+- [procedure] 1) Start a delay when a quiet music state begins. 2) If the delay expires, switch to a faded version of the track. 3) Gate it so the faded version plays once and ends. When: A player may stay in a quiet state unnaturally long. Why: Fading out after a timeout restores impact when the state lasts too long.
+- [procedure] 1) Place triggers at each area boundary. 2) On touch, play the area's music. 3) Stop the other area's music through its stop input. When: Simple switching between location music. Why: Triggers start and stop pieces without any musical timing.
+- [procedure] 1) Define music states such as ambient, action, triumph and death. 2) Trigger each state through events like pickup, hit or goal. 3) Test each death or failure state directly with a debug command. When: Testing interactive music states. Why: Direct state triggers let designers verify each transition.
+- [procedure] 1) Work out how the existing system routes its cues. 2) Add your music cues to the existing sound playback objects. 3) Set tempo and beats-per-measure variables to match your music. 4) Create triggers that call a track at the next beat or next measure. When: Extending a transition music system with new cues. Why: Matching tempo and timing to the music keeps cue changes on the beat.
+- [procedure] 1) Compose several parts that fit together. 2) Mute and unmute parts to preview combinations. 3) Mix parts with random selectors to produce varied combinations. 4) Weight the selectors so some combinations are more or less likely. When: Building a long-duration background score that avoids obvious repetition.
+- [procedure] 1) Start on the ambient track. 2) Switch to the action track when the player approaches a point of interest. 3) Play a win track or a death track when the outcome occurs. 4) Optionally return to ambient when the win track finishes. When: Music reacts to proximity and fight outcome.
+- [procedure] Start a music playback from a level startup event, a switch, or a trigger, depending on when the source should begin playing.
+- [procedure] 1) Start a looping background track from a level startup event or a trigger. 2) Fire stingers from the gameplay event that confirms the successful action.
+- [procedure] 1) Count beats with a counter that resets at the bar length. 2) Feed each reset into a looping switch that sets a bar number. 3) Compare the bar number to pick the matching stinger. 4) Pass beat and measure events through a remote event to keep the logic tidy.
+- [procedure] 1) Start every part together at level startup. 2) Make all parts the same length. 3) Fade each part's volume by its distance to its source. When: Several sources of music are mixed according to player distance.
+- [procedure] 1) When the gameplay event happens, open a gate for the new cue. 2) Keep the current cue running until the next bar pulse. 3) On that pulse, start the new cue and stop the old one. When: when a cue change must land on a bar line.
+- [procedure] 1) Start the music on a trigger. 2) Chain delays whose total equals the intended length. 3) Use a counter compared with a target to open or close gates for events. 4) On target reached, close the active gate, open the finale gate and remove the blocker. When: a timed challenge with music and objectives.
+- [procedure] 1) List all main cues. 2) For each pair, record whether a move is allowed and its switch timing. 3) Build this matrix before composing so required links and their handling are known. When: interactive music with several main cues. Why: unrestricted transitions produce many musically nonsensical moves.
+- [procedure] 1) Play each track with a finished output. 2) Route state-change triggers through the finished output. 3) Only the ambient track may be interrupted unmusically, so reaction to spotting stays instant. When: switching music states in a stealth or combat setting. Why: changes then land on musical points and any piece length works.
+- [procedure] 1) Choose a looping ambient base track. 2) Assign each action or zone a short musical phrase. 3) Layer those phrases over the loop as the player acts. When: building music that responds to player actions. Why: Layering keeps a steady base while player input adds musical variety.
+- [metric] Plan for roughly double the usual sound design effort for a VR game, since object interactions need believable sound. When: Scoping audio work for a VR project. Why: Each object interaction needs believable sound.
+- [metric] Bar-line time equals beats per bar multiplied by 60 divided by tempo, applied cumulatively; at 120 bpm and 4 beats per bar each bar lasts 2 seconds. When: Steady tempo.
+- [metric] A half-beat pulse interval equals 60 divided by tempo, divided by 2; a 0.2 second delay imitates 150 bpm. When: Generating rhythmic pulses from a delay node.
+- [metric] Allowing any of seven main cues to move to any other yields 127 possible transitions, most of which would not make musical sense.
+- [tradeoff] Immediate or at-beat switches respond quickly to game events but may clash with the beat; waiting for a bar or beat-aligned point keeps music correct, with a short delay. When: when choosing a switch point for a music change triggered by a gameplay event. Why: Responsiveness and musical continuity pull in opposite directions.
+- [tradeoff] Phrase-based concatenation builds sentences from opening, middle and end phrases and works best for relaxed, low-intensity speech.
+- [tradeoff] Merging duplicates at enqueue time saves queue slots and is simpler, while merging inside update moves the cost to the processor. When: Choosing where to aggregate duplicate sound requests. Why: Each placement trades queue space against processing time.
+- [pitfall] A mix that visibly shifts draws attention to itself, so ducking should be subtle enough to go unnoticed.
+- [pitfall] Leitmotifs that start at unaligned times produce a messy combined result, so their timing must be planned.
+- [pitfall] Allowing a direct jump from a calm loop to an end cue skips the combat that should sit between them. Transition rules must block such shortcuts. When: when defining transitions between music states.
+- [pitfall] A cue change request waits for its chosen boundary, so it does not take effect instantly even though it was sent. When: when a music change is requested between boundaries.
+- [pitfall] Too little reaction in music misses chances to heighten emotion. When: when music ignores changes in the scene.
+- [pitfall] An abrupt switch from ambient to combat music sounds unmusical. It works only for shock value, so most moments need smoother transitions. When: when switching between contrasting music states.
+- [pitfall] Changes in stem selection are heard only when a part is retriggered, so a one-minute part can delay an arrangement change by up to a minute.
+- [pitfall] The legacy play-music-track node has no fade-out on stop and cannot be stopped once started.
+- [pitfall] In some engine builds, crossing a distance crossfade boundary incorrectly retriggers the sound, so test by moving through boundaries carefully.
+- [pitfall] Treating the whole queue as a live structure means lag between request and processing can visibly change how sounds behave. When: Sound requests wait in a queue before playing. Why: Delay between request and playback alters perceived behavior.
+- [fact] A stem can be a single track or a group of tracks, and the term comes from film post-production where soundtracks are grouped into dialogue, music and effects.
+- [fact] Rhythm in music depends on the number and type of notes within a bar.
+- [fact] Most action-adventure games use a unique chime or tune to signal victory.
+
+## audio file formats and looping
+- [model] iXMF (Interactive eXtensible Music Format), from the IASIG, is an open cross-platform standard that holds both implementation instructions and audio data for interactive music.
+- [definition] Concatenation plays audio segments end to end, each after the previous finishes, forming new sequences; a sound cue's concatenator node does this. When: Building varied sounds from short segments. Why: Reordering segments creates new variations from stored material.
+- [definition] Lossless compression keeps every attribute of a sound intact, while lossy compression alters the sound to reduce its data size. When: Choosing an audio compression method. Why: Lossy methods trade fidelity for smaller files.
+- [mechanism] Downsampling a bright sound such as crickets removes its high frequencies and audibly degrades it, while a low-frequency rumble keeps its quality at lower rates. When: Sound energy extends into high frequencies. Why: Frequencies above the new rate's limit are lost.
+- [mechanism] Recombining N heel parts with N toe parts yields N times N distinct footsteps, so four heels and four toes give 16 variants. When: Building variation from separable sound segments. Why: Each heel-toe pairing is a distinct combination.
+- [mechanism] Storing a transient at full rate and a tail at a lower rate can cut file size by more than half with little audible change. When: A sound's transient is bright while its tail is dull. Why: Only the transient needs the high sample rate.
+- [mechanism] Generating a sound from many short reordered segments can replace dozens of stored sounds with a small total file size. When: Many similar short sounds are needed. Why: Runtime reordering reuses the same segments.
+- [mechanism] A gated loop keeps restarting while its gate is open, so a newly opened gate takes effect only when the current cue finishes.
+- [rule] Audition compressed sounds in the game, since lossy compression can produce unpredictable artifacts and default Vorbis quality 40 can be audibly lossy. When: After applying lossy compression or shipping Vorbis at default settings. Why: Artifacts may not show in editing tools; default quality is a generic starting point, not tuned per sound.
+- [rule] Cut looping sounds into a loop section and tail, and edit the loop point so the join is smooth, since the seam between end and restart is audible. When: Preparing a sound to loop. Why: The join between end and start is audible.
+- [rule] A loop sound cue must contain an explicit Loop node to repeat; without one, the system's default looping applies, so check loop behaviour during setup. When: Setting up looped sounds, such as weapon fire.
+- [rule] Export two files for a loop with folded decay: a first-play version and a looping version, since the looping version on first play gives decays with no notes behind them. When: Looping music whose decay wraps to the start. Why: The folded decay plays wrong on the first playing, before its notes have sounded.
+- [rule] Sound filenames must not contain spaces; replace spaces with underscores.
+- [rule] Lower the sample rate only when the sound has no content near its top frequency, since otherwise high frequencies are lost audibly. When: Deciding whether downsampling is safe. Why: Content above half the new rate cannot be represented.
+- [rule] Stream sounds into and out of memory per game area so only the sounds needed nearby occupy RAM. When: Large levels with memory limits. Why: Limits resident audio to the current area.
+- [rule] Do not change the sound class of existing engine or tutorial assets, since this can cause unintended effects later. When: Modifying shipped or provided sound assets. Why: Other content may depend on their current class.
+- [rule] For fast retriggered weapons, use a short fire sample that retriggers and add a longer tail on trigger release. When: fast retriggered weapons. Why: Retriggering long samples exhausts voices and causes phasing.
+- [rule] Give the composer control over audio file size so creative choices come first, while removing assets only when necessary. When: managing audio budgets for constrained distribution. Why: Creative decisions lose quality when size limits are imposed without input.
+- [heuristic] Set sample rate by how important a sound is and how often players hear it, not by frequency content alone, since usage determines audible impact. When: Assigning sample rates across a project. Why: Frequently heard or key sounds deserve higher quality than rare, distant ones; choosing from frequency content alone can waste or starve memory.
+- [heuristic] Trim leading and trailing silence from sounds before import, e.g. dialogue lines, since silent samples still use memory; in one example this nearly halved file size with no audible change. When: Preparing sound files for import. Why: Silent samples still consume bytes; silence can make up a large share of a file.
+- [heuristic] Choose a sample rate from where a sound's energy lies, not from a fixed rule. Sounds concentrated at low frequencies tolerate lower rates than bright sounds. When: Deciding the sample rate for a game sound. Why: Frequency content determines which rates remove audible detail.
+- [heuristic] Talk to programmers early to learn how audio playback and memory work on the target platform. When: Starting audio planning for any platform. Why: Hardware details may be under non-disclosure and vary by system.
+- [heuristic] An odd number of bars in a loop gives more variation when layered with other loops.
+- [procedure] 1) Cut the initial transient into its own file. 2) Loop the sustained section while the trigger is held. 3) Fade the loop in over about 0.2 seconds on fire and out on release. 4) Play a tail on release. When: Very high fire rates on a looped weapon. Why: Retriggering one long sample exhausts voices at high rates; a loop avoids that.
+- [procedure] 1) Create a new package in the Custom Levels Packages folder. 2) Click Import at the bottom of the Content Browser. 3) Browse to the wav folder and choose the file. 4) Save the package.
+- [procedure] 1) Put two or more loops of different lengths in one ambient sound source. 2) Let them play together. The result drifts out of time and takes a long time to repeat. When: a single loop sounds unnatural or repetitive. Why: loops of different lengths drift apart, producing new combinations.
+- [procedure] 1) Examine frequency over time to find where high-frequency content ends. 2) Split the sound into a transient and a tail. 3) Keep the transient at full rate and resample the tail to a lower rate. When: Saving memory on a sound whose frequency content changes over time. Why: Each segment is stored only at the rate its content requires.
+- [procedure] 1) Add markers in the audio editor at chosen points. 2) Confirm with the audio programmer which marker format the engine reads. 3) Trigger playback from each marker. When: Using multiple start points in one WAV. Why: The engine must read the marker format correctly.
+- [procedure] 1) Stream stereo music, speech, stereo ambience and anticipated big moments from disk. 2) Keep short, frequently used sounds in RAM. 3) Free RAM for interaction sounds. When: RAM is limited and many sounds are needed. Why: Long stereo assets are the costliest to hold in memory.
+- [procedure] 1) Right-click the source sound asset in the content browser and open it in the sound previewer. 2) Wait for the previewer to convert the variants. 3) Double-click a quality setting to audition it. 4) Confirm to apply the chosen setting to the sound. When: Choosing a Vorbis quality level for a sound that will ship with Vorbis compression. Why: Audition before committing so the smallest acceptable quality is picked.
+- [procedure] Give each music layer a short fade-in and a longer fade-out so intensity changes blend in rather than cutting. When: Playing layered ambient music in response to game state. Why: Fades soften changes between layers.
+- [procedure] 1) Copy the sequence so it repeats. 2) Export the result and trim it to keep the second half, which contains the decay. OR 1) Export with empty bars after the loop. 2) Mix-paste the decay portion back into the start. When: Exporting a looping music section whose notes ring past the loop point. Why: Exporting only the loop cuts off sustained tails, so the decay must be folded back in.
+- [procedure] 1) Keep the sentence structure fixed. 2) Record only the variable words, such as team names or home and away. 3) Stitch recorded pieces together in playback. When: Sentences with few changing words. Why: Avoids recording every full combination.
+- [procedure] Remove clicks and pops by zooming into the waveform and editing them, or with a click/pop eliminator in the editor's noise reduction menu.
+- [metric] Halving sample rate halves file size (369 kB at 44 kHz to 186 kB at 22 kHz), so lower rates fit proportionally more seconds in a memory budget. When: Reducing a sample's rate by half or fitting sounds into a fixed budget. Why: File size scales with samples per second; storage per second falls in proportion to sample rate.
+- [metric] A segment with no content above 7.5 kHz can be resampled to 15 kHz without audible change. When: Choosing a lower rate for a low-frequency tail. Why: Sampling at twice the highest content frequency preserves it.
+- [metric] At 16-bit depth, 44 kHz audio uses 88.2 kB per second, 22 kHz uses 44.1 kB, 11 kHz uses 22.05 kB, and 8 kHz uses 16 kB. When: Estimating mono sample storage at 16-bit depth. Why: Storage is sample rate times bytes per sample.
+- [metric] Four loops of 4, 6, 9 and 11 bars realign only after 2,376 bars, requiring 594, 396, 264 and 216 repetitions respectively.
+- [metric] A four-sentence branching exchange needs 25 separate sound files to cover all permutations, so file count grows quickly with branching.
+- [metric] Estimate final audio file size from each line's duration and sample rate, using the prototype's updated duration. When: when planning storage or asset budgets.
+- [tradeoff] Under tight memory budgets, discarding some high-frequency content by lowering the sample rate is often an acceptable cost. When: Memory is tightly constrained. Why: Saved memory can outweigh the loss of top-end detail.
+- [tradeoff] Game audio trades how much interactivity sound can express against how much memory can be spent storing it. When: Planning how reactive sound should be. Why: More expressive sound requires more stored or generated material.
+- [tradeoff] A gate can start open or closed and can close after a set number of messages, controlling when events pass through. When: Designing event flow for sound and alerts. Why: Initial state and message count determine which events reach their target.
+- [tradeoff] Converting loops from stereo 44.1 kHz to mono 22 kHz cuts their memory size by roughly a factor of four or more. When: Storing many loops in limited memory. Why: Lower sample rate and channel count reduce file size.
+- [tradeoff] Crossfading is harder with loops, because all elements must stay in sync while they crossfade.
+- [pitfall] Timing in the editor's quick play window is unreliable, so verify beat-synced audio in a full standalone launch. When: Testing rhythm-aligned sound effects during development. Why: Editor playback timing is inaccurate and differs from the shipped game.
+- [pitfall] Inaccurate loop edits make the pulse drift out of time, and the error grows with every repetition. When: Layering loops over long play sessions.
+- [pitfall] Editing music at arbitrary points in a wav file produces audible clicks. When: Cutting or joining music at points not aligned to the waveform or musical structure.
+- [pitfall] A long loop cycle does not by itself guarantee interesting listening. When: Relying on phasing for variety.
+- [pitfall] Check duration figures derived from loop length and repetition counts before quoting them, since they can fail to reconcile. When: Stating how long a loop set plays.
+- [pitfall] The legacy music track and arrangement tools in an older engine are limited and partly broken, so simple one-shot playback nodes are the better choice for most music work.
+- [pitfall] A loop that does not join smoothly produces an audible seam, which becomes obvious at high firing rates. Why: The seam repeats many times per second.
+- [fact] Sound files must be 16-bit wav, mono or stereo, at any sample rate.
+- [fact] Film can use nearly unlimited channels and top-quality sounds, whereas games must fit instantly playable sounds into a fixed memory budget that may be very small on portable consoles. When: Comparing audio constraints of games and film. Why: Games have a fixed RAM limit at playback time.
+- [fact] Console-specific audio formats such as XMA and Vorbis are designed for games and can reach up to 10:1 compression. When: Compressing game audio for consoles. Why: Formats are built for fast game playback.
+- [fact] Some engines let markers inside a WAV file define multiple start points, so one sample can play from different positions and give variety without chopping the file. When: The audio engine supports WAV cue markers. Why: Markers are stored in the WAV header.
+- [fact] Recording a separate sound for every interaction multiplies sample counts quickly; one desk pen with 13 sound types across 15 surfaces needs 195 samples. When: Planning interaction sounds for many objects and surfaces. Why: Combinatorial growth of object actions times surfaces exceeds RAM and recording time.
+- [fact] CD-quality audio uses about 176 kB per second, so roughly 10 seconds fit in about 1.8 MB of older console sound memory. When: Estimating sample memory cost. Why: Stereo 16-bit 44.1 kHz data rate.
+- [fact] Suggested sample rates by category: 44 kHz for key high-frequency sounds, 22 kHz for player weapons, 18 kHz for dialogue, 11 kHz for distant ambience or room tones. When: Starting sample rate assignments. Why: Rough tiers balancing quality against memory.
+- [fact] Wavetable synthesis plays a stored waveform cycle at varying rates to produce pitched tones, a technique closely related to playing one sample at multiple pitches.
+- [fact] Channel suffixes name speakers: _fl front left, _fr front right, _fc front centre, _lf low frequency, _sl and _sr side left and right, _bl and _br back left and right.
+- [fact] A playback object that sets a fade level and fade time while a sound plays enables analogue-style volume changes. When: Adjusting volume of an already playing sound.
+- [fact] Some sequencers offer a capture-effects-tail export option that reduces the effort of producing decay samples. When: Producing decay samples from a sequencer.
+- [fact] DownLoadable Sound packages custom sample banks with MIDI scores so music sounds as the composer intended on any playback device. Why: General MIDI alone depended on each sound card's instrument set.
+- [fact] Games can last from ten hours to hundreds of hours, far longer than films, which makes writing and storing enough music a problem.
+- [fact] 16-bit audio has limited dynamic range, so the system must control which sounds play and how many to prevent clipping.
+- [fact] Loops convey continuous sources such as engines or turbines and repeat regardless of interactions.
+
+## spatial audio
+- [model] Common distance attenuation curves are linear, logarithmic, inverse, log reverse and natural sound. Linear suits looping room tone; logarithmic suits short-range sounds; inverse suits loud distant sources; log reverse suits sounds stopped by walls. When: Choosing a falloff curve for a point source. Why: Each curve shape matches a different listening situation.
+- [definition] Spatialized sound makes sounds seem to come from a particular place, and it is important and powerful in VR.
+- [definition] Attenuation makes a sound quieter with distance, because games cannot reproduce real-world volume and physics and must approximate them.
+- [definition] A directional sound cone gives a source a front: full volume inside the inner cone, a set reduced level between inner and outer cones, and a reduced, low-pass filtered level outside the outer cone. When: Modelling sources that are louder and clearer in one direction. Why: Directional falloff mimics how a speaker sounds from behind compared with in front.
+- [definition] 2D sound plays over a scene regardless of how far the source is from the viewpoint, establishing setting and atmosphere.
+- [definition] 3D sound grows louder as the player nears its source, marking specific locations and making areas feel more or less spacious.
+- [mechanism] Mono files spatialise to the object playing them and pan between speakers as the player moves; stereo files play directly to the listener without spatialising or localising. When: Choosing file channel format for world sources. Why: Spatialization needs a single source position, which stereo files lack.
+- [mechanism] A sound plays at full volume inside its Radius Min sphere and fades to silence at its Radius Max sphere.
+- [mechanism] Spatialized copies pan as the listener moves, so several copies can make one source sound like many. Disabling spatialization stops this panning. When: multiple spatialized ambient copies. Why: each copy's stereo position changes with listener movement.
+- [mechanism] Applying a low-pass filter whose strength depends on distance makes one stored sound sound duller in the centre and brighter at the edges, letting one sample serve several places. When: One sample must appear in several locations with different tonal character. Why: High frequencies are removed more as distance decreases.
+- [mechanism] Air absorbs high frequencies over distance, so sounds get duller as they travel; a distance-based low-pass filter can approximate this, brightening as the listener approaches. When: Simulating realistic distance attenuation of distant sounds. Why: High frequencies are absorbed more than low frequencies as sound travels through air.
+- [mechanism] Smaller, high-frequency detail layers are added as the listener approaches a source, so close-up sounds reveal more fine detail. When: A complex sound source with several components. Why: Distance attenuates high frequencies and small components first, so they appear only up close.
+- [mechanism] A cue outside its attenuation's maximum radius is not played, so when it enters the radius it starts late and falls out of alignment with other parts.
+- [mechanism] A system that monitors sound levels at the player's location can cull masked quiet sounds, cleaning frequency content and creating headroom for important sounds.
+- [mechanism] Distance algorithm and min/max radius settings in attenuation determine how clearly a sound's direction and distance can be heard.
+- [mechanism] Inside a cue's minimum radius a sound plays normally, while outside it the sound is heard as a personal radio with center speaker routing, radio effects and no distance attenuation. When: A cue uses the radio filter setting. Why: The radio filter replaces spatial playback beyond the radius.
+- [mechanism] Muffled, distant sounds heighten the sense of how near and far things are.
+- [rule] Play a sound through the in-world object it comes from so it appears to originate there and attenuates with distance as the listener moves away. When: Sounds that should appear to originate from a location or in-world object. Why: Distance attenuation makes the sound fade as the listener moves away from the object.
+- [rule] Match echo to the room, since echo in a small room differs from echo in a large one. When: Designing ambience for virtual spaces. Why: Believable echo depends on the space's size.
+- [rule] Size each sound's radii so it covers its own area and does not spill into neighbouring rooms. When: level layouts with several adjacent rooms. Why: Radii set how far each sound is heard.
+- [rule] When attenuation is set inside a shared sound asset, instances cannot adjust the falloff radius per placement in the level. When: Placing many instances of a shared sound asset. Why: Attenuation is stored in the asset, not per actor.
+- [rule] Spatialise mono sound sources that come from a physical point, such as a radio or television, so they pan through the speakers as the player turns. When: Placing in-world sources. Why: Panning a point source gives direction, which helps the player locate it.
+- [rule] Play music not tied to a specific object as 2D to the player, so its stereo image stays fixed while the player turns. When: Music or distant stereo ambience without a source location. Why: A 2D sound is not positioned in the world, so it does not pan or attenuate with the listener.
+- [rule] Stop a diegetic sound when its source is destroyed, and play an effect at the source to show it. When: when the source object is destroyed.
+- [rule] Check that a voice actor can play several distinct characters, ideally at least four and often many more. When: Hiring voice talent.
+- [rule] Use 2D sound to establish the vastness of a space or for important sounds that must always be heard.
+- [rule] Use 3D sound to guide players, mark paths, or flag secrets, and 2D sound for atmosphere that covers the whole space.
+- [heuristic] In third-person or isometric games, camera-based audio can reveal sources the character cannot see; keep camera-based spatialisation where the player's view and hearing should match. When: Designing listener position for third-person, isometric or aligned-perspective sequences. Why: Camera sees more than the character, so its audio can reveal unseen sources; matching sound direction to view reinforces spatial awareness.
+- [heuristic] Spatialised music or score pans oddly and distracts the player, so lay it as non-spatialised stereo or move only part of its reverb into the surrounds. When: Adding music or score to gameplay or cut-scenes. Why: Spatialising score makes it pan oddly and distracts from the action.
+- [heuristic] Real-world sound falloff is not copied directly in games, because playback dynamic range is limited, game distances differ from real ones, and very large radii keep many quiet sounds playing. When: Setting attenuation radii for game sounds. Why: Recording and playback cannot match physical dynamic range, and wide radii consume voices.
+- [heuristic] Pair a non-spatialised stereo ambience bed with locally spatialised spot effects, since obvious panning across a stereo ambience sounds odd. When: Building environmental ambience. Why: The bed stays stable while localised sources give direction.
+- [heuristic] Distance bands can switch between sounds using comparison logic, so each range plays its own cue.
+- [procedure] 1) Put 2D and 3D audio cues in a map. 2) Watch how players react to the 3D cue. 3) Check whether the 2D sound changes how players view the map.
+- [procedure] 1) Select the sound actor and open its properties (F4). 2) Under the simple ambient sound settings, open Attenuation and set Radius Min and Radius Max. 3) Or select the actor, press space to cycle to Scale, and drag the square handles to change the Max radius.
+- [procedure] Use several instances of the ambient sound to fill the room without spilling past the walls, in engines lacking occlusion. When: a source must fill a room but not leak. Why: multiple sources keep the sound inside the space.
+- [procedure] 1) Render a filtered version of a sound in an audio editor. 2) Crossfade between the dry and filtered files by listener distance using a distance crossfade node. 3) Set the closest input to full level near the source. When: The engine lacks a filter-over-distance setting. Why: Prerendered filtering can capture complex frequency changes that a simple low-pass filter misses.
+- [procedure] 1) Copy the sound cue and re-reference the playing sound. 2) Enable spatialization, attenuation and attenuate-with-low-pass-filter. 3) Adjust the low-pass filter radius maximum and minimum until the distance falloff sounds right. When: Making a distant sound darken with distance. Why: The low-pass radius values set where filtering begins and ends.
+- [procedure] 1) Import channel files with suffixes to get one combined multichannel sound. 2) Loop it in a sound cue. 3) Re-import the channels without suffixes. 4) Place a note per speaker position and target each with a sound cue and playback.
+- [procedure] 1) Count NPCs within a radius of the player. 2) When the count passes a set number, swap their footsteps to tighter attenuation curves. 3) Use separate curves for single-player and multiplayer.
+- [procedure] 1) Create an object variable for the sound target in the scripting graph. 2) Assign any actor, including an invisible note actor, as the source. 3) Use a tag display option to locate the source in the editor. When: Playing a sound from a position that has no visible mesh.
+- [procedure] 1) Split the stereo file into left and right channels. 2) Play each channel through a point source at its own position. When: Spatializing a stereo music source in the world. Why: Separate point sources give a stereo file a localized position.
+- [procedure] 1) Attach a dynamic trigger to the player actor. 2) Set an offset behind and above the player. 3) Play the sound through that trigger.
+- [metric] Delaying sound so it moves near 100 meters per second feels noticeably realistic in third- and first-person titles.
+- [tradeoff] Prerendered crossfaded filter versions give finer control over distance-based tone than a simple low-pass filter, at the cost of extra audio files to produce and store. When: Choosing between runtime low-pass filtering and prerendered variants. Why: Real frequency changes with distance are more complex than a single low-pass cutoff.
+- [pitfall] Center channel, bleed, rear and spatial effects need a 5.1 or higher multichannel speaker system; expecting them on stereo playback will fail. Why: They are only clearly audible on surround hardware.
+- [pitfall] Overly large attenuation radii fill the mix with quiet sounds, consuming headroom and voices. When: Setting max radius for many point sources. Why: Every audible source takes a voice even when it is quiet.
+- [pitfall] Sound that pans with a turret or camera rather than the driver's position can feel wrong to the player. When: Vehicle sounds tied to a rotating turret or camera. Why: Panning that disagrees with the player's viewpoint breaks immersion.
+- [pitfall] Getting attached to early sound ideas is a pitfall, because they will change several times.
+- [pitfall] Using raw distances, which run into the thousands, directly as delay times produces delays of around 1,000 seconds.
+- [pitfall] Curve-based vehicle tuning is hard for non-programmers to reach, so designers often need custom vehicle versions.
+- [fact] Many engines ignore walls and lack accurate sound propagation, since full propagation exceeds console processing power, so occlusion needs deliberate workarounds.
+- [fact] Sound is carried as compression waves in any medium, and its intensity falls with distance from spreading and friction.
+- [fact] In air, sound moves at roughly 345 meters per second.
+- [fact] In first-person games, sound comes from the player's head, which is the camera; in 2D, third-person or fixed isometric games, sound may come from the character or a point offset from it.
+- [fact] Directional sound cones were not available in UDK at the time of writing, so other engines may be needed for this effect. When: Choosing an engine for directional audio.
+- [fact] Keeping versions of a sound with different filter settings allows variation for conditions such as hot sun or dense fog. When: Designing atmospheric audio across environmental conditions.
+- [fact] Stereo files, ambient sound simple actors and any sound cue without an attenuation object are usually not spatialised. When: Checking which sounds pan or attenuate.
+- [fact] Spatialisation gives direction information, which matters most for weapon fire, footsteps and dialogue. When: Deciding which sounds to spatialise. Why: Direction helps players locate threats and understand speech.
+- [fact] A copied animated actor that already has movement sounds keeps them, so each duplicated segment moves with its own sound.
+- [fact] Multichannel files play to fixed speakers and do not pan, so they suit explosions, surround music and quad or surround ambiences.
+- [fact] Layouts such as 5.1, 6.1 and 7.1 each use a different subset of the channel suffixes.
+- [fact] Files with matching channel suffixes import as one combined sound wave.
+- [fact] Sound travels from a source as waves and reaches the listener directly (dry) or after reflection or passage through materials (wet), and the balance between them tells listeners about their surroundings.
+- [fact] Stereo sound files do not pan in UDK, so the spatialize option has no effect on them, though they still attenuate when played from an object. When: Engine sound playback with stereo files.
+- [fact] Standard spatialization applies a low-pass filter over distance, which may not suit weapon sounds.
+
+## ambient zones and soundscapes
+- [definition] An ambient zone is a reverb-volume setting that tells the audio system how sound is attenuated and filtered depending on whether the listener is inside or outside the volume.
+- [definition] Ambient zone settings are interior volume, exterior volume, interior low-pass filter and exterior low-pass filter, each with a transition time between the inside and outside states.
+- [mechanism] Overlapping copies of the same sound roughly double the perceived volume, so their radius minimum and maximum values must be adjusted. When: multiple overlapping ambient sound sources. Why: summed sources add up in level.
+- [mechanism] Non-looping ambient sounds played at random delays avoid long loops in memory and vary how often and when each sound appears. When: building natural ambience from individual elements. Why: random timing hides repetition.
+- [mechanism] When the listener passes from one ambient zone into another, the exterior effects of the outer zone stack with the interior effects of the inner one, so sound is attenuated further, as in real space. When: Listener moves between nested or adjacent zoned spaces. Why: Physical sound passes through each barrier and loses energy cumulatively.
+- [mechanism] Controlling each crowd sound's volume during playback lets it fade up or down with game variables, so crowd response tracks game state. When: Complex blending of sourced crowd recordings.
+- [mechanism] Eerie light and chanting with no visible threat can sustain tension during a quiet moment. When: during low-action moments. Why: Cues without visible sources keep tension alive.
+- [mechanism] Changing ambient sound from natural noises to steady drums and unsettling tones raises tension as the player collects objectives.
+- [behavior] Even a simple room tone can strongly affect the mood of a space.
+- [rule] Never leave an environment completely silent unless silence is an explicit aesthetic choice, and even then it is discouraged. When: designing any space. Why: real spaces rarely are silent.
+- [rule] Use one large ambient zone around a building for a sound that covers the whole level, instead of placing many emitters around each building's geometry. When: A broad environmental sound such as rain spans the level. Why: Engines often do not know where walls are, so zones supply that geometry.
+- [rule] In multi-floor buildings, separate floors horizontally with ambient zones so that sound does not bleed between floors. When: Building with several stacked floors. Why: Sound from one floor would otherwise leak into the floor above or below.
+- [rule] Base movement sounds on how the character moves, the surface underfoot, and the situation, giving each situation its own sound set.
+- [rule] Moveable ambient sounds always loop their sound cue, even when the cue itself is not set to loop.
+- [rule] In intense moments, turn off quiet ambience when frequent loud events would mask it, freeing digital headroom and simplifying the mix. When: when many loud events occur. Why: Loud, frequent events mask quiet ambience anyway.
+- [heuristic] Let a lift or platform start when a character stands on it, not only from a switch, when players should ride it directly.
+- [heuristic] For distant ambiences, attach individual channels to invisible objects so the sounds move as the player rotates.
+- [heuristic] Area-based sources sound less directional with a large minimum radius and a linear or logarithmic-reverse curve, so they pan less. When: the source comes from an area rather than a point.
+- [heuristic] When isolating sounds with ambient zones, decide for each sound whether to attenuate, filter, or both.
+- [heuristic] Let an ambient sound set the mood on entry, then fade it to a lower level, making its point and then receding.
+- [heuristic] For surround ambience, mix it in a digital audio workstation as a multichannel source and import it into the engine. When: When stereo playback cannot create spatial effects.
+- [heuristic] Use a sudden stop of a constant room tone to make the player expect something, rather than for constant scares. When: When building anticipation. Why: Stopping a sound is rarer than a sudden sound, so it is more effective.
+- [heuristic] Ambient sound effects tied to the game's activities build the atmosphere of a setting.
+- [procedure] 1) Select a sound in the asset browser. 2) Right-click the floor in the 3D view and choose Add Actor, then add a simple ambient sound actor using that sound. 3) Play from that floor point to test. When: quick placement of a room tone in an empty room.
+- [procedure] 1) Open the Content Browser's Actor Classes tab. 2) Expand Sounds, then the ambient sound category. 3) Select the simple ambient sound actor and right-click the Perspective viewport to add it. 4) If no sound was selected, assign one with the green arrow in its properties. When: when an actor type is not in the right-click menu.
+- [procedure] 1) Place ambient sound actors for machinery using existing or imported sounds. 2) Balance the mix by setting each sound's Volume Scale, with 1.0 as the maximum.
+- [procedure] 1) Select a sound in the Content Browser. 2) Open the ambient sound actor's properties. 3) In the Wave slot, click the green arrow to assign the selected sound. 4) Reselect the sound if the arrow does nothing.
+- [procedure] 1) Place inside and outside toggleable ambient sounds. 2) Create a Touch event on the trigger volume. 3) Use Touched and Untouched outputs to toggle the inside and outside sounds. When: moving between indoor and outdoor areas.
+- [procedure] 1) Set a minimum and maximum delay between sounds. 2) Set each sound's weight to control its relative chance. 3) Enable modulation to randomize volume and pitch on each play. When: configuring randomized ambience. Why: delay range sets frequency, weight sets selection, and modulation adds variation.
+- [procedure] 1) Start with the complete object. 2) Play its movement sequence in reverse. 3) Its open and close sounds also play in reverse, so the object appears to assemble itself. When: an object is built up rather than taken down.
+- [procedure] 1) Convert the static mesh into an animated actor. 2) Key its movement in a sequence. 3) Add its sounds to the actor's properties or as sound tracks in the sequence.
+- [procedure] 1) Select the animated actor. 2) Create a mover event from it. 3) Its output fires when a pawn is attached to it. 4) Edit the movement sequence the event generates.
+- [procedure] 1) Attach a trigger volume to each note panel. 2) Set it to detect projectiles by touch, blocking complex collisions and ignoring zero-extent queries. 3) Link each hit to a sound playback. When: Building projectile-activated musical panels. Why: Trigger volumes detect projectile contact and route each hit to its note.
+- [procedure] 1) Attach triggers to moving objects. 2) Offset them so they sit on the floor, not at the object's origin. 3) Keep a central trigger fixed to add a stable base value. When: Triggers that follow moving lights or actors. Why: Attached triggers move with their actor, so offset keeps them at ground contact.
+- [tradeoff] Ambient zones cannot overlap, so each must fit its room exactly; yet overlapping toggleable reverb volumes switched by door state can muffle an outer ambience to simulate occlusion. When: Placing zones in a level with several rooms holds the no-overlap rule; simulating occlusion from doors or walls in an interior layout uses toggled overlapping volumes. Why: Zones without exact boundaries leak sound between rooms, while each toggled volume changes the reverb and filter applied to sounds inside it.
+- [tradeoff] Placing several smaller sounds around geometry fakes occlusion, but costs time and voices and can cause phasing.
+- [pitfall] Moving a sound's origin away from its object to stop overlap through walls is not a satisfactory fix. When: a source leaks into a neighbouring room.
+- [pitfall] A hard switch has no midpoint, so a player standing in a doorway flickers constantly between the two sound states.
+- [pitfall] Fixed ambient zones do not change when the player opens a door or window or breaks a wall, so the audio stops matching the situation. When: Environments the player can alter. Why: Zones configured in advance cannot react to changed barriers.
+- [fact] A rain environment can use six types: general rain, rain on trees, rain on water, rain on a metal roof, rain on hollow metal barrels, and rain on plants.
+- [fact] Real buildings and spaceships usually have constant or repeating electrical or mechanical sources, which looping sound files can reproduce.
+- [fact] Movers have six sound slots: Close (start of closing), Closed (end of closing), Closing (loop), Open (start of opening), Opened (end of opening), and Opening (loop).
+- [fact] Moving sound sources make a space feel more realistic whether or not the source is visible.
+- [fact] Crowd audio is not music, so its layers do not need to align in time, unlike interactive music layers.
+- [fact] In dungeon-crawling levels, object sounds can signal events happening elsewhere in the level.
+
+## music emotion and style
+- [model] A tempo-matched pulse can emit a beat event on every beat and a measure event on the first beat of each bar, to drive timed music changes. When: when music changes must align to the beat or bar.
+- [definition] Empathetic music supplies the emotion a moment expects, like a climactic theme for a large battle, completing it rather than repeating what is on screen.
+- [definition] A leitmotif is a musical motif tied to a character, group or entity, so that hearing it signals that subject's presence or state.
+- [definition] A score can express the feeling that underlies what a player does in the game.
+- [mechanism] A piece of music that suits the intended play makes many subconscious decisions about the game's feel and atmosphere.
+- [mechanism] Sudden sounds shock, but stopping a sound that has been present since the start creates anticipation, which builds tension.
+- [mechanism] Sparse melodic instruments and a constant ambient wind can produce relaxation and happiness.
+- [mechanism] Pleasant major-key tones can mark forward paths, while harsh minor-key tones mark paths that return players to the start.
+- [behavior] Reserve music for emotionally important moments and fade out persistent states, since constant music loses its signalling power. When: Deciding how often music plays or when music signals important events. Why: Constant music stops signalling anything; contrast with silence makes situations stand out.
+- [behavior] Instrument choice evokes a time, place and culture faster than melody, harmony or rhythm. When: Choosing an instrument palette. Why: Instrumentation is the most immediately evocative musical element.
+- [behavior] Music acts continuously and largely unnoticed; the unconscious mind converts it into a steady current of feeling. When: during play or film with background music. Why: conscious attention skips music while the unconscious keeps processing it.
+- [behavior] Sounds that echo genre tropes, such as distant battles or running out of ammunition, quickly signal the situations players expect.
+- [rule] Blend music with sound effects and world sounds, using environmental and creature noises as instruments, so effects and loops are heard as one integrated piece. When: composing game audio. Why: Separate-sounding effects break immersion; blended audio strengthens immersion. (x2)
+- [rule] Choose music early, possibly before the game is fully defined, since it shapes the game's feel.
+- [rule] Use genre music conventions as a starting point, and depart from them deliberately when the design calls for it.
+- [rule] Use a legacy music-track node only when one piece must play unchanged across a whole level.
+- [rule] Let mix and music chart the emotional landscape of a game, shaping how it feels across its moments.
+- [rule] Fast tempo suits action and slow tempo suits relaxation, and rhythm that follows natural body beats feels natural. When: Choosing music tempo.
+- [heuristic] Tying music or sound tempo to game speed, such as enemy movement speed, gives players an audio cue that danger is increasing. (x2)
+- [heuristic] Compose each character's motif to fit with the others, writing them over the same harmonic structure and defining locations through accompaniment instrumentation. When: Many motifs and locations may sound together. Why: Shared harmony keeps melodic clashes manageable.
+- [heuristic] Music can act as a theme that channels the design; if part of the game clashes with the music, that part should change.
+- [heuristic] Writing layers over a static harmony, such as a single chord or drone, makes vertical combinations easier and reduces the repetition a chord cycle creates.
+- [heuristic] Positive meanings often rise in pitch and negative meanings often fall, a rule of thumb borrowed from speech. When: Designing positive and negative feedback sounds.
+- [heuristic] Fast tempo with large pitch variation tends to express joy, and melodies in minor keys are often perceived as sad.
+- [heuristic] Music that departs from a genre's conventional instrument palette can help a game feel distinct from its peers.
+- [heuristic] Fast songs aid mental clarity, smoother songs aid relaxation or concentration, and slow music with oppressive riffs lowers mood.
+- [heuristic] Slow, melodic music with faint echo can make a space feel ethereal.
+- [heuristic] Accompany the gain of a new weapon or ability with a heroic tune.
+- [heuristic] In reward vaults or vistas, use a relaxing melody that contrasts with the intense rhythms of the challenge before it. When: after intense challenges. Why: contrast marks relief and reward.
+- [procedure] 1) Listen to game music and describe the emotions it evokes. 2) Watch the levels the music accompanies. 3) Note whether the music matches the action or contrasts with it.
+- [procedure] 1) Give each threat a rating. 2) Have overlapping threat areas add their ratings, capped at a maximum. 3) Compare the total against thresholds, playing the matching intensity layer and stopping the others. When: Mapping overlapping scare sources onto music intensity levels. Why: A central variable summing triggers lets the music reflect how many threats are near.
+- [procedure] 1) Play the soundtrack alone, away from the game. 2) Judge whether it recalls much of the feeling of play. Strong recall means music carries much of the emotion. When: judging how much emotion music contributes.
+- [metric] With n independent on/off music variables there are 2^n combinations; ten variables give 1,023 non-empty combinations. When: Planning how many distinct musical states a game can produce.
+- [fact] Artwork and sound can convey a physical state such as cold, such as visible breath, shivering, or wind whistling, without real conditions matching.
+- [fact] Genre music norms: casual/puzzle games use simple loops; platformers use retro synth; racing uses licensed pop; sports/simulation use menu-only or licensed radio music; strategy/RPG/MMO use location music; action/shooter are cinematic.
+- [fact] Music explicitly tied to game variables becomes an informational device that can convey information players cannot get elsewhere.
+- [fact] The same melody can feel lonely on a solo flute and ready for battle on brass and drums, so instrumentation shapes its emotional meaning.
+- [fact] Streaming large recorded files from CD, DVD and Blu-ray made rendered audio practical and it became the mainstream choice over MIDI. Why: Storage capacity removed the file-size constraint.
+- [fact] In-world music sources help establish a game's time, place and culture.
+- [fact] Streamed audio gives consistent playback, arguably better sound quality, and recorded musicians, which MIDI with DLS cannot match. MIDI with DLS suits memory- or bandwidth-limited platforms or note-level control.
+- [fact] Unlike music, most game audio originates with things and creatures inside the game's environment.
+- [fact] Music is universal across humans and can trigger visceral responses.
+- [fact] Music can modulate activity in limbic structures involved in emotion, including the amygdala, hypothalamus and hippocampus.
+- [fact] The brain is drawn to certain repetition, and music's tendency toward repetition makes it inherently pleasurable.
+- [fact] Nonmusical sounds carry strong emotion: grinding metal evokes tension, a pulse evokes anticipation, rain evokes calm, whistles evoke silliness, and squelching evokes disgust.
+
+## sound design practice
+- [mechanism] Sound effects repeatedly paired with threats, failures or successes become conditioned cues that trigger matching emotions when heard again. Why: conditioning links a sound to the outcome it accompanies.
+- [mechanism] Sound creates rhythms that players learn to expect, which can change their speed and support layered challenges.
+- [rule] Judge interactive game music inside the game, in the context where players will hear it, rather than as standalone concert listening. When: When reviewing or approving game music. Why: Music's job is to improve the game, and players experience it in context.
+- [rule] Before recording, multiply interaction sound types by surfaces to test whether the planned set fits the memory budget and recording time. When: Planning a set of interaction sounds. Why: Hearing repeated samples breaks immersion, but full coverage can exceed RAM, disk and time.
+- [rule] Record all equipment and actor-relative mic and script positions with photos and measurements, stored in the session, so later lines still match. When: when lines may be recorded in different studios or months apart.
+- [rule] Keep rejected sound concepts, since they are often wanted and approved months later.
+- [rule] Capture location and studio recordings cleanly, so they remain usable as source material for later processing and layering.
+- [heuristic] Build a quick audio mockup and play it for the team instead of describing the sound idea in a design document, since most people lack vocabulary for sound. When: When people struggle to describe audio or a sound idea.
+- [heuristic] Use other games, earlier entries in the same series, and films as musical references, since established cues act as emotional shorthand. When: When discussing music style with producers. Why: Shared references convey emotional tone quickly.
+- [heuristic] Extract maximum variety from minimal source material, and grasp your tools thoroughly to exploit their full potential. When: Designing game audio under memory limits. Why: Interactivity must be balanced against the memory available to store sounds.
+- [heuristic] Use subjective or interpretive audio that reflects the character's state rather than strict realism when it better serves the moment. When: The character's state matters more than a literal sound source. Why: Audio shaped by the character's perception strengthens immersion from their point of view.
+- [heuristic] Use ducking and EQ changes in the mix to focus attention and model altered physical or psychological states, which deepens immersion.
+- [heuristic] Re-creating existing soundtracks in video quickly reveals whether a sound designer has a good ear.
+- [heuristic] Train listening by tapping, rubbing and scraping everyday objects, and by stopping to notice sounds in the street.
+- [heuristic] Sound need not be realistic to be satisfying; exaggerated, stylized sounds can give more satisfaction than realistic ones.
+- [heuristic] Use simple effects that share one consistent relationship, such as pitch and size, rather than many splashy effects with no common logic. When: when choosing how much polish to add to sound and visuals. Why: Consistency conveys physical properties more clearly than lavish effects.
+- [heuristic] When visuals become more realistic, replace playful effect sounds with ones that match the physical interaction so actions seem logical. When: Raising visual realism in a stylized game. Why: Mismatched sounds break believability.
+- [procedure] 1) Edit existing music against the game's graphics or illustrations. 2) Present the edits to producers as references. 3) Use the reactions to find the desired style before writing full music. When: When establishing a music aesthetic early in production. Why: Producers often lack musical vocabulary, so real examples communicate style better than words.
+- [procedure] 1) Identify separate peaks with gaps in a waveform. 2) Mark and save each peak as its own file. 3) Concatenate the files in random order inside a cue. When: Working with sounds made of distinct peaks, such as beeps. Why: Separate events can be reordered into new sequences.
+- [procedure] 1) Pitch the recording up in an audio editor. 2) Import it. 3) Play it back at the inverse pitch scale in the engine to restore its original pitch. When: A needed pitch shift exceeds the engine's range or the file must shrink. Why: Compensates for the engine's limited pitch range.
+- [procedure] 1) Mark the musical in and out points of each section of a commercial track. 2) Calculate bar-line times from tempo and beats per bar. 3) Store markers as file metadata. 4) Call markers at bar lines during play. When: The track has a steady tempo and its sections map clearly to intensity levels. Why: Markers allow interactive switching without cutting the audio file.
+- [procedure] Talk through the character and context with the actor before recording, and stay open to an original angle the actor brings. When: Before a voice recording session.
+- [procedure] 1) Build a normal version of a scene. 2) Build a second version with a changed theme. 3) Compare the two to see how sound shifts mood.
+- [procedure] 1) Pause at each branching point. 2) Listen for whether the guiding sound gets louder or softer. 3) Choose the direction where it grows louder. When: a sound marks the correct branch.
+- [tradeoff] Game audio balances good quality, large variation and small memory footprint; a project can usually satisfy only two of the three. When: Deciding which quality to sacrifice for a sound. Why: Each pair of goals costs the third.
+- [pitfall] Adding music and sound only at the very end of development is a common mistake.
+- [pitfall] A stat fix can go unnoticed when sound is poor, and a sound fix can seem like a balance fix. When: Evaluating weapon changes. Why: Players judge weapons by how they sound as well as their numbers.
+- [fact] The musical aesthetic producers want may differ from what the composer expected, so concepting should happen before much music is written. When: At the start of music production.
+- [fact] Audio sketches set a prototype's tone and help bring animatics and other prototypes to life.
+- [fact] In game audio, creation and implementation cannot be separated, so composers need to understand the systems that govern their music.
+- [fact] Audio mockups make people quickly voice dislikes, influence other departments such as animation, form early sound associations, and prompt team discussion.
+- [fact] Sound effects are often revised to reduce perceived violence, as seen with film age ratings.
+- [fact] Game sound makes flat images feel substantial, sets mood, describes off-screen space, and gives feedback on actions and status.
+- [fact] Sound design work is often grouped into atmospheres, weapons, creatures and spells.
+- [fact] Game sound design follows the Foley process used in film, with the added requirement that sounds be repeatable in play. Why: Repeated playback makes identical sounds stale, so the design must support variation.
+- [fact] A sound designer may be asked for effects and music late in production, or may lay out the full audio plan early so sound supports gameplay.
+- [fact] Sound is a major part of how players understand a gamespace, alongside visuals, mechanics, and problem-solving.
+
+## loudness and level control
+- [model] What the player hears depends on source volume, source count, timbre, spatial format (3D, stereo, multichannel), distance attenuation, reverberation, occlusion, and global, group or bus volume controls.
+- [model] Six concerns shape a game soundscape mix: arrangement, panning, volume, compression and limiting, EQ, and reverb.
+- [definition] Additive mixing brings in new sounds or raises existing ones in response to game variables, in order to signal a state.
+- [definition] Normalization measures a file's peak sample and scales its gain so that peak reaches a chosen target value.
+- [definition] Arrangement is the number of simultaneous sound sources, set by the activity map, voice limiting and occlusion.
+- [mechanism] A timed mix mode with a recharge period, guarded by a gate, cannot be retriggered while active, keeping its effect predictable.
+- [behavior] Players judge loudness relative to preceding sounds: a quiet sound feels loud after quiet surroundings, and a loud event's impact depends on its level change from the passage before. When: Any game with varying ambient and event audio; when a loud sound follows a quieter passage. Why: Loudness is perceived comparatively; hearing is sensitive to changes in volume rather than absolute loudness.
+- [behavior] Adding fine detail layers only near a source can keep the mix cleaner when many sources are active at once. When: Several enemies or sources are audible at the same time. Why: Distant sources contribute only their low-detail layers, reducing clutter.
+- [behavior] Quiet sounds that matter in calm scenes are masked by louder events during action and go unheard. When: when loud events play nearby. Why: Louder sounds mask quieter ones.
+- [behavior] Many PC players set their volume by the loudness of a notification sound, such as a new-mail alert, which can be very loud on older systems.
+- [rule] Keep quiet sounds and music quiet so that loud sounds stand out, and avoid making everything loud. When: Mixing game audio across all content. Why: Without quiet reference points, players lower the volume and loud moments lose their impact.
+- [rule] Play movement sounds louder briefly when the surface changes, then let them fade, since they compete for headroom and voices in firefights. When: during combat. Why: movement sounds crowd out voices and weapons.
+- [rule] Set predetermined preamp levels for normal, whispered and shouted lines to get the best signal-to-noise ratio for each delivery.
+- [rule] Reset a sound mode manually when its end is tied to an event, such as an explosion, so the event's audio is unaffected by the mode. When: when the mode's end is tied to a scene event.
+- [rule] Mix so players never need to touch the volume control to hear the game.
+- [rule] Normalize assets to full scale where possible, since in-engine mixing reduces gain rather than boosting it. When: Preparing source files for a game mix. Why: Mixing can only lower levels cleanly, so headroom must be preserved at the source.
+- [heuristic] A mix can be intentionally busy or intentionally sparse, depending on what the moment needs.
+- [heuristic] Use an 'Only' sound mode, which silences other classes, to find which part of the mix causes a problem. When: When troubleshooting a mix problem.
+- [heuristic] Switch sound modes in response to gameplay events, such as when a cut-scene starts, to change the mix.
+- [procedure] 1) Divide the game into contained windows such as save-point segments, levels, or exploration and conflict sections. 2) Plan loud and quiet passages within each window. 3) Balance intense sections with quiet or tense ones. When: Planning the dynamic shape of game audio. Why: Players return at different times and volumes, so a single film-style climax cannot be relied on.
+- [procedure] 1) Scale the game variable into a useful volume range. 2) Send a fade trigger each time the value changes. 3) Move the volume to the new level over a short fixed time. When: Driving music volume from a changing game value. Why: Short fades keep changes smooth while tracking the value.
+- [procedure] 1) Attach a trigger to the player so it moves with them. 2) Give it a radius of about 900 units. 3) Count enemies entering the radius. 4) When more than two are inside, stop one playing sound and toggle off two toggleable ambient sound actors.
+- [procedure] 1) Play the console startup sound and dashboard sounds. 2) Set your playback so these are comfortable. 3) Mix the game against that level, which approximates typical player listening volume. When: No professional mixing room is available.
+- [procedure] 1) Activate the altered mix mode when the event occurs. 2) Play the event sound and any tone. 3) After a fixed duration, reset the mode to default. When: A short, single-event altered audio state. Why: A timed reset returns the mix without manual intervention.
+- [metric] A class's volume multiplied by a center-channel adjuster gives its center volume, for example 0.2 times 10 equals 2.0.
+- [metric] Starting volumes per category are roughly: dialogue 1.4, weapons 1.1, music 0.75, ambience 0.5. These assume raw files are already at similar loudness. When: Setting initial volume multipliers for an engine mix, after raw assets are normalized.
+- [tradeoff] Manual leveling by an experienced engineer gives the best result, but is rarely practical at around 350,000 lines, while automatic averaging of wav volume rarely works. When: Leveling large dialogue volumes.
+- [pitfall] Perceived loudness depends on frequency content, not only sound level, so averaging decibel values or matching peak levels can make sounds seem wrong or unequal.
+- [pitfall] A playing sound's volume cannot be changed by a volume multiplier set on playback; the multiplier only applies when the sound starts.
+- [pitfall] Ducking the whole volume of many sounds can sound artificial; a subtler method called notching may suit better where it fits.
+- [pitfall] Interrupting a mix mode loses the prior state unless it is tracked explicitly, so the system does not resume it afterward.
+- [pitfall] Editing the shared sound classes and modes package changes every later call to that mode across the game, so back up the original before changing it.
+- [fact] Headphones and portable speakers often have limited frequency response, so very high sample rates may add no audible benefit. When: Choosing sample rates for portable or consumer playback. Why: Output hardware cannot reproduce frequencies beyond its range.
+- [fact] The engine's interactive mixing tools are less transparent than desired and have limits, so simple systems can still be used creatively.
+- [fact] Game mixing resembles music production more than film mixing, because many elements sound at once and the player may listen selectively.
+- [fact] Triggered mixing is also called active mixing, while predetermined and automated mixing are called passive mixing.
+
+## feedback audio cues
+- [definition] Stingers are short motifs or cues played over existing music to highlight or acknowledge specific game events without changing the whole score.
+- [definition] Audio rewards are not rewards in themselves; they enhance other rewards or guide the emotion of a rewarding scene.
+- [mechanism] A timer-expiry sound jolts players out of a trance-like focus and back to awareness that the game is ending. When: designing timer or time-limit feedback. Why: Sudden audio breaks absorbed attention and restores awareness of time pressure.
+- [mechanism] Hidden audio sources that reward collection turn listening into an optional side exploration activity.
+- [behavior] Distinct enemy vocalizations heard before enemies are visible let players locate an attack's direction and change their priorities. When: Enemies approach from directions the player cannot yet see. Why: Sound reveals direction and threat before sight does. (x2)
+- [behavior] A distinctive alert sound that signals imminent danger triggers emotional and behavioral responses in players through conditioning. When: a sound repeatedly precedes danger. Why: the sound has been paired with threat.
+- [rule] A distinct sound or visual cue attached to a reward can make players anticipate that reward before they see it. When: Designing chests, pickups or other reward objects. Why: Players learn the cue-reward pairing and respond to the cue with heightened awareness and anticipation.
+- [rule] Attach a short musical stinger to each event that confirms a successful player action, so every success is musically acknowledged. When: Rewarding precise actions such as jumping onto a moving platform.
+- [rule] Stop the adaptive music system when a terminal cue such as victory or death plays, so nothing else follows. When: when a victory or death cue plays.
+- [rule] Fire stingers from gameplay events such as hits, playing them as a separate sound over the background music. When: when a gameplay event needs acknowledgment.
+- [rule] Over melodic or harmonic music, track the music's playback position before layering pitched stingers, to avoid clashes. When: when the background music has melody or harmony.
+- [rule] Give clear, specific direction; avoid reading a line for the actor to imitate, using that only as a last resort. When: Directing a voice actor. Why: Most actors dislike imitation.
+- [rule] Run a countdown threat on a delay that the player's correct action cancels, so that action also stops the ticking. When: when a timed threat must be defusable.
+- [rule] Give each beneficial or harmful pickup type a clearly distinct sound so players can tell them apart by ear. When: Multiple pickup types with different effects exist. Why: Distinct sounds let players identify the effect without looking.
+- [rule] Match audio to the rhythm of the player's clicks and keystrokes, since audio can either support or disrupt that input rhythm. When: designing audio for digital input-driven play. Why: Sound timed against input reinforces the player's pace; mistimed sound breaks it.
+- [rule] When paths look identical, give each option a distinct sound so players can listen to find the one that leads forward. When: visually ambiguous choices.
+- [rule] Use audio to warn that a hidden threat is nearby, so players can turn away instead of dying unfairly. When: a threat is hidden from view but the player must act on it. Why: Unseen threats otherwise cause unfair deaths.
+- [rule] Celebratory sounds like jingles and fanfares can mark solved puzzles, gained items, and victories. When: after puzzles, item gains, or victories. Why: sound marks success for the player.
+- [heuristic] Use stingers for actions too brief to justify a full change in intensity. When: when an event is brief.
+- [heuristic] Build a stinger from several short variants and choose one at random each time it plays. When: when a stinger plays repeatedly.
+- [heuristic] Stingers work over purely rhythmic background music, since no melody or harmony clashes with them. When: when the background music has no melody or harmony. Why: no pitched content can clash with the stinger.
+- [heuristic] Music written for scenarios with a fixed duration can build naturally to a climax, since the timing is known in advance. When: the scenario has a set length.
+- [heuristic] Use sound to confirm player input or announce that something new is about to happen, but not to convey precise information. When: designing feedback channels. Why: Sound signals events well but conveys exact values poorly.
+- [procedure] 1) Decide how the interface should feel if it were a real physical object. 2) Choose sounds that create that feeling.
+- [procedure] 1) Start from one short triangle wave as the sole source. 2) Create several sound cues that reference it. 3) Shift each cue's pitch with an oscillator to produce a distinct alarm. When: building varied alarms from one sound source. Why: pitch modulation changes a single tone into distinct alarms.
+- [procedure] 1) Route an alert message through a gate. 2) Set the gate closed when the line of sound is blocked, such as a closed door. 3) Open the gate when the path is clear, so the listener only reacts to audible alerts. When: Faking a guard's hearing of a noise event. Why: A gate that blocks the message stops the enemy from reacting to a sound it could not hear.
+- [procedure] 1) Route a damage event to a randomized cue with at least 10 lines expressing uncertainty. 2) Delay the response. 3) Play a give-up line after the delay. 4) Count events in a counter; at a threshold of two rapid hits, trigger the alert. When: Designing AI reaction to player noise.
+- [procedure] 1) Recheck the distance on a looping delay, at a short interval of 0.1 to 0.5 seconds. 2) Divide the raw distance to bring it to a usable scale. 3) Map the scaled distance to the beep's delay, volume and pitch.
+- [tradeoff] Syncing an enemy's death to a musical hit satisfies the music more than exact hit counting, at the cost of slight mismatch with hit counts and collapse timing. When: Enemy deaths timed to music. Why: Players rarely count hits precisely, and a slight delay in collapse often feels realistic.
+- [fact] Audio feedback feels more visceral than visual feedback and makes touch easier to simulate.
+- [fact] Music can warn players that an enemy is approaching or has spotted them.
+- [fact] Enemy speech and dying gasps indicate enemy health, and symbolic sounds can also convey enemy status.
+- [fact] A bot's pawn sound group covers dodge, double jump, land, default footstep, dying, small, medium and large pain, falling-damage landing, gib, crushed, body explosion and instant gib cues.
+- [fact] Game audio can use motifs and themes as metaphors for characters, mark transitions, and give direct or indirect feedback on progress, as film does. When: designing music and sound for narrative and progress. Why: Recurring musical material links sound to meaning and state.
+- [fact] Some sounds signal danger or disrupt play, while others guide players toward destinations.
+
+## interactive music systems
+- [model] Game music falls into three categories: reactive, interactive and performative. They differ in what information passes between the game and the music.
+- [model] Interactive game music raises two core problems: transitions between musical states when events do not land on musical points, and variation enough to fill play that can last hundreds of hours.
+- [definition] Mickey Mousing means music that imitates on-screen action so closely it works almost like a sound effect.
+- [definition] Reactive music changes in response to player actions or game state and only receives commands from the engine. It can use linear sections, horizontal transitions or vertical layering.
+- [definition] Interactive music feeds its current playback position and time until its next transition point back to the game, creating a feedback loop.
+- [definition] Interactive music makes player input part of the music, either by prompting timed button presses along a track or by letting player actions generate the soundtrack.
+- [mechanism] In music-based games, correct input plays the music as intended, while incorrect input plays a wrong note or error sound. When: Player input controls which musical elements sound. Why: Playback is tied to note-level input.
+- [mechanism] Music signals safety or imminent danger, so switching music between exploration and enemy-attack modes changes how threatened players feel.
+- [mechanism] Musical notes that speed up as the player gains power and speed link the score to the player's progress.
+- [behavior] Music can encourage six player states: searching for hidden things, destroying quickly, realizing a wrong direction, moving carefully, worrying about bystanders, and fast travel without looking back. When: Choosing music for a scene or section.
+- [behavior] Game music usually shifts intensity in response to gameplay variables rather than tightly synchronising to movement, since game action timing is not fixed. When: Scoring interactive gameplay. Why: Player-driven action cannot be predicted like fixed cartoon timing.
+- [behavior] Players react to the same track differently, so one track can annoy one player and stimulate another. Why: Music reactions are subjective.
+- [rule] Establish how reactive adaptive music should be only through thorough testing with several different people, and test the system yourself too. When: When designing adaptive or interactive music. Why: The right degree of reactivity cannot be guessed; feedback from varied listeners reveals it.
+- [rule] Give each character a specific motif, and vary its arrangement, tempo or articulation to convey that character's emotion.
+- [rule] Score trailers, cutscenes and credits to a fixed length and to specific visual moments, as in film. When: Content plays linearly with a set duration.
+- [rule] Expose music changes to level designers as preset named events, keeping timing logic inside the music system. When: when level scripts need to change music. Why: designers call events without managing timing.
+- [rule] Let gameplay events read the music's state, so an event such as an enemy's death waits for the next bar line when the music is ready. When: when a gameplay event should land on a musical moment. Why: the game uses music state as an input.
+- [rule] Use a game event such as an enemy spotting the player as a music switch input, with the same structure as switching on location. When: when music should change on a gameplay event.
+- [rule] Play a distinct announcement and sound when a special state starts, and another when it ends, so the player notices the change.
+- [heuristic] Linear music suits some designs; demanding games need interactive models where music state feeds game decisions. Simple playback can be enough; choose by time, resources and game needs. When: Choosing a music model for a game. Why: Demanding games need the music state available as an input to their decisions.
+- [heuristic] Any game variable, such as enemy count, ammo, health or hunger, can drive stem volume the same way as distance. When: Designing adaptive stem mixing. Why: The fade mechanism depends only on a numeric value.
+- [heuristic] Keep the current music through non-threatening tasks, and switch only when a new threat appears. When: when the player performs a task without danger.
+- [heuristic] Switch to a driving riff when an enemy appears, so tension rises during fights in confined spaces. When: enemy encounters in confined spaces. Why: a driving riff adds tension.
+- [procedure] Drive game music intensity and layer selection from variables such as enemy presence, nearby enemy count, player and enemy health, weapon condition, ammo, distance to a save point or target, and pickups, so the score tracks combat state as it changes. When: Designing reactive music intensity. Why: State changes map naturally to musical intensity.
+- [procedure] 1) Build in-game examples of the music using middleware such as FMOD or Wwise. 2) Demonstrate them in gameplay to the team. 3) Iterate with designers so the music integrates into the design. When: When proving the value of interactive music early. Why: In-game demonstrations persuade more effectively than describing how music will respond to variables.
+- [pitfall] Switching music by location with simple triggers ignores musical position and entry points, causing brusque, clunky transitions, especially between different keys. When: Switching music when the player crosses a location boundary. Why: A player can cross a boundary at any moment, not at a musical point.
+- [pitfall] Pitch-shifting a stinger to fit a harmony also changes its playback speed, so it is not a clean fix.
+- [pitfall] Reacting to every game variable makes the link to game systems too obvious, and players feel they're performing the soundtrack instead of playing the game. When: when music responds to many game variables.
+- [fact] Game engines such as UDK are limited in communicating with some external music interfaces, so dedicated audio tools like Max or Pure Data may be needed for advanced interactive music. When: Building advanced interactive music beyond engine tools. Why: Engine music tooling does not connect to all desired interfaces.
+- [fact] Percussive stingers fit any harmony, whereas melodic stingers can clash with chords they were not written for.
+- [fact] Motifs can belong to individuals, to broad groups such as heroes and villains, or to races or social groups.
+- [fact] Most game music in current games is reactive rather than interactive.
+- [fact] Some games, such as MMOs, can exceed 1,000 hours of play, so original music for the full duration is unrealistic to write and store.
+- [fact] Game music is usually 2D, played over a scene rather than coming from a source.
+
+## vehicle engine sound
+- [model] Vehicle acceleration comes from a torque-versus-speed curve, and engine RPM comes from an RPM-versus-speed curve.
+- [mechanism] Sending a scaled vehicle velocity or engine RPM value to a named parameter on a sound cue links it to a continuous modulator that scales engine loop volume and pitch.
+- [mechanism] Looping one short waveform cycle and playing it at different pitch multipliers yields different notes, so a melody can be built from a tiny sample. Multiplier equals target frequency divided by the source frequency. When: Creating melodic or tonal sound from minimal sample memory. Why: Playback rate sets pitch, so one stored cycle can cover many notes.
+- [mechanism] A scaled physics impact velocity can select between several sound variants, not just set volume, by checking which value range it falls within. When: One physics value should choose among distinct impact sounds such as hard, medium and soft. Why: Range checks on one value pick the variant that matches the event's intensity.
+- [mechanism] Reading velocity through a controllable curve, such as square root or squared, decouples the audio response from the raw physics value. When: A linear velocity-to-sound response sounds unnatural for a material or motion. Why: Curves let designers tune how loudness and pitch respond without changing the physics.
+- [mechanism] Sharp drops in an RPM curve make engine pitch step up in stages, which suggests gear changes.
+- [mechanism] A steep acceleration curve reaches its final range quickly, so the vehicle spends most of its time creeping toward top speed.
+- [rule] Modulate engine and tire pitch with turn angle, tire friction and speed; rising pitch in turns makes tire squeal and gravel crunch audible, reinforcing carving. When: vehicle sounds in a driving game. Why: Pitch changes make motion readable by ear.
+- [rule] Add movement sounds and vocalizations to a still or a series of images to imagine how a character or creature will interact.
+- [heuristic] Set exact times on keys so that paired movers finish their motion together. When: two doors or movers must end at the same moment.
+- [heuristic] Driver-linked sound principles apply to any moving object, such as skateboards or jet skis, whose sound relates to game variables. When: moving objects with sound tied to game variables.
+- [heuristic] Crossfade several engine recordings made at different speeds instead of pitching one sample across a wide range, which keeps engine timbre realistic. When: Designing engine sound for a vehicle that changes speed. Why: Large pitch shifts alter a sample's timbre.
+- [heuristic] A sliding whoosh is among the most important sounds for conveying physical contact with the ground.
+- [heuristic] Scale crash sound loudness and intensity with collision velocity so impacts feel proportionate to how hard they were. Why: Sound can convey impact severity when visuals are limited.
+- [procedure] 1) Store the current play rate. 2) Add or subtract a fixed step, such as 0.2. 3) Write the result back to the sequence's play rate. When: speed should change in discrete steps under player control.
+- [procedure] 1) Record a separate decay sample for each music block. 2) Overlap it with the start of the new cue. 3) Play the previous cue's decay sample only on the first playing of the new cue. When: Preserving natural decay at cue transitions. Why: A dedicated decay sample lets the old cue ring out without carrying its other notes.
+- [procedure] 1) Attach a trigger that switches on all engine sound cues, starting them silent. 2) Poll vehicle velocity every 0.1 seconds. 3) Map velocity to layer volumes and pitch. When: Building a speed-responsive engine sound.
+- [metric] Rounds per minute equals 60 divided by the fire interval in seconds, so a 0.3 second interval gives 200 rounds per minute.
+- [metric] A car-like engine sound setup can map RPM from about 500 up to 5,000.
+- [metric] The idle engine layer falls from full volume at velocity 0 to silent at velocity 500. When: Example values for one vehicle; tune per vehicle.
+- [metric] The low engine layer rises from silent at velocity 100 to full volume at velocity 300. When: Example values for one vehicle; tune per vehicle.
+- [metric] The medium engine layer rises from silent at velocity 800 to full at 1500, then falls back to silent by velocity 2000. When: Example values for one vehicle; tune per vehicle.
+- [metric] The high engine layer rises from silent at velocity 1100 to full volume at velocity 2000. When: Example values for one vehicle; tune per vehicle.
+- [metric] Scaling incoming pitch values can map the low engine cue onto a pitch range from 0.9 to 1.5. When: Example values for one vehicle.
+- [pitfall] Without a cap on scaled impact velocity, rare extreme physics values can produce disproportionately loud sounds. When: Mapping physics impact velocity to sound volume. Why: Physics engines occasionally produce unpredictable extreme values.
+- [pitfall] Recording separate decay samples for each block is possible but laborious, so schedule enough production time for it. When: Planning music production with decay samples. Why: Per-block decay recording multiplies the export and integration work.
+- [fact] Rotation can be keyed in a sequence the same way as position, so swinging movers are animated and sounded like sliding ones.
+- [fact] A real car engine is many sound sources, each reacting differently to driver input and physics states.
+- [fact] Built-in engine tools are limited for convincing car simulation but cover the basic principles.
+- [fact] A vehicle content script can reference an engine loop, collision, enter, exit, scrape, jump, duck and explosion sounds.
+- [fact] A velocity-driven engine sound can use four layers: idle, low, medium and high engine.
+- [fact] Vehicle driving audio can use two layers: an engine revving noise and a tire noise of crumbling gravel.
+
+## audio scripting and triggers
+- [model] A switch variable can be treated as an array in which each index holds a separate volume value for one music layer.
+- [definition] A Continuous Modulator varies pitch or volume from game variables, such as vehicle velocity. When: Sound should track a changing game value. Why: Ties audio response to gameplay state.
+- [definition] A pawn sound group is a class that holds a character's cues for movement, impacts, pain, death and gibbing.
+- [mechanism] Pointing many placed objects at one shared sound asset means adjusting that single asset updates every instance. When: Many objects need identical sound behaviour and tuning. Why: Instances share the asset rather than duplicating it.
+- [mechanism] Switching cues cuts off the old cue's note decays, and crossfading keeps some decay but also keeps all the old cue's other notes. When: Transitioning between music cues. Why: A hard switch ends sounding notes, while a crossfade preserves them along with unwanted material.
+- [mechanism] Summing several on/off states into one counter lets every combination map onto a smaller set of music levels, such as rising danger.
+- [mechanism] Audio calls run on the caller's thread, so rendering, AI and other threads hit the API concurrently without synchronization while the dedicated audio thread sits idle. Why: Callers invoke the API on their own threads instead of routing through the audio thread.
+- [rule] Any edited script must be recompiled before the change appears in the game. When: Editing a script, such as a footstep sound group script after adding a surface type. Why: The engine loads compiled script code, not the edited text.
+- [rule] Set a trigger's max trigger count to 0 to allow unlimited retriggers. When: Event sounds should replay each time the player enters. Why: Zero removes the trigger count limit.
+- [rule] Use a parent multiplier with a child correction when one child must ignore a broad change. When: A broad mix change should exclude one child class. Why: Correcting the child with the inverse multiplier restores its level without naming the other children.
+- [rule] Adjust a parent class when one change should cover all its sounds, and a child class when only one kind of sound needs its own level. When: Choosing where to set a volume or pitch adjustment in the class tree.
+- [rule] Replace the referenced cues in a pawn sound group with your own, then recompile the scripts.
+- [rule] Write audio scripts as gameplay descriptions that map each step to the dialogue it triggers, rather than as actor scripts. Why: Mapping steps to lines helps developers align audio with play.
+- [heuristic] Back up a script file before editing it so the original can be restored if something breaks. When: Modifying engine or sound group scripts. Why: A broken script edit can stop the whole game from compiling or running.
+- [heuristic] Audio trackers work best when visuals are hidden by fog or darkness, because the sound heightens tension.
+- [heuristic] Either volume or pitch alone can convey proximity, so the two need not both change.
+- [heuristic] Placing sounds on an animation timeline with notifies is easier than scripting for people who are not scripters. When: When sound timing should follow an animation.
+- [procedure] 1) Link the Touch output to a sound-playing action. 2) Choose New Action, Sound, then the play-sound action.
+- [procedure] 1) Enable real-time audio playback in the editor. 2) Enable real-time mode for the perspective viewport. 3) Select the ambient actor and open its properties to check the assigned sound.
+- [procedure] 1) Fade out the current state's track over a short time. 2) Fade in the next state's track over the same time. 3) Ensure the two overlap so the change is smooth. When: Switching between music states. Why: Simultaneous fades avoid an abrupt cut between tracks.
+- [procedure] 1) Give each switch its own trigger. 2) Have each trigger add to or subtract from one shared variable. 3) Map ranges of that variable to music levels with compare nodes. 4) Tune fade in and fade out lengths until the crossfades sound smooth. When: Music must respond to any combination of several on/off states.
+- [metric] The volume multiplier can be 1.4 minus the scaled distance, and the pitch multiplier can be (1.6 minus the scaled distance) divided by 2.
+- [pitfall] Players who cross doorways quickly may notice the switching, which breaks immersion.
+- [pitfall] Most script compile errors come from spelling mistakes.
+- [pitfall] Scripted audio needs careful planning of triggers and events, which makes the level labor-intensive to build.
+- [fact] FMOD and Wwise are common audio middleware that handle parameter-driven mixing with real-time parameter controllers (RTPCs).
+- [fact] Audio middleware is often a friendlier environment for sound designers than built-in engine tools.
+- [fact] A synchronous playSound call scattered across game systems blocks the caller, handles requests one at a time, and runs on whichever thread calls it. Why: These three problems motivate decoupling sound requests with a queue.
+
+## weapon fire sounds
+- [model] A held beam sound has three parts: a start sound at press, a loop played while held, and an end sound on release.
+- [definition] A weapon's fire interval is the time in seconds between shots; a smaller interval means faster fire.
+- [mechanism] A retriggered weapon restarts its fire sound every fire interval while the trigger is held, until ammo runs out. When: trigger held on a retriggered weapon.
+- [mechanism] Releasing the breath-hold key during the delay restarts the sway animation early. When: breath-hold delay is running.
+- [behavior] A gunshot's high-frequency content is concentrated in its first few hundred milliseconds, while its tail is mostly low frequency. When: Analysing how a percussive sound's spectrum changes over time. Why: Transients carry bright energy that decays faster than the tail.
+- [rule] To make a weapon fire exactly one shot per trigger press, play its fire cue in an overridden firing function, then call the engine's end-fire stop function. When: single-shot weapons. Why: The end-fire stop function prevents the weapon from refiring.
+- [rule] When extending a complex weapon script, replace only the cues you need and leave the rest intact. When: weapon scripts with many cue references.
+- [rule] When a beam touches a surface or pawn, layer an impact loop chosen by target: a flesh loop for an enemy pawn, a surface loop otherwise. When: beam hits a surface or pawn.
+- [rule] Looped weapon sounds need sample-accurate sync between the dry loop and any extra reverb layers. When: looped weapon with extra reverb layers.
+- [rule] When a weapon has its own reload animations, call sound cues directly from the animation rather than adding script hooks. When: Weapons with custom reload animations. Why: Avoids scripting for each sound.
+- [heuristic] Mechanical weapons vary little from shot to shot, so a very subtle pitch change is often enough to avoid identical repeats. When: mechanical weapon fire sounds.
+- [heuristic] Sci-fi beam weapons are often built on a constant loop instead of retriggered shots. When: sci-fi beam weapons.
+- [heuristic] In a shooter, combine weapon sound systems with whatever real-time acoustic processing the engine provides. When: Shooter games.
+- [procedure] 1) Play a loud start sound on each shot to announce it. 2) Play the retriggered body at the same moment at a lower level. 3) Play a tail when the trigger is released. When: rapid retriggered weapons, especially busy firefights. Why: Keeps busy firefights from turning into a muddy wall of sound.
+- [procedure] Consider crossfading weapon sounds as listener distance changes. 1) Create several versions of the fire sound at different distances. 2) Set the boundaries of each version in a distance crossfade node. 3) Play one sound cue that crossfades between versions by distance.
+- [procedure] 1) Keep a dry retriggered fire sound unchanged. 2) Hold a separate tail sample for each space. 3) Use trigger volumes to set each tail's volume. 4) Play the outside tail at full volume when no zone is entered. When: retriggered weapons in large spaces where tails must change with location. Why: Long samples are hard to use with retriggering.
+- [procedure] 1) Record or select several short samples. 2) Reorder them randomly at runtime. 3) Add slight pitch modulation to some segments. When: Creating continuous textures such as fire or crackle. Why: Random ordering and pitch variation avoid obvious repetition.
+- [procedure] 1) Place a Take Damage event on the object. 2) Connect it to play the sound cue. The setup matches a Touch event on a trigger volume. When: Playing a sound when an object is hit or destroyed. Why: Damage events fire on player actions.
+- [procedure] 1) On zoom in, start the sway animation and breathing loops. 2) On the breath-hold key, play a breath-hold cue and stop the sway. 3) After a short delay, around three seconds, resume the loops. 4) On zoom out, close the gates and end the zoom. When: scoped weapon with breathing sway. Why: Sway makes aim drift, and holding breath steadies the sights.
+- [procedure] 1) Back up the unedited script in a separate folder. 2) Remove read-only protection from the working copy and open it in a text editor. 3) Copy the sound cue's full name from the content browser. 4) Paste it over the existing cue reference. 5) Save, close the editor and compile scripts. 6) Test in the exercise room. When: replacing a weapon sound.
+- [procedure] 1) Place a weapons locker from the actor classes. 2) Open its properties. 3) Add the weapon class to its list. When: adding a weapon to your own level.
+- [pitfall] While the forced end-fire call stops refiring, changing the fire interval has no audible effect. When: single-shot weapons using the forced end-fire call. Why: The forced end-fire call overrides the interval.
+- [pitfall] Long samples retriggered often can phase.
+- [pitfall] Machine-gun rates of 600 to 1,200 rounds per minute cause problems with simple retriggering. When: simple retriggering at machine-gun rates.
+- [pitfall] Pitch-shifting one engine sample across a large range changes its timbre unnaturally, so pitch shifting alone does not make engine sound realistic.
+- [fact] Very high rate weapons, up to about 6,000 rounds per minute, are usually vehicle mounted.
+- [fact] A weapon with an alternate fire mode keeps a separate fire interval for each mode.
+- [fact] Default engine weapons often lack elaborate reload animations.
+
+## footsteps
+- [definition] Footfall planning selects a sequence of animations so a character's feet land only at suitable positions, for stairs, platforms and obstacles.
+- [definition] Footstep repetition (sometimes called FRM) is the audible sameness of repeated footsteps, reduced by treating them as movement sounds with variation.
+- [mechanism] Playing one impact sound per collision fails when many objects collide at once, because too many voices are used, causing phasing that sounds wrong. When: Many physics collisions occur in a short burst. Why: Simultaneous identical impacts overlap and interfere.
+- [mechanism] A jump sound that rises with height gained reinforces that holding the button yields a higher jump.
+- [mechanism] Three grapple sounds carry the claw's physicality: a rising extend tone, a two-part connection impact, and a dull thud when the claw hits an unconnectable surface; no sound plays when it connects to nothing. When: Grapple extends and contacts a surface. Why: Distinct sounds for connection and failed contact make the claw feel metallic and surfaces feel stony.
+- [rule] Leave out, or give a low selection weight to, any footstep that sounds too distinctive, since it stands out and makes the set feel repetitive.
+- [rule] Use animation notifies to synchronise sound with complex reload and firing animations.
+- [rule] Group collision sounds into tiers by impact velocity so that harder impacts sound more forceful.
+- [heuristic] Limit footfall lookahead to the next couple of animations, treating it as a third pathfinding level.
+- [heuristic] Add start and slowing-down sounds, or crossfade by velocity, because characters do not reach full speed at once. When: walk and run animations are used.
+- [heuristic] Choose from several footstep wavs at random, with slight pitch and volume variation, keeping pitch changes small.
+- [heuristic] Use slightly different samples for each foot in a left-right rhythm, since people lean more on one side.
+- [procedure] 1) Add a footstep notify to the character animation, marking left or right foot, so footsteps play in sync with foot contact. 2) A script reads the physical material under the foot and selects the mapped sound cue, so each surface is audible. When: Adding footsteps to a new character. Why: Footsteps must be timed to animated foot contact. (x2)
+- [procedure] 1) Obtain separate heel and toe samples, since most footsteps have a heel-contact part and a toe or flat-foot part. 2) Concatenate them into one footstep so each step has a heel-then-toe shape. When: Creating footstep variation from recorded samples. Why: Independent parts multiply the number of distinct combinations.
+- [procedure] 1) Duplicate an existing impact entry. 2) Increase its array index. 3) Set the material type and its sound cue. Custom surface types can be defined and linked to their own impact cues. When: adding a new surface type.
+- [procedure] 1) Count collision events in a short rolling time window. 2) When the count exceeds a set threshold, stop playing individual impacts. 3) Play one prerecorded multiple-collision sound instead. When: Physics events arrive in dense bursts, such as debris or shattering. Why: A single composite sound avoids voice use and interference from many impacts.
+- [procedure] 1) Create a physical material with a new type name and set its parent to the default physical material. 2) Apply it to a material. 3) Add an array entry in the footstep sound group script pointing to your sound cue. 4) Recompile the scripts. When: Giving a surface its own footstep sound. Why: The default parent makes unmatched surfaces fall back to default footsteps, and script changes only take effect after recompiling.
+- [procedure] 1) Restrict the key input to an area with a trigger volume. 2) A key press starts the movement sequence. 3) Releasing the key stops it. 4) Play a looping sound only while the sequence reports motion. When: movement must stop midway. Why: built-in open and close sounds fire only at sequence start and end.
+- [procedure] 1) Open the animation set editor for the weapon. 2) Open the animation sequence tab. 3) Add a sound notify at a time point. 4) Reference a sound cue, which plays each time that animation runs.
+- [procedure] 1) Use a short looping sound for prolonged contact. 2) Modulate it slightly so it varies as the load on the contact changes. When: Sustained contact such as grinding. Why: Variation tracks the changing weight on the contact point.
+- [metric] A threshold of more than four collisions within 0.3 seconds switches from individual rock impacts to a single multiple-collision sound. When: Tuning a dense debris collision trigger. Why: Threshold and window values set when the switch happens.
+- [tradeoff] Editing existing sound cues changes default sounds for everyone using that copy, whereas extending the script with new physical material types leaves existing materials unchanged. When: Choosing how to customise footsteps. Why: Extending the script isolates changes to new material types, while editing cues alters shared defaults.
+- [tradeoff] A key-held sequence can stop midway, while a reversed sequence suits objects that are built up rather than taken down.
+- [tradeoff] Above a set NPC count, one group sound cue replaces individual footsteps; this saves voices, but players may then struggle to locate individuals by sound.
+- [fact] Running, jumping, sliding, tripping and different speeds each produce distinct sounds, since running makes a single impact rather than a heel-toe rhythm.
+- [fact] Collision sound classes: a light plastic thud, a metal crash or crumple, a metal-rending tier with long aftereffects, and a separate most-violent class when a part breaks off.
+
+## mix design and routing
+- [model] Only one primary snapshot can be live at once; activating a new one replaces the current, while modifier mixes scale sound group values on top without replacing it. When: Designing a mix system with several overlapping mix states. Why: Separating a base state from temporary adjustments avoids one state overwriting another.
+- [model] SoundClasses form a parent/child tree that works like a mix bus group, so changing a parent adjusts all its children, letting one setting control a whole family of sounds. When: Organizing sound effects, music and voice in a game mix. Why: Hierarchical grouping lets a single adjustment cover related sounds.
+- [definition] Non-diegetic music is score-style music that characters in the game world cannot hear, similar to a film score.
+- [definition] Ducking means temporarily lowering the volume of playing music, for example under important dialogue.
+- [definition] Notching cuts a frequency band in a sound mode's EQ where competing sound sits, so a sound comes through without lowering overall volume.
+- [definition] Predetermined elements are set before run time, automated elements are processed at run time, and triggered elements respond to events or variables at run time.
+- [definition] Routing sounds into a shared group lets one control adjust many sounds at once, like a drum group controlling a whole kit.
+- [definition] A mixer snapshot stores the volume of each group plus settings such as EQ or effects, and is called a sound mode in UDK.
+- [mechanism] Soundmode changes are cumulative: a child class's change stacks on its parent's, and the audible level is the combination of both.
+- [rule] A sound played via a cue must belong to the ambient class for ambient zones to influence it; sounds linked straight to ambient actors need no such class. When: Using sound cues in ambient or scripted playback; ambient zones appear to do nothing to a cue. Why: Zones only affect ambient-class sounds; the mismatch produces no error, while other classes simply pass through untouched.
+- [rule] Mix for how people listen, not for what microphones record; treating an accurate recording of a scene as the goal is a mistake. Why: Microphones hear objectively, people listen subjectively.
+- [rule] Edits to a shared sound mode package affect the whole game, so restore the original settings when finished.
+- [rule] Draw mix ideas from film, literature and other art forms, not only from other games.
+- [rule] Give sounds that will often play simultaneously distinct frequency ranges, such as music in one band and effects in another, so each keeps some room. When: Many sounds and music share the same area. Why: Sounds competing in the same frequency range mask each other.
+- [rule] Ambient sound actors that play without an assigned cue are placed in the Ambient class automatically. When: Ambient actors play sound without a cue.
+- [heuristic] Dedicated speakers for impact sounds, placed so their blasts can be felt physically, reinforce a sense of place.
+- [heuristic] Prefer unique sounds sent to the LFE channel over LFE bleed where the system allows it. When: Low frequencies need to reach the subwoofer on a multichannel system. Why: Dedicated sub content avoids the comb filtering of double-routed bass.
+- [procedure] 1) Assign frequency bands to sound groups that often play together. 2) Set ballpark volume per category. 3) Normalize each asset folder in the DAW. 4) Finish these decisions before the formal mixing stage. When: Preparing audio assets before the mix stage on a game. Why: Planning frequency and level in advance keeps overlapping sounds from masking each other at runtime.
+- [procedure] 1) Schedule the loud event's sound with a short delay. 2) Just before the event, briefly lower all other sounds. 3) Let the event play at full level while the rest of the mix is ducked. When: A loud event needs impact but no quiet lead-in is possible. Why: The sudden contrast between ducked and full-level sound makes the event hit harder.
+- [procedure] 1) Select the cue in the editor. 2) Set its sound group in the properties panel. 3) Verify the group in the list view. When: Assigning audio cues to mix groups in the engine's editor.
+- [pitfall] Music that closely matches its scene and sound effects tends to fade into audio obscurity.
+- [fact] Music targeted at the player plays to the player's ears without panning, which suits non-diegetic music.
+- [fact] Mix design balances two demands: giving players information and giving them emotion.
+- [fact] The default audio class hierarchy has three top-level parents, Music, Voice and SFX, and other classes such as Weapon sit beneath them as children.
+- [fact] Each sound group has volume and pitch that act as a master control for every cue assigned to it.
+- [fact] Adding LFE bleed on a system that already uses bass management can cause comb filtering, since low frequencies are routed to the subwoofer twice.
+
+## impact and collision sounds
+- [mechanism] Layering a few explosion and debris samples in any combination yields many variants; four explosions and three debris sounds give 127 combinations, and it suits melee impacts too. When: A repeated event needs many distinct variants, such as explosions or hit and punch sounds in combat games. Why: Each non-empty subset of layers forms a distinct combination; layering works for any repetitive impact event.
+- [mechanism] A trigger volume shaped around an object can fire a collision sound when the player touches it, so the impact seems to come from that object. When: Adding impact sounds to objects in a level without physics-based collision audio. Why: Trigger volumes detect overlap and can start a sound event at the object's location.
+- [mechanism] Footstep sounds change with surface type. Each surface's material references a physical material, which selects the footstep sound cue to play. When: Surfaces built as BSP, static mesh or terrain. Why: Footsteps are routed through the surface's material chain, so the surface type determines the sound.
+- [mechanism] An explosion can trigger a temporary mix mode that muffles high frequencies and adds a whine, then resets to default after a few seconds, simulating temporary deafness. When: A single event should cause a short altered hearing state. Why: Filtering the top end and adding a tone mimics the perceptual effect of a blast on hearing.
+- [mechanism] Hitting a living target gives a heavy organic thud that gets louder and more emphatic as impact speed rises.
+- [behavior] When a virtual object makes no sound on impact, the player is reminded the world is fake. When: A virtual object is dropped or hits a surface silently.
+- [rule] Vary impact sounds by surface material: a coin on wood sounds very different from one on glass, so use a distinct sound per surface, not one generic loop. When: Designing impact sounds for virtual objects, or sounds that vary with the surface they hit, such as rain. Why: Surface changes how the sound reads; rain sounds differently on each surface. (x2)
+- [rule] Add echo to large spaces, rustling to grass and thick sloshing to swamps, so players sense how a space would feel to occupy. Why: Sound conveys the texture of a world players cannot touch.
+- [rule] Weight memorable impact sounds low inside a random container so they play less often. When: random containers of impact sounds.
+- [rule] Give a projectile that misses a wall a different sound from one that hits an enemy, so players can tell outcomes apart.
+- [heuristic] Assign physical materials inside the material itself rather than per object, so every use of the material behaves consistently. When: Setting up surfaces used across many objects. Why: A single material assignment applies to all its instances.
+- [heuristic] Use many distinct surface types that change often, rather than extra recordings of one surface, because repetition is most audible on continuous surfaces, which are rare in reality.
+- [heuristic] Source impact and collision sounds from recordings of real collisions to ground them in physical reality. Why: Real recordings sound physically credible.
+- [procedure] 1) Select a floor surface and find its material in the content browser. 2) Open the material editor and assign a suitable physical material. 3) Save and play the level to check each surface produces its own footstep. When: Making surfaces in a level sound distinct when stepped on. Why: Without physical materials, all surfaces use the same default footstep sound.
+- [procedure] 1) Read the hit surface's material type in the attachment script. 2) Look up the impact sound cue assigned to that type. 3) Play that cue at the hit point. When: instant-hit weapon impacts.
+- [pitfall] Playing twenty individual impact sounds for twenty falling rocks produces wave interference and fails. When: Large numbers of simultaneous small impacts. Why: Overlapping identical samples phase against each other.
+- [pitfall] Trigger-based collision sounds must be set up separately for each object, and the method cannot cover footsteps. When: Covering many collisions across a game. Why: Per-object setup is laborious and does not scale to the whole game.
+- [pitfall] Changing a shared material alters every object that uses it, so test changes on a spare or dedicated material instance. When: Assigning a new physical material to a surface. Why: Materials are shared assets, so one edit propagates to all instances.
+- [pitfall] Impact sound slots on physical materials are blank and hard-coded in the player script, so filling them has no effect. When: Assigning impact sounds to physical materials. Why: The player's script, not the physical material, supplies those sounds.
+- [fact] Sliding, scraping and rolling sounds are usually driven by velocity mapped to both volume and pitch, though the exact relationship depends on how robust the physics engine is.
+- [fact] The standard physical material set comprises Wood, Water_Shallow, Water, Sand, Metal, Liquid, Glass, Foliage, Energy, Dirt and Default.
+- [fact] The same weapon sound techniques apply to melee weapons such as axes and swords, and to magic spells.
+- [fact] Impact sounds come in three tiers: low is high-pitched and click-like, medium has more bass like a drum, and hard is an exaggerated rubbery twang.
+
+## reverb and room acoustics
+- [model] Convincing ambience is built from many layers of sound at different distances, such as distant, middle distance, and close, rather than a single sound. Why: layers at varied distances give depth, as an oil painting is built from many layers.
+- [definition] Reverb is a dense cloud of reflections, while an echo is a single distinct repeat of a sound.
+- [behavior] Reflection pattern signals space: distinct echoes suggest distant outdoor surfaces, many quick reflections a confined tunnel, sparse long reflections a large room; muffled or absent reverb suggests open outdoors or no reflection. When: Choosing reverb character or designing ambient sound for a location. Why: Listeners judge room size, shape and enclosure from how reflections and reverb arrive over time. (x2)
+- [behavior] A quiet repeating sound buried in ambience is hard to locate, so a temporary sense-boost mode can help players find it. When: when a quiet repeating cue is buried in ambience.
+- [rule] Add a looping mechanical room tone inside an enclosed hangar as an ambient sound so the interior has its own character. When: Designing an enclosed industrial space.
+- [heuristic] Close listening to real-world sounds is the key skill for building detailed, believable sound worlds, even when the environment is simple. When: designing ambient sound. Why: detail comes from careful observation.
+- [heuristic] Looping sounds feel false when heard repeatedly, so reserve long loops for the sounds that matter most. When: designing ambient soundscapes. Why: repetition of a loop is noticeable.
+- [heuristic] Give weapon sounds prebaked layers and different tail samples for each reverberant environment where they will be heard. When: Weapons fired in varied acoustic spaces.
+- [procedure] 1) Make separate inside and outside sound sets. 2) Place a trigger volume around the interior, such as a doorway. 3) On entering, switch off outside sounds and switch on inside sounds; reverse on leaving. 4) Fade between sets over about one second. When: sound differs inside and outside a room; faking occlusion cheaply at a doorway. Why: avoids overlap between the two sound sets.
+- [procedure] Use an imitation reverb system: 1) Keep the dry fire sound in the weapon script. 2) Send a console event on each shot. 3) Play extra reverb layers from that event. 4) Set each trigger volume's multiplier so position controls which layers are audible. When: weapon sound must vary by location; built-in reverbs do not suit the weapon. Why: built-in reverbs can be too blunt for a weapon.
+- [procedure] Fill a room with several smaller ambient sound sources instead of one point source, so the sound comes from across the room. When: a single point source does not fill the room. Why: one point source sounds localized rather than spread through the space.
+- [procedure] 1) Use one recorded hissing sample. 2) Vary its filtering and pitch to suggest different sources. 3) Check the variations in context. When: Creating varied ambience from a single source sample. Why: Filtering and pitch change perceived source character.
+- [procedure] 1) Add a Looping node and a Delay node to a cue. 2) Set Delay min and max equal to the desired interval. 3) Place an ambient sound actor with auto play on. When: Building repeating ambience at fixed intervals. Why: Looping plus delay produces a regular repeat.
+- [procedure] 1) Place looping outdoor ambience and indoor room tone as ambient sounds. 2) Create a reverb volume enclosing the interior. 3) Set interior and exterior volumes and apply some filtering. 4) Rebuild level geometry so the zone takes effect. When: Switching between outdoor sounds and an enclosed space. Why: Zone attenuation only applies after geometry is rebuilt and volumes are set.
+- [procedure] 1) Size a builder brush around the area. 2) Convert it to a reverb volume. 3) Pick a reverb preset type. 4) Set a fade time for room transitions and a volume strength. Ambient sounds inside the volume receive its reverb. When: Adding reverb to a room or area in a level editor.
+- [procedure] 1) Import a still concept image into a simple video editor. 2) Stretch the image along the timeline. 3) Add about one minute of environment ambience.
+- [tradeoff] Switching gives either inside or outside sound rather than a blend; it is acceptable where noise levels would mask the difference anyway.
+- [tradeoff] Modelling reflections accurately in real time needs a lot of computing power, so games normally use precalculated reverb presets instead. When: Choosing how to produce reverb in a real-time game. Why: Full reflection modelling costs more processing than a game budget usually allows.
+- [tradeoff] A long hall reverb suits a location, but a battle may need reverb removed or a different wet/dry balance, so reverb choice depends on the situation.
+- [pitfall] Dry studio dialogue placed in a reverberant scene sounds unnatural unless processed with the scene's reverb first.
+- [fact] Acoustic properties such as reverb and off-screen placement characterize an environment as much as the objects in it.
+
+## sample randomization
+- [mechanism] Random selection without replacement excludes recently played sounds until all have played, then resets the pool, so repeats are spaced out. With two inputs it alternates between them, so the same sample never repeats back to back. When: Choosing among several variants that should not repeat back to back. Why: Prevents the same sound from playing consecutively and spreads repeats evenly.
+- [mechanism] Randomly combining aligned tracks inside a sound cue yields a different mix each time, and varies layers within one tension level.
+- [rule] Maintain a healthy variety of each ambient sound type so no single line dominates.
+- [heuristic] Variation effort should target sounds that vary in the real world; mechanical sounds like weapon fire are similar each time and can repeat without loss of realism. When: Deciding which sounds need multiple variants. Why: Real-world variation is what players expect; mechanical repetition is believable.
+- [heuristic] Vary other DSP such as envelope or filter on each repetition where the engine allows it.
+- [heuristic] Vary each part's volume with a modulator so that repeated combinations do not sound identical.
+- [heuristic] For fast looping, choose sounds that are not heavy or booming; high-frequency elements loop well at high rates. When: fast-firing looped weapons.
+- [procedure] 1) Put all variants or lines in a single Random node, optionally weighted. 2) Enable randomization without replacement. 3) Track which item has played and pick randomly from the remaining ones, so each returns after the longest possible gap. When: Building a sound container with several variants or lines that repeat often. Why: Reduces repetition in short succession.
+- [procedure] 1) Create a range of variants for each frequently played interaction sound, per sound tier. 2) Choose one at random for each instance. Hearing the same sound repeatedly becomes annoying and distracting. When: Interaction sounds or sound tiers that play often. Why: Varied sounds avoid repetition that draws attention away from play and fatigues the listener.
+- [procedure] 1) Pick a random heel segment. 2) Pick a random toe segment. 3) Play them in sequence each time the cue is called. When: Playing a footstep or similar two-part sound at runtime. Why: Random pairing gives varied output from few samples.
+- [procedure] 1) Surface the fade durations of each sound-playing node. 2) Attach a random float to these durations. 3) Retrigger the sounds so each play uses new random values. When: Making looping ambient layers less static. Why: Changing envelopes each playback adds movement.
+- [procedure] 1) Use one source recording for all objects of the type. 2) Set a pitch scale per object, higher for smaller and lower for larger. 3) Verify each variant sounds right. When: Multiple sizes of the same sound-producing object. Why: Avoids storing a separate recording per size.
+- [procedure] 1) Play a sound with randomized fade-in length. 2) Stop it after the fade-in delay so it fades out. 3) Pick a new random fade-out length and restart after it plus a short gap. When: Generating many varied wave-like loops from one sample. Why: Changing envelope lengths reshapes one file into many waves without silence.
+- [tradeoff] Random gating of extra hits adds unpredictability, with a lower chance on rarer pulses and a higher chance on common ones. When: Adding variation to generated rhythms.
+- [tradeoff] Unrestricted random layer combinations maximize variety, while weighted and limited combinations reduce variety but give more musical results. When: choosing how to combine random music layers. Why: unrestricted randomness can produce unmusical combinations.
+- [pitfall] Making symbolic sounds too varied makes them feel like they belong to a different game and weakens their learned meaning.
+- [pitfall] Excessive sound gimmicks turn corny and may backfire, producing the reverse of the feeling intended.
+- [fact] Two sound cues can reference the same wave with different count limits, and the game can switch between them as circumstances change.
+- [fact] More than two similar sounds are heard as a group, so decide whether instances must sync precisely or use a grouped sound file. Why: Listeners perceive more than two similar sounds as one group.
+
+## music composition approaches
+- [definition] Abstract projectile music is a musical space with no goals or rules where player-fired bouncing projectiles hit note-tuned panels, so the player builds a piece by layering bounces.
+- [definition] Aleatoric methods leave some aspects of musical output to chance while the composer controls the range of possibilities.
+- [definition] Anempathetic music expresses an emotion different from the on-screen action, sometimes the opposite of it.
+- [definition] Designer music is composed to shape listeners' feelings in targeted ways, and it resembles modern game scores.
+- [mechanism] Familiar cultural music styles paired with dread-filled scenes create unease through contrast with their usual cheerful associations.
+- [mechanism] Somber music played during an intense fight can sharpen a tragic moment by contrasting with the action.
+- [rule] Engage early in design as an advocate for music where it helps and as an advocate for silence where it is not needed. When: When participating in early design discussions about sound.
+- [rule] Use anempathetic music when a moment should feel surprising or emotionally sharp.
+- [heuristic] Consider alternative instrument palettes before defaulting to a large orchestra, since orchestral scores fit genre expectations but provoke milder reactions. When: Starting a new score. Why: Most listeners already know the orchestral sound.
+- [heuristic] A composer-friendly authoring tool for interactive music is the missing link between composers and interactive music systems.
+- [heuristic] Writing music in short blocks and allowing state changes only at block ends keeps musical continuity while still reacting quickly.
+- [heuristic] Nonlinear music with dissonance can evoke fear.
+- [procedure] 1) Propose a new, bolder musical idea the producers may not have considered. 2) Prepare a predictable version alongside it. 3) Use the predictable version as a fallback if the new idea fails. When: When presenting music concepts to producers. Why: A fallback reduces the risk of trying unconventional ideas.
+- [tradeoff] New age music raised relaxation and lowered hostility and tension, but it also lowered mental clarity and vigor, trading alertness for calm.
+- [pitfall] Judging interactive music as concert music skews the verdict, because many listeners' tastes come from linear film scores. When: When listeners evaluate interactive music without gameplay. Why: Linear film listening habits do not match how music functions in games.
+- [pitfall] Aleatoric textures suit ambient music but can sound samey or noodly, so they need added variation or dramatic control.
+- [fact] Some game music works more as a soundscape than a melody, shaping atmosphere rather than carrying a tune.
+
+## voice concurrency
+- [mechanism] Game events determine the density and nature of sound at any moment, so audio mixing begins in game design. When: Deciding how audio should peak and rest over play. Why: Event pacing drives how many sounds play and how intense they are.
+- [mechanism] Wide attenuation radii let distant sounds play, so footsteps heard from far away can produce many concurrent instances.
+- [mechanism] A synchronous playSound call does not return until the audio engine finishes processing it, so loading a sound from disk can freeze the game for several frames. Why: The caller waits for the full engine work to complete.
+- [behavior] The window for collapsing duplicate sound requests is only as large as the queue: a fast processor leaves little to batch, while a backed-up queue offers more merge opportunities. When: Requests arrive faster than they are processed. Why: Merge chances depend on how many requests wait together.
+- [rule] Decide which sounds the listener most needs to hear at each moment, and why, before setting any volume levels; selecting what stands out is the sound designer's job.
+- [heuristic] Use a one, two, many approach to switch sound from single events to a group sound as event count rises, the same idea used for footsteps. When: Scaling sound for repeated events. Why: Few events read as individual sounds, while many read as one texture.
+- [heuristic] Per-sound concurrency limits are usually enough on current platforms, and with more voices available the question becomes whether to play everything at all.
+- [procedure] 1) Increment a counter when each event's tone starts. 2) Decrement it when that tone finishes. 3) While the count is above 1, play a raised-pitch variant instead of the single tone. When: Overlapping event sounds must stay distinct.
+- [procedure] 1) Reduce the attenuation maximum radius of the sound. 2) Or lower the concurrent play count on footstep cues to cut overlapping voices. When: In a crowded space.
+- [procedure] 1) Scan pending requests from head to tail, wrapping the ring. 2) If an entry has the same sound id, set its volume to the larger of the two and skip enqueuing. 3) Otherwise enqueue the request. When: Identical sound requests may arrive together and should collapse into one. Why: Duplicates would otherwise sum into an overly loud sound.
+- [metric] A sound cue's Max Concurrent Play Count caps its simultaneous instances and defaults to 16; lower it for sounds that stack.
+- [metric] Concurrent voices from retriggering are roughly sample length in seconds multiplied by shots per second. When: retriggered weapon fire sounds. Why: Long samples at high rates exhaust the voice pool quickly.
+- [tradeoff] Multiple ambient copies fill a space but cost voices, cause volume doubling, and can introduce phasing and panning changes. When: deciding whether to use several copies of one sound. Why: the fill benefit comes with resource and sound-quality costs.
+- [tradeoff] Real-time frequency analysis and multiband compression can cull masked sounds automatically on modern hardware, while simple scripted event logic can be enough.
+- [pitfall] Without a full spatial sound field, players cannot filter sounds, so playing every sound at once produces an undecipherable mix.
+- [pitfall] Long ricochet sounds add to voice count.
+- [fact] A sound class option called Always Play prioritizes assigned sounds when the voice count is limited, as a simple approximation of priority.
+
+## cinematic audio
+- [definition] Diegetic UI shows information inside the game world, such as an ammo count on the weapon itself; it can strengthen narrative and physical presence but is harder to make usable.
+- [definition] Diegetic music comes from sources within the game world, such as radios, televisions, tannoys, loudspeakers, or characters singing or playing instruments, so players hear it as part of the environment.
+- [mechanism] Changing a sequence's play rate scales its motion speed, where 1.0 is normal, and sound tracks placed in it follow that speed without separate files.
+- [behavior] Diegetic sound sources can draw players toward a location or warn them that other people are nearby. When: when a diegetic sound source plays in a space.
+- [rule] Prefer diegetic UI in VR when presence is a priority and the information can be shown in the world.
+- [rule] Use a brief static burst between tracks when a diegetic radio changes station. When: when the player switches a diegetic radio.
+- [heuristic] Use diegetic information when it is clear and comfortable for players; keep a HUD element when players need stable or additional information the world display cannot give.
+- [heuristic] When camera cuts are frequent and sound panning becomes distracting, use a separate cinematic sound track with its own continuity instead of following the camera. When: Cut-scenes with frequent cuts. Why: Decoupling sound from the camera removes sudden directional jumps.
+- [heuristic] Use diegetic music for sources that exist in the world, and non-diegetic music for score-like emotional support. When: Choosing music source for a scene. Why: Source placement determines whether music feels part of the world or outside it.
+- [procedure] 1) Pause gameplay while the response overlay is shown. 2) Present response choices as UI buttons. 3) Resolve the chosen branch before resuming play. When: Player chooses a dialogue response.
+- [procedure] 1) Mute camera-relative game audio with a Set Sound Mode action triggered from a Matinee event. 2) Place sound cues on Sound Tracks along the timeline to rebuild the scene. 3) Control overall sequence level with an Audio Master track and fade it with the curve editor. When: Building a cut-scene whose mix matters more than the camera position. Why: Muting the default mix stops automatic 3D sound from interfering with the authored cinematic mix.
+- [procedure] 1) Add a sound track to a group in the sequence. 2) Assign a sound cue. 3) Place it on the timeline. 4) Edit its keys to change volume or pitch over time.
+- [tradeoff] Diegetic health systems can increase presence but are harder to get right for usability.
+- [pitfall] Making an in-world interface that matches the game's setting while staying clear and easy to perceive is hard.
+- [pitfall] Built-in open and close sounds fire only at a sequence's start and end, so they cannot mark starting or stopping midway.
+- [pitfall] Sound events fire at sequence timing, so an end marker placed after the final key delays the end sound past the moment motion stops. Why: sounds are triggered by the sequence timeline.
+
+## combat and feedback sounds
+- [definition] A movable static mesh that uses the physics engine to collide with level geometry and other such objects reports collisions, and its impact velocity can drive sound logic. When: Physics objects that should trigger sounds on collision.
+- [mechanism] Sounds placed behind the player raise perceived threat, because hearing warns of threats that are out of view, hidden or far away. Why: Hearing covers off-screen threats.
+- [mechanism] Bystanders reacting with sound and animation to an entity can reveal that the entity is a nuisance, even if it looks harmless.
+- [mechanism] Sound that does not fade with distance makes a threat seem omnipresent and keeps its location ambiguous.
+- [mechanism] If an enemy reacts to each hit with a sound, and that sound quickens as the enemy closes distance during lulls in fire, its approach builds tension. When: brief lulls in the player's attacks. Why: a faster rhythm signals proximity.
+- [behavior] Players respond to audible stealth feedback by choosing silenced weapons, avoiding noisy surfaces, walking rather than running, closing doors, and deliberately making noise to distract enemies. When: Stealth games where enemies react to sound. Why: Sound becomes a tactical resource the player can control.
+- [heuristic] A retriggered weapon restarts its fire sound on each shot while the fire button is held; this suits mechanical weapons at moderate rates of fire. When: moderate rates of fire.
+- [heuristic] Give collision trigger volumes a retrigger delay so a collision sound does not repeat rapidly in quick succession. When: A player stays in contact or bounces against an object. Why: Without a delay the same impact sound fires many times in a row.
+- [heuristic] Loop a beeping sound until the player uses an available special state, so the player keeps noticing that it is ready. When: A special ability is ready but unused. Why: A repeating cue keeps an unused ability in the player's attention.
+- [heuristic] Frequent machine gun impacts repeat quickly, so modulate pitch and volume and randomly recombine samples. When: frequent automatic weapon impacts.
+- [pitfall] Relying only on sudden shock sounds weakens horror, because stopping a sound is rarer and more effective at building tension.
+- [fact] Real weapons often change character as the clip empties, so a state-dependent fire sound can mirror that behavior.
+- [fact] A player character's bullet impact cue is set in its own pawn sound group.
+- [fact] Player hits play together with hit, crushed or gibbed sounds.
+- [fact] Bullets travel faster than sound, so a player can be hit before hearing the shot, and a bullet whizz-by is the sound of a near miss.
+
+## snapshot mix states
+- [model] A sound mode's EQ has three bands: a high shelf, a low shelf, and a parametric mid band.
+- [definition] Subtractive mixing removes or filters out non-essential sounds during a special state so the remaining sounds dominate and the state feels focused.
+- [definition] A SoundMode is a snapshot mix that sets volume, pitch or EQ for selected sound classes and is triggered from scripting or the console.
+- [mechanism] A Set Sound Mode that targets a sound class silences every sound outside that class, including ambience. When: Switching to a dedicated cinematic mix. Why: Only sounds in the chosen sound class remain audible under the mode.
+- [mechanism] A mode's initial delay sets when its change starts, fade-in time sets how long it takes to apply, and fade-out time sets how long it takes to undo. A duration of 1 lasts until the next mode change.
+- [heuristic] Fire shell shock automatically when an explosion occurs within a set radius of the player, not only by manual trigger. When: Building a shell shock effect for real gameplay. Why: Automatic triggers keep the effect tied to the player's actual proximity to the blast.
+- [heuristic] Snapshots can be keyed to states like in-game or menu, places, or occurrences such as a power-up or shellshock.
+- [procedure] 1) Store the current mix mode in a variable when it changes. 2) Before reverting to default, check that variable. 3) Restore the stored mode if it is still wanted. When: A temporary mix mode must return to the prior state when it ends. Why: Explicit tracking preserves the previous state that the snapshot system does not keep.
+- [tradeoff] Priority snapshots restore the previous primary snapshot automatically when a higher one switches off, but a single snapshot slot loses the prior state unless tracked separately. When: Primary snapshots with priorities are tracked, or two mix states must coexist, such as a shell shock during an altered-hearing mode. Why: Tracking the loaded snapshot lets the system restore the prior state automatically, while only one active state can occupy a single slot.
+- [pitfall] A sound mode with a limited duration can end before the event it supports, such as a line of dialogue, so choose an infinite mode or lengthen it to cover the event.
+- [pitfall] New or edited sound modes may not appear until the engine editor is restarted.
+- [fact] Automated volume ducking can be overridden at run time, so it counts as a triggered mix behavior rather than a fixed one.
+- [fact] Sound mode values are multipliers applied to the class tree, not absolute levels, so changes stack down the tree.
+- [fact] Snapshot transitions may take effect instantly or be spread across a transition window.
+
+## voice and dialogue audio
+- [definition] A wild line is dialogue recorded without picture or existing audio, with animation and lip sync built to match it afterward.
+- [mechanism] Voices are a finite resource: each playing sound copy uses one, and engines limit simultaneous voices from 48 to a theoretical 512, forcing priority decisions.
+- [rule] Ambient chatter and nonspeech vocals such as pain, dying, and screaming should be spatialized so they seem to come from their characters in the game world.
+- [heuristic] Give voices accents and personality types such as serious, joker or rookie to individualize them, and make main characters especially distinct from the rest of the cast.
+- [heuristic] Record whisper and shout lines with the scene context, distance and environment noted, and agree on a fixed preamp setting for them. When: Recording lines whose loudness is part of their meaning. Why: Without the scene, a whispered line may be inaudible in play.
+- [procedure] 1) State character sex. 2) State wanted voice age, which may differ from actor age. 3) State accent. 4) Describe pitch, timbre, intonation and personality. 5) Reference example voices. When: Briefing a voice actor.
+- [procedure] 1) Import a very short placeholder sound wave into a sound cue. 2) Enable the text-to-speech option. 3) Type the dialogue into the spoken text field. 4) The node duration updates to the spoken length; the placeholder itself is not played.
+- [procedure] 1) Group sound cues into categories. 2) Assign each category a voice count based on its importance.
+- [procedure] 1) Tag each sound group by relative importance. 2) When voices run out, cull lower-priority sounds and keep high-priority ones playing.
+- [metric] Apply a high-pass filter around 100-150 Hz for male voices and 150-200 Hz for female voices to cut rumble while keeping natural tone. When: Dialogue has low rumble from mic handling.
+- [pitfall] A play-sound node finishes after the placeholder's original length, not the spoken length, so add a delay of about the line's length afterward. When: when triggering prototype dialogue in a sequence.
+- [pitfall] Overlapping retriggered sounds use up voices quickly when several weapons fire in one area. When: busy areas with several weapons firing.
+- [fact] The human voice affects listeners at a deep subconscious level, making voice a powerful storytelling tool in games and film.
+- [fact] A voice center channel volume sends dialogue to the center speaker in 5.1 and 7.1 setups, making speech easier to understand than spatialized sound.
+
+## occlusion and obstruction
+- [definition] Obstruction is when an obstacle blocks the direct sound path while reflections from the room still reach the listener.
+- [definition] Exclusion is when direct sound reaches the listener through a gap such as a doorway, while reflections hit the obstacle.
+- [definition] Occlusion is when a wall, object or surface blocks the path between listener and source, muffling both direct and reflected sound.
+- [mechanism] Modern engines trace a simple path from each emitter to the listener; if geometry interrupts it, a filtered version plays, filtered live or prerendered.
+- [behavior] Occlusion simulated for player audio has little effect on whether an AI character learns of a sound.
+- [procedure] 1) Place an ambient zone for each blocking wall. 2) Filter or attenuate exterior sounds inside the wall zones. 3) Keep the listener's room sounds and any doorway or gap outside all zones unfiltered.
+- [procedure] 1) Identify where the listener and source are separated by an opening or barrier. 2) Place a zone that only filters at openings. 3) Place a zone that filters and attenuates at solid walls. When: Engine lacks native occlusion for a barrier. Why: Specific zones approximate occlusion where automatic systems are unavailable.
+- [tradeoff] A zone that only filters keeps the volume of a sound heard through an opening like a window, while a zone that also attenuates reduces it, as a wall would. When: Simulating sound passing through windows versus walls. Why: Openings transmit high frequencies less than full volume loss.
+- [pitfall] A point-source ambient sound is heard clearly through walls because the engine does not block it at walls, and attenuation must stay wide enough to fill the room. When: a sound source sits inside a small room near walls. Why: the engine does not occlude sound at walls.
+- [fact] The Max low-pass radius setting defines the distance where the low-pass filter is fully applied, fading toward the Min radius setting. When: Configuring distance-based filtering on an ambient sound. Why: Filter strength is interpolated between the two radii.
+- [fact] The volume and frequency content lost to occlusion depends on the material, and brick has a strong muffling effect.
+- [fact] Some engines need the level geometry defined for them before they can trace occlusion.
+- [fact] Exact real-time occlusion exceeds the processing budget usually given to audio, so developers fake it.
+
+## udk sound engine setup
+- [model] Actors differ: looping ones repeat waves; toggleable ones switch via scripting; non-looping ones play random sounds at random times; collision ones play a cue once; moveable ones attach to cinematics. When: Choosing a sound actor for a level sound. Why: Each actor suits a different playback pattern.
+- [mechanism] Each sound request is handled independently, so the engine cannot aggregate or prioritize them; identical simultaneous sounds sum into one sound that is too loud, and excess sounds exceed channel limits and get cut off. When: Many sounds are requested in the same frame. Why: Independent handling leaves the engine no chance to combine or rank requests.
+- [heuristic] Switch off spatialisation on ambient sounds and sound cues, even mono files, to keep distance fade without panning; use this for large objects with no clear point of origin.
+- [heuristic] Make wall ambient zones slightly narrower than the walls, since sound only attenuates and filters gradually around a corner.
+- [heuristic] Use notching when a sound must stand out without an obvious duck in volume, especially over dense music or battle ambience.
+- [procedure] 1) Create a white noise cue. 2) Apply the sound mode. 3) Record the output. 4) Check the frequency spectrum for the notch.
+- [procedure] 1) Trigger a sound mode from a Set Sound Mode action in the visual scripting system. 2) Or type the setsoundmode console command followed by the mode name.
+- [pitfall] If a sound's source sits where the player never reaches the minimum filter distance, the unfiltered version is never heard there. When: Placing a filtered ambient sound source. Why: The player stays beyond the minimum radius.
+- [pitfall] The meaning of mid bandwidth values is not documented, so setting them requires trial and error.
+- [pitfall] Calling a synchronous audio API from several threads without locking can break things.
+- [fact] In UDK, pitch scale ranges from 2.0 (one octave up) to about 0.4 (a little under half speed), limiting in-engine shifts. When: Setting pitch scale on sound actors. Why: Shifts beyond this range need pre-shifting in an audio editor.
+- [fact] Any sound class not named in a sound mode keeps its volume at 1.0.
+- [fact] Typical priority groups are player weapons, NPC weapons, explosions, mission dialogue, dialogue chatter and ambience.
+
+## platform playback targets
+- [mechanism] Perceptual lossy codecs discard audio listeners are unlikely to notice, like high frequencies or sounds hidden beneath louder simultaneous sounds. When: Compressing audio with perceptual codecs. Why: Removed content is chosen by what listeners are unlikely to notice.
+- [behavior] Players rate identical graphics higher when the game has high-quality audio than when it has low-quality audio. When: comparing versions with the same visuals.
+- [rule] Avoid depending on platform limiters, which stop distortion but act unpredictably; design the mix so they are rarely needed.
+- [procedure] 1) Inspect the sound's frequency display to find where its energy lies. 2) Play white noise through the target platform's speakers to hear its real range. 3) Choose the lowest rate that keeps the needed content. When: Before fixing a sample rate for a target platform. Why: Displays and listening reveal the true content and playback limits.
+- [procedure] 1) Raise the sound one octave in an audio editor, which halves its file size. 2) Import it. 3) Play it one octave down in the engine to restore the original pitch. When: Memory is critical, such as portable consoles or smartphone downloads. Why: Halving the sample rate by pitch-up stores half the samples.
+- [pitfall] Consumer formats such as MP3 decode slowly, so they are generally unsuitable for sounds that must start instantly in games. When: Choosing a playback format for instant sounds. Why: Decoding needs processing time and power.
+- [pitfall] Cross-platform projects are often built to the lowest specification among their platforms, so the weakest memory budget constrains everything. When: Shipping on several platforms. Why: One shared asset set must fit the smallest target.
+- [fact] Audio details that go unnoticed on screens add a great deal to presence in VR.
+- [fact] To reproduce a frequency accurately, sample at twice that frequency, so content up to 12 kHz requires a 24 kHz sample rate. When: Choosing a sample rate for a sound. Why: Nyquist-Shannon sampling theorem.
+- [fact] Sound memory budgets vary widely: early-2000s console-class systems had about 2 MB for sound, handhelds up to about 500 kB, and current-generation consoles about 15 to 25 MB. When: Estimating memory for a target platform. Why: Values are ballpark and depend on hardware and project sharing.
+- [fact] Cinema mixes play at a known reference level in theaters, while games are a home medium with setups from mono TV to 7.1 surround.
+- [fact] Modern titles occupy hundreds of megabytes, and art and audio now far outweigh code in size.
+
+## procedural modulation and pitch
+- [mechanism] Larger or longer sources produce deeper pitches, so pitch-shifting one recording can represent differently sized versions of an object, conveying size without extra visuals. When: Several objects share one basic sound source and differ mainly in size, or when designing sound effects for objects of varying size. Why: Pitch relates to the size of the sound source; low pitch suggests mass and power, so consistent pitch communicates size. (x2)
+- [mechanism] Modulation adds variation to a sound without storing extra samples, saving memory. When: Memory is limited and variety is needed. Why: Variation comes from runtime parameter changes.
+- [mechanism] Large pitch shifts can change a sound's character, so one recording can serve different sources, such as a chicken call reused as rats. When: Reusing a sample for a different object. Why: Strong pitch changes alter timbre as well as pitch.
+- [mechanism] Active modifier mixes combine by multiplying their values, so two modifiers on the same sound group compound their effect. When: Several modifiers scale the same sound group at once. Why: Multiplying scale factors makes independent modifiers stack without naming each other.
+- [mechanism] A parent class multiplier applies to all its children, and a child can be corrected with its own multiplier, so the two combine as a product. When: A broad change should apply to a family but one child must keep its level. Why: Multipliers multiply down the class tree, so a child value of 2.0 cancels a parent value of 0.5.
+- [heuristic] Per-element modulators or separate cues for each layer give finer control than a single shared modulator. When: Layered cues need individual control over their elements. Why: Each element can vary independently.
+- [heuristic] Keep modulation ranges moderate so that varied sounds still remain believable. When: Setting pitch or volume random ranges. Why: Extreme variation makes a sound sound unnatural.
+- [heuristic] Random pitch modulation in a fire cue only partly reduces retriggering problems.
+- [procedure] 1) Set minimum and maximum pitch values on the modulator. 2) Set minimum and maximum volume values. 3) Each time the cue plays, the modulator picks random values within those ranges. When: Adding variation to a sound without new samples. Why: Random values within ranges produce varied playback.
+- [metric] Pitch multiplier = target frequency / source frequency. For a source at 220 Hz, A4 (440 Hz) is 2.0 and C3 (130.81 Hz) is about 0.595. When: Retuning a looped single-cycle sample to other notes. Why: Playback rate scales pitch linearly with the ratio of frequencies.
+- [tradeoff] Storing a sound an octave higher halves its size but can lose high-frequency content at the top of the range; downsampling loses more. When: Choosing how to shrink a sound file. Why: Octave-up storage keeps more quality than plain downsampling at the same size.
+- [fact] A continuous modulator scales its input range to 0 to 1, and its minimum output values set the lowest level for volume and pitch.
+
+## layering and variation
+- [definition] Grunts are wordless sounds in four kinds: screams of fear, joy or rage; effort sounds scaled to action difficulty; surprise sounds like a sharp breath; and laughter or giggles.
+- [rule] When time is short, blend fragments of existing film or game soundtracks to test a sound direction quickly. When: when time is short.
+- [rule] Layer sounds on a visual object when you want a new character but the object must still seem to produce the sound. When: when the object must still seem to produce the sound.
+- [rule] Layer several recordings together to build the sound of a scene or level.
+- [heuristic] Layer randomised cloth rustle and equipment jangles over footsteps; equipment such as armour can vary the sound and give the player feedback.
+- [heuristic] Record two or three inflection variants of stitched phrases and choose among them by game intensity, so short routine actions and tense late moments sound appropriately different. When: A line is reused across situations with different emotional weight. Why: A single inflection cannot fit every context in which the line plays.
+- [heuristic] Layer sounds over events to accentuate an emotion or to contrast it. When: designing audio feedback for game events.
+- [procedure] 1) Place several sounds in a mixer and set relative volumes. 2) Delay secondary layers by a randomized amount. 3) Add modulators for slight pitch and volume variation. 4) Add attenuation for distance. When: Building a complex event sound from several layers. Why: Each step adds controlled variety and realism.
+- [procedure] 1) Loop a steady, randomized ambient layer of general crowd noise. 2) Layer specific crowd reactions over it. 3) Add variable fade-ins and fade-outs to each layer so it blends naturally. When: Building sports or event crowd audio.
+- [metric] Layering N stored sounds in random combinations yields 2^N minus 1 distinct non-silent sounds; 3 sounds give 7, 5 give 31, 7 give 127, 10 give 1,023. When: Estimating variety from stored layers. Why: Each sound can play alone, in any subset, excluding silence.
+- [tradeoff] Randomized fade envelopes create many varied versions from one file, trading playback logic complexity for memory savings. When: Memory is limited and many varied versions are needed. Why: Stored audio stays small while the system generates variety.
+
+## parameter and volume curves
+- [mechanism] Driving pitch and volume with separate oscillators makes them modulate independently, rather than following a single cycle, producing a more organic looping sound. When: Creating looping sounds such as insect buzz. Why: Independent cycles prevent pitch and volume from moving in lockstep.
+- [mechanism] Using a scaled game value as an index into a lookup array of volume values produces non-linear volume curves that are easy to edit. When: mixing layers from a game variable such as distance.
+- [rule] Scale effort sounds to the difficulty of the action, so a small jump and a large climb sound distinctly different. When: A character performs a physical action with variable difficulty.
+- [procedure] 1) Poll the health value at short intervals. 2) Normalize it to a 0 to 1 range by dividing by its maximum. 3) Subtract from 1.0 to get volume for a layer or sound that should rise as health falls. When: a music layer or sound should grow louder as health drops.
+- [procedure] 1) Enable rigid body collision notification on the physics object. 2) Route the impact velocity through a divider to bring it into a usable range. 3) Feed the result into the sound's volume multiplier. 4) Set the sound origin to the physics object. 5) Tune the divider value by ear. When: Making a physics collision sound louder for harder impacts. Why: Raw impact velocities are far outside a usable volume range, so scaling is needed.
+- [procedure] 1) Create a movement track in a sequence editor for the moving sound. 2) Place keys by moving the actor to each position and adding a key on the timeline. 3) Set red markers for the sequence start and end and green markers for the looping section. 4) Start the sequence at level startup and enable looping. When: Making a sound travel a path, such as birds or insects moving through an area. Why: Keyframed paths let a sound pass by or circle the listener.
+- [procedure] 1) Add music layers to the scenario. 2) Change float values with Set Variable. 3) Listen to how each layer's volume responds to each change. When: Testing how music layers should respond to game variables.
+- [metric] An example modulator range keeps pitch between 0.4 and 1.05 and volume between 0.1 and 1.0 of full volume. When: Setting a starting range for pitch and volume modulation. Why: Ranges are a starting point to tune per sound.
+- [metric] In the sound mode EQ, frequency is set in Hz, gain runs from 0.0 to 1.0, and mid bandwidth runs from 0.1 to 2.0.
+- [pitfall] Linear velocity-to-volume mapping can feel wrong, because a small change in velocity may not sound like a proportional change in loudness.
+- [fact] In air, sound pressure falls with the square of distance, so volume roughly halves, about 6 dB, each time distance doubles.
+
+## synthesis and sound realism
+- [model] An oscillator in a sound cue has amplitude, center, frequency and offset ranges. Modulation values are a center plus or minus amplitude; frequency is twice the sine rate in Hertz; offset is the phase multiplied by 2π. When: Configuring an oscillator node in a sound cue.
+- [mechanism] Modulating the volume of looping noise with a slow sine-shaped oscillator makes the sound swell and fade, adding movement such as wind without extra samples. When: Adding natural movement to a looping sound such as wind or waves. Why: Level changes over time read as motion, and modulated level also shifts perceived tone.
+- [mechanism] Pleasant tones for successful actions act as positive reinforcement, while jagged buzzers for failures act as punishment, shaping what players repeat.
+- [rule] A new material must reference an existing default physical material or a new physical material to produce the correct footstep sound. When: Creating new surface materials. Why: Footstep sound selection depends on the physical material the material references.
+- [rule] Choose musical tones so any combination sounds consonant, letting players layer sequences freely without dissonance. When: Designing interactive musical sound sets. Why: Free combination by the player must not produce dissonance.
+- [heuristic] Treat realism as a tool, not a target: once the world is convincingly real and consistent, decide deliberately when to move beyond realism to serve gameplay or narrative. When: Designing the overall sound approach of a game. Why: Strict realism is not always the goal; emotional use of sound opens more creative options.
+- [metric] Start oscillator frequencies at 0.2, then 0.1, then 0.05, giving three distinct pitch modulations for alarm cues. When: creating three alarm cues from one tone.
+- [pitfall] Two identical tones at the same pitch blend into one longer tone, hiding the second event. When: Repeated feedback sounds overlap in time.
+- [pitfall] Missing hit and footstep sounds leave the world feeling less physical, and with a limited sound palette the remaining sounds must carry the feel. When: Sound palette is limited and hit or footstep sounds are absent. Why: Without impact and locomotion sounds, the world reads as less solid.
+- [fact] A realistic engine simulation models the engine, induction system, exhaust and wheels, using crossfades, granular sources and DSP effects.
+- [fact] Heavy but sharp percussion can evoke the material of an enemy, such as crunching armor or bone.
+
+## character and footstep sounds
+- [mechanism] Background breathing audio that quickens as the player succeeds can convey progress without visual UI. When: Conveying progress through sound.
+- [behavior] Having fewer counters or pieces in mid-game can give control of initiative, so the evaluation must encode such preferences rather than just counting material. When: Mid-game in games like Reversi where the final winner has the most counters. Why: Initiative can outweigh a temporary material deficit.
+- [rule] Sort materials into sound-blocking and sound-transmitting groups, treating transmitting materials like air. When: game code for sound propagation. Why: Real materials carry sound at different speeds.
+- [heuristic] Change footsteps with player state, such as heavier steps at low health, to give subtle feedback beyond the health bar.
+- [heuristic] Limit how many NPC footsteps play at once; keep the nearest or watched one at full volume and attenuate the rest. When: many NPCs share one sound cue in a small area. Why: shared cues in a small area make repetition obvious.
+- [procedure] 1) Examine the footfall. 2) Move it to the nearest suitable location. 3) Adjust the rest of the animation to match, using inverse kinematics.
+- [tradeoff] Local footfall correction is practical, while lookahead planning across animations can reach distant goals but needs huge graphs.
+- [tradeoff] Iterative sound spreads slowly, a few nodes per run, which needs shared timestamp bookkeeping; instant spread was found equally believable.
+- [fact] Games place objects farther apart than real life, so characters take more footsteps over the same distance.
+- [fact] In multiplayer, footsteps can reveal where other characters are and what type of character they are.
+
+## generative and procedural music
+- [definition] Performative music is music the player directly controls, as in rhythm-action games.
+- [definition] Multimodal game music appeals to hearing, sight, and action-oriented touch at the same time, so one musical experience spans several senses.
+- [mechanism] Mapping sound effects to player movement across grid zones lets the player unknowingly compose a score, as each action adds a musical phrase over an ambient loop. When: designing interactive or generative music. Why: Action-linked musical phrases make play itself produce the soundtrack.
+- [mechanism] Recorded everyday sounds, such as doors and household objects, can be turned into tracks that build tension.
+- [heuristic] Add a global control that changes several intensity layers together over a fixed cycle of pulses to give random textures an overall shape. When: Generative music sounds predictable or lacks direction. Why: Random textures alone can become monotonous.
+- [heuristic] Use generative methods when a piece must last an indeterminate time without becoming repetitive.
+- [procedure] 1) Start a looping delay at the shortest pulse length or regular half-beats. 2) Create a looping switch with one link per pulse, stepping outputs as a sequencer. 3) Attach a random sample from a set to each hit. 4) Add random selectors with empty outputs so some pulses stay silent, and random gates for extra hits on selected pulses. When: Building generative textures or percussion from short samples in real time. Why: Long non-repeating patterns are produced at low memory cost.
+- [tradeoff] Rendering music to a wav file is simple and consistent but big, costly in memory and inflexible, while MIDI with sample banks stays small and allows tempo and controller changes at almost no size cost. When: Choosing a music format for interactive play. Why: Wav fixes a single performance; MIDI keeps the performance editable.
+- [pitfall] Changing a volume multiplier affects a sound only when it is next triggered, not while it is already playing. When: Driving generative music intensity with volume variables. Why: Short sampled elements make the change sound almost instant.
+- [fact] Note-level interaction usually requires MIDI and sample-based playback, or an advanced stem muting and unmuting system.
+
+## feedback and warning sounds
+- [definition] Interactive sound is tied to events, so the same action should always trigger the same response, giving players dependable feedback.
+- [behavior] A harsh game-over sound can prompt players to restart quickly rather than linger, so sound choices shape how players respond to failure. When: designing failure feedback. Why: Audio cues influence the emotional reaction and pacing after failure.
+- [rule] Use sound effects to give feedback on scoring and to mark the start and end of levels.
+- [heuristic] Start a warning state, such as low health, by adding a heartbeat, a visual filter and reverb together when a variable crosses a threshold. When: A state the player must notice. Why: Layering sound with visual effects reinforces the feeling of danger.
+- [heuristic] Switch a weapon to a distinct warning sound when its ammo falls below a set threshold, giving the player audible feedback on ammo status. When: Ammo runs low during firing.
+- [procedure] 1) Use three or more music layers. 2) Set a master timer sound that retriggers all layers so they loop constantly. 3) Compare the health value to a start threshold per layer. 4) When health is below the threshold, raise that layer's volume multiplier. When: Building music layers that enter and leave with player health. Why: A constant loop keeps layers in sync, while thresholds bring them in as health falls.
+- [metric] A low-ammo warning can trigger when remaining ammo drops below a threshold such as 25 rounds. When: Example value; choose a threshold per weapon.
+- [tradeoff] Instantaneous sound is common in games, while modelling travel delay adds realism at the cost of extra work.
+- [tradeoff] Sound tracks suit repeated discrete events, while a continuous sound needs its own speed variations to follow a changing speed.
+
+## symbolic sound design
+- [definition] Sound conveys material qualities that players cannot physically touch, reinforcing the world's narrative state through echoes, rustling, sloshing, and music.
+- [mechanism] Pickup sounds act as learned signals, so the player associates each sound with a reward or punishment and seeks or avoids it. When: Games with collectibles or pickups that help or harm. Why: Players learn a fixed sound's meaning through repeated pairing with an outcome.
+- [behavior] Visually identical objects feel different when given different sounds; weapon sound shapes the player's sense of power and can change play style. When: when identical-looking objects receive different audio.
+- [rule] Keep symbolic sounds that convey game information, such as pickups or power-ups, consistent rather than varied, since variation distracts players or hides meaning. When: Designing feedback sounds that signal game state; sounds act as earcons with a fixed learned meaning. Why: Players must recognize the meaning quickly; variation breaks recognition and makes players attend to the sample instead of its meaning, while consistent sounds are processed automatically.
+- [rule] Use symbolic or stylized sound effects, such as small abstract rumbles, when visuals are stylized, instead of realistic recordings. When: when the art style is iconic or cartoonish. Why: Realistic sound on stylized visuals reads as inconsistent.
+- [rule] Tie sound timing and pitch to motion and collisions so audio gives players clues about the physical world.
+- [fact] Sound gives players gameplay information and describes space beyond the screen.
+- [fact] Common symbolic danger sounds include dogs barking, glass breaking, forbidden acts, whispers, reversed reverb, people in pain, low-frequency bangs or rumbles, and a baby crying.
+- [fact] Sound timbre conveys material: a stretched-rubber collision sound reads as bouncy, a breaking sound as crumbling stone, even on limited hardware.
+
+## audio ducking rules
+- [definition] Ducking lowers music or effects while speech plays; real ducking drives a compressor's side-chain with the speech signal.
+- [definition] An exception sound class sits outside the parent and child class tree, so a sound mode targeting the tree does not change it.
+- [mechanism] Assigning sounds to importance categories and ducking lower-importance sounds when higher-importance ones play keeps critical audio audible; very high importance sounds are not ducked. When: when a higher-importance sound plays. Why: Lower-importance sounds turn down, medium a little and low a lot, so priority sounds stand out.
+- [mechanism] An expander reduces audio below a threshold, and at extreme settings it acts as a noise gate.
+- [rule] Use volume ducking to lower competing sounds, such as music and effects, during dialogue so players can make out each line. When: when dialogue must always be heard over music and effects.
+- [rule] Use exception classes for sounds that should ignore the usual mix rules. When: when sounds should ignore the usual mix rules.
+- [procedure] 1) Identify the category of each sound to be lowered. 2) Create a mix-state preset with a category volume effect per category at reduced volume. 3) Leave the target sound's category out. 4) End the preset after a short duration, or with a second action that restores the default mix. When: Making one sound stand out while other sounds duck. Why: Ducking chosen classes isolates the target sound without changing its own volume.
+- [metric] A ducking mode can set the effects and music classes, with their children, to 0.2 while leaving the dialogue class unaffected.
+
+## microphone and field recording
+- [rule] Use close mic placement for dramatic, boomy voices and avoid it for normal dialogue; a normal distance is roughly 8 to 18 inches. When: Choosing mic distance for a recording session. Why: Proximity boost enriches lows for dramatic effect but colors ordinary speech.
+- [rule] Avoid compression and EQ during recording so that processing choices stay flexible later.
+- [rule] Position the mic above the actor's head, angled toward the mouth, with a pop shield to reduce popping from plosive consonants.
+- [rule] Carry a portable recorder so unexpected interesting sounds can be captured when they occur.
+- [fact] Directional microphones artificially boost bass when the speaker is very close, a phenomenon called the proximity effect; voices within about three inches are likely affected. When: Positioning a speaker relative to a directional microphone. Why: Directional mics respond to close sources with extra low-frequency gain.
+- [fact] A correctly positioned pop shield keeps an enthusiastic speaker at a safe distance from the microphone. When: Recording energetic or close-speaking actors. Why: The shield physically limits how near the actor can get.
+- [fact] Off-axis frequency response differs from on-axis response, and combined with projected performance it can suggest outdoor space. When: Choosing mic angle for an open-environment effect. Why: Off-axis pickup changes timbre and reverberant balance.
+- [fact] Very early in the morning is often quiet, which makes it a good time for field recording.
+
+## rhythm and music games
+- [definition] Music-based games make performing music the core mechanic, judging the player mainly on input timing and, with a microphone, on pitch accuracy.
+- [definition] Meter is the set of repeated elements across a piece of music.
+- [mechanism] Faster music speeds up people's actions, while slower music makes them linger longer and consider extra purchases or options. When: Music is used during play or in venues where pacing matters.
+- [mechanism] In rhythm games, a warning light sequence precedes each note, and a trigger volume around the note detects the player's shot. When: Building a note-timing rhythm mechanic. Why: Warnings give the player time to hit the note accurately.
+- [behavior] Listeners first hear a meter introduce itself, then come to form an expected schedule from its repetition. When: while listening to a metered piece. Why: repetition builds expectation.
+- [procedure] 1) Send each note through a gate that opens only at the correct moment. 2) Log a good note when the player's input meets the open gate. 3) Log a dead note otherwise. 4) Add or subtract score values for each event. When: Scoring a timed note-hit mechanic. Why: Gates separate valid and invalid hits by timing.
+- [procedure] 1) Place the music on the timeline and play it. 2) Tap a key at musical points to create target events. 3) Enter tempo and beats per bar so targets reach the hit area one bar after they are triggered. 4) Shift the music one bar later so events line up with the first beat. 5) Connect hit and miss sounds to scoring. When: when building a simple rhythm action prototype.
+- [pitfall] Heavily rhythmic or strongly directional music is hard to make work in games because the player can interrupt it at any point. When: Choosing music style for interactive play. Why: Interruptions break rhythmic and directional structure.
+
+## phasing artifacts
+- [mechanism] Phasing is a comb-like artifact when the same sound overlaps itself or several copies play together, a few to 35 ms out of time; subtle pitch variation reduces it. When: the same sound overlaps itself or several copies play together. Why: the offset waveforms interfere.
+- [mechanism] Loops of different lengths at the same tempo drift against each other and realign only after their lowest common multiple of bars, producing long non-repeating combinations. When: Layering rhythmic loops of different bar lengths. Why: Each restart meets a different section of the other loop.
+- [heuristic] Sounds with more high-frequency content are more affected by phasing, so avoid overlapping them. When: choosing sounds that will overlap.
+- [procedure] If overlap cannot be avoided, detune the copies slightly using the pitch property of the ambient sound source. When: same sound must overlap. Why: slight detuning breaks up the interference.
+- [metric] Two loops of 3 and 4 bars realign after 12 bars; 6 and 8 bars after 24; 7 and 9 bars after 63.
+- [tradeoff] Phasing loops work best with rhythmic elements; harmonic combinations are often too complex to avoid clashes predictably. When: Choosing material for loop layering.
+- [fact] Phasing loops are intentionally layered loops of different lengths, distinct from the phasing artifact, which is a problem to avoid.
+
+## audio testing and troubleshooting
+- [definition] The root cause is that playSound tells the engine to play immediately, yet callers invoke it whenever convenient; the fix is to decouple receiving a request from processing it.
+- [procedure] 1) Check radii in the Top viewport. 2) Use volume and radii together. 3) Test with Play from here.
+- [procedure] 1) Set the volume modulation minimum output near 1.0. 2) Play the sound cue. 3) Move the pitch minimum output up and down to hear the velocity-to-pitch relation.
+- [pitfall] Testers without good headphones, or who play their own music, give unreliable feedback on game audio. When: When running audio playtests. Why: Poor playback or competing sound hides how the game's music actually sounds and feels.
+
+## sound cue structure
+- [model] Cue graphs are built from nodes such as Speaker, Attenuation, Concatenator, Delay, Distance Crossfade, Looping, Mixer, Modulator, Continuous Modulator, Oscillator, Randomized, SoundNodeWaveParam and Sound Node Mature. When: Designing a cue graph. Why: Each node performs one playback or variation job, and chaining them builds variety.
+- [definition] A SoundCue is a node-based playback system that can choose, modify and spatialize sounds, not a single wav file. When: Setting up interactive sounds. Why: Most interactive sounds need selection and variation logic.
+- [definition] The speaker node in an audio cue graph sets global volume and pitch multipliers, maximum simultaneous playback count, and facial animation data for the cue. When: Setting overall cue volume, pitch or polyphony. Why: Global settings govern every sound the cue triggers.
+
+## distance-scaled beep
+- [mechanism] A tracker beep that speeds up, rises in pitch and grows louder as the player approaches conveys proximity without visuals.

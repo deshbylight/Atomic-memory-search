@@ -1,0 +1,2793 @@
+# game-ai
+
+## pathfinding and navigation
+- [model] A path interface maps a position plus the last parameter to a path parameter, and maps a parameter back to a position.
+- [model] A pathfinding graph is a directed graph of nodes, connections and costs, a level summary shaped for the search algorithm; tactical waypoint AI uses similar structures.
+- [model] A character plans an abstract route first, then plans each stage at finer levels down to actual movement. Only the next section is planned when the previous one completes. Why: spreads planning work over time and across levels of detail.
+- [model] Movement planning models a character as a graph whose nodes hold position, velocity and the animations allowed next, and whose connections are animations leading to the state reached when they finish. When: Planning detailed, constrained local movement with animations. Why: Animations move characters by fixed amounts, so the state after each one must be tracked explicitly.
+- [model] Each floor triangle is a node with up to three links, one per edge; link two floor triangles sharing two vertices when both are marked floor.
+- [definition] A* takes a directed graph with non-negative costs, a start node, a goal node and a heuristic object; it returns a least-cost connection list (any minimal path is accepted), or nothing if no path exists.
+- [definition] IDA* is depth-first search over action sequences with a cost cutoff and heuristic, finding lowest-cost plan for one goal; suits large action sets, keeps memory bounded, eases adding depth limits. When: Single-goal GOAP planning. Why: Memory stays small even when the action set is large.
+- [definition] Three ways to derive a cost between two node groups from low-level links are minimum distance (cheapest link), maximin (largest of per-link minimum distances plus outgoing cost), and average minimum (average of those per-link values instead of the largest). When: planning on a hierarchical graph.
+- [definition] A monotonic path parameter increases steadily along the path, like distance traveled, and both line segments and splines can be parameterized this way.
+- [definition] Coherence means searching only path parameters near the previous value, since the character cannot move far in one frame. When: Following a path during normal motion. Why: Limits the search to nearby sections.
+- [definition] A pathfinding heuristic exposes one operation, estimate(node), which returns the estimated remaining cost from that node to the goal.
+- [definition] A* keeps an open list of nodes found but not yet processed and a closed list of nodes already processed.
+- [definition] Estimated-total-cost is a node's cost-so-far plus the heuristic estimate of its remaining distance to the goal.
+- [definition] Unlike Dijkstra, which finds shortest paths to all nodes, A* aims to find one least-cost route between a start node and a goal node.
+- [definition] A pathfinding graph has nodes and connections; in its basic form, a connection is an unordered pair of nodes.
+- [definition] In pathfinding a node usually represents a region such as a room, corridor section, platform or outdoor patch, and a connection links two regions.
+- [definition] A path is a sequence of zero or more connections: zero when start and goal coincide, one when they are directly linked.
+- [definition] Condensation drops weaker tactical waypoints that sit near stronger ones, keeping those of very high quality or those isolated, distant from every other waypoint of their kind.
+- [definition] The base cost, such as distance or time, keeps characters from choosing exceptionally long routes.
+- [definition] Node array A* is a specialized A* storing node data in an array indexed by sequential node numbers; it suits graphs up to about 100,000 nodes, roughly 2 MB.
+- [definition] A navigation mesh uses artist-defined floor polygons as nodes, with connections between polygons sharing an edge, giving a graph with little artist effort. When: Ground movement or representing walkable areas for pathfinding. Why: Polygon adjacency gives a graph with little artist effort.
+- [definition] Two tactical waypoints link up if one is directly reachable from the other; obstacles such as walls sever those links.
+- [definition] Pathfinding graph links can be marked with the action needed to cross them, such as vaulting, opening a door, breaking a barrier, or rappelling down a wall.
+- [definition] A domain model is a library of plan operator templates that encodes the knowledge of a story world, and planners use it to choose actions.
+- [definition] The cluster heuristic groups highly connected regions of a graph into clusters and precomputes shortest path lengths between cluster pairs to estimate remaining path cost.
+- [definition] The open list holds reached nodes not yet processed, and the closed list holds processed nodes; initially open holds only the start and closed is empty.
+- [definition] Fill is the number of nodes a search considers that never become part of the final route; each costs processing time, so less fill is better.
+- [definition] Open goal pathfinding lets the search accept any node in a goal set as the destination, so the goal test asks whether a node belongs to the goals. When: Several locations can satisfy the task. Why: The character only needs one of several valid destinations.
+- [definition] Pathfinding computes a sensible, short route through a level from a character's current position to its goal, and sits between decision making and movement in game AI. When: Characters must reach destinations. Why: Movement needs a route that connects decisions to physical motion.
+- [definition] Random search samples random points in the search space.
+- [definition] Searching finds the element of a fixed collection of N array items whose key equals a given argument, returning its index so other fields can be reached. When: the collection is fixed during the search.
+- [definition] In a topological ordering of subroutines, a callee is placed before its caller.
+- [definition] Topological sorting embeds a partial order in a linear order in which every item comes after its predecessors. It is possible exactly when the relation contains no loops.
+- [definition] The path length of a node is the number of edges from the root to it, and the internal path length of a tree is the sum of these over all nodes.
+- [mechanism] Making one side of a chasm lower means the character can jump only from the high side, creating a one-way jump. When: Designing one-way traversal.
+- [mechanism] Accurate estimates narrow the search toward the goal, while poor estimates can make A* slower than Dijkstra.
+- [mechanism] A large negative tactic weight applied to a connection with a small base cost and a high tactic value can produce a negative total cost. When: Tactic weights combined with base connection costs. Why: The negative weight term can exceed the base cost.
+- [mechanism] Waypoint tactics that already mark room corners and door positions let the same script work for many building shapes. When: Coordinated squad scripts in varied building layouts. Why: Scripts query tagged waypoints rather than hard-coded geometry.
+- [mechanism] Dynamic connection costs run the cost function on every request, and caching results lets repeated queries within one frame reuse them. When: tactical situation changes during play.
+- [mechanism] Marking nodes with tactical information lets one graph serve both simple tactical decisions and full tactical pathfinding.
+- [mechanism] Some games score a position depending on how it was reached, such as Chess draws after three repetitions, so reusing a cached value can ignore repetition history. When: Game rules depend on move history such as repetition.
+- [mechanism] Waypoint-based state machines that respond to nearby characters and the tactical situation, with small randomness, vary play and look cooperative without squad AI.
+- [mechanism] The difficulty of a found path can influence AI decisions. When: RTS AI choosing between routes.
+- [mechanism] When a character reaches a marked link, it changes behavior so it appears to know the terrain; developers called this embedded navigation.
+- [mechanism] The cluster heuristic captures long real routes through corridors that a short straight-line distance through a wall would hide. When: convoluted indoor layouts. Why: Straight-line distance underestimates the true route when walls separate nearby points.
+- [mechanism] A* assumes connection cost does not depend on how the start node was reached; when costs depend on arrival time, A* family algorithms cannot work directly on the graph. When: connection availability changes with arrival time. Why: Arriving earlier or later can open or close a traffic gap.
+- [mechanism] Games with a small branching factor and a deep tree are easier for computers to search than games with a shallow tree and a huge branching factor.
+- [mechanism] Total signal travel time depends on the total distance covered and the speed of the modality.
+- [mechanism] Methods that move items one place per elementary step need order n² steps, so faster methods must move items over longer distances in single leaps.
+- [behavior] Minimum distance is very optimistic because it assumes no cost for moving within a group, while maximin is pessimistic because it always uses a large value. When: choosing a hierarchical connection cost. Why: Minimum ignores internal traversal cost; maximin takes the worst-case link.
+- [behavior] Coarse node spacing produces swerves that look arbitrary: some look death-defying while others miss clear gaps in traffic. When: fast traffic with coarse graph nodes. Why: Few nodes are placed at useful times.
+- [behavior] A combined search and pathfinding step yields a route the character can follow while continually reconsidering its tactical situation. When: Characters moving to tactical locations during combat. Why: The route and the tactical choice are produced together, so it can be updated as the situation changes.
+- [behavior] In some games the apparent leader changes rapidly every turn, making the horizon effect very pronounced, though these swings are often temporary and settle into positions with a clear leader. When: Search is shallow in games with rapidly changing leads. Why: Limited search depth sees only partial consequences of moves.
+- [behavior] Because all nodes in a cluster share one estimate, A* tends to fill an entire cluster before moving on to other clusters. Why: Nodes within a cluster receive identical heuristic values.
+- [behavior] Routes that detour through unrelated areas look unintelligent to players, while short sensible routes look purposeful. When: Characters moving to a destination in view of the player. Why: Players judge character intelligence by the apparent sense of the route.
+- [behavior] Routes recur across many characters, especially with hierarchical pathfinding, because high-level plan components are shared by many requests. When: Hierarchical pathfinding in a populated world. Why: Many requests share the same high-level route segments.
+- [rule] Characters can use different cost functions weighing visibility, speed or terrain by role; dynamic evaluation lets each apply its own weights at runtime, giving distinct personalities.
+- [rule] Add an assertion or debug message when a connection gets negative cost; otherwise such bugs appear as pathfinding that never returns or subtler faults. When: Developing tactical pathfinding or pathfinding with negative edge costs. Why: Negative-cost bugs are hard to track down; the search cannot terminate correctly with negative costs.
+- [rule] Generate many more waypoint candidates than will be used, so that quality assessment has enough weak candidates to filter out. Why: filtering needs a surplus to select the strongest positions.
+- [rule] Add pathfinding to steering to overcome the horizon problem, since adding more steering behaviors cannot fully fix it.
+- [rule] Look where you're going uses the same procedure as face, with the normalized velocity as the target direction.
+- [rule] Reverse the direction of travel along a path by negating the offset. When: Character must traverse a path backward.
+- [rule] Prefer basic path following where a path must be completed fully, such as a patrol route. When: Patrol routes or paths that must not be skipped. Why: Predictive following can skip sections.
+- [rule] Process the open node with the smallest estimated-total-cost next, not the one with the smallest cost-so-far.
+- [rule] The heuristic must never return a negative value, because graph connection costs are non-negative.
+- [rule] Compare candidate routes on cost-so-far rather than estimated-total-cost, since estimates include heuristic error.
+- [rule] If an improved node is still open, update it in place; if it is closed, move it back to open so it is processed again.
+- [rule] Use a memory-bounded A* variant for large continuous graphs that rarely revisit nodes. Why: Memory savings matter and storing many nodes gains little.
+- [rule] Place nodes where the vehicle will be at that time, not where other vehicles are now, so traffic must be predicted for each arrival time. Why: Other vehicles move, so their positions change with time.
+- [rule] Connection costs are usually travel time, but penalties such as for close calls with other motorists can be added.
+- [rule] Add danger-related costs, such as exposure to enemy fire or dangerous terrain, so the chosen path has the lowest danger. When: tactical pathfinding in RTS games.
+- [rule] Before linking neighbouring domains, check for walls between them, since adjacency alone does not guarantee passage.
+- [rule] Back up domain graph travel with a fallback such as an avoid-walls steering behaviour.
+- [rule] IDA* planning needs three inputs: an action cost, which may equal duration; a goal fulfilment test; and a heuristic estimate method.
+- [rule] When a suitable location is found during decision making, store it so movement goes straight there without another search. Why: Repeating the search after the decision duplicates effort.
+- [rule] Use D*, dynamic A* that replans only the part of an existing plan affected by new information, when environment is uncertain or changes and replanning from scratch is too expensive.
+- [rule] Add other factors, such as equipment wear in harsh deserts, to terrain analysis when the game supports equipment breakdown. When: the game supports equipment breakdown.
+- [rule] For very complex level geometry, first simplify the collision shape before generating the offset AI geometry. When: very complex level geometry.
+- [rule] Visualize the floor flags so misclassified polygons are caught before they break navigation.
+- [rule] Profile before optimizing search; in some observed cases over 80% of execution time went to heuristic evaluation.
+- [rule] When start and goal share a cluster, estimate with Euclidean distance or another fallback; otherwise look up the stored cluster-pair length. When: at runtime. Why: Stored values only cover distinct cluster pairs.
+- [rule] When a reached node is already open or closed, update its cost and connection only if the new cost-so-far is lower; if it is closed, reopen it and remove it from closed. Why: A lower-cost route found later must replace the old record, or a better route is lost.
+- [rule] Opaque, non-numeric node types need translation operations in place of adding and subtracting an offset. When: node types are not numeric.
+- [rule] Pair interruptible pathfinding with D* or LPA* when the character moves or the world changes during planning, so the search does not restart from scratch. When: the character moves or the world changes during planning.
+- [rule] Use animation-based planning for detailed local movement, not for whole-level routes. When: Choosing a planning scale. Why: Its graph grows quickly, so it suits short constrained sequences.
+- [rule] Use only non-negative connection costs with Dijkstra and A*, because these algorithms are invalid with negative weights. When: Choosing edge costs for a pathfinding graph. Why: Negative weights can create cycles with no shortest path, so most such searches loop forever.
+- [rule] Prefer exact methods when they are practical, and use Monte Carlo only as a check or when no exact method is feasible. Why: Monte Carlo results are approximate and vary between runs.
+- [rule] Model stations as nodes and direct links as weighted edges, then search for the minimum time between departure and destination, since not all pairs are directly linked.
+- [heuristic] Use minimum distance when rooms are roughly the same size, maximin when routes pass through many rooms, and average minimum often otherwise, except for long thin corridor-like rooms or sparse room connections. When: choosing a hierarchical connection cost. Why: Each method suits different room layouts.
+- [heuristic] Treat automatic tactical waypoints as an initial guess and refine them with level design tools.
+- [heuristic] Automatic generation pays off for huge, tactically complex levels; with only a few tens of waypoints per kind, manual placement is likely better. When: choosing waypoint placement for a level.
+- [heuristic] Routing toward the target's current position at each decision point gives enough apparent competence, even when the route is long or fruitless.
+- [heuristic] With a small set of options, simulate each maneuver and compare the resulting situations to pick the best. When: when the character has only a few discrete actions.
+- [heuristic] Tree walks are usually fast enough, so the cost of individual tests matters more than the cost of the walk itself.
+- [heuristic] Derive a connection's tactical value by averaging its two endpoint location values, which suits most games when character time splits reasonably between them. When: character time is split reasonably between the two endpoint regions. Why: Tactical values are stored per location, not per connection.
+- [heuristic] Look ahead at opponent replies and beyond, even a couple of moves, since static evaluations are narrow and rarely perfect; shallow search already plays much better than the heuristic alone. When: the static evaluation is imperfect. Why: evaluations cannot judge a position accurately on their own.
+- [heuristic] Real-time games can use the same abstraction by viewing the ebb and flow of play from an overview rather than particular moves.
+- [heuristic] Unless enemies always rush the player, a pathfinding layer is usually needed beneath the tactical waypoint layer.
+- [heuristic] Use Euclidean distance when connection costs equal distances between region points, which is common when every route is equally possible. When: connection costs are distances between region points.
+- [heuristic] For a tile-based main graph, merge world and instance logic rather than layering implicit graphs. When: main graph is tile-based.
+- [heuristic] Use distance to the goal as the heuristic for movement planning; include velocity in the heuristic when the movement involves a jump. When: A* over an animation-based movement graph. Why: Distance usually suffices, but jumps depend on velocity as well as position.
+- [heuristic] The bisector can be computed by integrating the membership area once and stored, so it adds no runtime cost during play. When: Using the bisector as a characteristic point. Why: The area split is fixed per set, so it can be calculated offline.
+- [heuristic] Pathfinding speed becomes critical when many units may be sent across a large map. When: large maps with many units. Why: every unit needs its own route.
+- [procedure] 1) Lay a dense grid over every floor area. 2) Discard cells a character cannot occupy, such as those too close to walls or under obstacles. 3) Score each valid location with real-valued tactical qualities. 4) Drop locations that fail every threshold. 5) Condense the rest into the best few per property per area, covering the whole level. When: selecting waypoints from scored candidates.
+- [procedure] Because movement graphs are generated on demand, use a basic two-list A* rather than an optimized variant that requires the node count in advance. When: the state graph is built during search. Why: Optimized A* needs the total node count beforehand.
+- [procedure] 1) Log each agent's location once per frame or every few frames. 2) Flag a spot when a character stays near it for several consecutive samples. 3) Flag spots that many characters reuse over the game. 4) Score flagged spots for tactical quality and keep those that pass. When: the engine can record character actions during play. Why: where characters linger or gather often marks useful tactical positions.
+- [procedure] 1) Move straight until reaching a junction. 2) At the junction, take the route toward the player's offset location with the enemy's own probability, otherwise take a random route. When: grid-style enemies choosing routes. Why: Per-enemy probabilities make each enemy's personality differ, and no pathfinding is needed.
+- [procedure] Very small gap volumes can act as 3D jump points when labelled with a target velocity. When: Precise jump points needed.
+- [procedure] 1) Find the character's nearest point on the path. 2) Move along the path by a fixed offset to get the target. 3) Delegate to seek. Arrive is unnecessary because the target keeps moving. When: Character should follow a path.
+- [procedure] 1) Check each segment of the line path. 2) Find the segment nearest the character. 3) Take the nearest point on that segment. When: Path is made of line segments.
+- [procedure] Split pathfinding work across frames when decomposers run expensive pathfinding and many goals are distant, so a single frame does not stall. When: When pathfinding decomposers are slow and many characters need goals. Why: Pathfinding inside a decomposer can take long enough to cause frame spikes.
+- [procedure] 1) Put a start record with cost 0, no connection, and estimate equal to heuristic(start) on open. 2) While open is non-empty, take the lowest estimated-total record; if it is the goal, stop. 3) Process each outgoing connection. 4) Move the current node from open to closed.
+- [procedure] 1) Compute the tentative cost-so-far as current cost plus connection cost. 2) If the neighbour already has an equal or lower cost, skip it. 3) If it is unvisited, create its record and call the heuristic once; otherwise reuse its stored heuristic. 4) Store cost, connection and estimated total; put it on open, removing it from closed if needed.
+- [procedure] 1) Start at the goal node. 2) Follow each node's stored connection back toward the start, collecting connections. 3) Reverse the collected connections to get the path.
+- [procedure] 1) Plan the nearby route continuously at the lowest level. 2) Plan the remaining route intersection by intersection at a higher level. When: long driving routes. Why: Continuous planning is too costly over long distances.
+- [procedure] 1) Set the initial cutoff from the heuristic at the start model. 2) Run a depth-first search; prune branches whose cost so far plus heuristic exceeds the cutoff, and return the plan on reaching the goal. 3) If no plan is found, raise the cutoff to the smallest pruned total that exceeded it and repeat; stop when no plan is possible.
+- [procedure] 1) Query a spatial structure for suitable waypoints near the character. 2) Sort candidates by distance. 3) For each candidate, measure path length with a pathfinding step. 4) Stop once the path exceeds the nearest candidate found so far. When: Finding tactical waypoints near a character in levels with walls or complex layouts. Why: Straight-line distance can pick points behind walls; path length gives the true travel cost and the early stop limits pathfinding work.
+- [procedure] 1) Extract each board edge. 2) Look up each edge in a database of edge configurations, each with a strength score. 3) Weight those scores highly in the static evaluation during the middle game. When: Board game where edge play matters, such as Reversi.
+- [procedure] 1) Choose a target room. 2) Plan a route with A* over a room waypoint graph. 3) Follow the route with path following. When: Agents heading to a room.
+- [procedure] 1) Partition the graph into clusters, by a graph clustering algorithm, manual design, or level structure. 2) Offline, run many pathfinding trials between every pair of clusters. 3) Store the minimum lengths in a lookup table.
+- [procedure] 1) Start at the goal. 2) Take the connection used to arrive at the current node. 3) Move to that connection's start node. 4) Repeat until the start node is reached. 5) Reverse the collected connections.
+- [procedure] 1) Group low-level locations into clusters. 2) Make each cluster one node at the next level. 3) Store a mapping from each node to its group. 4) Repeat upward to form the hierarchy. Why: each level becomes an ordinary graph the standard search can use.
+- [procedure] 1) Start at the highest level where start and goal fall in different nodes. 2) Run A* on that level and refine the first stage of the plan. 3) At each lower level, keep the current start and set the goal to the end of the first higher-level move. 4) Skip levels where start and goal share a node. Why: higher-level results limit the work needed below.
+- [procedure] 1) Run A* one iteration at a time. 2) Pause after any iteration, keeping the open and closed lists. 3) Resume on a later frame until the path completes. When: a single planning call would exceed the frame budget. Why: spreads planning across several frames.
+- [procedure] 1) Define the goal as a region of acceptable positions rather than one exact position and orientation. 2) Run the search. 3) Use the resulting animation list as the plan. When: Animation-based movement planning. Why: An exact position and orientation may be unreachable, causing the search to fail after exhausting the graph.
+- [procedure] 1) Create a record for every node up front, indexed by node number. 2) Store each record's category as unvisited, open or closed. 3) Use a separate priority queue for the open list. When: Implementing A* on a graph with known, indexed nodes. Why: Constant-time lookup replaces searching the open and closed lists, and the category answers membership without a separate closed list.
+- [procedure] 1) Choose one goal with a decision step. 2) Run ordinary pathfinding to that single goal. When: Goals are widely separated. Why: Avoids the wide search caused by heuristics that guess the wrong goal.
+- [procedure] 1) Start the output with the first node. 2) Ray cast from the last output node to successive input nodes, starting at the third node. 3) When a ray fails, add the node before the failing one to the output and restart casting from the next node. 4) Append the end node. When: Smoothing a path whose adjacent nodes are connected by clear routes. Why: Removes unnecessary intermediate nodes in linear time.
+- [procedure] 1) Find the floor polygon containing the character's position. 2) Check the previous node and its neighbours first, relying on coherence between frames. 3) Use the geometric centre of the polygon for localization. When: Locating a character on a navigation mesh. Why: Coherence makes the check fast, and the centre gives a reliable test point for triangles.
+- [procedure] 1) Trim floor polygons inward by the agent's size. 2) Recompute connections, checking doorways especially. When: Preparing a navigation mesh for agents of a given size. Why: Size changes which polygon edges remain passable, often at narrow doorways.
+- [procedure] 1) List the connections along the route. 2) Sum their costs. The result is the route's total path cost. When: Computing the cost of a candidate route. Why: Route cost is additive over connections.
+- [procedure] 1) Clear the board matrix. 2) Mark the start square as move 1. 3) Call the recursive try procedure from that square.
+- [procedure] 1) Pick any item with no remaining predecessor. 2) Place it at the head of the result and remove it. 3) Repeat on the remaining set until it is empty.
+- [procedure] 1) For each pair x before y, find or insert leaders for x and y, add a trailer for y to x's list, and raise y's predecessor count. 2) Gather leaders with zero count into a zero chain. 3) Repeatedly take a leader from the zero chain, output its key, lower each successor's count, and add any successor reaching zero to the chain. When: Sorting items under partial order constraints. Why: Items with no unmet predecessors can be emitted safely.
+- [metric] Checking every character's trajectory against all others for 100 characters requires 10,000 checks. When: predicting collisions among many characters.
+- [metric] The getParam lookup runs in O(1) for some paths but O(n) in the number of segments for others, and then dominates performance. When: Path has many segments.
+- [metric] A perfect heuristic lets A* reach the goal in O(p) time for a path of p steps.
+- [metric] If the largest overestimate over all nodes is x, the final path is at most x longer than the optimal path.
+- [metric] Path smoothing by ray casting runs in time linear in the number of path nodes, with most time spent on ray casts and constant extra memory beyond temporary storage. When: Estimating smoothing cost. Why: Each node is visited a bounded number of times.
+- [metric] Tile movement cost combines distance and gradient terms, and gradient cost can be computed directly from height values.
+- [metric] The POP heuristic estimates the length of the best complete plan from the number of steps and the number of flaws in a partial plan. When: Ranking partial plans during search.
+- [metric] Subtree path length p_ij equals w_ij plus the minimum over candidate roots k of p_i,k-1 plus p_kj.
+- [tradeoff] Dynamic costs yield better tactical routes but add planning time; precomputed costs plan faster but ignore changing conditions, so precompute only when tactical features are static. When: choosing how to evaluate tactical connection costs. Why: Stored costs cannot reflect changes in the tactical situation; the choice depends on whether extra planning time is acceptable.
+- [tradeoff] Player-watching gives better tactical waypoints than condensing a grid, but needs action-logging infrastructure and a lot of tester time. When: placing tactical waypoints.
+- [tradeoff] Predictive following is smoother on complex paths but can jump to another section where two path sections are close, cutting corners and skipping path. When: Choosing a path following variant. Why: Predicted point may land on a nearby unrelated section.
+- [tradeoff] Straight segment paths suit characters that turn quickly, while maneuver paths such as constant-radius turns suit vehicles; maneuver paths are harder to check for violations because of curved sections. When: When choosing path representation for a character or vehicle. Why: Fast-turning characters can follow sharp segments, while vehicles cannot turn instantly.
+- [tradeoff] Caching connections would fix IDA*'s speed problem but undermines its memory goal.
+- [tradeoff] Finer node spacing is needed for fast traffic, but most fine nodes are unreachable because vehicles block them.
+- [tradeoff] Computing transition level offsets at run time by searching the hierarchy is flexible but slow, whereas computing them offline gives a fast hybrid.
+- [tradeoff] Path-length search handles walls and complex layouts, while plain Euclidean distance is enough for simple levels. When: Choosing the distance measure for waypoint search. Why: Path search is more accurate but costs more than a straight-line check.
+- [tradeoff] Clamping costs to a positive minimum is a safety net, but it adds processing time and can make many connections share the same cost, losing ranking information. When: When weights cannot be guaranteed non-negative. Why: Clamping hides the weight problem and flattens differences between routes.
+- [tradeoff] A single shared waypoint system can serve pathfinding and tactics, but a separate tactical point set is often more efficient, since cover and sniping points are generally poor path nodes.
+- [tradeoff] Overestimating heuristics reach the goal faster but may miss the best route; large overestimates make A* perform worse quickly, and in games believable results can matter more than optimality.
+- [tradeoff] A general A* handles any cost type, node data type, and graph size but runs slower than specialized versions tailored to graph assumptions.
+- [tradeoff] Balance among the pathfinding list's four operations determines speed, and the best balance differs between games.
+- [tradeoff] D* saves planning time at the cost of storing intermediate data that may be needed later, which can be large.
+- [tradeoff] Cluster heuristics greatly reduce fill indoors but do not help outdoors and can reduce performance there.
+- [tradeoff] A* variants that reduce memory use usually cost some speed, so the trade-off should be measured in the target game.
+- [tradeoff] Path-following steering already smooths paths somewhat, so smoothing is worth adding only after testing; for some games it is essential. When: Deciding whether to add path smoothing. Why: Steering may already hide erratic turns, making smoothing redundant in some games.
+- [tradeoff] LPA* stores data about small plan sections, which are reusable across varied tasks, but its storage cost is high and suits small graphs. When: Choosing a replanning algorithm for a level. Why: Storage grows with graph size, so large open levels are where speed matters most yet storage is least practical.
+- [tradeoff] The time-indexed road graph is effectively infinite, so it is generated only where needed and constrained by changing lanes as soon as possible and travelling to each lane change as fast as possible. When: Generating continuous road planning graphs. Why: Full generation is impossible, and the speed assumption can miss optimal timing such as passing gaps at lower speed.
+- [tradeoff] Pre-computed routes for common paths speed up static levels, but deformable terrain makes pre-computation impossible, so routes must be searched live.
+- [tradeoff] The variant that ignores equality until the end has simpler termination and finds the least-index match, at the cost of a few extra comparisons, which the per-step gain outweighs.
+- [pitfall] Running full pathfinding for every candidate action or waypoint adds significant overhead, especially with thousands of actions in large levels. When: Searching many candidates each decision. Why: Pathfinding is expensive per call, so repeated calls multiply cost.
+- [pitfall] Minimum cost can make the planner prefer a route through fewer rooms over a much more direct one, while maximin can block a direct route with one large cost. When: planning on a hierarchical graph. Why: The chosen cost method changes which paths are returned.
+- [pitfall] Even with limited connections, a movement state graph can become very large and planning time grows accordingly. When: movement planning over many states.
+- [pitfall] A heuristic that works most of the time can still frustrate players in the cases it fails, such as units stepping out of position.
+- [pitfall] Without a target velocity or landing notion, a character cannot compute a take-off that avoids missing a small landing spot. When: Small landing targets.
+- [pitfall] A failed jump may be impossible to recover from and, at the limit, can kill the character. When: Jumps with lethal falls. Why: A committed jump offers no mid-air correction.
+- [pitfall] Without coherence, a path follower can latch onto a nearby but unrelated section of path where lines are close together. When: Path sections run close together. Why: Global search may pick the wrong section.
+- [pitfall] The heuristic runs in the innermost search loop, so an expensive estimate can dominate total search time.
+- [pitfall] Failing to reopen closed nodes leaves downstream costs stale and can produce incorrect routes.
+- [pitfall] IDA* is unsuitable when getting outgoing connections is expensive, because it regenerates the same nodes on every iteration.
+- [pitfall] Node placement is the hardest part of a continuous planner to debug.
+- [pitfall] Intricate domain shapes can make travel between two connected domains cross an impassable third domain, making the graph invalid.
+- [pitfall] Pruning helps greatly, but when no valid plan exists the search approaches an exhaustive search. When: Planning with an unreachable goal.
+- [pitfall] Every waypoint stores a full set of values, so five properties mean five numbers per waypoint even when most are zero.
+- [pitfall] Dynamic cost evaluation sits in the innermost pathfinding loop, so its expense is usually noticeable in search time.
+- [pitfall] Endpoint averaging can make an exposed connection look acceptable when both endpoints are safe, hiding a longer detour that would be better. When: connection crosses dangerous ground between safe locations.
+- [pitfall] Counting exits can mislead in dense areas, because several exits may lead to the same vicinity, so the count favors a spot in the middle of the room. When: ranking positions by number of exits. Why: exits may converge on the same region.
+- [pitfall] Topological results are very sensitive to waypoint density, so changing how densely waypoints are placed can change tactical rankings.
+- [pitfall] Without connection data, nearby waypoints cannot be classified as real exit routes or as points separated by a wall.
+- [pitfall] Automatic widening leaves very small polygons in corners and crevices, and these can trap characters.
+- [pitfall] Manually built graphs must be rebuilt whenever level geometry changes, which motivates automating graph creation.
+- [pitfall] A decorative patch wrongly flagged as non-floor can cut off an entire room from navigation.
+- [pitfall] Scanning the whole open list for its smallest node every iteration is slow.
+- [pitfall] In indoor tile levels with large obstructions, Euclidean distance produces large fill and poor performance.
+- [pitfall] With a minimum cost of 1 on every room link, the planner prefers the route with fewest rooms over a much more direct one, producing a path of cost 25 where the optimal is 9. When: group costs use minimum distance in room-based layouts. Why: fewer rooms beats direct routes when each link looks cheap.
+- [pitfall] A character in the air is quantized to the first polygon below it, which can be wrong when walkways lie above a room. When: Localizing airborne characters on a navigation mesh. Why: The nearest polygon below may belong to a different level than the character's position.
+- [pitfall] Using the geometric centre for localization works reliably for triangles but only for concave polygons among larger shapes. When: Localizing on navigation meshes with larger polygons. Why: The centre of a convex polygon may fall outside it or in a misleading place.
+- [pitfall] Direct moves between connected triangles can collide with walls, so connections alone do not guarantee clear movement. When: Using navmesh connections for direct movement. Why: Adjacent polygons may still have obstacles between their interior paths.
+- [pitfall] Graph simplification often discards information a person would consider obvious, so the result usually needs review and adjustment.
+- [pitfall] Straight search repeats comparisons already made at earlier start positions, which makes its worst-case cost quadratic in the input sizes.
+- [fact] In games a direct path usually exists, so Dijkstra is rarely the main pathfinder, though it matters for tactical analysis and a few other game AI uses.
+- [fact] The vertical quadratic has zero, one or two solutions: zero means the projectile stays below the height, one means it touches it at its peak, two means it crosses on the way up and down.
+- [fact] Precomputed heuristic lookup tables are possible in some cases but usually too large, since the number of node combinations is high.
+- [fact] Each reached node stores its cost-so-far, the connection it arrived by, and its estimated-total-cost.
+- [fact] Most game pathfinding systems use A* or a variant of it, and the algorithm also applies to problems beyond pathfinding.
+- [fact] The A* loop mirrors the classic shortest-path algorithm but orders the open list by estimated-total-cost and calls the heuristic for newly found nodes.
+- [fact] Dijkstra never needs to reopen closed nodes, but A* may, because an earlier estimate can have been too optimistic.
+- [fact] If the open list empties before the goal is reached, no path exists between the start and goal.
+- [fact] Continuous graphs rarely revisit a node with the same position and time, so they behave like trees and storing many nodes gains little.
+- [fact] The choice of pathfinder is independent of how the graph is implemented.
+- [fact] In discrete pathfinding, direction changes can occur only at graph nodes, whose placement is fixed by the graph builder, which fails for fast vehicles in predictable traffic.
+- [fact] Localising a position in a domain graph returns the characteristic point of the node whose domain contains it.
+- [fact] Connections join bordering domains; they can come from a Delaunay triangulation, designer specification, or ray casts between points.
+- [fact] Together the regions partition the whole level into connected pieces.
+- [fact] A null heuristic always returns zero, so the search reduces to the plain uniform-cost shortest-path algorithm.
+- [fact] Group pathfinding is typically no harder than individual pathfinding, because most corridors are wide enough for several characters. When: Pathfinding for squads of characters. Why: Most corridors accommodate several characters side by side.
+- [fact] Precomputed connection costs need a separate stored set for each set of tactic weights.
+- [fact] A separate base-cost weight is not strictly needed, since scaling all tactic weights by a factor matches scaling the base cost by its inverse.
+- [fact] Tactical waypoints and tactical analyses are often treated separately, yet their general theory is very similar.
+- [fact] Locations alone are not enough for tactical pathfinding; a record of connections between them must also exist.
+- [fact] The base pathfinding graph supplies easy movement between different parts of the level.
+- [fact] The pathfinding list needs add, remove, smallest-element by cost-so-far, find-by-node, and contains tests; finding the smallest and lookup are most worth optimizing.
+- [fact] Automatic node placement, split into geometric analysis and data mining, gives mixed results; people judge level structure and likely movement better, so supervision is usually needed.
+- [fact] Navigation meshes are overwhelmingly popular, have a reputation for reliability, and suit characters that climb walls or cross ceilings. When: Choosing a pathfinding representation. Why: Polygon surfaces can be defined on walls and ceilings as well as floors.
+- [fact] A full-featured route planner may need tens of milliseconds per character, and on a large graph that can exceed the frame budget at 30 or 60 fps.
+- [fact] Euclidean distance to the goal never overestimates when connection costs equal distances between region points; it ignores walls, so it is exact without obstructions and underestimates with them. When: connection costs are distances between region points.
+- [fact] Waypoint connections can be taken from the pathfinding graph or from a separate set of tactical waypoints.
+- [fact] Energy landscapes are minimized to find valleys, and fitness landscapes are maximized to find peaks; the search techniques are the same.
+- [fact] An original turn-based game has no existing opening database, so its opening book must be produced manually.
+- [fact] Dirichlet domain waypoint graphs are the most common representation and are used across driving, shooter and strategy games.
+- [fact] Connections and costs can be computed algorithmically from line of sight and level geometry.
+- [fact] Polygon floor meshes represent 3D movement poorly and make jumping awkward; these limits cannot be fixed at the tool stage.
+- [fact] Movement that must match realistic physics is usually much harder to build than tuning the physics to suit AI characters.
+- [fact] Alternative overtaking racing lines are usually created by hand rather than generated by AI.
+- [fact] A graph search such as Dijkstra can find the best route from already-known technologies to a goal technology.
+- [fact] Open city driving games have no fixed track, so their vehicles need pathfinding and tactical analysis to catch or avoid other cars.
+- [fact] Waypoints are now nearly universal in shooter games, used for both navigation and tactics.
+- [fact] The cluster heuristic is related to hierarchical pathfinding, which uses similar clustering.
+- [fact] The result of a graph search is a list of connections rather than nodes, because two nodes can be joined by several connections with different costs.
+- [fact] Multiple connections between the same node pair matter when costs change over time or differ between characters; many games allow only one connection per pair.
+- [fact] In open outdoor tile levels, Euclidean distance gives minimal fill and good performance.
+- [fact] Euclidean distance has very low computational cost and is the simplest common heuristic.
+- [fact] Game pathfinding has no agreed terminology; writers use many names, such as dots, locations, arcs, links and lines.
+- [fact] In indoor tile levels, fill ranks from highest to lowest: zero heuristic, Euclidean distance, then a tailored cluster heuristic. When: indoor tile levels.
+- [fact] Heuristics generated automatically from graph structure have been researched but are not yet convincing.
+- [fact] Perfect heuristics are rarely practical, since computing one requires solving the problem itself.
+- [fact] Animation-based movement planning was not in production use when first described, though its author expected it to appear in games within about five years.
+- [fact] Ray-cast path smoothing does not test all possible smoothed paths, so it may miss the optimal smoothing. When: Evaluating smoothed path quality. Why: It makes greedy local choices rather than a global search.
+- [fact] In 2D, shortest paths bend only at convex vertices of obstacles, and in 3D only at convex polygon edges or vertices. When: Building graphs from level geometry. Why: Optimal routes wrap around convex corners and never bend elsewhere.
+- [fact] On a rectangular grid, tile connections normally go to the eight surrounding tiles. When: Building a square tile graph. Why: Eight-way adjacency includes the diagonals.
+- [fact] Euclidean distance is a valid heuristic for distance costs because any real path is at least as long as the straight-line distance. When: connection costs are plain distance.
+- [fact] Tile graphs need almost no hand-authored AI data, because the layout is fixed and movement costs derive from tile and terrain properties. When: levels on a fixed grid, such as RTS maps.
+- [fact] Tile graphs persist in pathfinding-heavy games because they need no extra infrastructure, even after graphics moved away from sprite tiles.
+- [fact] In early RTS games pathfinding was the main technical challenge, since large grid levels can hold tens of thousands of tiles.
+- [fact] Indoor levels can be modeled using comparatively compact navigation graphs that are quick to search.
+- [fact] Navigation meshes are widespread in shooters, and some developers are returning to waypoints to combine pathfinding with tactical analysis.
+- [fact] Outdoor games often use grid-based pathfinding graphs.
+- [fact] A natural mountain profile is S-shaped: it rises slowly, then steepens, then levels off at a rounded peak.
+- [fact] Searching has three variants: linear search for unordered data, binary search for ordered data, and table search for structured keys such as strings.
+
+## game tree search
+- [model] A minimax board must provide five operations: list legal moves, apply a move to produce a new board, evaluate for a player, report the current player, and report whether the game is over.
+- [model] A turn-based game is drawn as a tree where nodes are board positions, branches are moves, and players move at alternating levels.
+- [model] Because move sequences can merge as well as split, the game tree is really a graph rather than a strict tree.
+- [definition] Minimax assumes each player always picks the move best for themselves and the opponent always picks the move worst for the searcher, maximizing their minimum guaranteed result in two-player zero-sum games. (x2)
+- [definition] A null leaf in a transition decision tree means that the branch leads to no result.
+- [definition] Negamax negates every child's score and keeps the largest at each level, giving the same result as minimax using a single code path. When: two-player zero-sum games.
+- [definition] Principal Variation Search repeats a failed scout pass with a standard alpha-beta negamax call rather than a wider scout search.
+- [definition] Each transposition table bucket holds one entry, so when two positions map to the same bucket a replacement rule decides which entry to keep.
+- [definition] Prefer-later-moves replacement keeps the stored entry unless the new clashing position comes from a later move, on the idea that later positions stay useful longer. Why: Later positions remain relevant for longer in the search.
+- [definition] The static evaluation function is a heuristic that scores a board from one player's point of view. It holds all strategic knowledge, since search algorithms contain none themselves.
+- [definition] The simplest bot state machine has two states: has seen the player, and has not seen the player.
+- [definition] A mixed Nash equilibrium occurs when each player randomizes among moves with set probabilities, and every option yields the same average payoff so no player gains by deviating.
+- [definition] A transposition table is a fixed-size hash table keyed by a world model's hash that records states already reached during search.
+- [definition] Each transposition table slot holds one entry recording the number of actions used to reach that state.
+- [definition] AB negamax is negamax extended with alpha-beta bounds, the practical baseline search for two-player zero-sum games.
+- [definition] Alpha-beta pruning skips branches that cannot change the final decision, so it returns the same move as plain negamax, only faster.
+- [definition] Alpha is the best score the mover can already guarantee; it is a lower limit, and any line scoring below it is never chosen.
+- [definition] Beta is the most the opponent will allow; it is an upper limit, and any line scoring above it will never be reached.
+- [definition] Minimax and MTD are tree-search algorithms for turn-based games, and both require the game to be represented as a special tree. When: turn-based games.
+- [definition] The branching factor is the number of moves available at each node of the game tree.
+- [definition] Depth is the maximum number of turns a game can last, and it bounds how far down the game tree a search can go.
+- [definition] The history heuristic orders moves for a deeper search using the results of a shallower iteration.
+- [definition] A transposition table stores board positions and their search results, letting search reuse stored values instead of repeating work; it also serves as working memory for other algorithms.
+- [definition] A transposition is a board position reached by different sequences of moves, and in many games the same position can also recur within a single game.
+- [definition] The horizon effect occurs when a fixed-depth sequence looks excellent but one more move reveals it is terrible, such as capturing a piece only to be checkmated next move.
+- [mechanism] A severely unbalanced tree of eight behaviors can need eight decisions to reach its deepest behavior versus three when balanced, making worst-case lookup linear rather than logarithmic.
+- [mechanism] In complex games, the tree of possible outcomes becomes too large to map beyond the first few moves, so players and programs rely on pattern recognition.
+- [mechanism] Shot transition matrices reduce the total of the state vector each time they are applied, so the total is not conserved and repeated shots eventually leave no safe position.
+- [mechanism] Predicting the start of a player's move sequence lets the AI select a counter before the sequence finishes. When: combo-based melee combat.
+- [mechanism] The best-action lookup serves two purposes: choosing which action to take and supplying the maximum next-state term in the update.
+- [mechanism] The maximum next-state term passes value backwards, so a state gains value when its successor states are good.
+- [mechanism] Reading a transposition table lets the search jump to promising moves, which plain recursion cannot do.
+- [mechanism] Negascout's scout passes depend on the first move's score, so good move ordering makes that score accurate and reduces scout failures.
+- [mechanism] Positions reached by different move orders share one entry, so looking up the current board returns every playable recommended move.
+- [mechanism] Combined with search extensions, quiescence pruning concentrates most search effort on the parts of the tree most critical for good play.
+- [mechanism] A smaller alpha-beta window prunes more branches, since only moves scoring inside the current window are of interest. The window starts infinite and should narrow as fast as possible.
+- [mechanism] Alpha-beta pruning discards scores outside its window, so stored scores may be exact, fail-low (alpha-pruned) or fail-high (beta-pruned) bounds rather than exact values.
+- [mechanism] When one reply to a move already scores worse than the best alternative found so far, the move's remaining replies need not be checked. When: searching a move whose first reply is already refuted.
+- [mechanism] A narrow search window around a good estimate causes many more cutoffs than a full window, so the search finishes much faster. When: a reliable estimate of the score exists. Why: tighter bounds let alpha-beta prune more branches.
+- [mechanism] Memory-based search algorithms, such as those using transposition tables, improve dramatically when the best moves are examined first. Why: better ordering produces more prunes.
+- [mechanism] Before searching a position, the algorithm checks whether it is already stored and reuses the stored value if so, avoiding repeated search.
+- [mechanism] Per-room delivery relies on denial rather than distribution: information never given to a manager cannot be gained by its listeners.
+- [mechanism] Knuth-Morris-Pratt and Boyer-Moore improve the worst case by using information gathered during the scan, which straight search does not use.
+- [mechanism] With ascending keys each new key becomes the right child of its predecessor; with descending keys it becomes the left child, forming a chain.
+- [behavior] With timing considered, a character with an urgent need prefers a quick partial fix over a long complete one. When: A need is urgent and actions vary in length. Why: Shorter completion time carries more weight in the choice.
+- [behavior] A learner may settle on a small reward it can collect repeatedly instead of heading for the main goal, producing a sub-optimal strategy. When: Extra small rewards are added to a reinforcement learner. Why: Repeatable small rewards can look more valuable than the distant goal.
+- [behavior] In late game, edge pattern scores matter less because the last 10 to 15 moves can often be searched fully, so no evaluation is needed. When: Late game with few remaining moves. Why: Full search replaces evaluation near the end.
+- [rule] Terminal positions receive the final game score; non-terminal scores must stay strictly below win and loss scores, since a near-win above an actual win makes the AI avoid winning.
+- [rule] For an optimal path, keep searching until the smallest open cost-so-far exceeds the cost of the path found to the goal. When: an optimal path is required.
+- [rule] Experts should run for a short time and then release control so other experts can act.
+- [rule] Test at a value slightly below gamma, with an offset smaller than the smallest evaluation increment, rather than testing equality, to avoid asymmetry when signs flip during recursion. When: calling the test from the MTD driver. Why: equality checks cause asymmetry under negation.
+- [rule] Write the static evaluation from the viewpoint of the player to move, so it needs no player argument and checks whose turn it is. Why: the viewpoint alternates each turn.
+- [rule] Use negamax for two-player zero-sum games, since it is simpler and faster to execute than minimax. When: two-player zero-sum games.
+- [rule] Pair negascout with a transposition table, because its re-searches of parts of the tree gain greatly from recalling earlier results.
+- [rule] Include the opening book in the static evaluation: weight its advice heavily while the position appears in a recorded line, and ignore that term once the game leaves the book.
+- [rule] Play the next move from a stored line without searching when that line ends in a position favorable to the AI. When: at the start of a game. Why: skips minimax entirely.
+- [rule] Match the agent's skill to the evaluation goal: use a goal-finishing agent to test playability and a human-imitating agent to estimate player experience.
+- [rule] Because IDA* keeps no open or closed lists, detect repeated states with a transposition table to avoid duplicated work.
+- [rule] When minimizing a score in annealing, treat lower values as better, reversing the usual hill-climbing comparison.
+- [rule] Start the root search with alpha at negative infinity and beta at positive infinity, then return the best move found.
+- [rule] The aspiration window size should depend on the range of scores the evaluation function can return.
+- [rule] For transposition tables, prefer one entry per bucket because lookup speed matters more than keeping every entry, and rarely recurring positions need not be stored. When: transposition table design. Why: lookup speed matters more than full storage.
+- [rule] Extend minimax-based search with a transposition table so that each merged position is searched only once. When: When the game tree contains merging branches.
+- [rule] A good state hash spreads likely positions widely across its range, and a small board change should produce a very different hash. Why: Most possible boards never occur, so spread avoids collisions among real positions.
+- [rule] In basic linear search, check the index bound before comparing the element, because the order of the two factors in the compound test matters. When: writing the basic version without a sentinel.
+- [rule] A search for one solution stops at the first complete placement and reports it, without exploring the remaining candidates. When: Only one solution is needed.
+- [rule] Record each move by writing its move number into the board matrix, where zero means unvisited, and clear the square back to zero to undo it. When: Backtracking over board squares.
+- [heuristic] Use multi-branch decisions when one value has many distinct outcomes; prefer binary decisions when the tree will be optimized or learned from data.
+- [heuristic] Feature weights often shift across the game, so a feature that matters in the opening may be weighted differently in the endgame. When: games whose strategy changes by stage. Why: which features matter changes as the board develops.
+- [heuristic] Search the likely best moves first, so the alpha-beta window contracts early and later weaker moves are more likely to be pruned.
+- [heuristic] Order moves using results from earlier searches, such as previous depths in iterative deepening or searches on previous turns, which gives better ordering.
+- [heuristic] In mid-game, the static evaluation should estimate how likely a player is to win from a position, so a clear advantage scores close to the winning value.
+- [heuristic] Give each option a rough score and try the highest-scoring option first; even an inaccurate score beats trying options at random.
+- [heuristic] The previous search's score is a good aspiration estimate for the next search, since scores usually change little between consecutive searches. When: consecutive searches of a similar position. Why: scores tend to stay close from one search to the next.
+- [heuristic] Size the table from the game's branching factor and maximum search depth, since searching many positions needs a large table.
+- [heuristic] If the table rarely returns useful entries, it is probably too small or its replacement strategy is wrong.
+- [heuristic] The optimal root of a subtree lies between the optimal roots of the two subtrees one key narrower, which restricts the root search. Why: This is Knuth's observation.
+- [heuristic] Use a growing search tree when the set of keys expands over time and a fixed array would not suit the data. When: Choosing a structure for dynamic key sets. Why: Insertion adds keys without reallocating or resizing a fixed structure.
+- [procedure] 1) Search a branch at successive depths. 2) If its heuristic value stays steady across those depths, stop searching it; steady values are probably, not certainly, accurate. 3) Spend the saved effort on other branches or extensions of the most promising lines. When: Lead changes quickly in early search but later settles into a stable position. Why: A stable value is probably accurate, so deeper search adds little information there.
+- [procedure] 1) Generate each legal move and apply it to get a new board. 2) Recurse on each resulting position, increasing depth by one. 3) At game end or maximum depth, return the static evaluation. 4) Keep the highest score on the searcher's turns and the lowest otherwise. 5) At depth zero, record the move giving the best score. When: searching a two-player perfect information game.
+- [procedure] 1) Set gamma to the current guess. 2) Run the test on the root at gamma minus a small offset. 3) If the returned value equals gamma, stop and return its move. 4) Otherwise use the result as the new guess and repeat, up to an iteration limit.
+- [procedure] 1) Keep several transposition tables, each using a different replacement strategy. 2) On lookup, check each table in turn for a matching entry. Why: Each strategy's weakness is offset by the others.
+- [procedure] 1) Fully search the first move from each position with a wide window. 2) Scout each later move with a zero-width window based on the first move's score. 3) If a scout fails, re-search that move with a full-width window.
+- [procedure] 1) Add a Zobrist key that counts repetitions of the position. 2) Each repetition then gets a different hash and is recorded separately. When: Game scoring depends on repeated positions.
+- [procedure] 1) Set the node's best score to negative infinity. 2) For each legal move, apply it and recurse with negated bounds: child beta is the negated maximum of alpha and best, child alpha is the negated beta. 3) Negate the child's score; if it exceeds best, store it with its move. 4) If best reaches beta, return immediately. When: implementing AB negamax search.
+- [procedure] A complete transposition table is a fixed-size array. 1) Compute the index as hash modulo table size. 2) Lookup: return the entry there only if its stored hash matches, otherwise report nothing found. 3) Store: always overwrite the entry at that index.
+- [procedure] 1) Set alpha and beta to the estimate minus and plus the window size. 2) Run alpha-beta. 3) If the score is at or below alpha, set alpha to a very large negative value and repeat; if at or above beta, set beta very large positive and repeat. 4) Return the score once it lies strictly inside the window.
+- [procedure] 1) Start with a guess of zero. 2) For each depth from two up to the maximum, run the MTD search using the previous result as the guess. 3) Check the time limit after each depth.
+- [procedure] 1) During the opponent's turn, search the move the computer would make in reply. 2) Store the results in the transposition table. 3) On the computer's own turn, reuse the stored results to search faster. When: When the computer can predict the human player's likely move. Why: Otherwise the computer sits idle during the human's thinking time.
+- [procedure] 1) Count valid placements for each piece, including both orientations. 2) If pieces may overlap, multiply the per-piece counts to get the total number of configurations. When: counting legal layouts on a grid when pieces can overlap. Why: without an overlap constraint, each piece's placement is independent of the others.
+- [procedure] 1) Pick a starting option for one player. 2) Alternate best responses between players, following each tie as a separate branch. 3) Stop when the chain cycles. 4) Repeat from every starting option and keep only options that lie on some cycle. When: reducing a large payoff table before solving. Why: Different starting points can reach different loops.
+- [procedure] Repair a threat, a step that could undo a causal link, by adding an ordering constraint that places it outside the link, or a binding constraint that separates it from the linked steps. When: A step could undo an established causal link.
+- [metric] In one test at depth four with about fifty actions per stage, discontentment pruning gave roughly a hundredfold speedup.
+- [metric] Minimax time grows as n to the power d, where n is moves per position and d is maximum depth, while memory grows only with d.
+- [metric] MTD runs in O(n^d) time like negascout, and its memory is O(s), with s being the transposition table entry count.
+- [metric] Table size depends on branching factor, search depth, and hash quality; deep chess searches commonly use tens of megabytes, a few million entries.
+- [metric] Alpha-beta pruning without move ordering can be about ten times faster than plain minimax, and with excellent ordering it can be roughly 100 times faster than minimax.
+- [metric] Chess scores use plus or minus 1000 for a win or loss, with a pawn worth 10 points, allowing strategic scoring down to a tenth of a pawn.
+- [metric] About 1000 entries was suggested for ten actions at depth ten; the right table size should be tuned by profiling. When: Choosing transposition table size.
+- [metric] Transposition-table IDA* uses O(t) memory for t entries and O(nd) time, where n is actions per state and d is depth.
+- [metric] If twice the noise range is smaller than the score gap, the best neighbour always wins; larger noise lets worse neighbours win sometimes.
+- [metric] A starting learning rate of 0.3 is a reasonable guess, though it needs tuning for each problem. When: Setting alpha for Q-learning.
+- [metric] AB negamax has time complexity O(n^d) and memory O(d), the same order as plain negamax.
+- [metric] Extensions of 10 to 20 moves have been reported on a base search depth of 8 or 9.
+- [metric] In a degenerate search tree the average search takes n/2 comparisons, so cost grows linearly with n.
+- [tradeoff] Basic turn-based search assumes two players; extending minimax to more players uses the same code, maximizing on the searcher's turns and minimizing on others' turns, but makes its optimizations harder to apply. When: more than two players.
+- [tradeoff] Entries store hash, best move, depth and score; alpha-beta needs a score-type flag for exact or bound values, while MTD's min and max scores make the flag unnecessary.
+- [tradeoff] Deep decision trees make decisions from fine detail, while shallow trees produce broad, general behavior. When: Designing decision tree structure for AI. Why: More branch points capture finer distinctions.
+- [tradeoff] MTD-best returns the best move without accurate scores for each position; it is slightly faster than MTD-f but more complex, does not indicate how good moves are, and is less common in most turn-based games.
+- [tradeoff] Move ordering trades knowledge against search: perfect knowledge of the best moves would remove the need to search, while ordering with the static evaluation costs time when that evaluation is called repeatedly.
+- [tradeoff] Fail-soft alpha-beta returns the best result found when it fails, while plain alpha-beta returns only alpha or beta, giving no sense of how far to move the guess.
+- [tradeoff] Simple turn-based strategy games can use tree search directly, with research, construction and troop movement forming the moves while the board is static during a turn; complex ones usually need real-time-style techniques. When: Simple turn-based strategy games versus complex ones.
+- [tradeoff] Deeper search counters the horizon effect, but high branching can make it impossible, so extensions are used instead. When: When the horizon effect is noticeable and branching prevents full deep search.
+- [pitfall] Tuning decision tree shape to extremes is rarely worth the effort, since trees are already fast; extra branches slow running only slightly, rarely noticeably.
+- [pitfall] The basic top-level match returns on the first matching item, so it reports one set of bindings per pattern rather than all possible bindings.
+- [pitfall] Choosing the move with the highest possible outcome can be a mistake, because the opponent's best reply may leave a lower guaranteed result than another move.
+- [pitfall] Numerical instability can stop MTD from converging, so an iteration limit should normally be applied.
+- [pitfall] MTD needs a large transposition table; when positions collide and overwrite needed entries, performance drops badly and the search may fail to return a result.
+- [pitfall] Negamax is invalid when one player's gain is not exactly the other's loss; non-zero-sum games need the general minimax form.
+- [pitfall] The name Principal Variation Search is often used incorrectly to mean negascout.
+- [pitfall] A line strong on paper may lead to a tight position that suits human players but exposes the program to horizon effects, so expert scores may not fit it. Why: each AI has different characteristics.
+- [pitfall] Techniques designed for perfect information often perform noticeably worse on imperfect information games unless they are adapted.
+- [pitfall] A position's stored value can change within one search because entries are overwritten, so a later lookup may miss and re-search the position with a different result.
+- [pitfall] In rare cases a position's score oscillates between two values, which can make some re-searching algorithms loop forever, though basic negascout is not affected. When: Re-searching algorithms with transposition tables.
+- [pitfall] Training on a biased sample leads to a biased outcome, because the model reproduces the skew in its data. When: When the training sample under-represents some groups or cases.
+- [pitfall] A single very large maximin connection value can block a direct route, forcing a much longer detour, here a cost of 25 against an optimal 12. When: group costs use maximin. Why: one inflated link value dominates the group cost.
+- [pitfall] A high alpha kept throughout training can overwrite hard-won Q-values when transitions are noisy. When: Alpha stays high and transitions vary.
+- [pitfall] A pruned result is fail-soft: the returned value is a bound rather than the exact score, so storing it requires care.
+- [pitfall] A failed aspiration search returns no usable best move, so it must be repeated, and the wasted effort grows when the estimate is far off. When: the estimate is far from the true score. Why: a score outside the window cannot be trusted.
+- [pitfall] A one-ply search rarely speeds up the overall search on its own.
+- [pitfall] Extensions rely heavily on the static evaluation function, so a poor evaluation can lead the search to extend along useless options.
+- [pitfall] Setting the payoff vector to all zeros yields only the all-zero solution, which is not a useful probability distribution.
+- [pitfall] Without a look-ahead element, the end of a run cannot be recognized on a sequential file. When: Implementing run detection on sequential input.
+- [pitfall] Keeping a list ordered gives no search gain when lookups of all keys occur equally often.
+- [fact] Normal minimax cannot search even one turn in complex turn-based strategy games, since per-turn move options from many units and cities combine multiplicatively, pushing AI toward real-time techniques. When: Complex turn-based strategy games with many units and cities. Why: Move combinations grow multiplicatively.
+- [fact] The strict optimal termination condition matches the classic shortest-path algorithm's termination and explores roughly as many nodes as that algorithm does.
+- [fact] Pruning speeds up planning but does not change its scaling with depth, goals, or actions.
+- [fact] Orders can carry strategy, individual targets, areas to avoid because other characters are there, and sometimes complete routes.
+- [fact] No general formula can confirm that a solution found by parameter search is the best possible.
+- [fact] Minimax-style tree search has limited use in real-time games, occasionally appearing as a strategic layer for long-term decisions. When: real-time games.
+- [fact] Complex games may use tens of separate scoring mechanisms to judge a position.
+- [fact] Evaluation weights can be adjusted automatically from game experience with a simple learning method, rather than set entirely by hand.
+- [fact] Chess has endgame databases, called tablebases, that record how to force mate with each combination of remaining material.
+- [fact] Minimax works for any two-player perfect information game, from small grid games to chess, needing only a small board interface.
+- [fact] MTD can start from infinity (MT-SSS), from a static evaluation guess (MTD-f), or from guesses carried between iterative deepening searches.
+- [fact] MTD(f) competes with aspiration-window NegaScout for the title of quickest tree search, frequently proving markedly faster in trials, though researchers still argue about additional tuning.
+- [fact] Most top programs still use negascout, but modern game AI increasingly relies on an MTD core.
+- [fact] MTD started from positive infinity reproduces SSS* behavior, and MTD started from negative infinity reproduces DUAL* behavior.
+- [fact] MTD-f, which uses a guess from a previous search, is the most powerful general MTD variant.
+- [fact] Developers often say minimax when they mean a negamax-based version, most commonly alpha-beta negamax.
+- [fact] Principal Variation Search's other differences from negamax are minor, and negascout generally performs better in practice.
+- [fact] Commercial opening database scores come from long histories of expert games and are unlikely to be wrong overall.
+- [fact] Larger chess opening databases, and most databases for less popular games, are generated by a strong program playing itself and recording its most favourable lines.
+- [fact] Expert players accumulate opening knowledge over many years, and for popular games such as chess this knowledge is captured in large databases.
+- [fact] Negascout never examines more boards than alpha-beta negamax on the same tree.
+- [fact] Aspiration negascout wraps negascout in an aspiration driver and is used in leading Chess, Checkers and Reversi programs as a strong game search.
+- [fact] The best move is stored in a table entry because it is the move whose resulting board has the highest inverted score.
+- [fact] Most tree-search methods assume two players, zero-sum outcomes and full information, so many of their strongest speedups do not carry over to broader strategy games.
+- [fact] Rock-paper-scissors has no pure equilibrium but one mixed equilibrium: each throw is chosen one third of the time.
+- [fact] AB negamax is much faster than plain negamax in almost all cases; only when move ordering allows no pruning does it add comparisons without benefit.
+- [fact] AB negamax is the simplest practical board-game AI search and the foundation for further optimizations.
+- [fact] The basic tree-search algorithms are shared and can be applied to any board game, while the strongest versions add per-game tuning.
+- [fact] Minimax is the most famous game search algorithm and dominated turn-based game AI for a long time.
+- [fact] Lookup and store each take constant time, and the table's memory grows linearly with its number of entries.
+- [fact] Terminal positions have no further moves and carry final scores, such as plus one for a win, minus one for a loss, or zero for a draw.
+- [fact] A fixed-depth minimax search does not guarantee finishing before the move deadline, and a large branching factor makes even a few plies slow.
+- [fact] MTD-f combined with iterative deepening is described as the fastest general-purpose game search algorithm.
+- [fact] The MTD family of search algorithms is designed with transpositions in mind.
+- [fact] Swapping the roles of the two sides in the input reverses which side the stable marriage search favours.
+
+## steering behaviors
+- [model] 2½D keeps a full 3D position with one scalar orientation about the up axis, giving four degrees of freedom; it suits most grounded game characters. When: Default choice for most game AI; movement is planar with vertical freedom. Why: Grounded characters are effectively two-dimensional, so one orientation angle suffices.
+- [model] Two actuation approaches exist: output filtering and capability-sensitive steering.
+- [model] Every movement algorithm reads geometric data about its character and the world, then returns a geometric description of the movement it wants.
+- [model] Most steering behaviors take the moving character's kinematic data plus target information, then output steering. The target input varies: another character, collision geometry, or a path.
+- [model] Many steering behaviors are variants of one or two themes, and many have an opposite formed by a small change, such as seek and flee. A child behavior can be seen as extending its parent.
+- [model] The steering pipeline is a cooperative arbitration design with four ordered stages: targeters set the goal, decomposers split it into sub-goals, constraints limit movement, and one actuator produces the path and motor output.
+- [model] Vehicles use a forward arc for targets reachable by turning without braking and a rear arc for targets reached by reversing, with the rear arc usually capped by a maximum reversing distance. When: Vehicle steering decisions.
+- [model] Urban driving AI has four parts: pathfinding, a destination selection layer (state machine, rule system, or script), kinematic steering, and explicit traffic and pedestrian simulation. When: Urban driving games.
+- [model] A common split: the AI chooses where to move, and separate code turns that movement into animation.
+- [definition] The movement layer, the lowest layer of game AI beneath decision making and strategy, turns AI decisions into motion, from homing in on targets to avoiding obstacles and navigating rooms.
+- [definition] Align turns a character to match a target orientation using only angular acceleration, ignoring position and velocity.
+- [definition] Arrive is a steering behavior that slows a character so it stops at its target instead of overshooting it.
+- [definition] Capability-sensitive steering selects among the maneuvers a character can actually perform, choosing the one that best serves its goal.
+- [definition] Steering behaviors is the term for dynamic movement algorithms, introduced by one researcher.
+- [definition] Actuation, or motor control, converts steering movement requests into motion a physical character can actually perform. When: Steering requests exceed what the character can do.
+- [definition] Separation pushes a character away from nearby characters within a threshold distance, with strength falling off with distance. Its contributions are summed and clipped.
+- [definition] Constraints are avoidance behaviors for moving or static obstacles that check the actuator's planned path.
+- [definition] Orientation can be stored as a scalar angle from the positive z axis or as a unit-length vector pointing in the facing direction, and the two convert using sine and cosine.
+- [definition] Velocity matching accelerates a character so its velocity equals the target's velocity; alone it is rarely useful but serves as a building block for behaviors such as flocking.
+- [mechanism] If a character is too fast to stop in time, the target velocity is smaller than its current velocity, so acceleration points backward and brakes it. When: when speed exceeds what the remaining distance allows.
+- [mechanism] Both decision arcs shrink as speed rises, at a rate set by tire grip and found by tuning. When: Vehicle decision arcs at varying speed. Why: Higher speed reduces the grip available for turning.
+- [mechanism] With offset geometry, collision detection and prediction can test point locations, which is cheaper than testing the character's extent.
+- [mechanism] Staging assigns high-level actions in response to triggers, mainly for many characters in a scene; a decision state executes a move-to-location behavior with the location as its parameter. When: Many characters are in the scene.
+- [mechanism] Crowd instability appears as sudden behavior changes, caused by decisions propagating through the group and being amplified at each step.
+- [mechanism] The cost of entering a group can depend on the group you came from, so one link cost can be cheap from one side and expensive from another. Good grouping reduces this effect but cannot remove it.
+- [behavior] Steering tolerates small errors because it re-decides every frame, so a slightly wrong estimate is corrected at the next update. When: Continuous steering movement. Why: Each frame's decision is simple and constantly revised.
+- [behavior] Kinematic seek moves at constant full speed and never stops, so it keeps pursuing a target it never reaches. When: Seek is used without arrival logic. Why: Seek always outputs full speed toward the target.
+- [behavior] Movement direction and facing are not linked by default, so a character can face one way while travelling another. When: Character movement is not tied to orientation. Why: Position and orientation update independently unless coupled.
+- [behavior] Seek against a moving target makes the character orbit rather than close in directly. With drag, the orbit becomes an inward spiral that, given enough drag, looks like direct approach. When: Target is moving. Why: Seek aims at the current position, so the character keeps turning around the target.
+- [behavior] Units sharing the same tactical data move in distinct styles when each uses its own weight set; scouts can seek exposure while artillery avoid it. When: units need different routing priorities from shared analysis data. Why: Distinct preferences come from the weights applied to the same data.
+- [behavior] Players notice sudden changes in motion more than smooth motion, so dropping collision for distant pedestrians is less noticeable than frequent pinball-style collisions.
+- [behavior] Grazing can be implemented as a slow wander that pauses to eat from time to time.
+- [behavior] Creatures flock with their own kind, especially when in danger, and respond to the player by fleeing as if it were a predator or by following.
+- [behavior] Steering behaviours alone may handle highly constrained characters poorly, such as vehicles needing maneuvering room or characters that cannot turn on the spot. When: Characters with limited turning ability. Why: Steering assumes free motion, while constrained characters need exact combinations of moves and turns.
+- [rule] Apply forces directly to physics-controlled characters only when forces are the sole control channel, as with vehicles; human characters are usually not force-controlled. When: controlling a physics-based character. Why: Vehicles are controlled only through drive and steering forces, while steering algorithms usually output accelerations.
+- [rule] Constraints may supply only some goal channels; channels a constraint does not specify keep their current values. When: a constraint suggests a new goal.
+- [rule] Use movement AI only when a character must travel to reach an action's target; play actions performed on the spot through animation alone.
+- [rule] A final actuator's heuristics must produce roughly sensible movement for any input, working from that single request alone.
+- [rule] Steering output types must support componentwise addition and scalar multiplication for blending to work.
+- [rule] A general steering system should combine elements of both blending and arbitration.
+- [rule] When the closest-approach time is negative, the characters are already moving apart and no avoidance action is needed.
+- [rule] When velocity is zero, do not change orientation, since there is no preferred facing. When: Character is stationary while using velocity-based facing. Why: Velocity direction is undefined at zero speed.
+- [rule] Set the avoid distance greater than the character's radius. When: Configuring wall avoidance. Why: Keeps the target clear of the character's body.
+- [rule] The candidate target must move forward along the path; if it is not farther along than the previous frame, push it forward. When: Using path following targets. Why: Prevents the target from moving backward and stalling.
+- [rule] Store velocities as distance per second instead of per frame, and multiply by elapsed time when integrating. Why: Per-frame velocities break when frame rate varies.
+- [rule] Combine steering behaviors rather than relying only on attractors and repulsors placed in the level. When: Designing movement for characters in a level. Why: Stuck characters cost more to fix than a more complex steering algorithm.
+- [rule] Keep each steering behavior to one job and give it only the input it needs. Build complex behaviors by combining simpler ones with a separate algorithm.
+- [rule] Targeters choose a single goal, so an away-from behavior such as running away must select a point to run to. When: Designing flee-like behaviors in a pipeline.
+- [rule] Use strict 2D for fully flat worlds without vertical movement, full 3D for flight and space games where all orientations matter, and 2½D for most other cases. When: Choosing a movement model.
+- [rule] Lower-level movement should report failure upward, such as with a stuck message, so high-level plans do not stall.
+- [rule] Flying enemies in platform games need 2.5D or 3D movement algorithms.
+- [rule] Give individual behaviors hysteresis: a band of distances in which a creature does not react, so it moves only when neighbors move far away. Why: it prevents chain reactions in the group.
+- [rule] Give each direction of a link its own cost, since traversal cost can differ greatly by direction.
+- [heuristic] Stop steering once the character is within a small arrival radius of its target. Why: Otherwise small positional errors keep the character moving.
+- [heuristic] With a nearly continuous range of speeds or turn angles, use a set of heuristics to pick the action from the current state and target. When: when the action space is effectively continuous.
+- [heuristic] Use cone-based evasion for a few characters where simplicity matters most, not for crowds.
+- [heuristic] Arrive can be split into computing a velocity target and then applying velocity matching, and this split is a common pattern in delegated behaviors.
+- [heuristic] Pairing slowing with a satisfaction radius allows a much smaller radius without wiggle or an instant stop. When: Arrive behaviour needs precise stopping. Why: Slowing removes the abrupt stop that a small radius would otherwise cause.
+- [heuristic] Use seek to chase a constantly moving target at full speed. To stop on a target, use arrive instead. When: Choosing a chase or stopping behavior.
+- [heuristic] Separation suits crowds heading in roughly the same direction. It works poorly when characters cross paths, where collision avoidance fits better. When: Crowd movement.
+- [heuristic] A cover-based overwatch squad needs its anchor movement switched off, and the anchor should move slowly relative to the members, since bounding overwatch is not a fast maneuver. When: Squad moves between cover points using a shared anchor. Why: A stationary squad's center of mass never changes, so the anchor never advances to new cover.
+- [heuristic] Movement algorithms usually treat a character as a single point at its center of mass, mirroring physics engines, while collision and obstacle avoidance still need the character's size. When: Designing movement logic for a character with volume. Why: Movement can ignore extent, but avoidance and collision depend on it.
+- [heuristic] A good hit-and-run position combines a clear view of the target area with several exit routes. When: choosing a spot to attack and withdraw from.
+- [heuristic] Use kinematic movement for autonomous agents that need no realistic physics; add pathfinding when they must head for destinations such as an exit. When: Agents moving through a game world.
+- [heuristic] A simple algorithm can make pursuers try to surround the player.
+- [procedure] 1) Take the desired velocity change from the steering output. 2) Find the combination of applicable forces that gets as close to it as possible. 3) The simplest version multiplies the desired acceleration by inertia to get a force. When: steering outputs accelerations for a physics-based character. Why: A character may be unable to apply every requested acceleration.
+- [procedure] 1) Update targeter goal channels in order. 2) Run decomposers in strict order, each possibly replacing the goal with a sub-goal. 3) Up to a fixed step limit, ask the actuator for a path to the goal and check constraints against it. 4) On the first violation, ask the constraint for a new goal and restart. 5) If no violation, return the actuator output; if the limit runs out, return the deadlock behavior output. When: a valid path is needed without a full planner. Why: Bounded looping with a fallback keeps behavior predictable when constraints conflict.
+- [procedure] 1) Iterate groups in priority order. 2) Compute each group's blended steering. 3) Return the first result whose linear or angular magnitude exceeds epsilon. 4) If none exceed epsilon, return the final group's output. Use squared magnitude for the linear test and scale epsilon to match. When: the number of groups is small and behavior evaluation is cheap. Why: Returning the first sufficiently large result avoids evaluating lower-priority groups.
+- [procedure] 1) Stop inside the target radius. 2) Outside the slowing radius, use maximum rotation; inside it, scale target rotation down linearly with the sign. 3) Set angular acceleration to target rotation minus current rotation, divided by the time-to-target constant, clipped to the maximum.
+- [procedure] 1) Measure distance to the target. 2) Desired speed equals maximum speed outside the slowing radius, zero at the target, and scales with distance between. 3) Target velocity is the unit direction to the target times desired speed. 4) Acceleration is (target velocity minus current velocity) divided by time-to-target. 5) Clip acceleration to the maximum.
+- [procedure] 1) Compute the direction from the character to its target. 2) If the direction has zero length, make no change. 3) Otherwise pass the direction to the 3D align-to-vector procedure to get a target orientation.
+- [procedure] 1) Compute the direction as target position minus character position. 2) If the direction has zero length, make no change. 3) Compute the orientation from the direction components with an arctangent. 4) Store it as the align target. 5) Let align perform the steering.
+- [procedure] 1) If the character is stationary or very slow and the target is very close, step directly to it, even backward or sideways. 2) If stationary with a farther target, turn to face it, then move forward. 3) If moving with the target inside a speed-dependent forward arc, keep moving and add rotation limited by the straight-line animation. 4) If the target is outside that arc, stop, turn on the spot, and set off again. When: Steering a human-like character to a target. Why: Matches how people actually move at different speeds.
+- [procedure] Each frame, rotate a fixed fraction of the remaining angle toward the target heading, smoothing the change over several frames; the example rotates halfway each frame. When: Smoothing a character's turn. Why: Repeated partial turns spread the change over frames.
+- [procedure] 1) Know start point, end point, gravity and vertical jump velocity. 2) Solve the three position equations for flight time with the quadratic formula. 3) Take the smaller time, or the larger if its horizontal speed exceeds maximum. 4) Set horizontal velocity to horizontal displacement divided by flight time. When: Jump onto a landing pad with vertical jump motion. Why: Launch velocity is derived from the target landing point.
+- [procedure] 1) Cast a short ray along velocity with length set by a lookahead. 2) If no collision, return no steering. 3) Otherwise target the hit point plus wall normal times avoid distance, and seek it. When: Character must avoid walls while moving.
+- [procedure] 1) For each neighbor, compute the offset vector. 2) If distance is below the threshold, compute repulsion strength. 3) Add a unit vector pointing away, scaled by that strength. 4) Clip the summed result to maximum acceleration.
+- [procedure] 1) If stationary, accelerate. 2) If moving with the target between the arcs, brake while turning at the maximum non-skidding rate. 3) If the target is in the forward arc, accelerate toward its direction up to desired speed. 4) If in the rear arc, accelerate backward and steer toward it. When: Choosing a vehicle action toward a target.
+- [procedure] 1) Compute the target velocity minus the character velocity. 2) Divide by a time-to-target constant, 0.1 in the sample. 3) If the magnitude exceeds maximum acceleration, normalize and scale it to the maximum. 4) Set angular output to zero. When: Implementing velocity matching.
+- [procedure] 1) Keep the target as a unit vector on a sphere. 2) Add a small random amount to each component and renormalize. 3) Transform by the character orientation and scale by the wander radius. 4) Offset it forward by the wander offset. When: Wandering in three dimensions.
+- [procedure] 1) Query each steering behavior as if it were the only active one. 2) Multiply each requested acceleration by its behavior's weight and sum them. 3) Trim the sum to the character's maximum acceleration.
+- [procedure] 1) Move an invisible target along the racing line using direct position updates. 2) Steer the car toward the target, for example with an arrive behavior. When: racing or rally-style AI cars. Why: The target stays ahead of the car, so steering begins early.
+- [procedure] 1) Move the entity by its speed times elapsed time in its current direction. 2) If it passes a patrol bound, flip its direction. 3) Reflect its position back across that bound by the overshoot. When: patrolling between two bounds with time-scaled movement. Why: Reflection keeps the overshoot instead of discarding it when a large time slice carries the entity past a bound.
+- [procedure] Without wind, search only elevation since bearing is correct. With crosswind, alternate between adjusting elevation and bearing. When: Iterative shot targeting with or without wind.
+- [procedure] 1) If the current pile is lower than its right neighbor, move to the next destination. 2) If the current pile is empty, raise the level, recompute the goal, and return to the first destination. 3) Consume one dummy from the chosen destination. When: choosing where each real run goes.
+- [metric] Priority steering uses constant extra memory and time linear in the total number of behaviors across all groups.
+- [metric] A time-to-target constant of 0.1 is used for align.
+- [metric] Relative position is the target's position minus the character's; relative velocity is the target's velocity minus the character's.
+- [metric] The sidestep radius, the very-slow movement threshold, and the forward arc size must be tuned to the scale of the character's animations.
+- [metric] Pursue runs in O(1) time and memory.
+- [metric] Linear falloff strength equals max acceleration times (threshold minus distance), divided by threshold. Inverse square strength equals the smaller of a constant times distance squared and max acceleration.
+- [metric] Velocity matching runs in constant time and memory, O(1).
+- [metric] Updating formation targets takes O(n) time for n occupied slots and O(1) extra memory beyond the output assignments.
+- [metric] Adding a character costs O(1) time and memory; removing one costs O(log n) time and O(1) memory with a suitable hashed lookup structure. When: Hashed structure used for finding members.
+- [metric] The velocity-facing behavior runs in O(1) time and memory.
+- [tradeoff] Use weighted blending when all concerns must always be considered at once, as in crowds and flocks; avoid it when strong constraints create conflicting goals that can stall the character. When: Group steering with several concurrent concerns.
+- [tradeoff] Arrive time-to-target: about 0.1 s suits a starting value, while about 0.25 s is a default; larger values brake more gently and smaller values brake abruptly. When: Choosing or tuning arrive's time-to-target. Why: Time to target sets how quickly desired speed falls near the goal.
+- [tradeoff] Central ray with short whiskers blocks tight passages; a single ray grazes convex obstacles; parallel side rays handle obtuse corners but are prone to the corner trap. When: When choosing a ray layout for wall avoidance. Why: Each layout fails in a different geometry.
+- [tradeoff] Setting AI grip at the limit of player grip keeps AI driving realistic but means AI cars never skid, so games wanting wheel spin or handbrake turns must retune these parameters. When: Tuning AI vehicle grip.
+- [pitfall] Near walls, wall avoidance with pursuit can push a character the wrong way, since independent behaviors ignore context and avoidance may give only tangential acceleration, making a pursuer slow sharply. When: When a pursuer approaches a wall.
+- [pitfall] Moving at full speed toward a fixed point causes overshoot and back-and-forth wiggle around the target; seek never slows down, so use arrive when the character must stop at a spot. When: Character approaches a fixed target or must stop exactly at a location. Why: Full speed cannot brake in time to stop on the point.
+- [pitfall] Conflicting constraints can cause the goal-revision loop to cycle without reaching a compromise, and the step limit then forces the deadlock fallback. When: multiple constraints compete in a complex environment.
+- [pitfall] Neglecting basic movement and collision handling makes characters snag on scenery or stick permanently, which players notice at once and resent.
+- [pitfall] If each behavior applies its own physical limits, the blended result of several behaviors is unlikely to make sense.
+- [pitfall] Removing the arrival radius rarely shows at normal frame rates but can cause instability at low frame rates, high maximum speeds, or low accelerations.
+- [pitfall] A roll-only steering behavior lags behind the turn, which looks odd when the behavior runs only a few times per second.
+- [pitfall] Snapping facing directly to the direction of motion causes visible sudden turns. When: Orientation is set instantly from velocity. Why: Turns happen in one frame with no transition.
+- [pitfall] Shoehorning a problem into 2.5D eventually takes longer than doing the 3D math, so past some point switching to 3D is worthwhile. When: A problem strongly resists the 2.5D constraint. Why: Workarounds accumulate cost.
+- [pitfall] When the chaser is faster than its target, seek oscillates around the target; replacing the delegate with arrive avoids this. When: When a faster pursuer uses seek against a target. Why: Seek overshoots the target and reverses, while arrive slows down near it.
+- [pitfall] At low speed the arcs must touch, since a gap makes the vehicle brake to a stop where it cannot turn, while touching at too high a speed causes a skid on a sharp turn. When: Tuning vehicle decision arcs.
+- [pitfall] Straight-line distance ignores level geometry: it can pick a waypoint in an adjacent room behind a wall, or let a farther listener hear a sound first around an angled corridor. When: Levels with thin walls, corridors close to other rooms, or angled corridors. Why: Euclidean distance ignores obstacles that lengthen the actual route.
+- [pitfall] A walk can get trapped in a small set of states, or need rarely chosen low-value action sequences to escape.
+- [pitfall] Enemies that are few, weak, or easy to kill will not herd the player, so herding with them fails.
+- [fact] Cars cannot turn while stationary or move sideways, turn less sharply at speed due to tire grip, brake harder than they accelerate, and reverse more slowly than they drive forward. When: Modeling car or wheeled vehicle movement. Why: Vehicle physics limit steering options.
+- [fact] Movement planning handles short sequences, such as crossing a room with obstacles, and fills in detail for the next part of a route rather than the whole level.
+- [fact] A final actuator receives one combined request with no knowledge of the behaviors behind it, so it cannot compare alternative routes.
+- [fact] Rotation values do not wrap, so a large rotation value simply means fast turning.
+- [fact] Arrive produces no angular output and runs in constant time and memory.
+- [fact] Steering is nearsighted: it reacts only to immediate surroundings and cannot foresee problems beyond its horizon.
+- [fact] The steering pipeline is a cooperative arbitration mechanism tailored to steering rather than a general decision tool.
+- [fact] Decision trees, state machines and blackboards have all been used to control steering, and no single approach is yet standard for games.
+- [fact] Only seek, align, and velocity matching are fundamental steering behaviors; rotation matching exists by analogy but has no known application.
+- [fact] A formation character needs only a method that sets a steering target from a position and orientation.
+- [fact] Humans can move in any direction but are much faster forward, so sideways and backward movement is rarely chosen unless the target is very close.
+- [fact] Dynamic movement is growing but remains a minority in games, which still rely heavily on kinematic movement.
+- [fact] Steering behaviours output a linear acceleration vector and an angular acceleration value.
+- [fact] Physics simulation now drives movement almost universally in driving games, is used for flying characters, and is spreading into human character physics.
+- [fact] Inputs always include the character's position; velocity is optional and needed only by some algorithms. Others include other characters' positions, special locations, paths and level geometry.
+- [fact] The most common movement output is a desired velocity, while older games often output only a direction for stationary, walking or running states.
+- [fact] Some games use only movement algorithms with no higher-level decision making and still appear convincing.
+- [fact] Resource management and turn-based games often skip movement logic, because the chosen destination can simply be set. When: Game is resource management or turn-based.
+- [fact] Full 3D steering suits characters that scurry along roofs or walls, airborne vehicles that tilt and roll, and gun mounts that spin freely in any direction. When: Characters or vehicles are not limited by gravity.
+- [fact] Projected volumes are the only complete solution to wall avoidance and are used by physics engines, but they are slow to query and hard to interpret; no widely trusted steering method exists yet.
+- [fact] Separation alone is not useful: characters jiggle out of range and stop. It is designed to combine with other behaviors.
+- [fact] Ten of fourteen 2D steering behaviors are purely linear and carry over unchanged to 3D: pursue, seek, evade, flee, arrive, path following, velocity matching, separation, collision avoidance and obstacle avoidance. When: Converting 2D steering to 3D.
+- [fact] Align, face and look where you're going are purely angular and need new orientation math in 3D. Wander is handled separately because its orientation drives its linear motion. When: Converting 2D steering to 3D.
+- [fact] Steering behaviors extend basic movement by outputting acceleration and rotation rather than only velocity. They are widely used in PC and console games and dominate some genres such as driving games.
+- [fact] Jumping, ledge drops and elevators still move grounded characters through the third dimension even in 2½D.
+- [fact] Motorbikes cannot travel backward, so their rear decision arc is zero.
+- [fact] In 3D wander the offset and maximum acceleration become vectors, typically with only the forward z component non-zero, and angular motion is delegated to 3D face.
+- [fact] Steering and path smoothing soften discrete graph limits but do not handle rapidly changing yet predictable situations.
+- [fact] Hard-coded state machines are usually faster than flexible implementations, except for very large machines with thousands of states.
+- [fact] Steering behaviors treat characters as zero-width particles, yet characters must behave as solid objects.
+- [fact] An open research direction is a wanderer that uses earlier logs to target poorly covered areas with novel move combinations.
+- [fact] Selected actions are often little more than steering behaviors, which is enough for most character behavior.
+- [fact] Inverse kinematics or other constraints can limit which movements an animated character can perform.
+- [fact] Creatures that move along walls and ceilings cannot be represented with a strictly 2.5D model.
+- [fact] Non-grazing creature states are either a basic goal-seeking behavior, such as fleeing, or a sum of goal-seeking behaviors, such as flocking.
+- [fact] Creatures flee threats and handle simple movement steering and obstacle avoidance.
+- [fact] Grid object movement patterns can be standing still, random moves with frequent or infrequent direction changes, or clockwise or counterclockwise motion along walls.
+- [fact] A facing vector does not determine a unique 3D orientation, since infinitely many orientations look down the same vector.
+
+## machine learning
+- [model] Multi-layer analysis merges several base per-location analyses into one score, such as choosing tower sites by visibility, security, and distance from other towers.
+- [model] A generic multi-layer perceptron network holds three collections of perceptrons: input, hidden, and output.
+- [model] A decision learner has a fixed set of behavior options and observable game values, such as distance to nearest enemy, ammo left, or relative army size.
+- [model] A taught creature's controller is a multi-layer perceptron: inputs are world context including internal parameters; outputs are action type, object, indirect object, and any other data needed for an action. When: Building a learning creature controller.
+- [model] In player-taught creature games, a character replicates observed actions, then the player gives positive or negative feedback, such as tickles or slaps, to encourage or discourage repeating them. When: Designing player-taught characters.
+- [model] A Hopfield network places neurons on a grid and connects each neuron to its neighboring points.
+- [definition] Online learning adapts during play, consuming data as the game generates it; offline learning processes collected game data between levels or at the studio, storing it and loading it whole later.
+- [definition] Credit assignment is deciding how much each earlier action deserves credit for a later rewarded event, such as a kill, and which actions in a series helped and which did not.
+- [definition] Weak supervision gives no answer set; a monitor or developer scores actions, penalizing outcomes such as being shot and rewarding success. Output-layer error is computed from such outcomes, not example answers.
+- [definition] Natural computing is AI drawing on biology or other natural systems, including neural networks (biologically inspired), genetic algorithms and simulated annealing.
+- [definition] A perceptron stores its list of input records, its current state, and its current error; each input record holds a source neuron reference and a weight.
+- [definition] Decision learning lets an AI choose one behavior from a fixed set by associating observed game values with decisions.
+- [definition] Hebbian learning is unsupervised: it strengthens connections between neighboring nodes that share a state, weakens those that differ, and needs neither examples nor error values.
+- [definition] Statistical confidence measures how unlikely an observed pattern is to have arisen by chance; it is high when that chance is low.
+- [definition] Off-policy learning keeps the action-selection policy outside the algorithm, so it can be replaced while the algorithm stays valid if all states are eventually visited.
+- [definition] On-policy learning builds its exploration strategy into the learning itself, so the action-selection policy is part of the algorithm.
+- [definition] Over-fitting, or over-learning, means a learner memorizes the responses to experiences it has had instead of generalizing to new situations.
+- [definition] A perceptron multiplies each input by its weight, adds a bias weight for an always-one input, and outputs zero if the sum is below zero, otherwise one.
+- [definition] A radial basis function outputs near one inside a bounded range of inputs and near zero outside it.
+- [definition] Strong supervision gives a learner a set of correct decisions, each paired with the observations at that moment, often recorded from a human player.
+- [definition] Context lets a character associate an action with the circumstances in which it is appropriate, such as eating being good but not while under attack. When: Designing learning characters.
+- [definition] Deep learning is a subset of machine learning based on neural networks with many layers.
+- [definition] Connectionist AI learns patterns from data through networks of simple interconnected processing units, and covers most machine learning and deep learning.
+- [definition] Defuzzification converts membership values back into a single output value that approximates an output which would produce those memberships, since an exact match often does not exist. When: Turning fuzzy results into game values. Why: Fuzzy memberships can imply combinations no single output can reproduce exactly.
+- [definition] Alpha is the learning rate, between zero and one, that sets how strongly new feedback overrides a stored Q-value; zero learns nothing and one uses only the latest experience.
+- [definition] In a feedforward network the leftmost input layer is set by the programmer and the rightmost output layer gives the final result, with values passing in one direction.
+- [mechanism] Smooth activations such as sigmoid act like a step far from zero but give intermediate outputs near the threshold, so small weight changes produce graded output changes, which learning needs. Why: A hard step gives no graded output, so there is nothing to adjust weights against.
+- [mechanism] Tactic weights can change during play; a damaged unit can raise its enemy-proximity weight so its route home becomes more conservative.
+- [mechanism] The critic receives reward feedback, learns values, and sends a critique signal that guides the actor's simpler learning.
+- [mechanism] A negative error weakens the inputs that contributed to a bad result, a positive error strengthens them, and a near-zero error changes weights very little.
+- [mechanism] Rewards for the same state-action pair may differ between attempts; the update averages them, so the Q-value tracks the action's overall success.
+- [mechanism] In a radial basis neuron the bias sets the range's position, while larger overall weights narrow the range and smaller weights widen it.
+- [mechanism] Raising the steepness parameter h pushes the sigmoid toward a hard step, while lower values give a smoother, more graded curve.
+- [mechanism] Most network outputs are illegal because the action, object, or indirect object may be unavailable; only legal outputs are carried out. When: Choosing actions from a neural network controller. Why: Actions depend on what is available at that moment.
+- [mechanism] A single training pass changes behavior very little, while many iterations can make a network forget behaviors it already learned. When: Choosing how many training passes to run. Why: Learning speed and forgetting speed must be balanced.
+- [mechanism] NEAT grows a flower network's hidden structure over time, so generated flowers become more complex. When: evolving CPPN-generated content. Why: Added hidden nodes increase the expressiveness of the generator.
+- [mechanism] Fewer tokens per coastline agent mean more agents and finer coastline detail.
+- [behavior] Similar states and actions tend to have similar quality, so heading toward known high-value pairs is a good way to find other good pairs. When: Searching for good actions in Q-learning. Why: Value generalizes across similar situations.
+- [behavior] When agents share experiences, others may come to copy or debunk them. When: Agents exchanging experiences about a stimulus.
+- [rule] Limit online Q-learning to problems with fewer than about 100 states. When: learning happens during play.
+- [rule] Give credit to the actions leading up to a rewarded event, even though no feedback arrived while they were performed. When: rewards are sparse and delayed.
+- [rule] Use a sigmoid rather than a hard step wherever learning needs graded outputs. Why: Graded outputs give learning something to adjust against.
+- [rule] During online play, set nu to zero, because the game controls the current state and random jumps are impossible. When: learning while the game controls the state.
+- [rule] Use threshold splitting only when a continuous attribute needs just a binary decision at a node.
+- [heuristic] Use online learning when the best parameter values shift as player behavior changes, such as when scores drift or are noisy. When: choosing a learning mode. Why: Scores drift or are noisy, and the best parameter value changes with player behavior.
+- [heuristic] Use a per-neuron structure for a clear, flexible implementation, and expect production code to use a different memory layout. When: implementing a neural network for study or prototyping. Why: Clarity and flexibility matter more than speed early on.
+- [heuristic] Scale the filtered request back to the original magnitude so the character does not move slower just because its request was filtered. When: Filtered request is much smaller than the original.
+- [heuristic] Choose neural networks when smooth generalization matters more than exact match to examples; choose decision trees when accuracy on known cases is the priority. When: Selecting a classifier for AI behavior. Why: Accuracy and generalization trade off against each other.
+- [heuristic] During online play use an exploration rate of 0.1 or less so behavior looks sensible to the player. When: Learning happens while the player is playing. Why: A high rate would make decisions look random to the player.
+- [heuristic] During offline training use a higher exploration rate, around 0.2 as a starting value, to learn as much as possible within the trade-off. When: Learning happens offline before release. Why: Players do not see the training behavior.
+- [heuristic] Constrain learning to one task whose output can be visualized and checked by eye, such as choosing cover points. When: Adding learning to a game. Why: Narrow, inspectable tasks are easier to reproduce, debug and verify.
+- [heuristic] Use neural networks mainly as classifiers; they have been over-hyped as general controllers for large-scale game behavior. When: choosing an AI technique for a game. Why: Developers who applied them to large-scale behavior control reported disappointing results.
+- [heuristic] Watch closely for over-fitting when the learner has few experiences and the model is large. When: training a learner from limited encounters.
+- [heuristic] Reinforcement learning fits when the best action depends on circumstances that cannot be anticipated at design time.
+- [heuristic] Tune the steepness h for each network, because the best value tends to fall as layer size and weight magnitude grow.
+- [heuristic] Use outcome-based training when the correct action is hard to specify but bad outcomes are easy to recognize.
+- [heuristic] The most promising deep learning uses in games are dynamic difficulty adjustment, believable NPC behavior and conversation, and procedural content generation.
+- [heuristic] Use incremental learning such as ID4 when examples arrive during play and the tree must adapt; plain ID3 suffices for a complete offline example set.
+- [heuristic] A multilayer perceptron's hidden layer usually matches or exceeds the input layer in size, and is frequently far bigger. When: Planning a network with three layers.
+- [heuristic] Feedforward structures suit mapping a set of inputs to an output, such as a multi-layer perceptron. When: The task maps inputs to outputs.
+- [procedure] 1) Set the input layer from the input values. 2) For each hidden neuron, sum weighted inputs, apply the threshold, and store the result as its state. 3) Repeat for each output neuron. 4) Read the result from the output layer. When: evaluating a neural network for a game decision. Why: Each layer needs the states of the layer before it, so layers must be computed in order from inputs to outputs.
+- [procedure] Estimate a goal's rate at runtime when it depends on events, such as health lost to hits: 1) On each GOB run, compute each goal's change since last run. 2) Divide by elapsed time for observed rate. 3) Update stored rate as 0.95 times old plus 0.05 times new sample; weights may be any pair summing to one. When: The rate depends on events.
+- [procedure] 1) For each input, multiply the source neuron's state by its weight. 2) Sum these products. 3) Apply the threshold and store the result as the new state.
+- [procedure] 1) Take the current error. 2) For each input, add gain times error times source state to its weight. 3) Store the error so upstream layers can use it.
+- [procedure] 1) Record observation-action examples where each example carries its correct action. 2) Build the tree automatically from these examples. 3) Execute the learned tree like any hand-made tree during play. When: A labeled set of observation-action examples exists. Why: Learning replaces manual tree authoring.
+- [procedure] 1) Train on many games, each with full safe and dangerous maps per turn from influence mapping. 2) Apply the Hebbian rule to neighboring grid nodes. 3) In play, fix visible tiles at known values and let the rest of the network settle to estimate hidden areas. When: Estimating unseen map information, such as fog-of-war safety in an RTS. Why: Hidden tiles are inferred from learned correlations with neighbors.
+- [procedure] 1) Record each creature's recent input-output pairs over at least several seconds. 2) When player feedback arrives, train the network to strengthen or weaken every pair in that window. 3) Reduce the feedback's influence for pairs further back in time.
+- [procedure] 1) Find a representation for the observed action. 2) Find a representation for the current context. 3) Train the network on that input-output pattern. When: A character learns by observing other characters or the player.
+- [procedure] 1) Start with a high gain near 0.7 (a reasonable starting gain is 0.3) to bring weights roughly into the right region. 2) Lower the gain to about 0.1 to refine weights and keep learning stable. When: Setting gain for neural network weight training, especially when initial weights are far from good values. Why: High gain moves weights quickly early on, and low gain protects the refinement from single-example noise.
+- [procedure] 1) Start with minimal networks that have no hidden nodes. 2) Add nodes and connections by mutation over generations. 3) Let topology grow automatically, so the designer does not fix neuron count. When: evolving neural networks or CPPNs. Why: Growing complexity lets evolved content become more elaborate over time.
+- [procedure] 1) Sort examples on the attribute. 2) Place the first in category A and the rest in B. 3) Compute gain. 4) Move the lowest-valued example from B to A and recompute. 5) Repeat until all splits are tried. 6) Keep the split with highest gain.
+- [procedure] 1) Collect 20 to 100 scenarios pairing inputs with desired outputs. 2) Split them into a training set and a testing set, with at least ten of each and ideally fifty of each. 3) After training, run feedforward on the test set to check results. When: Preparing and validating a neural network for game behavior. Why: A separate test set reveals whether learning generalises.
+- [metric] A hidden neuron's error equals its output times one minus its output, times the sum over the next layer of connecting weight times that neuron's error; it reflects the neuron's share of downstream error.
+- [metric] Memory use is O(nw), where n is the neuron count and w the inputs per neuron, and feedforward and backpropagation each take O(nw) time.
+- [metric] An output neuron's error equals its output times one minus its output, times the difference between target and output.
+- [metric] Offline training on a dedicated machine may extend the practical state scale by about an order of magnitude. When: training runs offline on dedicated hardware.
+- [metric] Sigmoid output equals 1 divided by (1 plus e raised to the negative of h times the weighted input sum), where h sets the steepness of the curve.
+- [metric] For small game networks, steepness values up to about 10 work well, though many texts start from h equal to 1. When: choosing a starting steepness for a small network.
+- [metric] Offline, a nu of roughly 0.1 yields streaks averaging around nine consecutive actions. When: learning offline with a simulator.
+- [metric] With two choices, windows beyond about 10 actions predicted worse than random guessing, even on a very predictable sequence.
+- [tradeoff] Skipping zero values saves memory but requires a reliable way to record each value together with its meaning.
+- [tradeoff] Online learning gives a more consistent challenge by adapting to the player's style, but makes behavior unpredictable and bugs harder to reproduce. When: designing adaptive game AI. Why: A constantly changing game is hard to test and replay.
+- [tradeoff] Radial basis neurons are more complex because each needs an extra weighting parameter, but they cover a range with fewer neurons than sigmoid neurons. When: a neuron must respond to a band of values and neuron count matters.
+- [tradeoff] Strong supervision is easier to get right but needs someone to define correct and incorrect actions; weak supervision can discover these itself but is much harder to make work. When: choosing how a learner gets feedback.
+- [tradeoff] Penalizing illegal outputs through a weakly supervised step yields near-term gains but may produce pathological states later. When: Training a network whose outputs are often illegal.
+- [tradeoff] A high learning gain learns quickly but lets a single input-output example cause large weight changes. Keeping it high throughout training makes the network unstable. When: Gain is set high or stays high throughout training. Why: Each example moves the weights strongly, so noisy or unusual examples have outsized effect.
+- [tradeoff] Deep learning needs large amounts of data and computing resources, which consumes a lot of energy.
+- [tradeoff] NEAT lets network size emerge from evolution rather than be fixed by hand, which suits interactive settings that need speed. When: choosing how to evolve network topology. Why: Automatic growth removes manual topology design, and NEAT is fast enough for real-time games.
+- [pitfall] Assuming natural computing is the future or always superior is a pitfall: it has not scaled better than symbolic methods and often fails to beat simpler approaches, though some suit particular domains.
+- [pitfall] Thresholds set too high discard locations that are significant but only marginally so.
+- [pitfall] Steering demos in sparse open areas hide failures that appear in indoor or urban levels.
+- [pitfall] Running sharpening many times makes influence collapse onto unit positions, giving an uninspiring result. When: Applying sharpening to influence maps repeatedly. Why: Repeated concentration removes the spread that gives useful terrain information.
+- [pitfall] Multiple hills (multi-modal problems) and many reward points make hill climbing fail, the situation most likely to fail under Q-learning. When: Games with many goals or reward points. Why: Learners get stuck on local peaks.
+- [pitfall] A Hebbian network may take a while to settle into a stable pattern. When: Running a Hebbian grid to estimate hidden areas.
+- [pitfall] In on-policy learning, changing the action-selection policy can stop the algorithm from reaching a reasonable solution. Why: The policy is intrinsically tied to how learning operates.
+- [pitfall] Outcome-based networks can learn dull, predictable play, or actions the developer can see are wrong.
+- [pitfall] Behaviors such as last stands may not emerge from outcome feedback alone when the alternative is punished less, so designers must shape the feedback to steer them.
+- [pitfall] A physics-driven car knocked off its racing line keeps trying to regain it and tends to overshoot the next corner and leave the track.
+- [pitfall] Oscillations involving several species are hard to debug and can look artificial. When: cycles appear only when several species are together.
+- [pitfall] Generalization can turn a specific punishment into avoidance of an entire behavior, such as a creature starving because it avoids eating altogether. When: Punishing a specific action in a learning creature.
+- [pitfall] The token count and the agent count are linked, so changing one silently changes the other.
+- [pitfall] Many references describe different algorithms under the same defuzzification name, so the specific algorithm must be checked before implementing. When: Reading fuzzy logic references. Why: Identically named methods may behave differently.
+- [fact] Neurons are designed to compute in parallel; on machines without suitable parallel hardware, each neuron is computed in turn.
+- [fact] Neural networks were proposed in 1943, before the symbolic era, so the later shift to natural computing was partly a change of fashion.
+- [fact] Natural computing implementations need largely unbiological optimizations before they give sensible results.
+- [fact] For many characters or very complex conditions, compound qualities can be computed offline and stored, removing designer effort but not runtime memory use. When: Complex tactical conditions across many characters. Why: Precomputation trades designer work and runtime query time for stored data.
+- [fact] The critic is usually a basic temporal-difference learner, though Q-learning also suits it.
+- [fact] The target output is one for the desired action and zero for all other output neurons.
+- [fact] Each perceptron only needs to know which perceptrons feed it, so the network architecture is not fixed.
+- [fact] Decision tree learning is the most practicable of three learning techniques for game AI, with reinforcement learning and neural networks as larger fields with potential. When: Choosing a learned decision maker for games. Why: Decision trees are simpler to apply in practice.
+- [fact] Game AI typically uses variants of Quinlan's ID3 to build decision trees, and such algorithms exist for classification, prediction and statistical analysis.
+- [fact] Uncorrelated neighboring nodes average out to no net change in Hebbian weights.
+- [fact] The neural network family is large and varied, so few general truths apply to all members and little of its theory transfers to games.
+- [fact] The multi-layer perceptron trained with backpropagation is the most common form of neural network.
+- [fact] Online learning is rare in shipped games.
+- [fact] Shipped games use offline learning for multiplayer map tactics, pathfinding and movement data, and bootstrapping physics interaction.
+- [fact] Different learning algorithms are susceptible to over-fitting to different degrees, and neural networks over-fit when misparameterized or oversized.
+- [fact] A sigmoid neuron splits its input into high and low categories around a dividing point, and its bias weight moves that point away from zero.
+- [fact] A sigmoid network can respond to a range using two neurons, one for each bound, at the cost of extra neurons.
+- [fact] Adjusting weights, including the bias, lets a radial basis neuron learn any minimum and maximum of a range.
+- [fact] In weakly supervised learning, hidden-layer error terms and weight updates are computed the same way as in the standard algorithm.
+- [fact] Outcome-based training can produce varied character behavior without a large hand-written behavior library, and can learn behaviors the developer did not foresee.
+- [fact] Most negamax optimizations transfer to strict minimax.
+- [fact] Internet text contains hate speech and toxic content, and it does not represent the world's population. About 80% of global Wikipedia editors identify as men. Why: Learned models absorb whatever skew their training data contains.
+- [fact] Deep learning is rare in games because black boxes are hard to debug, unpredictability can ruin the experience, and models demand processing power on players' hardware.
+- [fact] Supervised learning trains on labeled data and is commonly used for image recognition. When: When labeled examples of the target outputs are available.
+- [fact] Unsupervised learning draws inferences from unlabeled data, such as clustering users into groups for customized experiences or targeted ads. When: When no labels are available.
+- [fact] Convolutional networks suit visual pattern detection, and recurrent networks suit processing certain sequences.
+- [fact] Deep learning has driven advances in speech recognition, language processing, and image generation, and it underlies large language models and generative image tools.
+- [fact] Neural-network methods, including machine-learning and deep-learning models, can mirror human biases in opaque, hard-to-debug ways.
+- [fact] CPPNs are very similar to ordinary neural networks, so the same evolution algorithm applies to both.
+- [fact] Traditional neural networks typically use a sigmoid activation with a slope constant.
+- [fact] Standard neural networks are mainly used for control or classification, and their behaviour depends on architecture and weights.
+- [fact] The decision tree walk uses no working memory, so its cost depends only on the number of nodes it visits.
+- [fact] As the search space grows, finding any particular solution generally becomes harder.
+
+## perception and sensing
+- [model] Halo's AI does not change difficulty in a fixed way. It waits to see how hard the player pushes, then pushes back at a resistance suited to how the player plays. When: When enemies should respond to the player's style. Why: Resistance matched to play style keeps challenge proportional to what the player does.
+- [model] Smelly GOB represents each motive as a signal that diffuses through the level from objects that affect it, and characters follow the strongest signal to the source for their most pressing motive.
+- [model] Fantasy senses reuse existing modalities with altered parameters: aura or magic as modified vision, telepathy as modified hearing, and fear, reputation or charm as modified smell.
+- [definition] The finite element approach replaces continuous space with a directed graph of regions across which signals pass; it gives believable perception only if the regions are chosen carefully.
+- [definition] Perception is what information a character knows; it covers every interface between the game world and the AI, not only simulated sight and hearing.
+- [definition] An alarm behavior interrupts normal activity to handle an urgent condition, then lets the interrupted activity resume. When: An agent must respond to urgent events regardless of its current task.
+- [definition] A signal carries an identifier and is delivered to any interested AI behavior, optionally through an event or sense system for finer control.
+- [definition] The memory-enhanced test is a zero-width alpha-beta negamax backed by a transposition table, taking one guess called gamma instead of separate alpha and beta bounds.
+- [definition] Smell is propagated iteratively because it lingers and diffuses; unlike sound, each node stores a smell intensity and the time it was last updated. Why: Smell lingers and diffuses.
+- [definition] Sound is modelled as a wave spreading outward through nodes from its source, losing intensity across connections until it falls below a minimum.
+- [definition] Proxy data is a substitute variable, such as zip code or language pattern, used when objective data is missing. It can encode discrimination. When: When the objective measure is unavailable to the model. Why: Proxies correlate with sensitive attributes and carry their bias into decisions.
+- [definition] Quantization converts a game position into a graph node, and localization converts a graph node back into a game location a character can move to. When: Connecting game worlds to pathfinding graphs. Why: Pathfinders work only on nodes, so both conversions are needed.
+- [definition] A sense graph node is a region where signals pass unhindered, storing an attenuation per unit distance for every modality and, for smell-capable nodes, a dissipation value.
+- [definition] A sense graph connection joins two nodes through which one or more modalities can pass, storing attenuation and distance per modality and 3D positions at both ends.
+- [mechanism] Enemies that track smell can follow a trail of increasing intensity to locate the player.
+- [mechanism] If objects emit signals only when the particular character can use them now, a character carrying raw food is drawn to the oven and one without it to a fridge, greatly reducing planning.
+- [mechanism] Signal diffusion respects level geometry, taking time around corners and not passing through walls, and intensity falls with distance, so characters naturally favor close options.
+- [mechanism] Sources can emit signals of different intensities, so a weak source of a motive is less attractive than a strong one, which keeps characters choosing balanced options.
+- [mechanism] Scores bubble up from leaves: on the searcher's turns the highest child score passes upward, on opponent turns the lowest, so each level alternates goals.
+- [mechanism] Each sense manager run spreads smell to neighboring nodes according to the transmission and distance of the connections between them.
+- [mechanism] Each node's smell intensity fades at that node's dissipation rate.
+- [mechanism] Sound is not stored in nodes, so a sensor perceives it only while the wave passes through its node.
+- [mechanism] Intensity falls evenly as distance grows, and sound is lost once it dips under a character's hearing threshold.
+- [mechanism] A loud noise may be heard nearby but not across a level or behind soundproof glass, because distance and barriers limit what a character perceives.
+- [mechanism] A camouflage check compares a unit's camouflage id with the pattern id of its background material, so matching patterns hide it.
+- [mechanism] Sound carries within the current room up to a radius that depends on its volume.
+- [mechanism] A looping delay that resets a counter lets a patient player fire again undetected, so alert state decays over time. When: Stealth alert system with repeated events.
+- [behavior] Players notice distant characters less, so distant characters can ignore precise rules, such as passing through one another or taking longer to decide. When: When a character is far from the player's view. Why: Errors on distant characters are unlikely to be seen.
+- [behavior] When the player is not nearby, creatures typically sleep or stand around. When: No player is near a group of creatures.
+- [behavior] An enemy that appears at varying distances and advances when the player looks away makes the player's movement feel slow.
+- [behavior] Enemies that cannot see but have sharp hearing make players move slowly and quietly around them.
+- [rule] Agents must react to world events, to each other and to the player, and track what happens to themselves, colleagues and enemies, so they feel alive rather than scripted. (x2)
+- [rule] Give characters information only through their senses; wanting information does not acquire it, and perception works as an input process, not a search that fails for most requests.
+- [rule] When teaching, use the character's own context; when observing, use the observed character's context. Observer context creates wrong associations, like learning that eating means not being hungry. When: Pairing observed actions with context during observational learning. Why: An observer cannot know another's internal state.
+- [rule] Match the AI effort spent on a character to how long and how closely the player will watch it.
+- [rule] Use tactical waypoints as the location set in indoor levels or in games without tactical analyses.
+- [rule] Do not propagate smell across a connection when either endpoint's intensity sits under the minimum.
+- [rule] Limit smell travel to the simulated time, usually the gap between manager calls, so smell never spreads faster through the graph than through the level.
+- [rule] Update a node only when its stored time lags the current time, so each node changes at most once per iteration.
+- [rule] For AI hearing, let sound pass around corners regardless of its pitch.
+- [rule] In stealth games, let contact or proximity within a small fixed distance alert a character regardless of whether it can see or hear the player. When: stealth games.
+- [rule] Give every creature a well-defined radius for noticing things, so players can predict which creatures react and when. When: Designing creature perception in a complex ecosystem. Why: Players need to plan strategy around predictable reactions.
+- [rule] Decide whether an enemy's music should start when the enemy cannot see the player, or when the player cannot see the enemy.
+- [rule] Let enemy spawn or movement logic respond to where the player is looking.
+- [rule] For enemy herding to work, foes should arrive in large crowds, strike hard, or take a long time to defeat.
+- [rule] Large-scale pathfinding and perception need scalable implementations, such as pooled planners, hierarchical pathfinding, or instanced geometry. When: Large worlds with many characters.
+- [heuristic] Model vision as instantaneous: light travels about 300 million meters per second, so it crosses a game level within one frame. Why: Light travel time is negligible at game scale.
+- [heuristic] With several characters in the cone, evade either their average position and speed or only the closest one; both suit only a handful.
+- [heuristic] Estimate visibility by testing a random subset of locations, provided enough samples are used for a good estimate. When: full testing is too slow.
+- [heuristic] Sample important locations, such as strategic points from an influence map or enemy positions, instead of random ones; this is usually done during online play. When: visibility must be estimated at runtime.
+- [heuristic] Give characters different hearing thresholds to model keen hearing or temporary deafness, such as deafness after a nearby explosion.
+- [heuristic] Model normal attention with a cone of around 60 degrees. When: modeling everyday attention. Why: people consciously monitor only a few degrees at a time.
+- [heuristic] Cap the distance at which enemies notice the player, so enemies do not surprise the player from across an open area.
+- [heuristic] Creatures in herding games rarely need sophisticated AI, even predators.
+- [heuristic] In less realistic genres, a regional sense manager or a plain event manager is often better than full sense simulation. When: sensing is not central to the game.
+- [procedure] 1) Cover noisy surfaces with trigger volumes that each increment a counter. 2) Reset the counter on a repeating one-second delay loop. 3) Alert the guard when the counter reaches two within one second. Scripted hearing only imitates perception and is often simpler than real AI hearing. When: Faking enemy hearing with a scripted counter instead of real AI hearing. Why: A simple timed counter is often easier to build than full sound-based AI perception.
+- [procedure] 1) Compute the time to impact. 2) Compare it with the grenade's fuse length. 3) Choose to run away or to catch based on that comparison. When: Character reacts to a thrown grenade. Why: Time left before detonation decides the response.
+- [procedure] Use signals and waits so the team waits for the grenade to explode, then moves while maintaining cover. When: Sequencing dependent team actions. Why: Waits hold the team until the preceding event completes.
+- [procedure] 1) From a location, cast rays at fixed angular intervals. 2) Measure how far each ray travels. 3) Use the average length as the visibility score. Why: works well for indoor layouts.
+- [procedure] 1) If a stored entry is deep enough and its bounds decide against gamma, return it. 2) Else create an unbounded entry. 3) At terminal or maximum depth, set both bounds to the evaluation. 4) Else recurse on moves with negated gamma. 5) A best score below gamma updates the max bound; otherwise the min bound.
+- [procedure] 1) After a line-of-sight ray succeeds, cast further rays beyond the character. 2) Record the material each ray hits first. 3) Compute an extra attenuation from those materials and the character's camouflage. 4) Multiply signal strength by it. 5) Pass the signal on only if it stays above the character's threshold.
+- [procedure] 1) Gather sensors from every node whose smell intensity is above the minimum. 2) Run the usual testing step on those sensors. 3) Send notifications for sensors that pass. When: each smell iteration.
+- [procedure] 1) Collect sensors in the source node and mark it visited. 2) Move along sound-carrying connections, reducing intensity by each connection's attenuation. 3) Skip visited nodes. 4) Visit nodes in distance order. 5) At each node, gather candidate sensors and stop when intensity falls below the minimum. 6) Test each sensor's threshold and queue passing notifications.
+- [procedure] 1) Aggregate sensors within the modality's maximum range. 2) Test each sensor's threshold and any modality-specific checks. 3) Queue passing sensors with delivery time equal to now plus distance times inverse speed. 4) Each frame, deliver queued notifications whose time has passed.
+- [procedure] 1) Compute a concealment level from shadows, mist and other hiding effects. 2) If it is below a threshold, the AI spots the player. When: single player character with AI observers.
+- [procedure] 1) Guess randomly until a hit. 2) Probe neighboring squares in each direction to find the piece's ends. When: a simple human-like baseline for hidden-piece guessing. Why: a common, easy-to-implement comparison strategy.
+- [metric] A character in green camouflage gets an extra attenuation of 0.1 against foliage but 1.5 against sky, showing camouflage effects depend on background material.
+- [metric] Signal intensity at distance d equals source strength multiplied by the attenuation factor raised to the power d.
+- [metric] Wall avoidance itself runs in O(1), but the ray cast depends on environment complexity and dominates running time.
+- [tradeoff] A shared accurate map never underestimates opponents but feels like cheating and can make AI seem oblivious to hidden threats; predicting hidden forces is fairer but hard to get accurate. When: fog of war. Why: The shared map uses information a human would lack; prediction must infer hidden units.
+- [tradeoff] Broadcasting avoids registering interests and allows late designer-driven reactions, but most delivered data is useless and wasteful; narrowcasting is faster but needs explicit interest registration, so choose by event volume. When: event system design.
+- [tradeoff] A wider ray fan angle reduces the corner trap but blocks narrow passages; fan angles near π make side-ray hits come too late, so walls are still grazed. When: When choosing the fan angle for wall avoidance rays.
+- [tradeoff] Character-specific signals require a separate sensory simulation for each character, which is practical for a handful of slow characters but impractical for larger or faster simulations. When: When deciding between shared and per-character signals.
+- [tradeoff] Signal diffusion avoids costly per-option pathfinding when several sources compete, and yields realistic behavior, but it needs modification before a game can rely on it. When: When several sources compete for a character's attention.
+- [tradeoff] Radial ray casting suits indoor levels, but outdoors it needs very many rays to cope with hills and valleys.
+- [tradeoff] Firm sensory and movement limits trade some believability for playability; realistic sense simulation is usually not appropriate for such games. When: Choosing how realistic creature senses should be. Why: Emergent herding behavior cannot be predicted until the game is built and tested.
+- [tradeoff] Use a limited radius when units have a natural maximum reach; use map flooding when speed matters more than exact accumulation of influence.
+- [tradeoff] Ray-cast vision becomes expensive as many characters look at many targets, eventually requiring dedicated sense code.
+- [pitfall] An expensive test placed in a decision tree can dominate the tree's total runtime, so it should be reached as rarely as possible.
+- [pitfall] A simple object signal such as 'I can provide food' misleads characters when the object's action needs extra steps they cannot yet perform, such as an oven without raw food. When: When an object's action requires several preconditions.
+- [pitfall] In several games, tactical line-of-sight checks consumed over 30% of total processor time, which may be unacceptable for fast-reacting characters. When: Fast-reacting characters using live tactical checks. Why: Line-of-sight tests are expensive, especially across many candidates.
+- [pitfall] Averaging lightness over a character's body favors spots where the body is dark but the lit head still exposes the character.
+- [pitfall] Testing line of sight from every location to every other location can take many minutes on very large levels and is too slow.
+- [pitfall] Smell passing repeatedly between neighboring nodes can greatly increase the number of calculations needed.
+- [pitfall] Straight-line sensing lets a character behind a thick insulating barrier hear a sound produced near the source, a serious error.
+- [pitfall] Concealment that ignores the background lets a dark figure in a bright area go unseen, so levels must be designed to make this rarely noticeable.
+- [pitfall] Static sound zones become more damaging when enemy AI reacts to sound, since mismatched audio then also misleads enemy behaviour. When: Enemy AI responds to sound and the environment can change. Why: Enemies act on audio that no longer reflects the actual barriers.
+- [pitfall] Triggering enemy music on distance alone ignores orientation, so it fires for enemies that are facing away from the player.
+- [fact] Smell spreads by gas diffusion, which is slow and limited in distance, is much more noticeable downwind, and ordinary sources such as a person's scent carry only a few tens of feet.
+- [fact] Concentrated chemicals carry smell farther than ordinary sources, and animals with a good sense of smell can detect people at much greater distances in suitable wind.
+- [fact] Most games do not model smell; hunting games are the typical exception.
+- [fact] A decision tree can combine several perception and position tests, such as visibility, distance, audibility and flanking, to choose between actions.
+- [fact] Most decision tests take constant time, but some, such as checking for a visible enemy with ray casts through geometry, are expensive.
+- [fact] Shadow quality depends on the lighting model: global illumination is commonly baked offline into lightmaps, while stealth games may use direct lighting with static lightmaps.
+- [fact] Culling skips locations that cannot possibly be seen; indoor levels allow more culling than outdoor levels.
+- [fact] Visiting nodes in distance order matches arrival time when sound speed is constant. When: sound propagation with constant speed.
+- [fact] The sound model does not linger and does not simulate echoes.
+- [fact] Deep, low-frequency sounds reach farther and diffract around obstacles more readily than high-pitched sounds.
+- [fact] Many games make characters omniscient, for example by letting them always track the player's location.
+- [fact] Checks involving level geometry, such as line of sight blocked by movable objects, can be expensive to compute.
+- [fact] Crowd and military simulations use detailed perception models, even when their underlying AI is simple.
+- [fact] Vision cannot bend around corners; it requires a direct, unobstructed straight line.
+- [fact] Light-emitting events, such as muzzle flashes, can be seen around dark corners, unlike unlit objects.
+- [fact] In open scenes, humans have no inherent distance limit; atmosphere and the curve of the earth impose the practical limit.
+- [fact] Communication lets AI agents hold the correct information at the proper moment; it is essential even for simple AI and matters most when characters coordinate.
+- [fact] Early shooters faked perception with a radius around each enemy, and the enemy activated when the player entered that radius.
+- [fact] A cone-of-sight check is a common way to model a guard's vision.
+- [fact] In one shooter, AI decisions ran on roughly 30-second timescales and mission scripts on roughly 3-minute timescales, with the combat loop bridging them.
+- [fact] Under open-world semantics, a condition that a state description does not mention is unknown rather than false.
+- [fact] The finite element sense manager is a state-of-the-art approach but is complex, and its sense graphs need dedicated level tools.
+
+## finite state machines
+- [model] A sheep-like creature's FSM has four states: grazing, flocking, separating and fleeing; transitions depend on predator proximity, distance from other creatures, or whether it is calm or nervous.
+- [model] For Q-learning, a game is modelled as a state machine of states linked by actions; the game maps its situation to a single state number, and the learner never maps back.
+- [model] The reference hierarchical state machine implementation has five parts: a shared base class, a hierarchical machine, a plain state, a levelled transition, and a sub-machine state.
+- [model] Early game enemies were often state machines: each switched between states such as chasing or fleeing, choosing routes at junctions with state-dependent probabilities.
+- [model] A state machine holds one state at a time; each state has outgoing transitions with a target state and conditions, and only the current state's transitions are considered.
+- [model] A finite state machine is a restricted blackboard: the single current state replaces the board, and transitions act as experts that rewrite the state.
+- [definition] A state change action alters game state, often invisibly to the player, such as switching a weapon's fire mode or using a health pack, without requiring character activity. When: Classifying AI actions. Why: State changes modify data rather than producing direct visual output.
+- [definition] An entry action runs whenever a state is entered, regardless of where the transition came from. An exit action runs just before the state is left.
+- [definition] A representation converts game information into a form an AI algorithm can process efficiently, usually discarding irrelevant detail.
+- [definition] A hard-coded state machine stores its current state as an enumerated value and writes transition rules directly in game code, usually as conditionals in an update function.
+- [definition] A history state, marked H*, returns a composite state to its last active sub-state on re-entry, and uses the initial sub-state on first entry. When: A composite state is re-entered after being left.
+- [definition] A hierarchical transition carries a level offset: zero stays at the current level, positive moves up, and negative moves down.
+- [definition] A transition triggers when its conditions are met, and fires when the character is moved along it to the target state.
+- [definition] A hierarchical state machine lets a state have a superstate, so shared behavior is written once and inherited by its substates.
+- [definition] A pushdown automaton is a state machine that stores its states on a stack, with the current state on top.
+- [definition] A state machine is a diagram of states (circles) and labeled transitions (arrows) that starts in an initial state and may have final states; it models random processes and deterministic game AI.
+- [definition] A state is a condition a system can be in, not a physical location.
+- [mechanism] Changing avatar state, such as ground versus air, changes how the same button and directional input is interpreted, expanding control without adding buttons.
+- [mechanism] A generic FSM stores only the current state and any triggered transition, so its extra memory use is constant. When: Estimating memory for a generic state machine. Why: The machine tracks only the active state and the transition being taken.
+- [mechanism] Coding transitions as a state machine automatically forbids illegal moves between states, which cuts down on puzzling bugs.
+- [mechanism] Queuing the inputs of a finite state machine makes it respond asynchronously, and state machines with per-machine input queues called mailboxes form the actor model of computation. Why: A state machine needs a stream of inputs, so a queue turns it into an asynchronous responder.
+- [mechanism] Enemies that switch to a temporary revenge state after a power-up give the player a clear, visible shift in threat.
+- [mechanism] A sequence records which sub-action is currently active and updates that record as each sub-action completes.
+- [mechanism] A transition's trigger check runs the decision from the root and stores the resulting target, so the transition fires only when that target is not null.
+- [mechanism] State identifiers start at zero and are contiguous, so they index arrays directly. Each rule stores its input state identifiers and one conclusion identifier.
+- [mechanism] A transition may give each target its own transition degree, and each target's degree is then updated using only its own value.
+- [mechanism] When one source has several transition degrees, the source is reduced by one minus the largest of them, combined with its current degree by minimum.
+- [mechanism] Unlike state machine transitions, rules react to the contents of the database rather than only switching between states. When: comparing rules with state machines.
+- [mechanism] Hysteresis uses different switching boundaries depending on whether importance is rising or falling, so overlapping ranges prevent flicker.
+- [mechanism] Transitions in a four-state finite state machine depend only on the agent's own fear level and on others visible in its line of sight.
+- [mechanism] A stealth guard can be modeled as states Patrolling, Searching and Attacking: noise moves patrol to search, sighting the player moves either to attack, losing the player for 30 seconds moves attack to search, and 30 seconds of finding nothing returns search to patrol. When: designing deterministic enemy behavior with alert levels. Why: each change is triggered by a specific condition, so the states describe behavior clearly.
+- [mechanism] If no transition in the current state matches the incoming input, the machine ignores that input.
+- [mechanism] Pushing a state keeps the previous state directly beneath it. Popping removes the top state, so the one beneath becomes current again.
+- [mechanism] Changing an input's mapping by state can make a low-sensitivity input more expressive without feeling jarring, provided the state change is clearly perceptible. When: Input mapping changes with game state. Why: The player perceives that the character is in a different state.
+- [rule] Keep trigger testing separate from firing: isTriggered tests firing, getTargetState gives the destination, and getAction gives work done on firing, such as a sound or reset. When: Designing transitions that do work on state change. Why: Separating the trigger test from the fired action keeps each concern isolated and lets transitions perform side effects without changing state logic.
+- [rule] Visualize state machines in a debugger or design tool to step through them, view and set character states, and inject events into the event system. When: a state machine editor is available.
+- [rule] Make state changes clearly perceptible, since unclear transitions make results unpredictable, inputs feel random and players resort to random button mashing. When: One input does different things across states. Why: Unperceived state changes make inputs feel random.
+- [rule] Apply state change actions directly to the game state. When: Executing AI state change actions. Why: State changes modify game data and need no intermediary system.
+- [rule] Implement most states with one shared class that stores its entry, active and exit action lists and its transition list as data. When: Building a generic state machine. Why: A single data-driven class avoids writing a new state class for every state.
+- [rule] Define a representation by the interface an algorithm queries, so decision code works unchanged whichever implementation sits behind it. Why: Implementations can then be swapped freely.
+- [rule] Any state a pattern must check, such as which entity holds an item, has to be stored as a database fact, otherwise the rule cannot test it.
+- [rule] Transitions at higher levels take priority: a sub-state's transitions are checked only if no super-state transition triggers. When: A composite state has both its own and a sub-state's transitions.
+- [rule] Reduce the state count by dividing the level into areas, quantising health and ammo into a few levels, and approximating movement with discrete actions.
+- [rule] Include in the state every factor that affects decisions, such as health, because anything left out of the state cannot be learned. When: designing the state for Q-learning. Why: unrepresented factors cannot influence learned values.
+- [rule] Write transition routines for each pair of behaviours likely to follow one another, unless importance is guaranteed to change slowly.
+- [heuristic] Define state machines in data files loaded at run time, using generic transitions that trigger when a data value lies in a given range. When: Designers need to edit AI behavior without code changes. Why: Range-based generic transitions let whole machines be built from data.
+- [heuristic] Keep a flag per piece of state and do work only for pieces whose flags are set, especially where objects stay idle for long stretches. When: Objects remain idle for long periods and only occasionally need processing. Why: Skipping idle state avoids processing data that has not changed.
+- [heuristic] Use a state machine when characters act in a limited set of ways and change behavior only when an event or influence occurs; decision trees suit choosing among many actions. When: When selecting a decision structure for a character.
+- [heuristic] Use a finite state machine when behavior depends on internal state with few distinct options and the entity responds to inputs over time.
+- [heuristic] Finite state machines suit user input handling, menus, text parsing, network protocols and other asynchronous behavior.
+- [heuristic] Prefer a stack over many nearly identical states with hardcoded return transitions when an interrupt must resume whatever state was active. When: Several states need the same interrupt that returns to the previous state. Why: Hardcoded returns multiply states and transitions that differ only in where they return.
+- [heuristic] Use a state machine to describe how a system moves between conditions, especially when each change depends on a rule or a probability.
+- [procedure] 1) Walk the current state's transitions in order and find the first that triggers. 2) If one triggered, collect the old state's exit action, the transition's action, and the new state's entry action. 3) Move to the target state and return the combined list. 4) If none triggered, return the current state's action. When: Running a generic state machine each frame. Why: Taking the first triggered transition gives a deterministic outcome and bundles all work for the change.
+- [procedure] 1) If no state is active, enter the initial state. 2) Otherwise, check for a triggered transition. 3) Recurse into the current state's update. When: Each update of a hierarchical machine.
+- [procedure] 1) Recurse up to the transition's target level. 2) On the way back down, exit active states and enter each next state. When: A transition with a negative level is applied.
+- [procedure] 1) Branch on the current state value. 2) Check that state's transitions in order. 3) Change state when a transition applies. 4) Map the resulting state to its actions, or perform the actions directly. When: Each frame of a hard-coded state machine update.
+- [procedure] 1) A plain state returns its action. 2) A sub-machine calls its own update. 3) Any pending transition it returns is honored or passed upward according to its level. When: No transition triggers at the current level.
+- [procedure] 1) For each attribute, list its states. 2) Draw arrows between states. 3) Label each arrow with the event that triggers it. 4) Mark the start state with a double circle. When: An object has an attribute that changes over time. Why: Writing out every state and trigger makes the designer think through everything that can happen to the object.
+- [procedure] 1) Keep the current state chain as a stack, top being the current state. 2) Start at the top and walk down until a state handles the event. 3) If none handle it, ignore the event. When: Hierarchical state machine implemented without the State pattern.
+- [procedure] 1) List the objects in the game. 2) List each object's attributes. 3) List each attribute's possible states. 4) List what triggers each state change. When: when analyzing a game's mechanics. Why: Gameplay is decision making based on information, so the states and triggers that change information are central to the design.
+- [metric] The cost of one FSM update grows linearly with m, the number of transitions per state. When: Estimating per-frame state machine cost. Why: Each update checks the current state's transitions in turn.
+- [metric] Hierarchical state machine memory is linear in the number of layers, and time is linear in layers times transitions per state; recursion adds only linear cost.
+- [metric] A hard-coded state machine needs no extra memory, and its time grows linearly with the number of states plus the transitions per state.
+- [metric] A practical Q-learning scale is about 100,000 states with 10 actions each.
+- [tradeoff] A generic FSM built for maximum flexibility is unnecessarily inefficient when only a small part of that flexibility is used. When: Choosing between generic and specialized state machine designs. Why: Unused generality adds overhead without benefit.
+- [tradeoff] Multiple inheritance merges the machine and state roles, while encapsulation avoids that; making a machine a state subclass forces the top level to always return its active action. When: Designing the class structure of a hierarchical state machine.
+- [tradeoff] Passing private base state through constructors guarantees it exists after construction, but every derived constructor must forward it and expose it. When: Base class needs a dependency it should keep hidden from subclasses. Why: Forwarding forces derived classes to know about state the base wants private, and adding state requires editing every derived constructor.
+- [tradeoff] Polymorphic calls make transition trees flexible but add overhead that may be unacceptable when many transitions or decisions are checked. When: Many transitions or decisions are evaluated each update.
+- [tradeoff] Storing only primitive qualities saves memory and avoids cluttering levels with rarely used waypoint data, but querying compound tactics costs extra processing time. When: Choosing what to store in tactical waypoint data. Why: Derived queries run each time they are needed, while stored compounds use memory.
+- [tradeoff] Finite state machines are the dominant decision process and offer more flexibility, while decision trees have had some success but are less favored.
+- [pitfall] Do not rely on a plain finite state machine for complex game AI: its constrained structure, its greatest virtue, becomes its greatest flaw as behavior grows.
+- [pitfall] The trigger test is the hardest part to generalize, because each transition needs its own conditions. When: Making a generic transition class. Why: Conditions vary too much across transitions to share a single fixed test.
+- [pitfall] Only the first triggered transition is taken, so the order in which a state's transitions are listed determines which one wins. When: Writing multiple transitions out of one state. Why: Later transitions are never tested once an earlier one triggers.
+- [pitfall] Replacing virtual methods with one large type switch quickly becomes messy and hard to extend. When: Type-specific behavior is replaced by a central switch statement. Why: Every new type edits the same switch, so the code grows tangled.
+- [pitfall] Changing how a tested value is stored, for instance from a single angle to a four-component quaternion, can silently break decisions that read it. When: The data layout changes during development.
+- [pitfall] Decisions that are rarely executed can fail for a long time without anyone noticing, which makes their bugs hard to find.
+- [pitfall] Pursuing high tactical quality with fixed states can make the state count grow very large and quickly become unmanageable.
+- [pitfall] Handling each new move by adding flags to a state machine tends to create bugs as branching and mutable state grow.
+- [pitfall] A plain finite state machine has no memory of previous states, so returning to an earlier state needs many duplicated states.
+- [pitfall] The stack in a pushdown automaton stores history, while the stack in a hierarchical state machine manages nesting. The two serve different purposes and should not be confused.
+- [pitfall] When a state machine cannot express a behavior, the cause is rarely arbitration; the usual fix is a more capable technique.
+- [fact] UML does not distinguish decisions from transitions and usually leaves decision nodes unlabelled; labelling each decision with its test makes the tree clearer. When: Documenting decision-tree transitions in UML. Why: Unlabelled decisions hide which condition is being tested.
+- [fact] Most FSM run time is spent inside the state and transition methods it calls rather than in the update loop itself. When: Profiling a state machine. Why: Optimizing the user-defined methods has more impact than optimizing the loop.
+- [fact] A sub-machine state routes action queries to its state part and updates to its machine part, and places itself first in its hierarchy list.
+- [fact] Method-call overhead is usually not the bottleneck for hierarchical state machines, but with thousands of states, cache efficiency can become one.
+- [fact] State machines implicitly use first-applicable arbitration, where the first triggered transition fires; other arbitration schemes are possible but rarely used.
+- [fact] Transition checks are ordinary game functions, such as testing whether a character can see the player, that read the current game state.
+- [fact] Re-entering a composite state through its history record may skip the restored sub-state's entry action, a design choice the implementer can change. When: A composite state is re-entered with history.
+- [fact] In game AI, finite state machine (FSM) refers to a character decision structure, whereas in computer science FSM often means a simpler text-parsing automaton.
+- [fact] Running mode is fast, involves no learning, and gives the same output for the same input in a feedforward network.
+- [fact] Finite state machines come from automata theory, the same family that includes the Turing machine.
+- [fact] A finite state machine is not Turing complete, meaning it cannot implement a Turing machine.
+- [fact] Simple state machines and pushdown automata are limited for complex AI, and game AI trends favor behavior trees and planning systems.
+- [fact] With the Gang of Four State pattern, class inheritance implements the hierarchy, with the superstate as base class and substates deriving from it.
+
+## decision trees
+- [model] Give each action layer its own simple decision maker, and let a manager collect single-form actions and decide which of them can be layered together. When: Several simultaneous actions are chosen by separate concerns.
+- [model] Transition decision trees reuse ordinary decision nodes, replacing action leaves with target-state leaves that may also hold actions.
+- [model] A decision tree is made of decision nodes and action nodes under a common base node that declares a walk method; the walk starts at the root and recurses through decisions to an action.
+- [model] Multi-tier AI places behaviors at several levels: individual characters, squads, and optionally groups of squads or whole teams.
+- [model] Multi-tier AI needs a communication mechanism to pass orders down and a hierarchical scheduler to run the right behavior at the right time.
+- [model] A combat decision tree checks ammo, enemy visibility and nearby cover in turn, leading to reload, attack, hunt or take-cover actions.
+- [model] Strategy AI can be multi-tier: a top-level board game AI chooses strategies, and a lower-level AI carries them out through around 20 atomic actions.
+- [definition] A decision tree maps many inputs onto few actions: walking from the root, each branch tests a game-world aspect until an action leaf runs.
+- [definition] Polymorphism lets one algorithm work with many implementations; a chase behavior needs only the target's location, not its type.
+- [definition] Characters usually perform several actions at once, such as gesturing while moving, pursuing an enemy and using a health pack, so actions are layered.
+- [definition] External actions change the game world, such as throwing a switch or moving, while internal actions change the character's own state, such as its emotion or goal.
+- [definition] Information gain is the parent's entropy minus the sum, over child nodes, of each child's share of examples times its entropy.
+- [mechanism] A multi-branch decision holds many daughters and a test value; its branch method reads the value once, selects one daughter, and the walk recurses into it, replacing repeated binary tests. When: A single value has many discrete outcomes. Why: One lookup replaces a chain of binary tests.
+- [mechanism] ID4 stores all examples per node, rebuilds a subtree only when its best attribute changes, and always matches ID3's tree on the same examples, though the tree may keep changing. When: examples arrive online. Why: avoids full retraining while staying equivalent to ID3; some regard the continual change as unstable learning.
+- [mechanism] An expert can object to a flagged action by deleting it or by posting a new action, such as moving into position, and the original stays pending until that action completes.
+- [mechanism] Each state fires only its first triggered transition per iteration, so several transitions can fire in one iteration when several states are active.
+- [mechanism] A fuzzy trigger may return a partial confidence that serves as the transition degree, so a condition met at 0.5 produces roughly half the normal effect.
+- [mechanism] After an upward exit, a machine may have no active state, so its next update enters the initial state first. When: A transition has exited the machine's composite state upward.
+- [mechanism] Assigning the same decision to several true or false child slots merges branches, turning a decision tree into a directed acyclic graph that the existing walk still handles.
+- [mechanism] A decision node's branch method runs its test and returns the chosen child; its walk method calls branch and then recurses into that child. Action nodes return themselves.
+- [behavior] Early in learning ID4 rebuilds the tree often with each new example, but as data grows changes become rarer and speed holds up. Why: larger example sets stabilize the best attributes.
+- [rule] Process waypoints from strongest to weakest, comparing each against its nearby neighbors from weakest to strongest. Why: Reduces dependence on processing order; without a fixed order, condensation can keep different waypoint sets from the same level, since each removal changes which later pairs compete.
+- [rule] Design the engine's AI structure to make sense across multiple genres, not just one.
+- [rule] Shape decision trees by balancing them, making common branches shorter than rare ones, and placing the most expensive decisions late in the tree.
+- [rule] For characters with many parameterized actions, present a suite of actions and choose the one that best meets immediate needs, rather than building a huge decision tree.
+- [rule] Check each new merge to ensure it does not create a cycle before accepting it. When: building merged decision structures. Why: Cycles prevent the walk from reaching a leaf.
+- [rule] Use fixed scripts for cutscenes, and use decision scripts where the environment may change during execution. When: choosing how to script a character action.
+- [rule] Before comparing two waypoints, check that a character can move easily between them, usually with a line-of-sight test allowing slight deviations; pairs that fail never compete. Why: Otherwise a good point behind a wall could be lost to a point on the other side.
+- [rule] Discard the lower-valued waypoint of a pair when the quality difference exceeds a weighted distance between them.
+- [rule] Middle tiers should combine current game state with the order from above to judge whether an action is sensible now.
+- [rule] Pass decisions down as orders to lower tiers rather than scheduling them directly on individual characters.
+- [rule] Store search depth with each table value and do not use shallow entries for deep searches, since a shallow search value is inaccurate for a deeper one. When: Reusing table entries in a search. Why: Shallow values miss consequences that deeper search would reveal.
+- [rule] Default to state machines for decision making, reserving other methods for behaviors that state machines cannot express. Why: Their adaptability has repeatedly proven valuable.
+- [rule] Decision components should return a quick result first, then refine it with extra processing if time is available.
+- [rule] Keep context narrow: the character's internal state plus a handful of important external data. When: Designing context for learning characters. Why: Large context can improve performance but dramatically reduces learning speed.
+- [heuristic] Use a decision tree when inputs are many, outputs are few, and simple tests are enough to separate the cases. When: Many inputs must map onto a small set of simple outputs.
+- [heuristic] Specify each set's characteristic value directly instead of deriving it from membership functions, then blend using normalized degrees to save computation. When: Speed matters more than deriving values from membership functions.
+- [heuristic] Running a learned decision tree is cheap in game AI, so elaborate split methods are rarely worth their effort over simple ID3 optimizations.
+- [heuristic] Decision making driven by messages beats per-frame polling: a character stands still until told it can see danger, instead of checking every frame. Why: Polling every frame costs run-time processing.
+- [heuristic] Nest substates inside a complex state, such as scanning, pursuing, and moving through terrain within a chase state, to organize intelligent character behavior. When: Behavior of an intelligent character is complex and easy to confuse.
+- [procedure] 1) Store daughters in a hash table keyed by discrete values, or in an array searched by binary search for numeric values. 2) Look up the daughter matching the test value. 3) Recurse into it. When: Choosing among many daughters.
+- [procedure] Lower levels choose the weapon and range for an attack, then use pathfinding and steering to carry it out. When: executing an explicit order.
+- [procedure] 1) Remove every steering component the character cannot perform. 2) Apply the remaining request. 3) Rerun the filter every frame so the motion builds up gradually. When: Character has movement constraints such as a car's inability to slide sideways.
+- [procedure] 1) Offline, sort rules by clause count, most clauses first. 2) At run time, apply first-applicable matching to the sorted list.
+- [procedure] 1) To AND two decisions, place them in series so the second is tested only if the first passes, with the both-true action at the end and the fallback elsewhere. 2) To OR two decisions, place them in series and swap the actions: action 1 runs if either passes, action 2 runs only if both fail.
+- [procedure] 1) Start with a simple tree. 2) Add decisions while testing in the game to trap special cases or add behaviors.
+- [procedure] 1) If the node is null or a target-state leaf, return it. 2) Otherwise run the node's test. 3) Continue into the true or false child according to the result.
+- [procedure] 1) Start at the root decision. 2) Evaluate its true-or-false question. 3) Follow the branch that the answer selects. 4) Repeat until a final action is reached. Why: tracing shows how the tree reaches its action.
+- [procedure] 1) Give the entity one state reference per machine. 2) Pass each input to every machine. 3) Let each machine respond, spawn behavior and change state independently. When: Two mostly unrelated sets of states. Why: Keeps state counts additive.
+- [procedure] 1) Start with one leaf holding all examples. 2) Split by the attribute with highest information gain. 3) Give each child its subset. 4) Recurse until every example in a node shares one action.
+- [procedure] 1) Walk the new example to a leaf. 2) If the leaf action matches, store the example. 3) If not, make the leaf a decision and choose its split with ID3. 4) At a decision node, recompute the best attribute with the new example. 5) If unchanged, pass the example to its matching child. 6) If changed, delete the subtree and run ID3 on the node's examples plus the new one.
+- [procedure] 1) At each node, check whether the existing decision still gives the best gain. 2) If it does, pass the example to its matching child. 3) If not, discard the subtree and rebuild it with ID3 on all examples.
+- [metric] ID3 memory is about a log_v(n) and time is about a v n log_v(n), where a is attributes, v is values per attribute and n is examples.
+- [tradeoff] Decision tests can use ints, floats, Booleans or game types and read game data directly, avoiding duplicate representations but tying the tree to the game's data structure. When: Decision tests use the game's own types.
+- [tradeoff] Output filtering is fast, easy and surprisingly effective for most cases, but poor where steering must be followed closely, such as high-speed driving, tight spaces, matching animations or jumping. When: Choosing an actuation method.
+- [tradeoff] A lower distance weight makes quality differences dominate and leaves fewer waypoints; a higher weight keeps more waypoints. The weight is tuned by hand per level.
+- [tradeoff] Scoring locations by a numeric quality that balances distance against quality stops the character crossing the whole map for a slightly safer spot. When: Choosing tactical locations by score rather than nearest match. Why: Pure nearest selection ignores how much better a farther spot would be.
+- [tradeoff] Decision trees classify known examples accurately but generalize poorly into gaps between examples, while neural networks generalize more smoothly but may misclassify some training examples. When: Choosing a classifier for game situations. Why: Hard decisions in trees versus smooth interpolation in networks.
+- [tradeoff] Independent AI modules are simpler to build but act without coordination; a central AI can steer them toward one plan, such as favouring offensive construction, training and command.
+- [tradeoff] ID4 costs at worst as much as ID3 and at best as much as the naive update; in practice it is much faster than rerunning ID3 and yields flatter trees than the naive update.
+- [tradeoff] Quinlan's gain ratio is an alternative split criterion, but it is more complex mathematically and its results are often domain-specific.
+- [pitfall] Cycles in child references, such as a merge pointing back to an earlier node on its path, make the walk loop forever without reaching a leaf; keep the structure acyclic. When: adding merged references to a decision graph.
+- [pitfall] If filtering removes everything, a stationary character stays immobile until the target moves or numerical error breaks the deadlock. When: Stationary character with fully filtered request.
+- [pitfall] Extra programming effort and reduced flexibility may outweigh the small speed gain of multi-branch decisions.
+- [pitfall] Reordering decision tests changes how many decisions run, so the most likely paths should be checked first.
+- [pitfall] Large hard-coded state machines become tangled, unclear code that is hard to read and maintain. When: The machine has many states and transitions.
+- [pitfall] Designer-assigned unit influence values strongly shape AI behavior, so tuning is almost always needed.
+- [pitfall] A state object storing fields specific to one machine cannot be shared this way. Why: Shared state would mix data from different machines.
+- [pitfall] Every task needs a decomposition schema; if no schema applies to a task, the hierarchical planner fails.
+- [pitfall] Some example orderings force ID4 to rebuild at almost every step, which can make it slower than running ID3 on each new example.
+- [fact] Not every game needs every layer: board-style games may need only strategy, while purely reactive platform games may have no strategy layer.
+- [fact] Layer boundaries are not sharp: pathfinding can serve both movement and decision making, and tactical analysis can drive one character or a whole team.
+- [fact] Arbitration may return blending weights rather than a single behavior, so the two approaches can be nested.
+- [fact] Multi-branch decisions usually compile down to chains of binary tests, so their implementation speed is often similar to binary trees.
+- [fact] In a decision tree, only the decisions along the path taken are evaluated on a run, so cost is far below the total node count.
+- [fact] Decisions do not combine Boolean operators internally, so compound logic must be expressed through the structure of the tree.
+- [fact] Many utility-based games avoid action-ordering conflicts by design, shaping levels and actions so conflicts rarely arise.
+- [fact] Large rule sets accumulate over releases from new features, player feedback and bug fixes, and can become too slow for the rule engine alone.
+- [fact] Extra children in a database group are ignored, so a pattern matches a record that has more fields than the pattern lists.
+- [fact] A floating-point decision test returns the true child if the value lies between a minimum and maximum, and the false child otherwise.
+- [fact] Because only nearby pairs are compared, the first comparison is usually the strongest waypoint against its weakest close neighbor.
+- [fact] Visibility comes from terrain analysis, security from an influence map, and distance from other towers from an influence-like map of distance to the nearest tower.
+- [fact] Lower behaviors often combine several algorithms: a guard order may use formation steering, while an explore order may use pathfinding plus tactical analysis.
+- [fact] ID3 is simple and relatively efficient, but industry has largely moved to its optimized successors C4, C4.5 and C5.
+- [fact] ID3 works directly on discrete attributes; continuous attributes need a separate extension.
+- [fact] Information gain is a heuristic estimate of a branch's usefulness and may not be the best split criterion.
+
+## ai design principles
+- [model] Agent-based AI builds autonomous characters bottom-up: each character takes in game information, decides what to do, and acts, so overall game behavior emerges from these individual behaviors.
+- [model] Game AI blends three approaches: hacks (improvised fixes and clever tricks), heuristics (rules of thumb that work in most cases), and algorithms (formal, analyzable methods).
+- [model] The AI model has six parts: movement, decision making, tactical and strategic AI, world interface, execution management, and content creation.
+- [model] Visitor AI has four modes: scared (recover), curious (examine and explore), social (stay with group, console others), and bored (leave for a refund).
+- [model] The example's technology suite has six parts: kinematic movement, A* over a waypoint graph, a four-state finite state machine, sense management, a pathfinding planner pool, and a random number generator. When: Small simulation-style AI.
+- [definition] AI, a term coined in 1956, aims to make computers perform thinking tasks that humans and animals manage, creating machines that think or act like humans. (x2)
+- [definition] Behaviorism judges a thing by its observable behavior rather than by the nature of its inner mind.
+- [definition] The actor serves as the exploration strategy, controlling which actions are selected.
+- [definition] Satisficing means optimising for a satisfactory result rather than the best possible one; its exact meaning varies between writers.
+- [definition] The game itself is a separate entity that does not play but makes the decisions that enable play to happen.
+- [mechanism] Non-player characters powered by AI methods can generate distinctive, sometimes striking replies to what the player does, rather than fixed scripted reactions.
+- [mechanism] Characters that act on their own can conflict with what the player wants, creating tension between player intent and character intent.
+- [mechanism] The more complex an AI's decision-making becomes, the less predictable it is, and the less the player can plan several steps ahead. Why: Players can only plan around behavior they can anticipate.
+- [behavior] Many developers do not treat actions as a separate concept, so each decision technique's output is just a code snippet that calls functions or changes state directly. When: Building AI without an action layer. Why: Ad hoc output hides what the character can do.
+- [rule] Make computer characters make mistakes, since perfect driving or aim is not fun; game AI need not be perfect, only interesting, aiming for less artificial. (x2)
+- [rule] Ideal opponents meet three criteria: player actions that beat them are fun, several effective counter-strategies exist, and visible behavior gives clues to the best counterplay. When: When designing enemy AI.
+- [rule] An opponent should be challenging but not a cakewalk, and players should win more often than they lose in real life so they keep playing. When: When tuning enemy difficulty. Why: Players need regular wins to stay motivated.
+- [rule] Write glue code that translates game data into the representation each algorithm needs, which eases integration.
+- [rule] Borrow academic AI methods where they help get the job done, and survey academic work to find which ones may be worth adapting.
+- [rule] Judge goal-oriented behaviour by whether the character looks goal-driven to players, not by the internal mechanism that controls it.
+- [rule] Give flavour characters fixed routines and central story characters more varied behaviour, while keeping quest information easy to find.
+- [rule] Build a formal world interface when characters must interact with the world or with each other; self-contained behavior can skip communication infrastructure. When: characters must interact.
+- [rule] Add more detailed AI geometry as obstacle density grows, rather than keeping coarse shapes in cluttered spaces. When: rooms with many obstacles.
+- [rule] Game AI should challenge without cheating: it should fight well, lose believably, and offer players the same opportunities the AI has.
+- [rule] Have an agent visibly respond to world changes, such as a builder rushing to an upgraded building and working on it with matching sounds.
+- [heuristic] A very simple technique applied well can create an illusion of complexity, which is preferable to complicated systems that may fail visibly.
+- [heuristic] Simple emergent rules include moving toward other characters to keep the group together; more complex rules include choosing a teammate to protect and keeping them covered. When: designing squad behavior.
+- [heuristic] Use simple state-based AI when the genre's needs are met by it; many genres still rely on decades-old techniques because nothing more is needed.
+- [heuristic] Game developers mainly need engineering: algorithms that make characters appear human or animal-like, aiming for believable behavior rather than a faithful model of cognition. When: building AI for a shipped product.
+- [heuristic] When a learning system cannot handle basic tasks late in development, falling back to simpler algorithms usually saves the release. When: late in production.
+- [heuristic] Start from the desired character behavior and apply the most relevant, cheapest tool, rather than inventing an algorithm and searching for a use.
+- [heuristic] Simple scripted actions, such as sideswiping rivals or gesturing at enemies, convey character attitude without any AI infrastructure.
+- [heuristic] On extremely constrained devices, capacity may not allow a full execution management layer, so the AI algorithm itself must be fast.
+- [heuristic] Use a simple positional rule mixed with randomness when the goal is an impression of intelligence rather than real planning. When: the goal is perceived intelligence.
+- [heuristic] Use simple blending when simplicity matters more than avoiding every foolish movement.
+- [heuristic] Many genres do not need tactical AI; in 2D shooters and platformers, where players expect predictable behavior, it can frustrate them.
+- [heuristic] A predictive AI can challenge players more by anticipating which passage, weapon, route, or cover point they will pick.
+- [heuristic] An AI can place walls using influence maps and spatial reasoning, putting them between economic buildings and likely enemy positions.
+- [heuristic] Biased inputs produce biased decisions, and the bias is often hard to identify in the output. Why: The model's output looks objective even when its inputs are skewed.
+- [heuristic] A system needs only enough agent-like behavior for players to read it as an intelligent agent, not a realistic simulation of a mind. When: designing characters or agents that should feel intelligent. Why: the player's mind supplies the rest.
+- [heuristic] In mechanics-driven games, design AI first as a mechanic, since the fiction serves the mechanics rather than defining them. When: games where mechanics drive the player's experience. Why: Fiction exists to support the mechanics.
+- [procedure] 1) Keep the character tracking the player. 2) When the player comes near, trigger the chase behavior. 3) The character then appears to have been unable to see the player earlier.
+- [procedure] 1) Build a simple AI. 2) Observe what playtesters find easy or strange. 3) Add rules to prevent those cases. 4) Repeat. When: Developing AI that must feel believable.
+- [tradeoff] Characters that ignore the world, such as patrolling guards, are easy to build but cannot interact with others.
+- [pitfall] Letting AI difficulty vary with hardware can be rejected by QA and publishers.
+- [pitfall] Blending a behavior that always returns maximal acceleration, such as seek, dilutes collision avoidance: at equal weights avoidance has at most half the influence.
+- [pitfall] Adding debugging output to a hard-coded state machine is harder than doing so in a flexible implementation.
+- [pitfall] Genre-specific names for influence mapping and terrain analysis can hide that they share the same underlying technique.
+- [pitfall] The more elaborate the AI, the slower it is to yield a result, so without anytime behaviour the character is more likely to look foolish.
+- [pitfall] Getting the AI to interact correctly with the game environment is among the hardest parts of AI development.
+- [pitfall] Military-rank names for AI tiers are common but loosely agreed, which causes confusion; define what each tier means explicitly. Why: different readers assume different meanings for the same level name.
+- [pitfall] Attractive exotic techniques can pull a design away from its requirements; a few impressive behaviors matter less than making the rest of the AI work reliably.
+- [fact] First-person shooter bots have attracted more academic research than any other game genre.
+- [fact] Once a problem is solved comprehensively, it is no longer regarded as AI, so unsolved tasks remain the core of the field.
+- [fact] The best AI techniques depend on genre, and most useful characters combine several techniques rather than one.
+- [fact] Hacks and heuristics can make characters seem as alive as the most complicated algorithm.
+- [fact] Game AI takes a behaviorist stance and cares how characters appear, not how their minds work.
+- [fact] Most advanced game AI techniques suit current-generation handhelds, which face the same constraints as any console.
+- [fact] Processing time and memory costs are among the main reasons new AI techniques fail to reach common use.
+- [fact] Ordinary wildcards match independently, so separate wildcard tests within one pattern may bind to different entities.
+- [fact] Hard-coded state machines remain important but are less common now that level designers control state logic.
+- [fact] Newer designs require AI to infer player intent from actions and support it without explicit orders.
+- [fact] AI teammates can exchange exact plans through messages, but a player signals only through actions the AI must interpret, making intent harder to detect.
+- [fact] The basic event mechanism is enough to handle cooperative message passing between characters.
+- [fact] Advanced techniques like neural networks, genetic algorithms and GOAP are rarely used commercially, partly because their character-specific code is hard to fit into level editors.
+- [fact] Most AI design tools focus on finite state machines, movement and pathfinding, since these use simple processes and data designers can adjust.
+- [fact] Futuristic racing games are built on the same racing AI technology as driving games.
+- [fact] In adventure games, enemies are treated as another puzzle for the player to solve.
+- [fact] Most side-level decisions rely on lightweight methods like finite-state machines and decision trees.
+- [fact] Simple driving games often have escaping cars follow a fixed path and chasing cars use a simple homing algorithm.
+- [fact] Most games use rule-based AI, while developers experiment with machine learning for level generation, adaptive challenge scaling, and non-player character behavior.
+- [fact] Narrow AI for specific tasks is the practical goal today, while strong AI (artificial general intelligence) remains far off.
+- [fact] Believable AI for both player-controlled and nonplayer characters is widely considered a central goal of game design.
+- [fact] Even enemies with simple AI can serve as powerful spatial tools that shape how a space is used.
+
+## formations
+- [model] Formations can nest: a slot holds a character or sub-formation with its own anchor steered by a higher formation, to any depth if both expose the same interface.
+- [model] A formation pattern's slot-location query takes the time elapsed since the formation began, letting slots follow timed paths or jump to new positions. Why: Time-dependent queries let one pattern express plays that change shape.
+- [model] A fixed formation is a set of slots defined relative to the leader's slot, and the leader serves as the origin of the pattern.
+- [model] A formation manager holds a list of slot assignments (character plus slot number), a drift offset, and a formation pattern, and writes each slot's world target to its character on every update.
+- [model] A formation pattern reports its slot count (possibly fixed), returns the drift offset for a set of assignments, returns a slot's location by number, and says whether it can support a given slot count.
+- [model] Hard slot roles restrict which characters may fill which slots, so a character occupies a slot only if it can fulfil that slot's role.
+- [model] Set play slots can be anchored to the field, as in baseball, or to the line of scrimmage, as in football. A fixed anchor means two-level steering and drift correction are unnecessary. When: Anchor is fixed.
+- [model] Coordination approaches include multi-tier AI, emergent cooperation, scripted group actions, and military tactics, which can be used alone or combined.
+- [model] Territory assignment has three complications: sources differ in strength, each source's region must be contiguous, and each source has a maximum radius set by its strength.
+- [model] A squad-based shooter example has four layers: rule-based strategy, tactical analysis, group planning and movement, and individual movement for each squad member.
+- [model] Compound tactics can combine one location's qualities or span two nearby locations, for example a cover point with a fire point within a sideways-roll distance, or an ambush point as an exposed point beside a cover-and-shadow point. When: Designing tactical waypoint data. Why: Derived tactics need not be stored separately.
+- [model] Set play pattern books extend the opening book idea to board regions and later game stages, using pattern matching because exact whole-board matches are rare.
+- [model] Individual-competition sports like one-on-one tennis leave out the coordinated movement layer that team sports AI relies on.
+- [definition] Most RTS games move groups as formations: fixed slot patterns defined for a fixed set of units, kept while the group moves as a whole.
+- [definition] Cooperative arbitration makes steering behaviors aware of each other's goals so that context-sensitive behaviors account for them.
+- [definition] A defensive circle places characters evenly around a circle, all facing outward.
+- [definition] Dynamic slots are formation slots whose positions move relative to the anchor as a function of elapsed time, so a formation can change shape while moving or while stationary.
+- [definition] Formation motion moves a group of characters so they keep group organization once the decision to move together has been made.
+- [definition] Soft roles replace yes-or-no role eligibility with a slot cost per character and slot, measuring how hard that character finds the role. Assignment minimizes total cost. Why: A formation still fills sensibly when ideal characters are missing.
+- [definition] Compound tactics are assembled by combining primitive qualities, such as a sniper location with both cover and a wide view of the enemy.
+- [mechanism] The anchor's target lies just ahead, so arrive slows each character, lowering average speed and formation speed until the formation halts. When: anchor moderation is applied. Why: Slower members pull the anchor back, forming a feedback loop.
+- [mechanism] When the AI detects a particular play, such as a double play in baseball, it can switch each fielder from a fixed slot to a dynamic pattern whose slots follow the play's paths. When: when a recognized situation calls for a coordinated movement.
+- [mechanism] If the anchor is not at the average position of occupied slots, the formation moves each frame and drifts across the level even when it should be stationary.
+- [mechanism] Using distance as slot cost makes a character in a spread-out formation prefer a nearby slot over a distant one. When: Formation is spread out.
+- [mechanism] Each squad gets its own narrowcast manager, which routes data fast to the intended members and stops squads mixing up messages.
+- [mechanism] Formations set only final positions, so units move independently during the move and can be ordered to cover each other.
+- [behavior] If a fire team member is removed, the remaining members still keep themselves safe and can supply offensive capability. When: a squad member is lost. Why: Each member's rules are self-contained.
+- [behavior] Enemies that coordinate to surround the player, with one taking a flanking position, make combat feel tactically intelligent. When: enemies are grouped under a shared strategy. Why: Coordinated positioning reads as planned rather than random.
+- [behavior] A formation's structure often depends on its member count: a defensive circle with 20 defenders is wider than one with 5, and with around 100 it may use several concentric rings. When: When designing formations whose size varies. Why: Slot spacing and ring count must grow to fit more members.
+- [behavior] While the anchor moves below full speed, members have room to deviate from their slots around obstacles and the formation shape stays visible. When: Formation moving through obstacles.
+- [rule] Define slot locations as a function of total member count, computed at runtime with no stored slot list, so any number of units can fill the formation. When: groups whose size changes at runtime. Why: A fixed slot count cannot absorb extra units; computed slot positions adapt automatically as members are added or removed.
+- [rule] Give the formation's steering a very high maximum acceleration and velocity, since the characters hold it back and it never reaches them.
+- [rule] Limit the leader's turning rate so outlying members do not sweep around at implausible speeds, and account for the whole formation's size in collision and obstacle avoidance.
+- [rule] In defensive formations, characters should take the best cover first and partial cover only when no better slot is free. When: Defensive formation using cover.
+- [rule] Players should not follow their formation blindly; they must still react to what happens on the field.
+- [rule] Exclude corners too close to the door when selecting positions, since they do not allow a defensive position. When: Choosing corner positions for a room-clearing team. Why: Close corners leave no room to defend against entry.
+- [rule] Cooperative AI needs each character to know what its teammates are doing and intend to do. When: characters that cover exits or wait for teammates.
+- [heuristic] Treat slot costs as high-is-bad, suiting assignment algorithms and cost-based design: zero is ideal, and a very large, effectively infinite cost makes a slot impossible.
+- [heuristic] Capping formation speed at about half the characters' maximum is a rough fix, but in complex levels it is often not enough.
+- [heuristic] Use formation motion when a group should stay organized and the decision to move together has already been made. When: Group movement after a group decision. Why: Formation motion is simple, flexible, quick to write, and more stable than collaborative tactical decision making.
+- [heuristic] Cost variation matters little for moving formations but can be significant for defensive ones.
+- [heuristic] Indoors the anchor's steering must avoid walls, because a formation driven into a wall strands all its members. When: Formation moves in an enclosed space. Why: All members are tied to the anchor's path.
+- [heuristic] Extending formations into three dimensions can suggest space flight, and keeping a clear up and down direction keeps the formation readable. When: space units. Why: a clear vertical axis preserves orientation.
+- [heuristic] Choose the formation from the terrain: beside a wall, units line up behind cover; in open ground, they can form a wedge. When: units moving through varied terrain. Why: the formation shape should fit the available cover and space.
+- [procedure] Compute drift offset from occupied slots only: 1) average their positions and subtract that centroid from each slot's coordinates. 2) Average their orientations as unit vectors, normalize, convert to an angle in minus pi to pi, and subtract it from each slot's orientation. Why: Otherwise the formation drifts or spins on the spot.
+- [procedure] 1) Slot angle equals its share of the total slots times a full turn. 2) Radius equals character radius divided by the sine of half the angle between neighboring slots, so shoulders just touch. 3) Position is radius times the cosine and sine of the slot angle, in the horizontal plane. 4) Orientation faces outward at the slot angle.
+- [procedure] 1) Let slots jump to new positions and have arrive move characters there. 2) For complex plays, have slots follow indirect routes that characters weave along.
+- [procedure] 1) Place the pattern so the leader sits in its slot facing the correct way. 2) For each slot, rotate its offset by the leader's orientation and add the leader's position to get its world position. 3) Set its orientation to the leader's orientation plus the slot's relative orientation. 4) Place each follower directly at its slot. Why: Followers need no steering of their own when placed this way.
+- [procedure] 1) Get the anchor point and build its orientation matrix. 2) For each assignment, get the slot location relative to the anchor. 3) Transform it by the anchor's position and orientation. 4) Subtract the drift offset. 5) Pass the result to the character as its steering target. When: Each update of a formation manager. Why: Keeps every character tracking its slot as the group moves.
+- [procedure] 1) To add a character, check the pattern supports one more slot; if so, append an assignment and renumber slots, otherwise report failure. 2) To remove a character, find its assignment, delete it, and renumber slots. When: Membership of a formation changes. Why: Slot numbers must stay contiguous so every occupied slot has a valid location.
+- [procedure] The manager asks each character, through a method, how costly it would be to occupy a given slot.
+- [procedure] 1) Steer the formation anchor along the pattern path. 2) For each member, arrive at its assigned slot. 3) Add collision avoidance or other steering each member needs. When: Moving a formation of characters.
+- [procedure] 1) Store a 0-to-1 membership value for each tactical property at each waypoint. 2) Define the compound tactic as a combination of those properties. 3) Compute its value as the minimum of the clause values for AND.
+- [procedure] 1) Interpret the player's action, such as assuming they keep moving down a corridor. 2) Choose a squad strategy supporting it, such as covering their back, covering side passages, or securing room flanks and exits. 3) Let individuals pick movement that carries out the strategy.
+- [procedure] After casualties, reuse the same lower scripts in smaller top-level scripts: a three-person version keeps one soldier at the door, a two-person version leaves the door unoccupied. When: Squad size drops during a coordinated operation. Why: Lower scripts stay valid, and only the top-level assignment changes.
+- [procedure] 1) List each member's weight per category. 2) Take the worst value per category. 3) Use those values as the squad's weights. When: Computing a squad's movement weights from mixed members. Why: Taking the maximum cost per category keeps the squad within every member's limits.
+- [tradeoff] Store adjusted slot coordinates and recalculate only when occupied slots change; but for dynamic slots, recompute drift correction every frame since slots move over time. Why: Occupied combinations vary, so offline precomputation is often impossible; moving dynamic slots need per-frame correction.
+- [tradeoff] Fixed formations suit simple requirements such as small strategy-game squads, but leader movement constraints make them hard to extend beyond very simple patterns.
+- [tradeoff] Separate formations for each party composition are optimal but may need hundreds of designs; generating formations from role counts in code is powerful but complex. When: Supporting varied party compositions.
+- [pitfall] A party whose members cannot fill every role cannot fill the slots for the missing roles, so a party of only melee fighters cannot fill missile or magic slots. When: Hard roles with fixed party composition.
+- [fact] A defensive circle has no fixed upper limit on slot count, though very large circles may look silly.
+- [fact] With sequential assignment the slot count equals the number of assignments; the general version finds the highest used slot number and adds one, at some speed cost.
+- [fact] Dynamic slots underpin set plays in sports games and provide the basis for tactical movement.
+- [fact] Formations range from fixed geometric patterns, such as a V or line abreast, to patterns that make use of the environment.
+- [fact] Formation movement appears in team sports, squad titles, real-time strategy genres, and a rising number of first-person shooters, racing titles, and action adventures.
+- [fact] Military and RPG formations often give each member a set job, such as riflemen, grenadiers, machine gunners, and leaders in fixed positions, or magicians and missile users in the middle with melee fighters around them.
+- [fact] Some games reorganize a formation's slot distribution when new ships join, and use more complex movement algorithms than simple formation examples.
+- [fact] With no member holding a special role, a dead member does not require a replacement leader. When: Formation uses an invisible anchor.
+- [fact] A waypoint's tactical value often depends on the character's stance, the enemy's direction, or the weapon in use.
+- [fact] AI cooperation ranges from a whole side in an RTS to squads or pairs in shooters.
+- [fact] Formation steering is multi-tiered: squad-level steering moves the group, while individuals keep formation and avoid local obstacles.
+- [fact] A military chain of command is close to top-down, with information also flowing upward to moderate decisions.
+- [fact] A team's state count is roughly the product of each unit's state count times the shared flags, so it grows quickly as units are added. When: designing the state for a group of learning units. Why: Each unit multiplies the combinations the learner must cover.
+
+## reinforcement learning
+- [model] Actor-critic keeps two structures: a critic that learns values from reward, and an actor that holds the action policy.
+- [model] Q-learning code is built on two interfaces: a problem interface that supplies states, actions and outcomes, and a value store that holds Q-values.
+- [model] Reinforcement learning has three parts: an exploration strategy that tries actions, a reward function that scores them, and an update rule connecting both.
+- [model] A multi-layer perceptron arranges neurons in layers, with each neuron connected to every neuron in the layers immediately before and after it.
+- [definition] In a first-order Markov process, tomorrow's state depends solely on today's, and repeated use of a transition matrix forms a Markov chain of probabilities.
+- [definition] Rho sets how often the learner tries a random action instead of the best known one; zero means pure exploitation and one means pure exploration.
+- [definition] An experience tuple of start state, action, reinforcement and resulting state is the unit of Q-learning.
+- [definition] Reinforcement learning lets a game character improve its action choices from experience instead of hand-written rules.
+- [definition] A neural network's architecture, or topology, is the pattern of connections between its simple neurons, each of which runs the same basic algorithm.
+- [mechanism] With a single solving action given a large reward and all others zero, rising Q-values form a trail leading to that action after enough iterations. When: Reinforcement learning with one goal solution. Why: Values propagate backward from the reward through repeated updates.
+- [mechanism] Q-learning memory and training effort grow rapidly with the number of states and actions, so state must be grouped and discretised aggressively.
+- [mechanism] A penalty tied to a terminal event teaches the learner which situations are dangerous, even when the cause, such as the enemy's position, is not in the state. When: the state omits some factor that drives the bad outcome. Why: The learner still associates the states that lead to the penalty with lower value.
+- [mechanism] Negative outcomes produce output error in proportion to their severity, so a full team wipe yields far larger error than a couple of hits.
+- [mechanism] Reinforcement learning trains agents with rewards and punishments, applying operant conditioning principles from behavioral psychology.
+- [mechanism] A neural network can replace the Q-value table, which lowers memory limits and lets learned values generalise across similar situations. When: State or action space is too large to store in a table. Why: The network estimates values for unseen situations from similar ones.
+- [behavior] The common exploration policy is mostly greedy, picking the highest-Q action for the current state, with occasional random actions controlled by a parameter. When: Q-learning action selection.
+- [rule] Use a hash table for Q-values only when iterations are far fewer than actions times states, since each lookup costs more execution time.
+- [rule] Compare group output against a small epsilon rather than zero, because numerical error can prevent exact zeros.
+- [rule] Store a world model as differences from the real game state, checking the difference list first and falling back to game data for absent items. When: Planning for many characters. Why: Copying all data for each character is wasteful.
+- [rule] Group continuous quantities, such as 3D positions, into discrete states before learning, because they otherwise create effectively infinite states. When: continuous values appear in the state. Why: infinite states cannot be stored or learned.
+- [rule] Make practical Q-learning usable by tuning the learning rate, adding intermediate rewards, and limiting the number of iterations. Why: full convergence needs more visits than a game can afford.
+- [rule] Avoid reinforcement learning when solution quality is easy to judge directly, since planning fits those problems better. When: solution closeness can be measured easily.
+- [rule] Avoid reinforcement learning when successful strategies change over time, because it needs a fairly stable environment.
+- [heuristic] Use state machines to forbid actions outright, such as firing without ammo, since learners only make them unlikely; use learning to choose among permitted options. When: Enforcing rules that must never be broken. Why: Learned choices are probabilistic and cannot reliably guarantee a prohibition.
+- [heuristic] Keep a single solution with a single reward, and add extra rewards only when learning is too slow or gives poor results. When: Designing reinforcement learning rewards for a game. Why: Extra rewards can speed learning but add risk of unintended behavior.
+- [heuristic] Reinforcement learning suits offline learning problems with many interacting components, such as groups of characters or order-dependent action sequences.
+- [heuristic] Train against a simple scripted opponent model in a simulation without rendering, which runs far faster than playing the full game. When: early training of a learning agent. Why: Rendering costs time that learning does not need.
+- [heuristic] For online learning, learn broad general rules first, even if they are often wrong, and add specifics as data accumulates. When: learning online during play. Why: Broad rules that look sensible can be deployed quickly, while nuance takes much longer to learn.
+- [heuristic] Before enough game statistics exist, score an opening line by search instead of relying on learned results. When: early in learning.
+- [heuristic] Bots slightly better than players can serve as useful training tools.
+- [procedure] 1) For each output neuron, compute its error from its state and target, then adjust its weights. 2) For each hidden neuron, compute its error as the weighted sum of output errors scaled by its state factor, then adjust its weights. Why: output errors must exist before hidden errors can be computed.
+- [procedure] 1) With a set probability, jump to a random state; otherwise stay in the current state. 2) List the available actions. 3) With another set probability, pick one at random; otherwise pick the best-valued action. 4) Take the action and observe the reward and new state. 5) Update the Q-value and move to the new state. When: each iteration of Q-learning.
+- [procedure] 1) Encode the game state as logical facts such as position, speed and direction. 2) Link components with rules that infer possible next actions. 3) Send the chosen action to a physics simulator.
+- [procedure] 1) Initialize all weights to small random values. 2) Repeatedly take one training example in turn, looping back to the start. 3) For each example, run feedforward to produce a guess. 4) Run backpropagation to correct the weights. 5) Repeat for hundreds or thousands of iterations. When: Training a multi-layer perceptron.
+- [metric] A weight's new value equals its old value plus the gain times the receiving neuron's error times the sending neuron's state.
+- [metric] A starting gamma of 0.75 is suggested; with it, a reward of 1 adds about 0.05 to an action ten steps earlier in the chain. When: Initial setting for Q-learning discount rate.
+- [metric] Around 5,000,000 iterations and about 10 MB of memory give workable results in a few minutes at the practical scale. When: at roughly 100,000 states with 10 actions each.
+- [metric] Updated Q-value equals (1 minus learning rate) times the old value, plus learning rate times (reward plus discount rate times the highest Q-value among actions available in the next state).
+- [metric] Reinforcement is commonly kept between minus one and one, with zero used when there is no clear signal.
+- [tradeoff] Decision tree learning is the first choice, with RL and neural networks as overviews unless large investment is possible; Q-learning is an alternative start for game AI. When: Choosing a first learning technique. Why: RL and neural networks are large fields needing substantial effort; Q-learning is simple, widely tested outside games and tunable without deep theory.
+- [tradeoff] Q-values can be stored in a hash table keyed by state-action pair, which saves memory when few pairs are visited, or in a dense array indexed by state then action, which gives immediate lookups. Why: Arrays suit runs that visit every state and action several times.
+- [tradeoff] Higher gamma values favour longer action sequences but learn more slowly, while lower values stabilise faster but support only short sequences. When: Setting the discount rate in Q-learning. Why: Long-horizon credit assignment costs learning speed.
+- [tradeoff] Trying unknown actions may find better options but often costs more, while exploiting learned knowledge gives safer, known results. When: Choosing an exploration rate. Why: Classic trade-off between unknown and known actions.
+- [tradeoff] Per-state values use much less memory than per-state-action values when states have many actions, but they assume each action leads to a definite next state. When: choosing a value representation.
+- [pitfall] A discount rate above one makes Q-values grow without bound, so the algorithm never converges to a best solution. When: Setting the discount rate in Q-learning. Why: Values compound each update instead of converging.
+- [pitfall] Toy problems converge in a few thousand iterations; real games with many states need far more, so learned values are usually used before learning settles. When: Deploying Q-learning in a game. Why: Real problems need far more iterations than practical.
+- [pitfall] With a hash table, a state whose visited actions all have negative Q-values can make the best-action lookup pick a visited negative action over an unvisited action whose implicit value is zero. When: hash table Q-value storage. Why: Missing entries read as zero, so they can outrank negative values.
+- [pitfall] Spreading feedback across many actions can reinforce actions the player did not mean to judge.
+- [pitfall] A neural network does not return the same value it was given, so Q-values fluctuate during learning even when they are not being updated, and Q-learning may not reach a sensible result. When: Q-values are stored in a neural network. Why: Weight changes from other updates shift outputs for all inputs.
+- [pitfall] Adopting a neural net for storage makes the issue more multi-modal, and such issues often yield suboptimal behavior. When: Q-learning stores its values in a neural net.
+- [fact] The exploration policy is not part of Q-learning itself. Q-learning is off-policy, so it can pair with different exploration strategies, each with its own strengths and weaknesses.
+- [fact] Learning AI promises adaptive opponents, believable characters and less hand-written AI, but reinforcement learning has seen little game use and its practical payoff lags its hype. Why: Learning is hard to deliver in practice despite considerable effort.
+- [fact] Describing games in a common formal rule language lets general game-playing agents play unseen games, including generated ones, and lets competitions test agents on them.
+- [fact] Q-values converge only when the problem and rewards stay stable; random game events in rewards keep shifting them, and once converged further iterations change nothing. When: Q-learning on a fixed problem with consistent rewards; reward signals include random game events. Why: Changing rewards keep shifting the values.
+- [fact] A recency-weighted average of goal rates gives simple adaptive learning with very little implementation effort.
+- [fact] Several developers have proposed actor-critic for games, yet its practical benefit over simpler methods is often judged marginal.
+- [fact] Backpropagation is the learning rule for multi-layer perceptrons trained on labelled examples.
+- [fact] Following rising Q-values is a form of hill climbing, which works reliably only when the problem has a single hill (unimodal). When: Reinforcement learning value landscapes.
+- [fact] Hash tables store only action combinations that actually occur, and the implementation works for any window size and number of actions.
+- [fact] Q-learning convergence is proven only in the limit of infinitely many iterations, so practical runs depend on tuning rather than guarantees.
+- [fact] Keeping part of the old Q-value preserves previously learned information instead of overwriting it with each new outcome.
+- [fact] Applications include tactic selection, bootstrapping simple character AI, limited movement control, multiplayer social interaction, timing actions such as jumping or firing, board position evaluation, and strategy setting in turn-based games.
+- [fact] The global optimum is usually unknown, and a good parameter set found by search cannot be recognised as the best possible.
+- [fact] Temporal Difference methods handle random state transitions less well than Q-learning, which tolerates much greater randomness in outcomes.
+- [fact] The temporal difference update rule closely resembles Q-learning's, and its tuning parameters respond to adjustment in much the same way.
+- [fact] Temporal Difference style learning has produced strong game play, including a backgammon program that reached international-level play.
+- [fact] Reinforcement learning has produced game-playing systems that defeated world champions in complex strategy games.
+- [fact] Few developers have reported successfully combining neural networks with Q-learning in games, though the success of TD-Gammon suggests the complexity can be managed.
+
+## ai architecture
+- [model] Top-down control has one system decide for a whole population rather than each character deciding: the highest level decides and passes instructions down, each level interpreting and deciding in turn.
+- [model] AI infrastructure connects AI algorithms to the game: it turns movement requests into visible action, supplies game information to the AI, and manages processor time and memory.
+- [model] A general AI engine needs behavior management, a world interface, standard movement and animation interfaces, and a standard behavior structure linking decisions to actions.
+- [model] Specialist roles can be layered onto a squad with individual state machines: a grenadier fires on enemies behind light cover, a medic treats fallen comrades, and a radio operator calls air strikes. When: adding specialist squad roles.
+- [model] Most modern game AI addresses three needs: moving characters, deciding where to move, and thinking tactically or strategically.
+- [model] Game AI is organized as movement and decision making per character, strategy per team, surrounded by infrastructure: animation, physics, scripting, world interfacing, execution management and content creation.
+- [model] The top tier is often strategic reasoning built from expert systems, state machines, tactical analyses, or waypoint tactics, deciding where to move, take cover, or stay hidden.
+- [model] In bottom-up control, individuals decide autonomously and higher algorithms only supply information about the game state.
+- [model] Tactical and strategic AI, the third layer of the AI model, covers inferring the situation from sketchy information, deciding with that situation, and coordinating several characters.
+- [model] A typical RTS architecture also includes execution management, tactical analysis, pathfinding, and kinematic steering.
+- [model] Each creature combines a simple decision framework, such as a finite state machine or decision tree, that controls a portfolio of steering behaviors.
+- [definition] Decision making picks the most appropriate behavior for a character at each moment from its options, such as attacking, standing still, hiding, exploring, or patrolling.
+- [definition] Strategy AI coordinates a group of characters through a shared approach, while each member keeps its own decision making and movement shaped by that group plan.
+- [mechanism] A director system estimates player stress from variables such as health, skill mastery, and location, then adjusts enemy spawns and item drops.
+- [mechanism] Feedback scheduling measures how long each behaviour actually takes and adjusts its bias, so a behaviour that always overruns receives less time.
+- [mechanism] A generic bottom-up physics system, where many objects collide with any part of the world, produces emergent physical behaviours and exploits that were not explicitly designed. Why: Predictable simulated rules combine into unplanned interactions.
+- [rule] Plan the engine structure before much AI code is written; new behaviors can then be developed while the game runs and replace placeholders once ready.
+- [rule] Provide tool support for visualizing and editing AI geometry.
+- [rule] Represent context as parameter values or as discrete facts similar to the action representation. When: Encoding context for learning characters.
+- [heuristic] Game AI cannot assume days of processing or gigabytes of memory; a fixed speed and memory budget clarifies algorithm choice and optimization targets, unless cut late in production.
+- [heuristic] Simple rule-based selection suffices when a character needs only a few reactions; complex enemies that chain several actions need more elaborate tactical decision systems.
+- [heuristic] Scripting does not remove the need to choose a sound AI architecture; a script-based system still needs deliberate character architecture design. Why: Several developers assumed scripting removes the need for architecture design and fell into this trap.
+- [heuristic] Adding context sensitivity to tactical waypoints greatly improves AI competence when simple labels produce odd behavior. When: Tactical waypoint behavior looks odd. Why: Context lets the same label mean different things in different situations.
+- [heuristic] Managers with very specific functions, such as telling soldiers when to clock off, are hard to fold into a general broadcasting manager alongside other event kinds.
+- [heuristic] The decision-making architecture is the hardest choice, since most techniques can do what the others do; choose by fit to requirements rather than capability.
+- [heuristic] Replacing several Boolean flags with one state enum makes invalid flag combinations impossible.
+- [procedure] 1) Create AI data in modeling, level or AI tools and package it with the level. 2) On level load, create behaviors from level data and register them with the AI engine. 3) Each frame, the game calls the engine, which updates behaviors using world information and internal state. 4) Apply the results back to game data.
+- [metric] AI memory budgets are about 1 MB on a 32 MB console and 8 MB on a 512 MB machine, enough for heavy algorithms like pathfinding.
+- [metric] AI's share of processor time has grown over five years to about 20 percent in many games and over 50 percent in some.
+- [metric] For each case that genuinely requires a sophisticated algorithm, expect five or more where a quick heuristic suffices.
+- [metric] The pipeline runs in O(c·n) time, with c denoting constraint steps and n denoting constraints; constraint checking dominates the cost.
+- [tradeoff] Central control is powerful but hinges on how good the top-level choice is, and a unit that cannot follow an order is left unable to advance; emergent control avoids this single point of failure. When: choosing squad control style.
+- [tradeoff] A steering pipeline handles cooperation but slows as scenes grow complex, while simple blending is cheaper but occasionally makes foolish moves.
+- [tradeoff] Adding context to steering behaviors increases their complexity and reduces their independence from one another.
+- [tradeoff] The steering pipeline suits tight passages and pathfinding integration with lightweight steering, but few developers had used it when it was written. When: Choosing a steering architecture.
+- [pitfall] Treating the layer model as a rigid framework; it is a general model to guide design, not a straitjacket.
+- [pitfall] Assuming that more complex AI makes characters look better to players is a fallacy; matching behavior to technique matters more.
+- [pitfall] A fixed chain of AI modules only passes information forward, so downstream results cannot change upstream decisions without special-case backward messages.
+- [pitfall] Choosing an action only for the top goal ignores side effects; an action may relieve one need while pushing another need to the top.
+- [pitfall] Flat identifiers for deeply nested facts force many candidate lookups, which becomes unwieldy as nesting depth grows. When: Facts are nested several levels deep.
+- [pitfall] Fixed scripts fail when the player interferes, because they cannot react, which is why they are mostly limited to cutscenes. When: the player can disrupt the sequence.
+- [pitfall] A learner may never reach its specific stage, leaving only the general behaviors in play.
+- [fact] Early game AI was a small program written per character, while modern games keep general AI routines in a shared engine and assemble characters from them.
+- [fact] AI is branchy, running different code at different times, and self-referential, feeding results back into earlier operations, so it fits pipelined rendering poorly.
+- [fact] The line between bottom-up and top-down AI is hazy: level-of-detail techniques tend to be top-down, while most character AI is bottom-up.
+- [fact] Dynamic AI behavior is easier to understand by running it than from screenshots or static diagrams, because motion shows timing and interaction. When: Studying movement-based or behavioral AI.
+- [fact] Most action-based 3D games use only movement and decision making, without a strategy layer.
+- [fact] Most elaborate AI that looked bad never shipped.
+- [fact] Deciding when game AI should be complex and when it should stay simple is its hardest part.
+- [fact] Steering pipelines are designed specifically for steering, unlike general decision trees or blackboard architectures.
+- [fact] Decision making is the middle part of the game AI model and is often a small share of total AI effort.
+- [fact] Most games use very simple decision making, mainly state machines and decision trees, while rule-based systems are rarer but important.
+- [fact] Decision techniques apply both to intra-character decisions, a single character's choices, and inter-character decisions, coordination between characters.
+- [fact] Some fuzzy decision maker implementations require the membership degrees of one input's states to sum to 1.
+- [fact] Studios typically keep processor-heavy AI tasks, such as pathfinding, in engine code rather than in scripts.
+- [fact] Fully bottom-up control is closer to emergent cooperation than to what developers usually mean by multi-tier AI.
+- [fact] Upper tiers use decision making and tactical tools, while lower tiers use pathfinding and movement to carry out orders.
+- [fact] People simulation games are leading the move toward characters with broad competencies, such as using gadgets and everyday objects.
+- [fact] RTS AI architecture varies more between games than in earlier genres, depending on which gameplay elements are used, so the model is only a starting point.
+- [fact] Each side-level need is handled by its own AI component, and the complexity of these components varies widely between games.
+- [fact] Context-free decision making lets the same module serve either the player or an enemy side.
+- [fact] Even with AI-friendly design choices, turn-based AI eventually needs substantial execution management.
+- [fact] Common AI needs in games include locomotion, route finding, choice logic, tactical and strategic planning, learning, and procedural content generation.
+
+## action manager
+- [model] All actions share a base interface: expiry time limiting queue wait before discard, priority deciding precedence, interrupt check, pairwise compatibility check, completion check, and execute.
+- [model] The action manager holds a queue of pending actions from any source until they can run, a list of actively executing actions, and a counter for the current time.
+- [model] Decision making selects what to do while movement AI and animation handle how; some decisions need movement, some only animation, some only state change with no visible feedback.
+- [model] Commands can flow through a queue or stream from producers, such as input or AI, to consumers, such as a dispatcher or an actor.
+- [model] A complete AI structure has an alarm mechanism updated every frame and a decision maker, both feeding an action queue that drives execution. When: designing sophisticated game characters.
+- [model] Collaborative action primitives are state change, animation, AI, compound, sequence, signal, and wait. Compound runs a group simultaneously; sequence runs a group in series.
+- [definition] The Command pattern wraps a method call in an object, so the call can be stored, delayed or moved between code locations.
+- [definition] The Command pattern can be seen as a way to emulate closures in languages that lack them.
+- [definition] In Chain of Responsibility, an object in a hierarchy either handles a command itself or passes it on to a subordinate.
+- [definition] Arbitration lets one or more steering behaviors take complete control of the character.
+- [definition] An action combination executes all its sub-actions simultaneously, for example playing an animation while changing a value.
+- [definition] An action sequence runs its sub-actions one after another, waiting for each to complete before starting the next.
+- [definition] A hierarchical machine reports its current states as a list from highest to lowest level; a plain state lists itself, and a composite state lists itself first, then its active child's list.
+- [definition] An AI action runs another AI routine, such as steering toward a set target, searching for firing targets, or planning a route.
+- [definition] Action prediction estimates which option from a limited set a player will choose next.
+- [definition] A concrete action is an object carrying world-state changes, prerequisites, timing and animations, associated with level objects; an action's meaning is the goals it achieves and the goals it compromises.
+- [definition] Nodes are waypoints marking where a character can perform an action, such as using a computer; being near a node tells it which actions are available.
+- [definition] Action Description Language extends STRIPS with open-world semantics, richer goals, conditional effects, equality tests, and typed variables.
+- [mechanism] An action structure, created when a character acts, holds an action type plus optional object and indirect object; structures can add fields such as a required location for certain actions.
+- [mechanism] An action sequence keeps an index of its current sub-action, starting at the first, and executing it runs that sub-action and advances the index once it completes.
+- [mechanism] Objects appear to act together though they run one after another within each frame; each frame is one complete turn of the simulation.
+- [mechanism] With nu at zero, the learner keeps chaining actions from each resulting state, which lets it follow action sequences that may reach success.
+- [rule] A full AI action has four classes: state change (game state), animation, movement and AI request; animation goes to an animation controller, movement to movement algorithms, AI requests to another decision maker. When: Designing AI action classes or executing non-state-change AI actions. Why: Each flavor requires different handling by a different game system, and is best executed by the system that specializes in it.
+- [rule] Store action types in a database recording whether each needs an object or indirect object: some need none, some an object only, others an object plus optional indirect object.
+- [rule] Store each potential blackboard action with agreement flags and execute it only after every expert able to object has approved it; experts with no possible objection need not agree.
+- [rule] Action timing is travel time to the location plus time to perform the action; each action should report total completion time so planning can weigh quick gains against long ones. When: Planning with timed actions.
+- [rule] An action combination can interrupt if any sub-action can, can run alongside another action only if all its sub-actions can, is complete when all sub-actions are complete, and executes every sub-action.
+- [rule] Store the action queue and active action set as priority heaps, since heaps keep their contents in priority order. When: Implementing a decision-making action manager. Why: Heaps maintain priority ordering so the highest-priority action is always accessible.
+- [rule] Pass the target actor into execute as a parameter rather than looking it up through global functions, so one command can act on any actor.
+- [rule] Consider Chain of Responsibility when the object model is hierarchical and the target is not fixed in advance.
+- [rule] Let higher-importance decisions interrupt actions in progress, and make the action manager support this. When: Running multiple timed actions for a character. Why: An action that was sensible at start may become foolish later.
+- [rule] Scheduling an action should only append it to the queue; interruption, promotion, expiry and execution all happen in the per-frame execute step.
+- [rule] For compound actions, emit signals for specific actions, such as 'I can cook raw food', rather than for motives, so characters follow signals for what they can actually do. When: When an action needs several steps or items.
+- [rule] While a unit is mid-action, such as moving, exclude new action choices for it until that action finishes. When: a unit's action takes time to complete. Why: Choosing a new action mid-motion has no defined meaning in the game.
+- [rule] Objects must describe not only the actions they support but what those actions achieve, because goal-oriented planning chooses actions by their effects.
+- [rule] Take available actions from an object database rather than simulating recognition of objects.
+- [heuristic] Route all character actions through one central action handler; this makes capabilities explicit and makes debugging, logging and reporting simple. When: Designing character action systems, especially when AI behaviour is hard to trace across many decision makers or action types are expected to change often. Why: Debugging is the strongest reason to centralize: each action can carry its origin, queue time and completion state for inspection; explicit capabilities let action types be added or removed easily.
+- [heuristic] Use action scripts freely in game AI: they often achieve desired results more cheaply and reliably than research-heavy techniques such as neural networks or cognitive models. Why: They are easy to implement and offer practical value.
+- [heuristic] Use the Command pattern to untangle complicated code in games and other large programs. When: complicated control flow in large programs.
+- [heuristic] In languages with real closures, closures are a good way to write commands. When: languages that support closures well.
+- [heuristic] Use copy-down when breed attributes are fixed after creation and speed matters; use dynamic delegation when breeds may be modified at runtime. When: selecting how breed inheritance is resolved. Why: Copy-down favors fast reads and dynamic delegation favors runtime flexibility.
+- [heuristic] When effects must happen together, have one decision return a compound action of several atomic actions that execute simultaneously, rather than coordinating separate decision routines. When: Coordinated simultaneous effects, such as a small attack alongside a flanking assault. Why: Coordinating separate decision routines to produce simultaneous effects is difficult.
+- [heuristic] Have AI code emit commands through the same interface as player input, so AI modules can drive any actor or control the player in demo mode. When: several sources should drive the same actors.
+- [procedure] 1) Add logging to each action class's execute method. 2) Record the decision maker, queue entry time and completion status on each action. 3) Output this data at run time. When: Debugging AI actions during play. Why: Run-time records reveal which decision produced each action and when.
+- [procedure] 1) Update the alarm mechanism each frame, queuing emergency actions when needed. 2) Call the decision maker only when the action queue is empty. 3) Send a valid action at the queue head for execution. When: each frame of an AI action manager.
+- [procedure] Choose among valid behaviours with one of four rules: 1) any available, found by binary search on range midpoints then checking neighbours, which is most efficient; 2) first available in a priority-ordered list; 3) the most central behaviour, which keeps it longest; 4) the smallest range, which prefers the most specific behaviour.
+- [metric] Action manager memory use grows linearly with the maximum number of queued actions, not counting sub-actions.
+- [metric] Per-update time cost is proportional to the number of active actions times the number of queued actions, with sub-actions counted in both. Why: Compatibility checks try pairings between queued and active actions.
+- [tradeoff] The full action manager is flexible and suits sophisticated characters, but may be overkill for simple subsidiary characters; its flexibility helps as character behaviour grows more complex. When: choosing an AI structure for a character. Why: Character needs tend to grow over development.
+- [tradeoff] Action-based signals support many actions and are easy to extend, but they lose the elegance of following one smell per motive.
+- [pitfall] Enqueuing messages without caring which code processes them resembles a service locator, which hides who handles the work.
+- [pitfall] Choosing the action before considering tactical information can prove foolish when no safe spot exists nearby. When: Decision systems that pick actions before seeking cover. Why: Commitment to an action ignores whether a suitable location is available.
+- [pitfall] A simple 'can be pushed' flag is not enough for goal-oriented behavior, since the same action can achieve very different goals depending on the object.
+- [fact] The same idea appears under other names: callbacks, first-class functions, function pointers, closures and partially applied functions.
+- [fact] Delegated behaviors can serve as the base for other delegated behaviors, for example arrive forms the base of pursue.
+- [fact] Action combinations and sequences can contain each other, and nesting can go to any depth.
+- [fact] The common arbiter asks each expert for a numeric insistence value, picks the highest, and breaks ties randomly.
+- [fact] Internal actions are built into each algorithm, while external actions can take one uniform form shared by all algorithms.
+- [fact] Some actions are compound sequences of smaller steps that run together as one action.
+- [fact] The active list can report the priority of its highest-priority action, which is its first item, and the manager uses this to decide whether a queued action may interrupt.
+- [fact] In many games every action is always available, but in others the available set depends on location, held objects or earlier actions.
+
+## planning and search
+- [model] Forward chaining starts from the current database and repeatedly fires rules that change it, directly or through character actions; it is the form used in game rule systems. When: Building rule-based game logic. Why: Starting from known data and applying rules until no more change is a natural fit for game state updates.
+- [model] In plan-space search, the root is the problem, internal nodes are partial plans with flaws, and leaves are complete plans or partial plans that cannot be refined further.
+- [definition] A primitive action is a single effect, such as a state change, animation, movement or AI request, that carries out its own work directly.
+- [definition] A plan's cost can be its number of actions, its total duration, or a combined value that includes resources such as magic, money, or ammo.
+- [definition] A planning heuristic estimates the remaining cost from a world model to goal fulfilment; building a good one can be hard, and progress may appear absent.
+- [definition] A planner finds a route from a starting state to a goal, and the actions along that route can be read as a story.
+- [definition] Plan-space search explores candidate plans as a whole, while state-space search builds a plan step by step by adding parts in sequence.
+- [definition] A partial plan is reusable because the shortest route from an intermediate node to the goal is the tail of the shortest route through it. When: Storing and reusing plans on the same graph. Why: Subpaths of shortest paths are themselves shortest paths.
+- [definition] Parallel rewriting builds a new string entirely from the previous string, replacing every symbol at once, while sequential rewriting updates the string as it is read. Why: The two orders can produce very different results, so the order must match the intended model.
+- [definition] A partial-order plan orders only the steps that threats require, leaving other orderings open, whereas a total-order plan fixes every ordering.
+- [definition] A planning problem has an initial state and a goal state; a solution is a plan, a sequence of actions, that is sound if executing it from the initial state reaches the goal.
+- [definition] Domain knowledge for a planner is a library of operators, each with preconditions and effects.
+- [definition] A partial order gives precedence relations between some pairs of items but not all. It must be transitive, asymmetric and irreflexive, which together ensure the relation's directed graph contains no loops.
+- [mechanism] Combining state factors in one machine multiplies counts (n×m) rather than adding them (n+m), so few small factors yield an enormous state space; separate machines need only n+m. When: a state is built from several factors, or an entity has two mostly independent aspects of behavior. Why: each combination of factor values is a separate state; product versus sum of state counts. (x2)
+- [mechanism] A continuous planner stores each connection's driving action on the connection, so the vehicle executes it without recalculating.
+- [mechanism] Interactive evolution searches for the optimum in the human's preference space, so the target exists only in the user's judgment.
+- [mechanism] Swapping input and output file roles only requires resetting file positions, since no data is copied.
+- [behavior] During long planning, such as seconds of route calculation spread across frames, a character appears to stand still and seems unintelligent. When: When planning takes many frames. Why: Nothing visible happens while the plan is incomplete.
+- [rule] Update a node's values only when the newly calculated cost-so-far is lower than its stored value.
+- [rule] Use continuous planning only for small planning sections, since in practice it covered about 100 yards of route. Why: Its cost and complexity grow quickly with route length.
+- [rule] To return a whole plan rather than only its first action, the best-result record must store the full action sequence.
+- [rule] Consider planning when actions share resources or when one action unlocks another.
+- [rule] Plain A* on huge graphs returns more detail than often needed. Coarse routes planned first and refined later avoid wasted work on distant irrelevant detail.
+- [rule] Use open goal pathfinding when goals are close together, not when they are far apart. When: Choosing between open goal search and a single chosen goal. Why: Close goals make the heuristic's guess about the chosen goal rarely badly wrong.
+- [rule] Use final-state statistics only when the chain has a final state, since a chain that bounces indefinitely has none to measure.
+- [heuristic] For large numbers of simple agents, simple blending may suffice; reserve pipelines or planning for key agents.
+- [heuristic] Choose the formal planning language so that it expresses the problem domain well, since the choice shapes what the planner can represent.
+- [heuristic] From a set of items, handle first the one with the fewest valid options, such as a target that only one weapon can hurt. Why: it is the most likely to be left with no valid option.
+- [heuristic] Fixed patrol routes are simple but can be fooled by moved objects, and free wandering can look aimless and get stuck; runtime routes suit goals unknown in advance. When: Choosing how characters move through a level. Why: Fixed routes cannot adapt to changes, and unconstrained wandering lacks purpose.
+- [procedure] 1) Quantize start and goal positions to graph nodes. 2) If the start and goal nodes differ, run A* between them. 3) Return the first node of the resulting path as the sub-goal. When: When a decomposer must route a character across a navigation graph. Why: Converts a distant goal into a nearby sub-goal the actuator can steer toward.
+- [procedure] 1) Add a lane-change node per adjacent empty lane, costed at current speed. 2) Add a boundary node trailing the nearest car ahead, matching its speed; skip if a crash is unavoidable. 3) Add safe opportunity nodes just past each adjacent-lane car, assuming collision avoidance. 4) Add unsafe opportunity nodes at those same spots, assuming top speed without avoidance. When: when expanding a node in a continuous traffic graph. Why: Unsafe nodes matter because braking for a car ahead is pointless if the plan is to swerve.
+- [procedure] 1) Use the current position and time as a new start node. 2) Repeat successor generation using traffic predicted for each time. When: each planning call.
+- [procedure] 1) Give each available research advance a numeric score. 2) Pick the highest-scoring advance.
+- [procedure] 1) Parse the plan for NPCs. 2) Instantiate each NPC where it first takes part in an event. 3) Let each NPC adapt its behaviour at run time, since world geometry and prior events are unknown in advance. When: Populating a world from a story plan.
+- [procedure] 1) Create a column holding MONTH() of each row's due date. 2) Use COUNTIF() to count cells in that column matching MONTH(TODAY()). When: Counting tasks due in the current month.
+- [procedure] 1) Start with a root node describing the problem. 2) Select a non-terminal node by heuristic value. 3) Select a flaw in it. 4) If no flaw remains, return the node as the solution. 5) Otherwise repair the flaw and repeat. When: Searching plan space with POP.
+- [procedure] Repair an open precondition either by linking it to an existing step that establishes it, or by adding a new step whose effects imply it. When: A precondition no earlier step establishes.
+- [metric] Hundreds of visits per state may be needed before Q-values settle in practical Q-learning runs. When: practical Q-learning runs.
+- [metric] Direct-access frequency scheduling takes O(f·p) time, where f is the number of distinct frequencies and p the behaviours per phase, and O(f·F·p) storage, where F is the average frequency. When: Fixed set of frequencies known in advance. Why: Time falls to O(m) when phase slots are full, but memory grows with frequencies used.
+- [metric] With text length N and pattern length M, feasible start positions run from 0 to N minus M, inclusive.
+- [tradeoff] Rerunning full search on each new observation may leave no plan finishing before the next begins when the level changes constantly; plain replanning suffices only when it changes occasionally.
+- [tradeoff] Removing an old goal during a rewrite keeps the data simple, while keeping it lets the AI resume that goal later. When: A rewrite replaces an active goal that may be needed again.
+- [tradeoff] Storing complete plans is cheap and ready to use for exact repeats, but partial plans are more often reusable across varied tasks. When: Deciding what search results to cache. Why: Identical tasks rarely recur, while route sections recur more often.
+- [tradeoff] Direct-access frequency scheduling is a good fit for few shared frequencies, but with many frequencies and phases memory use grows and speedup shrinks, so a hierarchical scheduler is preferred. When: Many distinct frequencies and phases. Why: Sparse phase slots waste memory on empty arrays.
+- [pitfall] Searching without a depth limit lets an unreachable goal run forever while memory keeps growing.
+- [pitfall] Without failure feedback from movement, a high-level target that movement cannot reach leads to a stalemate in decision making.
+- [pitfall] Wide and deep game trees make minimax very slow, because the number of positions grows exponentially with search depth. Why: motivates later optimizations.
+- [pitfall] A refined result can reveal something missed, forcing a change of direction, which must be handled gracefully.
+- [pitfall] Plan-space search is computationally expensive, so it is uncommon in large practical applications.
+- [fact] Continuous planning is complex, hard to debug (especially node placement), and not fast relative to other pathfinders, even when working correctly.
+- [fact] Even depth two changes character behavior noticeably, while deeper plans add diminishing gains in believability.
+- [fact] The problem interface must supply a random start state, list the available actions for a state, and apply an action to return a reward and a new state.
+- [fact] Strong human players often plan 20 to 30 opening moves in advance.
+- [fact] Computers have fully solved checkers and four-in-a-row, while chess and Go remain unsolved, so their AIs rely on heuristics.
+- [fact] Conditional effects apply only when their stated condition holds, so one action can yield different outcomes in different states.
+- [fact] STRIPS and ADL are widely used formal languages for describing states, actions, and goals with classical planners.
+- [fact] The plan a planner selects depends on the agent's capabilities, the available facilities, its preferences, and its current circumstances.
+- [fact] Planning algorithms aim to find plans that maximise goals under given conditions, constraints, and preferences.
+- [fact] Storing partner arrays for both sides is redundant but speeds up lookups.
+- [fact] Partial orders occur in word definitions in a glossary, subtasks in a project, prerequisite courses in a curriculum, and procedure calls in a program.
+
+## tactical analysis
+- [model] A tactical analysis server has four parts: a common API for plug-in analysis modules, weighted-sum combination defined in data files, update scheduling, and a debugging overlay.
+- [model] Tactical analyses fall into three categories by how fast they change: static properties, slowly changing properties, and rapidly changing properties, which determines whether they are computed offline, spread across frames, or on demand.
+- [definition] Tactical pathfinding uses blended connection costs that include tactical concerns such as danger or visibility.
+- [definition] Tactical analysis stores per-location values, such as military influence, terrain difficulty or visibility, that AI decisions can query.
+- [definition] Waypoints can carry tactical data beyond pathfinding, so a character standing at one gains that tactical feature.
+- [mechanism] Storing several states per waypoint lets a situation be looked up at decision time, so no tactical calculation runs during play.
+- [mechanism] A positive tactic weight makes a character avoid that property, while a negative weight makes it seek the property; larger magnitude means a stronger preference.
+- [mechanism] Adding tactical terms to connection costs lets characters stay in cover and avoid enemy firing angles and typical ambush spots.
+- [mechanism] Tactical analysis of the direction a player is moving can find likely escape routes, which pursuers can then block.
+- [behavior] Characters whose friends have died and who face overwhelming enemy firepower usually flee; otherwise they remain and fight. When: after allies fall and enemy firepower overwhelms them. Why: emotion and state impulses weigh against staying.
+- [rule] At decision-tree level, use tactical availability as a yes-or-no condition, such as whether any cover point exists, rather than weighing location quality. Why: Prevents choosing an action that has no available target.
+- [rule] Provide a debugging interface that shows any registered tactical analysis as an overlay on the level. Why: Without it, tactic problems are hard to diagnose.
+- [rule] For directional cover, count hits separately for each attack direction; during play, use real enemy positions with random offsets instead of random angles. When: evaluating cover against specific directions.
+- [rule] Trigger an attack's animation and damage only after movement has brought the character into range of its target.
+- [rule] Place the anchor a fixed distance ahead of the formation's center of mass, along its velocity, using a tuning constant.
+- [rule] Store each tactical property per waypoint as a value, typically from 0 to 1; integers from 0 to 255 suit platforms without fast floating point.
+- [heuristic] Compute tactical properties offline as the usual approach; runtime computation reflects the current game context but costs more, especially with many waypoints.
+- [heuristic] Automatic tactical property generation is worthwhile when designers cannot set every property by hand, or when the level is built from tiles or prefabs.
+- [heuristic] For attack planning, strike the enemy-controlled border location with the smallest security; chains of weak points often mark a weak area, and flanks usually appear as weak spots.
+- [heuristic] Most shooters can afford a full set of tactical values per waypoint, whereas large outdoor RTS or massively multiplayer maps may need to economize.
+- [heuristic] Tactical decisions need not run every frame, so the processing cost of derived tactical queries is usually acceptable. When: Scheduling character tactical decisions. Why: Decisions change less often than frames, spreading the query cost.
+- [heuristic] Frightened agents avoid places known to be scary, while agents seeking excitement avoid boring areas.
+- [heuristic] Military command can hold off attacking until enough forces are gathered.
+- [heuristic] Tactical analysis benefits especially from spending longer on its calculations.
+- [procedure] 1) Each frame, set the anchor's position, orientation, velocity and rotation to the averages of those values over its occupied slot characters. When: formation with an anchor and slot characters.
+- [procedure] 1) Update a second-level analysis gradually from slow-changing data to approximate rapid data. 2) Use it to pick candidate locations. 3) Run the detailed, current check only on those candidates. When: When a rapidly changing check is too costly to run everywhere.
+- [procedure] 1) If only a few locations are needed, compute values on demand. 2) If the AI must search all locations, compute values in the background across many frames. When: When choosing when to compute tactical values.
+- [procedure] 1) Find points with cover and shadow. 2) Check nearby exposed points within the required radius of each. 3) Keep matches as ambush points. When: Searching for ambush locations from stored primitives. Why: Compound tactics are derived from primitive qualities at query time.
+- [procedure] 1) Start with simple tactical labels. 2) If behavior looks odd, add context sensitivity. 3) Add continuous tactical values so characters choose by waypoint quality. 4) For highly tactical games, add compound fuzzy-logic tactics. When: Increasing tactical waypoint sophistication. Why: Most games need only the early stages; later stages add effort that only tactical-focused games repay.
+- [procedure] 1) Choose an action such as reloading. 2) If the action needs cover, query nearby waypoints. 3) Keep waypoints that provide cover. 4) Apply post-processing checks. 5) Move to the nearest one that passes. When: Squad-based AI seeking cover before an action. Why: Nearby tactical points keep movement short while checks confirm suitability.
+- [procedure] 1) Overlay tactical waypoints onto a regular pathfinding graph. 2) Link each tactical location to its adjacent pathfinding nodes.
+- [metric] Connection cost equals base cost plus, for each supported tactic, that tactic's weight multiplied by its quality for the connection.
+- [tradeoff] Offline learning builds the map during testing and fixes the values in the final game; online learning usually starts from a pre-learned map and keeps adapting during play.
+- [tradeoff] Sophisticated enemy tactics cost much effort and may matter less than enemy behavior that shapes where players go. When: Deciding where to invest AI effort.
+- [pitfall] Tactical waypoints describe very small areas, so small placement errors or short distances can change their quality sharply, such as losing cover, unlike tactical analysis maps.
+- [pitfall] An expert cannot assume the board is unchanged between its interest check and its turn, since another expert may have removed the item it wanted.
+- [pitfall] Online frag-map learning depends on generalizing from known locations to unknown ones; without it, unvisited locations stay uninformed.
+- [pitfall] A formation anchor that ignores small obstacles and other characters lets members fall far behind the formation.
+- [pitfall] Approaching a narrow doorway at an acute angle can make obstacle avoidance miss the doorway entirely.
+- [pitfall] Basic slot schemes let any character fill any slot, so a rifle team could take a squad leader's slot or two leaders could occupy one squad. Why: Nothing constrains slot roles.
+- [pitfall] At an acute convex corner, the left ray turns the character left and the right ray then turns it right, so it appears to home straight into the corner. When: When using side rays for wall avoidance near acute corners. Why: Alternating ray hits cancel and the character is steered into the corner.
+- [pitfall] Precomputed connection costs cannot reflect dynamic factors such as shifting military influence or cover from known enemies.
+- [pitfall] Terrain results computed offline become invalid if the terrain can change during play.
+- [fact] Tactical pathfinding is not inherently more complex than regular pathfinding; it uses the same algorithms and graph representation, such as A*, and only the connection cost changes.
+- [fact] A simple post-processing step can reduce a dense visibility graph to a usable form, though AI programmers often worry about its performance.
+- [fact] Hand-placing a few hundred cover points is manageable, but context-sensitive or continuous tactical values are hard for designers and need visualization tools.
+- [fact] Each tactic type needs its own property calculation: cover uses simulated attacks, visibility uses rays cast from the eyes, and shadow uses lighting samples.
+- [fact] Fully automatic tactical waypoint generation is not reliably used without some human supervision.
+- [fact] The formation anchor can come from a leader character, a center-of-mass estimate, or an invisible steered anchor. When: Choosing the reference point of a formation.
+- [fact] Static tactical properties such as terrain, topology, and constant lighting can be computed offline before play.
+- [fact] Games increasingly need groups of AI characters to cooperate, including with the player, sometimes without explicit orders.
+- [fact] Documented tactical topics include urban operations, wilderness movement, sniping, heavy weapons, room and building clearing, and defensive camp setup.
+- [fact] Base analyses output different values: an influence map gives a side, strength, and optional security; a shadow analysis gives one intensity; a gradient analysis gives one difficulty value.
+- [fact] Influence maps and tactical analyses naturally supply the locations for a tactical pathfinding graph, especially in outdoor levels.
+- [fact] Common tactical location kinds include cover, sniper, shadow, fire, power-up respawn, reconnaissance, and quick exit points, plus negative ones such as ambush hotspots, exposed areas, and sinking sand.
+- [fact] Platform and adventure enemy AI has not been found to use goal-oriented behavior, rule-based systems, or waypoint tactics.
+- [fact] So far, tactical and strategic analysis has mostly guided pathfinding, such as letting units weigh terrain complexity when routing.
+
+## fuzzy logic
+- [model] Location quality values serve as degrees of membership in fuzzy tactical rules, so the strongest applicable tactic wins when actions are mutually exclusive. When: choosing between tactics that depend on location quality. Why: Graded values let the AI rank options rather than only test existence.
+- [model] Every sensory channel carries an attenuation factor, a range limit, and an inverse transmission speed; zero inverse speed means instant perception.
+- [definition] Fuzzy AND takes the minimum of two degrees, so compound tactics take their value from component properties; fuzzy OR takes the maximum, NOT one minus the degree.
+- [definition] Blending runs every steering behavior and merges their outputs using weights or priorities.
+- [definition] Blends of minimums, maximums and averages are named Smallest or Left of Maximum, Largest or Right of Maximum, and Mean of Maximum (MoM).
+- [definition] Fuzzification converts ordinary game data, such as numbers, Booleans and enumerations, into degrees of membership in fuzzy sets.
+- [definition] A degree of membership is a number from 0 to 1 stating how far an item belongs to a fuzzy set, where 1 means full membership and 0 means none.
+- [definition] In a fuzzy state machine each state has a degree of membership. A state with degree above zero is active, so a character can be in several states at once.
+- [definition] Insistence is a goal's pull on behavior: higher values pull harder, and zero means the goal is fully satisfied.
+- [definition] The IEEE fuzzy control method also called center of gravity does not crop membership functions; each function has a fixed point, so it fits the blended points approach instead. When: Comparing defuzzification methods with the same name. Why: Methods sharing a name can differ, so the correct one must be identified.
+- [mechanism] Blending weights each set's characteristic point by its membership degree, giving smoother output than choosing the set with the highest membership.
+- [mechanism] Each fuzzy set has its own membership function that maps a numeric input to a degree. One input can feed many functions, and their outputs need not sum to 1.
+- [mechanism] In a fuzzy rule 'if A and B then C', the degree of C is the minimum of the degrees of A and B, so a conclusion is no stronger than its weakest condition.
+- [mechanism] A transition raises its target's degree to the larger of the target's old degree and the smaller of the source degree and the transition degree.
+- [mechanism] A transition lowers its source's degree to the smaller of its current value and one minus the transition degree.
+- [behavior] Developers have been slow to adopt fuzzy logic and neural networks for decision making because they are hard to get working correctly, despite interest in them.
+- [rule] Normalize membership degrees so the blend weights sum to 1; without it, the output can exceed the value of the fastest set. When: Blending fuzzy set outputs.
+- [rule] Recalculate a membership only when its input changes, and reuse the stored degree while the input stays the same.
+- [rule] For systems with many inputs, use a small set of general rules or Combs method, whose rule count grows linearly with the number of input states.
+- [rule] Use the standard min, max and complement operators unless an alternative definition is explicitly stated, because different definitions give different results.
+- [rule] Keep actions out of fuzzy states. Let an external defuzzification step choose which action to perform from the state degrees.
+- [heuristic] Set each tactical threshold low so many locations pass, because a poor-cover spot may be the best in a room with almost no cover.
+- [heuristic] Use blending when the behavior set is small and fixed, so its linear cost is negligible.
+- [heuristic] When a fuzzy set matches a Boolean directly, use membership 0 for false and 1 for true. When: the fuzzy set is the Boolean condition itself.
+- [heuristic] Use a fuzzy decision maker when actions can apply by degree, extremes are easy to decide, and intermediate actions are hard, such as how hard to brake into a corner.
+- [heuristic] Use fuzzy states and terms when behaviour should shift gradually across a range rather than flip between two options.
+- [heuristic] Linear falloff is reasonable in practice and cheaper to compute than the alternative falloff curves.
+- [heuristic] Character importance combines story role, which often sets how likely the player is to watch a character, with noticeability such as distance.
+- [heuristic] Good designs blend knowledge routes, keeping internal knowledge always available while external knowledge comes through any route.
+- [procedure] 1) Give each action a fuzzy rule of tactical conditions. 2) Combine multiple conditions with AND by taking the minimum membership. 3) Pick the action with the highest resulting membership. When: rules combine several conditions.
+- [procedure] 1) Map each crisp input to fuzzy state degrees with membership functions. 2) For each rule, take the minimum of its input degrees. 3) Give each output state the maximum over rules that conclude it. 4) Defuzzify the output states to choose an action.
+- [procedure] 1) Copy the active-state list and sort the copy by decreasing degree. 2) For each state, test its transitions; on a trigger, read its degree, update targets and add new active targets. 3) Reduce the source degree by one minus the transition degree. 4) Remove the source if its degree reaches zero and skip its other transitions. When: each iteration of the update. Why: Working on a sorted copy keeps the live active list from changing mid-iteration.
+- [procedure] Start with importance based on distance alone to get the system running, then add other factors later.
+- [procedure] 1) Tie each character's scheduling frequency or priority to its importance. 2) Map importance to frequency by a function (higher importance, lower frequency value) or by categories. 3) Apply the mapping to priorities too. Why: Scheduling gives an LOD effect with no extra machinery.
+- [procedure] 1) Crop each membership function at its set's degree. 2) Integrate each cropped region to find its center of mass. 3) Combine the cropped shapes and take the centroid of the result as the output. When: Accuracy across all memberships matters more than speed. Why: Using every membership gives a smooth output that reflects all contributing sets.
+- [procedure] 1) Find the set with the highest membership degree. 2) Output a characteristic point of that set. When: Speed and simplicity matter more than precision. Why: Only one set and one point are needed, so it is very fast and easy to implement.
+- [metric] Linear falloff computes influence as base influence divided by (1 + distance), so doubling the distance halves the influence.
+- [metric] Fuzzy state machine memory is O(n) for n active states, and time is O(nm) for n active states with m transitions per state.
+- [tradeoff] Blending weighs all concerns at once but struggles under many movement constraints and tight, constrained layouts; arbitration gives one behavior full control to handle constraints.
+- [tradeoff] Center of gravity uses all memberships: more accurate but costlier and harder to extend; blended characteristic points are much quicker and simpler, similar in the reported comparison. When: Choosing a defuzzification method. Why: Accuracy and implementation simplicity pull in opposite directions.
+- [pitfall] Fuzzy tactical rules are a simple extension with powerful results, yet most games do not use them and rely on simpler tactical information.
+- [pitfall] Blending within a group dilutes its members' contributions, so a strong member can be cancelled by weaker opposing members. When: When grouping behaviors with regular weights.
+- [pitfall] LM abbreviates two different blending methods, and some references use these names only for the single-function case.
+- [pitfall] Do not read a degree of membership as a probability or percentage, since fuzzy results rarely match probabilistic methods.
+- [pitfall] Highest-membership defuzzification is coarse: inputs 0, 0, 1 and 0.33, 0.33, 0.34 produce the same output, so small membership differences are ignored. When: Using the highest-membership method. Why: The output changes only in steps, discarding information in the other memberships.
+- [fact] With crisp (0 or 1) transition degrees a fuzzy state machine behaves like an ordinary one; intermediate degrees express grey areas between fully entering one state or another.
+- [fact] Blending and arbitration are two ends of a continuum rather than exclusive choices.
+- [fact] A fuzzy decision maker produces sensible conclusions, not optimal ones.
+- [fact] Fuzzy NOR is one minus the maximum, NAND is one minus the minimum, and XOR is built from ANDs with NOTs so that exactly one input is true.
+- [fact] Classical logic identities still hold for fuzzy operators; for example, A OR B equals NOT(NOT A AND NOT B).
+- [fact] Restricting degrees to 0 and 1 recovers classical set logic, so all classical logic rules still hold in that case.
+- [fact] An item can belong to several fuzzy sets at once; mutually exclusive classical groups become membership values that ideally sum to 1.
+- [fact] Most implementations do not enforce that memberships sum to 1. Fuzzification is relied on to roughly achieve it, and small deviations matter little.
+- [fact] A fuzzy transition's trigger test can reuse ordinary state machine conditions, including decision trees or fuzzy logic evaluations.
+- [fact] Some modalities always pass their extra check, while others, such as sight, apply a real test.
+- [fact] Center of gravity defuzzification cannot be precomputed offline because its cropping level depends on runtime memberships, so it is often evaluated numerically and is slower. When: Planning fuzzy control in real-time games. Why: The integral depends on input-dependent cropping values known only at runtime.
+
+## utility ai
+- [model] A single decision can test whether a Boolean is true, match one value of an enumeration, check that a number lies in a range, or check that a vector's length lies in a range.
+- [model] A complex evaluation runs many scoring mechanisms, each detecting one feature, and combines their results into one score, most simply as a weighted sum with fixed weights.
+- [definition] The predicted change in insistence serves as a heuristic estimate of action utility; the selection inverts it so the most reducing action has the highest utility.
+- [definition] Situation classification groups game inputs, such as enemy distance, friend health and ammo, into behavior categories learned from examples.
+- [mechanism] Increasing a point's weight enlarges its domain, so weighted domains let designers set region size.
+- [mechanism] A single rule whose priority scales with a value, such as health, rises gradually, whereas separate rules for ranges switch suddenly at their boundaries.
+- [mechanism] Counting drift during an action's duration can reverse choices: a short action fixing an urgent need may beat a long action that lets another need rise sharply meanwhile. When: Goals rise on their own at different rates and actions take different times. Why: A long action lets unrelated needs grow, and the prediction reflects that growth.
+- [mechanism] Characters built from standard AI goals and sensor-triggered behaviors can carry a story forward while their choices follow a designer-encoded tension curve. When: Building a dialogue-driven simulation.
+- [behavior] Minimizing predicted total discontentment can pick an action that does not touch the highest goal when it avoids creating a larger new need. When: An action has side effects on other goals. Why: Total discontentment counts every goal's predicted value.
+- [behavior] Blended weights let a squad cross modestly rough ground that is fairly far from enemies when constraints are preferences. When: Squad movement with soft terrain preferences. Why: Soft constraints allow compromise where risk is low.
+- [rule] Score tactical qualities as real values, since a Boolean yes-or-no will not support condensation.
+- [rule] Rely on tested, reusable methods for movement, decision making and tactics instead of reinventing them for each game.
+- [rule] A weight of zero effectively switches a steering behavior off.
+- [rule] Even a simple first-in first-out action queue provides the debugging benefit of centralizing actions. When: Centralizing actions without a full manager. Why: A single entry point is enough to log all actions.
+- [rule] With one goal, every plan must fully fulfil that goal, and the planner should select the plan with the lowest total cost. When: Planning for a single goal.
+- [rule] Use SIMD-friendly discontentment evaluation for small goal and action sets; use simple selection for large sets.
+- [rule] Adopting time-aware prediction requires goals to provide a rate-of-change method and actions to provide a duration method; only the discontentment calculation changes. When: Upgrading an existing utility-based decision system.
+- [rule] Run condensation separately for each tactical property, so a waypoint is not removed because a waypoint for a different tactic is nearby.
+- [heuristic] Show the reason for an action, such as a broken switch or a waiting colleague, because a short glimpse rarely gives enough context.
+- [heuristic] Balancing matters most for large trees or equally likely outcomes; otherwise shape the tree around outcome frequency and decision cost.
+- [heuristic] The simplest time-aware method makes the discontentment calculation return lower values for shorter actions, all else being equal.
+- [heuristic] A tree whose root is a single action always returns that action, which is useful for prototyping. When: Prototyping an agent.
+- [heuristic] Prefer decision trees or state machines when they can produce the required behavior, which is almost always possible; rule systems are more than most games need. When: designing character decision making. Why: simpler structures are easier to build and debug.
+- [procedure] 1) For each attacker, measure the largest free angle among opponents within its shot cone. 2) Score each attacker by that angle. 3) Choose the highest-scoring target. When: Choosing a passing or shooting target.
+- [procedure] 1) Find the goal with the largest insistence. 2) Among available actions, choose the one that fully fulfils that goal or gives the largest drop in its insistence. 3) Break ties at random or by taking the first action found.
+- [procedure] 1) For each legal move, apply it to get the resulting position. 2) Score that position. 3) Choose the move with the highest score. When: only with a perfect evaluation. Why: a perfect evaluation makes lookahead unnecessary.
+- [procedure] 1) Compute a stop threshold from your score and the opponent's score. 2) Keep rolling while the turn total is below the threshold. 3) Stop once the turn total reaches or exceeds it. When: deciding when to end a turn in the dice game Pig.
+- [metric] Simple GOB selection takes O(n + m) time for n goals and m actions, and O(1) memory.
+- [metric] Predicted goal value equals current goal value plus the action's direct change plus the goal's natural rate of change multiplied by the action's duration. When: Scoring actions in a utility system where goals change over time. Why: Natural drift during an action changes the state the action leaves behind.
+- [metric] Time-aware utility needs O(1) extra memory and O(nm) time, and stays SIMD-friendly with a couple of extra operations. When: Goal values are stored in arrays.
+- [metric] A matrix with 1.0 on the diagonal and 0.1 elsewhere, applied once per minute without gunfire, makes safety values increase over time.
+- [tradeoff] The weakest-member rule (take each category's worst value) suits hard constraints that must never be violated; blended weights suit soft preferences that can be traded off. When: Choosing how to combine squad member concerns. Why: No single member has the blended concerns, so the worst value gives a safe approximation; hard constraints must never be violated, while soft preferences can be traded off.
+- [tradeoff] Modelling shared resources as extra motives can fix ordering conflicts, but many permanent effects such as doors, traps, and alerts would need thousands of extra motives.
+- [tradeoff] Sequences run their elements strictly in order, whereas compound actions can mix parallel and sequential parts; allowing compound actions inside sequences combines both at any depth. When: structuring character actions.
+- [tradeoff] A weighted sum can combine layers instead of multiplying them, but it must avoid placing value on another side's territory.
+- [pitfall] Changing weights can make a distant domain bulge into a wrong area, so display the domains to check for overlaps.
+- [pitfall] Small changes in one input can decide between a sensible and a foolish action, so tests should target the values that matter.
+- [pitfall] Choosing the best single action at each step can fail when actions consume shared resources, because the greedy pick can block a better combination. When: Actions share limited resources. Why: Greedy choice ignores what later actions need.
+- [pitfall] Simple selection ignores the side effects an action has on other goals.
+- [pitfall] Simple selection has no timing information, so it cannot tell short actions from long ones.
+- [pitfall] Time spent choosing which behaviour to run must be deducted from the time passed to the behaviour; the basic version omits this. Why: Otherwise the frame budget is overrun.
+- [fact] The same action can sit at several leaves, so many different input combinations can produce one behavior.
+- [fact] Physical and emotional parameters, such as hunger, can serve directly as goal insistence values.
+- [fact] Each available action is rated against every goal, and one action can reduce one goal's insistence while raising another's.
+- [fact] Simple GOB selection makes two maximum-style passes, one over goals and one over actions.
+- [fact] Simple selection gives surprisingly sensible results in games with few actions, such as shooters, third-person action, adventure, and RPGs.
+- [fact] Single-character decision making serves one character and does not predict the whole situation from what it knows.
+- [fact] A single dividing point cannot treat a band of values differently from values above and below that band.
+- [fact] Human actions influence each other over short spans, so longer sequences mostly arise from shorter ones and add randomness rather than signal.
+- [fact] In a zero-sum game, a board's score for one player is exactly the negative of its score for the opponent.
+- [fact] No general agreement exists on the best transposition table replacement strategy; different games probably need different strategies, so experimentation is needed.
+- [fact] Probabilistic methods such as Markov models are more common in RTS AI than in most other genres.
+
+## influence maps
+- [definition] Influence mapping, pioneered for real-time strategy games, scores map areas by which side controls them and has since spread to squad shooters and massively multiplayer games.
+- [definition] A frag-map is a per-location map learned from combat: locations where the AI was hit or killed get negative values, and locations where it scored hits get positive values. Why: It lets the AI learn dangerous and advantageous locations from experience.
+- [definition] An influence map records, for each location, which side controls it and by how much, computed by summing each unit's influence, which decays with distance from the unit.
+- [definition] Map flooding is a Dijkstra-style expansion from several source locations that assigns each location to the source giving it the strongest influence.
+- [definition] A convolution filter replaces each tile's value with a weighted sum of its neighborhood, using an odd-sized square weight matrix whose center element refers to the updated tile.
+- [mechanism] Online frag-map learning multiplies all values toward zero before each new event, unlearning old information so the AI adapts to the player's style. When: online learning. Why: Old combat results lose weight as new ones arrive.
+- [mechanism] With direct lighting and static lightmaps, shadow checks for hiding can be spread over several frames to fit the performance budget. When: stealth titles using static lightmaps.
+- [mechanism] Map flooding gives each location the strongest single-unit influence reaching it, runs in about O(min[nr, m]) time and O(m) memory, and can incorporate terrain.
+- [rule] Normalize filter weights to sum to one so values stop growing and repeated passes settle; add each unit's influence every pass while subtracting an equal total bias. When: repeated blurring of influence maps. Why: Normalization prevents runaway growth; balanced add and subtract keeps total influence stable.
+- [rule] Read from an old copy and write to a new copy, swapping roles each iteration, plus an integer category copy; in-place updates make results depend on scan order. Why: In-place updates are rarely acceptable.
+- [rule] A combined tactical analysis takes the update category of the fastest-changing input it uses.
+- [rule] Combining base terrain cost and gradient by weighted sum or product equals running two analyses and layering their results.
+- [rule] Whether something counts as dangerous belongs to the whole game's design, so designers can add new hazards without new AI programming.
+- [rule] Track occupied rows and diagonals in Boolean arrays rather than a board matrix, so each safety check becomes a few array lookups. Why: A board matrix makes each safety check costly to compute.
+- [heuristic] Negative frag-map areas are dangerous to linger in, while positive areas are good for picking off enemies.
+- [heuristic] Support both general and separable convolution in a tactical analysis server, because most convolution matrices are not separable.
+- [heuristic] Spread influence calculation across many frames; one full pass every ten seconds often gives data recent enough for sensible character AI.
+- [heuristic] The combining formula is designer-chosen and needs tuning; showing each layer and the combined result as a debug overlay helps.
+- [heuristic] Combining frequency and priority helps: frequent running avoids overshooting while longer running improves decisions, though collision avoidance remains costly.
+- [procedure] 1) Start every location at zero. 2) When any character is hit, subtract a value from the victim's location, proportional to hit points lost or fixed per kill. 3) When the AI sees a character hit another, add a value to the attacker's location. Why: Fixed values are common because the AI should not know other characters' hit points.
+- [procedure] 1) For each location, sum the influence of every unit on each side. 2) The side with the highest total controls the location. 3) Degree of control is the gap between the winner and the runner-up. 4) A very large gap means the location is secure.
+- [procedure] 1) Compute an influence map. 2) Apply a sharpening filter a few times. 3) Read the strongest region as the central hub, such as a site for a base. When: Locating where influence is concentrated on a map. Why: Sharpening concentrates values toward existing hubs.
+- [procedure] 1) Put every source on an open list carrying its source and strength. 2) Take the largest-strength location. 3) For each neighbor, compute the strength this source gives it via an arbitrary function. 4) Skip neighbors below a threshold. 5) Keep the stronger claim on conflicts. 6) Close the processed location; updated neighbors reopen.
+- [metric] Decaying by 0.9 per new frag, a spot hit from two directions stops being used after about five frags, versus ten frags without decay; five may still feel slow. When: two attack directions, online decay of 0.9.
+- [metric] A 3x3 blur takes nine multiply-add operations per location directly but six when separated; for size 3 in the larger example the counts are 25 and 10.
+- [metric] Combined quality can be security × visibility × distance, with security set to zero wherever an enemy controls the location.
+- [metric] Replacing distance with tower influence gives quality = security × visibility ÷ tower influence; tower influence must never be zero.
+- [metric] Spreading influence across an n-by-n map may need up to n passes, or about half that when sources are central. When: repeated convolution passes.
+- [metric] A convolution pass over a w-by-h map with filter size s takes O(whs²) time and O(wh) memory for the copy.
+- [metric] Naive influence computation costs O(nm) time and O(m) memory for n units and m locations; 1,000 units over a million locations means about a billion calculations.
+- [metric] Map flooding runs in O(nm) time, where n counts locations inside a source's region and m is neighbors per location, and uses O(n) memory since distant locations are ignored.
+- [tradeoff] Dividing by the square root of (1 + distance) drops influence fast at first but reaches farther; dividing by the square of (1 + distance) stays flat, then tails off steeply.
+- [tradeoff] Shrinking the matrix at edges, using nine variants, is most correct but blocks SIMD optimization, making it 1.5 to 5 times slower than the regular fast algorithm.
+- [tradeoff] A fixed border of values that are never updated is fast but leaves a pale halo near edges; a wider border updated normally makes the artifact less visible.
+- [pitfall] Starting with high values for weak locations can make the AI repeat an obviously failing tactic for a long time.
+- [pitfall] Cropping after summing lets large opposing requests cancel and hide a strong individual request.
+- [pitfall] Convolution can be slower than naive computation when a map has far more locations than units.
+- [pitfall] Map flooding assumes one strong unit can overpower many weak ones, which is a dangerous assumption.
+- [pitfall] Subtracting tactical benefits can push a connection's cost below its physical distance, breaking the guarantee that Euclidean distance never overestimates.
+- [fact] Building a detailed frag-map requires many combat experiences per location; filtering can extend known values to nearby unexplored locations.
+- [fact] Influence maps reveal very secure areas, areas to avoid, and weak border points where the influence difference is small, which can guide attack placement and movement.
+- [fact] An influence map outputs, per location, the controlling side, the degree of control, and optionally the degree of security.
+- [fact] For a withdrawal point, the check can use an influence map to test whether the location is under enemy control. When: Validating retreat waypoints. Why: Influence maps show where enemies dominate the map.
+- [fact] With a fixed number of height checks per location, terrain analysis takes constant time per location.
+- [fact] Record where agents became frightened on a tactical waypoint map, built like a fragmap, to guide avoidance.
+- [fact] A non-conservative transition matrix lets the state total rise or fall over successive updates.
+- [fact] The same technique is called a kernel filter or impulse response filter in other fields.
+- [fact] Convolution-based influence starts with spikes at unit positions and repeatedly blurs them outward across the map.
+- [fact] Map flooding needs only a function returning each location's neighbors, and sources must expose their location and strength; grid neighbor lookup can be inlined for speed.
+
+## sensing and visibility
+- [model] A sense management system, such as a region sense manager, reports sights, smells, and sounds to the AI.
+- [definition] A visibility map scores each location by how much of the level it can see from that location.
+- [definition] A sensor registers its position, its orientation, and a threshold for each modality it can sense.
+- [definition] A signal resembles an event but also carries its modality, its source intensity, and its source position.
+- [definition] Sense management checks whether a character can physically perceive game events, simulating how senses such as sight and hearing deliver knowledge.
+- [mechanism] Simulated senses let characters notice allies and their deaths, which makes stealth and alertness playable as design elements.
+- [mechanism] A sensor perceives a signal only when the attenuated intensity at its location reaches its threshold for that modality.
+- [mechanism] An enemy that kills instantly when startled forces players to move slowly and carefully through the area around it.
+- [mechanism] Minimising a count of vertical parent links as a soft preference biases generated mazes against vertical links.
+- [mechanism] When snipers punish players peeking from open cover, a large blocking object is needed to hide sightlines, and cheap props such as crates are the fastest way to provide one. When: open areas with long sightlines and peeking. Why: Blocking sightlines protects players from being killed as they look out.
+- [behavior] Fixed action sequences can make characters seem spiteful, reckless or secretive without any AI effort. When: characters follow a fixed action sequence. Why: the scripted order itself reveals apparent motives.
+- [rule] Use ray casting for indoor levels, and use culling or sampling for large outdoor levels.
+- [rule] Deliver external knowledge through event managers or polling stations so characters get only what a real person in the environment might know.
+- [rule] Let shots that miss pass where the player can watch them, so misses read as believable rather than as cheating. Why: visible misses make high accuracy feel fair.
+- [rule] Model virtual opponents as individual entities with their own knowledge, just as human players are modeled. When: Reasoning about what an opponent knows.
+- [rule] Let players see the goal and possible paths from a room's entrance so they can judge the space before committing. When: rooms with patrolling enemies. Why: Players can then plan their approach.
+- [rule] Usually make any location visible on the map reachable. When: open world with a visible map.
+- [rule] Sniper positions need a view of the main competition area, even if reaching them requires a long route through corridors. When: placing ranged vantage points in shooter levels. Why: A vantage point must see the contested area to be useful.
+- [heuristic] Reconnaissance favors locations that see far, while stealth favors locations that are hard to see from elsewhere. When: choosing positions for scouting or hiding.
+- [heuristic] Event-based delivery is preferred for sensory perception only; ordinary information requests can still use polling.
+- [heuristic] Straight-line sensing suits open-air levels and indoor levels whose walls are thicker than a signal can travel. When: open-air levels or thick-walled indoor levels.
+- [heuristic] Use measured jump limits, such as a four-tile platform height gap, five-tile maximum and two-to-six-tile pits, as hard bounds when generating traversable layouts.
+- [heuristic] A generator that outputs only a 2D layout will not capture height-based connections such as ramps, bridges and drops. When: generating 3D levels. Why: Plan-only output lacks vertical transitions.
+- [heuristic] Dividing spaces with doorways, windows, trellises, and screens instead of solid walls lets players see rewards or goals before reaching them.
+- [procedure] 1) Cast rays outward from the character's eye position at the waypoint. 2) Measure how far each ray travels before hitting geometry. 3) Average the lengths to score visibility. Why: average ray length approximates how much of the level the position can see; no random offset is needed.
+- [procedure] 1) Check that the sensor is interested in visual stimuli. 2) Check the signal's intensity against the sensor's threshold. 3) Check the sight cone. 4) Check line of sight. 5) Optionally check background conditions. When: testing sensors for visual signals after gathering candidates.
+- [procedure] 1) Add a trigger and resize its collision. 2) In the visual scripting editor, create a Touch event on the trigger with Max Trigger Count set to 0. 3) Connect Touched to a Toggle action. 4) Set the Toggle target to a toggleable ambient sound actor.
+- [metric] A visibility analysis yields either a count of visible locations or, for the ray method, an average ray length.
+- [tradeoff] More comprehensive sensing solutions handle these errors better, but greater sophistication raises processing cost.
+- [pitfall] A single line-of-sight ray can be fooled by a thin structure that blocks it, giving a false result; one ray is faster but less reliable. When: evaluating cover with a time budget; line-of-sight tests through level geometry. Why: One ray may miss a thin obstacle or pass through a gap.
+- [pitfall] Visibility-based links err both ways: distant regions can falsely connect via doorways, obtuse corners or inclines, and dense areas around a corner can wrongly appear unconnected.
+- [pitfall] Building an influence map from only visible units tends to underestimate the enemy under fog of war. When: fog of war. Why: Each side sees only some units, so the map can wrongly show control of much of the level.
+- [pitfall] Thin walls confuse simple distance checks, so designers should avoid them where possible. When: Placing walls in levels that use distance-based waypoint search. Why: Thin walls let straight-line checks see through to the wrong side.
+- [pitfall] In action games with thin walls and close quarters, straight-line sensing produces unpleasant artifacts that developers patch with extra tests, special cases and heuristics. When: first- and third-person action games.
+- [fact] Complex sense simulation is expected to become standard in first- and third-person action games and spread to real-time strategy and platformer games.
+- [fact] Visibility and cover are not strict opposites; a position can offer strong cover while still giving some view, like peering through a gap.
+- [fact] The most advanced knowledge delivery uses sense managers that distribute information from a physical simulation of the world.
+- [fact] Many stealth and action games build their core gameplay on AI sensing.
+- [fact] Modeling light bouncing off surfaces or mirrors requires extending a framework that assumes vision travels only in straight lines.
+- [fact] Touch requires direct physical contact and is best implemented with collision detection rather than the sense manager.
+- [fact] Visibility does not prove navigability: no simple test confirms movement between two locations, and complex action sequences are hard to anticipate geometrically.
+- [fact] A level's sightlines affect how movement input feels, so generated layouts should account for the camera views they create.
+- [fact] Early designed architecture used sight lines and alignments to direct occupant attention, making attention-directing one of the oldest spatial design concerns. When: Understanding the history of spatial design. Why: Early builders shaped occupant attention through form before other spatial concerns.
+
+## goal-oriented planning
+- [model] Goals hold a value and a discontentment method; actions hold a goal change method that returns their effect on each goal.
+- [model] Hybrid goal-based AI gives each character predefined goals, each controlled by its own finite state machine.
+- [model] Goal-oriented action planning replaces pre-built state machines with a planner that chains available actions to satisfy a goal.
+- [definition] GOAP extends utility-based decision making to action sequences that best fulfil goals overall; depth-first GOAP judges each sequence by the discontentment it leaves after its last action.
+- [definition] Dijkstra's loop is a multibranch WHILE loop with its own guard for each branch, which makes braided loops easier to write correctly.
+- [definition] Goal-oriented behaviour makes a character pursue internal goals or desires rather than only reacting to inputs.
+- [definition] A hierarchical task network represents a plan as a hierarchy in which abstract operators are decomposed through schemas until only primitive operators remain.
+- [mechanism] The quartic can yield up to two real arcs; no real root means the target is unreachable at that muzzle speed, and one root means it is at the absolute range limit. When: solving for a fixed muzzle speed.
+- [mechanism] Recording geometric constraints, such as perpendicular edges, lets a sketch update consistently: changing one element propagates to every diagram that uses it.
+- [mechanism] Different orders of the same actions often produce the same world state, so a depth-first planner revisits identical states.
+- [mechanism] A character periodically re-evaluates its goals and selects the most relevant one, which keeps control until another goal is chosen.
+- [behavior] Decomposers run in series and order matters. Early decomposers do broad coarse planning, such as pathfinding, and later ones refine sub-goals in detail.
+- [rule] Give actions their own algorithm for managing and running them, called a general action manager, when actions are treated as a distinct concept. When: Designing action execution for characters. Why: A separate manager is needed to schedule and run distinct actions.
+- [rule] Require simultaneous actions to be embedded in explicit combinations rather than combined ad hoc in the active list; this makes time cost linear in queue size. Why: Pairwise compatibility checks between queued and active actions are avoided.
+- [rule] Give each goal its own discontentment method; squaring is the default, higher powers suit critical goals, and minor goals should contribute little. When: Tuning goal weights. Why: Each goal needs a different response curve in practice.
+- [rule] Use discontentment-based choice when one action affects several goals and side effects matter.
+- [rule] Use a goal's designed rate of change directly when designers set it, since the game already updates the goal at that rate. When: The rate is set by game design.
+- [heuristic] Store the goal in the heuristic at construction so one general implementation can estimate distances between any nodes for any goal.
+- [heuristic] Goal-oriented behaviour suits genres where characters have many needs and many possible actions, such as people simulations.
+- [procedure] 1) Replace a state's transitions with a decision tree whose leaves are target states. 2) Test shared conditions once near the root. 3) Route each path to the state it selects. When: Several transitions share tests, especially expensive ones. Why: Shared tests run once instead of being repeated across flat transition conditions.
+- [procedure] 1) Allocate world models one more than the maximum depth, the first holding the current state. 2) At maximum depth, score discontentment and keep the best. 3) Otherwise take the next untried action, copy the model to the next level, apply it there, and go deeper. 4) When no actions remain, go up one level. 5) Stop when depth returns to zero. Execute the first action of the best sequence.
+- [procedure] 1) Start from an abstract root operator. 2) Pick an abstract operator to expand. 3) Select a decomposition schema whose preconditions hold. 4) Replace the operator with its subtasks. 5) Repeat until no abstract operators remain and all preconditions hold; fail if no schema applies.
+- [metric] Continuous planning needs O(1) memory beyond temporary storage; running time scales linearly with n, the count of nearby vehicles nearer than the front car in this lane.
+- [metric] Depth-first GOAP planning uses O(k) memory and O(nmk) time, for depth k, n goals, and m average actions per stage.
+- [metric] Flattening alarm behaviors into one state machine doubles the state count for each alarm level added. When: Multiple alarm levels interrupt the same agent.
+- [tradeoff] Stopping at first goal reach or smallest open estimate is faster but may return a non-shortest path; the strict condition is optimal but loses much of A*'s speed. Why: Closed nodes may later improve, so early stopping can miss the shortest path.
+- [tradeoff] Searching every action sequence to a fixed depth finds the best plan within that depth, but search time grows with the number of sequences.
+- [pitfall] An algorithm that looks compelling in a simple demo can bring a full production game to a standstill through its cost.
+- [pitfall] Time-aware utility works poorly for on/off goals, such as in shooter-style games, because those goals have no internal state that changes over time. When: Goals are binary rather than continuous quantities. Why: Without a changing value, there is no natural rate of change to predict.
+- [fact] Complex AI usually runs on the CPU, which on earlier consoles had budgets like those of 5- or 10-year-old PCs.
+- [fact] Evaluation functions usually return a signed integer, since many algorithms need integers and integer arithmetic is faster than floating point on most machines.
+- [fact] Most toolchains are data driven, letting users add data to an object's definition for use in decision making.
+- [fact] Guaranteed intelligent movement requires full motion planning, which is slower than pipeline steering.
+- [fact] Goal-oriented behaviour covers a simple goal-seeking framework, utility-based decision making, and goal-oriented action planning, which plans sequences of actions.
+- [fact] Planning action sequences is hard for two reasons: combinations grow quickly, with naive cost O(nmk) for k steps, and actions enable or disable other actions.
+- [fact] Recalculating only changed goals may approach O(nm) cost in some cases, though it gave little practical gain.
+- [fact] Depth-first GOAP planning is brute force, and no better general solution is known for this form of GOAP.
+- [fact] A multi-step action reports the total time to reach its goal, including every internal step such as preparation.
+- [fact] A character can hold any number of goals, also called motives, and some games allow hundreds of possible goals.
+- [fact] Goals are either fully satisfiable, dropping to zero when met, or permanent, staying low when met, like a stay-healthy goal.
+- [fact] Goals and motives can be treated as the same thing, so a belief layer that derives goals from motives is unnecessary.
+- [fact] Several different actions can fulfil the same goal, and each action lists the goals it can achieve.
+
+## player adaptation
+- [definition] Intra-behavior learning tunes a small, bounded part of a character's existing behavior without changing its overall mode of action, and it is easy to control and test. When: One bounded aspect of a behavior needs tuning and can be checked easily.
+- [mechanism] A character whose estimated damage rate is rising expects actions to cost more health and acts defensively; one doing well grows bolder. When: Goal rates adapt to recent events. Why: Recent changes weigh more than older ones.
+- [mechanism] An AI director that adjusts pacing and difficulty to player behavior and performance can keep a game engaging.
+- [mechanism] Enemies that learn from player interactions can adjust their behavior and develop grudges, making opponents feel personal and persistent.
+- [mechanism] An AI director that watches player performance and adjusts enemy and resource placement keeps a handmade level varied across play sessions. When: Handmade levels that must feel different each session.
+- [mechanism] Pairing generation with player models lets content be tailored to each player's enjoyment, learning, or engagement, using models of how that player responds to game elements.
+- [mechanism] Encounter selection is random or constrained by mood variables, so a volcano level favours fire creatures and a crypt favours undead. When: populating themed dungeons from an encounter database. Why: Mood constraints keep encounters consistent with the setting.
+- [mechanism] User selections reweight a multi-dimensional aesthetic fitness: patterns in chosen items are reinforced and patterns in unchosen items are reduced.
+- [behavior] Neural-network creature brains produced complex behavior that often looked stupid to players, so technical sophistication does not guarantee believable behavior. When: Using learning-based brains for game characters. Why: Complex learned behavior can be hard to read as intelligent.
+- [behavior] Learners can learn the wrong thing; the capacity for dramatic behavior change also implies the capacity for dramatically poor behavior. When: Learning is unconstrained. Why: Learning optimizes whatever signal it receives, including bad outcomes.
+- [behavior] Players often accept AI behavior they do not understand if it matches their expectations, and their mental model of AI is shaped by what they expect in early playtests. When: Players observe AI actions. Why: Matching expectations makes behavior seem intelligent even when it is random.
+- [behavior] Players imitate other players' strategies in multiplayer and imitate NPCs' actions in single-player, often without realizing it. When: Players observe other agents performing actions. Why: Learning by imitation is a basic human tendency.
+- [rule] RTS players sit atop the AI hierarchy, giving units explicit orders with no character; place no higher layer above them so their team decisions take precedence moment to moment. When: designing unit control in strategy games.
+- [rule] Learn lines that recur across many thousands of games by averaging their results and win likelihood, and record those values in the book. When: a program can play thousands of games.
+- [rule] Let the player choose the destination while the AI chooses the formation that fits the terrain. Why: the player directs intent while the AI handles positioning.
+- [rule] Give the learning mechanism to only a small number of characters in the game. When: Designing player-taught creature games.
+- [rule] Let players choose starting points or equipment rather than generating them randomly, as a direct lever for balancing generated content against player agency. When: designing procedural content. Why: Choice gives players agency that random generation removes.
+- [heuristic] Against fixed-pattern opponents, an AI that uses the observed history of past plays and scores can adapt and beat each fixed strategy. When: opponents follow repeatable patterns.
+- [heuristic] Keeping players in flow is comparable to keeping learners in their zone of proximal development, and machine learning can adjust difficulty to each learner's performance. When: When designing adaptive learning or difficulty for individual players. Why: Both need challenge matched to current skill.
+- [procedure] 1) Give each evolved item (e.g., weapon) a fitness equal to how often the player uses it, a cheap proxy for preference. 2) Evolve new items, favouring high-fitness items as parents. 3) Spawn the new items into play for the player to pick up. 4) Repeat during play so items become personalised to that player. When: game items or weapons that should adapt to each player, or evolving content from player behaviour data. Why: Usage frequency is a cheap proxy for player preference.
+- [procedure] 1) Generate an output from the input pattern. 2) Run backpropagation against the desired output.
+- [procedure] 1) Implement the atomic behaviors by hand. 2) Learn only which behavior to choose among a fixed set, possibly parameterized.
+- [procedure] 1) Search the action tree depth-first. 2) Backtrack when an action sequence fails to finish the level. 3) Use action priorities and domain rules to prune branches.
+- [procedure] 1) Evolve a neural network controller to drive like a specific player. 2) Score each candidate level by letting that controller play it in place of the player. 3) Keep candidates whose performance statistics fit that player. When: When content should suit one individual player. Why: An imitation agent stands in for the player, so its performance measures how well the content fits that player.
+- [procedure] 1) Build a player experience model from a gameplay feature dataset using a chosen machine learning or data-mining technique. 2) Use the model to recognise a new player's playing style. 3) Adjust content when the player's experience changes.
+- [procedure] 1) Record the player's style while a level is played. 2) Score each candidate design by fitness from that behaviour and the design's content features. 3) Show the best individual as the next level.
+- [pitfall] Intra-behavior learning only tunes details of the existing mode of action, so it cannot switch to a better strategy; a run-and-jump character never discovers stairs to reach a high ledge. When: A better alternative strategy exists outside the current behavior, or a fundamentally different approach is needed. Why: Learning is confined to tuning within the existing behavior's mode of action, so it cannot reveal a different one.
+- [pitfall] Multi-tier AI handles the player poorly: the player's choices can silently undermine higher-layer decisions, making teammates look poor.
+- [pitfall] A learned state can depend on a unique history, so a bug may appear only after particular learning and be hard to reproduce or verify as fixed. When: Learning has run over varied play sessions. Why: Each learner's accumulated state differs, so the same bug may not recur on a fresh run.
+- [pitfall] Multiple modular learners can coexist but may interact harmfully, such as targeting that keeps hitting cover another learner selected, so they need checking together. When: Running several learners in one game. Why: Each learner's output affects the inputs or conditions of the others.
+- [pitfall] Chasing realistic character minds in game AI can erase the planning that makes the mechanics meaningful.
+- [fact] An active research direction uses learned models of player behavior to control a character during network lag.
+- [fact] Action recognition for the player can be rule-based, and the squad strategy layer can be a state machine or decision tree.
+- [fact] Learned decision making is probabilistic, so every possible action keeps some chance of being chosen, however small.
+- [fact] Learning how to act entirely from scratch is currently considered almost pure fantasy in game AI.
+- [fact] The main obstacles to using learning in games are reproducibility and quality control rather than technical complexity.
+- [fact] Reinforcement learning can learn a player's play style and imitate it, which is one option for a dynamic demo mode.
+- [fact] An assistive module must estimate the player's strategy, which is very difficult to infer from observation, and few games have attempted it.
+- [fact] Players can take as long as they like on a turn, so turn-based AI still needs timing control when optimizing many simultaneous decisions.
+- [fact] Some learning combinations leave a creature largely incapable of sensible behavior, a state called learned impotence. When: Creatures trained by player feedback with neural networks. Why: This outcome seems an inevitable consequence of the AI approach.
+- [fact] Game characters can learn behavior from player rewards and punishments, shaping how they respond over time.
+- [fact] Designers can tag generated patterns as liked or unliked for each beat to steer later generation.
+
+## targeting and aiming
+- [model] Shooter AI has four key needs: movement, firing, decision making (usually simple state machines), and perception of whom to shoot and where they are.
+- [model] Shooter AI architecture combines decision making, movement, tactical and strategic AI, and pathfinding.
+- [definition] A chase targeter sets the goal ahead of the victim's position by the victim's velocity multiplied by a lookahead parameter.
+- [definition] Muzzle speed is the scalar speed at which a projectile leaves the weapon; it has no direction, which is supplied separately by the firing direction.
+- [definition] Shooter enemies are either bots with physical abilities like the player's, or cannon fodder that is simpler and more numerous.
+- [definition] Assistive AI lets the player hand decision tasks to the AI, which uses the same decision infrastructure as enemy forces. When: turn-based games.
+- [mechanism] Enemies that respond to player style produce low risk for careful play, such as picking enemies off, and strong pushback for reckless charging, which is likely fatal. When: When enemy response is tied to player behavior. Why: Pressure scales with how aggressively the player acts.
+- [mechanism] Widening an enemy's firing window makes it easier to survive; narrowing it makes it harder, so the window works as a tunable difficulty variable.
+- [mechanism] Slowing incoming projectiles lets the player see them and dodge, which keeps high enemy accuracy from overwhelming the player.
+- [mechanism] Aim assist strength depends on target distance, angular offset, other nearby targets, difficulty setting, and weapon. When: Tuning aim assist strength. Why: Each factor changes how much correction the player needs and how noticeable it becomes.
+- [behavior] Characters may wander far to reach sniping points, and players usually do not mind this. When: Characters seeking sniper positions. Why: Players tolerate long movement when it fits a sniper's role.
+- [behavior] Enemies may make a risky run past the player to reach a flanking position. When: when a flanking position is available. Why: flanking is valued enough to accept danger.
+- [rule] Assistive modules should rely minimally on player strategy, which is hard to infer; lacking it, they may pick safe options conflicting with the player's long-term plan. When: designing assistive decision modules. Why: the player's strategy is hard to infer by observation.
+- [rule] Each targeter sets one channel (position, orientation, velocity or rotation), and only one targeter may set each channel. Unset channels are don't-care. When: Designing steering pipeline targeters.
+- [heuristic] Narrow an enemy's aiming window as the score rises, so accuracy grows with player progress. When: Shooter-style games where enemies aim at the player.
+- [heuristic] When a character intends to catch an object, aim the target height near chest level, otherwise the object appears to drop at its feet. When: Predicting a catch point. Why: Catching at the feet looks unnatural.
+- [heuristic] Start with a window of about 4 actions for typical use, then tune it by trial and error. When: choosing a window size for a new predictor.
+- [heuristic] Platform game enemies use obvious, learnable patterns that players can exploit. When: Designing platform game enemies. Why: Platform games target a younger audience, so patterns are kept obvious.
+- [heuristic] Enemies can lower their defenses for a few seconds after attacking, giving the player a window to strike back. When: Designing enemy attack timing.
+- [heuristic] Use an influence map of controlled areas to find a safe spot for an important building.
+- [procedure] 1) Fire rays from numerous attacker spots arranged on a ring around the candidate point, adding random offsets and a constant angle increment. 2) Throw out spots lying beyond the room's boundary. 3) Point each ray at a random location inside a volume sized like a human. 4) Dividing successful hits by total iterations yields the cover score. When: measuring cover quality when accuracy outweighs runtime cost. Why: Testing many attack angles catches cover that one sight-line check would overlook.
+- [procedure] 1) Use a narrow fan while moving freely. 2) On a collision, widen the fan. 3) If collisions continue on successive frames, keep widening. 4) When trapped, pick one ray as the winner and ignore other rays' collisions for a while. When: When wall avoidance rays must handle both passages and corner traps. Why: Adjusting the fan to the situation balances passage blocking against corner trapping.
+- [procedure] Use a transition matrix for each shot that sets the fired-from value low and raises the others slightly, then apply a recovery matrix over quiet time to restore values. When: tuning position safety for a sniper.
+- [procedure] 1) Assemble outside the doorway. 2) Throw a grenade, stun if non-combatants may be present, lethal otherwise. 3) Move the first member along the near wall to a corner. 4) Move the second member to the adjacent corner. 5) Others cover the room center. Every member fires at visible targets while moving. When: Squad clearing a room through a door. Why: Corner positions give cover while the team enters and covers the interior.
+- [procedure] 1) Assume every legal layout consistent with prior results is equally likely. 2) For each square, count layouts covering it. 3) Divide by total layouts. 4) Shoot at the highest-probability square, breaking ties arbitrarily. When: building a hidden-information guessing AI. Why: picks the square most likely to hit given results so far.
+- [procedure] 1) Track moving targets by replacing part of the stick input with motion matching the target. 2) On stick release over a target, slide the crosshair onto it during deceleration. 3) When a sweep would pass a target, bend its direction slightly, not its speed. When: Building aim assist for console shooters. Why: Each subsystem acts in moments the player cannot detect, so assistance stays hidden.
+- [pitfall] Testing cover only at a single point height misses cover that protects against low attacks but not high ones. When: evaluating cover.
+- [pitfall] Making an enemy simply smarter and tougher can produce an opponent players cannot beat in a satisfying way, and an opponent that keeps getting tougher becomes one players almost never win. When: When raising enemy difficulty. Why: Unbeatable opponents stop being fun.
+- [pitfall] Enemy fire that is too accurate overwhelms the player and reads as unfair. When: shooters with fast projectiles. Why: the player has no realistic chance to react.
+- [fact] Shooting AI has two requirements: firing accurately and responding to incoming fire.
+- [fact] Straight-line aiming tests work reasonably well for fast projectiles over short distances. When: fast projectiles over short distances.
+- [fact] With physics-simulated projectiles, trajectory prediction is a core part of shooter AI.
+- [fact] Target-state and action accessors read the stored target and return nothing when no decision has been made.
+- [fact] Slowly changing tactical properties, such as RTS influence or city fire and police coverage, can be updated gradually, reconsidering only a handful of locations each frame.
+- [fact] For a sniper point, Boolean flags can record whether enemies have fired toward the location, a rough sign that the enemy knows it is there. When: Validating sniper waypoints. Why: Enemy fire toward a location suggests the position has been discovered.
+- [fact] Shooters viewed from first or third person are the most commercially significant genre, and their AI centers on movement and firing.
+- [fact] Pathfinding is needed for complex enemies or bots, while tactical AI handles safe positions, ambushes and advanced tactics.
+- [fact] Movement and firing are key in every shooter; later needs become expected in sophisticated shooters and support good critical reception.
+- [fact] Supporting shooter AI systems include line-of-sight checks, waypoint tactics or frag-maps, a scripting language, kinematic movement, and an animation controller.
+- [fact] Thumbstick aiming was long thought to make console shooters inferior to mouse-controlled PC shooters until aim assist showed that console aiming could be made playable. When: Designing aiming for thumbstick-controlled shooters. Why: Indirect assistance proved that console controls could be competitive with mouse aiming.
+- [fact] Assistance types include jump assist for safe landings, attack assist for clean hits, driving assist to avoid spinning out, and movement assist for ledges and obstacles. When: Designing assistance beyond aiming. Why: Assistance can help many actions, not only aiming, and each form should help without misjudging intent.
+
+## rule-based ai
+- [model] A rule pairs an if-clause with an action function that receives the variable bindings and may change the database.
+- [definition] A database rewriting rule changes the AI's stored data directly, such as replacing a patrol goal with an attack goal when an enemy is sighted.
+- [definition] A rule's condition is a pattern matched against database facts, assembled from facts, numeric ranges, and logical connectives like AND, OR, and NOT.
+- [definition] Block format is a set of AND-only fuzzy rules that stores outputs in plain arrays, so decisions can be made by direct array lookup.
+- [definition] A rule-based system pairs a database of knowledge with a set of if-then rules.
+- [definition] A rule becomes eligible once the fact base meets its condition; an eligible rule may be chosen to execute its action portion.
+- [definition] An arbiter chooses which of several triggered rules fires; many rule-based systems include one. When: more than one rule is triggered.
+- [definition] A reactive script can be modeled as an AND-OR tree: internal nodes are abstract behaviours that may be shared among characters, and leaves are primitive behaviours such as animations.
+- [mechanism] Rules in disabled sets never get the chance to trigger, so switching sets on and off limits which rules are evaluated.
+- [mechanism] The database can change between iterations, both through the action of a fired rule and through game code, so each iteration must re-evaluate the rules against current data.
+- [rule] Support then-parts that change game state, request game actions, rewrite the database, or run arbitrary code when a rule fires.
+- [rule] Let a condition-action rule only request an action, and let the game decide whether it succeeds and update the stored state when it does. When: The action takes place in the game world and may fail, such as an item out of reach. Why: Only the game knows whether the action actually succeeded.
+- [rule] Use direct database rewrites for AI-internal data, such as goals, that has no meaning to the rest of the game.
+- [rule] A block-format rule set must cover every state of each input and include a rule for every combination of those input states.
+- [rule] Use rule-based logic when decisions must be transparent and predictable.
+- [heuristic] Prefer rules with harder-to-meet conditions, since they match the current situation precisely; in Boolean-combined conditions, more clauses signal greater specificity. Why: Rules with easy conditions are likely general.
+- [heuristic] If one behavior is chosen most of the time, placing it near the root can beat a balanced layout. When: one behavior dominates.
+- [heuristic] Test a numeric range, such as health below a threshold, rather than one exact value, when the condition allows it. When: The condition is a numeric state that can vary.
+- [heuristic] Rule sets can be switched by game code or by the then-part of another rule, such as switching movement sets from enemy information already in the database.
+- [heuristic] Use region-level patterns, such as board edges, rather than full-board matching, since full-board matches are unlikely to succeed.
+- [procedure] Split a rule 'a1 AND ... AND an THEN c' into n single-input rules, one per input state, so rule count grows linearly rather than exponentially. When: fuzzy rule sets with many inputs. Why: ten inputs with five states give 50 rules, not about ten million.
+- [procedure] 1) Group rules into sets that can be switched on and off. 2) Place sets in a hierarchy under an always-enabled top set. 3) Let higher-level sets hold only rules that enable or disable their children, and lowest-level sets hold working rules. When: a rule system has grown too large to evaluate fully.
+- [procedure] 1) Loop over top-level database items and stop at the first that matches. 2) A datum matches when type, identifier (or wildcard) and value bounds agree. 3) A group matches when type and identifier agree and every pattern child matches some database child. When: matching a pattern against a hierarchical database.
+- [tradeoff] Rule-based systems are often regarded as inefficient and hard to build, yet they keep behavior predictable and simplify implementation and debugging. (x2)
+- [tradeoff] Combs format has no general transformation from block format and cannot express every truth table, but designing rules directly in it makes tuning easier at the cost of sophistication.
+- [tradeoff] General rules that are parsed at run time may be faster than block format for many inputs, but they give up block format's fixed array structure.
+- [pitfall] Decomposing AND rules breaks down when several rules share a conclusion, since split rules can conflict for the same input state.
+- [pitfall] Ten inputs with five states each would need nearly ten million block-format rules, far too many to author by hand.
+- [pitfall] Hand-written rule sets become difficult to maintain as the number of interacting conditions grows. When: Building AI decision rules with many interacting inputs. Why: Interactions multiply and become hard to manage by hand.
+- [pitfall] Reading other agents' internal state or polling their intentions is fast but error-prone, and both must be rewritten whenever a character's AI changes.
+- [pitfall] A model trained on past hiring decisions learned to penalize résumés likely from women, reproducing past discrimination in its own decisions. When: When training labels come from historical human decisions. Why: Past outcomes encode past bias, which the model learns as a pattern to follow.
+- [fact] Game AI tends to rely more on condition-action rules than on database rewrites, unlike many industrial AI systems.
+- [fact] Any consistent set of general fuzzy rules can be converted to block format, whatever operators or clause counts it uses, because a complete AND-rule table can express any truth table.
+- [fact] The rule count grows exponentially with the number of inputs, so block-format decision making only suits small systems.
+- [fact] Rule conditions compare values for absolute equality; numeric values may also use less-than, greater-than, or within-range tests.
+- [fact] A hard step function jumps directly from zero to one, though many other threshold functions are used in practice.
+- [fact] Bot scripting languages can be exposed to players or modders to change AI or create new autonomous characters.
+- [fact] Most video game AI is rule-based, with developers defining exactly how the game and its characters behave.
+- [fact] Reactive scripting technologies include behaviour trees, hierarchical finite state machines, HTN planners such as SHOP2, and the ABL planner.
+
+## enemy design
+- [model] Typical platform and adventure enemy AI has two states: player spotted, and normal behavior, often standing with animations or following fixed patrols.
+- [definition] Enemies can act as player-sized alternative architecture, shaping routes and behavior like walls; plan them as design elements of the space, not separate additions.
+- [definition] Enemy AI can be framed as negative space: every tactic given to an enemy implies the player behaviors that would defeat it, and the designer shapes those behaviors. When: When designing enemy tactics. Why: Enemy behavior defines which player strategies succeed.
+- [definition] AI staging lets designers coordinate movement-based events: triggers switch characters on or off, and high-level actions, mostly parametric move-to commands, are assigned to groups.
+- [mechanism] Fear rises when agents see, hear, or smell odd things; each stimulus has an oddness intensity for each of the three senses.
+- [mechanism] Allies and enemies that track area knowledge and their own fear can retreat when outnumbered, making encounters more exciting and replayable. Why: fear-based retreat makes outcomes less scripted.
+- [mechanism] Strong or hard-to-kill enemies in real time can herd the player toward the location the designer intends. When: designer needs to steer the player to a specific place.
+- [mechanism] Fixed enemy placements, recognizable enemy types and weapons, and generous checkpoints let players build strategies that carry across repeated attempts. When: when players retry the same encounter many times. Why: Predictable elements let players learn from each attempt and refine their approach.
+- [mechanism] In stealth levels, enemies act as architectural elements, so the level becomes a spatial puzzle about their placement.
+- [mechanism] Enemy health sets a hierarchy of power: the weakest enemies die in one shot from any weapon, while larger enemies take many shots from the basic weapon. When: Designing enemy health tiers against a fixed set of weapons. Why: Shot counts give the player a clear measure of how strong each enemy and weapon is.
+- [behavior] When a player's shields drop and they take cover, enemies that back off give the player time to recover, rather than flushing them out of cover. When: When the player is weakened and sheltered. Why: Letting players recover keeps pressure fair after a risky moment.
+- [behavior] Enemies can use waypoints to occupy defensive positions that surround the player when possible. When: when the player is in an open area with enough enemies.
+- [behavior] Enemies that are harmless alone can become dangerous in groups, because they flank the player. When: enemies appear in numbers. Why: Group behavior adds spatial pressure that individual enemies lack.
+- [behavior] Varying the encounter mix changes which builds feel strong, so a playthrough built around one stat type feels different from one built around another. When: encounters vary in their difficulty for different builds. Why: different encounters make different stats easy or hard to rely on.
+- [rule] Vary enemy attack range and approach: give some enemies both ranged and close-range attacks, and have some hang back at range while others tank and rush the player. Why: Range and approach variety forces players to change position, and different styles demand different responses.
+- [rule] Every action an enemy can take should have at least one counter the player can use, so players feel empowered to make winning decisions.
+- [rule] Give each enemy one to five distinct traits, such as range, abilities, vulnerabilities, or squad behavior, and give more traits to rare, important enemies. Why: Varied traits force players to learn several counters instead of one.
+- [rule] Give enemies vulnerabilities the player can exploit, such as silencing spellcasters, dispelling magical beings, or outrunning slow creatures. Why: Exploitable weaknesses give players a reason to identify and use the right counter.
+- [rule] Vary enemy strength, speed, and damage range, where damage may depend on armor, to create distinct threats. Why: Multiple variables give enemies different roles in play.
+- [rule] Position enemy spawners so enemies appear to emerge from natural features such as woods, so their origin feels explained. When: enemies should seem to come from the environment.
+- [rule] Make action-game spawns defensible and isolated from main nodes, yet close enough that players can rejoin a fight quickly.
+- [heuristic] Reuse a small set of enemy variants with consistent tactics so players learn each enemy's habits. When: when designing a set of enemies across a game. Why: Recognizable and consistent behavior lets players predict and counter enemies.
+- [heuristic] Enemies need little meaning beyond their function, which is to present danger and dominate space. When: designing enemies in a stylised game. Why: Functional clarity matters more than narrative depth for hazards.
+- [heuristic] Distant characters are processed as a group behaviour rather than individually, since thousands cannot all run individual behaviour and switching them off is easily noticed. When: Large populations away from the player. Why: Group processing keeps a living community at much lower cost.
+- [heuristic] Enemies moving at about the player's walking speed create regions where the player must time movement carefully. When: tuning enemy speed against player movement. Why: Matching the player's speed makes timing the central challenge.
+- [heuristic] Enemies that threaten damage can block a passage the way walls do, so the player must weigh the risk of passing or fighting. When: when enemies occupy routes in a level. Why: Players cannot pass through enemies without risk, so they function as spatial barriers.
+- [heuristic] The approach to a narrative stage can signal its presence by having no enemies, which is readable in games with random encounters. When: when random encounters occur while walking.
+- [heuristic] Gauge encounter danger by counting how many such fights a party survives before a wipe, compared with fights between full heals, and how many wins bring significant progression. When: evaluating difficulty and progression pacing.
+- [heuristic] When the designer knows typical encounters, set defensive and offensive stat costs to match the expected mix, or adjust the mix so that being outnumbered occurs about as often as outnumbering. When: the designer knows the encounter composition ahead of time. Why: equal frequency of advantage and disadvantage makes the two stat types equally valuable.
+- [procedure] 1) Show the new enemy in a cutscene 2) face it alone 3) face it with stronger enemies or in disadvantageous spaces 4) pit it against a newly gained weapon.
+- [procedure] 1) Set total playtime and the share spent in combat. 2) Set the target length of an average combat. 3) Divide combat time by average combat length to get encounters. 4) Divide encounters by enemy variants needed, allowing for reuse, to get the required enemy count. When: sizing enemy content for a game.
+- [metric] Average time between new enemies equals total playtime divided by the number of distinct enemies, which allows comparing enemy variety across games. When: comparing content pacing across games.
+- [metric] Areas where players go too long without encounters are boring, too long with too much health are too easy, and too long with too little health are too hard. When: Analyzing aggregated session data per area. Why: Gap length and health levels signal pacing and difficulty problems.
+- [pitfall] When enemy colour matches the warning signal colour, competitive players can lose reaction time.
+- [pitfall] Testing a layout without its enemies misses that an easy exit can become blocked once a horde arrives.
+- [fact] Enemies can run, fire and aim at once: running and firing are animation channels, while aiming is procedural, driven by where the character looks.
+- [fact] Games need far more distinct entity behaviors than ordinary software, since a typical role-playing game has many inhabitants, items and quests.
+- [fact] Enemies already placed up to a given point determine the expected character level, so the strength of later enemies can be derived from the XP budget before them. When: When placing enemies in a progression level.
+
+## behavior tree and blackboard
+- [model] A blackboard system has three parts: experts, a shared blackboard that any expert can read and write, and an arbiter.
+- [model] The utility-based GOB model has two inputs: goals, each with an insistence value, and actions that promise to change those insistence values.
+- [model] World interfacing uses two techniques: event passing, extended to simulated perception, and polling.
+- [model] Behavior-combination tools let programmers expose prebuilt behaviors and let designers combine them, usually into finite state machines, with decision logic based on game state.
+- [definition] In a blackboard architecture, each steering behavior reads what other behaviors intend before deciding its own output.
+- [definition] A balanced decision tree has roughly equal leaf counts under each branch, keeping the average path to any behavior short.
+- [definition] A wildcard lets one rule match any database entity that satisfies a condition, such as anyone with health below a threshold.
+- [definition] A world model is a changeable representation of game state that a planner can modify freely without altering the real game state.
+- [definition] A behavior differs qualitatively as a mode of action, such as laying an ambush, rather than a parameter tweak within one mode.
+- [mechanism] A blackboard lets each AI module communicate freely with others without explicitly setting up a separate channel for every pair.
+- [mechanism] A positive-level transition exits the current state, does nothing else at that level, and returns its exit action with the transition, reducing its level by one at each step up. When: A transition must be handled by an ancestor level.
+- [mechanism] Propagating value along a sequence needs several iterations in the same region, and following known good actions speeds this up. When: Learning long action sequences. Why: Repeated updates in one region pass value backward along the chain.
+- [mechanism] Information not supplied to a learning character is effectively ignored, so conditions that make an action inappropriate must be represented. When: Designing context for learned behavior.
+- [mechanism] In a hierarchical state machine, a substate that does not handle an event passes it up to its superstate.
+- [mechanism] AND nodes run sub-behaviours in sequence, and OR nodes offer alternative ways to achieve a behaviour, like if-then-else logic.
+- [mechanism] Applicability criteria prune subtrees that the current world state does not support. When: Selecting behaviours in a reactive script.
+- [behavior] Often no expert or only one expert wants control, so the arbiter has little work to do.
+- [rule] When a wildcard identifier matches, record the matched database item as a binding. When: pattern matching with wildcards. Why: Bindings let later rules refer to the matched items.
+- [rule] Build an opening book only when it is useful for the game, and use other techniques after the opening phase.
+- [heuristic] Add a strategy layer when a team must coordinate its behavior to reach a goal; otherwise movement and decision making are often enough. When: designing a group of characters.
+- [heuristic] Use cooperative arbitration when simple blending or priorities produce believable-looking failures in tight situations.
+- [heuristic] In a chain of binary checks, order the tests so the most likely outcomes come first to reduce wasted work, though repeated checks remain.
+- [heuristic] Write fuzzy rules directly in block format when possible; conversion tools mainly help translate a rule set that already exists.
+- [heuristic] Use a rule-based system when characters must reason about situations the designer cannot anticipate well enough to encode in a decision tree. When: behavior depends on unpredictable world states.
+- [heuristic] Prefer scripted teamwork when tactics are recorded as step-by-step sequences instead of open-ended layered or emergent AI.
+- [heuristic] Use Action Description Language instead of simple STRIPS when a planning problem needs quantified goals, conditional effects, or other features the simple form cannot express. When: a planning problem is too complex for simple STRIPS. Why: the extended form adds the needed expressiveness.
+- [procedure] 1) Experts indicate interest. 2) The arbiter selects one expert. 3) That expert works, possibly changing the board. 4) The expert releases control.
+- [procedure] 1) Return the exit action of the sub-state holding the pending transition. 2) Honor the transition at the level where it lands, returning exit actions of states left on the way. 3) Return the transition's action, then the target's entry action. When: A sub-state transitions to a state at a higher level.
+- [metric] With eight equally likely behaviors, a balanced decision tree always takes three decisions, while an unbalanced one averages a little under four and a half. When: eight behaviors, equally likely.
+- [metric] Organizing thousands of rules into switchable sets reduced the number of active rules at any time to about a hundred. Why: Only enabled sets are evaluated.
+- [tradeoff] Rule databases should hold true game state, since beliefs there make rule actions likelier to fail; a planner's world model should hold the character's beliefs, so unaware characters lack hazards. When: choosing what a rule database or planner world model stores.
+- [tradeoff] Use a blackboard when AI modules need feedback in both directions, so a downstream result can revise an upstream decision. When: modules need two-way feedback. Why: a plain chain cannot express backward messages.
+- [pitfall] Blackboard actions run after the iteration ends, possibly before other experts check them; without agreement flags, they run even if not properly thought through.
+- [fact] Binary trees are easier to optimize, and some tree learning algorithms require binary splits.
+- [fact] Any multi-branch decision tree can be expressed as a binary tree.
+- [fact] Blackboard content depends on the application: steering uses locations, maneuvers, or animations, while decision making uses game state, positions of enemies or resources, and character state.
+- [fact] The value store interface must read a Q-value, write a Q-value, and return the best action for a given state.
+
+## timed actions and scheduling
+- [model] A hierarchical partition splits space into a few regions and recursively subdivides any region holding more than a maximum number of objects, typically into two, four, or eight parts.
+- [definition] A task scheduler decides which tasks run on which frame, handling tasks with different execution frequencies and durations, so the workload stays smooth without large peaks.
+- [mechanism] A timed random decision stores its choice with the frame it was made, redraws the choice when the stored choice is stale or a timeout passes, so a behavior varies over time instead of persisting forever. When: A behavior should vary over time. Why: Prevents an agent staying in one state indefinitely.
+- [mechanism] A counter that resets every second lets a slow player cross one noisy surface safely, while two noisy steps within one second trigger an alert. When: Scripted noise detection with a one-second reset. Why: The reset window defines how much noise is tolerated per second.
+- [behavior] A time cell that increases by 1 each iteration, with other values updating from game state, models time-dependent effects within one run. When: Modeling time-dependent behavior in a spreadsheet via iterative calculation.
+- [rule] Suspend a rule as soon as it fires, and lift the suspension when the database changes. Why: Stops a rule from firing repeatedly without changes.
+- [rule] Give actions that involve animation or movement a duration, rather than having the decision maker re-request them every frame. When: When an action takes time to complete.
+- [rule] A hierarchical scheduler must run the right behavior in the right order, and only when that behavior is required.
+- [rule] Include an object only if the total weight stays within the limit; otherwise abandon extending the current selection.
+- [heuristic] Among actions with equal priority, order by increasing expiry time so actions nearest to expiring sit at the front, which gives a marginal performance gain. When: Priorities tie. Why: Equal-priority order is otherwise undefined.
+- [heuristic] Schedule the most difficult task early, because its constraints narrow the options left for the remaining tasks.
+- [heuristic] No group cost method is correct everywhere. The best trade-off for a game usually comes from tweaking the costs and testing the resulting paths.
+- [heuristic] Find a frequency's set by hashing, or by direct array indexing when every frequency up to a maximum has a set.
+- [heuristic] For many agents at one frequency, assigning each a distinct phase, even beyond the frequency, is less error-prone than fixed phases. When: Many agents sharing a frequency. Why: Changing the frequency alone will not stop a behaviour from running.
+- [procedure] 1) Request the wake-up action when leaving the sleep state. 2) Request the go-to-sleep action when entering it. 3) Wait for the animation to finish without continual processing. When: When states involve timed animations or movement.
+- [procedure] 1) Place markers at predefined points on the racing line. 2) When the character reaches a marker, schedule a trick of a given duration. When: Scheduling animated tricks during jumps.
+- [procedure] 1) Predict the likely airtime of the jump. 2) Schedule a trick whose duration fits that airtime. When: Scheduling tricks without fixed markers.
+- [procedure] 1) Fix start and end locations at every level. 2) Restrict each lower-level search to nodes inside the groups of the high-level plan. 3) Run the search over only those nodes. When: the complete detailed plan is needed up front. Why: the restriction shrinks the search dramatically.
+- [procedure] 1) Increment the frame count on each call. 2) For each behaviour, run it when the frame count plus its phase is divisible by its frequency, using modulo on integers. Why: Integer modulo is very fast on current hardware, keeping the check cheap.
+- [procedure] 1) Build a top-level graph of indoor sectors linked by portals. 2) Plan long routes between sectors. 3) Compute a navigation mesh route inside each sector. Why: fine routes are only needed within the sectors on the long route.
+- [metric] Hierarchical search takes O(plm) time for p levels, with l and m as defined in the source, and O(1) memory beyond A*. Good hierarchies can make search about two orders of magnitude faster on graphs of tens of thousands of nodes.
+- [metric] The basic frequency scheduler needs constant O(1) memory and linear O(n) time, with n denoting the count of behaviours.
+- [tradeoff] The basic frequency scheduler suits tens or hundreds of behaviours at small frequencies, but wastes checks when many behaviours always run together.
+- [pitfall] A behaviour repeatedly interrupted before returning a result, e.g. by thread synchronisation, may leave its character standing still; tiny processing changes can trigger this and it is hard to debug. When: Interruptible processes that never get enough time.
+- [pitfall] Clearing suspension on any database change fails when game code writes to the database every frame, because suspension is constantly lifted while the triggering data stays stable.
+- [pitfall] Assigning each character in turn its lowest-cost slot can leave some character until last with no sensible slot left. When: Naive greedy assignment. Why: Early choices consume slots that later characters need.
+- [pitfall] With very frequent changes, even incremental replanning can overwhelm the pathfinder.
+- [pitfall] Hierarchical search locks in the high-level route, so a shortcut visible only at a lower level is never found. The error comes from the single link cost chosen per group.
+- [pitfall] Ignoring the time dimension in continuous planning reintroduces path-dependent costs that A* cannot handle. When: Planning with timing-sensitive connections. Why: Costs then depend on the path taken to reach a node.
+- [pitfall] Frequencies sharing divisors, such as 2, 4 and 8, run together, leaving some frames empty and others overloaded. Why: Coinciding runs cluster work onto the same frames.
+- [pitfall] Changing access statistics can change the optimal tree, because its shape depends on the frequencies.
+- [fact] Timing errors from moving listeners are rarely noticed for sound but can matter greatly for smell.
+- [fact] Each of the two instability checks is a single linear scan over part of a preference list.
+- [fact] Integer counts can replace probabilities when computing search tree cost, since only the relative sizes of the weights matter.
+
+## projectile and motion prediction
+- [model] Under gravity alone, a projectile's position at time t equals the firing point plus the firing direction times muzzle speed times t, plus half of gravity times t squared. When: When predicting projectile position without air resistance. Why: The parabolic arc follows directly from constant gravitational acceleration.
+- [definition] A lead history records, at each turn, the difference between the estimated strengths of the eventual winner's and loser's positions.
+- [mechanism] Confidence in a follow-on rises as its observations accumulate and other follow-ons stay rare; a near-even split of outcomes gives almost none. When: counting follow-on outcomes for a window. Why: Random variation easily explains small or evenly split samples.
+- [rule] Prefer the lower arc when hitting a target, because it leaves the enemy less reaction time and avoids ceilings and obstacles; use the higher arc to fire over walls. When: two valid firing arcs exist. Why: The lower arc is faster to reach the target and clears fewer obstacles; the higher arc clears walls.
+- [rule] Reduce a prediction-based AI's competence so the player retains a fair chance of winning. When: tuning a prediction-based combat AI. Why: Full competence makes the AI effectively unbeatable.
+- [rule] Run the physics when ball dynamics are complex and central, as in pool or golf; predict the trajectory directly when dynamics are simpler, as in baseball or soccer.
+- [rule] Pursuers heading to an interception point should use tactical pathfinding that avoids crossing the player's path. When: when intercepting a moving player. Why: the interception is not given away.
+- [rule] Aim assistance should act indirectly rather than pulling the crosshair straight onto the target, because direct snapping feels obvious and breaks the illusion of player skill. When: Implementing aim assist for thumbstick shooters. Why: Overt snapping is noticed, while indirect adjustments are accepted as the player's own aim.
+- [heuristic] Evade predicted positions at closest-approach time so the correction starts immediately.
+- [heuristic] N-gram prediction can be applied beyond combat, for example to predict where players will be, which weapons they will use, and how they will attack.
+- [heuristic] Model all sounds alike in AI hearing, because pitch differences in propagation are too subtle to matter for character behavior. When: designing AI hearing.
+- [heuristic] Weapons that home in need only approximate targeting, not a full firing solution. When: Racing AI that fires homing weapons. Why: The weapon steers itself toward its target.
+- [procedure] To pursue a target assumed to keep its velocity, aim ahead to cut it off. 1) Compute prediction time as distance divided by current speed, using a maximum time if speed is too small. 2) Cap the prediction time at a maximum. 3) Set a surrogate target at the target position plus its velocity times prediction time. 4) Seek that surrogate. When: Chasing a target with steady motion, or a moving target that keeps roughly its current velocity. Why: Aiming at the predicted position avoids seeking the target's stale location.
+- [procedure] 1) Treat firing point, target, muzzle speed and gravity as known. 2) Add the normalized-direction constraint to get four equations in four unknowns. 3) Eliminate the direction to get a quartic in time with no odd powers. 4) Solve as a quadratic in time squared, take square roots, and discard negative times. When: muzzle speed is known and constant and drag is negligible. Why: Eliminating direction yields a closed-form solution in constant time and memory.
+- [procedure] 1) Solve the vertical position equation for the time the projectile reaches the target height. 2) Use the larger time value; if it is negative, the projectile will not return. 3) Substitute that time into the full position equation to get the horizontal impact point. When: Predicting where a projectile lands on a known height. Why: The descending crossing determines the landing point.
+- [procedure] 1) Compute the horizontal impact point. 2) Use its terrain height as the new target height. 3) Recompute until the horizontal values stabilize. When: Projectile lands on rapidly changing terrain. Why: Terrain height at the impact point changes the solution.
+- [procedure] 1) Predict the character's position a short time ahead from its velocity. 2) Find the nearest path point to that predicted position. 3) Offset forward from it to get the target. When: Path has complex sudden turns. Why: Prediction smooths following on sharp direction changes.
+- [metric] A collision is predicted when the separation at closest approach is less than the sum of the two radii.
+- [tradeoff] Pure homing is easy for players to predict, while pure randomness feels dull; blending the two gives better gameplay.
+- [pitfall] Aiming along a straight line at a projectile affected by gravity makes shots fall short, landing at the target's feet.
+- [pitfall] Near a ledge, a projectile can miss the character's height entirely and fall into the gap behind it. When: Projectile impact near ledges or walkways. Why: The simple height test does not check whether the impact is valid.
+- [pitfall] Predictive AI can draw wrong conclusions from past data, so it needs human supervision before automating decisions that affect people.
+- [fact] Many game AI behaviors depend on predicting how other objects will move under physics, not only on the character's own motion, such as intercepting a ball or leading a teammate's throw.
+- [fact] Earth's gravity is about 9.81 m/s² downward, but games often use roughly double that, since true gravity can make projectiles look floaty. When: When tuning projectile gravity for a game. Why: Stronger gravity makes shots read as more natural in play.
+- [fact] Gravity keeps most characters on the ground, so their movement is effectively two-dimensional and most classic movement algorithms are defined only in two dimensions.
+- [fact] Players often face harder physics than AI cars, though many games now give AI cars the same task as the player.
+- [fact] Sports AI often must predict a fast-moving ball's motion, either to intercept it or to work out the effect of a strike.
+- [fact] Projectile prediction methods, including firing solutions used for firearms, carry over directly to predicting ball motion in sports games.
+
+## behaviour arbitration
+- [model] In collusion each character has two goals: to challenge the player and to lead the player to interesting places. When: Designing enemy or companion behavior.
+- [model] Narrative directive behaviours are tied to event templates and control many characters at once like a stage manager, while local autonomous behaviours are tied to NPC types and run when an NPC is not in an event. Why: Autonomous behaviours give NPCs an apparent inner life between events.
+- [mechanism] When characters switch modes, one change can force another, and the chain can cycle into oscillation; hysteresis helps only a little. When: characters switch behavior modes based on each other. Why: Each mode change triggers the next, creating feedback loops.
+- [mechanism] A queued action may interrupt running actions only if its priority is higher than theirs; if it does, it enters the active set.
+- [mechanism] First-applicable arbitration fires the first triggered rule in a fixed ordered list and ignores the rest, giving earlier rules strict precedence.
+- [mechanism] The queue and active set always hold actions sorted from highest to lowest priority, so the top action is first and easy to retrieve.
+- [mechanism] If the player reinforces an instinct, it becomes part of the learned behavior and is carried out much more often. When: Learning creatures with built-in instincts.
+- [behavior] Under broadcasting, a character can begin reacting to a new event type without re-registration, because the data is already delivered to all listeners. When: scripts or late design changes need new reactions. Why: Listeners already receive every event.
+- [rule] Arrive has no leave counterpart; to leave a target, use flee at full acceleration as the practical opposite.
+- [rule] Fallback behaviours with ranges covering all importance values should run only when nothing else applies; with the smallest-range rule a fallback is always overruled.
+- [rule] Behaviours must save all the data they need before returning control, and only that data. When: writing behaviours for a cooperative scheduler.
+- [rule] Select mode from fear level: crossing a threshold means scared; near a scared character means social; very low fear means bored; otherwise curious.
+- [rule] Implement an interrupting behavior that can occur in any state by pushing its state onto the stack, then popping it when finished to resume the prior state. When: A behavior such as firing can interrupt any state and must return to the state that was active. Why: The stack records the prior state, so no return transitions need to be hardcoded.
+- [heuristic] First-applicable arbitration suits rule sets already ordered by priority, especially where repeated firing is intended, such as a rule that always reports current state.
+- [heuristic] Use running mode to obtain decisions from a trained network, and switch to learning mode only when adjusting weights. When: operating a neural network in a game.
+- [heuristic] When a character's importance drops, it is often better to switch its behaviour entirely than only reduce its scheduling.
+- [heuristic] Use instincts to mitigate poor learned behavior, since instincts perform fairly well by default. When: Creatures whose learned behavior may go wrong.
+- [procedure] 1) Collect every triggered rule. 2) Request a priority from each rule, computed at run time from its current importance. 3) Fire the rule with the highest value.
+- [procedure] 1) Arrange behaviors into groups, each blending its members with weights. 2) Order the groups by priority. 3) Consider each group in turn and skip any whose total magnitude is below a small epsilon. 4) Steer with the first group that exceeds epsilon. When: When some behaviors must always override others, such as avoidance over pursuit. Why: Higher-priority urgent behaviors take control without blending with lower ones.
+- [procedure] 1) Ask the top set for one triggered rule. 2) Search that set's own rules, then delegate to contained sets. 3) Each set may use its own arbitration method, such as most-specific. When: selecting a rule from a hierarchy of rule sets.
+- [pitfall] Dynamic priority arbitration is the slowest arbiter, since all triggered rules must be found and each priority request may search the database.
+- [pitfall] A rule that fires without changing the database, with no external change, will fire again on every run and can loop endlessly.
+- [fact] Fixed numeric priorities give the same result as first-applicable arbitration, because sorting by priority and firing the first triggered rule is equivalent.
+- [fact] In a layered design, pursuing an enemy can be split into a pathfinder, a path follower and an animation scheduler.
+- [fact] Leaving a composite state for a state outside it returns the composite's exit action, and the composite keeps its record of the last sub-state. When: A transition exits a composite state with history enabled.
+- [fact] Regular state machines can also use inactivity transitions, though numeric state machines use them more often.
+
+## per-frame and performance
+- [definition] Goals need a name and a value, and actions need a function that returns their goal change for a given goal.
+- [definition] The ideal AI scheduler controls total execution time, guarantees that every behaviour runs, and reports statistics on how each behaviour uses its share of time.
+- [mechanism] A polling station's cache recalculates data at most once per frame, and only if it is actually requested in that frame.
+- [behavior] A naive matcher tries every possibility on each iteration, so it is adequate only for very simple systems; larger systems need a more efficient matcher such as Rete. When: Rule count and database size grow. Why: Repeated full testing of all rules is wasteful.
+- [rule] Each frame, convert inputs to degrees and then compute rule minima, keeping the degrees of inputs that did not change since the last frame.
+- [rule] Game-specific optimizations designed for one scenario, such as many chess-specific techniques, are of limited value unless your game matches that scenario. When: Your game does not match the scenario the optimization was designed for.
+- [heuristic] Most games need no complex scheduling unless they have complex AI; a simple frequency scheduler suffices. Switch to priority policies when behaviours differ widely in interruptibility or required run rate. When: choosing an AI scheduling approach. Why: Priority-based systems introduce subtle problems.
+- [heuristic] Use separate matchers for each kinematic element and merge them later with combination techniques, rather than one general matcher accepting any element combination. When: Several elements may need matching simultaneously. Why: Matching several elements can conflict, for example matching velocity rules out getting closer, and merging resolves such conflicts.
+- [heuristic] Heavier units usually give large positive weights to difficult terrain, enemy proximity and visibility, while lighter units weight these much less.
+- [procedure] 1) Add velocity times elapsed time to position, and rotation times elapsed time to orientation. 2) Add acceleration times elapsed time to velocity, and angular acceleration times elapsed time to rotation. When: When updating a character's position and orientation each frame without a physics layer. Why: Simplified Newton-Euler-1 integration is accurate enough at typical frame rates.
+- [procedure] 1) Advance the time counter. 2) Scan the queue for interrupters, stopping when priority is no higher than the top active priority; if one can interrupt, clear the active list and keep only it. 3) Discard expired queued actions. 4) Move queued actions compatible with all active actions into the active list. 5) Remove completed active actions and execute the rest.
+- [procedure] 1) For each rule in fixed order, create an empty bindings list and test its if-clause against the database. 2) Run the action of the first rule that matches, passing the bindings. 3) End the iteration. 4) If none match, run a fallback or do nothing. When: Simple rule-based systems.
+- [procedure] A behaviour scheduled at frequency 1 is called every frame; if each call does a little more work, it eventually completes.
+- [metric] A naive nearest-point search over n domains costs O(n) per query.
+- [metric] In a sleep and on-guard example, two states need four states in total under per-frame re-requests, and five states would need 40 additional transition states. When: When states must repeat timed actions every frame.
+- [pitfall] Investing heavily in incidental characters that most players never study wastes effort, and reviewers may still judge the result sloppy.
+- [pitfall] A producer that adds an action every frame can flood the queue; expiry times help but may be too slow, so producers must be kept under control.
+- [pitfall] Changing hard-coded behavior requires programmers to edit and recompile the game, which is costly when builds take minutes or hours. When: Large projects with long build times.
+- [pitfall] Drawing a new random choice every frame causes visible jitter, so the choice must be held stable until it is redrawn.
+- [pitfall] Global illumination is very slow, so combining it with runtime shadow calculation is problematic.
+- [pitfall] Suspending a character when it leaves the screen and resuming it in the same spot looks odd, so AI should not depend only on on-screen status.
+- [pitfall] Under high load, finding a workable time-allocation strategy can require considerable tuning.
+- [pitfall] When each call site fetches data where it needs it, information flows through many places and becomes hard to trace and debug.
+- [fact] Communication between tiers can be simple, while scheduling is the harder part to get right.
+- [fact] Machinery for scheduling AI has also been repurposed for incremental level loading, texture handling, gameplay rules, sound timing and physics updates.
+- [fact] Beyond proportional priority, a scheduler can grant requested time, run every behaviour each frame, or adjust biases from measured overruns.
+
+## algorithm selection
+- [definition] Discontentment is a score computed from all goal insistence values, rising as insistence grows; the character minimizes it. Some search literature calls it an energy metric.
+- [definition] Model-free learning does not model how the world works; it tracks only visited states and actions, which makes it much simpler to implement.
+- [definition] Machine learning relies on algorithms that detect regularities in datasets, adapt from them, and improve performance without hand-written rules.
+- [mechanism] Specific rules let characters act with high competence and capture how small circumstance changes, such as an object's material, change its tactical use.
+- [rule] Do not consider an action that raises discontentment compared with the previous depth; discard that branch and move on. When: Depth-first GOAP planning. Why: It cuts the number of branches searched.
+- [rule] Use standard game-tree algorithms directly only when the game has no hidden randomness and all moves are known; otherwise adapt them. When: Game has no hidden randomness and all moves are known.
+- [rule] Developers using machine learning in games must account for known AI limits and keep players safe. When: when applying machine learning to game systems.
+- [heuristic] Learning techniques range from simple number tweaking to complex neural networks, each with quirks; use one in a game only when you understand its quirks and have realistic behavior expectations. When: Choosing or considering learning for game AI. Why: Unfamiliar techniques can behave unexpectedly in live play.
+- [heuristic] Expect published game AI implementations to differ from textbook versions, since developers modify borrowed algorithms heavily for their own game's needs. When: Comparing game AI implementations with textbook algorithms. Why: Speed and game-specific needs drive modification.
+- [heuristic] If a human cannot reliably learn or implement a technique, a generic learning algorithm is unlikely to find it easily. Why: Learners struggle with tasks that are hard for humans, such as cornering at the limit of tire grip.
+- [heuristic] Movement systems, decision tools, behavior suites and high-level decision making are easier to implement directly, with intra-behavior tuning added afterward.
+- [procedure] 1) For each action, add its change to each goal's current value. 2) Sum each goal's discontentment at its new value. 3) Keep the action whose predicted total discontentment is lowest.
+- [procedure] 1) List each required behavior. 2) Map each to the technology that directly provides it, such as A* for pathfinding or a formation motion system for group movement.
+- [metric] Discontentment selection takes O(nm) time for n goals and m actions, and O(1) memory.
+- [tradeoff] Decision making, movement, tactics and board game AI trade speed against accuracy; when accuracy is sacrificed, a heuristic usually replaces the search for the correct answer.
+- [tradeoff] Discontentment pruning avoids mid-plan trouble but misses plans that accept short-term discomfort for a later gain.
+- [tradeoff] Discontentment selection is much slower than simple selection on large sets, but its per-goal calculations can run in parallel on SIMD hardware.
+- [tradeoff] The more flexible the learning, the less control the designer has over gameplay. When: Choosing how broadly a learner can change behavior.
+- [tradeoff] A move-to parameter can be set in the staging tool beforehand or by a trigger during play; richer staging needs an AI design tool that can change decision making and internal state on triggers.
+- [pitfall] Choosing an AI technique because it is new or complex, rather than because it suits the behavior, produces characters that look foolish.
+- [pitfall] Simulating light bouncing around corners can cost more than its noticeable gameplay effect justifies.
+- [fact] Specificity depends only on rule structure, so the priority order can be computed before the system runs.
+- [fact] Developers are increasingly experimenting with replacing traditional decision-making techniques with learning systems.
+- [fact] Learning mode most commonly applies backpropagation, which works backward from the output layer to adjust weights.
+- [fact] SSS* and DUAL* were both shown to be special cases of MTD, which also removed the complex special-case code that earlier MTD versions needed.
+
+## navigation graph construction
+- [model] A pathfinding graph needs three elements: node placement with localization information, connections between nodes, and connection costs.
+- [definition] Here graph means a mathematical structure of nodes and connections, not a chart.
+- [definition] A connection's cost can represent distance for shortest paths, time for quickest paths, or any blend of concerns such as danger.
+- [definition] In a directed graph each connection is one-way, and a connection is an ordered pair of nodes plus a cost.
+- [rule] Place graph nodes by hand where level structure and movement patterns matter, and compute connections and costs automatically.
+- [heuristic] Index cells or rooms by a coordinate key in a fixed-size hash array to check in near-constant time whether a grid position is occupied. When: a generator needs fast occupancy queries on a fixed grid.
+- [heuristic] Dynamically moving edge nodes is overkill; a fixed graph combined with path smoothing usually gives adequate results. When: Deciding whether navmesh edge nodes should move. Why: Smoothing already provides the flexibility that moving nodes would add at higher cost.
+- [procedure] 1) For each pair of candidate locations, run a movement check or line-of-sight check. 2) Record a connection for each pair the character can move between directly.
+- [procedure] 1) Connect each grid cell to its adjacent cells. 2) Remove connections whose gradient exceeds a threshold. 3) Remove connections into cells occupied by obstacles. When: RTS grid graphs.
+- [metric] Matching player-watching quality through condensation needs a grid about every 10 centimeters of game space for human-sized characters.
+- [metric] A typical level's dense graph can hold roughly 10–99 million nodes and 100–999 million links, demanding substantial time and memory.
+- [tradeoff] Average minimum does not help when only one route connects two rooms, because averaging cannot fix a single connection's cost.
+- [tradeoff] Placing nodes on shared edges with connections across each polygon face suits portal rendering, and needs no line-of-sight tests because every edge of a convex polygon sees every other. When: Choosing navmesh node placement. Why: Edge nodes give visibility for free inside convex polygons, unlike polygon-centre nodes.
+- [pitfall] Keeping only a global top 50 of waypoint candidates can cluster waypoints in one part of the level and leave tight areas with none. When: selecting waypoints from scored candidates.
+- [pitfall] A poor simplification discards useful information and yields poor paths.
+- [pitfall] Stopping as soon as the goal is first discovered is faster but can return a route somewhat longer than the optimal one.
+- [pitfall] When goals are far apart, a heuristic favouring the nearest goal can make the search explore widely, possibly the whole level, if that goal is blocked. When: Open goal search with widely separated goals. Why: A low heuristic near a blocked goal pulls the search toward areas that lead the wrong way.
+- [fact] A* and Dijkstra cannot operate directly on level geometry, so the level must first be simplified into a graph.
+- [fact] Each graph element can be created separately with different techniques, or the whole graph can be built in one pass.
+- [fact] Dynamic graph methods such as D* are efficient only when the graph changes infrequently.
+- [fact] Distance and travel time differ: running 10 feet can be quicker than climbing a 10-foot ladder, so time-based costs can differ from distance-based costs. When: choosing costs for quickest paths.
+- [fact] The major pathfinding algorithms support directed graphs.
+- [fact] Pathfinding literature uses graph to mean a directed graph with non-negative weights.
+- [fact] A connection's stored distance need not equal its geometric length, which allows long-range links.
+- [fact] Over a sort, each item travels about n/3 places on average.
+
+## orientation and facing
+- [model] Four procedures, one per orientation, call each other for their sub-curves and draw the connecting lines between them.
+- [definition] The curve drawing uses a pen primitive that moves the pen a given length in a direction indexed by an integer, with directions 45 degrees apart.
+- [mechanism] Face the travel direction by computing a target orientation from velocity via arctangent, keeping current orientation at zero velocity, and delegating turning to align. When: Character faces its travel direction. Why: Zero velocity has no direction to face; gradual angular acceleration looks more natural than directly setting orientation.
+- [mechanism] Reversing the roll sign makes a vehicle lean outward in turns, which can simulate soggy suspension.
+- [mechanism] When an agent cannot turn in place or has a large turning circle, graph nodes must encode orientation as well as location, creating separate nodes for each facing. When: Agents whose facing constrains reachable neighbours. Why: A neighbouring tile may be reachable only from a specific orientation.
+- [rule] To face away from a target orientation, add π to it and align to the result, because there is no true opposite orientation. Why: Fleeing an orientation by negating it returns the character to where it started.
+- [rule] The kinematic orientation drives steering, while the faked orientation is calculated only for display.
+- [rule] Below a speed threshold, blend the faked orientation with the kinematic orientation; at zero speed use the kinematic orientation alone. Skip the blend for vehicles that never stop, such as aircraft that cannot hover.
+- [rule] Most characters should face their direction of motion, so orientation usually has to be set from the direction of travel. When: Characters that look where they move. Why: Visual facing otherwise contradicts motion.
+- [rule] If the base z direction equals the target, return the base orientation; if opposite, return its negation, since the cross product is zero in both cases.
+- [heuristic] Vehicle display orientation can be faked from velocity and turn rate by assuming roll is faster than pitch and pitch faster than yaw, so roll and pitch are visually made to produce yaw. When: when visual believability matters more than physical accuracy. Why: Physical roll, pitch and yaw simulation is costly and usually unnecessary for enemies.
+- [heuristic] Facing can be decoupled from movement, so a character can aim at a target while moving elsewhere. When: Characters need to aim while moving. Why: Movement and orientation are independent outputs.
+- [procedure] 1) Subtract the character's orientation from the target's. 2) Map the difference into the range minus π to π by adding or subtracting multiples of 2π. 3) Take the sign as the turn direction and the absolute value as its size.
+- [procedure] 1) Compute tilt as the arcsine of vertical velocity divided by speed. 2) Compute roll as the arctangent of rotation rate divided by a lean constant; roll approaches but never reaches pi. 3) Combine yaw about the up axis, then pitch, then roll to get the display orientation.
+- [procedure] 1) Take the orientation angle. 2) Set the vector's x component to its sine and z component to its cosine. 3) In a left-handed system, negate the x component. When: Converting between angle and facing vector.
+- [procedure] 1) Compute the rotation as the inverse of the current orientation times the target orientation. 2) For a unit quaternion, invert by conjugation: negate the vector part and keep the scalar. 3) Recover the angle as twice the arccosine of the scalar part, and the axis as the vector part divided by the sine of the angle. When: aligning a 3D orientation to a target.
+- [procedure] 1) Run the 2D align algorithm on the angle, as if starting from zero orientation, to get a rotation speed. 2) Combine that speed with the axis using the rotation-vector formula.
+- [procedure] 1) Cross the base orientation's local z direction with the target vector. 2) Set the angle to the arcsine of the cross product's length and the axis to the normalized cross product. 3) Build a quaternion from axis and angle. 4) Multiply the inverse of the base orientation by that quaternion to get the target orientation. When: a character should face a 3D direction without its roll being fixed by that direction alone.
+- [procedure] 1) Quantize both position and orientation when defining nodes. 2) Connect nodes with translations, such as moving forward. 3) Connect nodes with rotations, such as turning 90 degrees. When: Planning for agents with constrained turning. Why: Plans then mix moves and rotations within one graph.
+- [metric] Align runs in O(1) time and memory.
+- [tradeoff] Faked orientation trades physical accuracy for constant-time, believable visuals, while full actuator-level roll modeling is complex and usually overkill for enemies.
+- [tradeoff] Turning through angular acceleration looks more natural than setting orientation directly as kinematic movement does. When: Choosing how a character should rotate to its heading. Why: Direct orientation setting produces abrupt snapping.
+- [pitfall] Subtracting orientations directly fails near the 2π boundary, producing a near-full turn when a small one exists.
+- [pitfall] Recursive drawing procedures keep their state in the pen position, so calls must occur in the order the scheme prescribes.
+- [fact] Looking-where-you're-going suits aerial vehicles such as helicopters and hovercraft, and human characters that can sidestep if sidestep animations exist. When: Choosing a facing behavior for a character.
+
+## collision avoidance
+- [mechanism] A repulsion force pushes apart characters that come too close, so they avoid each other.
+- [rule] Whether giving or receiving fire, an AI should predict the likely trajectory of the weapon involved.
+- [rule] Characters already colliding should act immediately; head-on center-to-center paths should evade current positions and sidestep in different directions.
+- [rule] A successful jump needs the right speed, the right direction, and the jump triggered at the right moment, not too late. When: Designing or implementing character jumps. Why: Any of the three can cause the jump to fail.
+- [rule] Square each goal's insistence before summing discontentment, so one high goal outweighs several medium goals. When: Combining several goals' insistence values. Why: Raw sums let medium goals swamp a high goal, and squaring was found sufficient.
+- [rule] Give braking overtakes a second designer-defined racing line, which lets the car brake later and take the corner exit. When: Overtaking under braking at corners.
+- [heuristic] Make context-sensitive avoidance consider the pursuit target so the combined acceleration avoids sharp stalls.
+- [procedure] 1) Compare the character's facing vector with the direction to the other character using a dot product. 2) If the result exceeds the cone threshold, evade.
+- [procedure] 1) For each candidate target, compute time to collision and minimum separation. 2) Skip targets whose separation exceeds the radii sum. 3) Keep the earliest positive time. 4) Steer along the normalized relative position at that time, scaled to maximum acceleration.
+- [procedure] 1) Model each obstacle as a sphere with a center and radius. 2) Test whether any path segment passes within the radius of a center. 3) On violation, project the closest path point outward so the path clears the sphere by a margin greater than the radius. 4) If the path passes exactly through the center, use a point at right angles to the segment. When: When avoiding circular obstacles with a path-based steering pipeline. Why: Sphere tests are cheap and the projected point gives a valid new goal.
+- [metric] The cone threshold is the cosine of the cone's half-angle.
+- [metric] Time of closest approach equals the dot product of relative position and relative velocity divided by the squared length of relative velocity.
+- [metric] Closest-approach avoidance uses constant memory and time linear in the number of candidate targets.
+- [tradeoff] Spheres suit small obstacles, but a large object's sphere can fill a room and walls cannot be spheres; for isolated objects, a whole-object sphere is often enough. When: Choosing obstacle representation.
+- [pitfall] Assuming any requested acceleration can be applied ignores physical limits, so the requested change may be unattainable. When: steering a physics-based character. Why: Force and motion constraints limit achievable accelerations.
+- [pitfall] Cone-based evasion reacts to proximity and can panic even when the two characters' paths will never meet.
+- [pitfall] Two characters on a collision course can each sit outside the other's cone until contact, so neither evades.
+- [pitfall] A constant-velocity forecast fails when the target is about to change direction or speed, such as when approaching a wall. When: Target is about to turn or change speed. Why: The forecast assumes the current velocity continues unchanged.
+- [pitfall] Collision information is often not in an AI-friendly format, so obtaining it can cost far more than the steering math. Anticipating motion with ray casts or trial movement can be expensive.
+- [fact] The point of closest approach differs from the point where paths cross, because characters may reach that point at different times.
+- [fact] Games with heavy collisions, such as ice hockey, pool and snooker, may need to predict the results of impacts. When: Designing movement for collision-heavy games.
+- [fact] The squared-time acceleration term in full integration is tiny at high frame rates, so it is usually dropped.
+- [fact] Collision geometry is usually a simplified version of render geometry and is a common basis for AI obstacle data.
+- [fact] A sprite set defines each sprite type's movement, such as static, patrolling, or chasing, and physics may be grid-based or continuous, with or without gravity.
+
+## racing ai
+- [model] Continuous road planning nodes combine lane, distance along the section and time, so each node's outgoing costs are fixed and A* works without tracking the path taken. When: Planning car or vehicle movement on roads with timing. Why: Including time makes connection costs independent of the route that reached the node.
+- [model] Racing AI architecture has four parts: a state machine selecting the driving line, a Markov or fuzzy state machine generating steering, capability-sensitive steering, and marked-up track data. When: Racing games.
+- [definition] A racing line is usually stored as a spline, a mathematical curve that can also carry data such as speed.
+- [definition] A race objective requires reaching a physical or conceptual goal before other players do.
+- [mechanism] When game time is compressed, travel time can outweigh the action itself, so a long walk before a short action dominates the choice. When: Compressed game time.
+- [mechanism] Recent racing AI applies control inputs to the physics simulation, so cars behave realistically rather than being moved along a path.
+- [mechanism] In race games the board path is the route players travel, so the layout directly defines which moves are available.
+- [mechanism] Races have no fixed time limit; players pressure each other to go faster, so relative competition sets the pace.
+- [mechanism] Races can be decided by dexterity, by chance, or by a mix of strategy and chance, depending on the design.
+- [behavior] Tracked vehicles accelerate much slower than cars and turn at any speed, rapidly at rest; decision arcs touch at zero speed, so they can brake to nothing and turn sharply. When: Tracked vehicle movement and steering decisions. Why: Tracks allow turning without forward motion, removing the car's minimum-speed constraint.
+- [rule] Record which specific data items a rule triggered on, and suspend it until those items change.
+- [rule] When a spline-following car is knocked out of position, engage simple steering that returns it to the line.
+- [rule] Give each race a clearly distinct role, such as sneaky, micromanagement, heavy ground, versatile, or magic, so that races can be contrasted in competitive play. When: designing playable races for multiplayer. Why: Distinct roles let players compare and fight races meaningfully on ranked or online play.
+- [heuristic] Estimate travel time as proportional to straight-line distance, or compute it with pathfinding.
+- [heuristic] Judge driving AI mainly by how well it drives the car, since players evaluate it that way. When: Testing or tuning driving AI. Why: Players judge driving AI by driving quality.
+- [heuristic] A racing AI vehicle can slow down to let an enemy overtake it, then target that enemy. When: Racing AI with weapons. Why: So it can then target that enemy.
+- [procedure] 1) Wait for a long straight. 2) Pull out to pass the slower car. When: Overtaking slower cars.
+- [pitfall] Spline-following cars cannot easily overtake, will not avoid crashes ahead, tend to drive into a crashed car in a stream, and are not deflected when hit by the player.
+- [fact] A tank can turn in place, and a human can accelerate in any direction, with different top speeds forward, sideways and backward. When: Modeling tank or human movement.
+- [fact] Driving game AI centers on movement tasks; goal seeking, tactical reasoning and route finding may appear but are not core.
+- [fact] Extreme sports racing games use the same racing-line AI as driving games at their core, with a tricks sub-game layered on top.
+- [fact] A designer defines the racing line, and a car following it reaches optimal speed along the track.
+- [fact] Many background cars in open-world games use the spline racing-line approach.
+- [fact] In a hybrid water-and-air racing game, one playtested layout used about 60% underwater, 20% airborne, and 20% near-surface level space. When: when splitting level space across environments.
+
+## rete pattern matching
+- [model] Rete stores rules in one directed acyclic network: pattern nodes at top represent clauses, join nodes combine inputs with AND, rule nodes at bottom represent fireable rules; common patterns shared.
+- [mechanism] Removed items move to a deleted list with their trail, changed values keep the old value, and edits made by game code are marked as external. When: Items are removed, modified, or set directly by game code.
+- [mechanism] A removal request goes to all pattern nodes; a node holding the fact deletes its match and forwards the request, a join node deletes entries using the fact, and a rule node deletes trigger records containing it. Nodes without the fact ignore it. When: A fact is removed from the database.
+- [mechanism] An added fact is stored by matching pattern nodes, which notify downstream; join nodes create new non-clashing combinations using the fact, and rule nodes add trigger records, while unaffected nodes stop propagation. When: A fact is added to the database.
+- [mechanism] Facts enter at the top of a Rete network; pattern nodes pass matching facts with their variable bindings downward, and a join node outputs only combinations whose shared variable bindings agree.
+- [mechanism] Each rule node reached holds trigger records containing its matched facts and bindings, and arbitration then selects one to fire.
+- [mechanism] A clause used by several rules is stored once and matched once, which avoids duplicated matching work and is a key speed feature of Rete. When: several rules contain the same clause. Why: matching effort is not repeated per rule.
+- [mechanism] Unifying variable bindings in join nodes can dominate matching time when many wildcard matches are possible, though this is usually a minor concern. When: many possible wildcard matches exist.
+- [mechanism] A join node that receives a match on one input but no valid partner on the other produces no output, so propagation of an added fact can stop early. When: an added fact completes only part of a rule.
+- [mechanism] When a rule node loses its last valid match, its rule is removed from the triggered set. When: a removal invalidates a rule's match.
+- [procedure] 1) Treat each changed value as old fact removal plus new fact addition. 2) Process removals first, clearing their matches from pattern, join and rule nodes to prevent stale triggers. 3) Then process additions, pushing matches down; a join node passes a match only with a valid input combination. 4) Triggered list holds every possible rule; arbiter picks one. When: Facts change between iterations. Why: removals first prevents stale triggers from firing.
+- [metric] Rete matching time is roughly proportional to the number of rules, times clauses per rule, times facts in the database. When: estimating matching cost.
+- [metric] Rete memory use is roughly proportional to the number of rules, times clauses per rule, times distinct wildcard matches per pattern. When: estimating memory cost.
+- [tradeoff] Rete keeps stored matches between iterations for fast incremental updates, but uses significantly more memory than a naive rule matcher, the price of that speed. Why: retained matches let updates touch only changed facts.
+- [pitfall] Published matching algorithms can still be patented, so implementing Rete may require a licence; consult an intellectual property lawyer when unsure. Why: patent claims can restrict implementation.
+- [fact] A pattern with wildcards passes down every set of bindings, while a pattern without wildcards needs only one match to proceed.
+- [fact] Without unification, an AND join outputs once both inputs have matched; other Boolean operators can be join nodes or built into network structure as in decision trees.
+- [fact] Each node in a Rete network stores all database facts that match its pattern.
+- [fact] Each path through a Rete network covers all patterns of one rule.
+- [fact] Rule nodes are often left out of descriptions of Rete, but an implementation needs them to mark rules that can fire.
+- [fact] Rete is not the fastest known matching algorithm, but commercial expert systems commonly use it and it provides a base for further optimization.
+
+## kinematic steering movement
+- [definition] Kinematic movement sets velocity directly from position and orientation alone, ignoring acceleration and slowing, and can change it instantly; dynamic movement also uses current velocity and outputs forces or accelerations.
+- [mechanism] For a given force, the resulting acceleration falls as inertia rises; linear inertia is mass and angular inertia is the moment of inertia (inertia tensor in 3D). When: a force is applied to a physics-driven body. Why: Acceleration equals force divided by inertia.
+- [mechanism] When blended behaviors conflict, the character can settle into stable or unstable equilibria where it stops or creeps. When: strongly conflicting blended goals.
+- [behavior] Abrupt velocity changes from kinematic output can be smoothed over several frames. When: Kinematic output changes velocity suddenly. Why: Direct velocity jumps look unnatural.
+- [rule] Train taught creatures using a mix of heavy guidance drawn from watching demonstrations and light guidance from player feedback. When: Designing training for taught creatures.
+- [procedure] Blended steering: 1) Hold behavior-weight pairs plus maximum linear acceleration and maximum rotation. 2) Create an empty accumulator. 3) For each pair, request its steering and add it scaled by its weight. 4) Crop the linear and angular totals to their maxima. 5) Return the result.
+- [procedure] 1) Compute the vector to the target; if its length is inside the satisfaction radius, stop and return nothing. 2) Divide the vector by the time to target to get desired speed. 3) Clip that speed to maximum speed along its direction. 4) Set orientation from velocity and output zero rotation. When: Character must stop at a fixed point. Why: Slowing near the target avoids overshoot and wiggle.
+- [procedure] 1) Compute the vector from character to target. 2) Normalize it. 3) Scale it by maximum speed to get desired velocity. 4) Set orientation from velocity. Output zero rotation. When: Character must pursue a target.
+- [procedure] Flee uses the seek steps with the vector reversed, running from the target to the character. When: Character must run from a threat.
+- [procedure] 1) Set velocity to maximum speed along the facing direction. 2) Set rotation to a random binomial value times a maximum rotation below the physical limit. 3) Move forward each frame in the facing direction. When: Character must roam with a meandering path. Why: Small random turns keep the heading most of the time.
+- [procedure] 1) Pick one characteristic point per set, using its minimum, maximum, average or bisector. 2) Normalize the membership degrees so they sum to 1. 3) Output the weighted sum of the points.
+- [metric] Blended steering uses constant memory beyond temporaries and time linear in the number of behaviors.
+- [metric] Kinematic seek and flee run in constant time and constant memory.
+- [pitfall] That split allows free motion but can produce jarring movement and animation combinations; a richer animation palette helps counter this.
+- [fact] Kinematic algorithms use only position and orientation, with no velocities, and output a desired velocity that is often simply full speed or stationary with a direction.
+- [fact] A kinematic character record stores position, orientation, linear velocity and angular velocity (rotation).
+- [fact] If drag is proportional to velocity alone, the equation of motion has an exact closed-form solution giving position at any time. When: Drag depends only on velocity, not its square. Why: Linear drag yields a solvable linear differential equation.
+- [fact] With linear drag, acceleration equals gravity minus k times velocity. When: Projectile subject to viscous drag.
+- [fact] Blend weights are unconstrained and need not sum to one, so a weighted blend is a weighted linear sum, not a weighted mean.
+- [fact] Blend weights are usually chosen by trial and error; genetic algorithms and neural networks have been tried for this with poor results.
+
+## ai performance budget
+- [definition] AI level of detail gives processing time to characters that matter most to the player or are most sensitive to visible error, expressed as one importance number per character.
+- [definition] An anytime algorithm always has a best current answer available and improves it the longer it runs.
+- [definition] Each behaviour record stores a behaviour, minimum and maximum importance, and optional entry and exit routines; the record is valid when importance lies within its range.
+- [mechanism] The first-available selection rule costs O(1) memory and O(n) time, and linear scanning is acceptable with about four LODs per character.
+- [mechanism] Each importance range maps to a behaviour, so a character can run expensive behaviours when important and cheap or no behaviours when peripheral.
+- [mechanism] Behaviour compression passes useful data from the outgoing behaviour to the incoming one, such as a planned destination kept as the next target. When: When switching from a complex planner to a simpler behaviour.
+- [behavior] If processing time runs out before an action is queued, the AI system returns having done nothing for that frame. When: limited per-frame AI processing time.
+- [rule] Act on the best current guess while planning refines it; anytime behaviour fits an existing frame scheduler if that guess is always available before returning control. When: When planning spans multiple frames. Why: People tolerate rough early moves better than visible stalls.
+- [rule] Manage the AI budget by dividing execution time among AI needing it, running algorithms incrementally over several frames, and favouring important characters when resources are scarce. Why: Three things are needed for an effective AI system.
+- [rule] Give each behaviour an overlapping range of importance values, and keep the current behaviour while importance stays within its range.
+- [heuristic] Under severe memory and processing limits, AI choices narrow to simple state machines and chase-the-player behavior.
+- [heuristic] Ambient characters such as pedestrians, crowds and bird flocks can scale freely, using more characters when spare time is available.
+- [procedure] 1) If there is no current behaviour or it is no longer valid, scan the records in order. 2) Select the first record whose importance range contains the current importance. 3) Call the outgoing behaviour's exit routine and the incoming one's entry routine if set. 4) Store the new behaviour as current and run it. When: Each frame, for each character.
+- [tradeoff] When AI gets less time, it either does less work and becomes effectively stupider, changing difficulty, or takes longer, lowering frame rate or slowing decisions. When: on weaker hardware.
+- [tradeoff] Avoiding overlap between the outgoing and incoming behaviours prevents memory spikes, at the cost of a brief moment when neither is fully set up.
+- [fact] Movement and pathfinding are the most common anytime uses; other candidates include turn-based AI, learning, scripting interpreters and tactical analysis. Why: Movement and pathfinding are usually the most time-consuming AI processes.
+- [fact] Behaviours consume memory as well as time, and many characters cannot all keep every behaviour's data loaded at once.
+- [fact] AI load is uneven across frames: route planning can take much time, route following very little, and some frames may need almost no AI work.
+- [fact] Behaviours differ in whether they must run regularly, can be split into small pieces, or benefit from spare time, and one priority number cannot capture all of these.
+
+## game ai history
+- [definition] A datum is an identifier paired with either one value or a list of child data, and the identifier gives its value meaning.
+- [mechanism] The first guess controls MTD speed: a guess closer to the true minimax value needs fewer test iterations and finishes faster.
+- [mechanism] Targeting probability drops for squares near misses and rises sharply for squares near hits, so a probability-based guesser naturally follows up on found pieces. When: during play after feedback. Why: each result removes or adds consistent layouts.
+- [rule] Group related facts about one entity under a shared parent identifier rather than under separate flat keys. When: Storing several facts about the same character or object.
+- [heuristic] Games use several different matrices, each tied to a game event, rather than repeatedly applying a single matrix.
+- [heuristic] Raw frequency prediction suits single choices or counts gathered from many players, where it estimates where a new player is likely to go.
+- [heuristic] Early choices in a sequence often predict later choices, so predictors that use history outperform raw frequency counts. When: choices occur in a series.
+- [heuristic] Use history string prediction for choices a player repeats many times, such as cover points or weapon picks during enemy attacks. When: a choice is repeated many times in similar situations. Why: Repetition gives the history enough matching patterns to predict from.
+- [procedure] 1) Run N-gram windows of increasing size on the same data. 2) Register each sequence in every window, using the most recent sub-sequence that fits. 3) To predict, try the largest window first. 4) If it has enough samples, use it; otherwise drop to next smaller. 5) If no level qualifies, return no prediction or a random one. When: Running a hierarchical N-gram predictor, especially in online learning where early data must still produce decisions. Why: Large windows are slow to fill, so smaller ones give early predictions.
+- [procedure] 1) Try a candidate action in simulation. 2) Measure how near it gets to the goal. 3) Adjust and repeat until the result is close enough. When: Predicting the outcome of impacts such as shots.
+- [procedure] 1) Compute where the projectile will land. 2) Test whether its path touches the target character. When: When predicting whether a projectile will hit a character. Why: Landing point and path intersection are separate questions.
+- [procedure] 1) Keep a count for each option. 2) Divide each count by the total to get its predicted probability. 3) Predict the most frequently chosen option.
+- [procedure] 1) Store the player's choices as a sequence of symbols, which can be numbers or objects. 2) Take the last k choices as the window. 3) Find earlier occurrences of that window in the history. 4) Predict the choice that most often followed them. When: predicting a repeated player choice.
+- [tradeoff] Reducing frequency for low-importance characters makes decisions stale and causes overshooting or late collision reactions; reducing priority causes poor routes and unchecked paths. When: scaling AI detail by character importance.
+- [pitfall] Keeping a complete history for data that changes every frame can consume substantial memory and may be impractical. When: Per-frame data is tracked over long play sessions.
+- [fact] A hierarchical datum structure gives a matching algorithm more flexibility than flat identifiers do.
+- [fact] Before the mid-1990s, game AI rarely simulated perception and at most used a ray cast to test line of sight.
+- [fact] Goal-oriented action planning was one of the first full planning systems in game AI.
+- [fact] Early turn-based strategy games were simplified board-game variants, and their AI used minimax search.
+
+## jump traversal and links
+- [model] A pathfinding network can tag a connection spanning a gap as requiring a jump, handled at run time much as a takeoff point paired with a landing point. When: Game already has a pathfinding network. Why: Jump data is stored on existing connections rather than as separate entities.
+- [behavior] When a character follows a pathfinding route, it recognizes labelled jump connections automatically from the route it has been given. When: Character follows a pathfinding network route. Why: Labelled connections carry the jump data.
+- [behavior] Computed jump velocity accounts for the character's own capabilities, so a heavily loaded character needs higher speed to make the same jump. When: Computing jumps for characters with different loads. Why: Maximum speed limits the reachable horizontal speed.
+- [rule] When characters move at varying speeds, store a minimum velocity on each jump point, as a full target velocity or as a minimum component toward the far side. When: Characters differ in speed. Why: A fixed point cannot launch correctly from every approach speed otherwise.
+- [rule] If a computed jump trajectory is infeasible, the jump behaviour should request no acceleration. When: Computed jump has no valid solution. Why: No trajectory can reach the target.
+- [rule] The jump behaviour needs full control of the character, since blending with avoidance can skew the trajectory and make it miss the take-off or land wrongly. When: Executing a computed jump. Why: Blended steering alters the intended trajectory.
+- [heuristic] Use the jump detector approach when the landing area is large and failure is unlikely, such as a wide chasm. When: Choosing a jump method.
+- [heuristic] The margin for deciding a character is close enough to the jump target should scale with speed and character size. When: Triggering a computed jump. Why: Faster or larger characters cover more distance per frame.
+- [procedure] 1) Decide to jump and select the jump point. 2) Velocity-match into the point. 3) Launch the character when it touches the point. No separate jump-timing logic is needed. When: Jumps are limited in number and failures are forgiving. Why: Jump timing is fixed by the placed point rather than computed at run time.
+- [procedure] 1) Fill gaps with invisible jumpable-gap volumes whose edges stop jumps from the far wall. 2) Let the character steer normally, with a jump detector treating gap volumes differently from walls. 3) Move the character toward the gap at full speed. 4) Jump at the collision point, the last moment on the ledge. When: Character must cross a chasm or gap. Why: Characters can leap from any point along the gap without paired jump points.
+- [procedure] 1) Velocity-match toward the computed target. 2) When position and velocity are close enough to the target, schedule the jump and stop steering. When: Executing a computed jump. Why: Launch happens only once the approach matches the solution.
+- [tradeoff] Limiting jump placement to safe jumps avoids unrecoverable failures but restricts level layouts. When: Designing jump-based levels with a safety rule. Why: Only safe jumps are allowed, so layout options shrink.
+- [pitfall] A single jump point cannot describe the approach needed for thin walkways, narrow ledges or pedestals, which require exact direction or speed. When: Narrow or thin landing surfaces. Why: Those jumps depend on tight direction and speed constraints a point does not capture.
+- [pitfall] Jump difficulty depends on approach direction, so a point marked for one side may be easy from there and hard from the other side. When: Jump points used from multiple sides. Why: Difficulty is directional but a point stores only one placement.
+- [pitfall] Jump points cannot record how severe a failed jump is, such as landing in shallow water versus falling into lava. When: Failed jumps have different consequences. Why: A point has no field for failure cost.
+- [pitfall] Hand-placed jump data is error-prone and hard to tune, and bugs can stay hidden because testing rarely tries the wrong approach. When: Many manually placed jump points. Why: Testers usually follow the intended approach.
+- [fact] Local steering without pathfinding has to detect upcoming jumps with its own lookahead. When: No pathfinding network in use.
+- [fact] A jump commits the character to a trajectory, so small disturbances such as clipping an obstacle, gun recoil or explosion blast can make it miss the landing. When: Jumping during combat or physics interaction. Why: A jump cannot be corrected once airborne, unlike steering.
+- [fact] The computed jump model assumes gravity and the jump both act vertically and that there is no drag. When: Using the computed jump velocity model.
+
+## tactical and rts strategy
+- [model] Playbook execution combines coordinated movement, which sets the correct timing for each character, with formation motion, which makes team members move in visually realistic patterns.
+- [definition] Primitive tactics are basic stored waypoint qualities such as cover, visibility, shadow, and exposure.
+- [definition] Rally points are tactical locations used as fixed, safe retreat points for a fight that is going badly.
+- [definition] A playbook is a set of movement patterns a team uses in a given circumstance, covering either the whole team or a smaller group such as two players.
+- [mechanism] An invisible anchor point that no character occupies avoids the lurching that a visible leader's dodges cause in followers, since the anchor ignores small obstacles and terrain. When: Formation with a moving pattern. Why: Followers mimic a visible leader's sideways dodges, making all slots lurch.
+- [mechanism] Each waypoint stores one tactical value, and a check against the current game state runs before the location is used. When: Selecting tactical waypoints in combat. Why: Live state can reveal whether a stored value still holds.
+- [rule] Model the decisions a sensible human would make about when each action is useful, since no single general algorithm exists.
+- [rule] Mark actions that need several characters so each participant knows it is performing them jointly.
+- [rule] Linking tactical points to the pathfinding graph is usually unnecessary, though it can be powerful in special cases.
+- [heuristic] For rapidly changing properties, recalculate only the areas the AI plans to use, such as locations near its characters, since quality may change before the AI arrives. When: When computing a rapidly changing tactical property.
+- [heuristic] Post-processing checks suit characters that can take a couple of seconds to weigh options, and benefit squad-based shooters most. When: Deciding whether live tactical checks are affordable. Why: Slower decision cycles absorb the check cost.
+- [heuristic] A strong tactical AI keeps units outside enemy missile range, then attacks from several flanks at once.
+- [pitfall] Jumping to the most complex tactical waypoint stage without need adds effort that most games will not repay. When: Planning tactical waypoint systems. Why: Simple stages already suffice for most games.
+- [fact] Rapidly changing tactical properties, such as dynamic shadows or danger, cannot be recomputed for the whole level every frame.
+- [fact] The minimum-based combination extends to compound tactics with many clauses and still gives a dependable value.
+- [fact] Proximity-based influence maps, which depend mainly on nearby enemy units and bases, make up an estimated 90% of game influence mapping, since other factors like weather usually have small effects.
+- [fact] Public military training manuals written for regular forces document proven tactics that can inform game behavior.
+- [fact] Military tactics suit any genre or setting, from historical conflicts to science fiction or medieval fantasy.
+- [fact] Military deployment is often hard-coded if-then logic that depends on results from a tactical analysis engine.
+
+## state and event systems
+- [definition] Broadcasting sends many kinds of events to many listeners, and each listener filters out what it does not need.
+- [definition] A finite state machine has a fixed set of states, exactly one current at a time, and transitions that move between states when inputs arrive.
+- [mechanism] Four-character fire team states are Disengaged, In cover, In motion and Suppression attack; transitions depend on enemy sightings, team movement, arrival, and whether the highest-ranked unit reached its cover.
+- [mechanism] Improving a closed node reaches its downstream nodes only when it is reprocessed, because nodes depending on its old cost must be re-examined.
+- [heuristic] Use fixed per-waypoint states when the relevant states are obvious, such as cover directions or firing arcs; they fit poorly for withdrawal points.
+- [heuristic] Simple event codes can represent any interest, and a manager matches an event's code against a listener's code without knowing what the codes mean.
+- [heuristic] Use event-based intention sharing when team behavior changes often and characters must stay in step.
+- [heuristic] Use event passing when many similar characters all need the same piece of information. When: many similar characters share one information need. Why: events are often faster in that case.
+- [procedure] 1) Find the target's ancestor level, by run-time search or from precomputed offsets. 2) Walk down from that ancestor to the target. 3) At each level, exit the active child and enter the next, collecting actions. When: A transition with a negative level is applied.
+- [procedure] 1) When a behaviour starts, call its entry routine; when it stops, call its exit routine. 2) If the same behaviour continues, call neither. 3) Let the exiting behaviour pass useful data forward and clear its own memory. Why: Entry and exit routines handle setup, cleanup and handover.
+- [procedure] 1) Broadcast events during development to ease behaviour tuning. 2) If the event system proves slow, replace it with several narrowcasting managers before release.
+- [tradeoff] Simple exit counting is cheap but crude; checking where each connection leads is more accurate but becomes very complicated.
+- [tradeoff] Event-based sensing pushes game knowledge to capable characters, whereas polling runs a perception test on each request and most requests fail, wasting performance. When: implementing character perception.
+- [pitfall] Fixed states cannot exploit environmental quirks, such as a structure that gives cover from one specific walkway only.
+- [fact] Event-based transitions can run in a handler that game code calls when an event occurs, instead of the machine polling for the condition every frame. When: A transition is triggered by something discrete, such as a loud noise.
+- [fact] Often AI generates too few events for broadcasting to be noticeably slow.
+- [fact] Players came to expect enemies to perceive events around them; at minimum, characters should receive messages about nearby events.
+- [fact] A finite state machine keeps no record of prior states, so it cannot easily return to whichever state it was in before.
+
+## markov state machines
+- [definition] A Markov state vector holds one number per state, and it may contain zeros, any values and any total, with the total equal to 1 when it represents a distribution.
+- [definition] A transition matrix is square, and entry (i, j) gives the proportion of old value i that flows into new value j.
+- [definition] A Markov state machine maintains a set of numeric values per state that are updated over time without fuzzy interpretation, and its mathematics is a Markov process. When: decisions need priorities or scores such as safety or ranking.
+- [mechanism] Each iteration without a fired transition counts down the timer; a fired transition resets it to the reset time. At zero, the default transition matrix applies and the timer resets. When: a state machine should drift back to a baseline after inactivity.
+- [mechanism] One Markov iteration is ordinary matrix multiplication, so every new value draws contributions from every old value.
+- [procedure] 1) Check transitions in list order. 2) If a transition's trigger holds, multiply the state vector by its matrix and return its action list. 3) If none fires, return no actions. When: each iteration of a Markov state machine.
+- [procedure] Separate code must convert the state vector into an action, such as choosing the position whose value is largest. When: a Markov state machine drives a choice.
+- [tradeoff] A time-based transition in the ordinary list would need to watch every other transition, duplicating effort, so building the timer into the machine avoids this.
+- [pitfall] Mathematical Markov values are probabilities, but a game's Markov state machine places no such constraint on its values.
+- [pitfall] Matrix values are usually set by hand and are difficult to tune, so the acceptable tolerance depends on how the values are used.
+- [fact] In mathematical Markov processes, state vector entries give probabilities over possible outcomes, and the transition matrix supplies the probabilities for the next trial.
+- [fact] In AI, Markov chains predict the future from the present, as in speech recognition predicting the next word to tell similar-sounding words apart.
+- [fact] Learning algorithms can estimate transition matrix values, letting a system adapt to a particular user.
+- [fact] Transitions belong to the whole machine rather than to states, so actions come only from transitions; states carry no actions. Why: There is no single current state.
+- [fact] The state vector is stored as a plain list of numbers that the rest of the game can read as needed.
+- [fact] A first-order Markov process uses one matrix and depends only on the current vector, while higher-order processes also use earlier vectors.
+- [fact] No consensus exists for naming this algorithm; some call it a fuzzy state machine, though fuzzy logic is a separate technique.
+
+## group coordination
+- [model] Group coordination comes either from complementary individual decisions, or from a group decision (e.g., a shared response to threat) that members then carry out individually. Why: The group sets intent and members handle execution.
+- [mechanism] Agents can record visited and interesting places and share interesting ones with peers, spreading knowledge through the group. When: Groups of agents that remember and exchange experiences. Why: Models how word of good experiences spreads.
+- [rule] With many targets, react only to the first imminent collision, because averaging over targets works poorly.
+- [rule] Use the same decision tools for groups as for individuals, with outputs issued as orders to lower tiers; no special group algorithm is needed.
+- [rule] A state object with no fields specific to one state machine can be shared as a flyweight and reused by several machines at once. When: The state's behavior does not depend on which machine runs it. Why: Without machine-specific data, one instance serves every machine.
+- [heuristic] Simplify each character's rules for large numbers of identical enemies, where challenge comes from numbers; for more characters generally, use a multi-tier design where each squad is an emergent unit obeying group orders. When: scaling enemy group size. Why: Simpler individuals scale better; tiers keep group behavior manageable.
+- [heuristic] Top-down, flow-based simulation suits large populations that need individual detail only where the player can see them. When: Large crowds such as traffic or pedestrians where most members are off-screen. Why: Simulating unseen members individually wastes processing time.
+- [heuristic] Combine fixed motions for some roles with responsive roles for others. In a corner kick, three players run fixed motions while the rest respond to the defense. When: Team plays with both scripted and reactive roles.
+- [heuristic] Use kinematic seek toward visible targets for social movement, rather than planned paths. When: Agents moving toward others they can see.
+- [heuristic] Use a hierarchical state machine when several states share the same responses, such as jumping and ducking while on the ground. Why: Avoids duplicating shared behavior across states.
+- [tradeoff] Intent orders (defend, all-out assault) are flexible but need hard, often unconvincing AI intent interpretation; prefer explicit orders when inferring intent is too hard or the squad feels poor. When: offering orders in a shooter squad. Why: Intent identification is difficult for the AI; explicit orders remove the need to infer intent.
+- [tradeoff] Fixed slot patterns suit rigid, well-practiced plays, while a coordinating routine suits play where characters must respond to opponents. Pure scripts and fully free improvisation both fail in different ways. When: Designing team movement.
+- [pitfall] Sensors and detectors tested only on one user group can fail for others, such as skin tones or faces absent from testing. When: When validation covers only a narrow set of users. Why: Blind spots stay hidden because the failing group was never tested.
+- [fact] Pursue builds a seek target from another character's motion, collision avoidance builds a flee target from obstacle proximity, and wander creates its own meandering target.
+- [fact] Role suitability varies by degree; a mage may find melee slots very costly and missile slots only somewhat costly.
+- [fact] Group behaviors first summarize many targets, either by averaging a property such as center of mass, or by ordering and searching for the nearest or colliding targets.
+
+## randomness and variation
+- [definition] randomBinomial returns a value between minus one and one that is most likely near zero, built as the difference of two uniform random numbers from zero to one. When: Generating small random turn values. Why: Differencing two uniforms concentrates values near zero.
+- [definition] Nu is the chance per iteration that the learner jumps to a random state instead of continuing from the state its last action reached.
+- [mechanism] When enemy behavior is random, no fixed pattern reliably works, so play rewards quick reactions over memorization. When: enemy behavior includes randomness.
+- [mechanism] Choosing a fully random direction each frame gives jerky linear motion, and randomly changing orientation directly gives twitchy rotation. When: Simple random roaming.
+- [mechanism] Predator-prey chases can oscillate: the prey stop when out of range, the predator closes in after a delay, and the prey resume moving, repeating the cycle. Why: delayed responses create a repeating loop.
+- [behavior] A random branch chosen fresh every frame makes a character flicker between options, such as standing still and patrolling. When: When a random choice is evaluated in a per-frame decision tree. Why: Each frame draws a new random result, so consecutive frames disagree.
+- [rule] Keep each random component change below the square root of 3 to avoid producing a zero vector, and keep the random rate below about 0.577. When: Perturbing a 3D wander target. Why: Overly large changes can make the vector zero, which breaks normalization.
+- [heuristic] A random number generator is not an AI technique itself, but applied judiciously it produces apparent intelligence in many situations.
+- [heuristic] When choosing among many behaviors requires complicated weighing, pick one at random using chosen probabilities; players often do not notice the difference.
+- [heuristic] Vary the timeout, for example with a random stop time or by switching behavior when the timeout occurs, so an agent does not stand still several times in a row. When: Using timed random decisions.
+- [procedure] 1) Check every rule and collect all triggered rules. 2) Pick one of them at random and fire it.
+- [procedure] 1) Choose an available action at random. 2) Remember the object used. 3) Exclude remembered objects from later choices. When: Agents choosing among repeatable actions.
+- [tradeoff] Random arbitration cannot stop at the first match, so it must search all rules and is less efficient than first-match methods.
+- [pitfall] Homing enemies without randomness are easy to predict, and enemies with randomness but no direction are just noise.
+- [fact] A decision tree can replace some true-or-false tests with random or timed choices, making its behavior vary between runs.
+- [fact] Random outcomes such as dice rolls are private information to every entity until they are revealed.
+
+## line of sight graphs
+- [mechanism] A signal's initial strength can be set in proportion to light on its emitter, so characters in shadow send weaker signals that high-threshold characters may miss.
+- [mechanism] Sight tests can pass through partly transparent objects to the target, then continue past it to find the next thing hit.
+- [rule] Signals spread one connection step to sensors in the source node and directly connected nodes. Give every line-of-sight node pair a direct connection, since sight is not relayed onward. When: graph-based sensing; building the sight graph.
+- [heuristic] Even when viewing distance is uncapped, use a distance threshold for noticing small objects.
+- [procedure] 1) Sample lightness at several points spread across a character-sized volume. 2) Take the maximum lightness as the character's exposure. When: judging whether a hider is visible. Why: a hider is seen through its most visible part, not its average.
+- [metric] Visual notification delay is computed from the 3D Euclidean distance between signal and sensor; if sight is instantaneous, sensors are notified immediately.
+- [pitfall] Connections may link rooms where only a small corner of one room is visible, so line-of-sight tests must still do the real filtering.
+- [pitfall] Shadow-based hiding that ignores background contrast makes a backlit character a visible silhouette, so designers must avoid such setups. When: characters hide in shadows near bright areas.
+- [fact] A single steering ray can miss a wall the character will graze; splaying several rays like whiskers avoids this. When: When implementing wall avoidance with rays.
+- [fact] Waypoint sets with topological information already include connections, while regular waypoints and most tactical analyses do not.
+- [fact] Timing and intensity of visual signals are taken from the connections between nodes rather than computed separately.
+- [fact] Some implementations derive the sight graph from the rendering engine's potentially visible set, a feature common in modern engines.
+- [fact] The sight modality adds a sight-cone test, followed by a ray-cast line-of-sight test, to the standard checks.
+- [fact] Rendering, physics and AI can each use a different geometry suited to its own purpose.
+
+## npc and scripted behavior
+- [definition] Scripted AI usually means preprogrammed actions carried out in a fixed order without decisions.
+- [behavior] Scripted team coordination can look uncanny, with characters moving like a well-drilled team performing intertimed actions. When: When multiple characters execute scripted tactics together. Why: Tightly timed coordinated actions read as drilled, unnatural teamwork.
+- [rule] Generative NPCs need guardrails and safety filters before release, since their output is hard to fully control. When: When a language model drives NPC dialogue.
+- [heuristic] Have an NPC perform the desired action, since players tend to copy observed NPC behavior, which teaches the behavior without explanation. When: A behavior should be taught to the player. Why: Players learn through example more readily than through explanation.
+- [procedure] 1) Script each stage of an operation as its own behavior. 2) Write a higher-level script that coordinates those stages. 3) Feed execution feedback back in so scripted behavior stays sensible.
+- [tradeoff] Adding branches, loops, or calculations to scripts raises implementation difficulty and authoring burden, while signals and waits suffice for simple collaborative sequences.
+- [pitfall] Heavily promoted AI may deliver little visible behavior; a much-hyped system can mostly make characters walk back and forth, so judge AI by what players observe.
+- [pitfall] Rejecting action scripts because scripted AI has a bad reputation causes teams to miss their practical value.
+- [pitfall] Scripts for characters that must coordinate depend on timing, so a sequence can succeed once and fail the next time.
+- [pitfall] A creature that navigates too autonomously becomes too smart to manipulate, which undermines the point of the game.
+- [fact] Drive NPC behavior with three inputs: perception via sound, sight and touch; remembered world state like enemy sightings and weapon spots; and emotion, such as fear rising under attack.
+- [fact] Scripts commonly use macro commands such as moving to a path node or playing an animation.
+- [fact] Character behaviour over time can be generated with decomposition schemas that choose activities from current needs such as fatigue or hunger, which can also generate story.
+- [fact] Friendly NPCs and enemies can populate worlds, enhance spatial types, and direct player action.
+
+## cover and positioning
+- [definition] In bounding overwatch, some squad members stay in cover watching for enemies, ready to return fire, while others move to the next cover point.
+- [behavior] Post-processing checks let characters exploit quirks, such as a cover point that protects only against attacks from one walkway. When: Choosing among cover points with live checks. Why: Live checks reveal which directions a cover point actually protects.
+- [rule] Set the start radius far enough to make the attack non-trivial but not so far that attacks come from another room; keep the random radius below radius times sine of the angle step so positions cover every angle; shrink the angle step as iterations increase. When: tuning ray-sampled cover estimation. Why: Parameter ranges keep samples meaningful and complete.
+- [rule] Widen or drop coherence after another behavior moves the character far across the level, so the follower need not rejoin its previous section. When: Character was relocated by another behavior. Why: Previous parameter no longer near the character.
+- [rule] Remove cover points near the leader from the set of available slots, so squad members do not compete for the leader's own cover. When: Assigning cover slots around a moving leader. Why: Otherwise followers try to share the leader's cover.
+- [rule] Add ordinary pathfinding waypoints to tactical waypoints, because tactical locations are otherwise unreachable from one another.
+- [procedure] 1) Select the cover points closest to the anchor, one per slot. 2) Map each slot to one selected point. 3) When a point leaves the nearest set, the entering point takes the ID of the slot whose point left. 4) Points remaining in the set keep their IDs; a character whose point left steers toward the point now holding its ID.
+- [metric] Four directions, two stances, and five weapon types give 40 states for one cover waypoint.
+- [fact] Cover points are usually placed by designers by hand as part of the level data, or computed from the level layout.
+- [fact] For a reasonably sized level, billions of candidate locations may need checking, taking minutes or hours. When: automatic tactical waypoint generation.
+- [fact] For cover, the post-processing check is usually a line-of-sight test against the actual enemies. When: Validating cover waypoints. Why: Cover is only useful if it blocks sight from current enemy positions.
+- [fact] A sense system can account for cover broken by foliage such as bushes, so passing through them can expose a unit.
+
+## frame scheduling and queues
+- [model] In request-based scheduling each behaviour asks for a certain amount of time; requests exceeding available time wait for a later frame, usually under a precedence order.
+- [mechanism] Re-requesting an action every frame forces extra transition states, and the number of such states grows quickly as the number of states increases.
+- [rule] Cap the action queue when actions come from untrusted sources such as user scripts, and drop the lowest-priority action when the queue is full. When: actions come from untrusted sources. Why: Unbounded input can flood the queue.
+- [heuristic] The lowest level of a group LOD hierarchy can add a priority LOD that favours individuals closest to the player.
+- [procedure] 1) Sort queued actions by decreasing priority. 2) Move each one into the active set if it can run alongside the actions already active. 3) Stop when nothing more fits.
+- [procedure] 1) Each frame, find the behaviours due to run using their frequency and phase. 2) Sum their priorities. 3) Give each due behaviour remaining time equal to its priority divided by that sum. 4) After each behaviour, recalculate remaining time so overruns shrink later shares.
+- [procedure] 1) Place the player in a queue. 2) Look for opponents with close MMR. 3) Accept larger MMR gaps as the wait grows. 4) Stop when a match is found.
+- [metric] Checking each goal's change on every GOB run costs O(n) for n goals and does not noticeably slow the algorithm.
+- [metric] Both the learning rate and the discount rate should lie between zero and one.
+- [metric] The priority scheduler runs in O(n) time and O(m) memory, excluding the work done by the behaviours themselves, matching the load-balancing scheduler.
+- [fact] Frequencies can be dropped entirely, so each behaviour receives a share of AI time according to its priority alone.
+- [fact] Rendering, physics and input must run every frame, whereas AI decisions often change slowly and can run at lower rates.
+
+## polling and event checks
+- [definition] A polling station is a hub all polling requests pass through, a shared cache for costly checks and relay from AI to game level, compromising between polling and events.
+- [definition] Polling means an AI character directly queries the game state whenever it needs to know something, getting the answer immediately.
+- [mechanism] A counter that is never reset and counts all events can trigger a late-game consequence at a fixed threshold. When: Tracking cumulative player actions.
+- [rule] Route all polling requests through one station so they are easy to monitor and debug.
+- [heuristic] Prefer polling over event passing for a single occasional check, such as one object checking whether a siren is sounding. When: a single occasional check is needed.
+- [heuristic] Use polling for checks needed only occasionally, such as while in a particular state, since sending state as events every frame is wasteful. When: checks are needed only occasionally. Why: polling is often faster for such checks.
+- [heuristic] Avoid polling when each agent repeats the same expensive check; an event system could compute it once. When: many characters need the same information every frame.
+- [tradeoff] Polling is fast and needs no extra infrastructure, but scales poorly as characters and checks grow; event passing needs extra code and is overkill for simple situations.
+- [tradeoff] Polling returns information exactly when it is needed, while event passing adds delay and extra message handling.
+- [pitfall] The load-balancing cost figures exclude scheduler overhead, which holds only when the scheduled work dominates the cost.
+- [fact] Most polls return nothing useful: a siren is off more often than on, and a character rarely collides with more than one other per frame.
+- [fact] No single communication approach is fastest in every case; the better choice between polling and events depends on the application and is hard to predict in advance.
+
+## steering and reaction timing
+- [mechanism] Changing behavior weights over time, based on game or character state, shifts which steering concern dominates.
+- [mechanism] Repeated filtering lets a car speed up over frames, which then permits turning, so its path emerges from the repeated process. When: Vehicle steering is filtered each frame. Why: Turning requires speed.
+- [mechanism] Because the target stays ahead, the car starts turning well before a corner, and steers more heavily for a severe corner.
+- [mechanism] Enemies that attack and then flee draw players along a route, and timing an enemy's defeat to a chosen location brings players there. When: Enemies the player pursues through a level.
+- [behavior] Dynamic arrive accelerates toward the target, then accelerates the other way so speed reaches zero exactly at the destination. When: Character must stop precisely using acceleration. Why: Braking through acceleration reaches zero speed at the goal.
+- [rule] When steering behaviors are blended, combined through a blackboard, run in a state machine or chained in a pipeline, delay actuation to one final step.
+- [heuristic] Discretize an animation's playback range into a few sampled values, for example exposing only a few frame rates from a 15 to 30 fps animation. When: movement planning with continuous animation parameters. Why: A small set of states keeps the graph finite and tractable.
+- [heuristic] Send units toward the enemy's likely location rather than to random points on the map.
+- [procedure] 1) Detect a zero filtered result. 2) Switch to another method, such as driving forward and turning hard. When: Filtered steering output is zero.
+- [tradeoff] Dynamic steering suits characters that must accelerate and stop precisely, while kinematic output may suffice where abrupt velocity changes are acceptable. When: Choosing movement type for arrival. Why: Dynamic arrival needs acceleration and smooth braking, which kinematic output lacks.
+- [fact] Evade uses the same prediction as pursue but delegates to flee, moving away from the predicted position.
+- [fact] An action may promise a goal only after several hidden steps, so its effect on that goal is delayed.
+
+## strategy and turn-based ai
+- [definition] Game theory analyzes moves and countermoves among players who must anticipate each other; in design it applies to individual strategy interactions, not whole games.
+- [behavior] Commercial turn-based strategy games rarely use tree search as main AI; developers abandon minimax look-ahead and rely on heuristics alone. When: Strategy game trees remain too large after grouping moves. Why: Search cost grows too fast to reach useful decisions; search cannot cover the reduced tree.
+- [heuristic] For huge turn-based strategy trees, group individual moves into high-level nodes such as attack, regroup, retreat, counterattack, research or attacking a neighbouring nation, and search there. When: Individual moves are too numerous to search.
+- [heuristic] Strategy AI heuristics include territory controlled, proximity to enemy forces, technological superiority and population contentedness.
+- [heuristic] Turn-based games rarely need sophisticated movement algorithms; kinematic movement or direct position updates are usually enough.
+- [metric] A turn in a complex strategy game with 5 cities, 30 troops and side-wide choices can have around 10 to the power of 90 possible move combinations. Why: Each city, unit and national choice multiplies the options.
+- [fact] Turn-based and real-time strategy AI share architecture and difficulties, covering terrain analysis, influence mapping, scripted strategies, high-level planning, pathfinding, choice logic, and layered tactical and strategic levels.
+- [fact] Real-time strategy AI has reused much technology from military training simulators.
+- [fact] Turn-on-the-spot animation is usually available only to stationary or very slow characters; at walking or running speed, turning happens along a curve.
+- [fact] Traditionally, players give orders, and lower-level AI decides how to execute them.
+- [fact] Turn-based games with free movement can have almost unlimited move options per turn, even though each move is discrete.
+- [fact] Turn-based AI needs less execution management because fewer time-intensive tasks run at once, and its processes can run over several seconds.
+
+## emergent behaviour
+- [model] Emergent formations have no formation geometry; each character runs arrive toward a target chosen from other members' positions, so the group shape arises from local rules.
+- [mechanism] Interlinked rule sets and interacting mechanics produce semirealistic behavior and unauthored events, such as an ally dying, a betrayal, or a character killing others after unmet needs. When: When simulated entities interact through shared systems. Why: Events arise from combinations of mechanics rather than from scripts. (x2)
+- [mechanism] Emergent groups look coordinated without a central planner or leader, as each character accounts for teammates; having one member not position itself relative to another helps. When: designing squad behavior without a central planner.
+- [mechanism] Each emergent member avoids obstacles and collisions individually, so turning and wall avoidance need not account for the group's size. Why: Local avoidance keeps group logic independent of group size.
+- [behavior] Fire team state machines of this kind work well up to about six or seven characters before group behavior becomes hard to manage. When: scaling emergent squads.
+- [behavior] In a large emergent group, gaps between V arms are filled by smaller V shapes, and the arrowhead effect stays clear whatever the group size. When: large groups using emergent formations.
+- [procedure] 1) Pick a character ahead as the leader target. 2) Choose a steering point trailing it, off to one side. 3) If another character claims that point or a nearby spot is already targeted, keep searching. 4) Each frame, recompute the point from the chosen character's position and facing. 5) If unreachable, pick a new point.
+- [tradeoff] Emergent formations are simple and effective but hard to tune for exact shapes; members may jostle in the V center or form a single diagonal line from poor target choices.
+- [pitfall] Emergent groups show unintended, annoying behavior that looks unintelligent to players and rarely disappears by tweaking individuals; designers try variations until group behavior is reasonable, then tune it. When: emergent group design or tuning. Why: Group-level dynamics are hard to predict from individual rules.
+- [pitfall] Emergent formations are hard to debug and often produce controlled disorder rather than formation motion, limiting their use where precise group movement is required.
+- [fact] A relatively large number of characters with simple individual behaviors produces larger-scale emergent patterns.
+
+## search and optimization
+- [definition] Ruggedness is the steepness of a location; for a height-field cell it can be estimated by comparing its height with its neighbors' heights.
+- [definition] A sentinel value larger than any possible evaluation is used as the initial best score, so the search always records a move even when every move scores poorly. When: initializing the best score at the root.
+- [rule] Wrap the recursive search in a function that starts at depth zero and returns only the chosen move.
+- [rule] Implement both negascout and MTD and profile them, since the faster algorithm depends on the game; they can share the table, alpha-beta function, and game class. When: choosing a tree search for a specific game. Why: relative speed is game-dependent.
+- [procedure] 1) Generate a few trial successors. 2) Rate them with the heuristic. 3) Generate more trials around the best ones. 4) Repeat until the best successors are found with confidence. When: movement planning on an infinite state graph. Why: Concentrates search effort on promising successors.
+- [procedure] 1) For a large area, take a fixed number of random height samples inside it. 2) Use the highest minus lowest sample as ruggedness; sample variance is an alternative. When: the area is too large to check every cell.
+- [tradeoff] Sampling successors is slow and very sensitive to heuristic quality, while discretizing animation ranges into a few values is the more common choice. When: choosing how to handle continuous animation parameters.
+- [pitfall] A learner trained on a small set of encounters may perform well only on those and fail against new player behavior. Why: It memorized responses instead of generalizing.
+- [fact] Momentum, adaptive resolution and multiple trials usually find better solutions faster than simple hill climbing, but none guarantees the best one.
+- [fact] Core game-search algorithms are each simple yet admit many optimizations; alpha-beta cutoffs and transposition caches are vital for speed, while other tweaks squeeze out extra gains.
+- [fact] Other sequence-dependent games need more complex hashing or special search code to handle move history.
+
+## wander and idle behavior
+- [definition] A wait carries an identifier and halts its script until a signal with the matching identifier arrives.
+- [mechanism] Targets near the circle's edges make the character turn quickly, so it spends more time turning in either direction. When: Wander target placement on the circle. Why: The angle subtended by the circle edges sets turning speed.
+- [behavior] Because small random turn values dominate, a wandering character usually keeps its direction, and sharp direction changes remain possible but rare. When: Kinematic wander running. Why: Near-zero rotation values are most likely.
+- [behavior] Wander keeps a character roaming without a destination by placing a target on a circle ahead of it and seeking that target. When: Character should roam without a fixed goal.
+- [rule] While a script waits for a signal, run a waiting action such as an idle behavior so the character does not freeze.
+- [heuristic] Place a wander behavior in the lowest-priority group to provide a fallback that can break unstable equilibria. When: When characters can get stuck in equilibria between behaviors. Why: Wander moves the character out of positions where higher-priority behaviors cancel.
+- [heuristic] Use a smaller radius for the vertical component than for horizontal ones so the wanderer turns up and down more slowly, suiting flying creatures. When: Wandering flying creatures with an up axis along y. Why: A smaller vertical radius limits how fast the target moves up and down.
+- [procedure] 1) Place a circle ahead of the character at the wander offset along its facing. 2) Each frame, change the wander orientation by a random binomial value scaled by the wander rate. 3) Set the target as the circle center plus the radius along the target orientation. 4) Face the target. 5) Accelerate at maximum along the current facing. When: Implementing wander steering.
+- [procedure] 1) Wander until the protagonist is spotted. 2) Home in on it using seek or pursue. When: Enemies that wander freely until they notice the player.
+- [metric] Wander is controlled by four parameters: wander offset, wander radius, wander rate and maximum acceleration, and costs O(1) time and memory.
+- [pitfall] Setting maximum rotation near the physical maximum produces twitchy turning rather than a leisurely meander. When: Tuning wander turn rate. Why: Large rotation per frame makes turns abrupt.
+
+## knowledge representation
+- [model] External knowledge reaches characters via direct access, selected notification through event managers or polling stations, or simulated perception through sense managers.
+- [model] Hidden information can be modeled across entities: each player knows its own hand, while the game algorithm knows all hands and the deck.
+- [definition] Internal knowledge is a character's own state, such as health, equipment, state of mind, ultimate goals, movement and recent activity; characters should have unrestricted access to it.
+- [heuristic] Choose the format and quantity of character knowledge to meet the game's requirements.
+- [heuristic] Wrapping all game-state access in an interface layer usually insulates decision logic from changes in data structure. When: Decisions must survive changes to game data layouts.
+- [tradeoff] More built-in knowledge means less search, since reasoning often consists of searching possibilities; faster search can compensate for less knowledge. Why: Search and knowledge are intrinsically linked, an unavoidable engineering fact.
+- [pitfall] Conversion to a representation discards information by design, so discarding the wrong detail can leave the AI unable to make correct decisions.
+- [pitfall] Knowledge representation is closely tied to most decision algorithms, which makes a fully general representation hard to build.
+- [fact] The broader claim that the knowledge-search trade-off explains all intelligent behavior is largely discredited, though the trade-off itself is real and theoretically proved.
+- [fact] External knowledge can usually drive any decision algorithm, while each algorithm determines which kinds of internal knowledge it can use.
+
+## software design pitfalls
+- [mechanism] Least-recently-used arbitration spreads firing opportunities across all rules, directly reducing endless repetition of a single rule. When: When one rule keeps repeating and firing should be shared across the rule set.
+- [rule] Measure before choosing a steering pipeline, since it can add execution cost in complex scenes.
+- [procedure] 1) Scan the ordered rule list and fire the first triggered rule. 2) Move that rule to the end of the list. Over many firings, the first triggered rule is the least recently used one.
+- [procedure] 1) Let one machine claim an input. 2) Have other machines ignore claimed inputs. 3) Without this, several machines may respond to the same input. When: Parallel machines receive the same input. Why: Prevents conflicting responses.
+- [tradeoff] Inheriting from seek keeps code reuse, while inlining the seek code is faster but duplicates code. When: When implementing pursue on top of seek.
+- [tradeoff] Mixing polling and events is often fastest, but information then travels along several paths, making it harder to see what happens where.
+- [tradeoff] Inheritance in a state hierarchy couples classes tightly; it is powerful reuse but a strong form of coupling.
+- [pitfall] Reusing a target member name in a derived class shadows the superclass member; this works in most languages but breaks in some, such as Python, which needs different names. When: When implementing a derived steering behavior in an OOP language.
+- [pitfall] Iterate over copies of the queue and active list when removing items, because removing items from a list during iteration breaks the loop. Why: Items are removed while the lists are being iterated.
+
+## unit-level decision making
+- [model] Position, orientation and velocity matching are simple steering behaviors that each match one kinematic element of a target, taking the character and target kinematics as input.
+- [model] Each unit has one designer-set military influence value, which can differ from its offensive or defensive strength; a reconnaissance unit may have high influence with little combat power.
+- [rule] Make units obey orders exactly, immediately and the same way each time so players can build complex strategies on them. When: strategy games where players direct groups of units. Why: Consistent responses let the player, rather than the AI, determine outcomes.
+- [procedure] 1) Start evolution from weapons that shoot straight lines. 2) Let NEAT add nodes with functions such as Gaussian and sine. 3) Get more varied particle movement over generations. When: evolving particle weapons with NEAT. Why: Added nodes diversify motion from simple starting behaviour.
+- [tradeoff] Giving units an unpredictable inner life makes battles swing randomly and shifts outcomes from the player to the AI, while automaton-like units keep planning meaningful.
+- [fact] Different party compositions give different total costs, so one formation can handle a wide range of characters.
+- [fact] Simple gameplay can still demand varied AI behavior, since agents react differently to the same frights.
+- [fact] Individual units make small tactical choices, such as a ranged unit deciding whether to hold position or advance to engage.
+- [fact] Using tactical analysis to find weak points and strike them with the whole army is widely discussed but seldom built into games.
+
+## character behavior and emotion
+- [definition] Static character state is a 2D position plus one orientation value, with no velocity. Algorithms using only this data are called static because nothing describes motion.
+- [behavior] Most game characters behave the same regardless of who is present, so they seem less alive than characters that adjust to the status of others. When: When designing non-player character responses. Why: Characters that track their own and others' status appear more responsive.
+- [rule] To suggest emotion, trigger emotion animations at the right moments instead of modeling an emotional state.
+- [rule] Offer a toggle to switch an automated behavior on or off so players can avoid the cases where it fails.
+- [heuristic] Give incidental characters just two behaviors: a standard action and an action the player happens to spot. When: characters the player will only glimpse.
+- [pitfall] Straight-line sensing assumes characters are stationary, so a fast-moving listener near a sound hears it earlier than a slow one at the same distance.
+- [fact] Only a few actions are usually active at once, so compatibility checks rarely cost much in practice.
+- [fact] Typical external context data include distance to the nearest enemy, distance to safety, time of day, number of observers, and other game-specific quantities. When: Choosing context for learning characters.
+
+## decision data types
+- [model] Every decision technique takes a character's knowledge as input and produces an action request as output, giving one shared interface for comparing techniques. When: Comparing decision techniques. Why: The input and output interface stays the same across techniques.
+- [mechanism] Continuous tactical values let characters rank equally reachable options, preferring the one with the higher value.
+- [heuristic] A Boolean flag can replace a full state machine when the second aspect has only two states.
+- [fact] Boolean inputs store one membership value for true and one for false. Enumerated inputs store a fixed membership value for each possible value.
+- [fact] A Boolean fact can be stored as an identifier alone, where the identifier's presence means true and its absence means false.
+- [fact] Child data can nest to any depth, but each node holds only one value.
+- [fact] Datum values can be any type the game supports, including structures or function pointers, and the database treats them as opaque.
+- [fact] Observable game data is vast while actions are limited, so learners can encode very specific rules, but learning every nuance takes a long time.
+
+## social and dialogue ai
+- [definition] Collusion means computer characters pursue their own goals while also serving the designer's goal of an optimal player experience.
+- [mechanism] Breaking a deal lowers other parties' willingness to trade with the breaker.
+- [mechanism] Squadmates with personal agendas grow satisfied or unsatisfied depending on whether the player cooperates with them, making the player's choices affect the group. When: Companions have their own goals.
+- [behavior] Companion characters that move through, solve, or use abilities in a level guide players, who imitate them without noticing. When: A companion acts alongside the player in a level.
+- [procedure] 1) Implement each strategy as explicit purchase rules. 2) Run every strategy over the same fixed simulated time. 3) Compare final income. 4) Analyze each strategy's strengths and weaknesses. When: comparing automated or hand-made idle game strategies.
+- [tradeoff] Complex AI minds are worth their unpredictability when emotional triggers depend on nuanced interaction among AI characters, so simple predictability must be given up. When: the design centers on emotional interplay between AI characters. Why: Emotional triggers depend on nuanced interaction among AI characters.
+- [pitfall] A cumulative points total that cannot fall is a poor tool for matchmaking or predicting outcomes, because it no longer tracks current skill.
+- [fact] Conversation trees remain a common way to handle complex character interaction in RPGs, though they offer limited responsiveness.
+
+## sports and team ai
+- [model] Team sports AI has three tiers: a high-level strategy layer, a coordinated motion layer that triggers set movement patterns when match events occur, and individual player AI that varies behavior within the strategy. When: team sports.
+- [mechanism] Some characters work well together, so a team can perform better than the sum of its individual members. When: Evaluating team compositions. Why: Complementary abilities multiply value.
+- [behavior] In team sports, a character must react to a situation while accounting for what the rest of the team is doing.
+- [rule] The high-level strategy layer of a team sports game often uses learning so that the challenge stays fair. When: team sports.
+- [procedure] 1) Compute each team's MMR as a plain mean of member MMRs or a weighted form such as using only the highest-rated player. 2) Compare team values against other teams' values.
+- [fact] Sports and driving games face open AI problems, such as computing the fastest route around a race track dynamically.
+- [fact] Sports games have a large body of readily available expert strategy, but encoding that knowledge into AI is often difficult.
+- [fact] Some team sports have strong set patterns: a double play always follows the same overall movement, while fielder positions depend on where the ball is struck.
+
+## window size tuning
+- [definition] Window size is the number of most recent choices used to match against the stored history when predicting the next choice.
+- [definition] A zero-width alpha-beta window tests whether the true score equals a guessed value. It prunes almost all branches, so it is very fast but loses useful branches if the guess is wrong.
+- [metric] In a two-choice experiment with 1000 trials, predictive power peaked at a window of 5, but a window of 3 captured most of it with fewer samples.
+- [metric] Each extra window action multiplies the probabilities to store by the number of choices, doubling them with two choices and tripling them with three.
+- [fact] Raw probability prediction is equivalent to an N-gram predictor with a zero-length window.
+- [fact] With more choices, the minimum useful window grows, and with five choices a 3-action window was noticeably weaker than a 4-action window.
+- [fact] Each likely window needs several visits before its prediction is reliable, so longer windows can look poor for a long time.
+- [fact] Mathematical models can estimate the best window size, but game practice commonly tunes it by trial and error.
+
+## group and unit movement
+- [definition] Large-scale movement means moving whole characters around the level, not limbs or faces, which belongs to animation.
+- [mechanism] If the anchor leader moves at full speed, followers have no time to reach cover and appear to trail it; slowing the leader lets them take cover around it. When: Squad uses a leader character as the overwatch anchor. Why: Followers need time to reach cover slots before the anchor moves on.
+- [rule] Have each character announce its intentions to others as events rather than having others read or poll them. Why: Event-based sharing is more robust than reading internal state.
+- [pitfall] Ordinary avoidance can choose a maneuver a skidding vehicle cannot execute well, when accelerating forward would avoid impact. When: when the character's current motion limits its options.
+- [pitfall] A large squad may be unable to pass a narrow area that its members pass individually, which needs dedicated rules such as code, a decision tree, or an expert system. When: Squads moving through narrow areas. Why: Group size creates constraints that individual pathfinding does not capture.
+- [fact] Light units may accept travelling farther for a slot than heavy units, so mobility should enter the slot cost. When: Units differ in mobility.
+- [fact] Most platform and adventure enemies use purely local movement; only a few use pathfinding, typically over a navigation mesh.
+
+## physics and timing
+- [behavior] Playtesters discover unplanned uses of physics objects, such as letting enemies grab explosive barrels, which designers may then adopt as level content. When: a level contains physics objects and enemies that interact with them. Why: Players experiment with the rules and find actions the designers did not script.
+- [heuristic] Include action timing when action lengths vary widely or game time is compressed.
+- [heuristic] The delay between a character's staggered updates can stand in for its reaction time. When: Staggered update schedules.
+- [procedure] 1) Place a trigger and a toggleable ambient sound. 2) In the visual scripting editor, create a Used event on the trigger. 3) Connect Used to a Toggle action. 4) Set the Toggle target to the sound actor. 5) Set Max Trigger Count to 0 and untick Aim to Interact if interaction is hard.
+- [pitfall] Unfiltered chatbots may encourage harmful behavior or disclose sensitive data.
+- [fact] Movement with variable frame rates requires an explicit elapsed time: a character moving at 1 m/s over a 20 ms frame advances 20 mm. When: When frame durations vary.
+- [fact] Spin-induced lift and time-varying wind affect some projectiles in flight; predicting them is often best done by running the simulation itself, possibly at coarse resolution. When: When projectiles are spinning or wind varies during flight.
+
+## state transitions
+- [definition] A composite state contains a sub-machine, so an agent can be in several states at once, one per hierarchy level.
+- [mechanism] A transition that leaves a sub-machine discards its record, so returning to it restarts from the initial sub-state unless history is kept. When: A transition jumps out of a composite state to another level.
+- [behavior] A character near a fixed distance threshold may switch back and forth as the player moves, which is noticeable and can stop an anytime algorithm from finishing. When: Behaviour switches at a single fixed boundary. Why: Each switch costs setup and cleanup time.
+- [heuristic] When parallel machines must interact, use conditional checks on the other machine's state, such as forbidding firing while jumping. When: Two machines' states must constrain each other. Why: Less elegant than input consumption but practical.
+- [pitfall] A finite state machine with crisp states makes a character jump abruptly between behaviours, which looks unnatural.
+- [pitfall] A committed character may get stuck, since games rarely let AI reverse a decision. When: Tactical movement with committed actions. Why: Without reversal, a poor choice persists even when conditions change.
+- [fact] Hysteresis within individual behaviors cannot solve oscillations between different species, which need separate handling.
+
+## symbolic ai
+- [model] A symbolic system splits into a body of knowledge held as symbols and a reasoning algorithm that combines those symbols to find solutions or new knowledge.
+- [definition] Symbolic AI, also called GOFAI, represents knowledge explicitly and makes decisions with conditional if-then rules organized in decision trees.
+- [tradeoff] Symbolic AI is easy to explain because its rules are explicit, while connectionist AI learns from data but is harder to explain.
+- [fact] Criticism of symbolic AI had two sources: simple successes failed to scale to hard problems, and symbolic methods were not biologically plausible.
+- [fact] Practical natural-computing engineering often still relies on symbolic knowledge, such as known formulae and dictionary and grammar rules in speech recognition.
+- [fact] Common AI techniques for games include blackboard architectures, route planning, decision trees, state machines, and steering algorithms.
+- [fact] Symbolic AI was the dominant AI paradigm until the 1980s.
+
+## flocking
+- [definition] Flocking, modeling bird flocks as boids, is a weighted blend of separation, alignment (velocity matching) and cohesion, applied within a neighborhood to produce group motion.
+- [rule] Flocking considers only neighbors within a neighborhood, usually a radius cut-off (angular also possible); separation uses nearby boids, cohesion and alignment use neighbors' position, facing and velocity. Why: Ignoring the neighborhood makes every boid respond to the whole group, which is slow and unnatural.
+- [heuristic] Equal weights may suffice for flocking; separation is typically most important, then cohesion, then alignment. When: tuning flocking weights.
+- [procedure] 1) Separation: steer away from neighbors that are crowded. 2) Alignment: match the velocity and direction of the flock. 3) Cohesion: compute the flock's center of mass and pass it as a target to arrive.
+- [pitfall] Flocking is often misused to mean any steering behavior, since it is only the best-known one; alignment and cohesion weights are sometimes reversed in implementations.
+- [fact] Flocking suits herds, swarms or crowds that should move together while avoiding each other.
+
+## aiming and projectiles
+- [mechanism] With drag, the elevation needed to reach a target is higher than a drag-free solution suggests. When: Aiming a projectile with drag. Why: Drag slows the projectile, so it drops short without extra elevation.
+- [heuristic] Homing behavior can be extended with traversal actions, such as grabbing and climbing blocks, to reach the player. When: Enemies that must reach a player on raised terrain.
+- [tradeoff] A drag-free model is often an acceptable, simpler approximation to try first; but in physics-driven games, where engines usually include drag, drag-free solutions can be inaccurate at long range. When: When predicting projectile hits for AI aiming; the drag-free model suits short range, while long range in a physics-driven game calls for drag. Why: Physics engines include drag for numerical stability, so a drag-free model is simpler but can miss at long distances.
+- [fact] Predicting movement is most often needed for aiming firearms, which requires solving ballistic equations for a firing solution.
+- [fact] With quadratic drag no simple closed-form firing solution exists, so an iterative simulation is needed; dropping the quadratic term leaves a model that can be solved exactly. When: When computing firing solutions with drag.
+
+## decision scripts
+- [model] A bot scripting system runs game-specific script, sometimes JIT compiled, that polls perception functions and requests actions such as animation, movement and pathfinding.
+- [definition] A decision script is a short sequence of primitive actions, such as moving to a point, playing an animation or shooting, that a decision maker requests as a single action.
+- [mechanism] If a decision script is blocked mid-run, the decision maker can choose a different action. When: the character's path or action is obstructed during a script.
+- [procedure] 1) Write short lower-level scripts for each action: move into position, throw grenade, move into corner, flank doorway. 2) Write a top-level script that picks the two corners nearest the door, excluding those too close for defense. 3) Reuse the lower scripts for squads of different sizes. When: Building coordinated squad behaviors from reusable scripts. Why: Small reusable scripts compose into larger operations and adapt to casualties.
+- [fact] Decision scripts reportedly delivered most of the desired effect in major commercial games at a fraction of the cost of advanced techniques.
+
+## hierarchical decision coordination
+- [mechanism] In a hierarchical machine, a lower machine is considered only when the higher machine does not respond to its alarm, so the highest active state always controls behavior and priority is unambiguous. When: Each alarm level has its own machine.
+- [rule] Reserve costly responses such as ambushes for predictions whose probability is high, and use lower-cost responses otherwise. When: acting on an N-gram prediction. Why: A wrong prediction then wastes less of the AI's effort.
+- [rule] Consolidate interrupt behavior duplicated across several states into a hierarchical state machine rather than repeating it in each state.
+- [pitfall] Hierarchical state machines are difficult to coordinate when they are implemented in hard-coded style.
+- [fact] Decision trees often read the global game state directly rather than a character's model of what it knows.
+
+## justification and explainability
+- [definition] A justification record stores, for each database item, the rule that added or changed it, the matched items and their values, and a timestamp.
+- [heuristic] Use deep learning only when it meaningfully supports gameplay, since developers want control over most system elements.
+- [procedure] 1) Query an item's justification trail. 2) Recursively query each matched item in that trail. 3) Stop at items supplied by game code or initial data. When: Explaining why a decision or item exists.
+- [pitfall] Machine learning models are black boxes: inputs and outputs can be observed, but their reasoning is hard to understand.
+- [fact] Expert systems use justification trails to explain decisions; in games they mainly serve testing and debugging, since players are not shown the explanations.
+
+## n-gram modeling
+- [definition] N in an N-gram is one greater than the window size, so a 3-gram uses a window of two recent actions.
+- [heuristic] Use a small sample threshold, such as 3 or 4, for online game AI, since more possible actions need more examples and game AI can take more risks. When: Setting the enough-samples threshold for N-gram prediction. Why: Early decisions matter more than statistical certainty in online play.
+- [procedure] 1) Each time an action occurs, take the last N actions. 2) Use the first N-1 as the key and the last as the value. 3) Increment the value's count and the key record's total.
+- [procedure] 1) Take the most recent N-1 actions as the window. 2) Look up its record. 3) Return the follow-on with the highest count, or nothing if the window is unseen.
+- [fact] The most widespread use of N-gram prediction is in combo-based melee games, where timed move sequences are predicted.
+
+## rts strategic ai
+- [model] Real-time strategy AI has four core needs: pathfinding, group movement, tactical and strategic AI, and decision making.
+- [model] RTS AI works at several tiers: individual units, formations or groups, and the whole side.
+- [fact] Strategic decisions in RTS AI are typically handled by a rule-based system or custom code.
+- [fact] Per-character behavior in RTS AI typically uses a finite state machine.
+- [fact] Most complex decisions happen at the whole-side level: collecting resources, guiding research, scheduling construction, training units and marshalling forces.
+
+## terrain analysis
+- [definition] Terrain difficulty combines a base cost for each terrain type with a ruggedness value estimated from height samples.
+- [rule] Use automatic topological analysis only for the simplest tactical queries; for richer needs, have level designers specify tactical locations. Why: automated analysis is hard to get right.
+- [heuristic] Terrain difficulty suits movement costs in pathfinding; because it is cheap, it needs little optimization when terrain is static. When: terrain is static.
+- [fact] Terrain analysis is the military simulation and game AI term for a very similar technique, but it covers only one kind of tactical analysis.
+- [fact] Terrain types such as rivers, swamp, grassland, mountains and forest have difficulty that varies by unit; their type value can be used directly without analysis.
+
+## vehicle driving and traffic
+- [mechanism] A physics-driven car follows its defined racing line by driving, so it may fail to reach the line after being nudged by another car.
+- [mechanism] An open-world game can simulate only the area near the player and inject vehicles at suitable positions when pursuers are needed. Why: simulating the whole world is costly.
+- [heuristic] Tilting the base orientation with turn rate can make a character lean into its turns.
+- [procedure] 1) Measure the track's free extent ahead to the left and right. 2) Measure nearby vehicles. 3) Feed both to a hand-written Markov state machine that chooses the next action. When: Racing AI using fuzzy decision making instead of racing lines.
+- [pitfall] A large satisfaction radius alone can make the stop look abrupt; pair it with slowing. When: Arrive uses a large radius without slowing. Why: The character halts from speed when entering the radius.
+
+## 2.5d and dimensional simplification
+- [heuristic] Before committing to full 3D, check whether the situation can be forced into 2.5D, since that executes faster. When: Choosing between 2.5D and full 3D steering. Why: 2.5D executes faster.
+- [pitfall] Treating characters as points for everything ignores their extent, which breaks collision and obstacle avoidance.
+- [pitfall] Using a left-handed convention without flipping the x sign of the facing vector produces the wrong facing direction. When: Converting orientation in a left-handed coordinate system.
+- [fact] Floor polygons are usually identified by a designated floor material, and per-polygon data can flag floors manually.
+
+## ai data storage
+- [definition] Always overwrite replaces the stored entry whenever a clashing entry is stored. It is easy to implement and often sufficient. When: Simplicity matters more than tuning.
+- [pitfall] Array-based Q-value storage uses memory proportional to states times actions, so growth in the state count quickly exhausts memory. When: Q-values are held in arrays.
+- [fact] Algorithms can be studied analytically and reused across games, which makes them the basis of an AI engine.
+- [fact] Bindings can be stored as a list of identifier and item pairs or as a hash table indexed by identifier.
+
+## ai ethics and bias
+- [rule] When using advanced AI, keep inclusivity and users' best interests in mind.
+- [pitfall] Marginalized populations are underrepresented in training data unless the model is deliberately designed for inclusion. When: When data is collected without a deliberate inclusion effort.
+- [pitfall] LLM-driven NPCs can be persuaded through player conversation into offensive or hateful output. When: When an unfiltered language model speaks as a game character.
+- [fact] Some medical sensors have systematically overestimated blood oxygen for non-white patients, so device bias can cause real harm.
+
+## attractor dynamics
+- [behavior] A negative decay constant with inverse square falloff creates attraction, pulling characters toward others within a radius. This is rarely useful.
+- [pitfall] Movement driven only by attractors and repulsors is full of traps and leaves characters stuck.
+- [fact] Basins of attraction can depend on direction or orientation, which makes them hard to visualize.
+- [fact] Real games have attractor states that many action sequences lead to, and walking keeps the learner near them longer, which is useful.
+
+## equilibrium and stability
+- [definition] A stable equilibrium pulls a nudged character back, and its basin of attraction determines how likely the character is to get trapped.
+- [mechanism] Conflicting steering behaviors can create equilibria in which the character stops and does nothing. When: when behaviors pull in opposing directions.
+- [procedure] 1) Store each random decision's last result with the frame number it was made. 2) If tested on the next frame, reuse the stored result. 3) Otherwise, redraw and store a new result; a skipped frame discards the stored choice. When: When random choices in a decision tree must persist across consecutive frames. Why: If a tree skips a frame because another branch was taken, the world has changed, so discarding the stored choice is intended.
+- [pitfall] Priority steering cannot escape a large stable equilibrium: the fallback moves the character out, but if it stays inside the basin, it oscillates back. When: When a character sits in a large stable equilibrium of its behaviors. Why: The fallback's movement is too weak to leave the basin.
+
+## smart objects
+- [model] Embedding simple rules in both characters and objects, where an object's value attracts characters whose needs match it, produces emergent behavior, as when a sleepy character is drawn to a bed.
+- [mechanism] World objects can supply their own actions, offered only when the current game state allows them.
+- [rule] In object-oriented engines, a decision can call an instance method and apply a simple test to its return value, leaving heavy computation in compiled code.
+- [rule] Give each object at most one action, such as toggling a light switch or opening a door.
+
+## spatial geometry
+- [definition] Offset AI geometry is level geometry pushed outward from every wall by the character's radius, assuming a sphere or cylinder.
+- [rule] Avoid searching detailed render polygons for obstacles; use simplified collision-level shapes instead, since polygon searches are slow and perform poorly.
+- [pitfall] Multiple checks against level geometry from a character's left and right extremes can cause steering problems and stuck characters.
+- [pitfall] Bounding spheres of many nearby obstacles can overlap and block routes that are actually passable. When: cluttered rooms.
+
+## dirichlet domains
+- [definition] A Dirichlet domain, or Voronoi region, is the set of positions closer to a node's characteristic point than to any other node's point.
+- [pitfall] Edge areas of adjacent corridors can be assigned to the wrong node, and routes passing over one another vertically cause similar misclassification; the character then plans a wrong path.
+- [fact] Dirichlet domains are widely used because they are easy to program and to edit in a level editor without changing level geometry.
+
+## expert systems
+- [definition] External knowledge is what a character can observe of the game world: enemy and character positions, level layout, switch and door states, sound directions, available power-ups, surviving squad mates.
+- [definition] An expert system is the purest symbolic form: a large knowledge base of rules applied to derive new facts.
+- [definition] Explainable AI is a research field aiming to make models more transparent and accountable.
+
+## image sharpening filters
+- [definition] A sharpening filter does the opposite of a blur: it concentrates values in regions that already hold the most, helping locate the central hub of an influence.
+- [heuristic] Influence map sharpening is typically run just a few passes and seldom iterated until it converges. When: Applying sharpening to influence maps. Why: Many passes concentrate influence onto unit locations, reducing usefulness.
+- [fact] A sharpening matrix has a positive center value surrounded by negative values, and larger matrices follow the same principle. When: Designing influence map filters.
+
+## generative ai and npc design
+- [pitfall] Generative AI produces plausible answers that are not necessarily accurate, and can fabricate misinformation, discriminate, or generate hate speech.
+- [fact] Generative NPCs let developers define a character's background, attitude, and personality, while a language model handles player conversation.
+
+## imitation learning
+- [heuristic] To imitate echoes with a model that has none, emit fresh sounds every few frames. When: when the sound model lacks echoes.
+- [fact] Encoding actions as discrete data lets a character imitate observed actions and vary them slightly.
+
+## proper confidence calculation
+- [fact] Proper confidence weighs the chance that a smaller window captured the real pattern against the chance that a larger window was fooled by random variation.

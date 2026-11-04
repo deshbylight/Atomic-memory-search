@@ -1,0 +1,1236 @@
+# algorithms
+
+## tree structures
+- [model] A binary B-tree node has left and right pointers plus a Boolean flag; only the right pointer may be horizontal, marking a sibling link rather than a descendant link. Why: merging descendant and sibling pointers into one binary node.
+- [model] Each B-tree page stores an item count, a leftmost child pointer, and an array of 2n entries, each with a key, a child pointer, and optional extra data.
+- [model] A red-black tree stores one flag on each incoming pointer: vertical pointers mark black nodes, horizontal pointers mark red nodes, and no two reds are adjacent on a path. Why: Uses one bit per node instead of two pointer flags.
+- [model] A leader holds a key, a predecessor count, a trailer list, and a next link; a trailer holds a reference to a leader and a next link. Why: Separates the node set from the successor relations.
+- [definition] Generalizations of binary search trees to higher dimensions include BSP trees, k-d trees and bounding volume hierarchies.
+- [definition] An AVL tree is a binary search tree in which, at every node, the heights of the two subtrees differ by at most one.
+- [definition] A node's balance factor equals its right subtree's height minus its left subtree's height, and is always -1, 0 or +1.
+- [definition] In a B-tree of order n, each page except the root holds between n and 2n items.
+- [definition] Underflow occurs when a page holds fewer than n items after a removal.
+- [definition] A binary B-tree, also called a 2-3 tree, is an order-1 B-tree kept entirely in main store, whose nodes hold one or two items.
+- [definition] Preorder visits root, left, then right; inorder visits left, root, then right; postorder visits left, right, then root.
+- [definition] A multiway tree is a tree whose nodes may have any number of children.
+- [definition] An optimal search tree minimizes weighted path length among all search trees over a fixed key set, given known access frequencies.
+- [definition] A tree is perfectly balanced when, for every node, the counts of nodes in its two child subtrees are within one of each other.
+- [definition] In a binary search tree, every key in a node's left subtree is less than the node's key, and every key in its right subtree is greater.
+- [definition] A symmetric binary B-tree allows horizontal pointers on both left and right sides, with no two horizontal pointers consecutive on any search path. Why: Removes the left and right asymmetry of earlier binary B-trees.
+- [definition] The root is at level 0, a child lies one level below its parent, and the height or depth of a tree is the maximum level of any element.
+- [definition] A leaf has no descendants, while an interior node has at least one; a node's degree is its number of direct descendants.
+- [definition] An ordered binary tree has a left and a right subtree at each node, and either subtree may be empty.
+- [definition] A tree whose degree is above 2 is called a multiway tree.
+- [mechanism] Changing the root decision discards the entire subtree, because every lower split was chosen on the old root's partition. When: the best attribute at the root changes.
+- [mechanism] Finding several thresholds at once requires computing gain for a number of scenarios that grows exponentially with the number of splits. When: Using explicit multi-split algorithms.
+- [mechanism] Balanced partitions give consistent query time, which helps keep frame rate stable.
+- [mechanism] Each real run replaces a dummy taken from the piles in a left-to-right pattern, which evens out the remaining dummies quickly.
+- [mechanism] At a leaf the achieved value equals the achievable value, so the current selection replaces the stored optimum only if its value is larger.
+- [mechanism] When the left subtree grows, a factor of +1 becomes 0 and growth stops, 0 becomes -1 and growth continues, and -1 triggers rebalancing; the right side is mirrored.
+- [mechanism] A purely sequential update of the whole database fetches each page exactly once.
+- [mechanism] Inserting a key into a leaf that holds fewer than 2n items changes only that page, and no split is needed.
+- [mechanism] If the parent overflows after a split, it is split the same way, and this can repeat up to the root.
+- [mechanism] Recursive insertion returns a flag and any item that must move up, so each caller either absorbs that item or splits its own page.
+- [mechanism] Binary B-tree insertion has four cases, set by whether the left or right subtree grew and whether the affected key already has a sibling.
+- [mechanism] When the right subtree grows under a lone key, the key gains a sibling; when the key already has a sibling, the node splits and its middle node moves up.
+- [mechanism] Left-subtree growth under a lone key requires a pointer rotation, because the left pointer cannot be horizontal.
+- [mechanism] Grouping subtrees into pages that are read as one unit replaces many node accesses with one page access. With 100 nodes per page, a million-item search needs about 3 page accesses instead of about 20. When: Tree is stored on disk. Why: One page read fetches many nodes at once, so the access count falls to the logarithm of N in base page size.
+- [mechanism] A new node is placed in the empty subtree where the search ended, so the search path and the insertion point are the same. When: Inserting into a binary search tree. Why: An unsuccessful search always ends at a missing child.
+- [mechanism] The shape of a binary search tree built by insertion depends on the order of arrival, so the same keys can produce a very different tree than a balanced one. When: Building a search tree from a key sequence. Why: Each key is placed relative to earlier keys only.
+- [rule] Keep a full search path plus room for splits in main store during insertion, and keep the root there permanently, since splits need the ancestor pages. When: when the tree is stored on secondary storage. Why: searches fetch about log n of N pages and splits need the ancestor pages.
+- [rule] When gains tie during incremental tree updates, keep the current attribute to avoid unnecessary rebuilding.
+- [rule] A node can only be removed if all its connections go to marked nodes, so rules must be designed around this constraint.
+- [rule] Use horizontal distribution when the initial run count must be tracked exactly, as polyphase sort requires.
+- [rule] Handle a height shrink in the left branch and in the right branch with two mirror-image rebalancing procedures.
+- [rule] Use a single rotation (LL or RR) when the heavy child leans the same way as its parent; use a double rotation (LR or RL) when it leans the other way. When: rebalancing an AVL node after insertion.
+- [rule] Deleting a key that lies on a leaf page means removing it directly from that page.
+- [rule] Repair an underfull page by balancing with a sibling or merging with it, choosing according to the page's position in its parent. When: after a deletion leaves a page below its minimum.
+- [rule] Remove a node with two children by overwriting its contents with a neighbour's rather than relinking it. Why: one parent pointer cannot lead to both child subtrees.
+- [rule] Use a tree traversal when an algorithm must process nodes in a defined sequence, such as printing a tree or evaluating an expression tree.
+- [rule] Pass a subtree reference to a traversal by value, so the callee cannot change the caller's pointer. Why: a variable parameter would let the callee redirect the caller's pointer.
+- [rule] To construct the tallest balanced tree for a given node count, search for the insertion order that forces maximal height under AVL insertion.
+- [rule] To exercise every AVL deletion rebalancing routine, find a permutation of a balanced tree's keys that triggers each routine at least once.
+- [heuristic] Prefer repeated binary threshold splits over explicit multi-split algorithms in typical game applications, since deeper nodes place thresholds at new positions in smaller example sets. When: Building a decision tree for game behavior. Why: Repeated splits on one attribute approximate multiple regions cheaply.
+- [heuristic] Use the AVL criterion when the rebalancing rule must stay simple but search paths must stay close to the perfect height.
+- [heuristic] B-trees suit large ordered indexes that need insertions and deletions when the full tree does not fit in primary storage.
+- [heuristic] Before splitting a full page, first try balancing it with a neighbouring page; this known variation delays splitting.
+- [heuristic] Tree reorganization is more worthwhile when the ratio of accesses to insertions is high and the node count is large.
+- [heuristic] Use a search tree when items are retrieved by a unique key and a tree fits better than a linear list.
+- [heuristic] AVL trees suit workloads where retrieval far outnumbers insertions, while SBB-trees suit moderate retrieval-to-insertion ratios. When: Selecting a balanced search tree for a workload. Why: Rebalancing cost matters more when insertions are frequent.
+- [heuristic] Use binary trees for data with two-way branching, such as family trees, tournament histories, and arithmetic expressions with binary operators. When: Modeling hierarchical data. Why: Two children per node matches data that splits into two choices at each step.
+- [procedure] 1) Scan or binary-search the current page for the key. 2) If found, stop. 3) If the key falls between two keys, follow the child pointer between them and repeat at each level. 4) A missing child means the key is absent from the tree. When: searching a B-tree.
+- [procedure] 1) Define the target rebalancing cases, such as LL, LR, RR and RL for AVL insertion or every case of a symmetric binary B-tree. 2) Search for a short key sequence that triggers each case at least once. 3) Determine its minimal length. When: when testing rebalancing code.
+- [procedure] 1) Detect which split type suits each attribute. 2) Compile the result into a multi-decision, float-decision, or integer threshold node. When: Building a decision tree learner.
+- [procedure] 1) If the node is terminal or has one subtree, remove it as in ordinary tree deletion. 2) If it has two subtrees, replace it with the rightmost node of its left subtree, then remove that node. When: deleting a node from an AVL tree.
+- [procedure] 1) Follow the search path to confirm the key is absent. 2) Insert the new node and set its balance factor. 3) Retreat along the path, checking and rebalancing each node. When: inserting a key into an AVL tree.
+- [procedure] 1) Descend along rightmost pointers from the inner key's position to a leaf. 2) Copy that leaf's rightmost item into the place of the deleted key. 3) Remove that item from the leaf. When: deleting a key stored on an inner page.
+- [procedure] 1) When the target page already holds 2n items, gather its 2n+1 keys including the new one. 2) Divide them equally between the old page and a newly allocated page. 3) Move the middle key up into the parent page. When: when inserting into a full page.
+- [procedure] 1) If the key is absent, stop. 2) If its node has at most one child, link its parent to that child, or to nothing. 3) If it has two children, overwrite its key and count with those of the rightmost node of its left subtree, then unlink that node by replacing it with its left child.
+- [procedure] 1) Insert keys in a fixed order into an empty tree, noting which keys cause splits and height increases. 2) Delete the same keys in the same order under each underflow scheme, noting merges and height decreases. 3) Compare the schemes. When: when comparing B-tree underflow strategies.
+- [procedure] 1) Set weights and path lengths for empty subtrees and single keys. 2) For increasing subtree widths, compute each subtree's weight and minimal path length over all candidate roots. 3) Read the optimal tree from the full key range.
+- [procedure] 1) Use the next input value as the root. 2) Build the left subtree from nl = n DIV 2 values. 3) Build the right subtree from nr = n - nl - 1 values. Apply recursively. When: all input values are known in advance. Why: splitting counts evenly at each node yields minimal height.
+- [procedure] 1) Print the left subtree. 2) Print the node preceded by one tab per level. 3) Print the right subtree. This in-order traversal yields an indented view of the tree.
+- [procedure] 1) Start at the root. 2) Compare the target key with the node's key. 3) Stop if equal, else go left or right. 4) Repeat until found or an empty branch is reached.
+- [procedure] 1) Start with an empty search tree. 2) For each word, search the tree. 3) If found, increment its count. 4) If not found, insert it with count 1. When: Counting occurrences of keys in a growing set. Why: One pass builds the frequency table without a prior key list.
+- [procedure] 1) Point the root at a sentinel node. 2) Set the sentinel's key to the search value before every search. 3) On a match, increment that node's count. 4) On reaching the sentinel, allocate a node whose two children both point to the sentinel. When: Implementing insertion with a sentinel. Why: The sentinel removes the empty-subtree test from the search loop.
+- [metric] In the worst case, finding one of N keys in a B-tree of order n needs about log base n of N page accesses, where n is the page capacity parameter.
+- [metric] With constant-time tests and a balanced tree, the decision tree walk takes logarithmic time, O(log2 n), in the number of decision nodes.
+- [metric] Threshold splitting costs time and memory linear in the number of examples, per attribute.
+- [metric] For N sequences, a perfect initial distribution uses sums of N-1 down to 1 consecutive Fibonacci numbers of order N-2; for six sequences the order is four. When: polyphase sort with N sequences.
+- [metric] Distribution starts at level one; each level's dummy goal is the difference between its Fibonacci row and the previous row. When: horizontal distribution of initial runs.
+- [metric] An AVL tree with n nodes has height h satisfying log(n+1) < h < 1.4404 * log(n+2) - 0.328.
+- [metric] A tree reaches the perfect height exactly when its node count has the form 2^k - 1.
+- [metric] Empirical tests suggest AVL height stays near log n plus about 0.25; the exact expected height for random insertion orders is an unproven open problem.
+- [metric] Rebalancing is needed on average once per two insertions, with single and double rotations about equally likely (empirical).
+- [metric] Because every page except the root is at least half full, B-tree storage utilization is at least 50 percent.
+- [metric] The maximum search path length in a binary B-tree is 2 log N.
+- [metric] Storage of a tree node is measured as its key words plus one word per pointer, assuming one-word pointers.
+- [metric] Tree cost equals the sum of each key's success frequency times its level, plus the sum of each gap's unsuccessful frequency times its external level.
+- [metric] Subtree weight w_ij equals w_i,j-1 plus a_j plus b_j, where a_j is the key's success frequency and b_j the gap's unsuccessful frequency.
+- [metric] Naive search over all roots costs about n cubed over six; Knuth's root bound reduces the work to order n squared.
+- [metric] A perfectly balanced tree of n nodes has a search depth of about log n, since every level except the lowest is filled completely.
+- [metric] Averaged over all insertion orders, a random binary search tree of n keys has average path length about 2 ln n, roughly 1.386 times that of a perfectly balanced tree. When: all keys are equally likely to be looked up.
+- [metric] The average path length of a random binary search tree equals 2((n+1)/n · H_n − 1), where H_n is the nth harmonic number, approximately 2(ln n − 0.423) for large n.
+- [metric] The average path length of a perfectly balanced tree is about log n minus 1.
+- [metric] Perfect balance can improve average search path length of a random binary search tree by at most about 39 percent. When: all keys are equally likely to be looked up. Why: the ratio 2 ln 2 bounds the gain from perfect balance.
+- [metric] In a perfectly balanced binary search tree of n items, about log n comparisons suffice for a lookup.
+- [metric] In a symmetric binary B-tree, all terminal nodes lie at one level, the longest search path is at most twice the tree height, and the height is at most log N. When: Analyzing SBB-tree search cost. Why: Balanced terminal depth and the no-consecutive-horizontal rule bound the path length.
+- [metric] The average path length of a tree is its internal path length divided by its number of nodes. When: Comparing the shapes of trees with different sizes. Why: Normalizing by node count makes trees of different sizes comparable.
+- [metric] Adding special nodes so every node has the tree's full degree d requires (d-1) times n plus 1 special nodes for n original nodes. When: Computing external path length. Why: Each missing subtree slot needs one special node.
+- [metric] A tree of height h and degree d holds at most the sum of d to the power i for i from 0 to h-1 nodes; for binary trees this is 2 to the power h, minus 1. When: Bounding node capacity for a given height. Why: Each level can hold up to d times as many nodes as the level above.
+- [tradeoff] Balanced trees pay off when retrievals far outnumber insertions; plain tree insertion wins when records must be tightly packed or insertions are frequent.
+- [tradeoff] Storing children in a fixed array per node wastes space when child counts vary strongly; a linked list of children avoids this waste.
+- [tradeoff] Exact dynamic programming needs quadratic storage, impractical for very large n. For unsuccessful searches only, the optimal alphabetic binary tree algorithm needs linear storage and n log n work.
+- [tradeoff] Building a perfectly balanced tree suits fixed key sets, but restoring perfect balance after random insertions is expensive, so the construction is poor for trees that receive later insertions. When: insertions follow the initial build. Why: perfect balance is defined by node counts that change with each insertion.
+- [tradeoff] SBB-trees have longer average search paths than AVL trees but need rebalancing less often. When: Choosing between SBB-trees and AVL trees. Why: Looser balance rules allow more shape flexibility, which reduces restructuring work.
+- [pitfall] An object-tree interpreter can be clear and simple to read yet far too slow and memory-hungry at runtime. When: Choosing an execution model for performance-sensitive behavior. Why: Readability and runtime cost are independent, so a clean design can still perform poorly.
+- [pitfall] Overwriting a node's record without comparing costs can discard a better route already found.
+- [pitfall] Attributes with many values create wide, wasteful branching in a decision tree.
+- [pitfall] A naive update walks a new example to a leaf and splits it on a conflicting action, which only appends branches and can create long sequential chains.
+- [pitfall] String search scans two arrays together, with indices coordinated by the data, which makes the loops hard to write correctly.
+- [pitfall] Copying a merge tail needs no comparisons, but each copied item still counts as a move.
+- [pitfall] When sequences rotate, dummy counts and coefficients must rotate with the sequence map, or the merge schedule becomes wrong. When: Implementing polyphase tape rotation.
+- [pitfall] The balance criterion bounds only height, not shape: an AVL tree can be up to about 45 percent taller than a perfectly balanced tree.
+- [pitfall] Unlike insertion, which causes at most one rotation, AVL deletion can cascade rotations up the search path.
+- [pitfall] Moving a page from secondary to primary storage dominates search cost, so optimizing in-page comparisons misses the real cost; count page accesses instead.
+- [pitfall] Order-1 B-trees are poor for large data on secondary storage, because about half of their pages hold a single item. When: when data lives on secondary storage.
+- [pitfall] Binary B-tree insertion treats left and right growth asymmetrically, which looks artificial and motivates a symmetric variant.
+- [pitfall] In a first-child next-sibling structure the two pointers have different meanings, so a sibling must not be treated as an offspring in data definitions.
+- [pitfall] Individual random search trees may be far worse than the average, up to a linear degenerate shape, so the 39 percent figure describes averages only.
+- [pitfall] A disk-resident tree grown in random insertion order can reach worst cases near 10^4 page accesses, erasing the paging advantage. When: Insertions and deletions are interleaved on a paged tree. Why: Unbalanced growth produces long search paths.
+- [fact] Child nodes can be stored as a first-child, next-sibling binary tree, allowing any number of children without variable-size arrays.
+- [fact] The slot assignment problem is NP-complete, so exact optimal assignment is not feasible in reasonable time and a heuristic is used.
+- [fact] Any logarithm base gives the same ordering of gains, so the base can be dropped when only comparing attributes. When: only comparing gains. Why: only ordering matters.
+- [fact] When two structures exist, each can be optimized for its own use case.
+- [fact] The left-to-right horizontal distribution rule is not known to be optimal, but it works well in practice.
+- [fact] Locating, inserting and deleting a node in an AVL tree each cost O(log n) operations, even in the worst case. Why: the balance criterion bounds the height.
+- [fact] The tallest AVL trees for a given number of nodes are built from Fibonacci trees.
+- [fact] A node's balance factor needs only two bits, and the speed of reading and updating these factors often decides implementation efficiency. Why: nodes are usually densely packed in memory.
+- [fact] Only two imbalance configurations need separate handling: insertion into the outer subtree of the heavy child, and insertion into its inner subtree; the others follow by symmetry.
+- [fact] AVL rotations restore balance using only pointer changes and balance-factor updates.
+- [fact] All leaf pages of a B-tree lie at the same level.
+- [fact] A non-leaf B-tree page with m keys has m+1 children.
+- [fact] Reading all keys of a B-tree from left to right yields them in increasing order.
+- [fact] A B-tree decreases in height only when its empty root is deleted.
+- [fact] In the reference implementation, the main program handles a root split separately and allocates the new root.
+- [fact] The best page size depends on the storage and computing system, and it has been analysed theoretically.
+- [fact] Other proposed B-tree improvements give only marginal gains over the standard scheme.
+- [fact] A B-tree increases in height only when the root splits into a new root holding one item, so it grows upward from the leaves.
+- [fact] A node with one or two items has two or three descendants, which gives the 2-3 tree its name.
+- [fact] The rightmost node of a left subtree has at most one child, so it is easy to unlink; the leftmost node of the right subtree works equally well.
+- [fact] An inorder traversal of a binary search tree visits its keys in sorted order.
+- [fact] The order in which keys are inserted, rather than their values, determines the shape of an unbalanced search tree.
+- [fact] Removing a node's successor works by cyclically exchanging three pointers, and the removed node can be reused at the head of another list.
+- [fact] Binary trees suffice for pedigree relations, since no person has more than two parents.
+- [fact] Every subtree of an optimal search tree is itself optimal, which allows optimal trees to be built bottom-up.
+- [fact] Each node of a symmetric binary B-tree stores one key and two flags, one for the left pointer and one for the right pointer, marking each as horizontal or vertical.
+- [fact] Insertion reports each subtree as unchanged, having gained a sibling, or grown in height, and these three states drive rebalancing. When: Inserting into a symmetric binary B-tree.
+- [fact] SBB-tree insertion uses four rebalancing cases: single rotations for left-left and right-right, and double rotations for left-right and right-left. When: Restoring the SBB-tree rule after insertion.
+- [fact] Every AVL tree is also a symmetric binary B-tree, so SBB-trees form a larger class of trees.
+- [fact] Binary B-trees correspond canonically to red-black trees, linking the two structures.
+- [fact] Search trees of this kind are used in compilers and databases to organize stored objects.
+
+## sorting
+- [model] An array-based merge uses one array of double length, so it needs storage for twice the item count: its two ends act as destinations and its two halves as sources.
+- [model] The balanced variant uses 2N files: N inputs and N outputs that swap roles after each pass.
+- [model] Sorting methods divide into internal sorting, on arrays in fast random-access store, and external sorting, on sequential files on disks and tapes.
+- [definition] A sort is stable if items with equal keys keep their original relative order in the output.
+- [definition] A run is a maximal ordered subsequence: it cannot be extended at either end without breaking the order.
+- [definition] Quicksort sorts by exchanging items over large distances, using a partition step that splits the array around a chosen comparand.
+- [definition] Sorting permutes a set of items so that their ordering values are non-decreasing, which makes later searching easier.
+- [definition] The key is the explicit field whose value determines an item's position in the ordering.
+- [mechanism] Changing a behaviour's phase shifts when it runs without changing its frequency, so behaviours sharing a frequency can be spread over consecutive frames. Why: Three behaviours at frequency 3 with phases 0, 1 and 2 run on consecutive frames.
+- [mechanism] When a merge source reaches end of file, it is eliminated, the active count and live count drop, and the index map is rearranged.
+- [mechanism] When a merge source reaches end of run, it is excluded from selection until the current output run is complete, then becomes available again.
+- [mechanism] Merging r runs distributed over N files leaves about r/N runs per pass, so after k passes about r/N^k runs remain.
+- [mechanism] Sifting a new element at the top moves it down along the path of the smaller child, and each smaller child rises one level.
+- [mechanism] Merging two sequences of n runs each yields exactly n runs, so the number of runs halves with each merge pass. When: Natural merge sort performing successive passes. Why: Each pair of corresponding runs combines into one run.
+- [mechanism] Polyphase merge always combines runs from two sources into a third. When a source is exhausted, it becomes the next destination, so no fixed pass structure is needed. When: Merging runs across several sequences.
+- [mechanism] If the largest value is always chosen as comparand, each partition leaves only one item on one side, needing about n splits and order n^2 comparisons. When: Quicksort on inputs that defeat the comparand choice. Why: Splits are maximally unbalanced.
+- [mechanism] Straight selection costs about n^2/2 comparisons because each scan keeps only the minimum and discards the outcome of every other comparison. When: Analyzing straight selection sort.
+- [mechanism] A sift ends when an element with a smaller key is found or the left end of the ordered prefix is reached.
+- [rule] Take the simpler flat partition option when it is adequate.
+- [rule] Keep the scanning pointer forward-only when the data come from buffered secondary storage. Why: Backing up the pointer would disturb sequential access to buffered data.
+- [rule] To compare structured keys, search for the first pair of unequal components. If no such pair exists, the keys are equal.
+- [rule] When sorting arrays, permute items in place. Methods that copy items into a second result array are of minor interest, since storage economy is the predominant requirement. When: sorting arrays.
+- [rule] Swap the two destination ends after each merged group, so that output fills both ends evenly. When: merging into an array in both directions.
+- [rule] Choose the hybrid cutoff m by timing the hybrid for several values and keeping the one with the least total time.
+- [rule] Let a bubble sort finishing a segment of length m sweep exactly m-1 times instead of testing for a final sorted pass. When: bubble sort as the finishing step of a hybrid.
+- [rule] Test quicksort on constructed worst-case and best-case permutations of the keys 1 to n to see how it behaves at the extremes.
+- [rule] State the invariant that holds after each repetition of a straight sort, and use it to reason about correctness.
+- [rule] Track run boundaries during heap run generation so the output switches to a new run at the right time. When: heap run generation. Why: The heap starts empty, is partly filled near the end, and finally empties.
+- [rule] Use a heap whose root is the largest element, so heapsort's output comes out in ascending order.
+- [rule] Polyphase merge should terminate by a level counter that reaches zero, not by an end-of-file test on one particular sequence. When: Writing the control loop of a polyphase merge. Why: Further merges may still involve dummy runs on a sequence that already reached end of file.
+- [rule] Push the longer partition onto the stack and continue directly with the shorter one; the stack depth is then at most about log n. When: Implementing iterative quicksort with an explicit stack. Why: Work on the smaller side is finished quickly and the pending stack stays shallow.
+- [rule] A run-aware file reader should track the next key and an end-of-run flag alongside the end-of-file indicator. When: Designing file access for natural merge sort. Why: Merge code can then handle runs without low-level buffering details.
+- [heuristic] Sort after compiling candidate lists using an in-place sort such as quicksort. With linked lists, sorting during insertion may be faster. When: Choosing sort timing for candidate lists.
+- [heuristic] Plot the probabilities of each maximum run length to see how the distribution is shaped.
+- [heuristic] Straight sorting methods are learned first because they clarify the main sorting principles, have short programs, and are fast for small inputs.
+- [heuristic] For sizes that are not powers of two, keep merging full groups while enough items remain, and let the final short groups finish the pass.
+- [heuristic] The best cutoff m for a quicksort-plus-simple-sort hybrid is expected to be small.
+- [heuristic] Use a quickselect-style partition method for medians and other quantiles of large sets; it's not worth it for sets of about 10 elements or fewer.
+- [heuristic] Heapsort is very efficient for large n and its advantage grows with n, but it is not recommended for small inputs.
+- [heuristic] Polyphase planning only needs to track run counts per sequence, not keys, because merging n runs always produces exactly n runs. When: Planning a polyphase merge schedule. Why: The number of runs evolves predictably regardless of key values.
+- [heuristic] Before adopting quicksort, judge how much performance would be lost if unlucky input causes worst-case behavior. When: Choosing a sorting method for uncertain input. Why: Quicksort's average speed comes with a quadratic worst case.
+- [heuristic] Prefer this method when moving items dominates the cost, as on peripheral storage.
+- [heuristic] Use a stable sort when items are already ordered by a secondary property that must survive the sort. When: items with a secondary order.
+- [heuristic] Straight insertion suits small inputs and nearly sorted data, where it can beat straight selection. When: small or nearly sorted input.
+- [heuristic] Use straight merge sort when data sits on sequential external storage too large for main memory.
+- [heuristic] When men are paired in a fixed order, track availability only for women, since each man's status follows from the index being processed.
+- [procedure] 1) Use a 2n-element array, a direction flag, run length 1, and a destination pointer. 2) While run length is below n, merge adjacent run pairs into the other half. 3) When one run is exhausted, copy the other's tail. 4) Double run length. 5) If the result is in the upper half, copy it down.
+- [procedure] 1) Distribute initial runs cyclically over N output files and count the runs. 2) Each pass uses L inputs if fewer than N runs remain, else N; former outputs become inputs and outputs are emptied. 3) Merge one run from each active input into the current output by repeatedly copying the smallest front key. 4) Repeat passes until a single run remains.
+- [procedure] 1) Scan from the right end toward the front, comparing each adjacent pair. 2) Swap any pair that is out of order. 3) Repeat passes until no further pass is needed.
+- [procedure] Record whether any exchange happened in a pass, and stop when a pass makes none.
+- [procedure] Remember the index of the last exchange, and let later passes stop there, since everything below that index is already in order.
+- [procedure] 1) Run quicksort until partitions are shorter than a cutoff m. 2) Finish each short partition with a simple sort such as bubble sort. When: when short segments are cheap to finish with a simple sort.
+- [procedure] 1) Partition the segment. 2) Handle the shorter partition with an iterative loop. 3) Handle the longer partition with a recursive call, so only one recursive call remains. When: writing recursive quicksort.
+- [procedure] 1) Merge five sequences onto a sixth until the fifth is empty. 2) Merge four sequences onto the fifth, then three onto the fourth, then two onto the third. 3) Copy the first sequence onto the second. When: cascade merge starting from a perfect distribution on five sequences.
+- [procedure] 1) Count comparisons and moves for each sort. 2) Measure each sort's real running time on your machine. 3) Fit coefficients that turn the counts into estimated time. When: comparing straight sorts by running time.
+- [procedure] 1) Partition around x = a[k], giving indices i > j with items left of j at most x and items right of i at least x. 2) If j < k < i, a[k] is the answer. 3) If j < k, repeat on the upper part; if i > k, on the lower part. 4) Stop at one item. When: finding the k-th smallest item.
+- [procedure] 1) Write the top item to the current run. 2) Read the next input item into the top position. 3) Sift it down. When: heap run generation. Why: Each item passes through the heap like through a funnel, so the least key leaves each time.
+- [procedure] 1) Fill the upper half of the heap without ordering. 2) Fill the lower half and build the heap. 3) Pass remaining input through, starting a new run when a key cannot continue the current run. 4) At end of input, flush the lower part and relocate the upper part. 5) Flush remaining items as the last run.
+- [procedure] 1) Build the heap in place: from the middle index back to index 0, sift each element into place. 2) Swap the top element with the last heap element, shrink the heap by one, and sift the new top down. Repeat until one element remains.
+- [procedure] 1) Call select to choose a destination. 2) Copy the next run there. 3) Repeat until the source is exhausted.
+- [procedure] 1) Each source with a positive dummy count decrements it and is skipped. 2) If no sources remain active, output a dummy run. 3) Otherwise merge one real run from the active sources, selecting the smallest front key and removing exhausted sources. When: Each merge step of a polyphase merge at the current level. Why: Dummy counts stand in for runs that do not physically exist.
+- [procedure] 1) Make the output the newest source. 2) Make the old first sequence the new output. 3) Shift the dummy counts with the sequences. 4) Recompute the coefficients one level down. When: After finishing one level of a polyphase merge. Why: Rotation lets each finished level feed the next as a new source.
+- [procedure] 1) Fix the desired final state, with all data on one sequence. 2) Work backward through the merge steps to derive the initial run count on each sequence. When: Choosing the initial run distribution for a polyphase merge. Why: Arbitrary initial distributions can waste passes or stall the merge.
+- [procedure] 1) Choose a comparand x. 2) Scan from the left for an item not less than x and from the right for an item not greater than x. 3) Swap them and continue until the scans meet. When: Partitioning an array in quicksort.
+- [procedure] 1) Partition the range around a comparand. 2) Recursively sort the left side if it has more than one element. 3) Recursively sort the right side likewise. When: Implementing quicksort recursively.
+- [procedure] 1) Write the current item to the destination. 2) Read the next key from the source. 3) Set the end-of-run flag if the source is exhausted or its next key is smaller than the item just written. When: Copying items from a run-aware source to a destination. Why: A smaller next key means the current run has ended.
+- [procedure] 1) For each i from 1 to n-1, take x = a[i]. 2) While the element left of x is larger than x, shift that element one place right. 3) Place x in the vacated position.
+- [procedure] 1) Merge single items into ordered pairs. 2) Merge pairs into ordered quadruples, then quadruples into octets. 3) Keep doubling run length until the whole sequence is ordered.
+- [procedure] 1) For pass i, scan a[i] through a[n-1] to find the index k of the smallest key. 2) Swap a[i] with a[k]. 3) Repeat for the next i.
+- [procedure] 1) Split the task for m elements into m subtasks. 2) In each subtask, swap one element into the last position. 3) Generate the permutations of the remaining m-1 elements. 4) Pass each complete permutation to a parameter procedure. When: Generating all n! permutations without an extra array.
+- [procedure] 1) Sort a linked list into increasing order by an integer key. 2) Reverse the sorted list with a separate procedure that reverses its node order.
+- [metric] Sorting efficiency is measured by C, the number of key comparisons, and M, the number of item moves (transpositions). Both are functions of n.
+- [metric] The basic bubblesort always makes (n² - n)/2 key comparisons, regardless of input order.
+- [metric] The partition-based selection method averages about 2n comparisons, giving linear average cost in n.
+- [metric] With six sequences and a heap of 100 items, about 165 million initial runs can be sorted in ten partial passes.
+- [metric] On random keys, expected run length from heap run generation is about twice the heap size, rather than the heap size.
+- [metric] Heapsort's worst-case total moves are of order n log n, from about n/2 sifts to build the heap and n-1 sifts to sort.
+- [metric] Heapsort's average number of moves is about (n/2) log n.
+- [metric] The number of polyphase passes is roughly the logarithm of the number of runs n, taken to the base of the merge degree. When: Estimating passes for a polyphase merge.
+- [metric] Quicksort partitioning averages about n/6 exchanges per partition over all comparand positions; the exact value is (n - 1/n)/6. When: Estimating quicksort exchange counts.
+- [metric] With a median split at every level, quicksort needs about n log n comparisons and about n log n / 6 exchanges. When: Estimating quicksort cost in the best case. Why: Balanced splits give about log n levels of n work each.
+- [metric] A sift makes at least 1 and at most i-1 comparisons, and about i/2 on average over all permutations.
+- [metric] Straight insertion makes about n-1 comparisons and 2(n-1) moves on sorted input, about n²/2 of each in reverse order, and about n²/4 of each on average.
+- [metric] Naive QuickSort can recurse to depth n in the worst case, while a refined partitioning limits the depth to about log(n).
+- [tradeoff] Keeping follow-on counts sorted speeds prediction but slows registration; leave them unsorted because registration happens far more often. Why: Registration runs on every action, while prediction runs less often.
+- [tradeoff] Straight sorting methods have short programs and are faster for small n, but must not be used for large n. Advanced methods need fewer operations, but each operation is more complex. When: choosing a sorting method by input size.
+- [tradeoff] Cascade merge can beat polyphase despite leaving sequences idle and using plain copy steps. When: very large files with six or more sequences.
+- [tradeoff] Heap run generation with polyphase merging handles huge run counts, but its program is far more complex than simple array sorts of the same task.
+- [tradeoff] Fusing the split and merge phases of straight merging halves the copying, at the cost of a fourth tape.
+- [pitfall] Distribution alternates runs across output files without checking whether two runs on one file could merge, so consecutive runs there can silently change the run count.
+- [pitfall] Index handling for direction and destination in an array merge adds considerable administrative overhead.
+- [pitfall] A heavy item out of place sinks to its position in one pass, but a light item out of place rises only one step per pass. Why: the pass direction moves items at different speeds.
+- [pitfall] Exchanges cost more than comparisons, so bubblesort's improvements help less than intuition suggests.
+- [pitfall] Sorted or nearly sorted input tends toward quicksort's worst-case behavior, so test it deliberately.
+- [pitfall] Hoare's Find has order n-squared worst-case comparisons, because each partition may remove only one candidate.
+- [pitfall] Combining heap run generation with polyphase merging is awkward, because both need routines called from several places.
+- [pitfall] Judging heapsort on small examples misleads, since large items are sifted toward the front before reaching the far right.
+- [pitfall] Finding run ends costs extra comparisons, and sequential files expose only one element at a time, so run boundaries must be detected with a look-ahead. When: Implementing natural merge on sequential files.
+- [pitfall] Strict comparisons cause many needless swaps when keys are equal: a run of n identical keys causes about n/2 swaps. When: Partitioning arrays containing many duplicate keys. Why: Strict scans stop on equal keys and swap them.
+- [pitfall] Choosing the first or last element as comparand makes an already sorted array the worst case, while the middle element makes it the best case. When: Choosing a fixed comparand position in quicksort. Why: Sorted input then always splits unevenly or evenly, respectively.
+- [pitfall] Pushing the right partition and continuing with the left lets the stack grow to n entries on worst-case input. When: Iterative quicksort with a stack of pending ranges. Why: Each partition leaves one element on one side, so pending work accumulates.
+- [pitfall] Straight insertion is unsuitable for large n, and each insertion shifts a run of items, so its move count stays quadratic.
+- [pitfall] Split phases only copy items and move none into order, yet they make up half the copying in a straight merge sort.
+- [pitfall] Inserting keys in strictly ascending or descending order turns a plain search tree into a linked list.
+- [fact] Bubblesort is weak among straight sorting methods, with little beyond simplicity to recommend it; in reported measurements it was the slowest method overall.
+- [fact] In-place sorting methods fall into three principal categories: sorting by insertion, sorting by selection, and sorting by exchange.
+- [fact] Bubblesort's exchanges are of order n², ranging from zero for sorted input up to a worst case of order n².
+- [fact] The early-stop and last-exchange improvements remove redundant comparisons but do not reduce the number of exchanges.
+- [fact] In external sorting, array-based sorts are useful mainly in the distribution phase, since later merge passes handle runs longer than main store.
+- [fact] Heapsort keeps its binary heap inside the array being sorted.
+- [fact] Building a heap from input in reverse order needs no moves.
+- [fact] Heapsort beats Shellsort at large sizes. When: large n.
+- [fact] In measured times, the array version of straight merge sort beats heapsort and loses to quicksort.
+- [fact] With N sequences, polyphase merge performs an (N-1)-way merge, while balanced merging performs an N/2-way merge, so polyphase needs fewer passes. When: Comparing polyphase and balanced merge with the same number of sequences. Why: A higher merge degree reduces the number of passes.
+- [fact] For the improved bubblesort, the average pass count is about n minus a constant times the square root of n, and average comparisons are about (n² - n(k + ln n))/2, with k a constant. When: average case.
+- [fact] The first version of this method assumes the item count is a power of two, and a later refinement removes that restriction.
+- [fact] Any type with a total ordering relation can be sorted by the same methods once each item is reduced to its key.
+- [fact] An array gives direct access to every item, while a sequential file exposes only its front item, so the two need different methods.
+- [fact] In the reported measurements, Quicksort ran two to three times faster than Heapsort.
+- [fact] Quicksort sorts reverse-ordered input about as fast as sorted input.
+- [fact] Straight insertion is stable, since equal keys are never passed over.
+- [fact] Straight merging on sequential storage needs three tapes.
+- [fact] The expected comparisons and moves of Quicksort on random permutations can be derived by adapting the analysis of random binary search tree insertion.
+
+## sorting algorithms
+- [definition] A dummy run is a hypothetical empty run that fills the gap when real run counts do not form a perfect sum. When: polyphase distribution with imperfect run counts.
+- [definition] The median is the item that is no larger than half the items and no smaller than the other half.
+- [definition] Natural merge sort ignores fixed run lengths and merges the ordered subsequences already present in the input, called runs, so it exploits partial order.
+- [definition] An iterative quicksort replaces recursion with an explicit stack of pending index pairs (low and high), useful where recursion is unavailable. When: Implementing quicksort in a language without recursion.
+- [definition] Shakersort is an improved bubblesort that alternates the direction of successive passes, carrying heavy items right and light items left.
+- [definition] Shellsort runs insertion sort over chains of elements a fixed gap apart, then repeats with smaller gaps until the gap is 1.
+- [definition] Merging combines two or more ordered sequences into one ordered sequence by repeatedly choosing among the currently accessible front items.
+- [definition] A pass is the smallest repeated subprocess of a merge sort and consists of a split phase and a merge phase, each one operation over all the data.
+- [mechanism] Each step needs a predecessor-free item; if none exists, a loop exists, no linear order is valid, so the sort must detect it, not emit a wrong order.
+- [mechanism] A merge ignores any source holding a dummy run; if every source holds a dummy, the output receives a dummy run.
+- [mechanism] A look-ahead buffer holds the next unread element of a sequential file, letting a program peek at the upcoming key to detect run boundaries. When: Merging or scanning runs from a sequential file. Why: Sequential files expose only one element at a time.
+- [mechanism] Alternating pass direction removes the asymmetry of plain bubblesort, so a single misplaced light item no longer needs one pass per step to reach its place.
+- [mechanism] Earlier passes with larger gaps leave the data partly ordered, so later passes with smaller gaps merge already sorted chains and finish quickly.
+- [mechanism] Merge output alternates between two destinations that serve directly as the sources of the next pass, so no separate split phase is needed.
+- [mechanism] In a selection pass the running minimum changes with probability 1/i, so the expected number of assignments is the harmonic number H(n-1).
+- [mechanism] Tree sort avoids shifting elements as insertion sort does, because inserting into a search tree only changes links. When: Comparing tree sort with array insertion sort. Why: Links are rewired locally instead of moving stored components.
+- [behavior] Straight selection does the same number of comparisons on easy and hard inputs, so it adapts to input order far less than insertion. Why: its comparison count depends only on n.
+- [rule] Within a merge, while both sources have items, compare their current heads, copy the smaller item, and advance that source and the destination.
+- [rule] Stop the outer loop when run length is at least n, rather than testing for equality. Why: sizes that are not powers of two never hit run length exactly n.
+- [rule] Build a natural merge that reads runs from both ends of a double-length array inward, then compare its speed with the sequence-based natural merge.
+- [rule] Any correctness argument for a merge over runs must hold for arbitrary run counts per input, not only for equal counts. When: Proving or testing a natural merge sort. Why: Run counts can become unequal after distribution.
+- [rule] An output file should remember the last item written, so distribution can detect when writing would unintentionally join two runs. When: Distributing runs to output files during natural merge. Why: Joining runs silently changes run counts.
+- [rule] Any decreasing gap sequence ending in 1 produces a correct Shellsort.
+- [rule] Switch the destination after each completed run, where run length starts at one and doubles before each pass, so both destinations fill evenly.
+- [rule] Represent the chosen objects as a set of indices, and carry the current total weight and the value still achievable as recursion parameters.
+- [rule] When a set is not partially ordered, a topological sort should report a loop of elements instead of only a failure message.
+- [rule] Count leaders during input and decrement the count on each output; if any remain at the end, the ordering relation is not a partial order. When: Finishing a topological sort. Why: Leftover items cannot be placed without a predecessor cycle.
+- [rule] Send equal keys down the same branch as greater keys, so equal items keep their insertion order in an in-order scan. When: Sorting with duplicate keys in a search tree. Why: Consistent handling of equal keys preserves their original relative order.
+- [rule] When a tree is used for sorting, items with duplicate keys must still be inserted, not merely counted, or they will be lost from the output. When: Sorting data with repeated keys via a search tree. Why: Sorting must output every item, not one entry per key.
+- [heuristic] Avoid straight merge sort for data in main store: it needs room for 2n items and carries high index overhead, so it is rarely used on arrays there. When: data in main store.
+- [heuristic] Choose gap increments that are not multiples of each other, so chains interact as often as possible; shared factors keep chains independent and waste passes.
+- [heuristic] Use shakersort only for nearly sorted items; on most inputs it is slower than straight insertion and selection, except already sorted arrays. When: nearly sorted items.
+- [heuristic] A plain linear search for the smallest front key is sufficient when the number of files is small, because selection is the most frequently executed step. When: number of merge files is modest. Why: selection dominates run time.
+- [heuristic] Use multiway merging when more files are available, because it needs fewer passes.
+- [heuristic] Spread dummy runs as evenly as possible over the N-1 sequences, so that as many merges as possible involve real runs.
+- [heuristic] Natural merge is worth using when the input is already partly ordered, because it needs fewer passes than straight merging. When: Choosing a merge sort variant for partly sorted input. Why: Existing runs reduce the number of passes required.
+- [heuristic] Shellsort is reasonable for moderate n, while better algorithms exist for large inputs. When: moderate n.
+- [heuristic] Ordered insertion pays off only when many distinct words occur compared to their total number of occurrences.
+- [heuristic] Use tree sort when the same structure must support both searching and sorting; for ordering alone, faster dedicated sorting methods exist. When: Choosing a sorting method. Why: A search tree serves lookups and ordering at once, but pure sorting has better methods.
+- [procedure] 1) Merge runs from both inputs while both have data. 2) When one input is exhausted, copy all remaining items of the other input to the output in one pass; stopping early loses that tail. When: Natural merge where input run counts may be unequal. Why: Copying the whole tail, not at most one run, prevents data loss and keeps worst-case performance unchanged.
+- [procedure] 1) Distribute runs alternately from the main file to two auxiliary files. 2) Merge corresponding runs from the two auxiliary files back into the main file. 3) Repeat until the main file holds a single run. When: Running natural merge sort on a sequential file.
+- [procedure] 1) Generate pseudo-random integer input. 2) Write the result as text with run boundaries marked. 3) Report the item and run counts to verify the merge. When: Testing a natural merge implementation. Why: Visible boundaries and counts reveal lost or joined runs.
+- [procedure] 1) Compare keys in pairs. 2) Compare the winners in pairs, and repeat until one winner remains. The root then holds the least key, using n-1 comparisons in total. When: Building a selection tree to find the minimum. Why: Retaining comparison outcomes avoids rescanning all keys.
+- [procedure] 1) Follow the path from the root to the least key and remove it. 2) Refill each vacated slot with the winner of the alternative branch, or leave a hole at the bottom. 3) The next minimum then appears at the root. When: Extracting keys in order from a selection tree.
+- [procedure] 1) Run a right-to-left pass that bubbles the least item leftward, then set the left bound just past the last exchange. 2) Run a left-to-right pass that bubbles the largest item rightward, then set the right bound just before the last exchange. 3) Repeat rounds until the left bound exceeds the right bound.
+- [procedure] 1) Choose a decreasing sequence of gaps whose last value is 1. 2) For each gap h, insertion-sort each chain of elements h positions apart. 3) Finish with gap 1.
+- [procedure] 1) After each pass, swap the source and destination roles by flipping a direction flag. 2) Double the run length. 3) Start the next pass.
+- [procedure] 1) Insert all items into a search tree. 2) Scan the tree in order, emitting items as they are visited. When: Sorting items with a binary search tree. Why: In-order traversal of a search tree yields keys in sorted order.
+- [metric] Straight methods grow quadratically; selection and exchange sorts make exactly (n²-n)/2 comparisons, whatever the initial order.
+- [metric] Distributing runs over N files and merging N ways needs about log base N of n passes, since each pass divides the number of runs by N.
+- [metric] Each pass copies all n items, so the worst-case total is n·log base N of n copy operations.
+- [metric] Straight merge sort needs about log n passes, since run length doubles each pass until it exceeds n.
+- [metric] Straight merge sort makes about n log n item moves, because each pass copies all n items once.
+- [metric] Natural merge sort needs at most about n log n moves in the worst case, and fewer on average; comparisons increase because run ends require consecutive key comparisons. When: Estimating natural merge sort cost on n items. Why: Finding run boundaries requires comparing each key with its successor.
+- [metric] Partitioning n items makes exactly n comparisons. Why: Each item is compared once during the two scans.
+- [metric] Each extraction from a selection tree takes about log n comparisons, so the selection phase costs about n log n. When: Estimating tree sort cost. Why: Only the path from the root to the removed key is recomputed.
+- [metric] Shakersort makes n-1 comparisons in its best case. When: input already sorted.
+- [metric] The gap sequence 1, 4, 13, 40, 121, where each gap is three times the next plus one, is considered reasonable.
+- [metric] The gap sequence 1, 3, 7, 15, 31, where each gap is twice the next plus one, gives effort proportional to n^1.2.
+- [metric] Shellsort's operation count is about c·n^1.2, while Heapsort and Quicksort are about c·n·log(n), with c a system-dependent constant.
+- [metric] Straight selection makes at least 3(n-1) moves on ordered input and at most n²/4 + 3(n-1) on reverse-ordered input.
+- [metric] For large n, expected assignments in straight selection come to about n*(ln(n) + 0.577), where 0.577 is a fixed mathematical constant (about 0.5772). When: large n.
+- [metric] Merging two pages that are both at minimum size yields 2n-1 items, which reverses a split.
+- [metric] A well-coded tree sort can nearly match the speed of the best array sorting methods. When: Comparing sorting implementations.
+- [tradeoff] As the finishing step of a hybrid, selection sort costs more index handling than bubble sort, which sweeps the whole segment.
+- [tradeoff] Sorting the whole list and selecting the k-th element costs roughly n log n, whereas partition-based selection averages linear time yet degrades to quadratic in the worst case.
+- [tradeoff] Natural merge can either correct the distribution so run counts differ by at most one, or accept unequal counts and fix the merge to handle them. Each choice has a cost. When: Fixing a natural merge bug caused by unequal run distribution. Why: Correcting distribution keeps the merge simple; fixing the merge tolerates arbitrary counts.
+- [tradeoff] A naive selection tree for n items needs 2n-1 storage units, and holes left by extractions cause needless comparisons; the goal is n items in n units without holes. When: Choosing between tree-based selection sorts. Why: Extra storage and holes both add cost; heapsort meets both goals.
+- [tradeoff] Straight selection makes far fewer moves than straight insertion, but insertion is faster on sorted or nearly sorted input.
+- [pitfall] Moves usually cost far more than key comparisons, so saving comparisons yields modest gain; on peripheral storage moves outweigh comparisons by several orders of magnitude, so comparison counts mislead.
+- [pitfall] Plain minimax on merging branches searches the same subtree once per merge, duplicating work and wasting time. When: Without a transposition table. Why: Merged paths reach identical positions that get searched again.
+- [pitfall] A multiway merge program is not a small generalization of a two-way merge program; its structure differs throughout, including tracking which inputs remain active.
+- [pitfall] A partition routine that takes the middle element as pivot can fail on particular inputs.
+- [pitfall] Alternately distributing runs to two files can accidentally join two runs when the next run's first key exceeds the current run's last key, which changes the run counts per file. When: Natural merge sort distributes runs alternately onto two auxiliary files. Why: A joined run reduces the count on one file, so counts become unequal.
+- [pitfall] Straight selection remains quadratic in comparisons, so it is practical only for small n.
+- [fact] The best Shellsort gap sequence is unknown, and its analysis is mathematically hard, so many cost questions remain open.
+- [fact] A pigeonhole sort could reduce the total cost of position-sorted lookup further, to O(n).
+- [fact] Straight merge sort makes fewer key comparisons than item moves, because copying a run's tail needs no comparisons.
+- [fact] Picking the exact median is rare, with probability 1/n, but a random comparand is only a factor 2 ln 2 worse than the ideal on average. When: Choosing a comparand for quicksort.
+- [fact] Alternating pass direction does not reduce the number of exchanges a bubble-type sort performs.
+- [fact] Almost-sorted input is rare in practice.
+- [fact] Shellsort was introduced in 1959 as a refinement of straight insertion.
+- [fact] In the worst case, the final gap-1 pass does all the sorting work.
+- [fact] A sequence that is already k-sorted stays k-sorted after an i-sort, so earlier ordering is preserved.
+- [fact] At large n, quadratic methods such as straight insertion fall far behind n·log(n) methods on reverse-ordered input. When: large n, reverse-ordered input.
+- [fact] After pass i, the front of the array holds the i+1 smallest items in sorted order.
+
+## spatial partitioning
+- [model] Multi-resolution tile maps, quadtrees and octrees, and binary space partition trees are spatial structures that find nearby waypoints or objects quickly; graphics and physics engines use them.
+- [model] A fixed grid overlays the play area with equal square cells and stores each unit in the cell containing its position, with each cell heading a doubly linked list of its units. Why: Splits the battlefield into smaller independent groups so units only check neighbors in the same cell.
+- [model] A quadtree begins as a single square spanning the whole space, then divides any overfull square into four equal quadrants, recursively.
+- [model] A spatial partition has three parts: a position for each object, a spatial structure that stores objects, and an update step when positions change.
+- [definition] A collision detector takes a start position and movement amount, returning the first collision along that move with its position and surface normal, ignoring anything beyond the movement amount.
+- [definition] Adaptive partitions such as BSPs and k-d trees choose split planes so each side holds about the same number of objects.
+- [definition] A bounding volume hierarchy is an adaptive partition tuned to a specific set of objects.
+- [definition] An octree is the three-dimensional version of a quadtree, splitting a volume into eight cubes.
+- [definition] A spatial partition keeps objects arranged by position, letting the game locate objects at or near a point quickly.
+- [definition] A location query asks which objects are at or near a given position.
+- [definition] Locality means a small change to a genotype causes, on average, a small change in the phenotype and in fitness.
+- [mechanism] Clustered objects overload a few fixed partitions, wasting memory on empty areas and degrading searches back toward O(n²) behavior. When: objects unevenly distributed in space. Why: Fixed boundaries do not adjust to where objects are.
+- [mechanism] Regular tile connections can be computed when the pathfinder requests neighbours instead of being stored in advance, and blocked tiles return no connections. When: Generating tile graphs at run time. Why: Regular adjacency is predictable, so it need not be stored.
+- [mechanism] Moving one object in an adaptive partition can shift boundaries and force many other objects to change partitions, similar to rebalancing a tree.
+- [mechanism] Removing an object can collapse subdivisions once the parent's total count falls below the threshold.
+- [mechanism] Clustered objects stay balanced in a quadtree because no square holds more than the fixed maximum count.
+- [mechanism] Without locality, every search method performs no better than random search.
+- [mechanism] When tree nodes sit on disk, each pointer step can cost a disk access, so search cost is driven by the number of accesses rather than by comparisons. When: Tree is stored on secondary storage. Why: Disk access latency is far larger than the cost of an in-memory comparison.
+- [behavior] Identifiers in programs and words in text tend to cluster, so a key just accessed is likely to be requested again soon. When: Input data shows clustering of repeated keys. Why: Accesses are correlated in time rather than spread evenly over the keys.
+- [rule] Limit nearest-point search with spatial partitioning such as quad-tree, octree, BSP, or multiresolution map; test only nearby waypoint pairs supplied by the structure or grid for a large speed-up. When: large numbers of domains. Why: Searching only nearby points avoids checking every domain.
+- [rule] When an object moves, update the spatial structure so it can still be found by location; otherwise it stays in a stale cell and nearby objects stop finding it.
+- [rule] Characters must switch to the new room's event manager each time they change rooms. When: characters change rooms. Why: alerts arrive solely from the manager of the room they occupy.
+- [rule] Use the standard collections of your language instead of raw linked lists in production grid code.
+- [rule] Check four of the eight neighboring cells so every adjacent pair of units is considered exactly once.
+- [rule] One ring of neighboring cells suffices only when the attack distance is smaller than a cell; longer ranges require several rings. When: attack ranges relative to cell size.
+- [rule] Interpolate terrain heights with a nonlinear slope function rather than linear weights, to get rounded peaks and gradual slopes instead of sharp straight ones. When: Smoothing terrain between lattice points.
+- [rule] Exclude an object only if the value still achievable without it exceeds the best value found so far; otherwise prune that branch.
+- [rule] To make a dynamic tree disk-resident, change only its pointers so they hold disk addresses instead of main-store addresses. When: Converting an in-memory tree to secondary storage. Why: Pointers are the only part that refers to node location.
+- [heuristic] Pairwise checks are fastest for small groups, but checking every unit against all others each frame scales with the square of the count; use spatial structures once hundreds clash. When: large numbers of characters or units needing neighbor queries, such as large battles with frequent collisions. Why: Pairwise cost grows quadratically with object count. (x2)
+- [heuristic] Use flat partitions or fixed grids when objects are spread fairly evenly and simplicity or fixed memory footprint matters; choose hierarchical when space is largely empty or objects clump together.
+- [heuristic] Use fixed partitions when objects are added and moved constantly; use adaptive partitions when the set is mostly static and consistent performance matters. Why: Building adaptive partitions from a complete object set is more efficient.
+- [heuristic] Manual division often gives the best results because it can be tuned per level, and automatic techniques are needed when the graph must be built without hand work. When: Choosing between hand-built and generated pathfinding graphs. Why: Hand tuning captures level-specific detail that automation misses.
+- [heuristic] Use a spatial partition when object counts are large and location queries are frequent enough to hurt performance.
+- [heuristic] Knowing the one-dimensional relative of a spatial structure helps judge whether it fits a problem.
+- [procedure] 1) Start with long jumps. 2) While improvement continues, grow jump length somewhat. 3) When improvement stops, assume overshoot and reduce jump length. Can be combined with momentum or used alone.
+- [procedure] 1) Give each game state a fixed block of rows, such as four rows per state. 2) Have each cell refer to the matching cells in the block directly above. 3) Separate blocks with a horizontal border. When: A single time step's state is too wide for one row. Why: Blocks make successive game states easy to compare and read.
+- [procedure] 1) Find the square containing the object and insert it there. 2) If its count exceeds the maximum, split it into four equal squares. 3) Move its objects into the matching squares. 4) Repeat step 2 for any overfull child square.
+- [procedure] 1) Remove the object from its current square. 2) Add it at its new position. Both steps are quick, so moving an object is cheap.
+- [procedure] 1) Count the access frequency of each key. 2) Reinsert the keys in decreasing order of access count. 3) Compare the resulting average path length with that of an optimal tree.
+- [tradeoff] Fixed (flat) partitions give constant, predictable memory and cheap insertion and movement; adaptive (hierarchical) partitions balance clustered or empty space better but need several layers updated when objects move.
+- [tradeoff] Spatial partitions add update cost, code complexity, and memory overhead, which must be outweighed by search savings; moving objects must be reorganized inside the structure.
+- [tradeoff] Small clusters give accurate estimates but produce a large table and long preprocessing; large clusters give little gain over a simpler heuristic.
+- [tradeoff] Restricting lower searches to high-level groups is much faster but can miss the best route. Incremental planning avoids this and costs nothing for sections never needed. When: choosing between full-plan exclusion and section-by-section planning. Why: exclusion never examines nodes outside the chosen groups.
+- [pitfall] A partially blocked tile can make the graph invalid depending on the shape of the blockage, while fully blocked or fully empty tiles are safe. When: Marking obstacles on a tile graph. Why: Partial blockage may leave some points in the tile unreachable from neighbours.
+- [pitfall] Very small cells make the outer loop over all cells expensive, cancelling the gain from short per-cell lists. When: cells made very small.
+- [pitfall] Scanning a sparse grid for its few occupied cells wastes time; a separate object collection avoids that scan. When: grid mostly empty.
+- [fact] Most tactical analysis implementations use tile grids, a convention inherited from real-time strategy games.
+- [fact] In tile-based worlds, stored per-radius tile patterns laid over the character's tile can quickly list the tiles to check for waypoints. When: Worlds built on a tile grid. Why: Precomputed patterns avoid computing distances for every tile.
+- [fact] Predicting collisions for AI queries is hard when geometry is processed on dedicated graphics hardware.
+- [fact] With good pruning, a binary space partition tree can reduce neighbor search to logarithmic time in the number of potential targets. When: Good pruning is achieved.
+- [fact] Connection costs between regions are measured between representative points, usually region centres, so adjacent regions can still have a sizeable connection cost. When: Graphs built from divided regions. Why: A large room or long corridor makes centre-to-centre distance large.
+- [fact] Units in adjacent cells can still be within attack range, so neighboring cells must be checked as well as the unit's own cell. When: attack range is involved.
+- [fact] Quadtree split boundaries always fall at the halfway points of the square being divided.
+- [fact] Spatial partitions cut linear or quadratic searches down, and their payoff grows as object counts rise.
+- [fact] Spatial partitions are common for moving objects and for static art and geometry; large games often run several partitions for different content types.
+- [fact] The common spatial structures are the grid, quadtree, BSP, k-d tree, and bounding volume hierarchy.
+- [fact] Quadtrees and octrees are tries.
+- [fact] After partitioning, keys left of the split are at most x and keys right of it are at least x, with a possibly empty middle zone of keys equal to x.
+
+## data structures
+- [model] A pathfinding graph interface has one operation, returning the connections leaving a node. A connection interface has three: cost, start node and end node.
+- [model] Each record holds a pointer to its first offspring and a pointer to its next sibling, which lets a multiway tree be read as a binary tree.
+- [definition] A scene graph node holds a local transform, an optional mesh pointer (null for grouping-only nodes), and a list of child nodes.
+- [definition] An array is a homogeneous, random-access structure whose components share one base type and are selected by an integer index, which may be any expression evaluated at run time.
+- [definition] A cross-reference index stores each word of a text in a search tree, where each node heads a list of the line numbers in which the word occurs.
+- [definition] In a circular list the last node points back to the first node instead of to NIL.
+- [mechanism] Inserting observers at the front of a linked list makes the most recently added observer notified first, so notification runs in reverse registration order. When: when observers are added to the front of an intrusive list. Why: each insertion becomes the new head.
+- [rule] Give callers one query interface that hides caching details, so the caching can be optimized later without rewriting AI code.
+- [rule] When keeping two collections, update both on every object creation or destruction so they stay in sync. When: partition plus separate object collection.
+- [rule] Implement a FIFO queue as a linked list with insert, extract and empty-test operations, and reuse the storage of extracted nodes to save memory.
+- [rule] Appending at the end of a singly linked list needs a second pointer to the last element, and the first element must be handled as a special case.
+- [heuristic] Add a separate object collection when the game frequently processes every object regardless of position, since it lets the game visit all objects directly.
+- [heuristic] The more inactive objects there are, the more a separate active-object collection is worth its extra memory and sync cost.
+- [heuristic] Use fine-grained dirty flags when changes are sparse and sending unchanged data is costly; use coarse-grained flags when changes cluster within groups and per-chunk overhead matters. When: Changes are sparse or clustered within groups. Why: Sparse changes make unchanged data expensive to resend, while clustered changes make coarse groups efficient.
+- [heuristic] When derived data is easy to maintain incrementally, prefer a running total updated on each change over a dirty flag that triggers a full recomputation. When: Derived data can be adjusted incrementally with each change. Why: Incremental updates avoid the full recomputation a dirty flag would trigger.
+- [heuristic] Low-level representation decisions can be left to hardware designers, who know current technology best. When: When the detailed encoding depends on current hardware technology. Why: Hardware specialists know the technology best.
+- [heuristic] Skip a spatial partition when the object count is small, since the extra effort is not worth it.
+- [heuristic] Let the sorting method adapt to its data structure; a weak structure used cleverly can still give strong performance.
+- [heuristic] Choose the data representation around the most frequent operation, such as the safety test, rather than around the most natural picture of the data.
+- [procedure] 1) Separate fields read every frame from fields used rarely. 2) Keep hot fields in the main component. 3) Move cold fields into a separate object referenced by one pointer. When: When a few fields dominate per-frame traversal and others are touched only once. Why: Per-frame loops then load less unused data into the cache.
+- [procedure] 1) Sort all waypoints by decreasing value. 2) Take the next waypoint as current. 3) Get nearby waypoints sorted by increasing value. 4) Check neighbors in order, stopping at the first more valuable one. 5) Skip neighbors the character cannot easily reach. 6) If the squared value difference exceeds the weighted distance term, remove the lower-valued waypoint from both lists.
+- [procedure] 1) Multiply each matrix entry by the matching state entry. 2) Sum all products with one formula. 3) Enter it as an array formula, using Ctrl+Shift+Enter in a spreadsheet program or the ArrayFormula function in a web spreadsheet. 4) Fill it down and across. When: matrices too large to type each product by hand. Why: Hand-typed products become error-prone as the matrix grows.
+- [procedure] 1) For a sum, start at zero and add each element for indices 0 to N-1. 2) For a maximum, start with the first element at index 0, then for indices 1 to N-1 update the maximum and its index whenever the current element exceeds it.
+- [procedure] 1) Scan the text, printing each line with its number, and insert each word with its line number into the search tree. 2) Print the table with an inorder traversal, writing each word followed by its line numbers.
+- [metric] Creating from a linear-scan pool takes O(n) time, so a large, mostly full pool slows creation.
+- [metric] The cardinality of an array type is card(T) = card(T0)^n, where n is the array size and T0 its base type.
+- [metric] Component j of an array lives at address i0 + j*s, where i0 is the start of component 0 and s is the component size in words.
+- [metric] Signal and wait take constant time and memory, while a hash-set check costs O(n/b) for n signals and b buckets; a lone wait returns in constant time per frame. When: Analyzing signal store performance. Why: Hash-set buckets spread the check cost across the store.
+- [metric] Scanning a queue for duplicates costs linear time, while a hash table keyed on the sound id checks for duplicates in constant time. When: Queues of pending requests grow large. Why: Lookup cost depends on the data structure.
+- [metric] Empirically, deletion needs about one rotation per five deletions, against one per two insertions; overall, deletion is about as complex as insertion.
+- [tradeoff] Using the partition as the only object store saves memory and complexity over keeping two collections; choose it when location queries are the main need and storage must stay minimal.
+- [tradeoff] Array and SIMD layouts trade flexibility for speed, so they suit networks whose structure rarely changes, while simple per-neuron code suits experimentation. When: Choosing an implementation for a neural network. Why: Optimized layouts are harder to modify and reshape.
+- [tradeoff] An intrusive observer list is cheap, but each observer can watch only one subject at a time because the observer holds a single next pointer. When: when choosing an intrusive list for observers. Why: one next pointer links an observer into only one list.
+- [tradeoff] In an intrusive list the data contains the node, which is less flexible but more efficient than an ordinary list where the node contains the data. When: when choosing a linked list layout. Why: embedding the link avoids separate allocations at the cost of flexibility.
+- [tradeoff] A fixed array with an update method suits batch processing, but asynchronous processing that pulls one request while others remain needs a true queue. When: Choosing between batch processing and asynchronous pulls. Why: A batch clears all pending requests at once, which cannot leave some behind.
+- [tradeoff] Looking up sibling components by entity ID is slower than direct access, but it matters because components often interact during update.
+- [tradeoff] Sequential slot assignment is O(n) time and O(1) memory and simple, but it causes behavioral problems that advanced assignment methods fix, and reassigning only changed characters would be an optimization. When: Choosing a slot assignment method. Why: Simplicity versus behavior quality.
+- [pitfall] Software bugs can make some collected data simply wrong, so numbers cannot be trusted without checking.
+- [pitfall] The efficiency of the open and closed list structures in map flooding depends on non-trivial implementation choices.
+- [pitfall] Hard-coding a character's real name into code is risky because names may change late in development; internal codenames are safer. When: Naming identifiers for characters or assets. Why: Late renames then require widespread code edits.
+- [pitfall] Using an index outside the declared array range is a common mistake, so good systems should warn about such access.
+- [pitfall] Putting the inner comparison in a separate match function hides the inner loop, adds call overhead, and blocks the outer index from skipping ahead more than one.
+- [pitfall] Densely packed node records make flag access costly, which can change the performance comparison between tree variants. When: Nodes store flags in tight memory layouts. Why: Extra bit-level access work adds cost per node visited.
+- [pitfall] A fixed hash table size can cause poor storage use or overflow when the item count is misjudged, so treating hashing as universal is a mistake.
+- [fact] A bidirectional (doubly linked) list links each node to its successor and predecessor, removing a unit in constant time by adjusting only neighbors' pointers; it can carry a header node. (x2)
+- [fact] Integer node numbers enable very fast optimizations of A*.
+- [fact] Incremental hash updates are much faster than full recalculation when many pieces are on the board.
+- [fact] Deciding which fields are hot and which are cold is often unclear, since some fields matter only in certain entity modes or level regions.
+- [fact] An array of n components is declared ARRAY n OF T with indices 0 to n-1, and a component is selected as x[i]. Components can be updated individually.
+- [fact] Array element offsets are linear, equal to index times element size, while records have no uniform offset rule and select fields by fixed identifiers.
+- [fact] Fundamental structures such as arrays, records and sets have a fixed storage pattern set by their declaration, while dynamic structures change in value and shape during computation.
+- [fact] Separation uses constant memory and time linear in the number of candidate neighbors checked.
+- [fact] Condensation needs a waypoint list supporting sorting by value, nearby queries, sequential next, and removal between next calls, with each waypoint storing a position and a value.
+- [fact] The signal store is a hash set supporting set and check operations, and it should be cleared of stale identifiers from time to time. When: Implementing a central signal store. Why: Stale identifiers accumulate and can cause false results.
+- [fact] A dummy header node removes the special case of an empty list.
+- [fact] Key transformation uses only a static array with no dynamic allocation, but its fixed size makes it unsuitable when item count is unknown or varies strongly.
+
+## evolutionary algorithms
+- [model] A level generator can be encoded as a genome of 14 to 24 agents that move concurrently and affect each other only through the content they generate. When: evolving Mario-style level generators. Why: Independent agents make generators compositional and searchable.
+- [model] The μ+λ evolution strategy keeps the best μ individuals as an elite, creates λ offspring by copying and mutating them, and repeats until a stopping condition is met.
+- [definition] In interactive evolution the computer proposes artifacts and the human's ratings serve as fitness, selecting which individuals reproduce and die out; for tracks this improves quality and interest.
+- [definition] A blind watchmaker interface steers generated results by having the user pick among generated options rather than set parameters directly.
+- [definition] First-improvement hill descent accepts the first neighbour with a lower score instead of scanning all neighbours for the best.
+- [definition] Evolutionary algorithms are stochastic searches modelled loosely on natural selection: a population is scored each generation, the fittest reproduce, and offspring vary through crossover and mutation.
+- [definition] Gaussian mutation adds small Gaussian-distributed random values to every number in a real-valued vector.
+- [definition] A BNF grammar is defined by non-terminals, terminals, production rules, and a start symbol.
+- [definition] Grammatical evolution is an evolutionary algorithm that uses linear integer genomes and a context-free grammar to map genomes to phenotypes, so it can generate any output describable by production rules.
+- [definition] Optimality is defined by a positive-valued function applied to each solution.
+- [mechanism] Evolving content during play with player behaviour as fitness makes the whole game a distributed evolutionary algorithm, shaping future content without any explicit selection step.
+- [mechanism] A genetic algorithm can generate building designs procedurally, producing candidate structures from rules that a user then selects among.
+- [mechanism] Grammatical evolution can generate platformer levels by placing structural and enemy chunks on a 2D array, with a context-free design grammar bounding positions and sizes.
+- [mechanism] Crossover and mutation applied to sparse starting populations can reach good levels relatively easily.
+- [mechanism] The random range plays the role of temperature: it starts large and is reduced over the run.
+- [mechanism] Adding a proportion of the last improvement to the score for continuing in the same direction lets a climber overshoot sub-peaks, notice the decline, and reverse, escaping them at the cost of slower convergence. When: landscape contains a small local maximum before the global one. Why: momentum carries the climber past small local maxima.
+- [mechanism] NEAT evolves neural networks by starting from small networks and growing their topology over generations, so complexity increases gradually.
+- [rule] When a genetic algorithm solves a constrained production problem, encode the domain rules into its representation so it cannot propose invalid solutions. When: genetic algorithm applied to constrained scheduling or production. Why: Otherwise it may suggest illegal schedules.
+- [rule] Use the direct annealing method for simple parameter learning where a simpler method is not enough. When: simple parameter learning.
+- [rule] Do not automate life-or-death or important decisions with predictive AI without human oversight.
+- [rule] Use recursion when the problem, function or data structure is itself defined recursively and the depth of recursion stays small.
+- [rule] Write simple recurrences such as factorial and Fibonacci iteratively rather than recursively.
+- [heuristic] A large population and enough rooms per chromosome let selection find connected negative-representation dungeons. When: evolving negative room encodings. Why: Selection pressure gradually favours connected layouts.
+- [heuristic] Heuristic design is largely empirical; visualise fill in-game or through statistics rather than relying on intuition.
+- [heuristic] Adaptive step sizes tend to give useful gains, while momentum rarely gave reliable gains.
+- [heuristic] Start hill climbing from several initial values spread across the landscape and keep the best result, since a poor start can lead to a smaller peak. Why: a single start may converge to a lower peak.
+- [heuristic] For short real-valued vectors, CMA-ES is particularly effective. When: low-dimensional real-valued representations.
+- [heuristic] Use a multiobjective algorithm when no single number captures content quality.
+- [heuristic] Use μ+λ as a straightforward baseline when mutation is the main source of variation; match the mutation operator to the representation and fitness landscape.
+- [heuristic] Use interactive evolution when fitness is hard to write as a formula but a human can judge quality, such as for subjective beauty or deceptive measures.
+- [procedure] 1) Keep a population of rule sets ranked by fitness. 2) Select two fairly fit parents. 3) Combine them with crossover and mutation into a child. 4) Check the child for correctness, playability, performance and similarity to the population. 5) Name a child that passes all checks, measure its fitness and add it to the population.
+- [procedure] 1) Define a design grammar mapping the genotype to a level with specified element types and properties. 2) Add player experience model output to fitness, scoring each level by its predicted emotional state for the player. When: when generating levels personalised to a player.
+- [procedure] 1) At each step, add a random value to every neighbour's evaluation. 2) Choose the neighbour with the best adjusted score.
+- [procedure] 1) Initialise μ+λ individuals randomly, by hand, or from earlier runs. 2) Evaluate each, combining several evaluation functions into one fitness if needed. 3) Sort by fitness and remove the λ worst. 4) Replace them with copies of the μ survivors. 5) Mutate the copies. 6) Stop if good enough or at the maximum generation; otherwise repeat from step 2.
+- [procedure] 1) Start from the grammar's start symbol. 2) At each choice point, read the next integer codon and take it modulo the number of alternatives. 3) Select that production and expand the leftmost non-terminal. 4) Symbols with one option expand without reading a codon. 5) Repeat until no non-terminals remain. When: Mapping an integer genome to a phenotype through a grammar.
+- [procedure] 1) Initialise a population of random variable-length integer vectors. 2) Evaluate each individual's fitness. 3) Apply genetic operators to produce the next generation. 4) Repeat.
+- [tradeoff] Genetic programming evolves tree structures, while grammatical evolution evolves linear integer genomes that a grammar maps to outputs. When: Choosing between tree-based and grammar-based evolution.
+- [pitfall] When check results cannot be shared, event passing can be significantly slower, taking as long as each character checking for itself plus messaging overhead. When: check results cannot be shared between characters. Why: each character still performs its own check and the messaging adds cost.
+- [pitfall] If the genome runs out before mapping finishes, the individual must be penalised as invalid or the codons must wrap around and be reused. When: Grammatical mapping with a fixed-length genome. Why: Otherwise the mapping cannot complete.
+- [pitfall] A representation whose mutations cause large, unpredictable changes makes evolution perform poorly.
+- [fact] Search-based PCG with evolutionary algorithms has two main challenges: designing the evaluation function and choosing the content representation.
+- [fact] Grammars and their rules can themselves be produced by search methods such as evolution, enabling automatic grammar design.
+- [fact] Angelina evolves rules, maps, and initial placement as separate entities through cooperative co-evolution, and judges each element partly in isolation. When: when generating full games automatically with separately evolved components. Why: Separate evolution lets each component be scored on its own qualities before combination.
+- [fact] Genetic algorithms rely more on recombination and use different selection mechanisms than other evolutionary variants.
+- [fact] The whole μ+λ algorithm can be written in 10 to 20 lines, and even its 1+1 version can work well.
+- [fact] Grammatical evolution can generate mathematical formulas, program code, game levels, and physical or architectural designs.
+- [fact] Human evaluation in interactive evolution takes one of three forms: a numerical score proportional to preference, an ordering by preference, or selecting favourites to breed more from.
+- [fact] Interactive evolution has been applied to 2D art from L-systems, mathematical expressions, neural networks, 3D art, animation, typography, graphic design, rhythm and melody, industrial design, image retrieval and robot motion.
+- [fact] Highly unequal run distribution in natural merge is statistically unlikely, so accepting it costs little efficiency in practice. When: Evaluating a merge-side fix for unequal run counts.
+- [fact] A faster but more intricate stable matching algorithm also handles sets of unequal size.
+- [fact] A stable marriage instance can have several stable pairings, ranging from one best for men to one best for women.
+
+## heuristic search
+- [model] In state-space search, nodes are world states and arcs are operator applications. Forward progression starts at the initial state; backward regression starts at the goal. It produces total-order plans.
+- [definition] A heuristic is an approximate rule that usually works but not always.
+- [definition] Overestimating heuristics are called inadmissible, and they can still be used.
+- [definition] In STRIPS, a state is a set of ground, function-free literals, either propositional (true or false propositions) or first-order (relations over objects).
+- [definition] A STRIPS operator has a name, parameters, a precondition conjunction, and an effect conjunction.
+- [mechanism] More problem-specific knowledge in a heuristic reduces search; a perfect heuristic needs no search at all.
+- [mechanism] An underestimating heuristic biases the search toward cost-so-far, so A* explores nodes near the start more, which is slower.
+- [mechanism] An operator can run only when its preconditions hold; running it deletes the conditions its effects negate and adds its positive effects.
+- [rule] Engineer tactic weights so additions outweigh subtractions for most connections, keeping the Euclidean heuristic valid.
+- [rule] With few actions and all sequences reachable, use a flat array indexed by window and action; the largest value in a row gives the predicted action. When: small action sets where most sequences occur. Why: A flat array avoids the overhead of hash tables.
+- [rule] Use iterative deepening when the program cannot know in advance how long it may think, such as timed chess or games where the player controls the pace. When: time for a move is unknown.
+- [rule] Use matrix inversion when the payoff matrix is invertible; use a solver or other methods when it is not.
+- [heuristic] SMA* suits tasks where memory is limited, a near-optimal path is acceptable, and the heuristic is well-behaved. When: Choosing a search algorithm under memory limits. Why: Bounded memory is its purpose, and optimality is traded away.
+- [heuristic] Use momentum, adaptive resolution and multiple trials when the landscape has some local maxima but is not overwhelmed by sub-optima. When: landscape has some local maxima but few sub-optima.
+- [procedure] 1) Cap the open list at a fixed size. 2) When a new node's total cost is not lower than every node in the full list, discard it. 3) Otherwise add it and remove the node with the largest total. When: Running a memory-bounded search. Why: Bounding the list limits memory at the cost of possibly discarding useful nodes.
+- [procedure] 1) Start from a guessed parameter set and evaluate its score. 2) For each parameter, with others fixed, try one step up and one step down. 3) Apply only the best improving tweak. 4) Repeat until no tweak improves the score or a step limit is reached.
+- [metric] Multiplying the Euclidean heuristic by 0.5 restored use of good positions in a strongly negative-weighted case, at the price of slightly more search work. When: large negative tactic weights make search miss good positions. Why: Scaling down keeps the heuristic from overestimating.
+- [metric] Each hill climbing step costs O(n) time for n parameters and O(1) memory; total steps are capped by a steps parameter.
+- [metric] Under uniform hashing, the expected probes for insertion or retrieval equal -ln(1 − a)/a, where a is the load factor. When: estimating hash table lookup cost.
+- [tradeoff] Underestimates keep A* optimal but slower; overestimates speed the search but may silently return suboptimal paths without any error message.
+- [tradeoff] A sorted open list gives the best node immediately but costs more on insertion; since A* adds far more nodes than it removes, cheap insertion often wins.
+- [tradeoff] Small open-list limits make SMA* wander toward the target and give poor routes, while large limits reduce that risk but lose the memory benefit. When: Setting the open-list limit for SMA*. Why: A small list discards alternatives too early, and a large list approaches unbounded A*.
+- [tradeoff] Hill climbing is fast and often gives good results on a mostly smooth landscape, but it can get stuck on local maxima. When: landscape is mostly smooth with few sub-peaks.
+- [tradeoff] STRIPS is efficient for modelling world states with simple descriptions, but its simplicity limits complex planning problems, which motivates extensions such as ADL. When: Choosing a planning representation.
+- [tradeoff] Combining the large mismatch shift with a second shift adds table and logic cost; the gain was judged not worth the complexity. Why: Matches are rarer than mismatches, so large shifts on mismatch are most valuable.
+- [pitfall] Assuming a heuristic change helps without measuring fill can produce inferior results.
+- [pitfall] While a pathfinder is paused, the character keeps moving, so the stored plan's start point can become stale. When: planning spans several frames while the character moves. Why: the start node no longer matches the character's position.
+- [pitfall] SMA* results depend heavily on the heuristic, since a strongly underestimating heuristic lets useless nodes push out important ones. When: Using SMA* with a poor heuristic. Why: Misleading estimates decide which nodes are kept in the bounded list.
+- [fact] Three heuristics recur across AI and software and serve as good starting points when approaching a new problem. When: when first approaching an unfamiliar problem.
+- [fact] Heuristics appear in everyday reasoning and are embedded in many algorithms, though many are never stated explicitly.
+- [fact] The heuristic is called about O(lm) times; a typical heuristic takes constant time, so it does not change the complexity order.
+- [fact] A* with a zero heuristic behaves identically to Dijkstra.
+- [fact] A heuristic that underestimates everywhere makes A* return an optimal path, the same one Dijkstra would find.
+- [fact] Slight overestimates often still yield the optimal path.
+- [fact] SMA* is a lossy search that discards information, so the path it returns is not guaranteed to be optimal. When: Evaluating whether SMA* fits a task. Why: Discarded nodes may have been on the best route.
+- [fact] Momentum handles a landscape with a sub-peak before the main peak, but all three hill climbing extensions fail on near-random landscapes. When: landscape is near-random.
+- [fact] In one dimension two neighbors are tried; in two dimensions four samples are used, and more samples around a circle improve results at extra evaluation cost.
+- [fact] With an alphabet of about 128 symbols, a mismatch usually occurs after one or two comparisons, so straight search is fast in practice.
+
+## rating systems
+- [definition] Glicko extends Elo with a per-player RD uncertainty value that changes over time, so effective K varies between players. Its formulas are more complicated than Elo's.
+- [definition] Rank is an ordinal standing showing no gap size, only that no one sits between neighbors. Rating is an approximate absolute measure, usually of skill, whose numerical differences are meaningful.
+- [definition] Harkness is an early tournament method that sets a new rating from opponents' average rating and event score alone, ignoring the prior rating.
+- [definition] RANK(value, range) returns a value's position in a range, where 1 is the highest number, 2 the second highest, and so on.
+- [definition] Rating inflation is a rising average rating over time and deflation is a falling average, both caused by points entering or leaving a zero-sum rating system.
+- [definition] K-factor is the number of new players each player brings in, borrowed from viral marketing, and a high value sharply lowers acquisition cost.
+- [mechanism] A player's RD falls after each game and rises slowly during inactivity, so a long break makes the player's next rating less certain.
+- [mechanism] In a rating-based league, everyone starts with the same provisional rating, and the highest-rated player at the end is the winner.
+- [mechanism] Negative feedback makes the power difference between players swing back and forth rather than grow steadily.
+- [mechanism] A rating floor is positive sum: a floor-rated player who loses gains nothing, but the opponent still gains points, which inflates the system. When: a rating floor exists.
+- [mechanism] A low learning gain makes weight updates small, giving slow but stable learning that accumulates repeated errors while ignoring one-off errors. When: Gain is set low relative to the weight update step. Why: Small steps average out isolated examples, so only consistently seen errors shift the weights much.
+- [mechanism] Rewarding rank gains with currency rewards play without charging per game, and players feel they earned it because they wanted to rank up. When: when a monthly rank reset is used.
+- [behavior] Players cycle between active play and rest periods to reset their rating deviation. When: in pure Glicko systems. Why: going inactive lets deviation rise again.
+- [behavior] Showing a player near the bottom of a friends list may encourage spending to catch up. When: when a friends list shows a player trailing peers. Why: visible gaps to peers motivate catch-up behavior.
+- [rule] Build rank tables once from the preference lists, so that looking up a partner's rank becomes a single operation during repeated stability tests. When: stability must be checked many times during a search. Why: searching a preference list on every test is slow.
+- [rule] Use rank to show relative standing when the exact gap does not matter; use rating when you need to know how far apart two players are, such as in matchmaking.
+- [heuristic] Use Glicko to find a player's true rating quickly under frequent play, especially when uncertainty should grow during inactivity.
+- [procedure] 1) Compute R, the average rating of the opponents. 2) Convert the event score to a percentage. 3) If exactly 50%, the new rating is R. 4) If above 50%, add 10 points per percentage point above 50; if below, subtract 10 per point below 50.
+- [procedure] 1) Modify the Elo rating change formula so the outcome is weighted 90% skill and 10% luck. 2) Verify that rating updates reflect that split. When: when a game is mostly skill with a meaningful luck component.
+- [procedure] 1) Create thousands of simulated players with hidden true ratings. 2) Pair them with the matchmaking system. 3) Compute each match's win probability from the true rating gap. 4) Draw a random result and update system ratings. 5) Measure error against true ratings. When: when comparing or testing a rating system.
+- [procedure] 1) Fill C1 to C52 with =RAND(). 2) In D1 enter =RANK(C1,$C$1:$C$52). 3) Fill D1 down to D52. Column D then holds 1 through 52 in random order. When: you need a random ordering of a numbered set.
+- [procedure] 1) Read each response from the file. 2) Count mentions per hit, drop hits never mentioned, and sort the rest by count. 3) For each category, list respondents whose first choice is a top-three hit of that category. When: ranked-choice survey split into categories.
+- [procedure] 1) Ignore draws so neither player gains or loses rating. 2) If the stronger player still wins sometimes, score draws separately, based on the expected draw-to-win ratio at that rating gap. 3) Or change rules to prevent drawing exploits. When: When a draw should not count as half a win. Why: Draws can distort ratings if scored as half wins.
+- [procedure] Compare the win probabilities implied by point gains with observed win rates; a rating system is consistent when they match.
+- [metric] A Glicko rating is often shown as R ± 2RD, a range expected to contain the true rating about 95% of the time.
+- [metric] A minimum RD of about 30 is suggested so that every game still moves ratings a little.
+- [metric] Under a rating system that moves a player's rating by 10 points for each percentage point away from 50%, results stay within 500 points of the opponents' average.
+- [metric] Each game puts max(1, 10 − floor(D/20)) points at risk, where D is the rating difference: 10 under 20, then one less per additional 20 points, minimum 1. When: when a point scheme scales stakes by rating gap.
+- [tradeoff] Tying rank to rating makes it hard to reset rank without also resetting ratings, which reduces the value of matchmaking. When: when deciding whether rank should be derived from rating.
+- [tradeoff] Overall ratings as a tiebreaker give highly rated players an edge from outside the event and may look unfair, since they reward advantages existing before the tournament. When: when choosing a round robin tiebreaker.
+- [pitfall] With frequent play, RD falls toward zero in pure Glicko. Without a minimum RD, ratings barely move and players may feel results no longer matter. Why: low deviation makes ratings change little.
+- [pitfall] Because prior rating is ignored, these ratings can swing widely when a player's performance is inconsistent between events.
+- [fact] A ranking system determines and updates each player's rank, while a rating system assigns and updates each player's rating; Elo is the best-known rating system.
+- [fact] Ranking systems serve several purposes: progression if ranks reset often, rewards (one-time if permanent, ongoing if reset), dominance against friends or worldwide, and clarifying or mystifying ratings.
+- [fact] A learning algorithm should save implementation work overall, but learners usually need hand-holding such as correct data presentation, result validation and testing. Why: Learners need extra support, so total effort can exceed hand coding.
+- [fact] Player star ratings, typically 1 to 5 in app stores, differ from professional reviewer scores, which aggregator sites average.
+- [fact] Across many trials, unlikely streaks still occur, but aggregate results converge toward predicted values, and convergence strengthens as the trial count grows.
+
+## graph search
+- [definition] Dijkstra's algorithm finds a minimum-cost path between a start and a goal in a directed weighted graph with non-negative costs.
+- [definition] Each Dijkstra node record stores the node, the connection that reached it, and its cost-so-far.
+- [definition] A knight's tour is a sequence of legal knight moves that visits every square of an n by n board exactly once.
+- [definition] A word is any sequence of letters and digits that begins with a letter. When: when building a word index.
+- [definition] Unsuccessful searches are modeled by weights on the gaps between consecutive keys, which correspond to external nodes of the tree.
+- [mechanism] Dijkstra expands outward from the start, recording for each reached node its cost-so-far and the connection used to reach it, processing the cheapest open node each iteration.
+- [rule] Stop a Dijkstra pathfinding search only when the goal is the cheapest node on the open list. When: single start-to-goal pathfinding. Why: Until then, routes through unprocessed nodes may still be cheaper, so only this stop guarantees the optimal route.
+- [rule] Avoid plain Dijkstra for single start-to-goal searches in games; prefer A*. When: single start-to-goal searches. Why: Dijkstra expands in all directions, so most of its work never contributes to the final route.
+- [heuristic] Use linear search when the data are unordered or no other information about them is available.
+- [heuristic] Within a page, use binary search when it holds many keys and sequential search when it holds few.
+- [procedure] Dijkstra uses three structures: a simple list for the final path, a pathfinding list holding open and closed nodes, and a graph giving outgoing connections.
+- [procedure] 1) Create a record for the start with zero cost and no connection; put it on open and leave closed empty. 2) While open is not empty, take its smallest element as current; stop if it is the goal. 3) For each outgoing connection of current, compute the candidate cost to the end node; skip it if the end node is closed, or if it is open with cost less than or equal to the candidate. 4) Otherwise store the candidate cost and connection, and add the end node to open if absent. 5) After all connections, move current from open to closed. 6) If the goal was not reached, return no solution; otherwise walk back from goal to start collecting connections and reverse them.
+- [metric] The shortest-path method in question runs in O(nm) time, where n is the count of nodes nearer than the goal and m is the mean number of edges leaving each node.
+- [metric] Dijkstra's worst-case memory is O(nm), since the closed list holds n nodes and the open list holds at most nm entries.
+- [metric] Dijkstra performs about nm additions and finds, and about n extractions and smallest-element searches.
+- [metric] Knuth-Morris-Pratt search needs on the order of M+N character comparisons even in the worst case, for pattern length M and text length N.
+- [tradeoff] Speed-ups for Dijkstra often use more than O(nm) memory because they make key operations fast.
+- [tradeoff] Dijkstra gives costs to many or all nodes, useful for tactical analysis, but its fill is heavy for one goal, which A* avoids.
+- [tradeoff] Dijkstra needs no heuristic to tune, but its search fill slows large levels; A* is typical there because it uses a heuristic. When: large levels.
+- [pitfall] If additions or finds cost more than O(m), or extractions and smallest-element searches cost more than O(1), Dijkstra runs slower than O(nm).
+- [pitfall] Starting an enumeration index at 1 still produces every combination, but the outcomes come out out of order and are harder to read.
+- [pitfall] Looking up items by key during input is a linear list search, so input cost grows with the number of items. When: Building the leader list from ordering pairs. Why: Each lookup scans the list rather than using a faster index.
+- [fact] Dijkstra usually suffers heavy fill in point-to-point searches, exploring most of a level including areas far from the final path; only occasionally is its fill small.
+- [fact] Textbook analyses give O(n²) for Dijkstra, matching graphs so densely connected that m equals n.
+- [fact] Dijkstra was designed to find shortest routes from one start node to all other nodes, so a single point-to-point search wastes effort.
+- [fact] Dijkstra is a simpler version of A*, and it can be adapted to a single goal but remains inefficient for that purpose.
+- [fact] A reached node's cost-so-far equals its current node's cost-so-far plus the connection cost; the start node has cost zero, so the same code handles every iteration.
+- [fact] A dedicated Dijkstra implementation can skip the comparison for closed nodes because no better route will be found, but A* cannot skip it.
+- [fact] Full Dijkstra stops only when the open list is empty and every reachable node is closed; a pathfinding search can stop earlier.
+- [fact] In linear search, no element before the current index equals the search argument at any step of the scan.
+- [fact] Linear search finds the first occurrence because the match returned is the one with the least index.
+- [fact] Linear search always terminates, because the index grows each step and reaches N after at most N steps.
+- [fact] A complete knight's tour on an n by n board contains n squared minus one moves from its starting square.
+- [fact] A knight has up to eight candidate destinations, found by adding fixed row and column offset pairs to its current square.
+
+## hash tables
+- [model] A general hash table holds an array of buckets, each a list of entries; the hash value selects a bucket, and the entries inside are checked for a match.
+- [definition] A good hash function spreads keys evenly over the index range and is cheap to compute; ideally its output looks random.
+- [definition] Key transformation maps each item's key to an array index with a hash function, so retrieval computes the index and checks the entry there.
+- [mechanism] Linear probing advances one slot at a time, wrapping around circularly; it is simple but causes entries to cluster heavily around their primary index. When: Using open addressing with a simple probe step. Why: Occupied runs grow, so later keys hit longer collision chains.
+- [mechanism] When the computed slot holds a different key, a deterministic secondary index sequence is generated to find another slot. When: lookup or insertion hits an occupied slot. Why: the table has one slot per index, so a second candidate is needed.
+- [mechanism] Expected hash probes depend only on load factor, not table size, and stay small even when the table is nearly full, though linear probing costs more than uniform probing. When: a hash table's occupancy is kept below a chosen threshold. Why: probe cost is a function of how full the table is, not how large it is.
+- [rule] Compute simple hash ORD(k) MOD N, N the array size (prime); avoid bit masks and exclusive-or, which spread keys unevenly despite being faster. When: Building or choosing a hash function for a fixed-size table. Why: A full modulus by a prime spreads keys more evenly than bit-level masking; fast bit operations can lose the even spread a good hash needs.
+- [rule] On a hash clash, replace the stored entry only when the new state uses fewer actions, so the shallower state is kept. When: Two different states share a hash slot. Why: Keeping the shallower repeat avoids more duplicated search work.
+- [rule] Probing loops need a termination guard, such as aborting with an overflow error when the probe increment reaches the table size N. When: Writing any open addressing probe loop. Why: Without a guard, a full or badly sized table makes the loop run forever.
+- [heuristic] Aim for as many buckets as possible to hold exactly one entry; full buckets slow lookup and suggest more buckets, while empty ones suggest fewer.
+- [heuristic] Choose a prime table size for hashing letter-sequence keys, because power-of-two sizes give very uneven index distribution for similar words. When: keys are sequences of letters or structured identifiers. Why: similar keys map to the same index under a power-of-two modulus.
+- [procedure] 1) Find the highest assigned slot number. 2) Add one to get the slot count. When: A pattern derives its slot count from current assignments.
+- [procedure] 1) Compute h = H(k) for the search key k. 2) Read entry T[h]. 3) If its key equals k, the item is found; otherwise apply the collision sequence. When: searching a fixed-size hash array.
+- [procedure] 1) Estimate the expected item count. 2) Make the table about 10% larger than that count. 3) Keep the fixed size, since it cannot grow. When: a hash table with a known upper bound on item count. Why: a fixed table with a margin keeps occupancy and probe cost low.
+- [metric] With prime table size N, quadratic probing visits at least half the slots; with non-prime N it may miss free slots and not examine every entry. When: Sizing a quadratically probed table. Why: Prime size keeps the probe sequence spread across the table; non-prime size lets probe sequences repeat before covering all slots.
+- [metric] Comparing full game states is slow because a state can hold hundreds of items, so a hash value is used for the table lookup instead. Why: Full state comparison costs time proportional to state size.
+- [metric] Quadratic probing uses slot (h0 + i squared) mod N, and can be computed without multiplication by adding an odd increment that grows by 2 at each step. When: Implementing quadratic probing in open addressing. Why: Successive odd increments sum to the squares, so no multiplication is needed.
+- [metric] Under linear probing, the expected probes for insertion or retrieval equal (1 − a/2)/(1 − a), where a is the load factor. When: estimating linear probing lookup cost.
+- [tradeoff] Hashing gives about one step plus key check but needs fixed size, suiting data with known upper bound; trees adapt to unknown, variable or decreasing volume. When: Choosing between hashing and tree structures for lookup. Why: Fixed-size arrays or tables cannot grow and waste space or overflow when item count is misjudged, whereas trees grow dynamically.
+- [tradeoff] Buckets keep more entries but lookups must scan lists; one entry per bucket gives fast lookup but loses colliding entries.
+- [tradeoff] Chaining links colliding entries into lists, costing pointer space and maintenance; open addressing keeps no links and instead probes other table slots. When: Resolving hash collisions. Why: Links cost memory, while probing costs extra table scans.
+- [tradeoff] Linear probing is simplest but clusters entries; quadratic probing avoids primary clustering at a cost close to linear probing. When: Choosing a probe sequence for open addressing. Why: Non-linear probe steps spread entries without much extra work.
+- [pitfall] Positions act like hash keys that change unexpectedly, which makes a position-organized structure tricky to maintain.
+- [pitfall] Worst-case hash retrieval is poor, since a probe sequence may visit only occupied slots before finding an empty one or the key.
+- [pitfall] Deleting entries from an open-addressed hash table is cumbersome; chaining into a separate overflow area makes deletion easier.
+- [fact] On a hash clash, a new state can instead be searched without being stored in the table.
+- [fact] The bucket index is the hash value modulo the number of buckets, and there are almost always fewer buckets than possible keys.
+- [fact] Because the key space is far larger than the array, a hash function maps many keys to the same index, so collisions are unavoidable.
+- [fact] The load factor a is the ratio of occupied locations to total locations, ranging from 0 for an empty table to near 1 for a full one.
+
+## random numbers and shuffling
+- [definition] RANDBETWEEN(low, high) returns a random integer including both bounds, spread evenly, so RANDBETWEEN(1,6) simulates a die; each cell gets a new value on recalculation.
+- [definition] A pseudorandom number generator (RNG) repeatedly applies an erratic math function, feeding each output back in to produce the next number.
+- [definition] The seed is the starting value of an RNG, normally set once when the game starts.
+- [rule] Before MOD when extracting a digit, take the integer part of the division with FLOOR(a/b) or QUOTIENT(a,b), since MOD on a fractional value does not isolate the correct digit. Why: Removing the fraction lets the following MOD pick the right digit.
+- [heuristic] Use a seeded RNG in virtually all video games, since it is usually the only practical option. When: video games.
+- [heuristic] Shuffling the population before selection can help escape loss-of-gradient situations.
+- [procedure] 1) Start with an unshuffled deck. 2) Pick two random positions and swap the cards there. 3) Repeat the random swaps many times, such as a few thousand for 52 cards.
+- [procedure] 1) Research the RNG algorithm and how its seed is generated. 2) Narrow the seed candidates to a few million or fewer. 3) Generate and store each candidate's output sequence. 4) Match observed outputs, adding more until the match is unique. 5) Verify the remaining outputs.
+- [procedure] 1) Open File > Options > Formulas. 2) Check Enable Iterative Calculation. 3) Set the maximum number of iterations. When: Excel workbook needs a deliberate loop, such as a time counter.
+- [metric] Using milliseconds elapsed since midnight as a seed gives about 86.4 million possible seeds per day.
+- [metric] A 64-bit integer has about 1.8×10^19 distinct values, so a 64-bit seed space is roughly 2^64.
+- [metric] A 52-card deck has 52! (about 8×10^67) possible orders.
+- [metric] A 256-bit seed is needed to reach every 52-card shuffle, and it still falls short for 60-card decks.
+- [metric] Multiplying RAND() by the width of a range and adding the lower bound gives a decimal from the lower bound up to, not including, the upper bound. When: Generating values in an arbitrary range.
+- [metric] The cubic slope function s(x) = 3x² − 2x³ is simple and fast; it weights neighbouring points by 1 − s(x) and s(x). When: Bicubic terrain interpolation.
+- [metric] Good sorting algorithms need on the order of n·log(n) comparisons, while simple straight methods need on the order of n² comparisons.
+- [pitfall] Random-swap shuffling is very inefficient and never fully unbiased: each card stays slightly likelier in its original position, and more swaps only shrink this bias. Why: Cards that are never picked stay where they started.
+- [pitfall] Reusing a predictable seed in every session lets anyone who knows it replay the same results.
+- [pitfall] Seeding from only fractional milliseconds (0 to 999) gives just 1000 seeds, so repeated play looks suspiciously identical.
+- [pitfall] In competitive play, a determined opponent can study early results, identify the seed, and predict every later result. When: competitive play.
+- [pitfall] Even with 86.4 million seeds, a player who starts at about the same time each day may eventually receive a repeated seed.
+- [pitfall] A seed taken from milliseconds since midnight leaves about 86 million candidates, which a modern computer can search in seconds.
+- [pitfall] Rounding RAND() straight to an integer is wrong: rounding down always gives 0, and rounding to nearest gives only 0 or 1.
+- [fact] RAND() returns a decimal from 0 up to but not including 1, so it can return 0 but never 1.
+- [fact] Computers can run millions of trials in minutes, making simulation practical for systems too complex to solve by hand.
+- [fact] A riffle shuffle preserves the relative order of cards within each half, so some deck orders cannot occur after a single shuffle.
+- [fact] After a riffle shuffle, cards near the top and bottom of the deck stay near those positions.
+- [fact] Automated card shufflers can be less random than human shuffles, and card-by-card stacking algorithms have their own flaws.
+- [fact] RAND() can in principle produce identical values, which would break the one-to-52 ranking, but the chance is negligible for simulation.
+
+## recursion and backtracking
+- [definition] Factorial n! is the product of integers 1 through n, defined by initial value and recurrence: each term equals the next index times the previous term. (x2)
+- [definition] A Fibonacci number of order p is the sum of the preceding p+1 terms; order 1 gives the ordinary Fibonacci numbers.
+- [definition] Fibonacci numbers start with 0 and 1, and each later term is the sum of the two preceding terms.
+- [definition] A recursive definition refers to itself, so a finite statement can describe infinitely many objects or computations.
+- [definition] A procedure is directly recursive when it calls itself, and indirectly recursive when it calls another procedure that eventually calls it back.
+- [definition] A recursive program is a composition of ordinary statements with one call to itself, and a procedure gives that composition a name.
+- [definition] A Fibonacci tree of height h has a root with a Fibonacci tree of height h-1 on one side and one of height h-2 on the other; the empty tree and a single node are base cases.
+- [definition] A tree traversal is a short recursion that does nothing on an empty subtree and applies a chosen operation to every node it visits.
+- [definition] A tree is either empty or a node with a finite number of disjoint subtrees.
+- [mechanism] Naive recursive Fibonacci makes two self-calls for each call with an argument above 1, so the number of calls grows exponentially with n.
+- [rule] A square is safe for a queen exactly when its row and both of its diagonals are unoccupied. When: Column conflicts are already excluded by one queen per column.
+- [rule] Describe a stack of disks recursively as its top disk plus the rest, and move the rest out of the way using the auxiliary rod. When: Towers of Hanoi style problems with an auxiliary peg.
+- [rule] Guard each recursive call with a condition that eventually becomes false, such as recursing with n-1 only while n is greater than 0. Why: Without such a guard the recursive calls never end; the guard is the recursive analogue of a loop variant.
+- [rule] Pass the index as a parameter and return the computed value from the function instead of updating a shared result variable. When: a recursive or iterative computation produces a single result. Why: a returned value removes the need for shared state between levels.
+- [heuristic] Prefer a loop over recursion when values follow a simple recurrence and each step needs only the previous result.
+- [procedure] 1) Number each state uniquely from its variables. 2) Work backward, deriving each state from its predecessor states. 3) Fill the table in a spreadsheet to avoid enumeration errors. When: a state machine has many states that are easier to compute with a table than by hand. Why: backward recursion lists every path without missing cases.
+- [procedure] 1) Deduce the recursion scheme that relates each order of the figure to smaller orders. 2) Encode that scheme as a recursive drawing procedure. When: Drawing self-similar curves such as superimposed W-curves.
+- [procedure] 1) Study a non-recursive program for a similar task. 2) Use it as a guideline to build an iterative version of the recursive one. 3) Derive general conversion rules from the result. When: Converting a recursive program to iteration.
+- [procedure] 1) Initialize the variables that the recursive levels would carry. 2) While the base-case condition is false, perform one level's work per iteration. 3) Return the accumulated result. When: converting a single-call recursive procedure into a loop.
+- [metric] In the basic eight queens program, the safety test runs about 161 times per solution, averaged over all 92 solutions. When: Plain backtracking without symmetry reduction, all solutions enumerated.
+- [tradeoff] Row-by-row simulation works without iteration but uses more sheet space and more copy-and-paste work than the iterative approach.
+- [tradeoff] Keeping a naturally recursive algorithm recursive preserves its structure, whereas converting it to pure iteration needs an explicit stack that often obscures the structure.
+- [pitfall] Each recursion level stores its state on the system stack, such as local variables and parameters in quicksort, so deep recursion costs storage even when the program is correct.
+- [pitfall] The belief that recursion is inefficient largely comes from naturally iterative problems being written recursively.
+- [fact] Natural numbers, binary trees and the factorial function are recursively defined, so their definitions refer to themselves.
+- [fact] A recursive AVL insertion can return a flag saying whether the subtree grew, which the caller uses to update its own balance factor.
+- [fact] On an expression tree, preorder gives prefix notation, postorder gives postfix notation, and inorder gives infix notation without the parentheses needed for precedence.
+- [fact] When a balanced tree is built from input, values are read in preorder: the root first, then the left subtree, then the right subtree.
+
+## graph structures
+- [definition] A weighted graph attaches a numeric cost, often representing time or distance, to each connection. When: Modelling traversable connections for pathfinding. Why: Costs let search compare routes.
+- [definition] A wildcard node, marked with an asterisk, matches any node and leaves the matched node unchanged on the right-hand side.
+- [mechanism] Without smell, the graph-based sense manager resembles the region manager but finds candidate sensors faster and stops sound passing through walls. When: smell is not simulated.
+- [behavior] Portal graphs with visibility-style connections give very smooth paths, while tile graphs tend to produce erratic paths. When: Choosing a graph representation for smooth movement. Why: Visibility connections allow straight segments across open space.
+- [rule] If movement is possible in both directions, store two separate connections, one for each direction. When: a link can be traversed both ways. Why: Each direction can differ in reachability and in cost.
+- [rule] Connect two groups if any low-level node in one links to any low-level node in the other. Set their cost by hand or compute it from the low-level links between them.
+- [rule] A hierarchical graph must report its number of levels, switch the active level, and convert a node between levels. Going up is a lookup; going down uses a stored representative node, such as one near the group centre.
+- [heuristic] Use an optimal static search tree only for fixed key sets with reliable access statistics, such as compiler keyword lookup. Why: Such trees are a special case rather than the usual choice.
+- [heuristic] Use paged tree storage when the tree exceeds primary store or keeping it there is too costly, and insertions and deletions still occur. When: Choosing a storage layout for a search tree. Why: Paging trades a little structure overhead for far fewer slow accesses.
+- [procedure] 1) If the node belongs to a building instance, delegate to that instance. 2) Otherwise query the main graph and add zero-cost entrance connections, treating building exits and world nodes as the same point. Why: The distance between buildings is hard to measure.
+- [procedure] Compute connection costs when converting the level into a graph, an offline step independent of the pathfinder.
+- [procedure] 1) Place nodes at the inflection points of simplified geometry. 2) Cast a ray between each pair of nodes. 3) Connect the pair when the ray hits no other geometry. When: Generating a graph from level geometry. Why: Connections represent unobstructed straight moves between points.
+- [procedure] 1) Put nodes on a grid, e.g. one every half meter, discarding those inside walls or unreachable from the ground; in portal engines, build one section at a time. 2) Link the dense graph and assign costs. 3) Reduce it to a few thousand nodes while keeping the level's overall structure. When: automatic node placement.
+- [procedure] 1) Consider each connection in turn. 2) If its route passes through other nodes, remove the connection. 3) Keep the remaining connections as the pathfinding graph. When: after building a point-of-visibility graph. Why: A character must pass through the intermediate nodes anyway, so a direct connection is redundant.
+- [procedure] 1) Define walkable space with overlapping volumes. 2) Use the volumes as the pathfinding graph. 3) Treat action waypoints only as goals for the pathfinder.
+- [procedure] 1) Find a subgraph matching the left-hand side and mark its nodes. 2) Remove edges between marked nodes. 3) Transform marked nodes to right-hand side counterparts, add unmatched right-hand nodes, and remove marked nodes with no counterpart. 4) Copy right-hand edges. 5) Clear all marks. When: Applying a graph grammar rule to a host graph.
+- [tradeoff] Automatic visibility graph generation needs heavy hand cleanup, so polygonal meshes suit automatic generation better, while regular Dirichlet domains suit manual placement. When: Choosing a graph generation method. Why: Visibility graphs produce many nodes that must be cleaned up, though some developers use them successfully.
+- [tradeoff] Linking triangles that share only one vertex smooths jagged movement across dense meshes, but lets characters clip corners.
+- [pitfall] A severely unbalanced decision or priority search tree degrades traversal from logarithmic to linear time, losing logarithmic bounds on search, insertion and deletion, with poor average behaviour. (x2)
+- [pitfall] Math texts call nodes vertices, connections edges and costs weights, but in game code vertex usually means a geometry point, so pick one vocabulary and keep it.
+- [pitfall] Visibility graphs from complex geometry can grow very large, since most points see most others, and a cavern may yield hundreds of inflection points. When: Generating visibility graphs from detailed geometry. Why: Dense line-of-sight connections multiply with the number of points.
+- [pitfall] When nodes are quantized into Dirichlet domains, two connected nodes may fail to reach each other, making the graph invalid. When: Quantizing visibility graph nodes. Why: Domain boundaries can separate points that the visibility connection assumed were reachable.
+- [pitfall] Every elimination and closure of a merge source must update the index map consistently, or selection will use wrong files.
+- [fact] The graph is usually a lookup table indexed by node number, where each entry holds an array of connections, and the lookup is called in the inner loop so it must be cheap.
+- [fact] A division scheme is valid if every point in one region can reach every point in a connected region. When: Assessing a pathfinding graph's division scheme. Why: Invalid connections can produce plans the character cannot execute.
+- [fact] Placing nodes geometrically is extremely difficult, so graph reduction is the only semi-practical approach.
+- [fact] Deleting the rightmost node of a Fibonacci tree is the worst case, since it may require a rotation at every level on the search path.
+
+## list and string search
+- [definition] String search finds the first occurrence of a pattern of M items within a text of N items, where 0 < M < N.
+- [definition] Two strings are equal when all their characters match. One string is less than another when, at the first position where they differ, its character is smaller.
+- [mechanism] A one-dimensional spatial lookup sorts units by position and uses binary search, lowering total cost to O(n log n); spatial partitions extend this to more dimensions. When: units arranged along one line.
+- [mechanism] If a player knows the seeding method and RNG algorithm, a few observed results reveal their exact position in the sequence, after which all future results are predictable.
+- [mechanism] A string comparison loop advances while characters are equal and not the terminator. The terminator acts as a sentinel that stops the loop without a separate bounds check.
+- [rule] Use a terminator that never occurs in the text, typically 0X, as the least character in the set; otherwise string ordering comparisons give wrong results.
+- [rule] At each node check only one bound: alpha where the opponent minimizes, and beta where the player maximizes. When: implementing alpha-beta search with minimax nodes. Why: Each node can only be cut off by the bound its side is trying to improve.
+- [rule] When a string comparison loop ends, strings that end together are equal. Otherwise the first differing characters determine their order.
+- [rule] Replace separate find-first and find-next procedures with one loop that tests each candidate in an IF, which keeps the all-solutions version simpler.
+- [rule] Store all word characters in one shared buffer, keep only each word's starting index in its tree node, and truncate words to a fixed maximum length. Why: words of different lengths then share one structure.
+- [heuristic] Use linear search for short strings, under about 30 characters, and binary search for a large sorted table of strings. When: searching strings in a table.
+- [heuristic] Sequential search of a linked list is acceptable when the list is short.
+- [procedure] 1) For each start i from 0 to N-M, set the pattern index j to 0. 2) While text[i+j] equals pattern[j], increment j. 3) If j reaches M, report a match at i. 4) On mismatch, try the next start position.
+- [procedure] 1) Run a separate routine that checks for events every few frames. 2) Send any detected hit to the event manager. 3) The manager handles it as usual.
+- [procedure] 1) Run a binary search over the sorted table, using string comparison as the key test. 2) Compare the bounding entry with the search string to confirm a match.
+- [metric] In the worst case straight string search takes on the order of N times M comparisons, when each start matches nearly the whole pattern before failing.
+- [tradeoff] Precomputing the shift table adds complexity, but it pays off when the same pattern is searched repeatedly or the text is much longer than the pattern. When: choosing between simple and table-driven string search.
+- [tradeoff] A sentinel removes the NIL test from the search loop, but a failed lookup returns the sentinel, so the caller must check for it and the structure is no longer a strict tree.
+- [fact] The shift depends only on the pattern, so it is precomputed as a table before searching, and computing that table is itself a KMP-style search over the pattern.
+- [fact] During straight search, no match begins before the current start, and the first j pattern characters match at the current start.
+- [fact] Straight search ends with no match once the start passes N minus M, or with a match once the pattern index reaches M.
+- [fact] String search is basic to every text processing system, so efficient string search algorithms matter.
+- [fact] Three string search methods are straight search, Knuth-Morris-Pratt and Boyer-Moore, and Boyer-Moore is the most efficient of the three.
+- [fact] A linked list has no index, so search must proceed sequentially and stops at a matching key or at the end of the list.
+
+## backtracking search
+- [model] Backtracking splits a problem into partial tasks that form a search tree, which the search builds and prunes as it proceeds.
+- [model] Three Boolean arrays track occupancy: eight rows, 15 diagonals indexed by row plus column, and 15 diagonals indexed by row minus column shifted by 7. When: Eight by eight board with coordinates running from 1 to 8.
+- [definition] Branch and bound is a backtracking search over a tree of partial solutions that keeps the best solution found so far and prunes any branch whose bound cannot beat it.
+- [definition] Exhaustive search iterates through every possible configuration of the search space.
+- [definition] Backtracking solves a problem by trying steps toward a solution, recording each one, and undoing those that reach a dead end.
+- [definition] The eight queens problem asks for placement of eight queens on a chessboard so that no queen attacks another.
+- [mechanism] The search tree often grows exponentially with a problem parameter, so search effort grows at a similar rate.
+- [rule] Measure a character's flexibility per actual slot, not per role; a restricted character is still flexible if many matching slots exist. When: Computing ease of assignment.
+- [rule] Handle a degenerate or complete case with a conditional around the whole procedure body, so callers need no extra checks.
+- [rule] Pass the search state as parameters rather than reading it from global variables, where possible.
+- [rule] To find every solution, put the recursive call and the undo inside the loop body, not in the loop guard, so scanning continues after each success. Why: Scanning must continue after a success to reach the remaining candidates.
+- [rule] Place exactly one queen in each column, so the choice at each step is only the row of the queen in that column, among eight rows. When: Eight queens on an eight by eight board.
+- [procedure] 1) For each character, collect valid slots below the cost limit, storing cost and slot number, and add one divided by one plus cost to its ease. 2) Mark all slots open. 3) Sort characters by ease, least easy first. 4) Sort each candidate list by cost. 5) Give each character its first open candidate and mark that slot filled. When: Assigning characters to formation slots. Why: Constrained characters are placed before flexible ones, and this works in most cases.
+- [procedure] 1) Keep the best selection and its value in global variables. 2) At each leaf, instead of printing, replace them only when the current value is larger.
+- [procedure] 1) Select the first candidate for the next step. 2) While candidates remain and the current one cannot be completed, select the next candidate. When: building an incomplete solution.
+- [procedure] 1) Record the move. 2) Call Try on the extended partial solution. 3) If the attempt failed, erase the record. 4) Return whether the attempt succeeded.
+- [procedure] 1) Place a queen in the next column on a safe row. 2) If every column is filled, record and print the placement. 3) Otherwise recurse to the next column. 4) Remove the queen and try the next safe row. When: Enumerating every solution of a placement problem.
+- [procedure] 1) Pair the next man with the first untried woman in his preference list. 2) Keep the pairing only if the partial assignment stays stable. 3) If no woman fits, undo the last pairing and try his next choice. 4) Report each complete assignment as a solution. When: finding all stable pairings by backtracking over men in a fixed order.
+- [metric] Exhaustive breadth-first simulation is practical only for small levels with a restricted move set, and is impractical at the scale of large open-world games. When: when considering exhaustive simulation for mechanic testing. Why: The state space grows too fast for large levels.
+- [pitfall] Handling easy items first can use up valid slots, leaving the hard items with no valid option.
+- [pitfall] Users do not control artifacts directly, so selecting a favourite does not tell the computer how to interpret that choice.
+- [fact] Checking every assignment of characters to slots grows far too fast to be practical; for 20 characters and 20 slots the count is roughly 2500 trillion.
+- [fact] Eight queens has 92 solutions when mirror and rotated placements are counted separately, but only 12 are essentially different.
+
+## date and calendar functions
+- [definition] A time of day is stored as a fraction of a day, where 0 is midnight and values approach 1 near the end of the day.
+- [definition] WEEKNUM(date) returns the week number within the year, from 1 to 53, since a year runs slightly longer than 52 weeks.
+- [definition] YEAR(date) returns the year as an integer, and MONTH(date) returns the month as an integer from 1 for January to 12 for December.
+- [definition] In weight-limited selection, each object has a weight and a value, and the goal is maximal total value with total weight kept within a limit.
+- [mechanism] Weighting child entropy by each child's share of examples favors balanced splits, because unbalanced splits leave high-entropy children. When: choosing a split attribute.
+- [rule] Use WEEKNUM() when organizing tasks by week, and MONTH() when organizing them by month.
+- [rule] Verify LLM output before trusting it, since plausible answers may be false. When: When using an LLM to produce facts, references, or calculations.
+- [rule] When one run is exhausted in a two-way natural merge, copy the rest of the other run to the output instead of selecting its least keys. When: two-way natural merge reaching the end of one run. Why: The remaining keys are already in order and all follow the output written so far.
+- [heuristic] Test a streak formula on known sequences, such as all identical results or alternating results, before trusting it on the full enumeration.
+- [heuristic] Check solver results against the inverse-based solution; the two sets of probabilities should be similar. Why: Independent methods catch arithmetic or logic errors.
+- [procedure] 1) Start the weight limit at a step size. 2) Run the search for that limit. 3) Increase the limit by the step and repeat until a given upper limit is reached. When: Solving the selection problem for a range of weight limits.
+- [metric] The centroid index is the sum of each node's position times its access weight, divided by the total weight W, rounded to the nearest integer.
+- [tradeoff] A weighted sum of objectives lets some objectives dominate while others suffer; multiobjective methods such as NSGA-II instead return the set of nondominated individuals.
+- [pitfall] Use time-of-day fractions for time offsets such as differences or added seconds; adding a whole number to a date-time shifts it by days, not time. When: doing time arithmetic on a current date-time.
+- [pitfall] A clock built on NOW() looks stale between recalculations, so finer-grained live timing needs a workaround.
+- [pitfall] TODAY() by itself does little, and only becomes useful once arithmetic or comparisons are applied to it.
+- [pitfall] Matching WEEKNUM values alone can mislead across years, so dates should be checked with YEAR() as well to confirm they fall in the same week. When: Grouping dates by week across multiple years. Why: Week numbers repeat each year, so equal numbers do not guarantee the same week.
+- [pitfall] Unmatched partners must be excluded from stability comparisons, or the test compares against assignments that do not exist.
+- [fact] TODAY() takes no parameters and returns the current date.
+- [fact] The validity properties of a division scheme strongly constrain which character movement algorithms can be used. When: Selecting movement algorithms for a graph. Why: Movement algorithms assume the graph's validity guarantees.
+- [fact] Uniform random values from 0 to 1 have a mean of 0.5 and a theoretical standard deviation of about 0.2887.
+- [fact] Because input counts are not strictly equal, a balanced multiway merge must handle any number of active inputs.
+
+## game ai prediction
+- [definition] An unstable equilibrium is balanced so that any small disturbance sends the character away; its basin of attraction has zero size.
+- [definition] Connections that loop from a later layer back to an earlier one create a recurrent network, and some networks have no designated inputs or outputs.
+- [mechanism] Ordering rules by combination offset lets a single conclusion array, indexed by offset, replace the stored identifier lists in each rule.
+- [mechanism] A prediction can change the decisions that produce the predicted outcome, so the forecast itself alters what happens. When: When predictions are used to guide choices by people or organizations.
+- [mechanism] Random starting individuals still work, because some are less bad than others, and a carefully designed fitness function detects that gap.
+- [rule] Use action prediction when the player makes repeated choices from a small set of options.
+- [rule] Abandon a rule as soon as its running minimum falls below the current best degree for its output, since it cannot become that output's maximum.
+- [rule] Avoid restarting a multiple-start climb during online play, because the AI may suddenly appear to perform worse when it restarts. When: online play with the player watching the AI. Why: a restart from a poor value makes the AI look like it has degraded.
+- [rule] A good genotype representation should map to valid phenotypes, small mutations should cause small phenotypic changes, and crossover should blend parent phenotypes. When: Designing a representation for evolutionary search. Why: These properties make evolution behave predictably.
+- [heuristic] A shallower iteration's best move is usually a good candidate to examine first in the deeper search. When: iterative deepening. Why: the shallow result gives a good estimate of the best move.
+- [heuristic] Predictive AI assumes the future resembles the past, so it works best when nothing changes or when change is modeled. When: When predicting people's behavior or situations that may shift.
+- [procedure] 1) Keep only the most likely moves at each turn. 2) Extend those move sequences well beyond the base depth. 3) Ideally pair with iterative deepening, extending just the strongest candidates carried over from the prior pass. Why: Searches the few promising lines much deeper than a full search could.
+- [procedure] 1) Give each attack a priority based on its utility, set to zero when it is on cooldown. 2) Trigger the attack whose priority equals the maximum of all priorities. 3) Put that attack into cooldown. When: Several abilities compete for use each second. Why: A priority of zero prevents selection, so cooling-down attacks are skipped.
+- [metric] Q-learning time grows linearly with iterations, and array memory grows with actions times states.
+- [tradeoff] Recurrent networks can show very complex and unstable behavior and are much harder to control than feedforward networks. When: Choosing a network structure. Why: Feedback loops let activity circulate and change over time.
+- [pitfall] A prediction-based AI at full competence can be effectively unbeatable, since it counters every sequence it anticipates.
+- [pitfall] Visibility pruning does not remove false connections that span a gap with no navigable region in between, such as a large vertical drop.
+- [fact] The same action in the same state can lead to different results because other characters and the player are also acting.
+- [fact] A main strength of reinforcement learning is handling uncertainty, which lets designers expose simpler states to the algorithm.
+- [fact] Designers often cannot predict which actions are good, because action quality may depend on player behaviour or on randomly generated maps.
+- [fact] Adding uncertainty to mimic the difficulty of guessing others' thoughts did not look more believable and greatly slowed learning. When: Designing observational learning for believability.
+- [fact] Predictive AI can work well for recommendations and spam filtering, though false positives still occur.
+
+## list search
+- [mechanism] Using non-strict comparisons makes the comparand act as a sentinel for both scans, so the scans need no explicit bounds checks. When: Implementing the quicksort partition scans. Why: The comparand itself stops each scan at the array ends.
+- [mechanism] In an ordered list, a search for a missing key stops at the first larger key, which is exactly where the new key must be inserted.
+- [mechanism] The gain from move-to-front grows with both the degree of clustering in the input and the length of the list. When: Comparing self-organizing lists with static lists. Why: Stronger clustering and longer lists make cheap repeat accesses more valuable.
+- [rule] When a search for an absent key fails in a move-to-front list, insert the new key at the top of the list. When: Search misses in a self-organizing list. Why: A key searched once is likely to be searched again soon.
+- [heuristic] Use binary insertion only where key comparisons are much more expensive than item moves, which is rarely the case.
+- [procedure] 1) Convert the dragless firing solution's vertical component to an elevation angle as the first guess. 2) Simulate and measure the signed miss distance. 3) If overshot, set the upper bound to the guess and the lower bound to -90 degrees; if undershot, set the lower bound to the guess and the upper bound to 45 degrees. 4) If the upper bound still undershoots, no solution exists. 5) Repeatedly take the midpoint angle, simulate, and replace the bound on the side the sign indicates until the miss is within margin. When: Closed-form firing solution is impractical, such as with drag. Why: Constant memory search converging on the target.
+- [procedure] 1) Keep bounds L and R around the candidate section. 2) While L is less than R, set the middle to the mean of L and R. 3) Move L past the middle or R onto it, depending on the comparison. 4) When L equals R, test the element at R for equality unless R equals N. Why: Simpler termination condition; finds the match with least index.
+- [procedure] 1) Take the sorted prefix as the search interval. 2) Sample the middle item and keep the half containing the insertion point. 3) Stop when the interval has length 1. 4) Shift items from that position right by one and insert the new item.
+- [procedure] 1) Search the list while keeping a pointer to the predecessor of each candidate. 2) On a match, unlink the found element from its position. 3) Insert it at the top of the list. When: Each successful search on a self-organizing list. Why: Recently found elements move forward so repeat accesses are cheap.
+- [procedure] 1) Compute h = H(k). 2) Compare the key at h; stop if it matches or the slot is free. 3) Otherwise advance to the next probe index using a function G of the probe count i, and repeat from step 2. When: Looking up or inserting a key in an open addressing table. Why: Probing visits a fixed sequence of slots until the key or a free slot is found.
+- [metric] Binary search halves the remaining range per comparison, needing at most log2 N steps rounded up, versus about N/2 comparisons on average for linear search. When: The array is sorted in non-decreasing order. Why: Halving the remaining range at each step.
+- [metric] Bisection targeting uses constant memory, and its time depends on simulation sampling resolution and the accuracy threshold.
+- [metric] Binary insertion makes about n·(log(n) - log(e)) key comparisons in total, with a bias of up to ±0.5 per search from truncated division.
+- [metric] On average, a search of an ordered list for a new word scans only half of the list.
+- [tradeoff] Linked lists allow only sequential search, while arrays allow direct indexing and sorted arrays allow binary search.
+- [pitfall] Binary insertion gives only a marginal gain over straight insertion and can be slower than straight insertion with sequential search on already sorted input. When: input already sorted.
+- [pitfall] Multi-level bucket schemes add considerable complexity and are generally not worth building.
+- [pitfall] Changing binary insertion's loop test to less-or-equal, or simplifying its lower-bound assignment, can break the sort, so verify the altered version on crafted inputs.
+- [pitfall] Without clustering in the input, reordering a list by access gives little or no gain over a static list. When: Input keys are spread evenly with no repeats in short runs. Why: Reordering only helps when recent keys predict future ones.
+- [fact] Binary search on a sorted array finds the insertion point faster than walking a linked list.
+- [fact] The comparison count of binary insertion is nearly independent of input order: reverse-ordered input needs the fewest comparisons and already-ordered input the most.
+- [fact] Binary insertion does not reduce item moves, which remain of order n², since each insertion still shifts many items.
+
+## curve fitting
+- [definition] Game data means every number that defines a game object, such as hit points, damage per hit, hits per turn, or armor class.
+- [definition] A game object is a single item in one of a game's systems, such as a card, weapon, unit, equipment, tech, or character.
+- [heuristic] A balance formula that works for typical values can still fail at extremes, and if it is correct in most cases, the general formula may not need changing. When: Balance math being checked at edge conditions. Why: Extreme values expose limits that typical values do not reach.
+- [procedure] 1) Open the chart's customize options. 2) Open the series settings. 3) Tick the Trendline checkbox and choose a trendline type. When: A chart's points do not match a formula you already know.
+- [procedure] 1) Plot paired values as a scatter chart. 2) Add a linear trendline. 3) Display R-squared. 4) Compare it with the correlation coefficient computed from the same data. When: Checking whether a fitted trend reflects real relationship or chance.
+- [procedure] 1) Fit a formula relating price to expected damage per second using the first few known weapon rows. 2) Use it to fill in the remaining rows. 3) Check that all weapons fall on one curve. When: a data set of items should follow one value curve.
+- [procedure] 1) Repeatedly multiply the start vector by the transition matrix. 2) Record the chance of having reached the finish state after each turn. 3) Median is the first turn where that cumulative chance exceeds 0.5. 4) Finishing probability on a turn is the difference from the previous turn. 5) Mean is the sum of turn times finishing probability, stopped once it converges. When: measuring a single-player race game's length distribution. Why: the final-state probability curve gives the full length distribution.
+- [metric] Root-mean-square error is computed by squaring each player's rating error, taking the mean, then taking the square root. When: when measuring rating accuracy in simulation.
+- [metric] A polynomial trendline of degree n fits a sum of powers of x up to xⁿ, so degree 2 includes x squared and degree 3 includes x cubed. When: Choosing a polynomial trendline for curved data.
+- [metric] R-squared runs from 0 for the worst fit to 1 when the curve passes exactly through every point. Values near 1 indicate a strong fit. When: Judging how well a trendline matches the data.
+- [metric] At 30 fps, frame latency is about 100 to 133 ms plus display lag; at 60 fps it is about 50 to 67 ms plus display lag. When: Excluding display delay.
+- [tradeoff] Bicubic interpolation costs more computation than bilinear interpolation, though still cheap, in exchange for smooth rounded terrain.
+- [pitfall] No fixed R-squared cutoff separates good from bad fits. A low value is a sign to try a different trendline type rather than accept the curve. When: Evaluating a trendline's R-squared value. Why: The acceptable level depends on the data and the curve type chosen.
+- [pitfall] A rounded decimal standing in for an exact matrix value can slightly distort the computed probabilities.
+- [pitfall] Fractional values are harder for players to process, so avoid them when the game allows. When: Game allows whole-number values. Why: Players struggle to compare fractions quickly.
+- [pitfall] A curve can fit existing data well yet mislead when extended; early exponential and sigmoid fits look alike, and real player counts must level off.
+- [fact] Four characteristic points can represent a fuzzy set: minimum and maximum values where membership is 1, their average, and the bisector that splits the area under the curve in half. When: Choosing an output point for a fuzzy set. Why: These points give distinct ways to locate a representative output.
+- [fact] A corrected formula can still leave one outlier far off the curve, so manual tuning of individual values remains necessary.
+- [fact] RPGs typically expose hit points, damage, accuracy, and the numbers deciding whether an attack hits and what effect it has.
+
+## string matching
+- [definition] The alignment of a pattern in the text is the text index minus the pattern index.
+- [definition] In Knuth-Morris-Pratt search, a shift value of minus one means the pattern moves entirely past the current text position.
+- [definition] A pattern matches at start position i when pattern element j equals text element i+j for every j in the pattern.
+- [mechanism] Each successive column cycles through its values more slowly than the one before, so combined columns enumerate every combination. When: Building outcome columns from a single row index.
+- [rule] During string search, never move the text pointer backward; after a mismatch, shift only the pattern. When: searching a text with a precomputed shift table.
+- [rule] On a mismatch, choose the largest shift that keeps the matched part consistent and makes the next compared pattern character differ from the one that just mismatched. When: after a partial match fails. Why: The largest consistent shift skips the most positions, and a differing character avoids a guaranteed failing comparison.
+- [rule] Keep a pointer to the last item of each occurrence list and append there, so line numbers stay in ascending order during scanning. Why: avoids sorting each list separately.
+- [heuristic] Transforming each element of a character sequence transforms the whole text, so per-element routines can work on full text.
+- [procedure] 1) Repeatedly take the remainder after dividing by ten and divide by ten, pushing each remainder into a temporary array. 2) Pop the digits from the array and write them in that order. Why: Remainders yield the least significant digit first, so writing digits directly as they are generated emits them in reverse order; the stack reverses them back.
+- [procedure] 1) Start a streak counter at 1 for the first result. 2) For each later result, add 1 to the previous counter if it matches the prior result, otherwise reset it to 1. 3) Take the maximum counter in the row. When: finding the longest run of identical results in a sequence.
+- [procedure] 1) Compare the pattern from its right end against the text. 2) On a mismatch, shift the pattern by the table value of the aligned text character. 3) A match is found when the pattern index reaches zero; failure occurs when the text index passes the end.
+- [procedure] 1) For each character, record the distance from the pattern end to its rightmost occurrence, excluding the last position. 2) Give characters absent from the pattern a shift equal to the full pattern length. When: Precomputing the shift table for string search.
+- [procedure] 1) Set the value to zero. 2) While the next character is a digit, multiply the value by ten and add that digit. 3) Stop at the first non-digit.
+- [procedure] 1) Search the list for the word. 2) If found, increment its count. 3) If not found, insert the word.
+- [metric] A hierarchical N-gram costs O(n) memory and O(n) time, where n is the highest N-gram size used.
+- [metric] With well-filled hash tables, registering an action takes constant time, while predicting takes time linear in the number of possible actions.
+- [metric] Memory use for an N-gram predictor grows with the product of the window length N and the number of possible actions.
+- [metric] Boyer-Moore needs about N/M comparisons in its luckiest case and substantially fewer than N in nearly all other cases, for text length N and pattern length M.
+- [fact] The outer hash table is keyed by window, and each entry holds a follow-on count table plus the total count of times that window was seen.
+
+## grid and terrain
+- [model] A diamond-square generator takes three parameters: seed sets the initial corner values, iterations sets the number of passes, and roughness sets the magnitude of random offsets.
+- [model] An order-i Hilbert curve is four half-size order-(i-1) curves, suitably rotated, joined by three connecting lines, with order 0 empty.
+- [definition] Diamond-square is a fast, common fractal terrain method that alternates diamond and square steps over a grid, reducing random offset magnitude at each level.
+- [definition] A grid is a persistent bucket sort: its buckets are kept and updated over time.
+- [mechanism] On height-field grids, connection cost can combine distance and elevation change so that downhill moves cost less than uphill moves. When: Outdoor terrain tile graphs. Why: Climbing takes more effort than descending over the same distance.
+- [mechanism] A height-reduced flag is set when a node is removed or when rebalancing shrinks a subtree, and rebalancing is considered only while the flag is set.
+- [heuristic] Use diamond-square when a fast, simple fractal terrain is enough and fine control over the result is not required.
+- [procedure] 1) Seed the four corners of a heightmap. 2) Diamond step: set each square's centre to the corners' average plus a random value. 3) Square step: set each side midpoint to the average of its two corner neighbours and the centre, plus a random value. 4) Split into four smaller squares, reduce roughness, and repeat for the set number of iterations.
+- [procedure] 1) Divide each coordinate by the cell size and truncate to an integer per axis. 2) Push the unit onto the front of that cell's list. When: adding a unit to a grid.
+- [procedure] 1) Record the new position. 2) If old and new cells match, return early. 3) Otherwise unlink from the old cell's list, fixing neighbor and head pointers. 4) Insert into the new cell. When: a unit moves. Why: Units moving within a cell cost almost nothing.
+- [procedure] 1) Loop over every grid cell and pass its unit list to a per-cell handler. 2) In each cell, compare each unit only with units after it in the list. 3) For cross-cell attacks, check four of the eight neighboring cells. When: resolving melee or attack range in a grid. Why: Each unit pair is then considered exactly once.
+- [metric] With linear falloff and a threshold influence, a unit's radius is its base influence divided by the threshold, minus one; it contributes only to locations inside that radius.
+- [metric] Limiting each unit's contribution to its radius reduces time to O(nr), where n is the number of units and r is the typical count of locations inside one radius.
+- [pitfall] Diamond-square gives limited control over the result, so specific features such as a required ridge are hard to enforce.
+- [pitfall] A limited radius stops small influences from accumulating over long distances, so a group of weak units may have no influence on a location they surround.
+- [fact] Diamond-square output approximates fractional Brownian motion terrain.
+- [fact] Even with smooth visuals, many games keep a grid beneath the surface: a uniform table of elevation values known as a height field, which the pathfinder also uses.
+
+## board game ai
+- [definition] An opening book stores move sequences from the game's start, usually as a hash table keyed by board position; entries list candidate moves and each line's estimated average outcome.
+- [mechanism] On an open grid, central squares have higher hit probability than edge squares because more placements of a piece cover them. When: no prior hits and no obstacles on the board. Why: more legal placements pass through central squares.
+- [mechanism] With a plain list, each expert scanning the board costs time proportional to the number of entries; a hash keyed on semantic identifiers reduces lookup to near-constant time.
+- [rule] When importing opening sequences, record at each intermediate position which line it belongs to and how strong that line is.
+- [rule] Avoid full collision detection in targeting simulations by stopping early, for example when the projectile is well below the target's height. When: Running targeting simulations.
+- [heuristic] Many developers stop as soon as the goal is seen, because the first route found is often the shortest or close to it.
+- [heuristic] Late in games like chess, backgammon and checkers, simplified boards can again be handled with stored lookups similar to opening books. When: remaining material is small enough.
+- [procedure] 1) Start from an initial opening library. 2) Record the program's statistical results for each line. 3) Lower the score of any line that keeps losing for this program, so it is avoided later.
+- [procedure] 1) Search all states with breadth-first simulation over the available moves. 2) Check whether the goal is reached. Use this when no heuristics exist for the unknown effects of arbitrary code. When: when the effects of generated code on the game state are unknown. Why: Without domain heuristics, only exhaustive search can verify reachability.
+- [tradeoff] Brute force enumeration gives an exact probability but grows with outcome count, while Monte Carlo runs are cheap at scale but approximate and change on every recalculation. When: Choosing a method to find a probability.
+- [fact] Human players and successful computer programs both rely on pattern recognition drawn from past games or a database rather than calculating the optimal move each time.
+- [fact] Unlike a transposition table, one opening book position may have several recommended moves, because openings branch like a tree.
+- [fact] Sophisticated pattern recognition has been tried for set plays, especially in Go and Chess, but no dominant general method has emerged for board games.
+- [fact] Most commercial board game programs use the opponent's thinking time by searching during it and storing results in a transposition table.
+
+## event and coroutine systems
+- [model] An event manager has four elements: an optional checking engine, an event queue, a registry of (interest code, listener) pairs, and a dispatcher that notifies matching listeners each run.
+- [definition] In event passing, a central checking system detects interesting changes and notifies every character that might care about them.
+- [definition] A coroutine is a process that pauses at breakpoints and resumes at the same place when called again.
+- [mechanism] With n queued events and m registered listeners, event dispatch time grows as n times m and memory grows as n plus m.
+- [mechanism] Event passing adds bookkeeping: the manager must match events to interested characters, and each character holds an event until the code that needs it runs.
+- [rule] A listener needing several codes can instead use codes that are powers of two, combined as a bit mask, so one registration covers all of them. When: when a listener needs several codes and fewer registrations are wanted.
+- [rule] Listeners implement an event listener interface so they can register with the manager and be notified correctly.
+- [heuristic] Event types carry the data listeners need, such as the participants and time of a collision or the enemy location in a sighting report.
+- [procedure] 1) While the event queue is not empty, pop the next event. 2) Notify every listener whose registered code matches the event's code. 3) Repeat until the queue is empty.
+- [procedure] 1) Create a registration record holding the listener and its interest code. 2) Add the record to the registration list. A listener needing several codes registers once per code.
+- [procedure] 1) Make the polyphase sort the main program. 2) Write the run distribution as a coroutine. 3) Treat each run switch as a breakpoint. 4) Replace end-of-file tests with a test whether the coroutine has finished.
+- [fact] An event manager treats the event code as an opaque value, so it needs no knowledge of what each code means in the game.
+- [fact] Event passing is not faster in principle than polling, since checks still have to be made and the mechanism adds messaging work.
+- [fact] Events have different delivery deadlines: a siren notice can be delayed a couple of seconds, while a 'you have been shot' event must be delivered instantly because an animation may depend on it.
+
+## linked lists
+- [definition] A singly linked list node holds a key, a successor pointer and other data, and the list is accessed through a pointer to its first node.
+- [heuristic] Linked lists suit small, varying collections whose access frequencies are unknown, such as a compiler symbol table with entries added and removed.
+- [heuristic] Reuse a node's next field to build a new chain once the old chain is no longer needed, avoiding extra storage. When: Rearranging linked nodes during a sort. Why: The old link is free after the chain has been consumed.
+- [procedure] 1) Allocate a new node. 2) Link its successor to the current head. 3) Move the head pointer to the new node. The order of these steps matters.
+- [procedure] 1) Link the new node to the designated node's old successor. 2) Link the designated node to the new node.
+- [procedure] Insert a new node after the designated node, copy the designated node's contents into it, then store the new key in the designated node. When: Predecessor links are not available.
+- [procedure] 1) Test whether the pointer is NIL and stop if it is. 2) Apply the operation to the current element. 3) Move to the successor and repeat.
+- [procedure] 1) Walk one pointer ahead through the list. 2) Keep a second pointer one step behind it. 3) Insert the new node at the position the trailing pointer marks.
+- [tradeoff] Preallocating all node records gives fast lookup but wastes memory when most nodes are never considered, while an array of null pointers creates records only when needed. When: Choosing node storage for A* on large graphs or memory-limited consoles. Why: Preallocation trades memory for speed; lazy creation trades lookup simplicity for memory.
+- [pitfall] Removed nodes are not explicitly freed; they are reclaimed only if a garbage collector exists to reclaim unreferenced nodes.
+- [pitfall] Deleting a node itself moves its successor's value into it and deletes the successor; this needs a successor and no other pointer to the deleted node.
+- [pitfall] Passing the subtree link by value loses a newly allocated node, because the new pointer never reaches the parent's field. When: Recursive insertion into a tree. Why: The parent's pointer is not updated when only a copy of it is passed.
+- [fact] Repeated head insertion produces a list whose elements appear in reverse order of their insertion.
+- [fact] A list is a degenerate tree where every node holds no more than a single subtree.
+
+## numerical methods
+- [definition] A matrix is in triangular form when every entry below the diagonal is zero and every diagonal entry is non-zero; entries above the diagonal may be anything.
+- [definition] A trendline is a best-fit line or curve drawn through chart data when no known formula matches the points, so an approximate equation can be used.
+- [definition] A slope function s(x) gives how far up the slope a point sits, x of the way between lattice points; for bilinear interpolation s(x) equals x.
+- [mechanism] Where subtractions dominate, the pathfinder avoids the area, so characters underuse very good tactical positions, an effect players rarely notice.
+- [mechanism] Steady-state rating error always exists, because a player at their true rating still gains or loses points after each game. When: when running a rating simulation over many games.
+- [rule] Miss distance must be signed, positive for overshoot and negative for undershoot, because a plain distance is always positive and cannot indicate which side was missed. When: Iterative shot targeting.
+- [rule] Use the equation label option when you plan to extrapolate a trendline beyond the data, since it displays the formula you can then apply. When: Extrapolating a fitted curve past the charted range. Why: The displayed equation lets you compute values outside the original points.
+- [heuristic] Use squared distances in condensation comparisons so square roots are avoided.
+- [procedure] 1) Work column by column from the top left. 2) If a diagonal entry is zero, swap rows. 3) To cancel an entry, multiply one row by a whole number, then add rows. 4) Solve the bottom equation first and substitute upward. 5) Apply the sum-to-one rule to find remaining values.
+- [pitfall] A tree reflects only the examples provided, so an attribute that looks irrelevant in a small set may matter once more data arrives. When: learning from a small example set.
+- [pitfall] A small example set may not cover the situations a game produces, so the network will fail on the test set or in play. When: Training data is limited.
+- [pitfall] MINVERSE returns an error when a matrix has no inverse; if a small change to one value clears the error, use an approximation or another method.
+- [pitfall] A predictive model can learn patterns caused by how people were treated, mistaking the effect of care for a causal benefit. When: When care or intervention depends on the same factors the model predicts. Why: Prioritized patients receive treatment that changes the observed outcome.
+- [fact] Two independent random columns can show apparent correlation, and small samples produce much larger apparent correlations than large ones.
+
+## game entity behavior
+- [mechanism] A queued manager can run as an anytime algorithm, sending events only when the AI has processing budget left.
+- [mechanism] Each activation gets its own local variables and parameters, and name lookup uses the most recently created set, so repeated names do not conflict.
+- [rule] Keep character-specific movement cost modifiers in character data; a heavy unit might pay tenfold the slope cost of a light unit.
+- [rule] Test attacks with a distance check against the attack range, not an exact position match.
+- [heuristic] For a character with radius, shift each inflection point outward from its vertex rather than modelling true arcs, which gives believable paths. When: Adjusting visibility graph nodes for character size. Why: The offset approximates the arcs a wide character would follow around corners.
+- [procedure] 1) Make one cell show a marker when the attack is the next action and blank otherwise. 2) Make a second cell hold the remaining cooldown, decreasing by 1 each second while above zero. 3) When cooldown reaches zero, reset it to the cooldown length if the attack is ready, otherwise keep it at zero. When: Modeling a timed ability with cooldown using iterative calculation.
+- [metric] The arbiter uses no extra memory and runs in time linear in the number of experts.
+- [metric] The number of block-format rules equals the product of the state counts of all inputs; inputs with 2, 3 and 3 states give 18 rules.
+- [metric] Block-format decision memory is O(n+m) for the input and output degree arrays, where n is the input state count and m the output state count, plus rule storage.
+- [metric] Block-format decision time is proportional to the rule count times the number of clauses per rule, because each clause is evaluated.
+- [pitfall] Plans on tile graphs look blocky, and characters following them move strangely unless the path is smoothed. When: Moving characters along tile-graph routes. Why: Routes are restricted to grid steps.
+- [pitfall] Unlike pathfinding, a closed location may be updated during map flooding, because the strength function is arbitrary.
+
+## heaps and priority queues
+- [model] A priority heap is an array-based tree where node i has children 2i and 2i+1; the smallest element is at the head, and insertion and removal take O(log n).
+- [definition] A priority search tree combines search-tree order on one coordinate with heap order on the other, so each node carries two keys acting as plane coordinates.
+- [mechanism] Radix priority search tree: midpoint-split x-intervals halve per level, height ≤ log of coordinate range (word length for integers); fixed dividing lines confine updates to one spine.
+- [rule] Keep the open-list priority queue separate from node records rather than linking records together. When: Implementing A* node storage. Why: Linked records waste memory, complicate code and cause poor cache behaviour.
+- [rule] In a priority search tree, a left child has a smaller x than its parent and a right child has a larger x, while both children have a y not smaller than the parent's.
+- [heuristic] Use a radix priority search tree for points in a bounded two-dimensional space, especially for rectangle queries with integer coordinates.
+- [procedure] 1) Descend from the root. 2) If the position is empty, place a new node. 3) If the x-value exists, stop; x-values stay distinct, so duplicates are not inserted. 4) If the new y is smaller, swap and continue the displaced point downward. 5) Go left if x is below the midpoint, else right.
+- [metric] Enumerating points with x0 ≤ x < x1 and y ≤ y1 in a radix priority search tree takes O(log N + s) operations, with N the x-space size and s the points reported.
+- [pitfall] Priority-based, deadline-driven event queues are complex to design and build.
+- [pitfall] Partial-order planning search space grows exponentially with plan length, so POP is rarely used in large practical applications. When: Planning long plans. Why: Each unresolved ordering and binding multiplies the number of partial plans to consider.
+- [pitfall] Inserting a point that must lie above and between existing nodes forces a large restructuring of a priority search tree.
+- [fact] Typical operations on a radix priority search tree include enumeration of points in a rectangle, finding the least or largest x or y within limits, and deleting a point.
+
+## iterative deepening and iteration
+- [mechanism] IDA* stores only the path under test, with no open or closed list; it is simple, often under 50 lines, but re-plans the same nodes each iteration, sometimes slower than Dijkstra. Why: restarting from scratch each cutoff costs more time than A*.
+- [mechanism] At maximum iterations 100, a self-referencing cell like A1 =A1+1 rises by 100 per recalculation; at 1 it rises by 1, so keep 1 for step-by-step time simulation. When: Iterative calculation is enabled. Why: Each recalculation runs the loop once per allowed iteration.
+- [mechanism] A level parameter that decreases by one per call bounds recursion depth by its starting value, which guarantees termination.
+- [rule] Begin iterative deepening at depth two, since a one-ply search gives little useful information, but still run the one-ply search when branching is large or time is short. Why: a one-ply result carries little information on its own.
+- [rule] Turn on iterative calculation only when a value should deliberately advance step by step, such as a turn or time counter. Why: Accidental circular references are usually errors, so the default warning helps catch them.
+- [procedure] 1) Set the cutoff to the start node's heuristic value. 2) Recursively extend paths whose cost so far plus heuristic is below the cutoff. 3) When all such paths are exhausted, raise the cutoff to the smallest total that exceeded it. 4) Restart and repeat until the goal is found. When: memory is the main limit, such as handheld devices. Why: stores only the current path.
+- [procedure] 1) Search one ply deep, then two plies, and so on, increasing depth. 2) After each completed depth, check whether time has run out. 3) If time runs out mid-search, use the result of the last completed depth. When: the time available for a move is uncertain. Why: a finished shallower result is always available as a fallback.
+- [procedure] 1) Keep the current value and its predecessor in two variables. 2) Advance the pair until the index reaches n. 3) Update the pair with two assignments and no temporary variable.
+- [metric] The two-variable iterative Fibonacci computes its result in a number of steps linear in n, avoiding recomputation of values.
+- [metric] Minimal height-balanced trees of this family satisfy N_0 = 0, N_1 = 1, and N_h = N_(h-1) + 1 + N_(h-2); the sequence also goes by a second name.
+- [fact] Iterative deepening analyzes a move at a shallow depth first and revisits it at greater depth later.
+- [fact] Google Sheets does not support iterative calculation, so time simulation there requires a row-by-row method.
+
+## a* search tuning
+- [rule] Use the general A* version when node counts vary, such as with streamed level sections, or when memory is too tight for specialized versions.
+- [rule] Use distance for plain shortest paths and time when speed matters; use blended costs when a character has tactical concerns.
+- [metric] Ignoring data-structure overhead, A* takes O(lm) time, with l iterations and m the mean count of outgoing edges per node.
+- [metric] A* peak memory use is O(lm), because the open list ends with O(lm) entries.
+- [metric] A simple A* pathfinder suits a shooter level with 5 to 50 characters, but would likely struggle with 1000 characters across a continent-sized world.
+- [tradeoff] Underestimating heuristic suits when accuracy outweighs speed or heuristic is not consistently near-perfect; overestimating suits when small suboptimality is acceptable and speed matters.
+- [pitfall] Big-O order alone can mislead about real A* speed; priority queue, graph, and heuristic costs determine actual performance.
+- [fact] The iteration count l equals the number of nodes whose estimated total is below the goal's estimated total, and is usually smaller than the node count n.
+- [fact] A* can be understood as a low-fill version of Dijkstra.
+- [fact] A simple A* with a good heuristic can plan across tens of thousands of nodes in one frame, but worlds of hundreds of thousands or millions of locations need hierarchical planning and other remedies.
+- [fact] A* cannot run on raw level geometry and needs the level represented as a directed, non-negative weighted graph. When: Applying A* to a game level. Why: A* relies on nodes and weighted connections to measure route cost.
+
+## probabilistic models and simulation
+- [heuristic] In Monte Carlo tallies, use COUNTIF instead of a per-row IF helper column plus AVERAGE when only a success rate is needed. When: only a success rate is needed.
+- [procedure] 1) Simulate the game or test many times with random inputs. 2) Record the result of each trial and count the outcomes of interest. 3) Divide the count of the target result by the total number of trials to estimate its probability. When: when the math for a probability is too hard. Why: Repeated trials estimate odds without complex calculation. Estimates probabilities that are hard to compute exactly. (x2)
+- [procedure] 1) Write formulas that compute one roll per row. 2) Flag rows in the target range with IF and AVERAGE the flags for an estimate. 3) Recalculate several times to see the spread. 4) List every unique outcome, one per row. 5) Apply the same flag count to those rows for the exact probability. 6) Compare. When: Estimating a probability and checking the estimate against an exact count.
+- [procedure] 1) Create one worksheet per game state. 2) Place each state's calculations in row 1 of its sheet. 3) Link each sheet to the one before it. When: Row-by-row simulation becomes hard to read on one sheet.
+- [procedure] 1) Store the transition matrix with origin states in columns and destination states in rows. 2) Enter the starting state as a column vector. 3) Multiply the matrix by the current vector to get the next state. 4) Repeat for each transition. When: simulating a Markov chain in a spreadsheet.
+- [metric] The median number of transitions to reach a final state is the first transition where the cumulative probability of being in that state exceeds 0.5. When: the chain has a final state.
+- [metric] The most likely entry route is the transition that has the highest chance of first reaching the final state, found by MAX() then locating that column with MATCH().
+- [pitfall] Much Markov literature assumes the total is 1, so its methods may not carry over to game values with other totals.
+- [fact] Some transitions are one-way, such as a drop that cannot be climbed back, so a node pair may connect in one direction only.
+- [fact] Repeating one transition matrix forms a Markov chain whose stable final values are an eigenvector of that matrix, if one exists.
+- [fact] Games often apply several different transition matrices for different events, so stable final values matter less in practice.
+
+## search loops and sentinels
+- [definition] A sentinel is a copy of the search key past the last element of an array or list, so scans always stop at a match without an end-of-list test.
+- [mechanism] Alpha and beta form a search window that narrows as the search proceeds, so more branches fall outside it and get pruned.
+- [rule] Judge a search variant by stating its loop invariant, then check that it ends with the element equal to the argument if one exists, or with no match otherwise. When: comparing or correcting binary search variants. Why: A variant is correct only if its invariant holds throughout and its final state reports the right result.
+- [heuristic] Place a sentinel node at the start of a linked list so that search needs no separate end-of-list test, which simplifies the code. When: Implementing a linked list search. Why: The sentinel guarantees the search always stops.
+- [procedure] 1) Enlarge the array to N+1 slots. 2) Store the search key in slot N. 3) Scan from index 0, testing only for a match. 4) If the index equals N afterward, the key is absent. When: unordered data where one loop test per step is wanted.
+- [procedure] 1) Point every empty branch to one shared sentinel node. 2) Store the target key in the sentinel before searching. 3) Loop with only the key comparison. 4) A failed lookup returns the sentinel, which the caller must test.
+- [pitfall] A sentinel requires one extra array slot beyond the N items.
+- [pitfall] Moving boundary checks out of the procedure forces every call site to repeat them, so postpone such optimization until the algorithm is correct.
+- [pitfall] Testing the key before the end-of-list condition in a combined search loop reads a field of a nonexistent NIL node. When: A search loop combines two termination conditions.
+
+## stochastic optimization
+- [definition] Simulated annealing is named after metal cooling: slow cooling settles into a low-energy state, while rapid cooling leaves defects.
+- [definition] Cascading elitism is a multistage selection scheme resembling a mu+lambda evolution strategy, with a separate selection stage per objective so each receives suitable selection pressure.
+- [mechanism] Annealing adds a shrinking random term to hill descent, so early search accepts poor moves while later search becomes predictable.
+- [heuristic] Use a lower alpha when transitions are highly random, where rewards or resulting states vary widely each time. When: Transitions are noisy. Why: A low alpha averages out random variation instead of overwriting stored values.
+- [heuristic] Use a higher alpha when only a few iterations are allowed, so values change enough to be useful. When: Training budget is small. Why: Few updates leave little time for values to converge at a low rate.
+- [procedure] 1) Record the starting score. 2) For each parameter, try an up and a down tweak. 3) Accept any improvement. 4) Otherwise accept a worse value probabilistically. 5) Reset rejected parameters. 6) Return the originals if nothing was accepted.
+- [procedure] 1) Begin alpha near 0.7 so values change quickly while little is known. 2) Reduce alpha gradually toward about 0.1 so values gained later are protected. When: Training Q-learning over many iterations. Why: Early learning needs fast change, while later learning needs stability.
+- [metric] A worse neighbour is accepted with probability proportional to e^(-E/T), where E is the score increase and T is the current temperature.
+- [metric] Each annealing step costs O(n) time and O(1) memory, where n is the number of parameters.
+
+## implementation details
+- [model] A technique description covers seven parts: problem, general method, pseudo-code, data structure needs, implementation notes, performance analysis, and weaknesses.
+- [rule] Set the cutoff midway between the top value of group A and the bottom value of group B, so unseen values get classified sensibly.
+- [heuristic] Threshold splitting becomes more accurate as more examples arrive, since more data refines the chosen boundary.
+- [heuristic] A procedure that makes only one recursive call, placed at its start or end, can be rewritten as a loop without recursion. When: the procedure has one recursive call and no branching. Why: a single chain of calls carries no branching that a loop cannot reproduce.
+- [procedure] 1) Select a cell involved in the loop. 2) Use Trace Precedents and Trace Dependents to draw arrows showing which cells reference which. 3) Follow the arrows to find the circular reference. When: Diagnosing circular reference errors in a spreadsheet.
+- [metric] Slot assignment runs in roughly O(k a log a) steps, with a denoting the mean count of valid slots per character. Memory, O(kn), is often the real constraint.
+- [fact] If valid slots grow in proportion to total slots, slot assignment time becomes O(kn). When: Valid slots scale with total slots.
+- [fact] Further speed-ups from specializing A* depend on the cost structure and other assumptions about the graph.
+
+## complexity analysis
+- [heuristic] Present a technique as a sequence of increasingly efficient versions, starting with simpler stepping stones, so the final design's structure is easy to understand. When: Explaining or documenting a non-obvious algorithm. Why: Simpler stages show why the final design looks as it does.
+- [heuristic] Compare expected and worst-case performance when they differ; some algorithms have improbable worst cases that can often be ignored in practice.
+- [heuristic] Interchanging the two branch tests in binary search slightly improves efficiency, because equality occurs only once.
+- [procedure] 1) Scan the program text to find all procedure definitions. 2) Find every procedure call inside each definition. 3) Order the subroutines topologically using the call relation.
+- [metric] Algorithm performance uses O() notation with n usually a problem component, like characters in an area; approximate time or memory replaces O() when it is too involved.
+- [tradeoff] Looping over cells adds overhead, but short per-cell unit lists cut pair checks enough to offset it.
+- [fact] Replacing ten by a base B in both conversion routines yields conversion routines for base B.
+
+## search and pruning
+- [definition] Variable-depth search lets different branches stop at different depths, using conditions that decide when to stop each branch; alpha-beta pruning is one example.
+- [metric] When selecting from n objects, each object is either included or excluded, so the unpruned search covers 2^n sets.
+- [pitfall] Without an underlying order, finding nearby units requires scanning the entire array. When: units stored without spatial order.
+- [pitfall] Without bounding criteria that cut the search drastically, the 2^n growth makes exhaustive search impractical.
+- [fact] Some games, like chess, can last nearly unlimited turns, with competition move-limit rules imposing a cap.
+- [fact] Some events need no checking: a game object can enqueue an event directly, such as a 'ready-for-battle' signal sent to squad members.
+- [fact] Skipping already-visited pairs halves the comparisons but still leaves growth at O(n²).
+
+## validation and checks
+- [definition] A circular reference is a loop where a cell depends on itself, directly or through other cells, such as A1 =A2+1 with A2 =A1+1.
+- [mechanism] The checking engine decides whether something has happened that a listener may want, and it can check everything or use listeners' interests to narrow its work.
+- [mechanism] Spreadsheets normally flag circular references because they cannot determine which cell should update first.
+- [heuristic] Use event passing when many agents need the same result, or when checks can be done for all agents at once rather than agent by agent. When: many agents share a check result. Why: shared checks are done once for everyone.
+- [pitfall] Test that a candidate lies on the board before checking its visited state, because an out-of-range index is an invalid matrix lookup.
+- [fact] A checking engine often calls other services, such as a physics or collision detector, to determine whether an event has occurred.
+- [fact] Checks differ in kind: a siren is a single on/off value, collisions need geometric prediction, and speech recognition scans voice input for commands.
+
+## instancing
+- [model] Generic building designs share one pathfinding graph per type. Each placed instance wraps that graph in a translator that offsets node values and adds exit connections, and a world graph routes lookups to the right place. When: large worlds reuse building designs. Why: one stored graph serves hundreds of placed copies.
+- [rule] Use instancing for massive worlds with reused buildings only together with hierarchical pathfinding, treating each building instance as one higher-level node. The speed cost is then negligible. When: massive worlds with reused buildings. Why: the hierarchy hides the translation overhead.
+- [procedure] 1) Start the first instance's offset at the main graph's node count. 2) Add the previous instance's node count to each later offset. 3) Keep node values unique across all instances and types. When: numeric node values in a shared world graph. Why: prevents node collisions between instances.
+- [procedure] 1) Translate the requested node into building-graph values. 2) Query the building graph for connections. 3) Translate results back. 4) For exit nodes, add zero-cost connections to the world.
+- [metric] Finding which building owns a node needs a binary search over offsets, O(log n) for n buildings, with caching making it nearly O(1) in practice. Exit and entrance checks are hash lookups, near O(1) with a well-balanced hash.
+- [tradeoff] Instancing added enough per-step cost to halve execution speed in one test, so it is not worth it when one master graph fits in memory. When: a single master graph fits in memory. Why: the translation overhead in the hot loop costs speed.
+
+## optimization and annealing
+- [definition] SMS-EMOA is a multiobjective evolutionary algorithm; it can combine two or three objectives while other objectives act as constraints.
+- [mechanism] Lowering the temperature over the run shrinks randomness, so the search gradually accepts fewer worse moves.
+- [rule] Use an array of per-parameter step sizes when parameters differ in scale, rather than one constant step. When: parameters differ in scale.
+- [pitfall] Tuning momentum, step size, and temperature together is largely trial and error and hard to balance.
+- [fact] The starting parameter guess can be random, set by programmer intuition, or taken from the result of a previous run.
+- [fact] Swarm methods such as particle swarm and ant colony optimisation can serve the same search purpose but are not strictly evolutionary.
+
+## stable pairing and matching
+- [definition] A pairing of n men with n women is stable when no unmatched man and woman would each rather be with the other than with their current partner.
+- [rule] To judge a sort's stability, check whether any step can move one item past another item with an equal key.
+- [procedure] 1) Restrict the search for the first column to about half of its rows. 2) Compute reflections and the centre-point image of each solution. 3) Keep only one representative of each symmetry class. When: Counting essentially different solutions of a symmetric board problem.
+- [procedure] 1) Assume the tentative pairing is stable. 2) Scan the women the man ranks above his candidate, checking whether any prefers him to her current partner. 3) Scan the men the candidate ranks above her partner, checking whether any prefers her to his current partner. 4) Any success means instability. When: checking whether a tentative pairing keeps a stable matching.
+- [pitfall] Plain backtracking reports mirror and rotated placements as separate solutions; symmetry removal must be added explicitly, as the search does not recognize symmetry. When: Counting distinct solutions of a board placement problem. Why: The search does not recognize board symmetries.
+- [fact] Generating candidates in a fixed systematic order makes each candidate appear once, so every node of the search tree is visited exactly once.
+
+## matrix methods
+- [definition] Each payoff equation can be written as one matrix row, with opponent probabilities in the left columns and the payoff in the rightmost column.
+- [rule] Display an error when no non-zero pivot can be found during a row swap, or when the bottom row is all zeros, since then no single solution exists.
+- [procedure] 1) Write the payoff matrix M and a column p of ones. 2) Compute c as M inverse times p. 3) Divide each entry of c by the sum of all entries so the probabilities total 1. In a spreadsheet, use MMULT with MINVERSE as an array formula. When: the payoff matrix is invertible. Why: Normalizing by the sum converts raw solutions into valid probabilities.
+- [procedure] 1) If a diagonal entry is zero, swap in a row with a non-zero leading value. 2) Add scaled multiples of the top row to clear entries below the top diagonal. 3) Clear the bottom-left entry the same way. 4) If the middle pivot is zero and the bottom row's middle entry is not, swap those rows. 5) Clear the bottom row's center entry. 6) Solve the triangular system by substitution. When: solving a 3 by 3 payoff matrix without inversion. Why: Triangular form lets values be found one at a time by substitution.
+- [fact] Multiplying a matrix by a column vector gives a new column vector, where each output entry is the sum of one matrix row multiplied piece by piece by the vector.
+
+## optimal search tree
+- [procedure] 1) Place all genuine and special nodes on a line, weighted by access frequency. 2) Take the weighted centroid as the root candidate. 3) Search a limited range around it for the best local root. 4) Apply the same steps to each subtree, using exact dynamic programming once subtrees are small. When: when building a large search tree. Why: runs in O(n log n) time with O(n) storage.
+- [tradeoff] The centroid method gives a nearly optimal tree in O(n log n) time and O(n) storage, while the exact method needs quadratic storage but yields the true optimum. When: choosing a search-tree construction method.
+- [pitfall] A balanced tree is generally not optimal when access is skewed; the optimal shape can be degenerate, with the most frequent key at the root.
+- [fact] If all nodes have equal weight, the centroid is exactly the optimal root; otherwise the optimal root usually lies close to the centroid.
+- [fact] The chance that the optimal root lies very close to the centroid increases with the number of nodes n.
+
+## queues and ring buffers
+- [definition] A ring buffer is a fixed array with head and tail indices that wrap around modulo the capacity, giving a queue with no dynamic allocation.
+- [mechanism] If a ring buffer fills up, the tail collides with the head and overwrites pending items, so an assertion should detect the full state.
+- [rule] Queue events when broadcasting many events to many characters within a limited per-frame budget, and spread the queued events over several frames to smooth processor use. When: many events go to many characters with a limited per-frame budget. Why: events cannot all be handled in one frame.
+- [procedure] 1) Enqueue: write at the tail, then advance the tail by one modulo the array size. 2) Dequeue: read the item at the head, then advance the head by one modulo the array size. 3) The queue is empty when head equals tail. When: Implementing a fixed-size queue. Why: Wrapping indices let the buffer run indefinitely without shifting elements.
+- [fact] One cell stays unused as a gap between head and tail, which keeps full and empty states distinguishable.
+
+## repeated squaring and powers
+- [procedure] 1) Set y to 1.0 and copy the exponent into i. 2) While i is positive, multiply y by x when i is odd, square x, and halve i with integer division. 3) Result is y. When: raising a real number to a non-negative integer power without an exponent operator.
+- [metric] Repeated-squaring exponentiation makes about as many passes as the exponent has binary digits.
+- [pitfall] A tree of recursive calls can repeat the same subcomputations many times, so the cost is the total call count rather than the depth.
+- [fact] Repeatedly halving a decimal digit array with nested loops produces negative powers of two, such as 0.5, 0.25 and 0.0009765625 for 2^-10.
+- [fact] In repeated-squaring exponentiation, the invariant is that the original power equals the current x raised to i, times y.
+
+## resource tradeoffs
+- [heuristic] Spread items evenly during balancing, so later neighbour fetches are postponed, since fetching a page is a costly transfer.
+- [metric] Fill, the number of nodes a search examines, is the main measure of heuristic quality.
+- [metric] Converting a number to or from decimal text takes time proportional to its number of digits.
+- [tradeoff] Giving the user more control over selection can match their wishes better, but it raises cognitive effort and fatigue.
+- [fact] Common partitioning schemes for pathfinding graphs include Dirichlet domains, grid tiles, visibility points, and polygon meshes. When: Choosing how to divide a level into graph regions. Why: Each scheme turns continuous space into regions and connections.
+
+## priority queues and heaps
+- [model] A bucketed queue sorts buckets by value range, leaves contents unsorted, appends insertions, and removes from the first non-empty bucket; bucket count tunes the balance.
+- [definition] A binary heap is an array in which each element is less than both children; the children of index i sit at 2i+1 and 2i+2.
+- [tradeoff] Bucketed queues are more cache-friendly for very large graphs; for a few thousand to tens of thousands of nodes, a heap is often enough.
+- [tradeoff] A balanced priority search tree gives logarithmic bounds but makes insertion and deletion complicated, so it trades implementation simplicity for guaranteed performance.
+
+## space-filling curves
+- [model] Four pattern procedures differ only by 90-degree rotation; each combines four smaller patterns with explicit connecting lines, some drawn at double length.
+- [procedure] 1) For each order from 1 to n, halve the unit length. 2) Move the starting point to the middle of the smaller square. 3) Draw that order's curve, superimposed on the previous ones. When: Drawing orders 1 through n on one figure.
+- [procedure] 1) Set the starting coordinates. 2) Compute the unit length from the size of the plane. 3) Invoke the base pattern.
+- [fact] Sierpinski curves are closed and free of crossovers, so their base is a non-empty open curve whose four outer corner links are drawn explicitly.
+
+## game theory and card games
+- [procedure] 1) Generate random choices for two players with RANDBETWEEN(1,3). 2) Map each number to Rock, Paper or Scissors with nested IF(). 3) Decide the winner with nested IF(), returning 1, 2 or 0 for a tie. 4) Use a self-incrementing timer and log each game's winner over 30 games. When: Comparing iterative and non-iterative simulations of a randomized game.
+- [procedure] 1) Generate random choices for each player in their own columns. 2) Map choices to symbols and determine the winner on each row. 3) Number each game on its row and fill the rows down for the full run. When: Comparing against the iterative version of a randomized game simulation.
+- [fact] In zero-sum games the final scores of all players add to zero, while in non-zero-sum games each score reflects only that player's outcome.
+
+## rule-based backward chaining
+- [model] Backward chaining starts from a goal and checks rule conclusions that could produce it, recursively establishing each rule's conditions until they are all found in the database. When: Solving goal-directed problems such as theorem proving or planning. Why: Working back from a goal finds only the rules relevant to reaching it.
+- [rule] Under the closed-world assumption, any condition not stated is false, so initial states, goals, and preconditions use only positive literals, while effects may negate conditions. When: Writing STRIPS problems.
+- [fact] Backward chaining is rarely used in typical game AI, though it may suit contrived goal-driven game situations. When: Deciding between chaining approaches for game AI. Why: Typical game rule systems are driven by state changes rather than goal queries.
+
+## thresholding and image filtering
+- [tradeoff] Running one pass per frame while reusing values from earlier frames is common, but fast-moving units can leave stale blur behind.
+- [pitfall] A split threshold is local to a node, so the same attribute may split at different values in different branches. Why: deeper nodes have smaller example sets.
+- [fact] Attributes with more than two distinct regions, such as hurt versus almost dead, can be split by several thresholds, but game trees usually reach the same effect through repeated binary splits on one attribute.
+
+## llm reliability
+- [definition] LLM errors are fabricated misinformation rather than false perceptions, so the term fabrication describes them better than hallucination.
+- [fact] LLMs give answers that are plausible rather than necessarily accurate, and they can cite nonexistent sources and perform poorly on math.

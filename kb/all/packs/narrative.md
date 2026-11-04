@@ -1,0 +1,1263 @@
+# narrative
+
+## world building
+- [model] In a world built by many creators without formal authority, features audiences embrace persist while rejected ones disappear, so audiences effectively govern it. When: Long-lived transmedia worlds with many contributors. Why: Audience reception acts as the only selection process.
+- [model] Writing serves two audiences: players need only information affecting their experience, while the team needs wider backstory that shapes environments and designs.
+- [model] Licensed lore has three layers: the tip the public sees, the rest of the iceberg of insider lore, and the new stuff that is undefined and open to expansion.
+- [model] Five world archetypes are defined by their position in history: newly created, on the brink of change, very old and ending, newly discovered, and destroyed.
+- [model] Four world archetypes define the core conflict: war-torn, besieged, fallen, and perfect.
+- [model] A world overview document is organized into six parts: backdrop, technology and magic, world-changing events, peoples and class types, major landmarks and sites, and conflict summary. When: Documenting a game's world for the team. Why: Each section captures a different layer of the world.
+- [model] Like an iceberg, most worldbuilding stays hidden, and only a small visible part reaches players. When: Planning how much lore to write. Why: Hidden material supports the visible part even though players never see it.
+- [model] Each interactive character's small story combines into a region story, and region stories combine into the overarching world storyline. When: Designing MMO world narrative.
+- [definition] Micro worldbuilding is bottom-up, starting from a small event or place (a coronation, election, central city) or a recurring event with a few protagonists, not full history, and expanding outward.
+- [definition] A vision is a mental picture of a desired experience, and it is not a design of the system that produces that experience.
+- [definition] Worldbuilding happens in two ways: crafting the rules of how a world works, and communicating those rules to players through gameplay.
+- [definition] A world is a set of rules, while a story is a series of events, and story sits at the top of the stack to make actions and progress matter.
+- [definition] Treating a game world as a place that exists apart from the game, reachable through a doorway, helps shape its identity.
+- [definition] World building is the deep, intricate design of a fictional world, including maps, histories, cultures, languages, governments, and economies.
+- [definition] Macro worldbuilding is top-down: it starts from broad concepts such as shared cultural history, world scale and world origin, and applies them down to the world.
+- [definition] An awakening world is newly created, with little history and many possibilities, so early player decisions can shape its development.
+- [definition] A changing world sits on the brink of a major change, and the story begins when that change is decided.
+- [definition] A newly discovered world has just been found by one or more races, creating conflict over the unknown.
+- [definition] A war-torn world has two or more factions almost always in conflict, and its lore reflects constant war.
+- [definition] A perfect (utopian) world has reached the best possible outcome, yet still needs a conflict to drive a story.
+- [definition] The setting section covers genre tone, time period, geography, population, and the governing body of the world.
+- [definition] The technology/magic section describes how the world's technology or magic works and what it is used for.
+- [definition] The world-altering events section records major happenings that changed the world.
+- [definition] The cultures/character classes section describes the peoples and classes of the world and their origins.
+- [definition] Lore is the full collection of material that describes and defines a world and its history.
+- [definition] Worldbuilding means defining the setting in which a story takes place; every game has a world, whatever its genre. Why: The setting determines a game's scope and suggests how it should look and sound.
+- [definition] World narrative is backstory conveyed through a place's landscape, construction, object placement, junk, loot, corpses and documents, conveying both information and emotion about its past and people.
+- [definition] A coherent fictional world follows its own rules and explores the implications of those rules, with every observable fact fitting every other across historical, physical, and cultural levels.
+- [definition] Worldbuilding creates fictional geography, cultures and histories that give a space meaning; geography works as a stage shaped by the cultures and relationships within it.
+- [mechanism] Writing an idea down helps the designer develop it, because the work moves out of limited working memory.
+- [mechanism] A well-built world feels more real to an audience as the audience visits more of its gateways.
+- [mechanism] As new media open new gateways into a world, the world's features or the audience's perception of them adjust to accommodate those gateways.
+- [mechanism] Real countries, cities and landmarks carry existing associations, so they communicate setting and motive to players quickly, without long explanation. When: Writing a game set in a recognizable real location. Why: Players already hold images of real places, which the writer can use instead of building them.
+- [mechanism] When a group is undervalued and lacks time, few members gain specialized training, so specialist skills concentrate in better-funded regions. When: Designing a society with unequal access to education. Why: Economic position and time limit who can pursue demanding skills.
+- [mechanism] When a scarce, time-limited resource lies far away, travelers grow desperate, and anyone carrying it risks robbery and violence. When: Placing a valuable resource far from the population that needs it. Why: Distance and scarcity raise both desperation and the reward for theft.
+- [mechanism] A disease that forces victims to return repeatedly for treatment sustains demand and keeps constant pressure on the affected community. When: Designing an illness that needs ongoing care. Why: Repeated need prevents recovery from becoming a one-time event.
+- [mechanism] Where wealthier areas can afford treatment and rural areas cannot, rural communities lose residents and some settlements die out. When: Designing unequal access to care across regions. Why: Lack of treatment drives population loss, which compounds economic decline.
+- [mechanism] A narrative designer's worldbuilding guides art and sound design by suggesting how the game should look and sound.
+- [mechanism] A world story continues whether or not any individual player takes part, so players can see events progress without their involvement. When: MMO and persistent world design.
+- [mechanism] Games can combine world story, hard scripts, and soft scripts so that the player's emergent story arises from these layers plus the player's choices, at micro and macro levels. Why: Each layer supplies material without fully scripting the result, so no two players have the same experience.
+- [behavior] Worlds aimed at children can stay profitable across generations, since children often share them with their own children.
+- [behavior] Players and approvers do not share the same cultural references, so a reference obvious to one person may be unfamiliar to another. When: Writing pitches that use references from films, comics or books. Why: Cultural frameworks differ between readers.
+- [behavior] Players sense whether an analogue or direct representation rings true, and inaccurate details break immersion even when players do not consciously notice them. When: presenting real-world-inspired content. Why: Players judge believability intuitively.
+- [behavior] People seek a scarce cure for themselves or family, and some hoard it to resell at high prices, which intensifies competition. When: A life-saving resource is limited in supply. Why: Desperation and profit motives both push people to accumulate it.
+- [behavior] Players infer past events from what a space contains or lacks: a defensive wall suggests threat, and a hidden venue suggests violated social norms. When: exploring a built environment. Why: features imply history through their presence or absence.
+- [behavior] Striking player actions in confined, interactive spaces can become shared community lore that people retell. When: arenas are tightly confined and contain interactive objects. Why: Memorable moments are repeated and passed on among players.
+- [rule] Define the world's rules, including those of invented science, and apply them consistently everywhere, including edge cases; strange rules are acceptable when consistent. (x2)
+- [rule] Use world building when a game needs long-term engagement and depth beyond individual levels, since its depth and story potential sustain interest over long periods.
+- [rule] Define how your world offers something better than reality, since that is what makes it worth entering. When: Designing a world's identity.
+- [rule] Do not consider worldbuilding final until designers, artists and programmers have all signed off on it.
+- [rule] In voiced games, write only lines actors can say comfortably, and check for tongue-twisters, alliteration, unintended rhymes and other mismatches between page and speech. When: Writing dialogue for voice actors.
+- [rule] Know the game world in depth as a real place, not merely as a plot with characters and rules.
+- [rule] Detailed world planning is rarely necessary, but designers must be able to answer basic questions about world history and character motivation. When: Developing a game world.
+- [rule] The imagined world need not be realistic, but must be internally consistent, since one contradiction can break suspension of disbelief and pull the guest out.
+- [rule] Do not build a world around a single plotline; leave room for future stories and for audiences to imagine their own.
+- [rule] Document backstory for reference, the narrative devices that reveal the story, and subplots tied to both gameplay and the main plot.
+- [rule] Cover these world topics: overview, key locations, travel, mapping, scale, physical objects, weather, day and night, time, physics, and society or culture.
+- [rule] Name items, objects and encounters so they reflect the different cultures within the game world.
+- [rule] Decide how world information reaches players, such as through codices or dialogue about cultures, since the delivery channel shapes what they perceive. When: planning world delivery. Why: Players experience only what the game chooses to show.
+- [rule] Make lore follow believable character behavior, for example keeping forbidden knowledge in a library rather than speaking it aloud. When: writing characters who hold secret knowledge. Why: Characters act in ways consistent with their role and culture.
+- [rule] Search every invented name for gods, cities and characters before becoming attached to it, since it may already be a famous title.
+- [rule] Respect existing content and lore above all when writing for a licensed game.
+- [rule] Deliver history through the story, so that dialogue contains only the history relevant to the current plot. Why: In books and film, history arrives through story rather than exposition.
+- [rule] Keep unused lore material and use it in a sequel if the game succeeds. When: if the game succeeds.
+- [rule] Research a real-world setting thoroughly before writing, because gaps in places, slang or customs are quickly exposed by players who know them. When: Building a realistic setting. Why: Skimped research is visible to knowledgeable players.
+- [rule] Derive place names from a local physical detail, such as a creek or a rock formation, to give each location a grounded origin story. When: Naming settlements and landmarks. Why: Names tied to real features feel believable and carry a story.
+- [rule] Give concept artists a culture and environment brief before they sketch, so designs avoid generic stereotypes and need fewer revisions. When: Commissioning character or location concept art. Why: Without background, artists fall back on generic and stereotyped designs.
+- [rule] Skip the world history section for games that are not story driven. When: Game is not story driven.
+- [rule] Each large world storyline should reveal that it is only part of a larger, unfinished arc. When: Persistent world storytelling. Why: Keeps players anticipating what comes next.
+- [heuristic] Designers and team members draw characters, locations and storylines from their own lives, since real events read as authentic; frequent moves can give locations a transitory or disorienting feel. Why: Details from real events or observations read as authentic.
+- [heuristic] Upper design layers often change as the foundation solidifies, so a planned element may be replaced by a better one after lower layers are playtested.
+- [heuristic] Worlds with intuitive shared rules need little explanation, because audiences assume a consistent universe already exists. When: Audiences already know the category of world being shown.
+- [heuristic] Judge a world's pull by its core fantasy rather than its plot or characters, since the wish to enter the fantasy drives fans to extremes. When: Assessing long-term fan engagement.
+- [heuristic] Pair an iconic, simple character with a richly detailed world; the combination is powerful.
+- [heuristic] World building often begins with maps and histories before extending to cultures, languages, and economies.
+- [heuristic] Spread lore across the small share of the world players see, placing some in the story and some for devoted fans to find while exploring. When: placing lore in a game world. Why: Most players see only part of the world, so layered placement serves both casual and devoted players.
+- [heuristic] Science fiction novels are useful research sources only if the designer already knows the genre well.
+- [heuristic] Let a culture's beliefs determine where features sit in the world, such as placing taboo sites outside the city, so the layout feels logical.
+- [heuristic] Build a rich, historically grounded world, then ask which parts players need now and save the rest.
+- [heuristic] A few research-based details can make a familiar setting feel new and keep players engaged.
+- [heuristic] A modern military or spy setting is easier for players to grasp than a fantasy world that opens with long histories of invented peoples. When: Choosing between a realistic and a fantasy setting. Why: Familiar contexts need no explanation, so players understand the situation quickly.
+- [heuristic] A micro-level world suits a game built around a single event and fixed protagonists, since the event gives the story a clear focus. When: Choosing the scope of a game's world. Why: A narrow focus keeps the world's content tied to the story.
+- [heuristic] Detailed background lets other writers keep new work consistent with existing lore. When: Adding writers to an established world. Why: Shared background reduces contradictions between contributors.
+- [heuristic] Convey recent changes in the world through NPC dialogue that implies both the shift itself and how things formerly were, rather than stating facts directly.
+- [heuristic] Pair grand, opulent spaces with gore and decay to show a society's past potential and its decline without telling players. Why: Visual contrast lets players infer history by themselves.
+- [heuristic] Sealed settings with unbreakable barriers and hostile residents, or stories with few characters and one restricted tool, naturally remove many unwanted actions. When: designing a setting that must limit player actions. Why: the premise itself makes escape, combat, or conversation impossible.
+- [heuristic] Cultural symbols communicate through association: architectural styles evoke ideas such as empire, conquest, wealth, or evil, so choose styles for the meanings they carry. Why: players map styles onto familiar associations.
+- [heuristic] Reveal world narrative in layers, from broad facts to fine detail, so a first visit feels complete while return visits add motive and method. When: replay value matters. Why: layers reward exploration without withholding the core story.
+- [heuristic] Low population density reduces the character count the team must build and avoids the need for large crowds the technology handles poorly.
+- [procedure] 1) Deliberately imagine the worst experiences the game will produce, such as frustrating failures, boring grinds, and unclear interactions. 2) Judge the design against that balanced picture. When: When evaluating a design vision. Why: Imagining the worst outcomes corrects the bias toward highlights and gives a balanced view.
+- [procedure] 1) Set the rules of the world. 2) Let players explore within them. 3) Add art and writing that give interactive elements narrative context. When: building a game world around interactive systems. Why: Rules come first so that added narrative context matches what players can actually do.
+- [procedure] 1) Ask what fighting techniques exist and their origins. 2) Ask where the main conflict begins and who is involved. 3) Ask what major prior event occurred and its effect. 4) Ask what makes the main cultures unique. 5) For class-based games, ask how many classes exist and their homelands. When: before starting worldbuilding research. Why: The answers direct which research topics to investigate.
+- [procedure] 1) Research architecture, clothing, and local flora of the real setting. 2) Use period sources such as vintage clothing, aerial photos, and archival maps for the target era. 3) Study commercial and residential zones of the era. When: recreating a real place in a historical period. Why: Period sources capture how the place actually looked and was lived in.
+- [procedure] 1) Plan how the world is introduced in the game and its objects. 2) Plan how it is extended through later DLC or transmedia. 3) Use this plan when a world holds more material than one game can show. When: planning a long-term world. Why: Planned staging spreads the world across releases.
+- [procedure] 1) Research the planned world topics. 2) Write a world overview covering setting, technology or magic, world-altering events, cultures or classes, major locations, and the world's central conflict. When: documenting a game world after initial research. Why: A single overview document keeps the team's world knowledge consistent.
+- [procedure] 1) Pick the setting's year. 2) Read daily contemporary newspapers across the whole period. 3) Note recurring images and topics on front pages. 4) Tune the setting's tone to what the public saw.
+- [procedure] 1) Check internal documentation or wikis and update outdated material. 2) Learn how the lore works from an insider's view. 3) Find undefined gaps that can be expanded, respecting existing canon.
+- [procedure] 1) Play the existing game. 2) Research its wikis. 3) Read player discussions. Together these reveal the visible lore to build on.
+- [procedure] 1) Define the cultures and societies. 2) Pick locations that show them. 3) Decide whether story or player choices change the world. 4) Choose which locations show those changes and how.
+- [tradeoff] A single shared world gives cohesion but limits strange interactions; a multiverse of distinct worlds permits odd combinations at the cost of one unified setting.
+- [tradeoff] In realistic settings, disallowing actions requires arbitrary locked doors and interface limits on communicating with strangers, which feel less honest than fiction-based restrictions. When: the setting is realistic and open. Why: nothing in the world explains the restrictions.
+- [pitfall] Contradicting established facts or rules, even through one convenient exception or an off-character episode, can damage the whole story world, since one logical break can ruin it.
+- [pitfall] Some elements resist theming through hardware, so a designer may need a fallback such as in-character dialogue to carry the theme.
+- [pitfall] When many independently written subclasses reach directly into engine subsystems, they duplicate code, couple to internals, break on engine changes, and bypass global invariants. When: A large family of subclasses calls engine services without a shared layer. Why: Each subclass handles sound, effects, physics and entity management itself, so changes and invariants spread across the codebase.
+- [pitfall] Visions picture the best moments and skip the long walks, repeated failures, and downsides of trade-offs, so they give a misleadingly positive picture of a game. When: When relying on a designer's vision to judge a game. Why: The imagined scene selects highlights and omits the everyday experience players will have.
+- [pitfall] A world the designer does not feel is real shows as unimaginative work, and players sense the missing reality. Why: Gaps in grounding appear in the details.
+- [pitfall] Fantasy worlds built from borrowed racial archetypes without their own history leave characters with no past and no life beyond the plot. When: inexperienced designers building fantasy worlds. Why: Borrowed archetypes supply traits but no reasons behind them.
+- [pitfall] Presuming all players want to absorb every detail of the world makes them skip dialogue, especially when characters recite long histories on every greeting.
+- [pitfall] A world made of individually interesting details that do not relate has no depth, and players cannot imagine navigating or changing it. Why: Each detail means only its surface content.
+- [fact] War settings suspend normal rules, and powerful weapons make the player a godlike arbiter of who lives and dies.
+- [fact] Visuals and meaningful context in games help players learn and remember facts.
+- [fact] Backstory that players never see still gives a game world solidity.
+- [fact] Adding new gateways to an existing world is difficult, and a fresh perspective on known material is especially valuable.
+- [fact] Well-built transmedia worlds can stay profitable for decades, far longer than most individual products.
+- [fact] A fantasy world can be entered through written tales, verse, music, cinema, correspondence, and in-person meetings with its central figure.
+- [fact] Games with underdeveloped characters or worldbuilding can still do narrative work through short, well-placed details.
+- [fact] Books, codices, journals, and in modern settings emails or text messages can carry lore on geography, culture, history, mythology, art, and personal experience.
+- [fact] The worldbuilding approach applies to any setting, whether high fantasy, space opera, or a suburban community.
+- [fact] Hard sci-fi research sources include journals, news sites, forums, mailing lists, professional blogs, video channels, library books and science fiction novels.
+- [fact] Either macro or micro worldbuilding can be applied to an original IP or a licensed property.
+- [fact] Dedicated wiki specialists are rare, so the narrative team usually maintains the internal wiki and its details.
+- [fact] All writers build a setting, and games of every genre, from action-adventure and RPGs to mobile, indie, and social games, take place in a world.
+- [fact] Retold stories lose the uncertainty, decision, and consequence they had in the moment, so lived experience is the deepest model for interactive story.
+- [fact] The strongest fictional worlds contain large amounts of implied content that is never shown.
+- [fact] Prior research into art and philosophy can shape a game's setting and atmosphere. Why: Deep research provides coherent thematic material.
+- [fact] Heroic landscapes are visibly deficient in support or reassurance, such as ruins or open wilderness.
+
+## character design
+- [model] The interpersonal circumplex plots characters on two relative axes, friendliness and dominance, around a chosen reference character placed in the middle. When: When mapping relationships among a cast. Why: Both axes are relative, so every chart needs a reference character.
+- [model] Characters can be read psychologically as a mirror for audience fears and desires, symbolically as an idea, or representatively as a group.
+- [model] Player-characters come in four types: Cipher, Fixed Character, Customizable Character, and Fixed Background with Customizable Character, placed along a spectrum of how much the player defines the character.
+- [model] A character profile combines demeanor, appearance, a motto, a bio, and a list of emotional states, tying these together into one readable character.
+- [model] Define a character's view of the world and self, motivations and desires, how they pursue them, bearing, speech, interests, and dress.
+- [model] Life factors that shape a character include spiritual beliefs, gender identity, social status, philosophical and political leanings, family relationships, work experience, childhood, and education.
+- [definition] A player-character represents the player in the world; players project their decisions into it and can become it, experiencing its challenges directly, unlike a film protagonist. When: Designing characters that players control or judge. Why: Interactivity lets players act as the character, not only feel for them. (x2)
+- [definition] Interactive dialogue is branching, player-driven conversation that pauses gameplay and offers a list, wheel or other set of responses; it often drives story and progression. Why: Its development and play-time cost makes it a major investment that shapes game structure.
+- [definition] Round characters have well-defined, realistic traits or change significantly over the story, while flat characters have few traits, little change, and often serve as stereotypes or foils.
+- [definition] Meaningful conflict keeps players from reaching goals too easily and creates tension about the outcome.
+- [definition] A character profile gives the team the personality, motivations, history, affiliations, relationships, and appearance needed to bring a character to life.
+- [definition] Postures are short animations in which NPCs, creatures or the environment set a scene, and they can be reused across levels.
+- [definition] Player-character alignment means the player and the character pursue the same goal, even when their motivations come from different sources.
+- [mechanism] Persistent characters and settings let returning audiences recognize them, and growing familiarity deepens empathy and projection into the fantasy world, making their events more interesting. Why: Empathy grows as characters become familiar.
+- [mechanism] An objective well integrated into the game's premise or story can give the game strong dramatic qualities.
+- [mechanism] An obstacle that opposes the player's building or progress can signal a rival force's intent, such as its expansion.
+- [mechanism] When players choose among protagonists with different motives, each choice sets a different starting location and personal reason for pursuing the same goal. When: Designing selectable protagonists sharing one goal. Why: Different starting points and motives create distinct experiences of the same event.
+- [mechanism] A personality-based profile lets team members infer body language, movement, and clothing from the character's outlook.
+- [mechanism] Pairing merits and flaws within a character creates internal conflict, which makes each character feel unique.
+- [mechanism] When a protagonist knows something the player does not, the character feels less like the player's own, creating a disconnect.
+- [mechanism] NPCs can pass on information through ambient dialogue, point players toward places, or behave strangely so players go investigate.
+- [mechanism] As players progress, NPC relationships should evolve and dialogue should reflect that change. When: Games where the player can alter the world. Why: NPCs naturally react to what players do to their home.
+- [mechanism] Packing objectives, story, instructions, hints and rewards into one dialogue box makes speech unnatural and turns NPCs into signposts. When: Social and mobile games with tight text space. Why: People do not normally state the exact task and reward aloud.
+- [mechanism] Consistent recurring characters, such as shopkeepers, help community members look after one another and make introductions.
+- [behavior] Players need only a small share of a world's detail to feel it is alive, while the team needs a much deeper foundation of knowledge. When: building a game world. Why: Players perceive a world through a few visible details, not its full depth.
+- [behavior] People often assume a distant group holds special insight, granting its experts a reputation for gifts others lack. When: Cultures with legendary views of a neighboring group. Why: Legendary beliefs about innate ability raise the status of the group's specialists.
+- [behavior] Players often protect a player-character when that character's past is revealed, and this suggests a subverted stereotype has worked. When: when a protagonist has a criminal or stigmatized past. Why: Players invest in a character they feel responsible for.
+- [behavior] Players bond emotionally when they empathize with the hurdles and events the lead character faces. When: Character design.
+- [behavior] Players are more willing to help an NPC who is already trying hard, which makes the quest-giver more sympathetic. When: When an NPC is visibly engaged in an action before asking for help. Why: Visible effort reads as genuine need.
+- [behavior] Mobile players often need instructions yet have little game experience, which explains why a helpful NPC speaking directly to the player is a common convention. When: Mobile and social games with new players. Why: Inexperienced players need guidance that a direct-address helper provides.
+- [behavior] A character who speaks their own intentions while acting can teach players what to do without interrupting play. When: the opening sequence of a game. Why: Spoken intent paired with visible action explains the step.
+- [rule] Populate the world with NPCs from diverse backgrounds, each with concrete personality, desires, motivations, likes and dislikes, merits and flaws, and a clear relationship with the player. When: Designing NPCs, even when no player avatar exists. Why: Depth makes NPCs distinct and believable.
+- [rule] Consider whether characters are predesigned or player-created, whether they have backstories and motivations, and whether they allow customization and growth.
+- [rule] Use direct representation when the game recreates a real place or event players may know and accuracy is a selling point. When: choosing a real-world setting.
+- [rule] Design player characters and NPCs carefully, since direct player interaction with the protagonist deepens immersion for every protagonist type.
+- [rule] Use life factors to design inner conflicts and to identify what a character values, since those values shape their goals.
+- [rule] Test a character's limits by asking what they will fight for, what they will refuse to fight for, and whether their convictions could make them risk their life for an antagonist.
+- [rule] NPCs must fill the roles the genre and story require while staying consistent and supporting character-centric arcs.
+- [rule] When opportunity allows, give NPCs their own lives, agency and interests rather than making them tools for the protagonist's progress.
+- [rule] Keep combat shouts to crucial information, and save longer banter for quiet moments such as walks or cooldowns.
+- [rule] Use eye dialect sparingly: a couple of non-standard words per line, standard spelling for the rest, and consistent spelling of repeated words for each character.
+- [rule] Do not have every NPC deliver all the information each time; ask what the character would naturally say.
+- [rule] Use dialogue when a critical plot juncture cannot be explained any other way; in character-driven games, a crucial character reveal also qualifies. When: A plot point or character reveal has no other delivery channel.
+- [rule] Begin each conversation as late as possible, with characters cutting straight to the point, since the player's arrival already starts the scene.
+- [rule] Have characters react little or not at all to a recurring hazard, which signals to the audience that the hazard is routine. When: writing scenes with repeated danger. Why: Muted reactions communicate familiarity without extra exposition.
+- [rule] Use sexual signals only when the game and its audience can accept them; for serious or broadly targeted games they are often not worth it.
+- [rule] Let a character perform actions just ahead of the player so they watch the action before doing it themselves. When: the game has voice or animation budget. Why: Watching an action first makes it easier to repeat.
+- [heuristic] Use a fixed protagonist when adapting an existing character whose history player decisions cannot change; most games based on existing properties do so. When: Adapting an existing character. Why: Detailed histories already exist in popular culture.
+- [heuristic] Imagining yourself in another's position helps you judge which moves that individual could make when facing a puzzle. When: Designing puzzles or situations where players must assess a character's options. Why: Taking another's perspective reveals which actions are available to them.
+- [heuristic] Let players personalize characters and settings so they care about outcomes and similar playthroughs feel different. Why: Personal investment makes outcomes matter.
+- [heuristic] If the protagonist cannot change, let a sidekick or villain change instead. When: The protagonist must remain fixed.
+- [heuristic] A cartoon character drawn with a blocky, iconic style sets expectations of weight and presence, and players may expect cartoon physics. When: Designing a stylised character whose abilities differ from the player's expectations. Why: Stylised art implies physical properties that players then apply to the character's movement.
+- [heuristic] Use predesigned characters when a specific story must be told, and customizable avatars when investment in the player's own identity matters.
+- [heuristic] Give a stereotyped archetype a detailed culture and memorable characters so it becomes distinctive rather than generic. Why: Culture and characters turn a cliché into an iconic figure.
+- [heuristic] Treat mistakes in character writing as lessons and seek feedback, rather than fearing doing it wrong. Why: Fear of error stalls writers, while feedback turns errors into improvement.
+- [heuristic] Letting players alter only appearance is a safe customization level, and letting them choose among backgrounds that later affect the game is better still.
+- [heuristic] Mentoring newer characters can test whether a guarded character can share what they know and stop keeping others at a distance.
+- [heuristic] Build characters from experiences, culture and talents, not just identity labels; orientation, gender and race are only some of the factors shaping identity.
+- [heuristic] Pair an epic plot with a personal, human motive so players have an emotional anchor. When: When planning an epic plot. Why: Players connect more with personal motives than with saving the world.
+- [heuristic] An NPC who shares personal details alongside the quest feels more human than one focused only on the task.
+- [heuristic] One-liners are quick to write and record, so they can be added late to fill dead time or clarify sections that testers found confusing.
+- [heuristic] Use interparty dialogue during a natural pause in gameplay, such as while a character picks a lock, and end the conversation when the pause ends. When: A calm pause in play. Why: Players ignore lines that continue after the pause ends.
+- [heuristic] Give characters memorable labels or traits, such as a role or a title, so players have material to build stories about them. Why: labels give players' imagination something to construct stories from.
+- [heuristic] Design character appearance to signal occupation: grungy work clothes and a simple hairstyle suggest a tinkerer or researcher rather than a salesperson. Why: players read role from clothing.
+- [heuristic] A friendly character's request for help can serve as a quest hook, turning a conversation into a concrete goal the player pursues.
+- [heuristic] Following one character through a fictional world tends to produce ideas for stories set in that world. When: Searching for fiction ideas.
+- [heuristic] Explore a character through the medium you think in: performers can improvise a skit, and audio-minded people can build a soundscape. When: Developing a character or world without a purely written approach.
+- [procedure] 1) Ask what the character wants. 2) Ask what the character needs. 3) Ask what the audience or player hopes for. 4) Ask what the audience or player fears. When: Drafting any character who must carry dramatic weight. Why: These questions link the character's motives to the audience's emotional investment.
+- [procedure] 1) Define the character's story function. 2) Choose traits or abilities as the vehicle, picking one type at first. 3) Define exactly one adjective. 4) Pick an MBTI type and/or four-temperaments blend and be able to explain its theory. 5) Select a governing trait or ability that drives actions. 6) Pick a conflicting trait or ability nearly opposite the governing one. When: When a narrative designer needs to build internal conflict quickly, for any character including minor sidekicks. Why: A fast workflow adds inner conflict when there is no time for full backstories.
+- [procedure] List characters; write each via template and sample bio, in order: identity (name, gender, age, height, build, ethnicity, complexion, hair, eye color, inspiration, appearance); personality (traits, conflicts, breaking point, introversion/extroversion, dream, fear, humor, sadness, dark secret); society (religion, government attitudes, law, norms, subcultures, education, income, job, love life, family, stranger behavior, food, drink, clothing); story (bio, involvement, development, growth, relationships). When: When creating a character profile for a game. Why: A fixed field order gives writers, artists, and animators a complete, shared profile.
+- [procedure] 1) Check how much the story relies on a strong protagonist, a specific background or culture, or other characters expecting certain behavior. 2) Define the protagonist only as far as that dependence requires. 3) Leave other traits to the player. When: when designing a customizable protagonist. Why: Over-defining removes player freedom, while under-defining breaks story dependencies.
+- [procedure] 1) Let a refusing option lead the NPC to plead. 2) Link the plea back to the same explanation a player who asks for more information receives. When: Designing refusal branches in a middle hub. Why: Keeps divergent branches connected so the explanation is reused without duplication.
+- [tradeoff] Fixed name, background and personality ease writing and story control, but players lose freedom to define the protagonist and must be persuaded to identify.
+- [tradeoff] Direct representations of real cities, events, or figures demand factual accuracy and more research time than analogues, while analogues allow creative license. When: choosing between real and fictional counterparts. Why: Real references are checked against what players know.
+- [tradeoff] Simple reflective NPCs suit stories that need little from them; full characters cost more work and should be built when time and scope allow.
+- [pitfall] Empathy can be manipulated, because models can make people feel emotion without a real subject. When: Using characters or visuals to evoke feeling. Why: The brain responds to models as though they were real, so feelings can be engineered.
+- [pitfall] Defaulting to traditional role assignments, such as making the princess the hostage, wastes creative options in the cast.
+- [pitfall] Games often keep characters as fixed types, such as a villain who is always a villain, which makes the storytelling dull.
+- [pitfall] Games rarely explore their characters' relationships in depth, though deep character-web exploration is how many successful TV dramas build their appeal.
+- [pitfall] Characters with dull, dead eyes feel lifeless even when the rest of the character is well made.
+- [pitfall] Inconclusive violence research does not settle concerns about harmful representation, which is a separate question from aggression.
+- [pitfall] Mixing traits and abilities in the first iteration makes the contrast between governing and conflicting elements confusing.
+- [pitfall] A female protagonist whose most notable trait is sex appeal overshadows her actual skills, which can be corrected by redesigning her to emphasize competence.
+- [pitfall] Players may not identify with a role they did not choose, so the writer must earn that identification through the character's choices.
+- [pitfall] Heavy eye dialect makes lines a chore to read and can turn a character into a parody or make them seem uneducated.
+- [pitfall] Options that all trigger the same NPC reaction, or player lines removable without changing the NPC's story, make the player character passive.
+- [pitfall] When every NPC is friendly and helpful, they become interchangeable and dull, effectively one character. Why: A single trait gives no basis for distinct personalities.
+- [pitfall] Presuming to know what the player's character values produces scenes that contradict earlier choices and break immersion. When: writing scenes after branching player choices. Why: Earlier choices may have established motives the scene ignores.
+- [pitfall] Forcing characters into illogical choices is a mistake, because players spot it quickly. Why: Players quickly notice when a character acts against their nature.
+- [pitfall] When most characters are nondescript, players have little to build stories around, and the emergent narrative stays thin.
+- [fact] Some games let story events permanently change the main character rather than leaving the protagonist unchanged.
+- [fact] Characters in the same group can view one another very differently, because motives such as insecurity, envy, or loyalty shape each character's feelings. When: Writing relationships within a cast.
+- [fact] Human faces are highly expressive, and the eyes carry much of that expression, so character faces deserve attention even when animation is simple. Why: A large share of the brain handles facial expression, and humans have visible eye whites.
+- [fact] Each medium shapes its characters: novels reveal inner thoughts, films show speech and action, and games center on physical conflict. Why: Each medium's form determines how a character's struggle is shown to the audience.
+- [fact] Game characters tend to be more fantastical and less deep than novel or film characters, because game plots and character depth shrink from novels to games. Why: Games center on physical conflict, and the player supplies the thinking.
+- [fact] Low-status behaviors include fidgeting, looking away, touching one's face, and tension; high-status behaviors include relaxation, control, strong eye contact, and a still head while speaking.
+- [fact] Status is relative: a character can be high status with one character and low status with another.
+- [fact] A cartoony, surreal world with a physical logic can coexist with more realistic 3D materials when the character stays an iconic, exaggerated figure. When: Establishing art direction for a stylized 3D game.
+- [fact] Writing characters for games differs from other media because the player inhabits the protagonist, and NPCs must support that experience.
+- [fact] Game characters are built with techniques shared by all media, such as archetypes, flaws, diversity, and believable villains.
+- [fact] Game character design covers choosing a player-character type, keeping players invested, working with the team, creating nuanced characters, and subverting tropes.
+- [fact] Characters of color are often given racialized roles based on stereotypes, such as serving a white protagonist without agency.
+- [fact] Secondary traits such as love languages or Type A and Type B, and methods like the Frankenstein Method, can enrich a character beyond the basic workflow.
+- [fact] Customizable characters are built by players during character creation, so the developer knows little about the protagonist and the world and NPCs must give players material to define themselves.
+- [fact] Player characters in games without customization have predominantly been heterosexual white males, while NPCs show more diversity.
+- [fact] Postures can reveal how an NPC perceives the world around them.
+- [fact] Buttons, joysticks, and motion sensors cannot express thoughts and feelings to a machine, and machines cannot yet simulate a human mind to respond in kind.
+- [fact] Characters can still appear as insane or quasi-human characters, inhuman AIs, humans talking to each other, or recordings of earlier conversations. When: the player cannot converse with a character.
+- [fact] Appearance cues such as facial hair or jaw shape can signal character traits like villainy or bravery, but the mapping depends on the culture. Why: Cultural archetypes are learned associations, not universal ones.
+
+## environmental storytelling
+- [model] A memory palace, or method of loci, stores information as memorable locations in an imagined space that a person mentally walks through. When: when designing levels that carry information for players to recall. Why: Spatial memory makes ordered information easier to retrieve.
+- [model] A hero's-journey arc can be mirrored spatially, moving from comfort to epic wilderness to a dark, corrupted final area.
+- [model] Twine organizes a story into rooms linked in a flow chart called a map, which can be navigated like architecture.
+- [definition] Embedded narrative is predetermined story that designers make work through mechanics, holding it in architecture through sculpture, calligraphy, or evidence of past use, and deciding what each space reveals.
+- [definition] Levels execute gameplay rules and also express those rules to players, making them the designer's main channel for communicating gameplay.
+- [definition] Environmental storytelling conveys a wordless mini-narrative by arranging prefabricated scene assets, which can establish tone, tension and foreshadowing without dialogue.
+- [definition] Environments reveal a character's social status, values, and development, and can expose an unreliable character.
+- [definition] Environmental narrative is the story told through the game world and the player's exploration of it, using audio, visual, and design techniques.
+- [definition] Environmental narrative delivers plot through ambient NPC dialogue, NPC behavior, and level design instead of cutscenes or interactive dialogue.
+- [definition] Mise-en-scene is the arrangement of leftover traces of past events in a space, so the setting reveals recent history without explicit telling.
+- [definition] Evocative spaces use familiar architectural elements to set mood, establish fiction, or signal positive or negative events, and work because players understand the vernacular. Why: Players read familiar architectural language to infer meaning.
+- [definition] A staging space is a large, visible space where important gameplay or narrative events happen, working like a theatrical set.
+- [mechanism] Identical prefabricated assets carry different meanings by arrangement, so arrangement, not asset identity, determines the story; reused assets stay evocative in new arrangements. When: assets are reused across a level or game. Why: interpretation depends on arrangement rather than on asset novelty.
+- [mechanism] Players learn a repeated symbol's meaning after several cases where it reliably precedes the same outcome, such as danger or reward, so repeated symbolic assets shape their behavior. Why: Repeated pairing of a sign with a consequence builds association.
+- [mechanism] A smell-only connection can carry poison gas from one room to a guard in another room, as through an air duct.
+- [mechanism] Naming places, people and events that never appear makes a world seem larger and richer.
+- [mechanism] Ornament on a structure can both narrate a story to viewers and advertise the builder's authority, so decorative detail carries communicative as well as aesthetic meaning. When: Designing façades or decorative detail in a monumental space. Why: Ornament has long served as a communication channel for narrative and status.
+- [mechanism] Environmental details such as ruins in a city never rebuilt can reveal a past event and a defeated people's inability to recover. When: designing explorable environments. Why: Players infer history from visible traces.
+- [mechanism] Environmental details that contradict a character's account, such as nonsensical signage, can lead players to question that character's mental state or reliability. When: Unreliable narrator or character design. Why: Players notice inconsistencies between the environment and the character's words.
+- [mechanism] A guiding entity that leads players to letters, memos, or diaries can deliver objectives and background as players follow it.
+- [mechanism] Found documents written by ordinary people can reveal a character's life before the player meets them, establishing that character without direct interaction. When: a character is absent or not yet encountered. Why: documents show the character's life one step ahead of the player.
+- [mechanism] When combat leaves every corpse, weapon, and scorch mark where it fell, players can read the remains to reconstruct how the fight unfolded. When: Battles with many combatants and persistent debris.
+- [mechanism] In 2D or top-down games, camera framing can show threats or plot objects that the player's character cannot see.
+- [mechanism] Subtle environmental clues such as abandoned objects or traces of an unseen character reward observant players and build hidden story and foreshadowing. When: Players look closely at the environment. Why: Players who notice details assemble story from them.
+- [mechanism] Contrasting architectural vernacular assets, such as urban buildings beside overgrowth, shows decay and elapsed time. When: Showing how long a place has been abandoned.
+- [mechanism] Staging spaces host climactic battles, cutscenes and scripted events, and they can also function as goals or pacing controls that shape the rhythm of play.
+- [mechanism] Staged background events can run alongside active play in a linear space, so the world feels alive while the player moves through it. When: a linear space is used for play.
+- [behavior] Players increasingly prefer nature content aligned with their own culture, which shifts depictions away from Western-influenced defaults. When: nature depictions in games.
+- [behavior] Games without text or dialogue can let players' imagination and emotion carry the story. When: story is told without words. Why: Players fill gaps with their own interpretation and feeling.
+- [behavior] Players infer past events from object arrangements, reconstructing what happened from abandoned items and traces. When: a scene conveys story without dialogue or cutscenes. Why: players look for causes behind scattered or displaced objects.
+- [behavior] Players assume unfamiliar objects behave like familiar real-world equivalents unless the game shows otherwise. When: Vehicles or objects shown without explanation. Why: Players map new things onto what they already know.
+- [behavior] Audiences keep products that carry a whole world and casually discard products that do not.
+- [behavior] Players who find fixed clues of a past event in any order can still reconstruct the full story from them. When: clues of a completed event are scattered and discoverable out of sequence. Why: Each clue is fixed and consistent with the same underlying story.
+- [rule] Show environmental facts and story through level layout, art and contents rather than stating them directly, so players piece them together. Why: Players learn setting, characters, and plot by inspecting construction and objects. (x2)
+- [rule] Scatter supplies around abandoned shelters and vehicles to imply that the occupants left in a hurry. When: suggesting a recent past event through props.
+- [rule] Place the answer to a puzzle in nearby dialogue the player can overhear, so the clue is found through play.
+- [rule] Any environmental narrative technique, such as interactive objects, NPC behavior, or sound, can be placed in level design.
+- [rule] Use asset arrangements to suggest past events when a story must be conveyed without dialogue or cutscenes. When: story delivery is limited to the environment.
+- [rule] In action-oriented games, environmental story visuals must be large and noticeable enough to be seen while the player moves past them. When: action games. Why: Players running through the space will otherwise miss them.
+- [rule] Introduce a strange item through in-world setup, such as signs or establishing shots, before players need it. When: An unusual item is essential to both story and mechanics. Why: Setup creates anticipation so the item seems natural when it appears.
+- [rule] In a comedic world, replace costly arbitrary physical outcomes with stylized ones, such as an object shattering instead of being cut into new geometry. When: Realistic handling would be technically hard, such as cutting objects into arbitrary pieces. Why: A stylized outcome avoids the cost while the tone keeps it plausible.
+- [rule] Leave as few traces as possible in behind-the-scenes material, since fans will dig through anything that ships with the game.
+- [rule] Confirm that every asset a cutscene's dialogue refers to is in production, since dialogue about nonexistent assets, such as a tank with no tank model, creates a serious problem.
+- [rule] Show a world state through short animations, such as villagers cowering or hiding, instead of long explanatory text. When: a village or area has just been affected by an event. Why: Visible behavior conveys emotion and situation with fewer words.
+- [rule] Use deep focus, keeping foreground and background both sharp, so two narrative events can be shown in one frame.
+- [rule] Place a foreground detail that reveals meaning the characters' words do not state. When: dialogue hides or softens a story point.
+- [rule] Show a large background structure as a vista during a pause before a boss, then use it later as a dramatic payoff.
+- [rule] In 3D games, use lighting, shadows and contrast to highlight embedded objects as the player arrives at them.
+- [heuristic] Use art, sound, decals, particles and light settings to set tone and atmosphere, reinforcing an area's theme; form and ornament can convey ideas beyond function. (x2)
+- [heuristic] Arrange terrain, locations, creatures and loot so players can build their own stories from them. When: when designing environments for player-driven narrative. Why: Players make emergent stories from the places and objects they find.
+- [heuristic] Aim for emotionally resonant levels that may be scary, personal, heartbreaking, funny, or tragic, since that range makes levels strong.
+- [heuristic] Because the camera shows the character within its surroundings, designers can use spatial size types dramatically.
+- [heuristic] Narrative rewards can reward required actions and also players who test the boundaries of a game world. When: Designing rewards for exploration.
+- [heuristic] Environmental text such as graffiti should add worldbuilding or revelation rather than restate what the scene already shows.
+- [heuristic] Use traces that lead from an event to a focal spot, such as a trail toward a lit doorway, to imply what happened and where the actor went.
+- [heuristic] Strong visual and audio clues that belong to the game and its gameplay work best for conveying small pieces of story.
+- [heuristic] Safe settlements can carry story content that draws newcomers into the world's narrative. When: Designing safe zones for new players. Why: Calm spaces allow players to engage with the story.
+- [heuristic] Use a physical method for early brainstorming and a shareable file for review by other departments. When: Wireframing workflow.
+- [heuristic] Repeat a core idea through plaques, statues and graffiti to keep it present without exposition. When: when a society's founding principle must shape the world. Why: Repeated visible cues reinforce the idea as players move through the space.
+- [heuristic] Arranged remains signal the kind of event: bound bodies at a wall suggest execution, emaciated bodies in rags suggest genocide, and bodies in royal garb suggest revolution.
+- [heuristic] Let architecture and visual details convey setting before any dialogue, using decay, cheap shelters, and hand-painted signage to signal extreme poverty. When: establishing a harsh setting at the start. Why: visual cues communicate faster than exposition.
+- [heuristic] Players tend to meet nearby content before distant content, so spatial arrangement softly orders what the player experiences.
+- [heuristic] A distant feature visible during play can later be reached, turning top-down spatial depth into a storytelling tool.
+- [heuristic] With no enemies present, players can drop their combat mindset, rest, and take in the story, even when a battle follows.
+- [procedure] Designers mark objects with AI-relevant flags, often reusing non-AI flags, such as a collectable power-up also serving a guard that defends collectables.
+- [procedure] Tailor an area or room with objects and details so players explore and absorb who the character is, rather than relying on heavy exposition.
+- [procedure] 1) List locations that matter to the character. 2) Ask how formative places shaped them. 3) Ask what each location says about personality. 4) Check whether it shows change. 5) Identify objects that reveal something. When: Designing character-revealing environments.
+- [procedure] 1) Decide which locations tell the story. 2) Plan how players reach them. 3) Decide what they find there, such as NPCs, items or visual clues. 4) Choose how NPCs communicate without speaking to the player-character.
+- [procedure] 1) Show the scene's outcome on first visit. 2) Add motive clues, such as documents. 3) Add method clues, such as a weapon. 4) Add relationship evidence and recorded testimony from the participants. When: designing a scene that rewards return visits.
+- [procedure] 1) Choose the emotions the space should convey. 2) Build materials and details that evoke them. 3) Add small sensory cues, such as a subtle sound, that work below conscious awareness. When: designing a space to carry a specific emotional tone. Why: Emotional intent guides the design, and subtle cues deepen the effect without drawing attention.
+- [tradeoff] Simple objects can be packed densely into one scene, but complex interactive mechanisms need more isolation, so object count per scene should depend on complexity. When: When deciding how many objects to place in a teaching scene. Why: Complex objects demand more processing than simple ones.
+- [pitfall] Some players will miss information no matter what, so every player should still be given a real chance to notice core messages.
+- [pitfall] Mystery plots make each writer depend on earlier content, so they are harder to split among writers than a simple ancient-evil plot.
+- [pitfall] Choices that lead to the same result reduce dialogue to decoration.
+- [pitfall] Spaces lacking identifiable qualities or interactive features give players little reason to return, so emergent narrative does not form.
+- [fact] Decoration quoting a sacred text makes the ornament itself carry narrative meaning.
+- [fact] Early game environments used block forms, no lighting, and little or no colour. When: 1980s game landscapes.
+- [fact] Visual details missing from the source text, like costume items or props, can become a character's defining icons when adaptations repeat them.
+- [fact] Recurring objects placed in a character's memories can reveal hidden emotional history, such as an affection the character could not express verbally. When: Memory-based or retrospective narratives.
+- [fact] Environmental narrative techniques can be audio, visual, design-based, or physical, such as tying mechanics to controller vibration.
+- [fact] Environmental narrative can show the world's state, use settings to guide progress, give insight into characters, and be built into level design or mechanics.
+- [fact] Scenery-based storytelling can guide players toward places, expose plot points, offer hints, and foreshadow later events.
+- [fact] Familiar real-world environments, such as a mountain monastery or an igloo, evoke particular kinds of people and ways of life.
+- [fact] Illustrated symbols work best when paired with behavioral and Montessori teaching approaches.
+- [fact] Vernacular is built through symbol-building, where a space borrows recognizable forms from a real place or era to carry meaning.
+- [fact] Spatial qualities such as size, orientation, lighting and views evoke emotion and keep players returning to a game.
+
+## story structure
+- [model] Writers often structure narrative progression with the three-act structure or the twelve-stage hero's journey.
+- [model] Also called rivers and lakes, this method alternates noninteractive story segments with bounded stretches of play that have a fixed goal, and is the most common videogame method.
+- [model] The dramatic arc has six stages: exposition, conflict, escalation, climax, de-escalation, and dénouement.
+- [model] The point of attack, the moment that disrupts the existing order, introduces the conflict and launches the plot.
+- [model] Multilevel storytelling lets designers choose how much freedom players get at each moment, combining linear authorship with player freedom. When: When you want both authored story and player freedom in one game.
+- [model] At the broadest level, narrative types split into word-based forms, such as quest-based or mission-based narrative, and wordless forms, such as environmental narrative.
+- [model] A well-crafted authored story works like a house of cards, where each nuance and line of dialogue supports later events that build toward the conclusion. When: a linear or authored narrative. Why: removing or contradicting one element can collapse the events built on it.
+- [model] In the string of pearls structure, linear arenas are where the player moves freely, joined by one-way transitions; larger arenas feel more open and smaller ones feel pointless.
+- [definition] The Rod of Many Parts is a story structure in which a character gathers seven parts of a magical artifact to progress.
+- [definition] A story is a sequence of events that one person relates to another.
+- [definition] Interactive stories contain two stories: the player story, formed by the player's actions and imagination, and the world story, built by designers from environments, enemies, plot and dialogue.
+- [definition] Narrative types describe how a story is told in an interactive setting, specifying the elements that must be added to a story structure so it works in a game.
+- [definition] Convergent narratives present decisions that split the primary plot, but the splits later merge back into one thread.
+- [definition] Story ordering devices are levels, quests, and blockages; each makes one piece of content get consumed before another.
+- [definition] A narrative stage is a space where scripted story events happen, often marked by celebratory architecture or an absence of enemies.
+- [mechanism] Ending a scene on an escalating threat, such as a structure tilting until characters must flee, or on a sudden collapse or explosion, sets a cliffhanger that drives urgency into the next scene.
+- [mechanism] In story-driven games, narrative designers become more involved in system design and help develop narrative and other gameplay systems. When: Story is a central pillar of the game.
+- [mechanism] Reliable foreknowledge from a respected prediction practice can protect a society from disaster, which makes its practitioners central and revered. When: Designing institutions built around prediction. Why: Avoiding harm earns the practice social authority.
+- [mechanism] Each plot point becomes a gameplay and environment decision: story text specifies fights, loot, bosses and areas that level designers must realize. When: Handing narrative to level design.
+- [behavior] When done well, players experience the player story and world story as one narrative in which their actions matter. When: When the two story layers are well integrated.
+- [rule] For games mixing exploration and combat, alternate slow and fast parts and add an in-depth personal story for the protagonist.
+- [rule] For games built on combat, questing and item gathering, use fast on-demand storytelling in short pieces, with longer pieces during breaks.
+- [rule] For games built on puzzle solving and exploration, use slow-paced storytelling delivered through puzzles and environment, varying puzzle complexity for depth.
+- [rule] Do not prioritize story over balance when players expect a fair fight. When: Games where players expect competitive fairness. Why: Narrative priority fails when fairness is the expectation.
+- [rule] Craft the beginning and ending of a story as a single unit, so the opening problem drives the story to its resolution. When: writing branching or open-ended narrative. Why: Unity gives the story meaning.
+- [rule] Make each gateway understandable and enjoyable on its own, because any one may be a player's first contact. When: You cannot predict which gateway players will reach first.
+- [rule] Single-player endings should reward the hours, conflict, and struggle the player invested, built into the story rather than a generic praise animation. When: Designing the final scenes of a single-player game. Why: Generic praise wastes the payoff of long play.
+- [rule] Create an invisible thread that leads players logically through the world; without it, the player story becomes muddled. Why: Players need logical guidance to make sense of their own path.
+- [rule] Make each new plot point follow narratively from what the player has just achieved, so the player feels their success caused it. When: When designing successive plot points. Why: Causal links create a sense of agency.
+- [rule] If the quest is not yet clear, offer sympathetic, curious and dismissive options in the first hub instead. When: The quest has not yet been explained.
+- [rule] Never build a hub from a single line, and do not make players click through a plain 'continue' button.
+- [rule] Open quest dialogue in media res, with the NPC already busy when the player arrives, rather than with a stiff greeting that asks for help outright. When: Games with voiceover and ambient NPC animation. Why: Makes the quest-giver seem to have existed before the player arrived, so the problem feels believable.
+- [rule] Spread the full story across dialogues, books, journals and ambient chatter rather than placing it all in the quest text up front. Why: Lets players reach the story at their own pace.
+- [rule] Never place information the player needs to advance in ambient dialogue, since players can walk away before it ends; put it in a cutscene instead.
+- [rule] Use an opening event, such as the protagonist being separated from home, to establish a clear motivation for the player.
+- [rule] Start from narrative when the story's key experiences can be translated into actions the player takes. When: Deciding whether to begin from story.
+- [heuristic] Prioritize one story-structure goal: a strong narrative thread favors linear, agency favors branching, and freedom favors open structure.
+- [heuristic] Story pacing should match what a genre's core mechanics demand, since each genre pairs with particular storytelling techniques.
+- [heuristic] Pair a familiar hook with a novel twist so players can enter the game and still find it fresh. When: Choosing a premise or setting. Why: Familiar elements give players a point of entry.
+- [heuristic] Meaningful interactive experiences may blend story and game structures in untraditional ways.
+- [heuristic] Encode a tension curve over time that shapes what characters say and do, so the drama stays interesting across play. When: Authoring characters in an open simulation.
+- [heuristic] Knowing the whole story lets the narrative designer judge where each part belongs in the overall game.
+- [heuristic] Avoid long, complex storylines spanning several questlines; let each questline tell its own small story nested inside a larger one.
+- [heuristic] Use branching when player choices should change specific plot sections but the overall story must still reach a common conclusion.
+- [heuristic] Choose a story structure early, based on game length, genre, studio specialty, and intended audience, since the requirements of each differ. When: Starting a game's story planning.
+- [heuristic] If complex structure does not improve the story much and is not required by company culture or audience, enrich a linear structure with complex elements instead. When: Deciding between linear and complex structure. Why: Simpler structures avoid unnecessary cost.
+- [heuristic] Linear structure suits stories whose emotional beats the designer wants to control closely.
+- [heuristic] Choose an open narrative only when the team decides players need to define themselves and find their own role in the world.
+- [heuristic] Use the space between missions to introduce characters, conflicts, plotlines, and background.
+- [heuristic] Plan-space search suits story generation because its causal structure supports narrative analysis and resembles how people build a mental model of a story. When: Generating stories with a planner.
+- [heuristic] Combine structures when a single model cannot meet the game's needs; a hybrid can carry an authored start and end around an open middle, softly ordered by skill or level. When: one structure cannot satisfy the game's needs. Why: authored openings and climaxes keep control while the middle stays free.
+- [heuristic] Put events on a clock at fixed times to order them, as time-based games do.
+- [heuristic] Build in order when a linear element such as story is central to the game's enjoyment.
+- [heuristic] Subverting an expectation set by an earlier moment, such as a familiar planet being revealed as something else, creates surprise in a quest. When: Planning reveals in a quest.
+- [procedure] When a story feels dull, it usually lacks surprise, emotion, or both. 1) Check the story for emotion. 2) Check it for surprise. 3) Revise whichever is missing.
+- [procedure] 1) Deliver a noninteractive story segment. 2) Give the player free movement toward one fixed goal. 3) On success, unlock more story and a new challenge. 4) Repeat from step 1. When: Authoring a story-driven game with set challenges.
+- [procedure] 1) Pick one plot point from the wireframe. 2) Show the player's starting point, coming off the previous plot point. 3) Show every critical-path mission or quest. 4) Mark decision points that cause branching. 5) Show the resulting ending state or states. 6) Show optional side quests available during this plot. When: Expanding a wireframe into a detailed flowchart.
+- [procedure] 1) Identify the minimum narrative players need to understand the game. 2) Push that content through dialogue or cutscenes. 3) Put optional detail in a pull layer, such as logs or discoverable mechanics. When: When story supports a game that is not story-centric.
+- [procedure] 1) Keep the top-level core story linear to serve as a template for later choices. 2) Keep it at the level of general events that drive the story. 3) Name only key characters, and mark planned multiple endings for later work. When: For the first wireframe pass before choices and details are added. Why: Choices and consequences are designed later on top of the simple core.
+- [procedure] 1) Set the motivation. 2) Provide the entry. 3) Stage the climactic battle. 4) Resolve with falling action and rewards. When: when structuring an embedded dungeon story.
+- [pitfall] Forcing a story to match a structure such as the hero's journey, especially at the start, bends it and makes it hackneyed and formulaic. When: applying a story template.
+- [pitfall] Adding choices without unity, letting player decisions abandon the central problem, makes branching stories feel watery, weak, and disconnected.
+- [pitfall] A new feature that conflicts with what the audience expects of a world may be rejected even when its creator is famous.
+- [pitfall] Assuming a linear story means player choices do not matter breaks the player's sense of agency.
+- [pitfall] Linearity can seem to work against interactivity, so the designer must find ways to keep the player involved.
+- [pitfall] Ending a hub on a vague emotional line leaves players unable to connect their responses to the quest.
+- [pitfall] Players can recognize a famous scene without understanding its premise, so familiar references still need explicit context.
+- [fact] Films with three acts, songs with intro, verses, chorus, bridge and finish, tragedy, comedy's rule of three, and roller coasters share the rising-then-resolving curve shape.
+- [fact] Even short personal anecdotes build tension toward a peak moment and then resolve, showing the curve at a small scale.
+- [fact] Games usually work within established genres such as action, space opera and Tolkienesque fantasy, where cliché is hard to avoid.
+- [fact] Storytelling and emotional attachment to characters are established ways to increase player engagement.
+- [fact] Narrative can trigger emotions that movies or books cannot.
+- [fact] Most story games described as non-linear are actually branching, because fully non-linear play tends to produce a muddled story.
+- [fact] In a linear game every player sees the same events in the same order on every playthrough, though linear does not mean simple.
+- [fact] Linear games can still contain many plot twists and a strong emotional arc while most players see the same story.
+- [fact] A true story is an ordered sequence with beginning, middle and end, so a truly non-linear story cannot exist; designers instead create a sense of non-linearity.
+- [fact] Living history sites, museums, galleries, ruins, graffiti, and crime scenes are nonlinear stories that visitors explore in their own way.
+- [fact] Whole designs can be labyrinthine, forcing players along a single predetermined sequence of events.
+- [fact] Narrative descriptors, which give mechanics meaning through story, can appear as cutscenes, text, art, or packaging.
+
+## narrative planning
+- [model] Core narrative design questions: how can story be interactive; how can players shape it; which mechanical obstacles can stand for story obstacles; what story players actually experience.
+- [model] Narrative designers need working knowledge of level design, systems design, localisation, and the limits of art and animation.
+- [model] Game content design covers narrative, quest and mission, and level design, while game system design covers mechanic, combat, encounter and rule design.
+- [model] A story can be represented as a tuple of events, temporal orderings between events, and causal links, where a causal link records that one event establishes a condition needed by a later event.
+- [definition] Story unfolds over the course of play, whereas a premise need not go anywhere.
+- [definition] A truth-based theme is grounded in an enduring truth about the world, which the whole game expresses through its design.
+- [definition] A story overview is a short document describing a game's important settings, characters and actions.
+- [definition] A story bible sets the rules of the story world, stating what can and cannot happen in it.
+- [definition] A script holds the dialog of non-player characters and may sit in a separate document or as an appendix to the design document.
+- [definition] A game narrative designer champions an interactive story and blends the roles of writer and game designer.
+- [definition] A high concept, also called a one-liner or logline, condenses a game or any single part of it into one or two sentences, giving a clear vision that is easy to communicate and remember.
+- [definition] The narrative pitch doc describes only a game's story, using the same structure as the game pitch doc. When: Pitching the story of a game. Why: Separates story content from the game pitch.
+- [definition] A game bible, also called a universe or story bible, documents worldbuilding and lore, and may include character development, storylines, and missions or quests.
+- [mechanism] A game bible keeps details consistent across hundreds of contributors and transmedia spin-offs, making contradictions such as changed dates or eye colors visible. When: Large teams or multiple games sharing a world. Why: Without a central reference, contradictions between games go unnoticed.
+- [mechanism] A central theme such as 'freedom vs. security' can drive most quest design, with each quest offering a choice between the freedom of some and the safety of many. When: Branching quest design. Why: A recurring dilemma gives every choice the same weight.
+- [behavior] Only players who want the story will stay for it, so story content reaches the audience that values it when dialogue is skippable. Why: Players cannot be forced to like story by being made to sit through it.
+- [rule] Heroic stories share an internal structure despite different surface forms; use its stages to diagnose stories, not dictate scenes, since not all twelve need appear or in order. Why: Stages describe common patterns rather than required steps.
+- [rule] Build a story bible when many team members will propose story changes; it lets engineers, artists and designers integrate suggestions with art, technology and gameplay within shared limits. When: many team members will propose story changes. Why: Everyone can propose story ideas within the same limits, and suggestions then fit the art, technology and gameplay.
+- [rule] In the narrative pitch doc, omit genre, platform, audience and gameplay, which the game pitch doc covers; include the one-liner, fluff text, setting and story integration. When: Writing a narrative pitch doc. Why: Avoids duplicating game pitch doc content; the included parts cover story-specific content.
+- [rule] Choose a theme early for unified, effective games, especially branching or large writing teams, where it guides many small decisions, keeps coordination under tight deadlines, and avoids endless iteration. When: Branching games or large writing teams. Why: A shared theme guides many small decisions and reduces rework.
+- [rule] Use traditional storytelling techniques when writing the story parts of a game, since interactivity does not make them obsolete. When: writing game narrative. Why: Interactive design still depends on desire and emotion.
+- [rule] Build an onboarding plan early in development that sorts elements by complexity and prioritizes them, so players learn efficiently.
+- [rule] Unite the whole team under one story vision and keep it consistent through development, sequels and add-ons. Why: Without shared vision, disciplines build clashing settings, such as mismatched art styles and eras.
+- [rule] Choose a world archetype early to define the core conflict before writing lore. When: Starting worldbuilding. Why: A defined core conflict gives all later lore a consistent direction.
+- [rule] Decide early how many clues and red herrings come before a mystery's solution, and what players can do after they have figured it out.
+- [rule] Have QA review narrative plans ahead of time, since early review can prevent months of work and complex retconning later. When: Before narrative production. Why: Plot holes found late are costly to fix.
+- [rule] Check the franchise's formatting conventions first, since some games disallow bold, italics or all caps.
+- [rule] Put scene descriptions or general actions longer than four lines before the character name, not in a parenthetical, since parentheticals are only for very short details. When: Action runs during dialogue.
+- [rule] Remember your earlier notes, since an issue you flagged may be resolved in a later scene.
+- [rule] Weigh each comment against your view of the whole narrative, since reviewers often see only part of it. When: triaging feedback.
+- [rule] Place a visible background threat early so players sense danger before it reaches them.
+- [rule] Consider what the world promotes, ignores, or challenges, since level and NPC design reflect community values and stigma even without conscious intent. When: Designing worlds and characters. Why: Ideologies can enter a design beyond conscious awareness.
+- [heuristic] In narrative games with few mechanics and low challenge, balance matters less than the story, so build the core narrative first and make other elements serve it. When: Interactive stories with light mechanics and low challenge. Why: Players expect an interactive story rather than a contest.
+- [heuristic] If a fictional choice sends an unwanted message, replacing it with an alternative can keep the mechanics while avoiding controversy and making the design feel novel. When: When a story choice risks an unwanted reading.
+- [heuristic] Consider who players can tell their story to, and whether those listeners will actually care about it. When: designing for player-told stories. Why: Stories gain value when shared with interested listeners.
+- [heuristic] Thriving worlds usually come from one creator's vision, because a holistic vision gives integrity; large teams rarely succeed at this.
+- [heuristic] Build a transmedia world when you expect it to remain valuable over a long period. When: Planning a world intended to last.
+- [heuristic] Give a short story overview to contracted writers who work far from the team. When: writers are outside the core team. Why: A short overview gives remote writers the key story elements without constant contact.
+- [heuristic] Unify formal and dramatic elements within the premise so the setting and the mechanics reinforce each other and heighten the experience.
+- [heuristic] Narrative designers need only basic competence in level design and scripting, since nobody expects perfection in either.
+- [heuristic] Even an idealized setting needs conflict, which can come from hidden problems beneath its perfect surface. When: Writing a utopian setting. Why: Without tension beneath the surface, the story has nothing to resolve.
+- [heuristic] Characters met early have little emotional impact on players, so a death needs earlier history with the character to matter.
+- [heuristic] A game bible is needed for story-heavy games with many contributors; a non-story-driven game may need only a small one. When: Deciding how large a bible to create.
+- [heuristic] Breaking a standard convention, such as bodies vanishing, can make a late revelation land harder and implicate the player. When: near a late revelation or emotional decision. Why: The lingering consequence reinforces the revelation before a critical choice.
+- [heuristic] Once the first full draft is written, the outline can usually be discarded unless someone keeps it updated; check the logline and game goals instead. When: after the first words-on-paper draft.
+- [heuristic] Planning inside the story world matches the places and events the player actually experiences, so it is more straightforward for games than author-level planning alone. When: Designing story generation for a game.
+- [heuristic] Pick cutscenes or soft scripting by weighing which narrative beat must be conveyed against the core mechanics in play.
+- [heuristic] Deliberately weak short stories can serve as prompts that spark fiction ideas. When: Searching for fiction ideas.
+- [procedure] 1) Write a one- or two-paragraph synopsis of the story. 2) Write a complete outline that unfolds as the player progresses through the game.
+- [procedure] 1) Designer implements quests as empty but functional quest files. 2) Writers then write final quest texts and name creatures and objects in the area.
+- [procedure] 1) Identify the assets the script needs. 2) Plan their production with other departments. 3) Discuss required features with programmers. 4) Check the script against the overall story experience and rewrite where needed.
+- [procedure] 1) Open with four one-line items: title, genre, platform, audience; use a placeholder title if none exists. 2) Add a one-liner description, comparison, or both. 3) Add sections for story, gameplay, innovations and key selling points, and a gameplay example. Use paragraphs and bullets to stay brief. When: Writing a game pitch doc. Why: A snapshot lets readers decide quickly whether to continue.
+- [procedure] 1) Gather enough people to voice every character in a scene, mission, or arc. 2) Reserve a meeting room. 3) Assign each person a character. 4) Read the material aloud, working through it line by line. When: game with voice-over.
+- [procedure] Use in-world simulation when the story must match player actions; add author-level goals on top of world events when the game needs a narrative arc or dramatic structure. When: Choosing a story generation approach.
+- [metric] Roughly 10 percent of writing and design work is immediately relevant to players, and the remaining 90 percent serves the team and transmedia.
+- [tradeoff] Author-centric generation may ignore plausible character intentions, while character-centric generation keeps characters consistent but rarely yields a tellable story without authorial goals; intent-driven planners combine both. When: Choosing how story plans are generated.
+- [tradeoff] In films and plays the author resolves the audience's uncertainty, while in games the players resolve it, which makes traditional storytelling methods hard to integrate.
+- [tradeoff] Author-oriented planning is harder in games because players act in the game world rather than in the author's head, so planned sequences can conflict with player actions. When: Planning narrative for a player-driven game. Why: Authorial plans assume events the player may not produce.
+- [pitfall] Clinging to a story detail that conflicts with gameplay or technology.
+- [pitfall] A premise that is only a thin label can leave the underlying abstraction unchanged for players.
+- [pitfall] Choosing a worldbuilding approach without checking the project can leave world scope or history mismatched with gameplay.
+- [pitfall] A logically sound, short plan is not automatically a good story, because soundness does not check character plausibility, such as whether a character has reason to cooperate. When: Generating stories from logical plans. Why: Planners verify causal validity but not motivation.
+- [fact] In a unified story, the problem introduced at the beginning keeps its meaning through to the ending.
+- [fact] Because most story is communication, games remain limited as storytelling media until characters can converse meaningfully.
+- [fact] Dialogue is usually written late in production. Early narrative work is talking, deciding direction, and often discarding the work and restarting.
+- [fact] A script stays only words until someone plans how its elements will be built into the game.
+- [fact] Narrative designers most often produce two kinds of document: a game-level proposal and a story-level proposal.
+- [fact] Games are rarely sold or funded at the pitch stage; a pitch aims to show the project deserves serious consideration and earn a meeting or second look. When: Writing a game pitch for publishers, developers or investors.
+- [fact] The game bible serves as a shared reference for level builders, systems engineers, artists, sound designers, and game writers.
+- [fact] Common game bible sections cover setting, timelines, history, magic and technology, cultures and societies, languages, characters, storylines and plot development, and glossary and appendices. Why: The size of the bible depends on the game's needs.
+- [fact] A core story is not always built in linear order; the ending may be known first and the rest built toward it.
+- [fact] Screenplay conventions include CONT'D for a speaker resuming after interruption, transitions such as CUT TO, FADE IN and FADE OUT between scenes, and Courier size 12 font; in-house formats override these.
+- [fact] A cinematic script can set scene, tone and dialogue together, so that location, mood and speech reinforce one another.
+- [fact] Story generation can use planning, and map generation can be shaped to fit a generated story.
+- [fact] Plan events are abstract and temporally extended, so the plan omits travel time and incidental play between events.
+
+## cutscene design
+- [definition] A cutscene is non-interactive, narrative-scripted dialogue outside gameplay that offers no choice, usually sparse, built in-engine and paired with animated sequences filmed outside the gameplay camera.
+- [definition] Animatics are non-interactive still-image sequences edited together with text, narration and soundtrack; they replace cinematics when budget or memory is limited, including handheld and mobile. When: Budget or storage is limited. Why: Cinematics consume much memory.
+- [definition] In principle a cutscene is a payoff that shows the player's achievements rendered cinematically after a stretch of play.
+- [definition] Sequences are brief scenes, at times containing replayable lines, that can repeat without growing wearisome.
+- [definition] Interactive cutscenes are scripted and in-engine like cutscenes, but they let the player choose dialogue options.
+- [definition] Full motion video is a heavily scripted scene where the player has a limited set of inputs, such as pressing buttons at the right time.
+- [definition] Cinematics are entirely pre-rendered films played inside the game, with no player interaction, high production values, and usually the highest budget.
+- [mechanism] Cutscene sounds spatialised from the camera change orientation abruptly on each camera cut, so they appear to jump sides of the screen, producing extreme, disconcerting panning. When: A sequence switches between cameras with sounds spatialised from the camera, such as in-game cutscene dialogue with camera cuts. Why: Spatialisation is computed relative to the current camera, so each cut changes the apparent direction.
+- [mechanism] Long opening cutscenes are expensive to produce and often damage engageability by breaking game flow early. When: Opening sequences.
+- [mechanism] Because attention goes to the art rather than movement, animatics encourage stylized and detailed art, and can suit a game's style better than motion.
+- [mechanism] Sequences play without interrupting gameplay, so they suit MMOs, where players can enjoy them whenever they have time. When: designing story content for MMOs. Why: Non-interrupting scenes fit players who log in for varied lengths of time.
+- [behavior] In VR, characters who act as if the player is not there make the player feel absent and prompt questions about their role; screen audiences accept an unseen camera. When: Characters in a VR scene behave as if the player is not there. Why: In VR the viewer is physically placed in the scene, so being ignored stands out.
+- [rule] Identify the main gameplay activity at a story moment; the more gameplay or required interaction it holds, the more you should avoid a cutscene.
+- [rule] Avoid cutscenes that end an activity players want to continue, such as during an intense boss battle.
+- [rule] Avoid cutscenes at the start of a session, when working memory is fresh and can be used to interact with the game. When: session start. Why: fresh working memory is better spent on play.
+- [rule] Use cutscenes sparingly because of their production cost.
+- [rule] In unvoiced games, place story in the breaks between gameplay tasks rather than during active play. When: Unvoiced games. Why: Players can read text only when not engaged in action.
+- [rule] Before committing to a cutscene, consider ambient dialogue, voiced conversation the player hears while still playing, and ask first whether the cutscene is necessary. When: Planning how to deliver story. Why: Cutscenes can badly disrupt pacing.
+- [rule] Test the first instinct to use a cutscene for vital information against other storytelling tools, since a cutscene is not always the best choice. Why: Varied delivery makes the decision more valid and rewarding.
+- [rule] Know each cutscene's budget before writing, since budget shapes both the dialogue and the animation plan, and confirm with the cinematic department how many cutscenes are planned.
+- [rule] Show in a cutscene only what gameplay cannot deliver with equal impact, and show the rest through the gameplay camera or player actions.
+- [rule] Don't lean on a cinematic as a blatant stopgap for engine constraints; favour spectacle assembled from mechanics the title already supports.
+- [rule] An opening level cutscene should hint at the level's theme, a simple story setup, and likely obstacles, NPCs, abilities and weapons. When: starting a themed level or world. Why: Players get a preview of what the level will ask of them.
+- [rule] An ending level cutscene can show the victorious character moving on, defeated enemies, grateful NPCs, or overcome obstacles that remind players of their achievements.
+- [rule] Keep win and lose cutscenes very short, using images or animations players will not tire of, especially where winning or losing happens often. When: outcomes that repeat frequently. Why: Repeated viewing turns long scenes into annoyances.
+- [rule] Even short cutscenes help by giving players useful information about the game and adding visual and auditory interest.
+- [rule] Place short cutscenes at the opening and closing of levels, stages, zones and worlds, at wins and losses, and at the very start and finish of the game. When: games with short sessions. Why: These moments fit brief scenes without consuming a whole session.
+- [rule] An opening cutscene in a light-story game should quickly introduce the player character, NPCs, world and gameplay.
+- [rule] An ending cutscene should reward finishing by recalling rescued or defeated NPCs, levels beaten, or other feats.
+- [rule] Opening-style scenes that share useful tidbits suit a game's start and the beginning and closing points of each major division such as levels, stages, zones or worlds.
+- [rule] Keep cutscene dialogue short and reserve cutscenes for visuals players cannot get elsewhere, such as large battles or dramatic arrivals. When: RPGs and higher-budget games.
+- [rule] Have each cutscene follow directly from the action the player just took, such as an arrival scene after choosing to be taken to a leader.
+- [rule] Label non-interactive cutscenes clearly in the script and start them only after the preceding gameplay action has settled.
+- [rule] Use a camera pan from an interior view to an exterior shot to reveal the wider state of the world after a focused scene.
+- [rule] Choose the lightest scene type that delivers the story, because cinematics cost the most. When: planning scripted scenes. Why: Cost rises sharply from postures and sequences up to cinematics.
+- [rule] An opening cutscene under a minute can establish the player character, their goal, their abilities, the opposition and the first area. When: designing a short game introduction. Why: A brief scene can inform players of all four without long exposition.
+- [heuristic] Arrange vehicles and barriers so they look driven through or blocked, implying a panicked escape. When: suggesting a past flight or chase through the environment.
+- [heuristic] Cutscenes need extra thought in multiplayer worlds, since they can block the interaction that much of the play depends on. When: Online multiplayer games where play centers on player interaction.
+- [heuristic] Place cutscenes after about 30 to 40 minutes of gameplay so working memory gets a break. Why: sustained attention fatigues.
+- [heuristic] Cutscenes placed after intense action act as breathing space, while cutscenes placed before action cost more to justify.
+- [heuristic] Use cutscenes for high-impact story moments that benefit from animation and camera control, and keep player choice in interactive dialogue. When: Planning story moments in a game with interactive dialogue. Why: Cutscenes lack player choice, so choice belongs elsewhere.
+- [heuristic] Place cinematics at the start to set up the story and at the end as the payoff, and consider a midpoint cinematic as a reward if the budget allows.
+- [heuristic] Cutscene guidance can be scaled in length, assets and production quality to suit any genre, team or budget.
+- [heuristic] Keep a cutscene under about thirty seconds where possible; longer scenes need a reward strong enough to hold attention.
+- [heuristic] A cutscene ought to deliver wonder and delight, not interrupt the action.
+- [heuristic] Shoot cutscenes from the player-character's point of view so the player sees what the character sees, and avoid pulling the player out of that frame.
+- [heuristic] Cutscene rules are often broken, but first weigh the payoff against the effect on players; a wider view can be justified when it clearly serves the payoff.
+- [heuristic] Avoid sequences that play in only one specific situation or that few players will see, because their cost is hard to justify. Why: Few players benefit from a sequence seen only rarely.
+- [heuristic] The more a sequence benefits players and story while staying reusable, the more it is worth building.
+- [procedure] 1) Mute game sounds with sound modes. 2) Recreate the sounds with sound tracks in the cutscene sequencer. 3) Apply environment reverb to dialogue files in the audio editor. When: In-game cutscene dialogue. Why: Sound tracks are not emitted by objects, so attenuation and reverb do not apply.
+- [procedure] 1) Enable a cinematic mode that blocks player input. 2) Fire an event just before the dialogue. 3) Apply a ducking sound mode. 4) When the sequence completes, reset the mix to default.
+- [procedure] 1) Have the cinematics team check each cutscene script against budget and tools. 2) Ask animators whether they want exact physical action or only dialogue. 3) If the team is overloaded, add a description of the action. When: Writing cutscene scripts. Why: Animators differ in how much direction they want.
+- [procedure] 1) Add setting notes to the script. 2) Review the scene with writers, animators and leads. 3) Storyboard it with panels showing camera angles, characters, items and expressions, each with a line or two of description. 4) Iterate until everyone is satisfied. 5) Keep talking to animators during production. Why: The writer is the only one who sees the scene as imagined, and animators know their skill limits.
+- [procedure] 1) Write a scene heading whenever location changes, using INT for indoor and EXT for outdoor. 2) Write character names in caps at first appearance and in dialogue headings. 3) Center dialogue under the speaker's name. 4) Put short parentheticals above dialogue. When: Writing cutscene scripts in screenplay style. Why: Consistent format makes scripts readable to the team.
+- [procedure] 1) Let the player encounter recurring clues without explanation. 2) Withhold their purpose. 3) Reveal the meaning of all gathered pieces together at a late point. When: designing story or puzzle reveals.
+- [tradeoff] Cutscene restrictions on player agency matter most in RPGs and games with many dialogue choices, where player decisions shape the narrative. When: RPGs or games with many dialogue choices. Why: Removing control there undermines choice.
+- [tradeoff] Cutscenes let designers use every film technique but fully disable player interactivity, so overuse creates a jerky stop-start rhythm.
+- [pitfall] Leaving cut-scene sound to the automatic 3D sound engine does not produce polished results. When: Mixing cut-scenes. Why: Automatic spatialisation ignores the deliberate mixing a linear film needs.
+- [pitfall] Starting a cutscene or textbox in the middle of an encounter is one of the worst mistakes, because players cannot absorb it.
+- [pitfall] Wordy lines during combat are treated as obstacles that spoil the fun. When: during combat.
+- [pitfall] Expecting an artist to reproduce your mental image without discussion leads to a mismatch between the intended scene and the result.
+- [pitfall] Letting a cutscene decide an outcome that the player's earlier choices should have decided undermines agency.
+- [pitfall] Long or annoying cutscenes can make players put the game down.
+- [pitfall] Importing film methods wholesale blinds designers to the central challenges of game story, which are choice and players who depart from the author's plan.
+- [fact] Brief cinematics opening and closing each level, stage, zone or world carry players forward, reveal progress, and can tease rewards for finishing.
+- [fact] Linear stories rarely use interactive dialogue, because there is no way to respect player dialogue choices; they rely on cutscenes and environmental narrative instead. When: Linear game story delivery. Why: Dialogue choices cannot be honored in a fixed storyline.
+- [fact] Visual novels and adventure games use animatics as a genre convention for their text-heavy sections.
+- [fact] In some games cutscenes are the only way to deliver story beats, whether exciting, intimate or expository.
+- [fact] Win and lose cutscenes can show characters celebrating a win or encourage the player to try again after a loss.
+- [fact] Lower-budget, social and mobile games can use voiced cutscenes, scores, altered storylines and story twists much like traditional games.
+- [fact] Scripted scenes come in seven types: postures, sequences, animatics, cutscenes, interactive cutscenes, full motion video and cinematics.
+- [fact] Cinematic sequences are among the most economical means of adding animated visual storytelling to a game.
+- [fact] Camera position determines which environmental details players see, so framing, focus and layered views can deliver narrative alongside gameplay.
+
+## mission and quest design
+- [model] In a level-based quest, each piece is the goal of one level, and each level is a string of smaller challenges such as puzzles, enemy encounters, and obstacle courses.
+- [model] Quest-based stories map onto TV structure: several quest chains make a season, one chain an episode, one quest an act, and one task a beat. Why: Comparing quests to TV units helps organize the story and decide what to tell when.
+- [model] A quest has five components: an issue, a persona, a set of tasks, obstacles or opposition, and a payoff.
+- [model] A role-playing game may be built as one large quest divided into smaller quests that alternate gameplay and narrative advancement. When: Structuring a role-playing game.
+- [definition] A quest is a self-contained storyline in a larger or open-world story, like an anthology story rather than a chapter; order is fixed, but it can start and pause anytime. (x2)
+- [definition] Quest hubs are towns or starting areas where players gain supplies, learn mechanics, and receive quests that send them outward.
+- [definition] A quest is a relatively linear story section in which every player action serves one goal; it ends when its goal changes.
+- [definition] A mission is one fixed step of a linear story; missions always play in the same order and can build on each other. When: Linear story structure.
+- [definition] A mission is a goal or set of goals for the next map, usually given between maps like a military briefing.
+- [definition] A quest is a task driven by current story state that advances the narrative on completion, e.g. collecting an object, aiding a non-player character, slaying a creature, or hauling freight.
+- [definition] Side quests are optional content beside the main path that players can consume or ignore, and they affect little of the main story.
+- [mechanism] Story-to-space generation maps story locations to islands, where story events happen, connected by bridges, where open-ended play happens. Bridges may branch, so some areas need not be visited. When: Generating a game world from a story plan. Why: Separating event areas from connective areas gives story events fixed places while leaving travel open-ended.
+- [mechanism] Spacing side quests and points of interest along a main path can draw players into exploration and lengthen play. When: open-world or MMO route design.
+- [mechanism] Freeing bound hostages can reward players with loot while showing their heroic impact on the world and its people.
+- [behavior] Players find side quests by exploring and talking to minor characters, and many optional quests will never be discovered by a given player. When: Optional content in open RPGs. Why: Discovery depends on exploration and conversation rather than on any guaranteed prompt.
+- [rule] Tie side quests back to the main plot so the critical path stays alive throughout a long game.
+- [rule] Make each mission flow directly from the player's accomplishments in the previous mission. Why: Preserves the player's sense of control in linear play.
+- [rule] Narrative designers must write each quest's own storyline and also ensure all quests join into one coherent overall story. When: Writing quests for a large game.
+- [rule] Use 'mission' when order matters and 'quest' when content can be picked up in any order; designers may still restrict some quests to a fixed sequence. When: Naming and structuring story units.
+- [rule] In mission-based games, place major exposition and story progression between missions, in cutscenes or interactive story spaces. Why: Downtime between maps is where players can absorb story.
+- [rule] For each quest, document the quest giver or how it is received, the tasks, each task's obstacles, the gameplay used to pass each obstacle, and the reward.
+- [rule] Work out the complete plan for every branch of a quest that can be completed in several ways before the quest is built into the game. When: when a quest can be completed in more than one way.
+- [rule] Keep quest texts short and focused on the NPC's current problem, without background detail that is not needed at the moment the player is asked to act. When: Writing MMO quest texts. Why: Players in groups have little time to read, and most skip to the summary and rewards.
+- [heuristic] Generated levels can carry narrative when layout and contents embed a story, since narrative can be framed as a spatial creation engine. When: Procedural dungeon or level generation, including levels built from spatial design rather than hand-placed content. Why: Embedded space story applies directly to generated layouts and contents. (x2)
+- [heuristic] Treat skill gates as blocking elements when generating dungeon progression. When: a generated dungeon has progression locks. Why: gates are the same kind of blocker as locks in progression graphs.
+- [heuristic] Enemy placement can be linked to narrative cues, so spawn logic can be driven by story markers placed in the level. When: when generating or placing enemies in procedurally or manually built levels. Why: Narrative cues and spawn logic reinforce each other.
+- [heuristic] Use a string-based mission for simple linear games, and a graph-based mission when the level needs optional paths, locks, or several ways to reach the goal. When: when choosing how to represent a generated level's mission. Why: Graphs express branching and lock structure more naturally than strings.
+- [heuristic] Pair generated mechanics with varied themes, since similar mechanics under different fiction can feel distinctly different. When: When a generator reuses mechanics across levels. Why: Fiction changes how players label the same arousal.
+- [heuristic] A generated path to a goal can be built as stacked challenges of rising difficulty, with environment art signaling that a reward lies at the end. When: when generating a path to a goal.
+- [heuristic] Designating an enemy-free, distinctively shaped room for story beats gives a generated dungeon a readable pacing shift. When: when generating dungeon pacing.
+- [heuristic] Winding passages that let rewards be seen through other layers can give a generated maze both puzzle structure and visible payoffs. When: when generating maze layouts.
+- [heuristic] Quest hubs encourage exploration and introduce mechanics through introductory quests.
+- [heuristic] Quests that send players to other hubs give them a tour of the world and self-guided goals.
+- [heuristic] Required quests should show escalating conflict between fixed events, while optional quests add flavor around them.
+- [heuristic] Very large quests suit the critical-path backbone, while four or five steps is usually the complexity limit for a side quest.
+- [heuristic] Keep in-mission text and dialogue minimal, with thin motivation, while objectives and opposition still reflect the story. When: inside a mission. Why: Gameplay takes priority during missions.
+- [heuristic] Reduce each quest to its simplest form to reveal exactly which assets the game must build.
+- [procedure] 1) Build a directed mission graph with a graph grammar. 2) Expand each mission into a node-and-edge network. 3) Convert each network into game space with a shape grammar. Why: Gives gameplay-based control over the layout.
+- [procedure] 1) Take a tile-based world map and select the mission location. 2) Generate terrain with tile grammars and cellular automata driven by vegetation, elevation and building tiles. 3) Analyse terrain into an abstract space graph. 4) Generate mission specifications with a string grammar and plot them onto the graph. 5) Add enemies. 6) Place mission objects on the tile map and combine them with terrain. When: Generating a mission environment from a world-map tile.
+- [procedure] 1) Apply the start rule once. 2) Apply add-task rules repeatedly. 3) Add a boss once. 4) Define tasks. 5) Move locks as needed. When: Generating a mission graph with fixed rule sequences.
+- [procedure] 1) Lay out the mission graph with an automatic layout algorithm. 2) Sample the laid-out graph into a tile map. When: when a generated mission must become a traversable space for action-adventure or narrative games. Why: Mission coherence and pacing are kept, though this transition is the hardest of the three strategies.
+- [procedure] 1) Generate geometry with cellular automata, grammars, evolution, or another method. 2) Analyse the geometry into an abstract graph. 3) Derive missions from that graph. When: when level geometry must come first, such as strategic games or levels with consistent architecture. Why: Geometry-first generation yields spaces with natural mission hooks, though control over the mission is reduced.
+- [procedure] 1) Parse the story plan for locations. 2) Build an abstract space tree of location types. 3) Realize the tree as graphics. When: Generating space from a story plan.
+- [procedure] 1) Play an open-world or MMO game and travel the main path between two story events. 2) Map that route. 3) Mark side quests and points of interest along it. 4) Note how they are spaced.
+- [procedure] 1) Settle genre: meet expectations with a few surprising twists. 2) Define a concrete villain with enough henchmen to survive many defeats. 3) Agree target length, then compare similar games' cutscene, level and twist counts. 4) Set tone deliberately. When: When moving from a broad story outline to detailed mission plans.
+- [procedure] 1) Quest-giver conversation sets goal and reward. 2) Fight, with much gameplay and few story moments. 3) A twist undermines the reason the player came. 4) Offer a new goal, less desirable but higher reward. 5) Player chooses a goal. 6) Complete the chosen goal and its final fight. 7) Return to the matching NPC for the reward. When: When building a quest with a moral twist.
+- [procedure] Quest-scene drafting: 1) Write one interactive scene in which the player receives a new objective. 2) Use one to three non-player characters. 3) Keep the scene between two and four player responses, with two or three middle hubs. 4) Prioritize clearly communicating the plot step over stylistic wordplay. When: Writing a scene that delivers a quest or main-plot objective. Why: A scene that communicates the objective is more useful than one that only shows style.
+- [procedure] Closing a quest conversation: 1) Remind the player where they are in the overall story. 2) Tie the quest to their larger goals. 3) State the next step in small, clear terms. When: The player has decided whether to take the quest.
+- [procedure] 1) State the objective in character speech. 2) Tell the player where to look. 3) Warn about the threats. 4) Restate the task and reward in an instructions line. 5) Add a hint a character would not know. When: Writing a mission's dialogue and supporting text. Why: Each part conveys a different piece of information the player must learn.
+- [metric] One quest in a large RPG may exceed 70,000 words, covering eight-plus levels and no fewer than four dungeons.
+- [metric] An average quest chain runs about 25 to 30 minutes, which can guide how much story each part of the game delivers.
+- [tradeoff] Turning a mission into building instructions makes graph-to-tile conversion easier, but producing multiple paths to the same goal becomes hard. When: when generating linear platformers or some story-driven levels. Why: Instruction-based building follows a fixed sequence, which limits alternative routes.
+- [tradeoff] Events that play regardless of player action, such as timed mail, appearing objects, or radio broadcasts, are cheap and powerful but cannot react to the player. When: When a beat must happen regardless of what the player does. Why: They need no custom semi-interactive design.
+- [pitfall] Computer RPG quests are often just lists of milestones, while tabletop quests adapt during play; procedural quest generation aims to restore that flexibility. When: Designing computer RPG quests. Why: Fixed milestone lists cannot respond to player choices the way a game master can.
+- [pitfall] Players may miss a scripted beat, see it from a poor angle, or interfere with it, so the beat must not depend on player attention. When: Soft-scripted events.
+- [fact] The order of set pieces affects the player's experience independently of how good each individual piece is.
+- [fact] A story that affects gameplay can have its map generated together with the story, or the map can be generated afterwards to follow the story.
+- [fact] Search and optimisation techniques can map plot points onto physical locations in a game world.
+- [fact] A common linear form is a sequence of pass/fail missions, where failure brings a Game Over screen.
+- [fact] The same story can be split into several quests linked by a larger questline, so quest boundaries are a design choice.
+- [fact] Long RPGs may offer hundreds of quests, most of them optional. When: Long open-world or RPG games.
+- [fact] Mission-based narrative is typical for strategy and simulation games, which have much narrative space between missions and little during them.
+- [fact] Most MMOs present dialogue as structured quest text boxes, and some titles use quest texts as their only story tool.
+
+## narrative delivery
+- [definition] Story integration explains how the story enters the game and which mechanic carries which story element. When: Planning how a story reaches players. Why: Shows the story is delivered through gameplay systems.
+- [definition] Ludonarrative dissonance is the conflict between what works best for the story and what is most fun to play.
+- [mechanism] Obstacles that block a goal create problem solving, which people find interesting. Why: Solving blocked goals engages the audience.
+- [mechanism] Bigger obstacles create greater potential for dramatic change.
+- [mechanism] A scripted event fired at the same point each time feels unpredictable to a first-time player. When: Triggered by a significant act such as defeating a hard boss. Why: The player cannot anticipate the trigger timing.
+- [mechanism] Ordinary events gain interest from their relationships in a story arc, since early setups make a later discovery meaningful.
+- [mechanism] Narrative tools improved and players accepted some loss of freedom in exchange for engaging stories, allowing story to be woven into gameplay.
+- [mechanism] An obstacle is resolved through whatever actions the game's mechanics afford, so combat fights it while stealth sneaks past it.
+- [mechanism] As unintended actions are blocked level by level, the fictional backdrop thins, the game grows less sensible and its levels weaken.
+- [mechanism] Recorded voices convey emotion and capture conversations or natural events, and hearing a voice early prepares players to recognize that character later. When: audio logs or recordings are used. Why: voice creates an impression that players carry forward.
+- [behavior] When a world's rules shift, players see it as a broken artifact rather than a living place. When: Rules change or are bent during the story. Why: Inconsistency exposes the construction behind the world.
+- [behavior] Long quest conversations pull players out of the main flow of play, so the closing line must reorient them. When: A quest conversation runs long.
+- [behavior] A raw simulation log lacks pacing, dramatic tension, foreshadowing, and narrative arc unless these arise by accident. When: Telling stories from simulated world events. Why: Simulation records what happened, not what is dramatically worth telling.
+- [rule] Justify restrictions that seem arbitrary, such as the inability to jump, with the fiction; reframing a story element can justify technical limitations and strengthen drama. When: Introducing an unusual movement restriction or a technical limitation. Why: Players read an unexplained limitation as arbitrary. (x2)
+- [rule] Make longer story blocks and backstory optional, placing backstory in lore books or optional dialogue, so players choose how much information they receive and when.
+- [rule] If story cannot be explained through the game's systems, move it to another medium or rewrite it so gameplay tells it; unmatched story may not belong as written. When: The story cannot be explained through the game's systems or has no matching mechanic. Why: Story that lives outside mechanics is weakly connected to play and detached from it.
+- [rule] For games built on aiming, shooting and dodging, tell story in fast moment-to-moment beats and save longer story for breaks between action.
+- [rule] For games built on resource management and base building, use brief event-driven story pieces during play and interactive cutscenes between missions.
+- [rule] For games built on questing, exploration and combat, use complex slow-paced plots with deep character arcs, keeping story present throughout.
+- [rule] For games built on jumping, pair an overall objective with level-based stories told mostly through the environment.
+- [rule] For games built on construction, exploration and combining, build the story around the player character's exploration of and interaction with the world.
+- [rule] When an unusual visual detail draws repeated player questions, adjust it to look normal. When: A visual detail repeatedly prompts player questions. Why: Questions stop once visuals match player expectations.
+- [rule] Reshape the story when it blocks a mechanic or technical approach that works well. When: A story detail conflicts with a working mechanic or technical approach.
+- [rule] Make mechanics and story support each other: story reflects gameplay, the world expresses the mechanics, and gameplay shows off the world and characters.
+- [rule] Story is valued only as part of the game; well-written content that does not fit the project should be cut.
+- [rule] Keep a narrative pitch doc short, but explain the story integration plan clearly. When: Writing a narrative pitch doc. Why: Short docs get read, while the integration plan must be unambiguous.
+- [rule] When gameplay is complete, write story to fill the gaps between gameplay scenes and connect levels not designed with narrative in mind.
+- [rule] Let players react to major moments without telling them how to feel; explain consequences later or have characters discuss events after they process them.
+- [rule] Design fiction and mechanics together as a unified whole, because the desire must be instilled in the player and mirrored in the character. When: aligning player and character motivation. Why: separately built pieces joined afterward rarely share the same drive.
+- [rule] Find actions that support the narrative and translate them into mechanics, so story and gameplay reinforce each other rather than existing separately. When: Designing a game where story should shape play. Why: When story and mechanics exist independently, the story becomes a backdrop.
+- [heuristic] Deliver lore as optional content players access on demand, placed where combat won't interrupt it, to introduce characters or hint at dangers ahead. When: Placing audio logs or lore items in a game with a strong core mechanic. Why: Uninterrupted lore sets up later encounters, combines anticipation with recovery, and enriches the core without blocking it. (x2)
+- [heuristic] Let the game's cards define its physics, rather than fixing a world's physics first and building cards around it. Why: Fixed world physics constrains card design and creates problems.
+- [heuristic] Tie a demonstration's presenter to the story, so the lesson feels part of the narrative rather than separate from it.
+- [heuristic] Story bits work best when they highlight or reinforce the core mechanics, so start the design from gameplay.
+- [heuristic] Long timers and collectible items need in-world logic from worldbuilding, and collectibles can tell players about the world and characters. When: when a mechanic has a long wait or a collectible item. Why: Players accept mechanics more readily when the world explains them.
+- [heuristic] A character's desire or a world conflict can be conveyed through mechanics, sound and animation rather than through text.
+- [heuristic] Develop unused material such as languages and cultures, since it deepens the author's understanding even when players never see it. When: Building a world's depth. Why: Background detail keeps the visible content coherent.
+- [heuristic] Story is among the most flexible elements, so narrative can be modified to compensate for last-minute problems or cut levels while keeping the experience smooth.
+- [heuristic] A setting can justify the core mechanics: a desperate, violent world supports constant combat, and a dead world supports very low population density. Why: Justified mechanics let the designer avoid building extra systems and characters.
+- [procedure] 1) Define the player character's motivation and check whether mechanics can communicate it. 2) Give other characters motivations and show them through play. 3) Decide what is happening in the world. 4) Use sound, animation and visuals to convey character and world. When: when a game has little or no story yet. Why: Story then reinforces the mechanics instead of sitting apart from them.
+- [tradeoff] Keeping an unusual item costs setup effort and may confuse, while replacing it with a conventional one is simpler but may lose the distinctive idea. When: Deciding whether an unusual item is worth its strangeness.
+- [tradeoff] Some projects focus on gameplay, some weight story and gameplay equally, and some let gameplay serve the story. Each choice changes how the story is delivered. When: when setting the balance for a project.
+- [tradeoff] Free mechanical experimentation supports exploration in mechanics-driven games, but it clashes with the fiction when actions make no sense in character. When: designing a mechanics-driven experience with a narrative layer. Why: the mechanics layer and the fiction layer follow different logic.
+- [pitfall] When the story climax falls after the hardest fight, or the final boss is trivial after a power upgrade, the ending feels anticlimactic. When: Aligning story beats with the difficulty curve. Why: Story and difficulty curves do not line up, so tension drops at the climax.
+- [pitfall] Too much narrative content placed on the core path can block gameplay, damaging the game's feel and core idea. When: Adding narrative content to a game with strong core mechanics.
+- [pitfall] Dialogue players must read during intense gameplay is easy to miss or ignore. When: Unvoiced games with active play. Why: Reading competes with gameplay attention.
+- [fact] Designers disagree on how much story to include, whether gameplay should change the story, and whether story should dictate gameplay.
+- [fact] Games can make arguments through cause-and-effect between player actions and rules, a idea called procedural rhetoric.
+- [fact] Interactive story problems have no single fix, and realistic artificial characters or human game masters alone do not solve them.
+- [fact] Story can be integrated by writing text through any tool built for that purpose, or by applying level and game design methods.
+- [fact] Story is often not a core mechanic; it exists to make the game more attractive and enjoyable.
+- [fact] A released game's story rarely matches the writer's original concept, because games are collaborative and must appeal to a broad audience.
+- [fact] Scripted choices involve no system reasoning, unlike a chess move or a fighting-game attack, because their outcomes are authored rather than learned.
+- [fact] Players who master a game's mechanics can use them to tell their own stories.
+- [fact] Game environments often move from natural settings toward harsher materials such as wet stone, lava, and alien metal as play advances.
+
+## dialogue writing craft
+- [model] A good quest-giving dialogue has six parts in order: opening hook; first NPC hub stating the problem; first player hub to pursue or leave; further NPC hubs detailing the quest; further player hubs for questions and acceptance or refusal; immediate goal stating the first step.
+- [model] Dialogue in games divides into three general types: ambient lines, interactive conversation, and cutscenes. Why: These categories cover the varied terms used across genres and companies.
+- [definition] Dialogue trees, or hub dialogue, list social actions or option words a player picks, each with a scripted response; designers author both sides, so no simulation is needed.
+- [definition] A gateway is a product that opens onto one part of a shared world, so the world itself is what is being sold.
+- [definition] The primary purpose of game dialogue is to help players progress through the game smoothly and naturally. Why: Other dialogue roles are secondary to player progression.
+- [definition] Secondary dialogue roles are characterization, worldbuilding through history and backstory, pacing through breather moments between intense action, and humor that lightens mood or sets up a later surprise.
+- [definition] Generic banter is a short exchange involving two or more characters, optionally the player too, that is situational or character-driven and usually interruptible.
+- [definition] A token is a placeholder, such as @player_name, that the game fills in from player choices like name, gender or faction, letting one line fit many possible heroes.
+- [mechanism] Linked gateways into one fantasy world reinforce each other: wanting to win a game motivates watching its show, and the show makes the game feel more vivid. When: A world is reached through several connected products. Why: Each product creates a new reason to engage with the others.
+- [mechanism] Writing tends to be the first element revised, since rewriting dialogue costs far less than reanimating a scene.
+- [mechanism] Looping dialogue back to a shared root reuses a small number of nodes, avoiding a new branch for every possible conversation path. Why: otherwise infinite branching becomes unmanageable.
+- [rule] Write speech with slang, hesitations, stumbles and short fragments, breaking exposition into short chunks rather than complete encyclopedic sentences, since formal sentences make NPCs sound like reference material.
+- [rule] Review all dialog as a designer, since one line may conflict with a gameplay rule.
+- [rule] Decide how much dialogue or text to use by first deciding which emotion the player should feel.
+- [rule] Use a fixed box template so each information type always appears in the same place, such as story first, task next, and reward last.
+- [rule] Use dialogue when the player needs narrative motivation in order to proceed. When: The player would otherwise lack a reason to continue.
+- [rule] Place a player-response hub fairly early, and split important information into separate sections that players can react to. When: A new piece of information must register with the player.
+- [rule] Cut greetings and farewells such as 'Hello,' 'Goodbye' and 'Thank you' when they add nothing to the story. Why: Such lines consume space without moving the plot forward.
+- [rule] Give the first NPC hub enough to draw the player in, but not so much that it overwhelms them.
+- [rule] Make the first hub offer at least three distinct options: an eager reply, a refusal, and a curious reply such as 'Tell me more.' When: The quest is clear to the player. Why: These cover the most likely player sentiments and branch cleanly into the next hub.
+- [rule] Always include an eager option that lets players skip the details and go straight to the next action.
+- [rule] Write repeated sequence dialogue so it does not become annoying on the tenth hearing.
+- [rule] Check that dialogue reads well and keeps a consistent tone and style across characters. When: during revision.
+- [rule] The player character must never hold a two-way exchange with a sane, conscious, coherent, humanlike character.
+- [heuristic] Placeholder dialogue is revised repeatedly until it is final.
+- [heuristic] In visual and auditory media, players judge writing mainly by dialogue, even when plot takes most of the effort. When: games with spoken or on-screen dialogue.
+- [heuristic] Test a line's length by asking how long you would want someone to explain it while you are being hunted and need an escape route.
+- [heuristic] Stammered, broken-off words in text suggest anxiety or fear.
+- [heuristic] A condescending tone in lines can convey a character's contempt for the player.
+- [heuristic] In limited-space writing, showing what you can say in a small space is more valuable than showing how much space you can fill. When: Portfolio or short-form dialogue.
+- [procedure] 1) Decide which information types each dialogue box holds. 2) Allot each information type a character limit, counting spaces but not words. When: when designing dialogue box content.
+- [procedure] Quest dialogue self-check: 1) Confirm the objective is clear and restated in the final line. 2) Confirm every path states it before acceptance. 3) Confirm optional lines hold only optional information. 4) Confirm options are distinct. 5) Confirm the NPC reacts to every choice. 6) Confirm options span player types. 7) Confirm lines read well aloud. When: After drafting a quest conversation.
+- [metric] A single play session may expose only about ten percent of the recorded dialogue, so each session feels different. When: Simulations with large recorded dialogue.
+- [metric] A sample budget allows up to 150 characters of dialogue and 50 characters of instructions per box.
+- [metric] Short side quests may use one middle hub, while longer dialogues can have up to about six; beyond that, split the dialogue into two encounters. When: When designing quest dialogue length. Why: Hub count bounds how long a conversation can run before it becomes unwieldy.
+- [tradeoff] Branches that are closer to separate stories give distinct experiences, but middle-path players may be left dissatisfied. When: designing paths between extremes.
+- [tradeoff] Dialogue trees give designers full control over responses but limit the player to a handful of options rather than open-ended conversation. When: choosing how to handle player interaction.
+- [pitfall] Near-identical options, such as three versions of 'yes' or identical greetings in a first hub, give no real choice and make players feel the dialogue is forced. Why: It only confirms that a dialogue has started.
+- [pitfall] Writers whose strength is long, poetic description may not suit games, since game writing has different demands.
+- [pitfall] Perfunctory small content lowers game quality, since players either notice the carelessness or do not care at all.
+- [pitfall] Simplifying a story for a supposedly unsophisticated audience leads to substandard work; clarity should be matched to genre and audience expectations rather than dumbed down. When: Being asked to simplify a story. Why: Players notice holes in science and lore.
+- [pitfall] Writing dialogue that describes placeholder visuals, such as a character saying they are sad, becomes redundant or clumsy once the finished animation arrives. When: placeholder art or animation.
+- [pitfall] Scripting a live scene forces the designer to handle every action a player might take, which multiplies contingencies that past-event storytelling avoids.
+- [fact] Toys and games based on a fantasy world give children more ways to enter it and spend more time there.
+- [fact] Writing good game dialogue is a learned skill that takes years of practice rather than innate talent.
+- [fact] Dialogue often carries narrative and instruction with less help from visual storytelling than film has, which makes clumsy writing easy to produce.
+- [fact] Writing dialogue is both art and craft; mastering the structure of ambient and interactive dialogue frees a writer to focus on polished, memorable lines.
+- [fact] Each quest or story segment starts with a quest-giving dialogue, and many mid-plot dialogues also set up the next stage.
+
+## exposition
+- [model] Exposition introduces settings, characters, and concepts the action depends on; traditionally it establishes time, place, characters, relationships, and the prevailing status quo before conflict begins.
+- [definition] Fluff text is a short line taken from the story world, such as dialogue, that conveys the game's mood and atmosphere. When: Writing a narrative pitch doc. Why: It shows the tone without full exposition.
+- [mechanism] Revealing a previously private fact at the right moment can create drama, because the information a player acts on changes during play. When: when a hidden fact is disclosed mid-game. Why: Who knows what can change over the course of play.
+- [mechanism] Flavor text added to functional item text turns dry mechanics into lore by naming the maker and their fate, showing cultural value, or telling a brief story of use. When: writing item and ability descriptions. Why: Lore adds meaning without changing the mechanics.
+- [mechanism] Writers who master every game detail become valuable across disciplines, and quality assurance turns to the narrative team when unsure of a detail. Why: Detail knowledge is needed by other teams, not only by writers.
+- [behavior] Explanatory text or a character commenting on a major event reduces its emotional effect on the player. When: when players face a major event or revelation. Why: The explanation tells players how to respond instead of letting them react on their own.
+- [rule] If an unrealistic detail must stay, explain it instead of ignoring it. When: An unrealistic detail cannot be removed. Why: Unexplained oddities invite doubt.
+- [rule] Do not rely on imagination for educational content about unfamiliar places; provide far more detail. When: The purpose is teaching players about a place they have never been. Why: Players cannot fill gaps in knowledge they lack.
+- [rule] Deliver lore through dialogue that arises naturally in conversation, since a passing remark can reveal a major event or how one class views another. When: writing NPC dialogue. Why: Casual remarks convey history and attitudes without exposition.
+- [rule] Tell players about abilities beyond normal human capability before the level requires them. When: when a solution depends on a non-human ability. Why: Without setup, players search only within their own experience and may miss the intended solution.
+- [rule] Consider graphical perspective and player attention span whenever possible, even though they are not always treated as narrative design.
+- [rule] Separate essential from optional content, and check that testers can tell them apart and that the story still makes sense when optional parts are skipped.
+- [heuristic] Players fill gaps with their own imagination, so decide which details to show and which to leave to the player. Only show what you can render well. When: When choosing how much detail to put into scenery, sound, characters, animation or effects. Why: A detail that looks worse than what players can imagine lowers perceived seriousness.
+- [heuristic] The more technical detail a designer explains, the more consistency the designer must maintain across the game.
+- [heuristic] To disguise a forced acceptance, pair the agreement option with a reward question so players can accept for altruistic or practical reasons. When: The quest requires the player to accept.
+- [heuristic] Sane characters can speak only remotely, while face-to-face characters are hostile, so attempted interaction turns into attack, which the game can simulate. When: the fiction can justify the absence of conversation. Why: remote or hostile characters explain why the player cannot talk to them.
+- [heuristic] Attach fictional labels such as names, personality tags, and biographical events to existing mechanics so players invent stories the systems never simulated. Why: players' imagination supplies the story.
+- [heuristic] Enemies placed where locked doors would be, and escalating their response on repeated attempts, can convey a world's setting without exposition. When: when introducing a setting without dialogue. Why: Player encounters with hostile forces communicate the world through action.
+- [heuristic] Story exposition can serve as a reward for completing large battles or skill challenges.
+- [procedure] 1) Choose how the protagonist can ask questions: use amnesia, make them an outsider to the world, or write dialogue where NPCs imply information. 2) Check that the chosen method fits the protagonist's origin. When: when the protagonist grew up in the game world. Why: A native protagonist asking basic questions sounds unnatural.
+- [tradeoff] Keep story information shallow and to what players need when attention is short, but extra context usually does not limit improvisation, so explaining more can be safe. When: deciding how much story context to give players. Why: Shallow context suits short attention and avoids unused detail; extra context rarely constrains player-driven stories. (x2)
+- [tradeoff] Block unwanted actions through the fiction's logic when the setting makes them naturally impossible; flex the fiction around mechanics when it would block the intended experience. Why: Players accept restrictions that feel honest within the world, but a fixed fiction can prevent the intended experience.
+- [tradeoff] Explicit detail in graphics, sound, and dialogue adds clarity and presence, but reduces the room players have to interpret, while minimal representation does the reverse. When: choosing how explicitly to present characters and events.
+- [pitfall] Dialogue that only moves the plot forward tells the player nothing about the speakers. When: When writing character dialogue that carries plot information.
+- [pitfall] Covering poor systems with exposition does not fix them, and players will rightly criticize it.
+- [pitfall] Exposition delivered in one long block before the player speaks is largely lost, because players tune out and learn less. When: A conversation opens with extended information and no player response.
+- [pitfall] Packing too many personal details into a hub buries the core problem.
+- [pitfall] Writers tend to leave out details that seem obvious to them, so the script can be unclear to anyone without their context. Why: Details feel obvious only to the author.
+- [pitfall] Showing too much explicit detail can erase the personality or relationship the player was constructing in their imagination.
+
+## character roles
+- [model] Character design uses traits, abilities, merits and flaws: traits are identifying habits, abilities are capacities to act, merits are benefits, and flaws are weaknesses.
+- [model] A character's growth arc can be built around a fear the story forces them to confront, resolved by learning to open up to and depend on others.
+- [model] Believable characters need insight into their inner world, what matters to them, and why they respond to conflict the way they do.
+- [model] A character list separates player-characters, major NPCs, and minor NPCs.
+- [definition] A cipher is a blank-slate player character with a name and appearance but little defined personality or agency, letting players feel they are playing themselves.
+- [behavior] Optional interactions that differ between characters, such as how each handles a task, reveal their personalities without dialogue. When: when two or more characters are played or observed. Why: Players read character from how each acts in small moments.
+- [rule] Build players' care for characters before relying on them to prompt action; players help those they empathize with, and steering fails without that connection. Why: Empathy makes players want to help.
+- [rule] Provide alternative paths: several characters in the world should be able to fill the role that starts an arc. When: When an arc can be started by different characters.
+- [rule] Check that each character acts according to their motivations, and that no one is forced into nonsensical acts just to move the plot. When: during revision.
+- [heuristic] Create a fresh character by changing one defining trait of a familiar archetype. When: Designing characters from a well-known type. Why: The familiar base keeps the character readable while the change adds novelty.
+- [heuristic] Giving one character two roles can save development cost and create an ironic twist, such as a mentor who turns out to be the final boss. When: The cast is smaller than the list of roles.
+- [heuristic] Reduce a long character profile to a short set of distilled traits that hold across defining situations, and accept that these traits may contradict each other. When: When designing or writing a character. Why: Real people hold contradictory traits, and a small trait set stays usable where a full profile becomes too long to apply.
+- [heuristic] When a protagonist already has a defined backstory, adding an internal motivation that counterpoints the external goal makes the climax more engaging than the external story alone. When: protagonist has some defined backstory.
+- [heuristic] Give characters a life outside their quest, such as personal history or bonds, so they feel like people rather than quest dispensers.
+- [procedure] 1) List the roles the game needs. 2) List characters already imagined and existing characters. 3) Match characters to roles, looking past obvious assignments. 4) Check whether one character can fill several roles. 5) Create or add characters for unfilled roles. When: When planning a game's cast or checking that it covers the game's needs. Why: Separating a character's function from its look and personality shows missing jobs and reveals efficient role combinations.
+- [procedure] 1) List every character. 2) For each character, write how it feels about every other character and the motive behind each view. 3) Check that each feeling is specific and no connection is missing or too similar; make similar ones more distinct. When: When mapping or deepening relationships across a cast. Why: A web reveals interactions that positional or summary views miss; deep character webs drive engagement in ensemble stories, which games rarely explore well.
+- [procedure] 1) List characters down one side of a grid. 2) List story sections across the top. 3) Mark every point where each character undergoes some change, small or large, temporary or permanent. When: Reviewing how a cast changes across a story. Why: Following each character over time, not only the plot thread, reveals changes a plot-only view misses.
+- [procedure] 1) Ask whether the avatar is an ideal form players will resonate with. 2) Ask whether its iconic qualities let players project themselves into it. When: When designing the player avatar. Why: The avatar is the player's gateway into the game world.
+- [procedure] 1) Define how each character changes through the game. 2) Communicate those changes clearly to the player. 3) Check that changes are sufficient, surprising, and believable. When: When planning character arcs. Why: People attend to what might change them, so transformation draws players in.
+- [procedure] 1) Ask what the player character wants. 2) Ask whether the game's mechanics can communicate that want. 3) Ask whether other characters have motivations of their own.
+- [procedure] Before writing for a customizable protagonist, answer two questions: what knowledge does the character start with, and why is the character so naive? Why: These answers keep the protagonist believable from the start.
+- [tradeoff] Concrete, easy-to-remember goals motivate players better, while abstract goals reach a smaller audience and need a matching budget.
+- [tradeoff] Adding characterization competes with clear gameplay explanation; the balance depends on how much immersion matters compared with how clearly goals are explained. When: Deciding dialogue depth in social or mobile games.
+- [pitfall] Artificial characters rarely show status behaviors, because creators do not notice they perform these behaviors themselves.
+- [fact] A character can be an agent through which a dramatic story is told, letting players empathize, or a vessel the player creates and directs.
+- [fact] Major characters strongly affect a story's outcome, while minor characters have little impact on it.
+- [fact] Characterization comes from what a character says, what they do, how they look, and what others say about them.
+- [fact] Character motivations live inside the fiction, while player motivations come from outside it, such as entertainment, social status, and curiosity about mechanics.
+
+## branching narrative
+- [definition] In a branching narrative, each choice leads to predetermined changes that alter individual plot and gameplay sections, while the branches rejoin at key points. (x2)
+- [mechanism] Each added choice multiplies outcomes exponentially, so branches cannot be fully authored; modeling every decision naively leaves each player missing most content. When: designing branching narrative. (x2)
+- [mechanism] In a branching dialogue, the player's politeness in chosen responses determines the outcome, such as an NPC letting the player pass or attacking. When: Dialogue choices gate progress.
+- [mechanism] Branches that converge at pinch points let choices alter sections of the story while the overall plot still moves toward a common climax.
+- [mechanism] When player choices physically alter the world, the changes and their harm to affected NPCs become visible in locations.
+- [mechanism] Player dialogue choices set conditions that the game later recognizes, changing character reactions or tailored content.
+- [mechanism] Post-level reports can vary with method, accuracy, kills, and surviving witnesses, so the reported story reflects how the player played.
+- [rule] Create the audience's desire to decide, then know when to fulfill it and when to hold it back. When: when designing story pacing.
+- [rule] Plan branching carefully, since poor planning produces broken paths.
+- [rule] Make every offered dialogue choice matter to the story, with distinct options and outcomes, so dialogue works as a game system rather than flavor.
+- [rule] Branching works fully only when nearly all content is generated emergently; with predefined events, limit branches.
+- [heuristic] In choice-driven stories, leave room for player choice in middles and endings while making players feel in control of outcomes.
+- [heuristic] Games without major story decisions still benefit from narrative design, which can reinforce a gameplay feature or convey brief world detail with little or no text. When: social, mobile and casual games.
+- [heuristic] Give a game element several narrative links across the world, not only its gameplay uses, so it deepens coherence. Why: The more links an element forms, the more elegant the world feels.
+- [heuristic] Random events built as dilemmas with branching outcomes, dialog and custom art add variety to a travel or journey mode.
+- [procedure] 1) Telegraph the big choice during build-up so players anticipate it. 2) Let players understand likely consequences before they choose. 3) Show ramifications within about thirty minutes and again at the end of the game. When: Designing a large, consequential choice. Why: Players engage more with choices whose stakes they understand and see paid off.
+- [metric] Twenty opportunities of three choices each, from start to finish, yield over five billion distinct story outcomes. When: estimating branching scope.
+- [tradeoff] Converging branches keeps scope manageable but can make choices feel pointless, so plan convergence deliberately rather than applying it as a late fix. When: scoping or designing branch convergence. Why: Converged choices lead to the same place.
+- [tradeoff] Branching gives story impact but costs at least twice the linear writing, and testing every variant takes more effort than producing content; use it only when the story justifies that.
+- [tradeoff] Branching is easy to build but has limited scope, so restricted choices can feel simplistic and some branches yield uninteresting outcomes.
+- [pitfall] Large branching dialogue causes narrative (coherence), asset (file count) and organization (tracking lines) problems, so visually scripting every branch becomes unmanageable.
+- [pitfall] Letting players reverse every serious bad outcome removes the sense of destiny and the sorrow of a doomed path.
+- [pitfall] Starting a branching design without understanding its costs can exhaust the budget.
+- [pitfall] If rejoin points are not planned carefully, branches feel disconnected from each other.
+- [pitfall] Repeating the same type of meaningful choice again and again can feel railroaded and dull.
+- [pitfall] Treating predefined choices as systems-driven decisions confuses their purpose and leads to designing them the wrong way.
+- [fact] Filming shared scenes with different dialogue but the same information does not relieve the tedium of replay.
+
+## narrative designer role
+- [model] A narrative designer needs four qualities: organisation and communication, understanding of the intended game experience, an ear for dialogue, and teamwork.
+- [model] The role designs the world, characters and plotlines, writes dialogue, and stays involved through testing, post-production and dialogue recording.
+- [model] Narrative designer responsibilities include being the go-to person for story assets, writing, designing and copyediting content, and keeping lore documentation current.
+- [definition] The narrative designer is the team's go-to person and primary advocate for the game's story, usually knows it best, and writes most narrative documentation from pitch to post-production.
+- [definition] A narrative designer combines writer and game designer roles, an overlap rather than their sum, aimed at telling story through mechanics; not every writer or designer fills this role.
+- [definition] Narrative designers need command of world-building, plot development and tempo, character design, dialogue, and how narrative draws players in via systems.
+- [definition] Narrative design is the craft of telling a story in a game with its own techniques, combining gameplay with visual and acoustic methods to engage players.
+- [mechanism] Changes made elsewhere in a project propagate into narrative content, so story and dialogue are revised constantly during development.
+- [behavior] Professional writers often reply to a story overview with proposals that reshape the entire game design. When: after receiving a story overview.
+- [rule] Study creative writing, fiction and screenwriting conventions, past storytelling devices and what makes strong story, and keep writing to improve.
+- [rule] Identify every way the game already uses storytelling, then plan with the team how to carry each one out. When: Planning environmental narrative.
+- [heuristic] Work with colleagues who see that narrative can improve gameplay, since that makes working with narrative staff easier for them.
+- [heuristic] Writing is usually the easiest game element to change in production. When: A team must revise content late in development. Why: Text changes need less work from other departments than gameplay or art.
+- [heuristic] If you cannot get from one story point to another because a middle point is required, try removing that middle point. When: story progression is blocked by a required scene.
+- [pitfall] Assuming narrative design equals writing is a mistake: strong writers may lack the design skill to make story work through game rules, and dialogue skill alone does not cover the role.
+- [pitfall] Original creators may lose control of a world's defining features, since adaptations can establish icons the source never intended.
+- [pitfall] Assuming interactivity cancels the craft of storytelling leads to poorly told stories.
+- [pitfall] Film and novel writers often struggle to move into games, either resisting player-driven story or resisting shared authorship in a multidisciplinary team.
+- [fact] A writer's role can range from writing dialogue where needed to scripting the whole story. If you are not a strong writer, bring one in early and work with them throughout.
+- [fact] Narrative designer duties range from worldbuilding, story concepts and character profiles to dialogue, codex entries, item naming and marketing blurbs.
+- [fact] A narrative designer should understand interactive storytelling and the dynamics of game stories, and be able to implement story through scripting and design.
+- [fact] Writers and narrative designers share some tasks, including overall story development, establishing and maintaining tone, and writing content. Narrative designers also own planning, implementation, scheduling and scope tracking. When: Dividing narrative work across a team.
+- [fact] A narrative designer may originate a concept, write a pitch for another person's idea, or present a pitch directly to executives. When: During the concept phase.
+- [fact] Narrative designers write backstories and histories and work with artists and animators on character appearance and behavior.
+- [fact] In tabletop roleplaying, a human game master voices every non-player character and can respond to anything players do, because a real person decides each reaction.
+
+## scripting and player control
+- [definition] A hard script is scripted content that plays the same way every time, such as fixed character dialogue.
+- [definition] A soft script sets up conditions for an event and lets game systems resolve its outcome, as in combat encounters.
+- [definition] Soft ordering encourages a sequence of content without guaranteeing it, using skill gating, timing, and spatial arrangement.
+- [mechanism] Dialogue grows more anxious the longer a character lingers in a hazard, signalling rising stakes and lost hit points; trigger lines at story locations so urgency builds near climactic events. When: when a character lingers in a hazardous area; when the player nears climactic events at story locations. Why: The escalation tells the player the threat is growing and that health is dropping. (x2)
+- [mechanism] A linear backbone of fixed events can still hold meaningful decisions when choices change how an event resolves, such as fighting, dueling, or paying a costly price for peace.
+- [mechanism] Even when dialogue is hard-scripted, letting players choose which lines to say makes the same scene play out differently under different choices.
+- [rule] Preserve the feeling of freedom for the participant rather than actual unlimited freedom.
+- [rule] Do not offer a build choice and then force a behavior pattern that contradicts it, such as placing a stealth, non-lethal player in situations requiring killing. Why: Players find it hard to identify with a protagonist whose behavior was forced against their build.
+- [rule] In first-person games, direct the player's gaze toward important objects using lines, contrasting colors or lighting.
+- [heuristic] When players design the protagonist's look, keep key story events fixed, so every version of the character shares the same central losses and stakes. Why: Shared events keep the plot coherent while appearance varies.
+- [heuristic] Enforce a fixed content order when a setup must precede its payoff, when too many plot threads should not run concurrently, or when mechanics should be taught gradually.
+- [procedure] 1) Disable movement during a scripted sequence. 2) Keep shooting or another action enabled. 3) Time the sequence so the player's action matters. When: Semi-interactive scripted events that must break normal pacing.
+- [tradeoff] Soft scripting spans heavy designer control to wide freedom. Active controls let players watch, walk past, run, or interfere; partly or fully limited controls keep scripted events on track. When: Deciding whether controls stay active during soft-scripted events.
+- [tradeoff] Granting players more freedom increases their control, but it becomes harder for creators to orchestrate the most dramatic plot beats.
+- [tradeoff] Forcing every player through full backstory tends to simplify the quest, while skippable dialogue lets story-focused players stay and gameplay-focused players reach rewards quickly. When: Deciding whether dialogue can be skipped. Why: Repeated mandatory explanations wear down quest quality, even for QA staff.
+- [tradeoff] Hard scripts give authorial control but cannot adapt to player choices. Soft scripts and emergence give variety but surrender that control.
+- [tradeoff] Soft scripting protects flow by keeping controls active, but designers lose control of camera angle, visibility, and player interference.
+- [tradeoff] Demonstrating characters teach through watched action, but voice acting raises file size and cost, and extra animation can add months of work. When: the production budget is limited. Why: Voice and animation are production costs.
+- [tradeoff] Narration that directs the player against real choices can suit comedy but undermines tension in serious experiences.
+- [pitfall] A story can suffer badly when players derail planned events.
+
+## ambient dialogue
+- [model] Ambient dialogue takes three forms: overheard NPC conversations, local street chatter that teaches about a place, and conversations involving the player's own character with companions or party members.
+- [definition] Ambient dialogue is any talk during gameplay from the player character, AI companions, voiceovers, radio headsets or passersby, triggered by in-game events.
+- [definition] Ambient lines come in two kinds: generic, short situational lines that often hint direction, and customized one-time lines, usually for important missions, giving specific navigation clues.
+- [mechanism] Because the player keeps moving during ambient lines, they can absorb world detail without being pulled out of play. Why: Gameplay continues during the dialogue.
+- [behavior] Extended ambient dialogue leaves players as passive observers, so they tend to skip it. When: during action games with long non-interactive dialogue. Why: Players cannot respond to non-interactive speech, so they disengage from it.
+- [rule] Ambient dialogue must never force the player to stop or pause play, must be supported by the gameplay situation, and its player-character lines offer no choice.
+- [rule] Keep all other dialogue optional and skippable so it does not slow players who want to act. When: Dialogue is not required for plot or motivation. Why: Players who want to act should not be slowed.
+- [rule] Never place critical narrative information in generic banter, because it is interruptible and players may never hear it. Why: Interrupted banter can be missed entirely.
+- [rule] Customized banter may carry mission or narrative information, but coordinate its placement with level design so it doesn't collide with or get interrupted by other encounters. When: Writing customized banter tied to a level.
+- [rule] Add ambient sequences, such as NPCs walking, chatting or buying goods, or a cat chasing a mouse, to make the world feel alive.
+- [rule] Avoid two-way conversation with the player character by design, using world and emergent tools that do not require it. When: the story would otherwise need rich dialogue with humanlike characters. Why: current technology cannot support it convincingly.
+- [heuristic] Barks often need many variant lines to express one simple idea, so they add far more writing than their size suggests.
+- [heuristic] Companions can follow the player and share information at key points, then thank and reward the player ambiently after objectives, keeping story inside the game world.
+- [metric] Action-game players have short attention spans of roughly fifteen to twenty seconds, so keep each dialogue exchange brief. When: in action games.
+- [tradeoff] Shouted ambient lines in fully voiced action games can carry much story, but avoid exposition in intense combat: players rarely listen and audio engines often drop voice under battle noise. When: Story via shouted lines: fully voiced action games. Exposition: busy or intense combat scenes. Why: Voice lines can be heard without pausing gameplay; players rarely listen while issuing orders, and audio engines often do not prioritize voice over battle noise.
+- [tradeoff] Ambient dialogue keeps action uninterrupted but gives players no say; interactive dialogue lets players shape the conversation.
+- [fact] Ambient dialogue is triggered by entering an area, taking damage, or attempting an action, such as opening a locked chest.
+- [fact] Ambient lines can be ignored, though they often carry useful instructions such as directions.
+- [fact] In first-person shooters and real-time strategy genres, ambient chatter is often the main or sole dialogue form and can carry a compelling narrative.
+
+## conflict and drama
+- [model] A story's core structure has three ingredients: a character with a goal, obstacles that block the goal, and other characters whose goals conflict with it.
+- [model] Dramatic conflict takes six forms: character versus character, nature, machine, self, society, and fate.
+- [model] Game conflict takes four forms: player against player, player against the system, player against multiple players, and team against team.
+- [model] Basic dramatic elements such as challenge and play appear in all games, while premise, character, and story are more complex and explain abstract systems.
+- [definition] Conflict arises when the protagonist's goal is opposed by the environment, an antagonist, or both.
+- [definition] Dramatic elements are a toolset that gives gameplay context and overlays the formal system to make it meaningful and emotionally engaging.
+- [definition] An external want is the goal a character pursues in the plot, while an internal want is a deeper personal need; strong stories give the protagonist both, resolved at the climax.
+- [mechanism] Conflicting goals produce unpredictable outcomes, which creates surprise.
+- [mechanism] Arguments are interesting because status seesaws back and forth as each side tries to raise its own status or lower the other's. When: When writing conflict between characters.
+- [mechanism] In games, drama comes from the player's own struggle to overcome obstacles (agency), whereas films and novels rely on empathy with characters who struggle.
+- [mechanism] In games the player controls the protagonist, so the story often gives only an external motivation, such as defeating an enemy. Why: Players direct actions, so internal motivation is harder to deliver.
+- [mechanism] The more intense the conflict, the deeper it reveals a character's true values. When: When designing character conflict. Why: Pressure forces choices that expose inner nature.
+- [rule] Deliver backstory through environmental narrative and on-demand storytelling rather than adding it to quest text. Why: Keeps quest texts short without losing world depth.
+- [heuristic] Mapping conflict categories to both the premise and the formal system deepens players' relationships with both.
+- [heuristic] Link a character's present constraint, such as a need to stay hidden, to a specific past event so the constraint reads as caused rather than arbitrary. When: writing a character background.
+- [heuristic] A trusted ally's betrayal can expose a character's own blind spots, forcing them to ask why they missed the warning signs.
+- [pitfall] If story and characters dominate early work, they can obscure the gameplay. When: During early design.
+- [pitfall] Treating every backstory detail as essential to the main story makes the experience slow and unfocused.
+- [fact] In many games, the story is only backstory whose progression does not depend on player actions.
+
+## story scope and genre tone
+- [definition] Story is the sequence of events in a game, which may be linear and scripted or branching and emergent.
+- [definition] Storytelling covers setting, pacing, environmental narrative, gameplay and the emotions a game evokes, not only written words.
+- [mechanism] The same unexpected event breaks presence in a serious world but reinforces the world's rules in a comedy world. When: An object behaves in an unrealistic way.
+- [rule] Violence as a theme is legitimate; glorifying it or reinforcing discrimination for fun is the line to avoid.
+- [rule] The expanded story breakout should be a beat-by-beat account of the critical path, while side stories go elsewhere.
+- [rule] Cut any content that does not change the story's progression, keeping genre and budget in mind.
+- [heuristic] Tone can vary within a genre or theme; a humorous action-adventure has more absurd situations and banter than a serious military simulation, and grim horror can include dark humor. When: Choosing tone for a genre or theme.
+- [heuristic] Use an unusual story element to explain unusual mechanics, and make sure it does not confuse or alienate the player. When: unusual mechanics need story support, or the world feels flat.
+- [heuristic] A war-torn world centers on factional war, while a fallen world centers on hopelessness; a setting may lean toward one emphasis. When: Deciding how dark a setting's conflict should be. Why: Choosing the emphasis clarifies the tone of the world's lore.
+- [pitfall] Showing a strange item for the first time without setup makes it feel arbitrary.
+- [pitfall] Piling up many strange story elements makes the story puzzling; remove or merge some of them. When: several weird elements coexist. Why: Accumulated strangeness confuses players.
+- [fact] Surreal elements are common in games and must be integrated smoothly into the world.
+- [fact] Most newcomers find storytelling in games harder than they expect.
+- [fact] Narrative design can be integrated into any game genre.
+- [fact] Small content such as data pad entries, diary pages, ability descriptions, barks and onomatopoeia shapes the overall gameplay experience.
+- [fact] Games use story to different degrees: some only as backstory that sets mood and motivation, others with a narrative arc that structures the whole experience.
+- [fact] One game alone does not by itself change how players perceive their bodies, but cultural objectification of women has some impact on implicit biases.
+
+## representation
+- [definition] A stereotype is a cliche that uses a single concept to give a character superficial development and nothing more.
+- [behavior] Briefly playing a game with stereotyped enemy characters from a group can increase stereotyping of that group. When: Players are exposed to a game where a group is portrayed only as enemies. Why: Repeated portrayals can shape attitudes even after short exposure.
+- [rule] Subject content perpetuating discrimination against women, BIPOC people, LGBTQIA+ people, or people with disabilities requires ethical review. Why: Stereotypes exist independently of games, so using them for entertainment without moral questioning is the concern.
+- [tradeoff] Familiar tropes reassure players about a new IP but risk a generic result; distinctive culture avoids that but takes more worldbuilding effort.
+- [tradeoff] A one-note stereotype may be all a project can afford, but a trope used to introduce a multilayered character rewards writer and player more. When: choosing character depth under limited budget or narrative focus.
+- [tradeoff] Gratuitous sexual content damages atmosphere and believability in serious narratives and alienates players who are uninterested in it.
+- [pitfall] Reusing a fantasy-style 'tell me about your race' dialogue template for real groups turns it into offensive stereotyping. When: Writing dialogue about real ethnic or national groups. Why: Invented races are fiction, but real groups are not, so the same framing becomes a stereotype.
+- [pitfall] Basing a character's personality or appearance on one identity marker produces stereotypes and flat characters, and this happens to white, male, and heterosexual characters too. Why: Identity traits are only one part of a whole person, so reducing a character to one of them lacks nuance.
+- [pitfall] Female, minority, gay, and transgender characters are often written as stereotypes that hurt, lack agency, and lack complexity, a problem seen in all media.
+- [pitfall] Defining strong women mainly through sexuality or appearance, or making them secretly in love with the protagonist, reduces their role to romantic decoration rather than capable characters.
+- [pitfall] Gay and bisexual characters are often confined to best-friend roles defined by romantic longing for the protagonist, and spurned ones often turn villainous.
+- [pitfall] Common portrayal pitfalls include reducing trans characters to men in dresses, using shock reveals, mocking or pitying them, and casting them as unstable or villainous. Why: These portrayals ignore the complexity of trans identities.
+- [fact] Institutions funded by a central authority can make a region a cultural center whose specialists shape the wider country.
+- [fact] Female characters are often defined by femininity, sexuality, or romantic interest in the player-character, and supporting women often compete for the male lead's attention.
+- [fact] Common female stereotypes include beauty or appearance obsession, seeking a man's affection, nurturing or supportive roles, and being less athletically gifted than men.
+- [fact] Trans female characters appear in games more often than trans male characters.
+
+## tropes and cliches
+- [model] Successful subversion has two keys: a strong understanding of the trope being subverted, and believable characters.
+- [definition] Trope subversion introduces a character with a familiar trope as shorthand, then reverses it to create an unexpected arc or plot twist.
+- [definition] A trope is a widely known concept, recognized by the audience, used as shorthand that sets expectations players can react to quickly.
+- [rule] Do not portray a nation or ethnic group as villains for plot convenience; include sympathetic members of that group, such as a strong ally or love interest. When: Writing antagonists tied to a real nation or ethnicity. Why: Demonizing a whole group for convenience is unfair and damages credibility.
+- [rule] Use subversion only when it serves the story; if there is time to introduce a character properly, do that instead of risking a gimmick.
+- [heuristic] Cameos and fan-appreciation content reward fans and developers only when used sparingly; frequent use clutters content and lowers the value each one gives fans.
+- [heuristic] A protagonist can subvert media stereotypes by giving them a non-stereotypical profession and physique, which makes players question assumptions and grow to care for them. Why: Players who see a character defy expectations tend to empathize more.
+- [heuristic] Before subverting a trope, understand why it is negative and research how the group has been portrayed, since that shows how to challenge those views.
+- [heuristic] A trope turns into a stereotype when that trope is all the character is, with no inner world or motivations beyond it.
+- [procedure] 1) Begin with the individual character, not with a question about a demographic. 2) Study how film and other media depict and typecast marginalized populations. 3) Apply those findings to sidestep or undermine clichés. Why: Starting from a demographic tends to produce clichés; examining media representations shows where those clichés originate.
+- [tradeoff] Overusing a cliché wears out player interest, but avoiding clichés entirely can leave players unable to relate, since nothing familiar anchors them. When: Choosing premises or tropes; designing an offbeat setting. Why: Repetition stops feeling engaging, while players need something comprehensible to understand the game.
+- [pitfall] Amnesia answers every question at once but is often met with eye-rolls from players, though it rarely stops them from playing.
+- [pitfall] Overusing trope subversion turns it into a gimmick.
+- [pitfall] Templates that rely on gender or other stereotypes are useful for demonstration but should not appear in finished products.
+- [fact] Stereotyped roles include Middle Eastern characters as terrorists, Black, Asian, and Latino characters as gang members or prostitutes, Black male characters as imposing or tanks, East Asian characters as martial arts masters or tech nerds, and characters defined as exotic.
+
+## character design and conflict
+- [definition] Status is a constant, mostly subconscious negotiation over who is in charge of an interaction, and it is a behavior a character performs rather than a fixed property. When: Whenever two or more characters interact.
+- [mechanism] Comedy arises from unexpected status reversals, such as followers mocking a leader or enemies being mocked by those beneath them. When: When writing comedic character interactions. Why: Reversing expected status produces surprise.
+- [mechanism] Making players dislike a villain steers their choices against him. When: Designing player choices against antagonists. Why: Emotional dislike motivates opposition.
+- [heuristic] The stronger the contrast between a governing trait and its conflicting trait, the more interesting the character's inner conflict.
+- [heuristic] Supporting characters should make players feel important without making the world implausible, and villains must threaten enough to motivate defeat while allowing frequent player victories.
+- [procedure] 1) List the character's traits. 2) Check that they appear in its words, actions, and appearance. 3) Check that single lines or actions can carry several traits at once. When: When writing or designing a character. Why: Traits left as labels in a design document are not felt by players.
+- [procedure] 1) When a character receives news, avoid a direct reaction. 2) Do something unexpected that draws attention back to the character. 3) Return to the character's established persona. When: When writing a dramatic reaction. Why: Unexpected reactions regain audience attention.
+- [tradeoff] Simple characters doing mainly physical actions are the easy path in games, but deeper characters are possible on a simple gameplay structure. When: When deciding how much character depth a game needs. Why: Players want richer characters, and depth can be built alongside simple mechanics.
+- [pitfall] A protagonist whose goal never wavers and has no internal conflict, paired with a threat that never escalates, misses an opportunity to integrate story with gameplay. Why: stakes stay flat so the drama adds little to the mechanics.
+- [pitfall] Supporting characters who lack their own motives serve the story rather than making choices that affect the plot. Why: Without motives, they cannot drive events and exist only to support the protagonist.
+- [pitfall] Turning a spurned gay or lesbian character into a vengeful villain repeats a harmful stereotype, whether the story uses it for sympathy or shock.
+- [pitfall] Assigning stock mechanics to a character can contradict that character's actual abilities and story. When: Designing character abilities or party roles.
+- [fact] Status can be signaled through slow motion and spatial position, where high-status characters occupy the most important place in a room and low-status characters move where they are unlikely to be noticed.
+- [fact] Villain design faces recurring tensions: making a villain threatening enough to motivate defeat while players keep winning against the villain's forces, and characterizing a villain the player cannot meet until a final showdown. Why: Players expect constant victories and may win too early against a villain without a final confrontation.
+
+## emergent narrative
+- [definition] Emergent story is generated during play by mechanics, players, and chance interacting, creating plot, character, and theme in response to player decisions rather than a fixed designer sequence.
+- [definition] Interactivity creates emergent narrative because each player's actions differ, so designers guide experiences rather than fix them. Why: Player choices produce different stories.
+- [mechanism] Story sequences that trigger depending on player actions let narrative respond to play rather than follow a fixed path.
+- [mechanism] Spaces with identifiable qualities and interactive features give players reasons to use them in unplanned ways, creating emergent narrative that can outlive the original design. Why: Players find reasons to return to and act within distinctive spaces.
+- [rule] Give small backstory fragments at random after combat or during exploration, and hide optional items such as notes to reward thorough exploration. When: Delivering lore in gaps between major beats. Why: Lore tied to actions the player takes feels earned rather than arbitrary.
+- [rule] Designers can use emergent techniques to make game scenarios more believable and unpredictable.
+- [heuristic] Use emergent story when player-driven variety matters more than authored narrative control.
+- [heuristic] Insert authored story segments at intervals within a procedurally set sequence of events to keep the plot moving forward. When: Procedurally generated games that need a continuous narrative thread.
+- [fact] Gameplay snapshots arranged as captioned scrapbooks and shared online let players communicate their emergent stories to others.
+- [fact] Whether emergent story will significantly change games is still open, but designers keep seeking ways to integrate story without diminishing gameplay.
+- [fact] Apophenia underlies nearly all emergent stories, and it is what makes characters and feelings possible in them.
+- [fact] Emergent stories can cross from fiction into real life: a player's own experiences, such as a changing relationship formed through play, become true stories no designer can author.
+- [fact] Emergent story can only contain events the mechanics model, so subjects outside the game's systems, such as mundane everyday routines, cannot emerge.
+
+## moral choices and consequences
+- [model] Players are moral agents who make choices within game rules, which force particular behaviors through their design. Why: Rules define the options players have, so the moral weight of choices depends on the rules.
+- [mechanism] Game narrative can evoke guilt that film or books struggle to produce, because reflective meaning can shape visceral responses through player complicity. Why: Players who take part in a morally troubling action feel complicit.
+- [mechanism] When an injury or disease cannot be cured, care shifts toward relieving suffering, so healers specialize in comfort and palliation. When: Designing healing practices in a setting with incurable conditions. Why: Without a cure, the practical goal becomes reducing pain and improving quality of life.
+- [mechanism] Games that place players in the position of a refugee or an immigrant officer use player choices to convey moral and social perspectives. When: when designing games with social awareness goals. Why: Making players decide within a constrained role builds understanding of that role.
+- [rule] Never presume a player will pick the ethical option, and never presume your idea of morality matches someone else's.
+- [rule] The more complex the narrative, the more past player choices from gameplay and dialogue must be honored before writing new content. When: In narratives with many branching decisions.
+- [heuristic] Give each moral option real weight and a believable reason, such as reasons to spare or kill a villain, so consequences reinforce why the player chose as they did. When: Designing right-versus-wrong or good-versus-evil choices where player values are the point of the scene. Why: Consequences must reinforce why the player chose as they did.
+- [heuristic] Moving the audience's empathy from one character to another through framing and shot choice steers how they feel about the story. When: Directing audience attention to particular characters. Why: Viewers' empathy follows the character the camera or framing emphasizes.
+- [heuristic] Interactive fiction that approaches the full dream should at least keep the potential for tragedy. When: designing ambitious interactive stories.
+- [pitfall] Story content that does not fit the game's established setting wastes production effort, however well written it is.
+- [pitfall] A late moral choice feels nonsensical when players have already committed many actions that contradict its moral stance. When: earlier play has rewarded or normalized contradictory actions. Why: the choice no longer fits the player's accumulated behavior.
+- [fact] Some consequences stay hidden until a player replays the game to see alternatives.
+
+## critical path and quest structure
+- [model] Many RPGs combine a fixed chain of mandatory quests, the critical path (critpath), with many optional side quests; designers should plan both layers. When: Designing branching RPG quest structure. Why: The fixed chain advances the plot while optional content gives players freedom.
+- [mechanism] An item interaction, such as photographing a marked location, can reveal the next destination and gate progression.
+- [rule] Make in-game challenges match the protagonist's obstacles; unrelated challenges weaken the experience, while matched ones fuse story and game structure. Why: Alignment joins narrative and mechanics.
+- [heuristic] Talk-to and breadcrumb quests can develop deeper storylines and connect characters.
+- [heuristic] Build each critical path quest around one or two big reveals.
+- [heuristic] Lines can be combined to save space: dialogue carries the story while the instructions line carries the search location and reward. When: When screen or text space is tight.
+- [procedure] 1) Summarize the critical path as a few large events. 2) Check that the summary is simple enough for several writers to build on. 3) Plan information flow, set concrete goals, and keep the main plot visible in side content. When: several writers share one large critical path.
+- [procedure] 1) Player meets an NPC with a problem and is asked for help or chooses to get involved. 2) Player visits places, finds clues or talks to characters to learn why the problem exists. 3) Player either solves the problem or decides whether it should be solved. When: As a starting skeleton for critpath and side quests.
+- [tradeoff] A critpath backbone with optional side content gives wide player freedom, suited to long games; it is costlier to write than a single linear chain. When: Long games where designers want wide freedom. Why: Optional content multiplies writing and integration work.
+- [pitfall] Contradictions or inconsistencies between gateways break a world's solidity and can reduce the value of every product.
+- [fact] An adaptation that mirrors a game's quest path and mechanics teaches viewers which strategies to use when they play.
+
+## game story foundations
+- [definition] A premise places a game's action in a setting or metaphor, giving abstract rules a dramatic context.
+- [rule] Use a gameplay segment to carry the player through the aftermath of a scene, letting them act out its consequences before a closing cutscene. When: moving from a cinematic into gameplay and back. Why: Interactive aftermath keeps the player involved between scripted moments.
+- [pitfall] Story-to-play transitions that feel forced break the flow of the experience, as early implementations of this method often did. When: Joining authored story to play segments.
+- [fact] Game characters mostly use physical verbs such as run, shoot, jump, and climb, while stories rely on communication verbs such as ask, argue, and persuade.
+- [fact] Integrating story with gameplay and building deeper empathy for characters are named hard problems in game design.
+- [fact] Games' emotional impact has not yet reached its potential, so designers should master traditional drama tools and understand good gameplay.
+- [fact] Games needn't include narrative to be enjoyable, yet story can stir emotion.
+- [fact] Game stories range from none at all to sprawling epics, but all of them are interactive, which sets them apart from traditional media.
+- [fact] Game stories fall into three structure categories: linear, branching, and open, each with its own writing requirements.
+- [fact] Most games have stories, either as backstories or as structures that shape play, and these stories can be treated as generated content.
+- [fact] Games can convey social messages about migration, conflict, depression, sustainability, and simple living, presenting them as art that moves players and prompts reflection.
+
+## genres marketing and licensing
+- [definition] A licensed IP is a game based on an existing movie, TV show or novel, or a sequel to an existing game.
+- [definition] Image-led advertising portrays a product within an attractive scene instead of enumerating its features.
+- [behavior] Stereotypes slip under notice because they are so prevalent that even the groups portrayed may not notice them. Why: Stereotypes are common enough to look normal, and some truths within them make flat characters harder to spot.
+- [behavior] Every story leaves an implicit message, intended or not; games without a chosen theme tend to end up with 'good will conquer evil against all odds.' When: Games without a deliberate theme.
+- [behavior] Culture shapes stereotypes, especially when they are not clearly condemned, and people may absorb them implicitly. When: Stereotypes appear in media without explicit criticism. Why: Unchallenged portrayals are absorbed without conscious awareness.
+- [rule] Avoid promising a specific emotional moment in marketing, because players then watch for it during play and may judge the game by whether it appears. When: writing marketing copy for a game. Why: Promised moments become expectations players actively track.
+- [heuristic] Instrumental and atonal techniques from 20th-century composers give flexible ambiguity that suits horror music. When: Scoring horror or tense games. Why: Ambiguity lets intensity shift without jarring transitions.
+- [heuristic] Marketing should sell the ultimate purpose or meaningful fantasy, such as becoming a hero who saves the world, rather than only listing actions like shoot, explore or craft. When: when writing marketing for a game or mode. Why: purpose gives players a reason to care about actions.
+- [heuristic] Add humor or absurdity to a grim setting to give players emotional relief, so the setting's heaviness does not overwhelm them. When: the core setting is bleak and survival-focused. Why: emotional relief keeps players engaged.
+- [fact] Screen media may influence players' attitudes, beliefs, and prejudices toward groups, but the evidence is uncertain and effects are not established as causal; state such claims carefully, not overstated. Why: Evidence is mixed, so overstating media effects is a pitfall.
+- [fact] Narrative design adds entertainment value in crowded markets and gives players small insights into the game's world.
+
+## science and setting plausibility
+- [definition] A discipline that is both science and divination uses observed patterns to predict events such as famine, disasters and changes in leadership.
+- [behavior] Audiences judge whether a device is plausible against the technology they believe exists, so a premise can seem credible in its era and absurd later. When: Premises set in an earlier or future period. Why: Plausibility depends on perceived technological progress at the time.
+- [rule] When realistic behavior would bore players, choose the version that feels exciting, even if it is less accurate. When: Tuning speed or movement in action games. Why: Accurate behavior can reduce engagement.
+- [rule] Trace each fantasy archetype back to its source and examine the assumptions it carries before adopting it into your world. Why: Unexamined assumptions get copied into the new world.
+- [rule] Ground future technology in current scientific research and theory, which makes far-fetched ideas easier for players to accept. When: hard science fiction. Why: Established science anchors the speculation.
+- [heuristic] Versions of a long-lived story vary in details, but the element that stays constant across versions often carries a truth to build a theme on. When: When looking for a truth-based theme in a myth or traditional story. Why: Survival across thousands of years suggests the core holds a shared truth.
+- [heuristic] Set a fantasy era by analogy to a real historical period, which helps define the world's tone and technology level. When: Early setting design for a fantasy world. Why: A familiar historical reference quickly communicates expected technology and atmosphere.
+- [tradeoff] Hard science fiction requires explicit, consistent rules, while science-as-magic settings stay looser but give players less rigorous grounding.
+- [fact] Games can create utopias, ideal societies against which people compare other nations and cultures.
+- [fact] Players from a real-world location notice factual errors, and such mistakes are often posted publicly within hours of a game's release. When: Writing about a real country, city or culture.
+
+## story delivery methods
+- [rule] Do not present story as a separate block delivered to a passive audience; deliver it through gameplay or alongside it as often as possible. Why: Story presented as something told to the player conflicts with interactivity and weakens the player's sense of control.
+- [rule] For games built on resource management, unit movement and tactical combat, tell story as events happen, with short cutscenes at the start and end of a map.
+- [rule] Use short cutscenes when a story is present and sessions allow it; skip them in brief-session games without a narrative focus. When: deciding whether a game needs cutscenes. Why: Cutscenes cost session time that story-light games cannot spare.
+- [heuristic] Use a cipher when the goal is for players to feel they are playing themselves.
+- [heuristic] Reveal essential world knowledge that the protagonist holds early, before the player bonds with the character, since later the chance to convey it through the protagonist is lost.
+- [heuristic] Assume players have forgotten any information they were never given a chance to comment on.
+- [heuristic] Keep event interpretations simple so they prompt the player's imagination; complex ones crowd out the player's own story-making.
+- [fact] Simpler interactive stories with limited structure and freedom can still be enjoyable and memorable, even though the full dream has not been achieved.
+- [fact] The main delivery tools for linear stories are cutscenes and environmental narrative, which uses level design, supporting characters, and ambient dialogue. When: Linear game story delivery.
+- [fact] Video recordings can play on loops or from projectors, and may come from television, news, propaganda, home video, or security footage.
+
+## story testing and feedback
+- [definition] A table read is a session where a group speaks the script aloud, each person taking a character, to reveal awkward dialogue pacing, poor word choices, and clumsy sequences.
+- [behavior] Feedback from people who do not know writing jargon is often vague, and notes from higher-ups tend to be the worst.
+- [behavior] The first storyboard reveals what others understood and what was forgotten because it seemed obvious to the writer. When: Reviewing a first storyboard.
+- [rule] The narrative designer writes story material and keeps all of it consistent with the rest of the game.
+- [heuristic] Ask how essential the story is at a given moment; consider moving it to another point or leaving it to the player's imagination.
+- [heuristic] Restructuring a sequence so the player takes charge can address a vague note even if the commenter never notices the change.
+- [heuristic] Before investing in story, ask whether the game really needs one and why players would care about it. When: any game, including abstract ones. Why: Story only earns its place when it adds value.
+- [procedure] 1) Set the relative status level of each character. 2) Show status behaviors suited to each level. 3) Check that status conflicts and status changes are interesting. 4) Give the player chances to express status. When: When making characters react to each other through status.
+- [procedure] 1) Check whether the premise is compelling and imaginative. 2) Check whether characters are unique. 3) Check whether the story drives gameplay or emerges from it. 4) Check whether players play because of the story or in spite of it. 5) Identify which story and character elements work or fail for players. When: Evaluating a game's story.
+- [procedure] 1) For each part, ask what players should know afterward. 2) Check whether testers found that information easily. 3) For each section, list the mechanics taught, introduced, or heavily used, and check that testers understood them. When: building a testing plan.
+
+## simulation and systemic stories
+- [model] Stories can be generated by simulating characters in a world and recounting events, or by planning a narrative sequence from an author's goals; game stories often need a hybrid of both.
+- [definition] A sportscaster system interprets game events into a coherent narrative with character, tension, climax, and resolution, and can be an advanced form of recordkeeping.
+- [rule] For management simulations, limit story to short, non-distracting plots on the sidelines.
+- [heuristic] Analyze dynamically generated situations through a story lens as well as mechanical criteria, since the story lens brings a large set of narrative analysis tools. When: evaluating dynamically generated situations.
+- [procedure] 1) Pick a sample narrative item. 2) Apply an unreasonable change request, such as changing a character trait, the genre, or the climax type. 3) Revise the affected dialogue and bible sections. 4) List the other effects the change causes. When: practising adapting under pressure. Why: Extreme requests reveal how far one change spreads through narrative work.
+- [pitfall] Incorporated actions can expand without limit, since each repeat invites further reactions, so close off the response scope in advance. Why: repeated actions demand escalating responses.
+- [pitfall] Games find it very hard to systemically interpret the events that matter to people.
+- [fact] Sports games such as baseball and golf produce thousands of player stories although their designers never planned those stories.
+- [fact] Story play moves the narrative toward a conclusion, while open-ended play, such as exploring, neither advances nor blocks the story.
+
+## believability
+- [definition] An analogue is a fictional element that alludes to a real counterpart found in research, without copying it exactly.
+- [mechanism] Analogues feel believable because they echo something real, so players accept their plausibility even without noticing why. When: designing fictional worldbuilding elements. Why: The real counterpart supplies the sense of truth.
+- [behavior] A sound source large enough that its origin is hard to pinpoint can create unease similar to a rear sound.
+- [rule] Prefer consistent, believable game sound over strict realism, because perceptual reality is unachievable in games and players judge sound against everyday listening. When: Designing sound for immersion, including fantasy settings. Why: Players expect sound to behave as it does in the physical world, and consistency sustains immersion.
+- [rule] Prioritize what players believe and enjoy over physical accuracy when shaping a story world. When: Designing settings, devices or events in a story world. Why: Players judge plausibility by credibility and fun, not by strict physics.
+- [rule] Use analogues for governments, settings, inhabitants, characters, and time periods when the world must feel believable but need not match a real place or event exactly. When: worldbuilding in realistic or fantastic games.
+- [fact] Listeners use timing and filtering differences between the ears to focus on one voice in a crowd, the cocktail party effect.
+- [fact] Sound can evoke empathy, hatred, and love more readily than visuals alone, and higher-quality audio can make visuals seem better. When: deciding how much investment audio needs. Why: Audio strongly shapes emotional response and perceived quality.
+
+## narrative tools and implementation
+- [model] Narrative designers also implement content, including scripted prototypes of interactive elements, work with external writers to make material game-relevant, keep story consistent across departments, and support marketing.
+- [model] Implementation tools include quest-based narrative, mission-based narrative, environmental narrative, graphical perspective, and player attention span.
+- [model] Narrative tools driven by mechanics come in three types: authored plot, environmental storytelling, and emergent story.
+- [definition] Hybrid tools such as loudspeaker news, dropped pamphlets, town criers, car radios, stock tickers, and overheard conversations convey world state in present tense rather than advance plot.
+- [definition] A narrative tool is any device that forms a piece of story in the player's mind.
+- [rule] Maintain an internal wiki that records what was, what is, and what will be in the game. When: During development of a game with lore. Why: A single record of details keeps the whole team consistent.
+- [heuristic] Different practitioners use different names for the same narrative tools, so understanding what a tool does matters more than its name.
+- [heuristic] Narrative design can solve some testing problems, such as supplying a story or worldbuilding explanation for a glitch.
+
+## transmedia and tabletop
+- [definition] Transmedia tells multiple stories in one world across fiction, comics or manga, film, animation, prose and games, rather than only in games, deepening the experience for devoted fans.
+- [definition] A transmedia world is a fantasy world reached through many media, for instance books, movies, cartoons, merchandise, and digital play, where each product is a gateway into a different part of it.
+- [mechanism] In tabletop roleplaying, the game master's descriptions and player responses drive the world, so its history depends on what players do.
+- [heuristic] Focusing on a single medium is usually not enough for a world to succeed.
+- [procedure] 1) Have technical designers set up tokens early in the design process. 2) Use tokens for forms of address, names, factions, cities and regions where the player's choices vary them. When: Writing dialogue for games with player-chosen identity. Why: Early setup keeps lines consistent as the dialogue grows.
+- [fact] Most strong transmedia worlds began as a strong product in one medium and stayed strongest in that original medium.
+- [fact] Tabletop RPG sourcebooks keep a product line alive with backstory, city descriptions and monster ecology, but they mainly serve the game master rather than players.
+- [fact] A story can continue in other media such as novels or comics, and transmedia is a large market.
+
+## game localization
+- [rule] Keep localization notes clear and well organized, and send lines with context, since lines sent without context produce poor translations and waste budget.
+- [rule] Explain the meaning of sentences and idioms to translators every time they ask, even when repetitive, because bad translations are traced back to the writer. When: A translator asks about meaning.
+- [rule] Consider culturalization across territories, since content fine in one place may offend or be misunderstood in another. When: games distributed in multiple territories.
+- [rule] Treat any words drawn into art, such as a sign on a door, as text that must be translated along with the dialogue.
+- [heuristic] In games, clarity usually matters more than literary quality, so ask how a line's meaning will survive translation. When: Writing lines that will be localized.
+- [fact] Idioms, jokes, swearing and names may lack direct equivalents in other languages, so writer and translator must agree on adaptations, and names may need changing per release language. When: Localizing for multiple languages. Why: Expressions and names can carry different meanings abroad.
+- [fact] A language reflects the culture of its speakers, so its sound and tone can express that people's character.
+
+## interactive storytelling theory
+- [definition] The interactive story dream is a fully interactive story that feels like a great film while giving the participant complete freedom of action, thought, and expression.
+- [heuristic] Treat the full interactive story dream as a motivation for experiments rather than a near-term target for a project. When: planning a narrative project. Why: No one has yet come close to realizing it.
+- [heuristic] Make licensed toys and products interactive, portable, flexible, and social so players can visit a world and reshape it for themselves. When: Designing products that extend a fantasy world.
+- [tradeoff] Interactivity makes storytelling harder, because the designer must predict, account for, respond to, and integrate the participant's actions.
+- [fact] Digital games now offer emotional characters, richer stories, and play with real friends at convenient times.
+- [fact] The debate between focusing on game mechanics and focusing on story has largely settled into viewing games as rule systems combined with meaningful structures.
+- [fact] Interactive stories are not fundamentally new; traditional storytelling skills apply to them, and the core difference is the participant's ability to act.
+
+## player-made and procedural stories
+- [model] Designers can convey a pre-created story through a level, or create conditions for players to generate their own stories; leaving room for players to build the story suits the latter. When: when writing narrative content for a game. Why: Players' imagination completes the story. (x2)
+- [mechanism] Because content must make sense in many scenarios, the same content may need to be produced several times with different outcomes or starting conditions.
+- [behavior] Players build countless stories from a game's formal system elements when the system allows open-ended play, as in life simulation games. When: Open-ended simulation games. Why: Players combine system elements into their own narratives.
+- [procedure] 1) Build the story from small story blocks. 2) Give each block a precondition that triggers it. 3) Make blocks work in almost any order. When: When players may take the story in an unpredictable order. Why: The designer cannot predict the path a player will take.
+- [procedure] 1) Let players capture snapshots of simulated characters. 2) Let them arrange the snapshots with captions. 3) Let them share the results as their own narratives. When: Simulation games with recognizable characters. Why: Players then author stories from simulation output.
+- [tradeoff] Open narratives are the most expensive and hardest-to-document story structure, so teams should decide how much freedom players really need before choosing them. When: When considering an open narrative structure. Why: Every block must make sense in many scenarios.
+- [tradeoff] Predefined character arcs play out identically each time and are reliable, while generated arcs emerge from interacting mechanics and vary with each play. When: When deciding how character stories are produced. Why: Authored arcs are consistent; emergent arcs are unscripted but less controlled.
+
+## wireframe prototyping
+- [definition] Wireframing maps a story's information hierarchy as a flowchart, giving writers and departments a quick shared view of the structure.
+- [rule] Use wireframes to pitch ideas, check narrative consistency, and explain structure to other departments working on missions or cinematics. When: Pitching and coordinating narrative. Why: A flowchart is understood at a glance.
+- [rule] Any wireframing method is acceptable if the work can be walked through with others or shared as an easily distributed PDF. When: Choosing a wireframing method. Why: The output must be reviewable by others.
+- [rule] Check the original wireframe against the scenes and cinematics currently in production, and confirm with leads whether the outline or the logline and game goals need revising. When: during revision.
+- [procedure] 1) Wireframe a high-level linear core story for a proposed game. 2) Once the structure is solid, add choices and multiple endings in a second pass. When: Designing a new game's story structure. Why: A solid linear skeleton makes branching and endings easier to add without losing coherence.
+- [fact] Wireframes can cover a whole game's story arcs, a single quest, a multi-branch dialogue, or narrative elements balanced across the timeline.
+- [fact] Wireframes can be built in diagramming applications, note-taking apps, on whiteboards, on corkboards with index cards, with sticky notes, or in free online diagram tools.
+
+## character personality and identity
+- [model] Personality shorthand models include MBTI, with sixteen types each having a dominant and an inferior function, and the four temperaments, where each person blends two of sanguine, choleric, melancholic, or phlegmatic.
+- [definition] Presence requires the player to have a sense of who they are within the virtual space.
+- [rule] Never base a character's personality solely on race, ethnicity, sexual orientation, or gender; these inform identity but are not the only factors.
+- [rule] Phrase a design as a character that is female rather than a female character, and likewise for ethnicity. Why: Framing the trait as one attribute of a whole person avoids making it the defining feature.
+- [pitfall] Personal details must still fit the world's logic, or they will feel out of place.
+- [pitfall] Personality typing models such as MBTI are useful shorthand, but their accuracy for real people is contested, so they should not be treated as established fact.
+
+## level and progression design
+- [definition] Narrative progression must hold attention enough that the player wants to continue playing.
+- [mechanism] Level gating restricts access to content beyond a point until the player reaches a required level, letting designers shape the larger story while players choose the pieces. When: When the story needs some order without a fixed sequence.
+- [rule] Carry narrative and persuasive messages through level rules and geometry, not only through cutscenes and dialog. When: Designing story content in levels. Why: Meaning conveyed through play is absorbed through action rather than passive viewing.
+- [fact] Many games gate progress behind collecting a set of items, such as a number of tokens or activated sources.
+- [fact] Levels can carry story and character elements that are important to the game.
+- [fact] Landmarks and interactive elements give players reasons to use a space beyond simply travelling through it.
+
+## retcon and plot consistency
+- [definition] A retcon changes existing lore or a game's world or story so it appears planned from the start and stays consistent with what has already been published.
+- [mechanism] After a contradiction, audiences may find the characters and setting phony from then on.
+- [rule] Weigh every retcon's pros and cons, including fan engagement and likely reaction, before making the change. When: Considering changes to published lore. Why: Retcons can alienate fans even when they fix problems.
+- [rule] Use a retcon to add new content to a sequel only when it can be explained without undoing player choices. When: When new content is needed in a sequel.
+- [pitfall] A retcon that affects too many player decisions angers players and the fan base.
+- [pitfall] Contradictions in setting, such as animals from opposite poles appearing together, are plot holes that a typical player will notice. When: Writing settings and worldbuilding. Why: Players quickly spot logical inconsistencies.
+
+## text and writing conventions
+- [behavior] Audiences fill missing details with their own imagination, so suggestive text or simple displays, such as text games using descriptions and directional commands, can feel richer than literal depiction. When: comparing written or suggestive presentation with literal depiction. Why: the audience's imagination adds detail that feels personal; simple displays can still deliver rich narratives because players supply missing detail. (x2)
+- [rule] Add text only to convey information; skip it when the environment can already explain the event.
+- [rule] Use italics for stress, emphasis, urgency, irritation or sarcasm; bold for a raised voice; all caps for shouting; and asterisks for sounds like coughs.
+- [heuristic] When text is the only storytelling tool, decide which stories it can carry and how they fit fast gameplay without interrupting it.
+- [heuristic] Using more environmental techniques together increases how much players engage with both the story and gameplay.
+- [fact] Presenting text so that passages twist into a spatial map can make the narrative's world function like a memory palace.
+
+## tone and emotion
+- [mechanism] Controlling the information players receive in a level shapes the emotion the space evokes, turning it into a memory-palace-like experience.
+- [heuristic] The circumplex is not a complete tool, but it is useful for the questions it prompts about relationships.
+- [heuristic] Presence is easier to build in a cartoonish comedy world, because players expect odd rules and discovering them is part of the fun.
+- [heuristic] Consider a comedic tone when strict realism would be too costly or when the technology cannot meet every expectation. When: Setting the tone of a VR project with limited technical resources.
+- [procedure] 1) Choose a reference character and place it at the center of a hostile-to-friendly and submissive-to-dominant graph. 2) Plot others relative to it by how friendly and dominant they appear. 3) Examine gaps and extremes for relationship questions, and check whether friends share quadrants. When: When analyzing relationships in a cast or a character's relationships.
+- [tradeoff] Exaggerated movement in dramatic scenes can make players laugh and undercut tone, making balance fixes political; a deliberate comic reveal with an irritated reaction can lighten tense scenes. When: Unintended exaggerated movement during dramatic scenes versus a deliberate comic reveal paired with an irritated reaction. Why: exaggerated motion reads as comic to players. (x2)
+
+## villains and helper characters
+- [mechanism] A character who seems to help the player but later deceives them can gain credibility within the setting and create a surprise twist.
+- [rule] Foreshadow future enemies in an opening scene by showing them watching from cover before they become active threats.
+- [rule] Punish the protagonist through fiction, such as injury, loss, or hardship, rather than punishing the player with loading screens, replays, or grinding. When: When designing consequences for failure. Why: Strong characterization makes fictional consequences meaningful without wasting player time.
+- [heuristic] Attach scripted tactical hints to enemies, such as preferred positions, and let enemies respond on their own to the player's actions. Why: Enemies still behave believably while steering them toward designer intent.
+- [pitfall] Players dislike the hologram or vanishes-in-smoke trick for building conflict.
+- [pitfall] Open-narrative games may let players kill major villains early, which can disrupt the planned story.
+
+## world expansion and quests
+- [mechanism] Expansion content can bring players back to a world through supporting characters, fresh locations, or playable tales about events the main game merely alludes to. When: planning post-release content. Why: Returning to a known world builds on existing player familiarity.
+- [mechanism] In large MMOs, faction storylines and quest order shape each player's unique story, while lore events occur regardless of individual players.
+- [rule] When levels, character models, abilities, or gameplay are finished, the story must fit them and cannot require new environments, appearances, or abilities. When: when other content is already locked. Why: Finished content cannot be changed to suit the plot.
+- [heuristic] Present very different expansions as different worlds, so a diverse card pool still feels coherent and playable.
+- [procedure] 1) Start with a blank map. 2) Place each feature and give it a name. 3) For each named feature, work out its history, the society that made it, and why it exists. When: Inventing a fictional world from scratch. Why: Naming and relating each element forces development of depth that a finished map alone would not show.
+- [fact] Mistakes and corrections during generative map-making push the design forward, and the finished map ends up describing the world in detail.
+
+## genre and setting themes
+- [definition] A besieged world faces assault from an external power or entities from elsewhere that threaten conquest or ruin.
+- [behavior] Swinging through the air like a jungle hero fulfils a fantasy of cheating gravity, which makes the air a natural environment for the character. When: Character moves primarily through the air on a swing mechanic. Why: Gravity-defying movement taps a common childhood power fantasy.
+- [heuristic] Designing for a particular age requires understanding which pastimes and subjects were in vogue during that audience's youth. When: Designing for a specific age group. Why: Play across life links to childhood, so the audience's formative pastimes and subjects shape their expectations.
+- [pitfall] Horror games that use asylums and psychiatric settings as shortcuts to fear reinforce stereotypes about mental illness.
+- [fact] Fantasy worlds made for children can become shared modern mythology that guides people for the rest of their lives.
+
+## research and sourcing
+- [rule] Cross-check every fact found online, because much of what circulates there is wrong.
+- [procedure] 1) List the six questions: who, what, when, where, why, how. 2) Use them to pick initial research topics. 3) Use them to judge whether a source is relevant. 4) Turn answers into narrower follow-up questions. 5) Repeat, moving from general to specific details. When: Starting worldbuilding research or choosing sources. Why: The questions give structure when a starting point is unclear.
+- [pitfall] Starting research without a clear starting point feels overwhelming and unfocused; applying the six questions first gives direction. When: Beginning research on an unfamiliar subject. Why: Open-ended research without guiding questions stalls progress.
+- [fact] A university library is the strongest library source for scientific research.
+- [fact] An unsolved real-world case gives a writer creative license to propose their own explanation for events.
+
+## fan and community stories
+- [rule] Write prompts that state concrete situations and explain the comedy or theme, rather than relying on players to supply background knowledge. When: humor or theme depends on background context. Why: Prompts that assume shared knowledge make the tone confusing.
+- [heuristic] The most devoted fandoms usually surround the strongest transmedia worlds, which typically have a deep core fans want to enter. When: Judging a world's long-term fan potential.
+- [fact] Fans may write their own stories set in your world with your characters.
+- [fact] Free interactive-story tools include Twine (branching text), StoryNexus (choose-your-own-adventure), Ren'Py (visual novels), ChoiceScript, inklewriter, and Inform (interactive fiction).
+
+## hero's journey structure
+- [model] The hero's journey is a shared heroic story structure across myths, staged as call to adventure, trials, a benevolent force, a malevolent force, and a return with a boon. (x2)
+- [heuristic] Draft the story first, then compare it with the hero's journey stages as a diagnostic lens to find missing elements, not to dictate plot. When: Revising or after drafting a heroic story. Why: Comparison reveals gaps without dictating content; shows whether mythic elements would improve the story.
+- [procedure] 1) Ordinary world 2) Call to adventure 3) Refusal 4) Mentor aid 5) Cross threshold 6) Tests, allies, enemies 7) Approach cave, setbacks 8) Ordeal crisis 9) Reward 10) Road back 11) Resurrection, greater crisis 12) Return with elixir.
+- [pitfall] Treating the hero's journey as a guaranteed formula for an entertaining story.
+
+## writing production budget
+- [rule] Lower-budget games can replace full cinematics with animatics (comic panels or static images in sequence) with text or narration; choose formats matching budget and voice-over presence. When: Small-budget or unvoiced games.
+- [tradeoff] Forced points are acceptable only when budget cannot support more branching and throttle points are handled carefully. When: When branching is limited by budget.
+- [tradeoff] Sequences cost animation time but save text, voice-over and localization work, unless an animation does not suit a culture.
+- [fact] Material cut from a story may reappear in places you did not expect.
+
+## backstory and past events
+- [rule] Tell completed events through remains or traces, not live scripted scenes, when players should discover them in any order; their authored story stays fixed. When: the events are already over when the player arrives, and the story is told through remains or traces of a completed event. Why: Completed events have no live state for player actions to alter.
+- [rule] Record game events and present them as a laid-out history, so players can reconstruct their own story without recalling everything. Why: Players cannot remember every event, and a visible record makes the story legible.
+- [tradeoff] Scripted live events need tricks or restrictions to force a correct path, whereas fixed past-event clues allow free exploration without forcing an order.
+
+## games versus film
+- [model] Film climaxes release tension built through audience empathy, while game climaxes add personal accomplishment on top of sympathy for characters.
+- [pitfall] Treating a film as the origin of a world and other products as mere copies misses how a world can grow through the rules of handheld play.
+- [fact] Film shares moving images, sound, three-act structure and phased development with games, and teaches framing, pacing and visual effects, but not player choice or departures from the author's plan. Why: games do not work like films because players act within the story.

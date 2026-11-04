@@ -1,0 +1,2085 @@
+# balance-economy
+
+## balance tuning
+- [model] Progression takes four classes: character, player skill, narrative, and mechanical. A game may use one, several, or none of them.
+- [definition] Each parameter setting is a location on a landscape with an associated score; one parameter is a point on a line, two form a point on a plane.
+- [definition] Chicken motivators are nonserious, nonexplicit, occasional symbolic signals that influence behavior without harming team climate.
+- [definition] A PvP game is balanced on initial conditions when every participant has roughly equal odds of winning at the start, given equal skill. When: competitive PvP games.
+- [definition] Game balance is a feeling players get across a whole game; it emerges from play rather than being added like a feature.
+- [definition] Game balance is a sub-field of game design focused on the numbers and formulas that underlie a game.
+- [definition] A tuning game asks the player to play a mechanic while rebalancing its parameters against one another, so each goal may need a different tuning.
+- [definition] The Goldilocks zone is the middle band of challenge between frustration and boredom, where flow is sparked, and it differs from player to player.
+- [mechanism] A fixed challenge breaks flow at either end of the skill range; as players improve during a playthrough, it becomes too easy and causes boredom, common in long PvE games. Why: Players improve during a single playthrough. (x2)
+- [mechanism] Labeled difficulty levels can prime expectations, so an easy mode that helps the player and a hard mode that helps the AI may be accepted. When: Designing difficulty modes. Why: Labels set player expectations about what kind of help is fair.
+- [mechanism] Harder features impose more cognitive load, which leaves room for fewer other features taught at the same time. When: sequencing onboarding. Why: Cognitive capacity is limited, so load adds up across simultaneously taught features.
+- [mechanism] As enemies are destroyed, the survivors speed up and get harder to hit, so difficulty rises within each wave.
+- [mechanism] Each new wave restarts with slow, easy enemies, so difficulty resets easier even though waves get harder overall.
+- [mechanism] A new, much harder activity after main progression, often with different mechanics, gives veterans fresh challenge but eventually runs out of appeal.
+- [mechanism] Restricting lawless attacks to specific zones, enforced by guards that hunt flagged characters, splits a world into areas with and without player attacks.
+- [mechanism] A team wave awards a bonus to every player who survives the level, while a gladiator wave awards the bonus only to the first player to defeat the other. When: Alternating cooperative and competitive wave types in a two-player arena. Why: Bonus rules tie rewards to either shared survival or direct rivalry.
+- [mechanism] A slight skew in an opponent's intransitive mix creates a fully dominant counter, so the balanced equilibrium of an intransitive game can be fragile.
+- [mechanism] Spatial transposition can turn a linear input-to-response curve into an exponential one, or recognize groups of inputs from different controls as one signal.
+- [mechanism] Fixed damage and hit points make fights fully predictable, so each encounter becomes a counted sequence of hits rather than a decision. When: combat with deterministic damage. Why: Without variance, the outcome is known in advance and engagement drops.
+- [mechanism] Reducing the power of moves that beginners use most and experts use less lowers win rate at low skill while leaving high-skill play largely unchanged. When: Balancing a character whose strength is concentrated at low skill levels. Why: Changes hit the moves that matter at the affected rating band.
+- [mechanism] An explicit difficulty setting limits the range of hidden adaptation, so each setting shifts within its own band of internal levels.
+- [behavior] Nongamers can complete a tutorial and understand basics, yet still be overrun in combat and fail to enjoy the game, when the game is aimed beyond its original audience. When: testing a game with nongamer players. Why: Basic understanding does not guarantee enjoyment.
+- [behavior] Early development usually contains many dominant strategies, and finding and removing them is progress even when it feels like confusion. When: Balancing a game in early development. Why: Discovering dominant options is part of iterating toward balance.
+- [behavior] A player who pulls ahead early and keeps a narrow lead may be deliberately controlling the opponent's experience, which signals skill. When: Tracking in-match play patterns to infer skill. Why: Maintaining control without a crushing margin requires skill.
+- [behavior] Players expect occasional difficulty spikes; a boss only slightly harder than its predecessor produces boredom. When: a boss is only slightly harder than the previous boss. Why: players expect occasional spikes and read small steps as no change.
+- [behavior] Players first find an exploitable enemy comical, then grow bored when repeating the same exploit, and most players who find an exploit adopt it. When: Players discover a dominant, repetitive tactic. Why: A helpless opponent is amusing briefly, but repetition removes challenge and interest.
+- [behavior] When players choose difficulty, many pick a challenge slightly harder than even odds, struggle, and give up unless matchmaking or dynamic difficulty adjustment intervenes. When: player-selected difficulty without automatic balancing.
+- [behavior] A player far behind in a competitive game must go through the motions of a game they cannot win, which feels excruciating when it lasts a long time. When: When a player or team falls far behind in a competitive match or race. Why: The outcome is decided but play continues.
+- [behavior] A character's popularity and win rate can rise steadily with no update as players copy a strong strategy. When: Observing a steady rise in a character's metrics between patches. Why: Strategies spread through imitation among players.
+- [rule] Build a system-level model from many varied playtests before balance decisions; one or two tests, self-play, or a handful of samples can mislead by chance. When: tuning by few trials or tests. Why: Few stories or samples confuse anecdote with system behavior and yield confident wrong answers. (x2)
+- [rule] Build tunable values so they can change while the game runs: in prototypes so effects show immediately, and after release through a content management system to keep balancing. When: prototyping. Why: Changing values at runtime and after shipping speeds up tuning and extends the balancing loop beyond launch. (x2)
+- [rule] Award extra lives at regular milestones, such as every 10,000 points or every hundred collected items; regular milestones make each life feel earned and raise the chance of completing all levels. Why: Regular milestones make each extra life feel earned. (x2)
+- [rule] Rebalance through repeated testing and give-and-take adjustments after each change, rather than trusting a single pass, until the whole game seems balanced.
+- [rule] Unforgiving difficulty is acceptable only when the game is transparent about how harsh it is and players consent to it; hiding that harshness breaks the consent.
+- [rule] Set computer opponents slightly below the top performance a skilled human could reach, so they remain beatable.
+- [rule] If the score comes from a differentiable formula, compute the best parameter values directly; otherwise search by trying settings in the game. When: tuning AI parameters.
+- [rule] Expose the same controls to scripted AI that the player has, such as forward speed, turning and weapon changes, so an AI character can be swapped for a human player.
+- [rule] Schedule balance passes late, once systems are in place, and start the main balance work after all content is complete.
+- [rule] Test high-skill balance with dedicated players who practice daily and can play intensely for long sessions. When: tuning skill-based balance.
+- [rule] Mathematics is one of several balance methods, and no single method should be used to the exclusion of the others.
+- [rule] Make parameter evaluation fast, for example by running the game at high speed without rendering or by using heuristics that skip running the game. When: searching parameter spaces by trial. Why: Techniques that need a full game with a real player are unlikely to be practical.
+- [rule] Label each stretch of an interest curve with the interest type holding attention there, showing which factor works at each moment.
+- [rule] Fix the underlying collection bug rather than only scrubbing its output, so the cleaning does not have to be repeated. When: Data problems recur across collection periods. Why: Repeated scrubbing wastes effort on the same faults.
+- [rule] After every balance change, recheck the metrics that motivated it to confirm the expected effect.
+- [rule] Check moves with 100% hit rates before analysis, since they may be designed to be unblockable or unavoidable rather than data errors; confirm with whoever wrote the data collection code. When: Move hit-rate data shows moves that always connect. Why: Such values usually reflect intended mechanics, not measurement mistakes.
+- [rule] An exploit that works but is slower than normal play is not a practical exploit.
+- [rule] Budget extensive tuning time for any car avatar, whatever its art style, since its handling is judged against real driving. When: building a car avatar. Why: Feel expectations are high even for stylized vehicles.
+- [rule] Look for game elements that are too simple to be interesting.
+- [rule] Decide carefully which post-release problems to patch; often wait, since quick patches to temporary spikes cut off the community's natural adaptation. When: deciding on post-release balance changes. Why: Deciding is hard after release, and waiting lets players adapt.
+- [rule] Tune combat pacing to the skill and reaction speed of the intended players; one speed does not suit every audience.
+- [rule] Check each goal for whether it is too hard, too easy, unclear, or hidden from players. When: fun testing.
+- [rule] Pursue high-skill balance when the game's meaning comes from skill-driven challenge; prefer lower-skill balance when meaning comes mainly from story or socializing.
+- [rule] When rebalancing costs, change only the quantity of a power, never its type.
+- [rule] Make the easiest difficulty really easy, since being too easy is safer than being so hard that some players cannot play at all.
+- [heuristic] Initial numbers are usually wrong, so never treat a first prototype's starting values as final; repeated guessing and revision builds design intuition. Why: An initial version may be highly unbalanced and need iteration.
+- [heuristic] Negative feedback and random mechanics that favor the player who is behind can give less skilled players a real chance to win. When: when designing PvP for mixed skill levels. Why: Advantages for the trailing player offset skill gaps.
+- [heuristic] No designer balances a game perfectly by hand on the first try; build a playable version first, then let real players reveal the problems. Why: Balance problems become visible only when the game runs with real players.
+- [heuristic] Balance intuition is built mainly by making many games.
+- [heuristic] Designers often assume their numbers are off by less than they really are, so test a doubling or halving to check. When: reviewing tuned values. Why: Initial estimates tend to underestimate how far values are from balance.
+- [heuristic] Adjusting numerical values is usually easier than rewriting story sections when difficulty and story pacing conflict. When: Fixing mismatches between difficulty and narrative. Why: Numbers can be tuned quickly, while narrative rewrites are costly.
+- [heuristic] Turn-based games convert easily to paper prototypes, while real-time games can sometimes be converted to turn-based play or run in real time with human helpers. When: when building a paper prototype.
+- [heuristic] Prefer relatively simple systems with enough content to analyze; avoid games with dozens of stats or giant manuals. When: choosing a game to analyze and expand. Why: Too many stats and rules make analysis slow and overwhelming.
+- [heuristic] Personal experience can be supplemented with strategy articles and player or developer forums when judging balance.
+- [heuristic] Assume any existing design is imperfect; if it seems perfect, look harder for flaws. When: Starting a balance review of a game. Why: Unexamined assumptions of perfection hide real problems.
+- [heuristic] Announcing regular balance changes during beta can build player excitement.
+- [heuristic] Before mechanics are stable, focus on building tools rather than active balancing, unless playtesters strongly report a problem that blocks progress.
+- [heuristic] Expose a few key parameters of a mechanic as editable fields so players or students can tune it without programming. When: Teaching or testing game balance.
+- [heuristic] Be cautious when criticizing a released game, since the production context and constraints behind its design are usually unknown. When: when judging a game after release. Why: Criticism is easy from outside, but the production context is often missing.
+- [heuristic] Use follow-up schedules as a guide, since over-eager contact can wear on a publisher. When: following up after a pitch.
+- [heuristic] Balancing less interesting tasks with interesting ones, and interacting positively with others, is a major professional asset. When: Team production where preferred tasks cannot always be chosen.
+- [heuristic] Compare expressive range charts during development as a debugging tool, not only after the system is finished.
+- [heuristic] Telling players a game is not balanced but fun tends to improve their experience. When: Games knowingly unbalanced but narratively engaging. Why: Sets expectations so imbalance is read as part of the experience.
+- [heuristic] A strong online game needs both a strong game and strong community support, since a dull game leaves nothing to discuss and weak support lets players drift away.
+- [heuristic] A saw-tooth difficulty pattern gives variance and expresses mastery better than a steady climb in difficulty.
+- [heuristic] Track a limit as a static attribute and its current value as a dynamic attribute, so fixed and changing parts stay separate. When: when an object has a maximum such as speed or capacity.
+- [heuristic] As a final check, ask whether the game feels right and why or why not, to catch balancing problems that detailed checks missed. When: After applying detailed balancing reviews. Why: Stepping back to the whole experience reveals issues that focused checks overlook.
+- [heuristic] Feel emerges from how parameters interact, so when tuning one value, check the values it partners with.
+- [heuristic] Control of many objects can use a cursor whose influence falls off with distance from its center, giving full control near the center and partial control farther away. When: Controlling large groups of objects at once.
+- [heuristic] Caution players at least three times before any catastrophic event. When: scheduling warnings for catastrophic events. Why: Repeated warnings make the threat fair and expected.
+- [heuristic] Scale warnings to impact: strong warnings for high-consequence events, small or no warnings for minor ones, which players learn to expect through experience. When: deciding how much warning an event needs. Why: Proportional warnings keep minor events from feeling punitive.
+- [heuristic] Design a flexible system that stays simple, so different players can find the experience they prefer.
+- [heuristic] Use deliberate unfairness when exploration, history, or humor matters more than honest competition.
+- [heuristic] Fixed ratio schedules are weak standalone motivators; pair them with other schedules that cover the gaps between rewards. Why: Long gaps let players stop and walk away.
+- [heuristic] If no strong core can be found, or the built core is poor, consider restarting with a different concept.
+- [heuristic] Expect a mechanic's timing or radius to need tuning; a shorter or smaller planned value may work better than the first estimate.
+- [heuristic] Variety can come from changing the enemy formations or arrangements that players see when a mission starts.
+- [heuristic] If weapon growth feels too slow, increase per-level gain, the damage ceiling, or both. When: Weapon progression feels flat.
+- [heuristic] Bosses and unique items are often variants of a common entity, and a prototype reference can express them directly without an abstract base. When: when authoring variants of an existing entry. Why: the simplest existing entry can serve as the prototype.
+- [procedure] 1) Confirm the rules are internally complete. 2) Only then check fairness and balance. 3) Test for fun and challenge. 4) Keep the whole system in motion throughout.
+- [procedure] 1) Sort all players by rating from highest to lowest. 2) Use the resulting order as the high-granularity rank.
+- [procedure] 1) Adjust store prices or currency drop rates during alpha or beta testing. 2) Make post-launch price changes when an item proves worth more or less than expected.
+- [procedure] 1) Add a new mechanic column, blank or zero for every existing row. 2) Enter tentative costing math based on current game knowledge. 3) Document the mechanic and justify its cost in a cell note.
+- [procedure] 1) Sketch the expected power curve for a short PvP game. 2) Play it or record a session. 3) Track each player's distance from the win condition over time. 4) Compare the real curve with the prediction.
+- [procedure] 1) Take a simple barter game. 2) Add a new layer of complexity to its trading system, such as dynamically changing item values. 3) Playtest the change. When: Practicing economy design. Why: Dynamic values reveal how trade behavior shifts under changing prices.
+- [procedure] 1) Place every reward on a chart showing its approximate position in the game. 2) Mark gaps where little happens for a long stretch. 3) Size each reward by its intensity: big power gains, major level transitions or permanent world changes, and climaxes or story reversals. 4) Sum intensity over time to graph the player's sense of progress. When: Early design check for pacing problems before playtests. Why: Shows the general shape of progress as the player experiences it.
+- [procedure] 1) Test the value at its minimum, maximum and midpoint to learn how the game feels. 2) Tune from there. When: A number with a known range but unknown right value. Why: Extremes reveal how the value shapes play.
+- [procedure] 1) Start balance tests with the dev team, close family and friends. 2) Ask testers to try to break systems and find exploits. 3) Record which tester gave each feedback item. When: Early balance testing. Why: Different testers reveal different problems, and their source matters.
+- [procedure] 1) Assign sounds to importance categories. 2) Set ducking levels. 3) Playtest and get feedback from players and audio professionals. 4) Repeat trial and error until the balance is right. Why: Finding the right balance requires trial and error.
+- [procedure] 1) Pick a reasonable best guess for each unknown parameter, such as grid size or spawn count. 2) Play and observe. 3) Revise the values after testing.
+- [procedure] 1) Write down the expected relationships between the balanced elements. 2) For each experiment, record whether it improved the game and whether it matched the model. 3) Revise the model when results disagree with it. When: When balancing several interacting values. Why: Written expectations make it easier to see why a change had an effect and to build on past results.
+- [procedure] 1) When a value feels wrong, guess an exact number rather than a round one. 2) Test it. 3) Use the result to refine the next guess, converging on a value that feels right. When: When repeatedly adjusting one value by feel. Why: Exact guesses give intuition precise feedback, while rounded steps stop it from improving.
+- [procedure] 1) While playing or watching a game, judge whether it is balanced, looking for slight imbalances since no game is perfect. 2) For each imbalance, note what it is, its severity, its cause and how you would fix it. 3) Later check the notes with mathematical analysis.
+- [procedure] 1) Identify the types of trading in a chosen game. 2) Swap in a different auction mechanic. 3) Predict the effect on play. When: Evaluating a trade or auction mechanic in an existing game.
+- [procedure] 1) Guess how long a recent game's combat lasts. 2) Time it with a stopwatch. 3) Compare the result with your guess and note whether it felt longer or shorter. When: calibrating intuition about fight length.
+- [procedure] 1) Choose a game and imagine a remake that keeps core mechanics. 2) Define at least three balance questions analytics could answer. 3) For each question, list needed metrics and collection methods. 4) Plan calculations, visualizations and the patterns that would support each conclusion. When: Planning an analytics study for an existing game's balance. Why: A structured plan ties each balance question to measurable evidence.
+- [procedure] 1) Study the design decisions and numbers of games you play. 2) Make your own games. 3) Balance those games and test the results.
+- [procedure] 1) Track each player's strike probability on odd and even turns and their cumulative expected strikes. 2) Find the turn at which a player's chance of losing first passes 50%. 3) Repeat for three, four, five and more players to find turn-order patterns. When: checking whether the first player in a multiplayer dice game has an advantage. Why: the first player's opening roll differs, so equal-probability assumptions are only approximate.
+- [procedure] 1) Write down an intuitive guess of the optimal mix. 2) Solve the payoff equations. 3) Compare the guess with the solution to calibrate intuition. When: Solving an intransitive game with altered payoffs. Why: Intuition about payoffs is often wrong.
+- [procedure] 1) Disable the character animation. 2) Replay the same movements. 3) Note what feels lost, such as arcs, turns, slides and landings. When: auditing how much feel comes from presentation. Why: Removing one layer reveals how much feel it carries.
+- [procedure] 1) Make one player or component grossly stronger. 2) Observe how the rest of the game responds. When: probing how a system reacts to imbalance.
+- [procedure] 1) Create AI agents with different playing characteristics. 2) Use them to playtest many generated levels, since the mechanism needs many levels tested. When: when a personalisation mechanism needs many playtested levels.
+- [procedure] 1) Observe harmful player behavior in playtests. 2) Remove the reward and any mechanic that enables it. 3) Reward the cooperative behavior you want, such as staying close to others.
+- [procedure] 1) Pick a game and its current emotional tone. 2) Replace its music with a piece evoking a very different feeling. 3) Note whether the result is unsettling, funny or strange. When: exploring tone options.
+- [procedure] 1) Create formless color swatches for each scene. 2) Review them in sequence. 3) Judge the visual and emotional progression by color alone. When: Planning visual and emotional arc across scenes. Why: Color alone reveals mood progression without detail distraction.
+- [procedure] Tune difficulty and pacing in small, measured steps guided by aggregated metrics rather than large guesses. When: Mid-project balancing. Why: Coarse guesswork yields erratic progress; precise measurement enables steady improvement.
+- [procedure] 1) Identify why optimal play stalls the game. 2) Add, remove, or change one rule at a time. 3) Test each change. 4) Repeat until the game is interesting and finishes under optimal play, using the fewest changes. When: when a competitive game stalls under optimal play. Why: Small isolated changes reveal which rule causes the problem.
+- [procedure] 1) Define key performance indicators with product managers. 2) Let players in and collect play data. 3) Tune the game toward the predefined KPIs, meeting publisher performance criteria before launch. When: When tuning a live or free-to-play game against performance goals.
+- [procedure] 1) Replace one power type with the other type the deck already uses. 2) Swap in power cards by discarding matching action cards from the deck. 3) Drop power cards in favor of duplicates of any action card that exists in the game. When: when adjusting power cards in a deck of fixed size. Why: each option shifts resource supply without changing deck size.
+- [procedure] 1) List the game variables in the prototype. 2) Change one variable and observe its effects on the others. 3) Try to create easy, medium, and hard levels by tweaking variables alone. When: Tuning a prototype.
+- [procedure] 1) Edit matrix entries to represent a changed rule. 2) Recompute the length distribution. 3) Compare the new median and mean with the old. When: testing a proposed rule change to a track game. Why: matrix edits give exact effects without playtesting.
+- [procedure] 1) Have players try the opening level, then suggest a setting. 2) Explain each difficulty with concrete examples. 3) Let players adjust difficulty mid-game. When: When players are unsure which explicit difficulty level to pick. Why: Difficulty names lack a shared meaning, so players need help choosing.
+- [metric] An old rule of thumb allots about six months of balancing after a working version exists, though the true time depends on the game's type and scope.
+- [metric] Balancing can consume a large share of total development time, around half.
+- [metric] Five layers each at 80% certainty give about 33% survival (0.8 to the fifth power); with each layer at 30% certainty, a design five layers up survives unchanged only about 0.2% of the time. When: Estimating whether a stacked design will survive playtesting. Why: Multiplication of uncertainties makes high-layer designs fragile.
+- [metric] With n distinct playable characters, pairings alone yield about n squared matchups, counting order; ten characters give about a hundred.
+- [tradeoff] Racers that slow after a player's crash and speed up as the player closes in aid catch-up, yet AI advantages players cannot use break mutual opportunity and are disliked. When: Racing against computer cars; designing AI assistance or catch-up mechanics. Why: Players perceive asymmetric advantages as unfair. (x2)
+- [tradeoff] Parties of friends can create larger skill gaps, so tracking a separate MMR for solo and group play keeps matchmaking even. When: when matchmaking includes premade groups.
+- [tradeoff] Building a complete supporting math costs slow trial and error plus playtesting or analytics, but afterward it speeds design and balance considerably. When: deciding whether to invest in a full balance system. Why: Most of the balance work is paid up front and returns benefits later.
+- [tradeoff] Rebuilding a failing mission affects gameplay, level design and art, while salvaging it cheaply usually shifts extra work onto the narrative team. When: A playable mission is not working. Why: Each fix spreads cost to different departments.
+- [tradeoff] Memorized optimal strategies give reliable, measurable skill, but they lack the adaptive, clever decisions that let players turn a loss into a win.
+- [tradeoff] Tuning enemies for viable builds makes optimal builds trivial, while tuning for optimal builds makes content too hard for most players. When: tuning late-game content. Why: One tuning target cannot serve both build levels.
+- [tradeoff] Tuning the probabilities of a fixed random outcome and tuning the effects of each space both reach a target median length, but the two differ in ease and in how they change play. When: choosing how to hit a target game length. Why: changing odds keeps rules intact while changing effects alters what each space does.
+- [tradeoff] Explicit difficulty selection is simple and reasonably effective, but players may fear choosing wrong because difficulty names have no standard meaning. Adaptive difficulty avoids this by adjusting silently. When: When choosing how to offer difficulty modification. Why: Explicit choices are transparent but risky to pick; adaptive adjustment is hidden but can be noticed and exploited.
+- [pitfall] Fixing one problem can create another, including in experiences no tester has reached, so check each fix against the whole system before accepting it. (x2)
+- [pitfall] Creating a character's AI is not just setting parameter values, so a data-driven editor alone is insufficient; decision logic and combining behaviors need a dedicated AI design tool.
+- [pitfall] Making AI opponents stronger by boosting raw performance is easy but does not make the content itself interesting; designing good content is the harder problem.
+- [pitfall] Balancing cannot meaningfully start until the game works, and schedules spent making it functional often leave too little time to balance it, so the release feels unbalanced.
+- [pitfall] Trusting the first formula without a common-sense check leaves hidden errors in the cost curve.
+- [pitfall] A paper balance is untested, so its results are provisional until playtesting confirms them.
+- [pitfall] A progression chart can only approximate reward timing, because designers cannot control how long players take or the order of challenges in non-linear levels.
+- [pitfall] Automatic topological analysis can absorb very large amounts of tuning time, sometimes months.
+- [pitfall] Designers often misjudge which AI behaviors are difficult and which are easy to add.
+- [pitfall] A breakable link tuned too fragile or too sturdy is a common error; the right threshold can only be found through playtesting.
+- [pitfall] Keeping the goals and adjusting numbers until the budget looks reasonable is the most common beginner mistake, and it leads to overpromising and underbudgeting. Why: Overpromising risks lost money, an overworked team, and undelivered promises.
+- [pitfall] Layout tuning can absorb large amounts of time, so set a stopping point rather than endlessly pushing data around.
+- [pitfall] Balancing by guesswork and self-testing is useful early but too coarse for fine-grained balance. When: Late-stage balance refinement. Why: Few testers cannot detect small differences.
+- [pitfall] Complaints such as 'too easy', 'impossible', 'unfair', and 'not fun' usually trace back to how hit points are handled.
+- [pitfall] Adding a tool can reduce depth if it creates a degenerate strategy, and extra viable strategies add complexity without necessarily adding decision depth. Why: Counting options is easy to measure, but the real goal is a richer player thought process.
+- [pitfall] Extreme penalties such as erasing long saved progress or permanently removing hard-earned advancement can make players quit or exploit the system, and are often judged too harsh. When: When a penalty wipes out large amounts of player investment. Why: Losses that are severe and irreversible outweigh the value of the challenge for many players.
+- [pitfall] A weak curve starts with disappointment, lacks a hook, peaks only briefly, and falls below the quitting threshold, so later content fails to build and the experience fades.
+- [pitfall] Treating game design as trivial amusement underrates how strongly games shape experiences and thinking.
+- [pitfall] A catastrophic event with no prior signs feels arbitrary and makes the player feel cheated. When: designing sudden major setbacks. Why: Players perceive unannounced disasters as unfair.
+- [pitfall] Random balance changes are not perfect imbalance; each change must be deliberate.
+- [pitfall] Trouble arises when players expect a fair contest and only discover the imbalance during play. Why: Violated expectations cause frustration.
+- [pitfall] Early deaths that feel unfair make players quit, especially in free-to-play games where commitment is low. When: early game. Why: Players have little commitment to endure unfair early losses.
+- [pitfall] Tuning a game for expert players can spoil it for the average player. When: When balancing difficulty for a broad audience. Why: Expert preferences often differ from the general player population.
+- [pitfall] Reacting to each playtest problem with a quick knob turn makes the game lurch between imbalances, because strategies are coupled and each fix causes another problem.
+- [pitfall] Beta and live balancing and monetization assume critical UX issues are already fixed, which is often not the case. When: Beta and live operation.
+- [pitfall] An exploitable imbalance can destroy the game's intended play even when no one planned it.
+- [fact] Game AI relies on many numeric parameters, including steering constants, pathfinding costs, tactical blend weights, and decision probabilities.
+- [fact] Isolating which objects, properties, behaviors or relationships cause a problem is one of the hardest parts of tuning.
+- [fact] Balance is an ongoing process: experience improves the first guess, but player preferences shift over time.
+- [fact] Making one change at a time lets a marginally working game be tuned without losing earlier work.
+- [fact] Balancing a deep interaction system can take years of development and tuning before the game is ready.
+- [fact] Meaningful games are often too long and variable for a class period, and they let each player proceed at their own speed, while teachers must keep one pace. When: adopting games in a classroom. Why: Class schedules and shared pacing conflict with game structure.
+- [fact] Many educators did not grow up with video games, and building a game that delivers a complete, assessable, engaging lesson is very hard. When: adopting games in a classroom. Why: Limited familiarity with games and difficult design slow adoption.
+- [fact] Games that keep developing after release, such as MMOs, online trading card games, and free-to-play mobile titles, add expansions and new content over time.
+- [fact] By the post-launch stage the team understands the game's balance far better, so its starting information is richer than in earlier phases.
+- [fact] Teams often keep working after release, watching player feedback and shipping small online patches to fix important problems. Why: Most players are online and can download small updates.
+- [fact] Initial-condition bias can come from random turn order, starting position, or the chosen character, class, or faction.
+- [fact] Variety can come from visuals, size, speed, movement mode, cover-seeking, ranged versus close-range attacks, hit points, and AI behavior.
+- [fact] Modeling time, money, skill and luck together needs four dimensions, which is harder to chart than the two-axis skill-luck plot.
+- [fact] A game played for thousands of years can still have its exact balance and first-turn value unknown.
+- [fact] Balance patches can continue for years after release, because a large player base finds imbalances that a much smaller beta group misses.
+
+## probability and odds
+- [model] In a push-your-luck turn, each roll either adds its face value to a turn total or, on a losing face, wipes the whole total; the player may bank it by stopping.
+- [model] Dice-driven track games can be cast as a Markov chain: one state per reachable square, with each turn applying a transition matrix built from die-roll probabilities. When: analysing a dice-driven track game. Why: the matrix turns the board rules into a Markov chain that can be computed exactly.
+- [definition] A conservative Markov process keeps the sum of its state vector constant, which suits values that represent a distribution or counts of game objects.
+- [definition] Entropy measures how much the actions in a set agree: it is 0 when all actions match and 1 when two actions are evenly split.
+- [definition] A flush has all five cards of one suit; a straight flush has consecutive ranks in one suit, and a royal flush is ten through ace in one suit.
+- [definition] Theoretical probability is the mathematically expected rate, while practical probability is the rate observed across actual trials.
+- [definition] A probability distribution curve plots the chance of each possible outcome, so the shape of a random result can be seen at a glance.
+- [definition] dN denotes a die with N faces; any device giving each integer from 1 to N equal probability counts as a die.
+- [definition] A count before the d means several dice are summed, and a constant after it is added, as in 2d6+1.
+- [definition] Rolls are independent when no past or future event influences a roll, so earlier results never change the odds of the next roll.
+- [definition] Probability is a value from 0 (never happens) to 1 (always happens), expressible as a decimal, fraction, or percentage.
+- [definition] Odds express the ratio of occurrences to non-occurrences, so a 1 on a d4 has odds of 1:3 (or 3:1 against).
+- [definition] The number of ways to choose k items from n distinct items when order does not matter is C(n,k) = n!/(k!(n−k)!), written COMBIN(n,k) in spreadsheets.
+- [definition] The number of ordered arrangements of k items chosen from n distinct items is P(n,k) = n!/(n−k)!, written PERMUT(n,k) in spreadsheets.
+- [definition] Independent events do not influence later outcomes, while in dependent events learning one outcome changes the probabilities of future outcomes.
+- [definition] Card draws are dependent only when cards are drawn without replacement, so the deck changes after each draw.
+- [definition] Theoretical probability equals the number of favorable outcomes divided by the total number of equally likely outcomes.
+- [mechanism] Summing several dice concentrates totals near the middle, while a single die spreads results evenly across its range; with two six-sided dice 7 is common and 12 rare. When: choosing between dice setups with equal range. Why: Combining outcomes produces a bell-like distribution rather than a flat one. (x2)
+- [mechanism] In a short race, a source that deals rare large hits can beat a steady source with the same average damage; as the race lengthens, win rates converge toward even. When: two attackers have equal expected damage per turn. Why: variance decides short races, while averages dominate long ones.
+- [mechanism] Under ante, a deck built from many purchased decks risks its best card, and a winner takes a more valuable card, which limits how far purchasing power helps. When: players play for ante.
+- [mechanism] Uncertainty creates surprises, and surprises are a big reason players enjoy games, so chance is central to enjoyment.
+- [mechanism] Tracking cards already played is a skill, because each revealed card changes the odds of the cards that follow.
+- [mechanism] In blackjack, optimal play depends on whether high or low cards remain in the deck, shifting odds toward the player without guaranteeing a win. When: Games where hidden information changes the odds of an action. Why: Remaining deck composition alters the probability of each outcome.
+- [mechanism] Removing a card face-down without looking gives no new information, so the probabilities for the remaining cards do not change.
+- [mechanism] Each revealed card adds information, which changes the probabilities for the cards still unseen; probabilities depend on what is known rather than only on what is physically removed.
+- [mechanism] When every initial deal is equally likely, a player's win chance equals the fraction of all deals in which they win. When: Deals are dealt uniformly at random and outcomes are fully determined by the deal and play choices. Why: Uniform likelihood turns win probability into a simple count over the enumerated deal space.
+- [mechanism] Frequent small losses with occasional modest wins and no large unexpected losses keep players engaged in chance-based games.
+- [mechanism] Repeated reload-and-retry turns low-probability outcomes into near-certain ones, undermining carefully balanced odds.
+- [mechanism] Extra setbacks such as chutes usually lengthen games, while extra shortcuts such as ladders shorten them; a setback placed just before a large shortcut can instead shorten games. When: tuning the number and placement of track shortcuts and setbacks. Why: each element changes the path to the finish, and placement changes the net effect.
+- [mechanism] Additional rerolls raise the chance of reaching a target combination, and with enough rolls the chance of reaching it passes 50%, making that roll count the median. When: a player chases a combination with repeated rerolls. Why: each reroll gives another independent chance to improve the hand.
+- [mechanism] When an enemy spreads its attacks evenly over several targets, each target is attacked less often, so its armor class matters proportionally less than attack bonus.
+- [behavior] Players and gamblers find odds less intuitive than probabilities, so expressing outcomes as odds can make a game seem fairer than it is.
+- [rule] For independent events that must all succeed, multiply their probabilities; four 10% drops in a row have chance 1/10,000. When: events are independent, so none affects the others. (x2)
+- [rule] When outcomes are equally likely, probability equals favorable outcomes divided by total possible outcomes, so it always lies between 0 and 1. Why: This gives the probability directly from counts. (x2)
+- [rule] Every probability must lie between 0 and 1; a negative or greater-than-1 result signals a calculation error. (x2)
+- [rule] For events that can occur together, P(A or B) = P(A) + P(B) − P(A and B); adding them directly overcounts, or enumerate outcomes. When: events can happen together. (x2)
+- [rule] Roll multiple dice by calling RANDBETWEEN separately for each die and adding the results.
+- [rule] Check that each column of the transition matrix and the starting state vector sums to 1 using SUM(). Why: Probabilities out of each state must total 1 for the chain to be valid.
+- [rule] Before counting a run placed on a destination, check whether its first key continues the last key written there; if so, count it as replacing a dummy.
+- [rule] Limit player losses to the amount wagered; avoid designs where a bad outcome costs more than the bet. When: Wagering games. Why: Players who bet their last chips cannot pay larger losses, so such rules are hard to enforce.
+- [rule] For mutually exclusive events, the chance that either occurs is the sum of their individual probabilities. When: when events cannot happen together.
+- [rule] Compute the chance of at least one event as 1 minus the chance that none occurs.
+- [rule] Plot standard error bars around each win rate to judge whether differences between characters are likely real.
+- [rule] Use 'chance' for a qualitative sense of likelihood and 'probability' or odds when a precise figure is needed.
+- [rule] Use the combination formula or COMBIN when order does not matter, and the permutation formula or PERMUT when each ordering counts as a distinct outcome. Why: Mixing them up gives the wrong count.
+- [rule] The basic combination and permutation formulas, including COMBIN and PERMUT, assume every item is distinct, so duplicate items require a separate adjustment.
+- [rule] Drawing with replacement, or reshuffling after each draw, makes every draw independent and equivalent to rolling a die with that many faces; loot drops work this way. Why: Drops are not removed from the pool, unlike cards drawn from a deck.
+- [rule] For multi-draw success, first find draws that cannot fail, then count successes only among the cards still in the deck at each draw that can fail. When: computing a probability over a sequence of draws without replacement. Why: removed cards change the remaining deck.
+- [rule] Model the finishing state as absorbing: its column keeps probability 1 and all other entries in it are zero, so the player stays finished. When: building a Markov model of a race or track game. Why: a finished player must not leave the end state.
+- [heuristic] For at-least-one events, count the none case instead of summing many hit-count cases, provided it is one simple combination of independent outcomes. When: counting successes directly would need many separate cases. Why: avoids summing several hit-count cases. (x2)
+- [heuristic] Working out why a designer chose a particular number builds balance skill.
+- [heuristic] The card-equation method works best with many comparable objects; a dozen unrelated objects need other analysis methods.
+- [heuristic] Cap early bets and raise the cap over time, so a lucky early leader cannot dominate while late hands can still be decisive. When: in betting games with escalating stakes. Why: caps stop early runaway leads while allowing a final decisive stage.
+- [heuristic] Use the same probability-weighted sum when equally likely outcomes pay out different amounts, such as a rare large prize among small ones. When: payouts or results differ in value.
+- [heuristic] When one more roll could win the game outright, keep rolling despite the risk, since the immediate win chance can outweigh expected points. When: a single roll can end the game in your favor.
+- [heuristic] Enumeration is practical for small outcome spaces, such as a few dice, but becomes impossible for large ones, so shortcut rules are needed then. When: Choosing between counting and formulas. Why: The number of outcomes grows exponentially with each roll.
+- [heuristic] Reshaping a random element's probability distribution curve can change how it feels, so test curve shapes rather than accepting the default. When: when tuning a random element.
+- [heuristic] Intuitive estimates of multi-trial odds often differ from computed values, so calculate rather than trust intuition.
+- [heuristic] Sum several dice when results should cluster around a middle value; use one die when every outcome should be equally likely. When: Choosing a random generator for a stat or result.
+- [heuristic] Experience with dice and card games already builds much of the intuition needed for game math.
+- [heuristic] Moderate streaks are normal over many rolls, but an extreme streak, such as twenty identical results, suggests a biased die.
+- [heuristic] For unbounded chance outcomes or infinite-state chains, simulation or truncation to the first few hundred cases or states gives an answer close enough. When: Exact enumeration is impossible and a precise closed form is not needed. Why: Probabilities of large outcomes or far states shrink quickly, so truncation loses little.
+- [heuristic] For at-least-one questions, count the complement, the case where none occurs, and subtract its probability from 1. Why: the complement is often easier to count than the success cases.
+- [heuristic] A combo needing two specific cards in a small opening hand succeeds reasonably often only with extra draws or other strategies. When: a combo depends on two specific cards early. Why: small hands rarely contain both specific cards.
+- [heuristic] In dice-based combat, rolling more dice always improves a player's chance of winning the battle. When: Choosing how many dice to roll in a combat exchange. Why: Extra dice give more chances to win each pairwise comparison.
+- [heuristic] Prefer copy-and-fill over hand-written rows for large outcome tables, since no formula is needed and only copying and filling is involved. When: a probability formula seems too complicated to write directly.
+- [procedure] 1) Describe the remaining deck as a state of counts of each card type. 2) Recurse on the chance of drawing each type next. 3) Stop with the target outcome when the run condition is met. 4) Sum the branch probabilities. When: computing the chance of a streak in a finite shuffled sequence. Why: the state space is too large to enumerate by hand, so a program must fill it automatically.
+- [procedure] 1) Put row indexes 0 to 16383 in column A. 2) In column B use MOD(A,4)+1. 3) For each later column, divide the index by the next power of 4, apply FLOOR, take MOD 4, and add 1. 4) Fill each formula down. When: Generating every outcome of seven 4-sided dice without copy-and-fill blocks.
+- [procedure] 1) Put one RANDBETWEEN formula in each cell of a column. 2) Fill the formula down until the column holds one cell per die. 3) Use SUM on that column to get the total. When: Rolling large numbers of dice, such as 100 six-sided dice.
+- [procedure] 1) Define each hand category precisely. 2) Count the card sets in each category with COMBIN or PERMUT. When: computing hand probabilities from a deck.
+- [procedure] 1) Count rows with each maximum run length using COUNTIF. 2) Divide each count by the total number of outcomes. 3) Check that the probabilities sum to 1.
+- [procedure] 1) Create a state machine with labeled states and transitions. 2) Mark the initial and final states. 3) Give each transition a probability. 4) Describe in plain language what the machine does. When: designing a probability-driven game system for analysis. Why: explicit states and probabilities make the system solvable.
+- [procedure] Subtract one card's equation from a near-identical card's equation to isolate the value of the single stat that differs between them. When: two cards differ in only one stat or cost.
+- [procedure] 1) Assign each required result to its own slot. 2) Count the choices left for each slot, shrinking the pool as values are used. 3) Multiply the counts. 4) Divide by the total number of possible outcomes. When: each die or slot must show a different specified value. Why: multiplying choices counts ordered arrangements.
+- [procedure] 1) Write a loop over every combination of die faces. 2) Sum each combination's total. 3) Count totals meeting the target condition. 4) Divide that count by the total number of combinations. When: too many dice outcomes to count by hand. Why: gives an exact answer by brute force.
+- [procedure] 1) For each pack slot, multiply the chance that slot holds a given tier by 1 divided by that tier's size. 2) Sum across slots to get a specific card's average copies per pack.
+- [procedure] 1) Find existing games with similar complexity, play time, and maximum win. 2) Look up or calculate their house edges. 3) Tune your rules to land at a similar edge.
+- [procedure] 1) Find the chance of failure on a single attempt. 2) Raise that chance to the power of the number of independent attempts. 3) Subtract the result from 1 to get the chance of at least one success. When: 'at least one success' questions with repeated independent attempts. Why: Multiplying failure chances gives the chance of none, which is simpler than adding overlapping cases.
+- [procedure] 1) List each possible outcome and its value. 2) Multiply each value by its probability. 3) Sum the products to get the expected value. When: Comparing actions or checking a game's fairness. Why: The sum gives the long-run average payoff.
+- [procedure] 1) Cap each outcome's value at what the situation can actually use. 2) Multiply the capped value by its probability. 3) Compare the capped expected values to choose an action. When: Evaluating an action whose benefit depends on the target's state. Why: Only usable value shapes the real choice.
+- [procedure] 1) Write out every possible outcome. 2) Mark the outcomes that meet the condition. 3) Divide the marked count by the total count. When: The outcome space is small enough to list. Why: Direct counting avoids errors in shortcut formulas.
+- [procedure] 1) Split all outcomes into mutually exclusive cases by the number of successes. 2) Count the arrangements in each case. 3) Multiply each case's single-arrangement probability by its arrangement count. 4) Sum the cases.
+- [procedure] 1) Plot levels against required XP as a scatter plot. 2) Add linear, polynomial degree 2 and 3, and exponential trendlines. 3) Compare their R-squared values. 4) If the curve has distinct segments, fit each segment separately. When: choosing a formula for an XP curve from data.
+- [procedure] 1) Count the distinct items needed for a complete set. 2) Compute the probability that repeated independent draws cover every item. 3) Compute the expected number of draws needed to collect all items, which exceeds the minimum number of draws. When: collecting one of each of several equally likely items.
+- [procedure] 1) Compute the chance of each entry on the first table. 2) For entries that trigger another roll, multiply by the chance of the next table's entry. 3) Repeat through each nested table to get the chance of a specific final item. When: loot tables where an entry rolls again on another table.
+- [procedure] 1) When ties reroll, discard tie outcomes. 2) Divide the win probability by the sum of win and loss probabilities to get the win chance. When: contests where ties force a reroll until one side wins.
+- [procedure] 1) Count the favorable shuffles that meet each condition on card positions and multiply the counts. 2) Count all distinct shuffles, treating identical cards as interchangeable. 3) Divide favorable by total. When: computing the chance of a specific opening hand or draw pattern from a deck. Why: Treating identical cards as interchangeable keeps the count correct.
+- [procedure] 1) Tally favorable outcomes. 2) Divide that tally by the total number of possibilities. 3) Recalculate the total after every reveal, because it shrinks and changes. When: finding probabilities when earlier results affect later ones.
+- [procedure] 1) Start from the total orderings of all cards as if distinct. 2) Divide by the factorial of the count of each group of identical cards. 3) Multiply the factorials of the groups, which gives the number of distinct shuffles. When: decks containing several copies of the same card.
+- [procedure] 1) Group identical cards by rank, ignoring suits. 2) Choose the ranks for each part of the hand, respecting order between different roles. 3) Choose the required number of cards within each rank group. 4) Multiply the counts and divide by the total number of hands. When: counting hands where cards are distinguished only by rank.
+- [procedure] 1) List the mutually exclusive categories of the first card. 2) Multiply each category's probability by the second-card match chance given that category. 3) Add the products. 4) Check that all outcomes sum to 1. When: computing the chance of a matching pair from a deck with special cards. Why: conditioning on the first card changes the second-card odds.
+- [procedure] 1) List every equally likely setup. 2) For each strategy, count the setups it wins. 3) Divide by the total number of setups. When: checking a counterintuitive probability with a small number of cases. Why: exhaustive counting gives exact odds.
+- [procedure] 1) Count draws missing card A. 2) Count draws missing card B. 3) Add those counts. 4) Subtract draws missing both. 5) Divide by total draws to get the chance of missing at least one. 6) Subtract from 1 to get the chance of having both. When: chance that a fixed-size draw contains at least one copy of each of two specific cards. Why: subtracting the overlap avoids double-counting draws missing both.
+- [procedure] 1) Compute the chance of success for the initial hand. 2) Account for each redraw from the full deck after reshuffling. 3) Apply any later draw to the remaining deck, updating the counts at each step. When: computing the chance of holding a key card after mulligans and an extra draw. Why: each step changes the deck composition for the next.
+- [procedure] 1) Count distinct hands as unordered sets of cards. 2) Multiply by the number of play orders only if the order changes the outcome. When: counting initial deals in a card game where hands are dealt face down. Why: choosing which cards a hand holds differs from ordering them for play.
+- [procedure] 1) List the probability of each early outcome directly. 2) Multiply the continuation chances along each path. 3) Stop summing once the remaining probability is negligible, or switch to a simulation. When: A repeated chance event where each continuation has a fixed probability. Why: Path probabilities shrink, so a short prefix already approximates the total.
+- [procedure] 1) Compare the highest die on each side; the lower roll loses one army, and ties go to the defender. 2) If both sides rolled at least two dice, compare the second-highest pair the same way. When: Resolving a dice-based combat round where each side rolls several dice. Why: Pairwise comparison of sorted dice decides which army is lost each exchange.
+- [procedure] 1) List every possible dice roll for both sides. 2) Resolve each roll by pairwise comparison. 3) Sum the probabilities of outcomes that win the battle. When: Computing exact combat odds for a small battle with a finite set of rolls. Why: Enumeration gives exact odds that can be checked by spreadsheet.
+- [procedure] 1) Set the one-vs-one win chance as the base case. 2) For any battle, sum over each possible roll result: its probability times the win chance of the smaller battle it leaves. 3) Fill a grid by attacker and defender counts. When: Computing win odds for battles of any size in a dice-based combat game. Why: Each battle reduces to smaller battles with known odds, so the grid builds up exactly.
+- [procedure] 1) Model each turn as a state pair of strikes (0 to 5) and dice rolled (1 to 6). 2) Add a single final state for six strikes. 3) Use the resulting Markov chain to find mean, median and mode of total rolls. When: analyzing the length of a dice game where players are eliminated after a fixed number of strikes. Why: a Markov chain captures the probabilistic transitions between strike and dice-count states.
+- [procedure] 1) Frame the process as states that record only the number of dice rolled per turn. 2) Find the steady state and the turns needed to reach it. 3) For each dice-count state, compute the failure probability. 4) Multiply each failure probability by the state's steady-state probability and sum the products. When: estimating the long-run chance of a strike on any turn in a dice game. Why: the steady-state probabilities determine the average outcome, not the starting state.
+- [procedure] 1) Count the arrangements for each outcome category of the roll. 2) Divide by symmetry to remove double counting for repeated arrangements. 3) Check that all category counts sum to the total number of possible rolls. When: computing exact probabilities for a multi-die roll. Why: the sum check reveals double counting when too high and missed cases when too low.
+- [procedure] 1) Define states for no match, pair, three, four, and five of a kind. 2) Set transition probabilities for each reroll count. 3) Multiply the initial state vector by the matrix once per reroll to find the probability of each state. When: computing the chance of reaching a target combination within a fixed number of rerolls. Why: repeated matrix multiplication gives the state distribution after each roll.
+- [procedure] 1) List the faces 1 to n in column A. 2) For each new die, copy the existing rows below themselves until the row count is n times larger. 3) Fill the new column with each face value over its own equal block of rows. 4) Repeat for each die until the row count equals n to the power of the dice. When: listing every outcome of several n-sided dice in a spreadsheet.
+- [procedure] 1) Shuffle the deck and draw seven opening cards, then one card each turn. 2) Note the first turn with 6 available mana. 3) Repeat the shuffle many times. 4) Average the recorded turns. When: estimating how soon a deck reaches a mana threshold.
+- [procedure] 1) List items in column B. 2) In column A, enter cumulative lower bounds starting at 0, in ascending order. 3) Use =VLOOKUP(RAND(),A1:B5,2) to pick an item. When: probabilities are not simple round weights.
+- [metric] The probability that an event does not occur equals 1 minus the probability that it occurs: P(not) = 1 − P(happens). (x2)
+- [metric] A specific face on a fair n-sided die has probability 1/n; a 1 on a d4 has probability 1/4, or 25%.
+- [metric] Rolling n dice with s faces, or flipping n coins, gives s^n equally likely ordered results; ten coin flips give 1024. When: dice are distinguishable.
+- [metric] Entropy is the sum over actions of minus p_i times log2 p_i, where p_i is the proportion of examples with action i.
+- [metric] The probability of first entering a final state at a given transition equals its cumulative probability minus the previous transition's cumulative probability.
+- [metric] The mean number of transitions to a final state is the sum of each transition number multiplied by its first-entry probability, computed as an array formula.
+- [metric] Probabilities of all distinct, non-overlapping outcomes sum to exactly 1; any other sum signals an arithmetic error. When: Verifying probability calculations. Why: Complete outcome sets must cover all possibilities once.
+- [metric] The chance of rolling no six in five rolls of a die is (5/6)^5, about 40%.
+- [metric] A wager with expected value of -1/18 per dollar loses about 5.6 cents for every dollar wagered.
+- [metric] For a d6 where a 1 wipes a turn total X, one more roll changes expected points by (20 - X)/6.
+- [metric] A house edge between about 0.25% and 30% is workable; below 0.25% is not profitable enough, and above 30% players will not tolerate it. When: tuning casino-style rules.
+- [metric] Three six-sided dice produce totals from 3 to 18, with values around 10 and 11 most common and extremes rare.
+- [metric] The expected value of a die equals the sum of all its faces, counting repeats, divided by the number of faces; for a fair d6 this is 3.5.
+- [metric] The number of outcomes for several dice equals faces per die raised to the number of dice: five six-sided dice give 7,776 and seven 4-sided dice give 4^7 = 16,384. When: Judging whether enumeration is practical.
+- [metric] The probability that n independent attempts all fail equals (1 − p)^n, where p is the success chance per attempt.
+- [metric] A Poker full house occurs in 3,744 of 2,598,960 five-card hands, a probability of about 0.00144.
+- [metric] With switch-offer chance R after a right first pick and W after a wrong one, staying wins 1/3 and switching wins 2/3 times W plus 1/3 times (1 - R). When: a host offers a switch with pick-dependent probabilities.
+- [metric] A two-dice sum's expected count in 36 rolls equals 36 times its probability, giving 1 for sums of 2 or 12 and 5 for sums of 6 or 8. When: two six-sided dice.
+- [metric] A one-attacker versus one-defender battle is won by the attacker with probability 15/36, and two attackers versus one defender gives about 0.754 for the attacker. When: Estimating attacker win chance in a one-exchange-at-a-time dice combat. Why: These exact values anchor the recursive odds for larger battles.
+- [tradeoff] Repeating entries encodes simple round weights but becomes impractical at large sizes; a cumulative threshold table handles any probabilities in a short list.
+- [tradeoff] Rules fix the damage range while chance picks the outcome within it, so the mix should be chosen based on the experience wanted.
+- [pitfall] Adding per-attempt chances to estimate the chance of at least one success is a common error that overstates the result and can exceed 100%.
+- [pitfall] Adding probabilities of events that must all occur, instead of multiplying independent ones, gives impossible totals, and forgetting to subtract overlaps counts them twice. When: Combining probabilities. Why: Event type determines whether to add or multiply.
+- [pitfall] Requiring an exact combination of distance and turn can make a plan impossible, because available animations rarely match the needed values precisely. When: Planning with discrete animations. Why: Each animation covers fixed amounts, so a needed move may not be exactly achievable.
+- [pitfall] Multiplying a single die roll by a number does not simulate several dice, and it removes possible totals such as odd numbers.
+- [pitfall] Double-counting is the main trap in enumerating card hands, so each hand must belong to exactly one category.
+- [pitfall] Checking all eight neighboring cells registers every cross-cell attack twice. Why: Each adjacent pair is visited from both of its cells.
+- [pitfall] A simple average of outcomes is wrong when outcomes have unequal probabilities; each result must be weighted by its probability. When: outcomes differ in probability. Why: a simple average treats every outcome as equally likely.
+- [pitfall] Treat each die as distinguishable when counting arrangements; ignoring which die shows which value miscounts the favorable total.
+- [pitfall] Probability errors usually come from miscounting favorable or total outcomes, since those counts are not always obvious. When: Calculating probability by formula. Why: A wrong count gives a wrong probability even when the formula is correct.
+- [pitfall] Multiplying probabilities of events that affect each other gives wrong results, so confirm independence before multiplying. When: when events may influence each other.
+- [pitfall] Counting arrangements is error-prone, so verify the arrangement count for each case before multiplying.
+- [pitfall] Treating averages from revenue diagrams as fixed numbers is a mistake, since actual deals are detailed and vary. When: using revenue split figures. Why: Real contracts differ from typical averages.
+- [pitfall] Designers overuse six-sided dice from familiarity, though the d6 is popular mainly because cubes are cheap to manufacture.
+- [pitfall] When stating odds, specify whether they are true odds or payout odds, since the two differ.
+- [pitfall] Adding separate single-card counts without subtracting draws missing both cards double-counts draws and can produce impossible probability values.
+- [pitfall] Marked or tampered cards or tiles break the usual probability calculations, so computed odds no longer match actual outcomes. When: A random set may be marked or manipulated. Why: The calculations rely on equal likelihood, which tampering removes.
+- [pitfall] Double counting in dice outcome tallies is the main risk; repeated arrangements must be divided by their symmetry factor.
+- [fact] Random generators have no memory, so a streak does not make the opposite result more likely; believing a streak makes the next result hot or due is wrong. When: trials are independent. Why: each trial is independent of earlier ones.
+- [fact] The entropy helper returns 0 for an empty set or a set containing a single action.
+- [fact] Relatively prime frequencies reduce clashes but do not remove them; frequencies 2, 3 and 5 still coincide every 6 and every 30 frames.
+- [fact] When all payoffs are equal, the payoff vector is one repeated value, and since it only scales the probability column, it can be set to 1 in every position. When: solving equal-payoff matchups.
+- [fact] A hand-tuned dice outcome function can be neither increasing nor decreasing and still work well, if it creates tension through reversals of fortune. When: designing dice-result outcomes with uneven values. Why: Non-monotonic results make each roll uncertain and engaging.
+- [fact] Bingo balls, lottery balls and board game spinners can be biased by uneven paint weight or friction.
+- [fact] Transitive data appears in RPG shop prices and leveling, FPS weapon upgrades, life-simulation purchases, tower upgrades, trading card costs, arcade scoring, and sports salaries.
+- [fact] Six dice showing each face exactly once occur about 1.5% of the time, so such bonuses are rare even though every face is equally likely.
+- [fact] Across very many random trials, results cluster near the expected value, while short series show streaks and uneven results.
+- [fact] Independent rolls can be performed in any order without changing the probability that all succeed.
+- [fact] Standard deviation must be read relative to the mean, since the same spread is minor around a large mean but large around a small one.
+- [fact] Classical logic makes 'a AND b entails c' equivalent to '(a entails c) OR (b entails c)'.
+- [fact] Estimating probabilities is itself a skill; skilled players predict outcomes better by calculating odds.
+- [fact] A single random selection, such as one die roll, gives every outcome an equal chance.
+- [fact] Expected values of independent dice add when summed: three dice each averaging 5/3 together average 5 per roll.
+- [fact] In Blackjack a normal win pays 1:1, while a natural blackjack pays 3:2.
+- [fact] By convention 0! = 1, and factorials grow very quickly.
+- [fact] A full house is very unlikely in a standard five-card draw and becomes more common only when players draw more cards or have wild cards.
+- [fact] Opening a losing option does not change the odds of the player's first choice, so the unopened option holds all the probability the first choice lacks. When: a host reveals one losing option among three. Why: the host always reveals a losing option, so the reveal carries information.
+- [fact] With three options, one prize, and a host who always reveals a losing option, switching to the remaining option wins two-thirds of the time, staying one-third. When: the first pick is uniformly random and the host knows the prize location.
+- [fact] In a shuffled 52-card deck, after one card is drawn, the chance the next card shares its rank is 3 in 51, about 1 in 17.
+- [fact] Five cards can be played in 5 x 4 x 3 x 2 x 1 = 120 different orders. When: each card must be played once in sequence. Why: each position in the order has one fewer choice.
+- [fact] Total expected profit and percentage player advantage measure different things and can move in opposite directions, so a bigger total prize may shrink the relative edge.
+- [fact] Casinos spend heavily to remove equipment bias, since perceived rigging could cost them their gambling license.
+- [fact] Casinos use real-time statistics to tell lucky players from cheats, which is a practical deterrent.
+- [fact] Long-run state shares depend directly on the transition probabilities, so small probability changes can noticeably shift the steady-state mix. When: tuning transition probabilities in a game system. Why: the steady state is a function of the matrix entries.
+- [fact] With one die left to roll, about four failures usually occur before a 1 appears. When: a single die is being rerolled until it shows a 1. Why: a fixed one-in-six chance per roll makes the expected wait short.
+- [fact] A five-of-a-kind on the first roll of five six-sided dice is less than one in a thousand.
+- [fact] Going for a five-of-a-kind every turn across 13 scoring categories gives roughly a 46% chance of at least one such result. When: a player chases the same combination in every scoring category. Why: each category gives another chance of success.
+
+## game economy
+- [model] Game resources fall into five classes: time, currency, game-specific objects, hit points or lives, and experience with levels. When: When listing a game's resources. Why: These classes cover the common exchangeable things players spend and gain.
+- [model] Games commonly fall into five economic system types: fixed, player-dynamic, free-to-play, prestige and real currency, which differ in where resources come from, whether players set prices, and whether real money enters.
+- [model] In games where items are bought with a resource such as gold, mana, or experience points, that resource cost can serve as the anchor for scaling other item numbers.
+- [model] Open economies, where players can buy advantages, stay fair through three methods: limiting spending, limiting power, and providing competitive gates.
+- [definition] Money or currency is any all-purpose resource traded for other resources, information, or saved time, such as skill points spent on skills; most games use one main currency. (x2)
+- [definition] A resource is anything a player receives that can be used or traded to acquire something else. Why: A broad definition lets designers audit every exchangeable thing in a game.
+- [definition] A resource is an object made valuable by scarcity and usefulness toward the player's goal; designers make resources valuable by making them scarce, so players want them.
+- [definition] In a real-currency economy, some resources are real money, as in gambling games that take money to play or pay real money, and games selling in-game property or exclusive rewards.
+- [definition] A game economy is defined by two meaningful decisions: how the player earns money and how the player spends it. When: Judging whether a resource system counts as a real economy. Why: If players lack either the earning choice or the spending choice, the system is not an economy.
+- [definition] A consumable is a resource the player uses up in acquiring something else, and once used it is gone.
+- [definition] In a fixed economy, all resources come from inside the game, designers set prices before launch, and players cannot affect prices or buy in with real money.
+- [definition] In a player-dynamic economy, resources come from the game but players set prices through trade or auction using in-game currency.
+- [definition] A money sink is a negative-sum mechanic that removes currency from the economy without creating it elsewhere, and positive-sum economies need sinks to stay stable.
+- [definition] In games, inflation is a continual rise in the price of goods or services, driven by a shift in supply or demand that raises market prices.
+- [definition] Resource generation is how players gain resources, by buying them with in-game or real currency, grinding through combat, or accumulating them over time.
+- [definition] Resource conversion turns one resource into another resource or a permanent item, such as through crafting or buying from a store; it creates something new, while consumption changes something that already exists.
+- [definition] Resource trading lets players exchange resources through negotiation, haggling or gifts, giving them a reason to interact, which matters in community-driven games.
+- [definition] Resource consumption is spending resources for an in-game benefit or to remove a barrier; designers control it through demand, quantity, timing and effect.
+- [definition] Total resource supply is either unlimited or capped, and designers control rarity or make items strictly limited.
+- [definition] A closed economy is self-contained, with no route for outside forces, including real currency, to alter its resources; the majority of big-budget and tabletop economies are closed.
+- [definition] An open economy lets outside forces, such as buying currency with real money or rushing production, directly affect in-game money and resources.
+- [definition] An economy is positive sum if players collectively gain value, negative sum if they collectively lose it, and zero sum if gains and losses cancel.
+- [definition] A game economy forms when items can be exchanged among players or between players and the system.
+- [definition] Premium currency is bought with real money, is hard to earn in play, and is often spent on cosmetics or on options that let paying players gain an advantage.
+- [definition] Game-specific resources are items players collect, find, mine, or win, which they can use now or later to improve their game state.
+- [definition] An economic reset takes everyone's wealth away and restarts all players from the same starting point.
+- [definition] Units are used when a player is represented by several objects at once, and they can keep fixed values or upgrade and evolve over time.
+- [definition] Resources are assets that help players reach goals, and they play a role similar to real-world resources.
+- [definition] A rival good can be consumed by only one customer at a time, while a nonrival good, like a game, can be distributed to any number of customers at almost no cost.
+- [mechanism] In an economy, spending helps players earn more, which gives more chances to spend, forming a loop that carries players forward.
+- [mechanism] Left unchecked, a positive loop drives games toward an irreversible conclusion, known as the empire problem. When: When a leader's advantage compounds without limit. Why: Each gain produces more gains, so the lead becomes unassailable.
+- [mechanism] When players create and sell items with no progression, every item effectively becomes a prestige item. When: Player-created item economy without progression.
+- [mechanism] In a positive-sum economy where currency is added without being removed, average currency per player grows over time, shifting the demand curve so players pay higher prices for the same goods. When: Monster loot in MMOs or similar sources add currency without removing it.
+- [mechanism] When prices outpace what players can earn, new and returning players find items unattainable, because prices keep rising while they are away.
+- [mechanism] Very high-priced cosmetic status items can drain large amounts of currency quickly when wealthy players buy them.
+- [mechanism] Requiring expensive items for quests pulls currency from all players, acting as a sink.
+- [mechanism] Supply-side inflation occurs when the amount of currency entering a game rises sharply, causing market prices of goods to climb as the oversupply spreads through the player community. Why: Excess currency entering through external sources raises prices for items and services across the economy.
+- [mechanism] Buying currency for cash can make purchased currency a larger source of currency than in-game earnings, inflating the economy. When: When players can trade real money for in-game currency.
+- [mechanism] Currency-store items are priced to what will monetize; because challenge outpaces item power, spending is pushed.
+- [mechanism] Because each later resource unit arrives later on average, each one is worth more than the last, so costs should rise faster after early units.
+- [mechanism] In property-trading board games, spending income on income-producing assets forms a positive loop that stops a positive-sum game from running forever.
+- [mechanism] Inflation penalizes newcomers, who have to grind harder to close the gap, whereas deflation penalizes veterans, who must win just to stay even.
+- [mechanism] A fixed-rate bank exchange caps how much a resource can be worth in trade, since players can always convert at that rate. When: A game offers a bank conversion rate alongside player trade. Why: Players compare trade offers against the bank rate, limiting inflated prices.
+- [mechanism] A rule forcing players holding too many cards to surrender half their hand discourages hoarding and spreads resources back into play. When: Resource-collection games with a card-hand limit. Why: Losing a large share of a big hand makes accumulation costly.
+- [mechanism] In Battlefield 1942 assault matches, each death drains a ticket count and controlling a required point drains the opponent's tickets, so control shifts the balance.
+- [mechanism] Resource value changes over a game as better versions appear, so newer materials depreciate older ones. When: In games where tools or items are upgraded in tiers. Why: Better tiers save more time, making earlier tiers less useful.
+- [mechanism] Free-to-play games make real-money prices hard to compare against in-game currency through irregular bundles and dual currencies, which reduces player scrutiny of costs and can increase spending. When: games selling in-game currency for real money. Why: Players who cannot easily compute the effective unit price tend to question purchases less.
+- [mechanism] When an item is priced in two currencies that can be both bought and earned, with one much rarer, the true cost becomes hard to judge. When: dual-currency economies with a premium and a common currency. Why: Players must convert between currencies with no clear exchange rate.
+- [mechanism] Keeping a price fixed while reducing the currency it buys raises the effective price without changing the list price.
+- [mechanism] Money-for-time sells speed along the same progression curve free players follow, so it does not change relative power.
+- [mechanism] Inventory items are kept scarce through high purchase prices or through the opportunity cost of searching for them.
+- [mechanism] Special terrain can act as a primary resource in map-based strategy, and terrain can also serve as a resource in less obvious ways, such as scoring squares in word games.
+- [mechanism] Time works as a resource when each player has a limited time budget tracked by a clock, and countdowns add dramatic tension.
+- [mechanism] Renewable units often carry a cost per unit, and whether that cost is balanced is best checked through playtesting.
+- [mechanism] When points are scarce, players spend them carefully, so each use becomes a spectacular, memorable event. When: Limited resources tied to dramatic actions. Why: Scarcity raises the value of each spend.
+- [mechanism] Funding choices such as budget size or monetization model shape a game's design, so form follows funding.
+- [mechanism] Resource limits determine how long a match can last, so they set the game's pace. When: Designing match length. Why: Finite supply caps how long play can continue.
+- [mechanism] In a positive-sum economy where money enters the game without draining, the bankruptcy goal recedes over time and matches can run very long. When: Money flow is not drained by play. Why: Accumulating wealth makes elimination rarer and slower.
+- [mechanism] In many free-to-play games, difficulty above player ability forces grinding or a small payment, so money can stand in for time, skill and luck.
+- [mechanism] Reducing a primary damage source pushes players toward costlier or limited alternatives, which may run out before the level ends.
+- [mechanism] A gain-rate powerup raises XP gain only from its purchase time onward, so XP earned before the purchase is unchanged.
+- [mechanism] Making a resource run out and replenishing it through a secondary action changes how the resource is used and how the secondary action feels. When: when designing consumable resources such as ammunition. Why: Scarcity gives players a reason to use the resource selectively.
+- [mechanism] Upkeep drains gold income in proportion to army size, so large surpluses are prevented and players are encouraged to fight with smaller armies. When: players can rebuild instantly from resource surpluses after losses. Why: The drain removes the benefit of hoarding resources for mass rebuilding.
+- [mechanism] Games are antirival: they become better as more people play, through stronger communities, more play partners, user-made content and word of mouth. When: a game's player base grows. Why: Larger audiences generate value that attracts further players.
+- [behavior] Farmer representatives approach players in-game, offering currency in exchange for cash sent through third-party payment apps.
+- [behavior] If players can buy goods with real money, they will likely trade those goods for cash, creating a secondary economy.
+- [behavior] Players buy time: when grinding is slow, players will pay real money for currency if trading allows it, even when direct paid rush is banned. When: When currency is tradeable for real money. Why: Trading lets players convert money into the time saved by grinding.
+- [behavior] Players buy cards they never plan to use, simply to remove annoying or overly powerful cards from circulation. When: a card threatens their deck or annoys them.
+- [behavior] When players know a bonus recurs at a fixed interval, they will pay to continue after dying to keep reaching it. When: predictable recurring bonuses. Why: players anticipate and value the next bonus.
+- [rule] Include only the resources a game truly needs, and keep testing whether each one is necessary. When: When designing a game's resource set. Why: Extra resources complicate play and usually end poorly.
+- [rule] List the game's resources and how they connect before balancing, both early in design and for games already in production. Why: Balance depends on how resources flow between systems, so knowing the pieces is the first step.
+- [rule] To fix an unbalanced object, change its costs or benefits, or change surrounding systems, level design, or encounter frequency, while keeping the object itself the same. When: an object's value is off and the object's design should stay fixed. Why: the surrounding context often determines how valuable the object is.
+- [rule] Cap how many of an essential resource a player can gift to one recipient per day. When: The gifted resource is essential and the game depends on its sales. Why: The cap forces players to build a wider network instead of relying on one friend.
+- [rule] Sinks must not conflict with the goal of stopping inflation, so designers should check that sources and sinks stay in balance.
+- [rule] Designers who do not want cash trades should design the trading system so it does not allow them.
+- [rule] When a card, combination, or deck is too strong, adjust its cost by hand.
+- [rule] Tie every economic action to the player's objective so that each action advances or hinders progress, and balance resource utility against scarcity. Why: Economic choices only matter when they affect the goal.
+- [rule] In live games, taper currency from drops over time, reducing the flow of new money into the economy.
+- [rule] Convert resources that trade into each other (time to points, coins to lives, coins per time unit) using their exchange rate, read from numeric relations. When: Resources convert into one another.
+- [rule] A resource needs both utility, meaning it helps reach goals, and scarcity, meaning it is not overly abundant.
+- [rule] Designers plan which resources players can find or earn, so that meeting challenges yields what is needed to advance.
+- [rule] Design currency to reward the activities you want players to do, so that earning it adds value through play rather than through money.
+- [heuristic] Designers can interpret marketing data creatively to address market trends without sacrificing core gameplay.
+- [heuristic] Specialized barter currencies tied to in-world goods can suit a world better than a generic universal currency. Why: They make the economy feel native to the world's rules.
+- [heuristic] With all other factors equal, doubling an item's benefit should double its cost. When: all other factors are equal.
+- [heuristic] Revisit the cost curve and its supporting math to find the cause of an imbalance, because the cause may reveal other cards that need changes. When: after a card or deck is found too strong.
+- [heuristic] Use a single all-purpose currency for most games and question any extra resource that does not add meaningful choice.
+- [heuristic] Use a resource-only economy, where collected materials are the main way to become stronger, when gathering itself should drive growth.
+- [heuristic] Rather than adding currency sinks, designers may cut the positive-sum sources feeding inflation, or wipe the economy clean. When: Economies showing inflation.
+- [heuristic] Give players a small budget of points that alter rolls in their favor during risky moments, to balance risk without fixed odds. When: Risky actions are too rare or too routine. Why: Player control over outcomes adjusts risk without changing base odds.
+- [heuristic] When tuning a generated dungeon's health, energy, and reward items, map their links first to see which generator parameters affect each other. When: Dungeon generation with several interdependent resources. Why: Changing one linked parameter shifts the others.
+- [heuristic] Counter runaway accumulation by offering different rewards, avoiding groupings that reward control, or giving players reasons to spend resources. When: Each additional unit is more useful and players chase control. Why: Spending pressure and varied rewards stop players from monopolizing resources.
+- [heuristic] When resources are unlimited, efficient economic ramp-up matters more than unit deaths, and multiple victory paths keep play from reducing to one route. When: Resource-rich strategy games. Why: Economic speed decides outcomes more than unit trades.
+- [heuristic] Currency can reward playing against human opponents, since such players supply entertainment and challenge to others regardless of payment.
+- [heuristic] Track several linked resources, such as health, supplies and vehicle condition, so each travel choice carries a cost.
+- [procedure] 1) For each resource type, list games that use it. 2) If none come to mind, research and play several examples.
+- [procedure] 1) Define the basic function of a resource type. 2) Apply that function in new ways rather than copying familiar games.
+- [procedure] 1) List every resource in the game state. 2) Find which resources convert into others through core mechanics or special object rules. 3) Draw the flow as boxes for resources and arrows for conversions. When: analyzing a game's economy before balancing it.
+- [procedure] 1) Fairness: can buying or earning grant unfair edges? 2) Challenge: can purchases trivialize play, or is earning too hard? 3) Choices: enough earn and spend options, and is earning skill or luck based? 4) Cooperation: can players pool funds or collude? 5) Pacing: is earning too slow or fast, and do rewards matter? 6) Autonomy: can players acquire desired goods independently? When: Reviewing an economy that involves trading between players.
+- [procedure] 1) Ask how players earn money and whether other earning methods should exist. 2) Ask what players can buy and why. 3) Ask whether money is too easy or too hard to get and how to adjust it. 4) Ask whether earning and spending choices are meaningful. 5) Ask whether one universal currency suits the design or specialized currencies would serve better. When: After an economy is defined, to check that it is controlled and meaningful.
+- [procedure] 1) Introduce pricier goods. 2) Raise existing prices, which players dislike. 3) Lower the drop rates that add currency. When: Designer responds to demand-side inflation.
+- [procedure] 1) Measure average currency per player over time. 2) If it grows or shrinks, adjust sources or sinks. 3) Aim for sinks that remove about as much currency as sources add. When: Keeping a positive-sum economy stable. Why: Stable currency per player means prices hold their value.
+- [procedure] 1) Ban accounts linked to currency farming. 2) Build tools that detect and disable bots. When: When external farmers flood the economy with currency. Why: Removing the sources of illicit currency limits the oversupply.
+- [procedure] 1) Control availability, so store-sold items rarely sell above store price. 2) Set loot rarity, since rarer items are usually worth more. 3) Place stores so nearby buy or sell options cap prices. 4) Restrict item properties, since class-only items have limited markets. When: When designers want to influence player-set trade prices.
+- [procedure] 1) Remove auction trading. 2) Or build a performance economy that rewards in-game actions over what players can afford. When: When real-money currency trading distorts the economy.
+- [procedure] 1) Start with a fixed economy. 2) Add a production source. 3) Add a bank exchange cap. 4) Restrict trade timing and partners. 5) Make values fluctuate with supply and demand. When: Evolving a simple trading card game into a richer economy. Why: Each added layer increases complexity while keeping the game playable.
+- [procedure] 1) Decide whether the economy grows over the game and whether that growth is controlled. 2) Decide how currency supply is controlled. 3) Decide how prices are set. 4) Decide what restricts trade. When: Designing a game economy from scratch. Why: These four decisions determine the economy's growth, inflation, pricing, and trade flow.
+- [procedure] 1) Start by letting players self-regulate resource recycling. 2) Observe whether players hoard items. 3) If hoarding breaks the economy, switch to designer control of supply. When: Managing item supply in a persistent online economy. Why: Unregulated recycling can let hoarding distort availability.
+- [procedure] Keep two identity resources separate when one is scarce in some situations, when theme rules out the exchange, or when one is more versatile. When: deciding whether two equal-value resources should remain distinct. Why: Scarcity, theme, and versatility each break a true one-to-one identity in play.
+- [procedure] 1) Choose a game with several resource types and list as many as possible. 2) Identify how they relate or are exchanged during play. 3) Draw each resource as a box and each relationship, numeric relation or exchange rate as an arrow. 4) Choose the resource best suited as anchor. When: First analyzing a game's economy, when a balance issue involves several resources, or analyzing a classic game's resource economy. Why: Makes hidden links between resources visible.
+- [procedure] 1) Map the resource cost to cost points, keeping the curve as identity. 2) Map each benefit to benefit points. 3) Subtract cost points from benefit points to find the item's position relative to the curve. 4) Compare items only after conversion; raw resource units against stat points reverse the apparent balance. When: Items whose resource costs grow non-linearly, or items whose costs are in raw resource units. Why: Converting costs keeps the identity curve valid without changing it; unit mismatch reverses the apparent balance.
+- [procedure] 1) List every party that receives part of a sale. 2) Note each party's share. 3) Explain why each share is that size. 4) Use the gaps to find the questions to answer. When: analyzing any business model. Why: Following the money reveals how the business really works.
+- [procedure] 1) Identify where a currency comes from, such as starting amount or loot. 2) Identify where it goes, such as shops, NPCs, other players, or event costs. When: Analyzing a currency's flow through a game economy. Why: Sources and sinks determine whether the currency stays balanced.
+- [metric] Economy control methods include limiting how much money the game creates and controlling the ways money is earned and spent.
+- [metric] A typical competitive 60-card deck holds about 20 resource sources, roughly one card in three.
+- [tradeoff] Showing market data helps players decide well, whereas concealment leaves the community a shared puzzle to solve.
+- [tradeoff] Closed economies are easier to design and balance because the designer controls all production and consumption, while open economies are harder because players may spend very different amounts and the designer loses control.
+- [tradeoff] Designers can forbid cash trades, tolerate them without accepting responsibility for disputes, or formalize them by building cash acceptance and transfer into the game.
+- [tradeoff] A simple conversion rate, such as 10 cents per unit, makes costs transparent, whereas a complex rate reduces the number of players who question their purchases. When: designing real-money currency pricing. Why: Transparency aids informed buying; complexity suppresses comparison.
+- [tradeoff] Buying the cheapest income upgrade now raises income sooner, while saving for a costlier upgrade with better cost-to-benefit ratio earns less early but more later. When: idle games with several upgrades and a fixed time horizon.
+- [tradeoff] Limited resources make unit losses permanent and focus play on preserving units, while unlimited resources let players rebuild losses and care less about any one unit. When: Designing tactical unit economy. Why: Replaceability determines how much each unit matters.
+- [tradeoff] Treating spending as the player's free choice serves the business, but accepting measurable harm to players conflicts with entertainment as the product.
+- [tradeoff] Reusable items cost more up front but save per use, paying off after upfront cost difference ÷ per-use saving uses; consumables cost less up front but repeat the expense. When: Choosing between a reusable item and repeated consumable purchases. Why: Per-use savings accumulate until they repay the up-front cost.
+- [pitfall] An economy disconnected from other resources may be unnecessary altogether. When: When a subsystem trades only within itself. Why: Disconnected resources add complexity without contributing to the core tradeoffs.
+- [pitfall] The five economy types leave many edge cases, so they work as shared vocabulary rather than strict categories.
+- [pitfall] Inflation can look harmless because players are richer too, but when it comes from gold farming or pay-to-win it unfairly favors those who pay.
+- [pitfall] Once farmed currency circulates among players, designers cannot easily remove it, so money sinks only work if they affect all players.
+- [pitfall] Adding house rules without checking sources and sinks can increase inflation; for example, sending tax money to a free parking pot removes a sink and worsens it. When: When changing rules that move currency.
+- [pitfall] Deliberate-looking inflation costs player trust even when each increase is small.
+- [pitfall] Replacing a power-up with currency can disturb the economy if the currency is handed out in amounts that are too large. When: a power-up is swapped for currency. Why: the economy absorbs the extra currency.
+- [pitfall] A scarce resource offered as a quest reward is weak if players have not yet felt its scarcity or cannot craft anything interesting with it. When: Designing scarce resources and rewards. Why: A resource gains value only when players recognize its scarcity and use.
+- [pitfall] Purchasing power can let one player assemble an unbeatable deck from many purchased decks.
+- [pitfall] Spreading resource gathering evenly across all resources does not plan ahead to stockpile what later needs, so reserves are not built.
+- [pitfall] Offering a power boost when a player is stuck can make them feel like a failure who needs to pay. When: a player is blocked by an obstacle. Why: The offer ties the purchase to a moment of frustration.
+- [pitfall] If a unit pays its cost in a resource other than the one that decides most games, matchups can swing wildly.
+- [pitfall] Assuming a fixed usage frequency for an object is unreliable, because use depends on what else the player owns, acquisition order, and play style. Why: Players may also use suboptimal tools.
+- [pitfall] Removing scarcity, for example by making ammunition infinite, can remove the reason to use the resource at all, so players use it constantly. When: when considering whether a consumable should be unlimited. Why: Without cost, the resource no longer shapes player choices.
+- [fact] Metaeconomies emerge outside the game: players sell characters or items on external auction sites, sometimes for hundreds of dollars, and worldwide card-trading markets can shape play without in-game trading.
+- [fact] Balancing a multiplayer economy requires weighing nine concerns at once: fairness, challenge, choices, chance, cooperation, time, rewards, punishment, and freedom. When: Large online games where players trade with each other. Why: Trading between players creates many interacting concerns that single-factor fixes cannot address.
+- [fact] Resource classes form one interwoven economy of tradeoffs, so changing one resource affects the others. Why: Resources are connected through exchange, not isolated.
+- [fact] Common curve shapes: experience points are exponential, experience levels are logarithmic, skill point identity, HP increases are linear with a random value in a range, monster strength is linear, and item values are linear with damage or protection.
+- [fact] Without a common currency, a barter economy with millions of goods implies trillions of possible pairwise exchange rates.
+- [fact] Economic system types are rarely named in the field; mechanics, platform and connectivity usually dictate them, and games can combine several types.
+- [fact] Common money sinks are NPC merchants selling items for gold, consumables that must be rebought, repair costs for weapons and armor, and death penalties that take money or items.
+- [fact] Gold farmers grind in-game currency using bots or hired workers, and at peak one estimate counted over 100,000 people working as full-time gold farmers.
+- [fact] A game whose currency is mostly injected by sources and removed only by involuntary sinks is strongly positive-sum, so players grow richer over time and bankruptcy becomes harder to reach. Why: Net currency creation makes the win condition recede and lengthens play.
+- [fact] When at most one resource source arrives per turn and unused resources are lost, a player has at most N resource units on turn N.
+- [fact] Resources can further a player's aims, be combined into new items, and be bought and sold in markets.
+- [fact] Resources may be exchanged directly between players or placed in fixed positions by the designer for players to find and collect.
+- [fact] Resources take many forms, including cards, weapons, ammunition, power-ups, time, units, turns, and terrain; finding and managing them is central to many games.
+- [fact] Currency is among the most powerful resource types because it lets players trade without bartering goods they happen to hold.
+- [fact] Currency does not have to follow a standard banknote system; barter systems can achieve similar trade goals.
+- [fact] A game economy needs tradable goods, participants that trade them, such as players or a central treasury, and channels for trading, like auctions or vendor stalls.
+- [fact] Currency is optional in an economy; when present, it helps facilitate trade.
+- [fact] Persistent online worlds combine a labor market, where players earn gold from menial tasks sold to shopkeepers or other players, with a goods market for weapons, armor, and magic items.
+- [fact] A player-driven trading layer can behave as a small economy, with prices set by valuations and perceived uses.
+- [fact] A single resource can follow different curves with different partner resources, such as identity with one and another shape with a second.
+- [fact] Strictly limiting or forbidding extra purchases gives everyone equal resources, but is rarely practical for games that depend on sales. When: Tournament-style games, not purchase-driven business models.
+- [fact] Economic game theory works only on very simple systems, so it rarely helps when designing actual games.
+- [fact] Time, currency, levels, health and purchased items are resources a game may use, and their relationships (time as currency, currency as time, health linked to time) are worth examining. When: Analyzing a game's resource design.
+- [fact] Many free-to-play games pair a regular currency with a second one that is hard to earn through play and is mostly sold for real money.
+- [fact] In competitive games, content is often unlocked by spending in-game currency.
+- [fact] Earning real money from games existed before blockchain games, as shown by gold farming in massively multiplayer online games.
+- [fact] A food cap alone does not stop large armies, since players reach the cap and then rebuild from resource surpluses after losses. When: limiting army size with a population cap. Why: Surplus resources let players refill the cap quickly.
+
+## reward schedules
+- [model] Design motivation to satisfy competence, autonomy and relatedness; this intrinsic motivation matters most in educational games and lasts longer than extrinsic rewards. Why: These three needs drive sustained engagement. (x2)
+- [model] Operant view: any rewarding operant behavior, such as gaming, drug use, sex, or eating, can become addictive.
+- [model] Reward schedules vary on two axes: basis, where time gives an interval schedule and behavior gives a ratio schedule, and predictability, which is fixed or variable.
+- [definition] Intrinsic motivation comes from inside the player, for an activity's own sake or pleasure; extrinsic motivation comes from external rewards, payment, or avoiding punishment. (x4)
+- [definition] Operant conditioning shapes voluntary actions: an action performed after a stimulus is linked to the reward or punishment that follows it, unlike classical conditioning, which manipulates involuntary responses. (x3)
+- [definition] Classical conditioning links two stimuli through repeated pairing, so one comes to trigger a response associated with the other. (x2)
+- [definition] Positive means something is added and negative means something is removed, and neither term means good or bad; combined they yield positive reward, positive punishment, negative punishment and negative reward.
+- [definition] The minor gift is an innate ease with some discipline, for example level design, arithmetic, or piano; it does not guarantee enjoyment.
+- [definition] Genuine affection for the craft is a designer's greatest asset: it sustains effort with whatever skills one has and shows in the finished product.
+- [definition] Inherent interest is the attention an event captures by itself, such as a dangerous live act that is hard to look away from.
+- [definition] DRL is a differential rate schedule in which an early attempt restarts the interval, encouraging low, steady rates of activity. When: designing paced or deliberate actions. Why: Rewards go only to players who wait out the interval.
+- [definition] DRH is a differential rate schedule that requires a set number of actions within an interval to earn the reward, for example five defeats within one minute. When: designing timed burst challenges. Why: Rewards go only to players who act quickly enough.
+- [definition] A fixed ratio schedule gives a reward after a set number of actions, and that ratio stays the same every time.
+- [definition] A fixed interval schedule makes a reward available a set time after it was last taken, rather than after a number of actions.
+- [definition] A variable interval schedule makes a reward available after a randomized amount of time, rather than after a fixed one.
+- [definition] A reinforcement schedule is a set of rules that determines when rewards are given.
+- [definition] An experimental enclosure with levers, lights, and dispensers, wired by hidden logic, is used to test reward schedules on animals.
+- [definition] Positive reinforcement rewards a correct action, while punishment follows a wrong one.
+- [definition] Negative reinforcement strengthens an action because it removes an unpleasant condition.
+- [definition] A set of objects without relationships between them is only a collection; relationships are what turn objects into a system.
+- [definition] A compulsion machine does not seriously try to fulfill players and treats each decision as a way to maximize motivation.
+- [definition] Fixed interval rewards arrive after set time periods, fixed ratio rewards after set numbers of actions, variable interval rewards after unpredictable times, and variable ratio rewards after unpredictable numbers of actions.
+- [definition] Task-contingent rewards depend on engagement, completion, or performance: engagement-contingent rewards reward taking part, completion-contingent rewards reward finishing, performance-contingent rewards reward doing well.
+- [mechanism] Rewards or avoided punishment make a behavior more frequent; punishment or going unrewarded makes it less frequent, and withdrawing punishment after a behavior also increases it. (x2)
+- [mechanism] Variable ratio reinforcement, where rewards follow an unpredictable number of actions, sustains more consistent engagement than fixed-interval or fixed-ratio schedules. When: Designing reward timing for repeated player actions. Why: Players cannot predict the reward moment, and unpredictable payoffs sustain repeated behavior more strongly than fixed payoffs. (x2)
+- [mechanism] Variable-ratio rewards, granted after a randomized count of actions, hold players longer and sustain activity far better than fixed rewards with identical average value. When: Choosing between fixed and random payoffs for the same expected reward, or designing rewards for sustained repeated activity. Why: Unpredictable payoffs keep each reward feeling like a surprise, while predictable ones become dull; each action carries a shot at a big payout. (x2)
+- [mechanism] Satisfaction from a gain follows diminishing returns, so many small gains spread over time feel better than the same total granted in a short window. Why: Each extra gain adds less satisfaction than the one before.
+- [mechanism] When community events are frequent, players keep checking back to learn what is coming up, which sustains return visits. When: When events occur on a regular schedule. Why: Players anticipate upcoming events and check for announcements.
+- [mechanism] When two stimuli repeatedly occur close together, the first comes to trigger the response that normally follows the second, without the learner acting deliberately. Why: Association forms passively and largely implicitly.
+- [mechanism] In operant conditioning, the learner discovers that a particular action changes the likelihood of an outcome, so consequences shape how often the action is repeated.
+- [mechanism] When a previously rewarded behavior stops being reinforced, it declines, a process called extinction.
+- [mechanism] A disruptive behavior that goes unpunished or feels rewarded tends to increase over time. When: Multiplayer behavior is left unchecked. Why: Operant conditioning: consequences shape how often a behavior recurs.
+- [mechanism] Well-practiced conditioned associations are retrieved almost instantly, faster than facts that must be worked out step by step. Why: conditioning bypasses calculation.
+- [mechanism] Each time a memory is reinforced, it is reconsolidated and the forgetting curve becomes less steep. Why: reconsolidation occurs at every repetition.
+- [mechanism] Rewards can enhance motivation when they give useful information, confirm competence, or enable something people already wanted.
+- [mechanism] The four motivation types are not independent; together they shape perception, feelings, cognition, and behavior.
+- [mechanism] Classical conditioning is passive association, while operant conditioning requires the learner to perform an appropriate action to receive a reward.
+- [mechanism] Operant conditioning, learning an action to gain a reward, is robust but transfers poorly; motivation can stop when rewards stop. Why: Behavior is tied to the reward contingency rather than to the skill itself.
+- [mechanism] Letting players work on several reward-bearing tasks at once superimposes variable ratio schedules on one another.
+- [mechanism] In a variable interval schedule, checking more often lowers the chance of a reward, so players have less reason to repeat the action quickly.
+- [mechanism] Attaching money to creative work can displace the intrinsic reasons developers have for it, such as wanting to make something great, gain recognition, progress, and autonomy. When: When introducing pay or bonuses tied to creative output. Why: Extrinsic incentives can crowd out internal motivation.
+- [mechanism] Regular, visible progress in the work is the main driver of daily motivation, more than social approval or product quality. When: When organizing creative work over days and weeks. Why: Seeing one's own advancement sustains engagement even when the overall game is still weak.
+- [mechanism] Rewards reinforce correctly executed mechanics, which teaches players how to play. Why: behaviorist reinforcement links rewarded actions to later repetition.
+- [mechanism] Granting a bonus only when the player attacked during the turn ties the reward to action, so players who merely hoard resources gain nothing.
+- [mechanism] Events that can occur on any action but arrive in bursts after long buildups behave like a variable ratio schedule.
+- [mechanism] A variable-ratio schedule, rewarding after an unpredictable 1 to 20 responses, produces higher and steadier responding than rewarding every response.
+- [mechanism] Fixed schedules cause pausing after each reward and fast extinction when rewards stop, ratio schedules beat interval schedules, and variable ratio gives the highest, steadiest response.
+- [mechanism] Many staggered progression loops running at once give a small reward every few turns; each timer is deterministic, yet the combined schedule feels irregular.
+- [mechanism] Unlocking newly evolved content as achievement rewards, with a capped set carried at once, ties content novelty to player progress.
+- [mechanism] Layering several fixed ratio reward schedules keeps at least one close to payoff at any moment, because when one falls into its dip another is near its reward and the player shifts focus. When: Designing reward loops that must avoid motivation gaps. Why: Dips in one schedule are covered by others, so motivation stays high.
+- [behavior] Fixed-interval rewards, given on a set time schedule regardless of action, are poor motivators: players ignore them until return nears, check often, take them, then ignore them again. Why: Motivation rises only as the return time approaches. (x2)
+- [behavior] Long stretches without a sense of progress can make players feel they are playing wrong even when they are doing fine.
+- [behavior] Acquiring an item that expands how the player can interact with the world creates excitement.
+- [behavior] Uncertain rewards are valued less, and risk-averse people discount them more than risk-seekers do.
+- [behavior] Non-physical punishment such as a bad grade can cause stress or aggression and can hurt learning and retention.
+- [behavior] Variable rewards do not automatically sustain engagement with daily or routine tasks. When: Chance-based bonuses are attached to repetitive everyday work or chores.
+- [behavior] Performance-contingent rewards that require meeting a standard of excellence are often perceived as controlling. When: when rewards require meeting a standard of excellence. Why: Players feel pressure to reach the standard.
+- [behavior] Players will play token-based gambling only when real money is at stake, because tokens create little internal value. When: games with tokens and no real stakes. Why: Little internal value gives players little reason to play.
+- [behavior] Players collect items expecting value, then ignore them once they find the items serve no purpose beyond scoring. When: a collectible that only adds to a score. Why: A score with no use does not help players reach their goal.
+- [behavior] Players rate rewards delivered at random times as more pleasurable than the same rewards delivered on a fixed pattern. When: when rewards are timed predictably versus unpredictably. Why: Surprise makes an experience more enjoyable.
+- [behavior] Players find larger reward numbers more exciting, so 100 gold feels better than 10 gold. When: Displaying rewards. Why: Bigger numbers feel more significant even at equal value ratios.
+- [behavior] Player demand for an item usually falls as they accumulate more of it, so they buy less of it. When: Players stockpile a consumable with fixed price. Why: Each additional unit adds less value to the player.
+- [behavior] Tiny penalties invite reckless play, while large penalties invite caution. Why: Players weigh expected loss against the reward for each risk.
+- [behavior] Players are chiefly driven by gaining ground on rivals, which raises their odds after a strong move, regardless of whether the contest is positive-sum, negative-sum or zero-sum. Why: Standing relative to opponents drives satisfaction in PvP.
+- [behavior] After a reset, players must replay to regain their former rank, which encourages regular play. When: after a seasonal reset. Why: rank recovery requires continued activity.
+- [behavior] Players attribute random rewards to their own skill, treating a lucky result as the payoff of a calculated risk. When: random rewards occur. Why: attribution bias.
+- [behavior] Beyond a point, much larger prizes feel roughly equal to smaller ones, so raising the prize does little to attract players when win odds stay very low. When: win odds are very low and prizes are already huge. Why: Players judge prize value by feel, not by its numeric size.
+- [behavior] After a lucky streak, players credit their skill, then perform lower when results regress, and feel frustrated by the drop. When: after an unusually successful run ends. Why: Self-serving bias credits success to skill.
+- [behavior] Publicized winners and unseen losers make a gamble seem more likely to pay off than it really is. When: lotteries and similar gambles with heavily reported jackpots. Why: Vivid winners are easily recalled while losers go unnoticed.
+- [behavior] Coins are common enough that running out of health is rare, yet the restore rule still makes players seek coins when health is low. When: low health. Why: Coins restore health directly.
+- [behavior] Players build an internal scale of relative reward from experience, so a stunt-heavy round can make stunts feel more valuable than captures. When: scoring has several action types. Why: Repeated scoring teaches players how actions compare.
+- [behavior] People persist longer when told they are improving rapidly than when told they are good but not improving.
+- [behavior] People often lose interest in an activity after an external monetary reward, if they first found the activity interesting. When: the activity was initially interesting and the reward felt external. Why: money makes the reason for engaging feel external.
+- [behavior] When a task's meaning is weak, players are less motivated to follow instructions, which weakens attention and memory. When: when players cannot see why a task matters.
+- [behavior] Many children disengage from traditional curricula, so educational games must excite them to hold their motivation. When: When designing learning activities for children. Why: Motivation is a key pillar of learning through play.
+- [behavior] Players enjoy rewards and dislike punishment, so designers often emphasize rewards and limit punishments.
+- [behavior] Players trained by a convention to expect a behavior learn a new rule best when it subverts that expectation at the point of use. When: when a convention has trained players to expect a behavior. Why: The surprise at the point of use makes the new rule memorable.
+- [behavior] Players respond to emergent reinforcement schedules as they do to designed ones, so emergent patterns can decide whether a game holds or loses players.
+- [behavior] Under fixed ratio schedules players show long low-activity stretches followed by bursts of effort as they push toward the next reward. When: fixed ratio reward schedules. Why: Players work hard when they decide they want the next reward.
+- [behavior] Unpredictable alternation between reward and withholding keeps people pursuing an outcome, the same effect that makes slot machines compelling. When: Designing any system with intermittent rewards. Why: Unpredictability sustains pursuit more strongly than predictable reward timing.
+- [behavior] When players can see into a building before entering, they weigh the risk of searching longer against the chance of better rewards. When: when time pressure exists and loot is visible. Why: visibility lets players judge whether a trip is worth the risk.
+- [behavior] Players need new content such as characters, maps or events; without it they become bored and leave.
+- [behavior] Players grow accustomed to rewards, so a reward that felt exciting earlier can seem unimportant later. When: Rewards stay the same size over a long play session. Why: Repeated exposure reduces the emotional impact of an unchanged reward.
+- [rule] Praise learners' effort rather than innate intelligence, since praising smartness makes later failure feel like a verdict on ability, and effort praise encourages learning goals. When: giving feedback on learners' performance. Why: Effort praise supports a malleable view of ability. (x2)
+- [rule] Never use physical punishment, which is unethical and harmful.
+- [rule] Record and display how often each random outcome occurs, so players can check for themselves whether the system is fair. When: outcomes come from a random process players may doubt.
+- [rule] Use DRH for quick, bursty activity such as timed combat challenges, and DRL for deliberate, paced activity rather than rushing. When: choosing a reward schedule for a design goal. Why: Each schedule shapes a distinct activity pattern.
+- [rule] Use variable intervals when steady low-intensity motivation over long periods is wanted; use fixed intervals when players can be expected to return at a known time.
+- [rule] Do not tie variable-ratio rewards to money, directly or via in-game currency indirectly tied to real money; use variable rewards to spice up gameplay instead. When: Designing chance-based rewards such as loot boxes or card packs. Why: Such mechanics are linked to problem gambling and disordered gaming, and are ethically problematic especially when children are targeted.
+- [rule] Let the game world react to achievements, such as NPCs celebrating after a rescue, to reward players.
+- [rule] Deliver rewards close to the actions that earned them, because a reward received hours later is less meaningful. When: designing reward timing. Why: meaning is strongest when the reward is received.
+- [heuristic] Rewards usually change behavior better than punishment.
+- [heuristic] For complex tasks requiring concentration, investment, or creativity, intrinsic motivation tends to improve performance. When: the task is complex or creative. Why: external rewards crowd out the engagement these tasks need.
+- [heuristic] Reward correct use of level elements and let players learn from their earlier mistakes.
+- [heuristic] Most games combine several reward types because each one satisfies a different player desire. When: Designing the reward structure of a game. Why: A single reward type rarely satisfies all players.
+- [heuristic] Strong games are extended sequences of tangible, reachable, satisfying small objectives. When: designing a long activity. Why: Regularly attainable targets keep players engaged.
+- [heuristic] Seasonal resets limit rating drift because ratings do not survive long enough to drift far.
+- [heuristic] Fixed interval rewards support player strategy, fixed ratio rewards show growing mastery, and variable rewards make gameplay more exciting. When: designing reward schedules.
+- [heuristic] Judge a reward's value from the player's current situation, since a skill or item feels valuable only once its need is felt, such as a larger backpack only after inventory limits appear. When: Designing skill trees, rewards, or resource economies. Why: Perceived value is subjective and depends on what the player has experienced.
+- [heuristic] Tune reward timing through repeated trial and error, accepting a good-enough balance rather than a perfect one. When: Balancing a reward schedule. Why: Reward pacing is discovered through iteration rather than derived in advance.
+- [heuristic] Daily quests encourage logging in and playing, and quests that require a featured character or strategy, rotated over time, push players to explore systems they might otherwise miss. When: when designing daily quests.
+- [procedure] 1) Identify how the task satisfies competence, autonomy, and relatedness. 2) Frame the task around meaning and purpose for the player. Why: players find tasks rewarding when core needs and meaning are satisfied.
+- [procedure] 1) List every way the player grows stronger, such as loot, boss drops, level-up abilities, and exploration finds. 2) Note how often each appears across the game. 3) Build a timeline of sections, such as regions or quest lines. 4) Estimate section times for a reasonable playthrough. 5) Flag sections with many or very strong rewards and sections with few. 6) Model random rewards with a pseudorandom spreadsheet across one or more playthroughs. 7) Compare reward density in each section with how grindy players find it. When: When checking whether reward pacing matches how players perceive grinding. Why: Mapping rewards over time reveals pacing gaps that are invisible in isolated item lists.
+- [metric] A monster giving 0 points with two-in-three chance and 30 points with one-in-three chance keeps the same average of 10 points as a fixed 10-point reward. When: Designing a random payoff with a set average. Why: Matching the expected value preserves balance while changing how the reward feels.
+- [metric] A 10% chance of a 10-gold reward per enemy defeat yields a long-run average of 1 gold per kill, yet streaks of three rewards or fifty empty kills both occur. When: Setting probabilities for randomized rewards. Why: Each draw is independent, so streaks in both directions are normal even with a stable average.
+- [tradeoff] Variable interval trades intensity for continuity: it sustains motivation steadily but more weakly than a variable ratio schedule.
+- [tradeoff] Designs that only trigger behavior, like virtual Skinner boxes, extract intense behavior and may succeed briefly, but they lose players once the tricks are learned; designs built on fulfillment sustain engagement. When: Choosing a reward structure for a game. Why: Players who learn the reward tricks stop finding the experience worthwhile, while fulfilling experiences keep them playing.
+- [tradeoff] Variable rewards are acceptable as engagement but become a dark pattern when used to push spending, as with slot machines and loot boxes. When: Random rewards are tied to purchases made with real or in-game currency. Why: The reward mechanic shifts from engaging play to encouraging money spent.
+- [pitfall] Flooding players with rewards in short bursts, making each one too intense, or giving a steady stream of small rewards lowers every reward's value until players stop caring. When: Designing reward schedules. (x2)
+- [pitfall] Rewards that arrive regardless of player action lose their meaning; random rewards not linked to player action break the sense of being rewarded for skill. (x2)
+- [pitfall] When an expected reward fails to arrive, it acts like punishment and makes the behavior less likely to be repeated. When: The game signals a reward that the player then does not receive. Why: The missing reward is experienced as a negative consequence of the action.
+- [pitfall] A reinforcer is not automatically a reward, since the behaviorist vocabulary is easily confused with everyday meanings.
+- [pitfall] Grouping pleasure seeking and pain avoidance together as one motivation hides differences that matter for design.
+- [pitfall] Operant conditioning ignores unobservable processes such as attention and memory, and it can overlook side effects.
+- [pitfall] Unintended rewards can spread harmful behavior, because players repeat actions they find rewarding.
+- [pitfall] When players can predict exactly when the next reward comes, they feel no pull to start a new cycle right after getting one.
+- [pitfall] A token achievement for a very large effort feels underwhelming; match reward size to the time and effort invested.
+- [pitfall] If players can focus on just one reward schedule, they finish it, reach a large motivation gap, and stop; overlapping tasks and rewards spread across the world prevent this. When: Designing reward schedules that players can complete individually. Why: Finishing a lone schedule removes the reason to keep playing until a new one starts.
+- [fact] Intermittent or random rewards shape behavior more strongly than fixed or continuous rewards, but rewards should still track the player's real progress. (x2)
+- [fact] Predictable reward timing lets players anticipate payoffs, a pattern that resembles classical conditioning. Why: expectation sustains continued play.
+- [fact] Most games use intermittent rewards, while dice and card draws always involve them and chess and Go are rare exceptions.
+- [fact] Push notifications that draw players back while they are not playing come closest to pure extrinsic rewards. When: Designing re-engagement messaging. Why: They motivate return without any play-driven interest.
+- [fact] Real game motivations are usually mixed, as a player may enjoy a chase while also wanting points.
+- [fact] Intrinsically motivated people tend to perform better than extrinsically motivated people.
+- [fact] Fixed-ratio rewards, given after a set number of actions, work better than fixed-interval rewards for sustaining repeated behavior.
+- [fact] Real-world rewards that drive motivation include food, money, power, and social status.
+- [fact] The brain does not distinguish real from virtual rewards, so virtual rewards are less intense than real ones but keep some of their power. Why: The brain evolved without games.
+- [fact] Collecting appeals to many player types, from small sets within one session to long-running collections.
+- [fact] Well-timed weapons and loot in good games come from design that relates thousands of data points.
+- [fact] In PvE progression, rewards arrive most often early and slow over time as the player becomes invested, but the slowdown must not reach the point where players feel no progress.
+- [fact] Trading card games often run seasonal rotations that retire older cards from play at the season's close.
+- [fact] XP bars are fixed ratio in principle, but when XP is earned through random number generation they behave as variable ratio. When: XP gains depend on random outcomes.
+- [fact] Most game rewards are task-contingent feedback tied to what the player does.
+
+## progression curves
+- [model] Triangular numbers follow y = (x² − x)/2 for each n, growing faster than linear but slower than exponential, rising faster and faster over a long range. When: modeling a quantity that grows by one more step each level.
+- [model] A cost curve ties the numbers of many objects into one progression, so their relative power can be compared directly.
+- [model] Competitive games with resource-cost items use an identity curve: one point of cost equals one point of benefit, and an item is balanced when totals match. When: player-versus-player games where items cost resources.
+- [model] Progression curves are commonly classified as identity, linear, exponential, logarithmic, or polynomial, with custom shapes for anything else.
+- [definition] An identity curve pairs two values one-to-one: 10 food for 10 gold, or a rise of 5 in one matching a rise of 5 in the other.
+- [definition] A cost curve, interchangeably called a power or cost/power curve, relates an item's cost to its power, found by scaling item numbers to a common anchor.
+- [definition] A linear curve, y = mx with fixed multiplier m, gives each added unit the same cost, such as 5 gold per food; identity is m = 1.
+- [definition] A logarithmic curve, the inverse of an exponential (y = log_b x, or x = b^y), needs 4 times as much gold per extra food in food-for-gold trades, showing steep diminishing returns.
+- [definition] A curve is a mathematical function, a graph of how one game resource changes as another changes, rather than an aesthetic one, named after both, such as experience against level. Why: Named curves make progression relationships explicit and comparable.
+- [definition] Curves can be straight, gently sloped, or hilly; a learning curve describes how quickly players must learn as challenge rises, and a ramp is an informal term for a curve that climbs. Why: Shared vocabulary lets designers describe and choose progression shapes.
+- [definition] An item above the cost curve gives more benefit than its cost predicts; an item below it gives less.
+- [definition] Progression balance is judged on three questions: whether difficulty rises at a good rate, whether player power keeps pace with enemy power, and whether overall difficulty suits the audience. When: Evaluating PvE progression in single-player, tabletop, or co-op games, where a group progresses as one character would.
+- [definition] Progression balance covers how fast players gain power and whether gains arrive steadily or in bursts tied to specific places.
+- [definition] Power progression is the growth of a player's strength through stat gains, levels, abilities, and items.
+- [definition] An exponential curve multiplies the previous result by a fixed base each step; with base 4, 1 to 4 food cost 2, 8, 32, and 128 gold.
+- [definition] An exponential progression multiplies a base by itself a set number of times, so values start modest and then grow faster and faster.
+- [definition] A level curve, also called an XP curve, shows how much experience is needed for a level based on the character's current level.
+- [definition] Velocity is the rate of change in power over time; acceleration is the rate of change in velocity. Together they describe how a progression system's pace behaves.
+- [definition] Power is broad and can include pieces, cards, resources, board position, actions, stats, equipment, or anything that affects standing.
+- [definition] In a cumulative table, each item's lower bound equals the sum of the probabilities of all items listed before it.
+- [definition] A triangular leveling curve is one where each later level needs more XP than the previous one, with cost rising by a steady step per level.
+- [mechanism] In persistent games with expansions, cost-power rises over time as each new set is balanced against the strongest earlier options, and slight overpowering accumulates across sets. When: persistent games with expansions or sets released over time. Why: Small accidental overpowering compounds across sets.
+- [mechanism] A reward that raises player power eases difficulty briefly, until enemy strength scales up and challenge returns, so the cycle repeats.
+- [mechanism] When XP needed per level roughly doubles from one level to the next, XP awarded from combat and quests must be tuned to keep pace with it. When: Character levels use an XP requirement that grows each level.
+- [mechanism] If power grows too fast, the game becomes trivial once the player finds one dominant weapon; if it grows too slowly, players are forced into tedious grinding.
+- [mechanism] Under positive feedback both players share the same power-curve shape, but one curve is shifted slightly later, as if that player lost one early turn.
+- [mechanism] A power spike may briefly overpower the player until difficulty rises to catch up.
+- [mechanism] Lowering the base of an XP exponential partway through the curve makes later levels take much less time to reach. When: a level curve switches from a higher base to a lower base at a set level. Why: A smaller base produces smaller increments per level.
+- [mechanism] Exponential effects start slowly and then ramp to extremes, which can unbalance a system or make a level curve drag. When: systems using exponential growth for stats or requirements. Why: Compounding multiplies small differences into very large ones.
+- [mechanism] Many XP values map to one level, while each level maps to a range of XP values, so XP-to-level is many-to-one. When: reading a level table. Why: A level covers a band of XP totals.
+- [mechanism] Ramp-out raises difficulty faster than player skill, so players usually sense strain by day two or three, after which premium currency offers appear.
+- [mechanism] Player power rises through purchased items, level-ups and drops, while the area's challenge types stay the same.
+- [mechanism] Winning fights levels the player up and makes later fights easier, but stronger enemies and more victories needed per level offset this, so net power gain stays close to linear.
+- [mechanism] In an idle run, virtual skill often rises logarithmically, so slowing progress eventually prompts a reset, while maximum virtual skill before each reset may rise exponentially.
+- [mechanism] F2P puzzle games start with easy three-star levels, then the same skill earns two stars, then one, then borderline passes, raising friction over time.
+- [mechanism] Price multiplying with each owned unit makes cost grow geometrically, while each unit adds only a fixed amount of income per second. When: idle games with compounding unit prices and fixed unit output.
+- [mechanism] In many RPGs costs grow faster than stat bonuses, while in many collectible card games benefits grow faster than costs, so late-game cards are powerful. When: Choosing how costs and benefits scale across a game. Why: Earn rates and game length shape which side grows faster.
+- [mechanism] Progress rate is roughly the inverse of resistance: the more resistance a system presents, the slower players advance.
+- [mechanism] Exponential progression arises when early resources generate more resources through positive feedback, so growth accelerates over time. When: when early gains produce further gains. Why: Each gain increases the rate of the next gain.
+- [mechanism] If power is the reward and rises steadily until the end, the game finishes just as players reach their peak, so they never enjoy feeling dominant. When: when power rises steadily to the game's end. Why: No period of dominance remains before the game ends.
+- [mechanism] Because a lifetime points total never decreases, the system is positive-sum and cannot reflect a decline in current skill.
+- [mechanism] As income grows with progress, fixed prices feel cheaper later, because less exploring or fighting is needed to afford each item.
+- [mechanism] A quantity formed by multiplying a linear factor with a triangular factor grows faster than either factor alone. When: Two growing factors multiply together in a value such as a sell price or profit. Why: Each factor's growth compounds with the other's, so the product accelerates.
+- [mechanism] Idle XP grows linearly with elapsed time, so total time XP equals elapsed seconds multiplied by the gain rate. When: progression accrues while the player is away or idle.
+- [rule] Fix an item above the curve by lowering its benefit or raising its cost or rarity; fix one below it by adding benefit or lowering its cost.
+- [rule] For a shipped game whose balance data is lost, derive its cost curve after the fact so later expansions can reuse its math. When: original spreadsheets are unavailable. Why: future developers need the curve to build consistent new content.
+- [rule] Balance every new object on the existing cost curve, with supporting math showing each object's place on the curve as closely as practical.
+- [rule] Generate derived values with spreadsheet formulas that reference cost cells, so one formula change fills down to update every affected item. When: Building item costs in a spreadsheet.
+- [rule] In progressive-level games, increase difficulty from level to level, but balance each level individually. When: Designing sequential difficulty levels.
+- [rule] Decide how fast players advance and when progression caps, since each choice defines a curve for the progression. When: designing any progression system.
+- [rule] Spending a resource must never reduce a progression level, so progression should track a total that spending does not decrement. When: designing a currency that players can spend.
+- [heuristic] Use a custom curve, or cap or replace exponential and logarithmic curves, when a standard shape produces jumps too large for the experience. When: designing progression or scaling curves where a standard progression produces jumps that are too large. Why: Standard shapes can produce unpleasant extremes that hurt play.
+- [heuristic] Smooth curves are rare for monsters and items, so designers often hand-edit spreadsheets to add peaks and valleys and adjust rarity.
+- [heuristic] A procedural progression can make each object a fixed percentage stronger than the previous one, such as 5%.
+- [heuristic] A derived curve passes the common-sense test when the most-above objects dominate play and the most-below objects are seldom used.
+- [heuristic] Compare cards with the same effect but different power types, such as specific-only, generic-only or mixed, to check that costs are valued consistently.
+- [heuristic] Power should arrive in periodic spikes, such as finding a strong weapon or unlocking an ability, rather than ramping smoothly.
+- [heuristic] For sequels, reuse the previous game's data and tweak it for new play, items, and locations.
+- [heuristic] Casual and free-to-play games should balance progression toward the time players expect to gain a level. Why: Players expect a level within a certain time, and missing it hurts retention.
+- [heuristic] An identity relationship often suggests a single resource would do, unless the game gives reasons to keep both. When: two resources that exchange at equal amounts. Why: Equal exchange makes one of the two resources redundant.
+- [heuristic] In solo skill-based games, designers usually assume a player is ready for the next level after completing the previous one, while in PvP games rank based on wins or a matchmaking metric signals readiness. When: When gating progression by player readiness.
+- [heuristic] In single-player card games against AI, gaining stronger cards over time meets expectations and matters less for balance. When: Single-player progression card games. Why: Players expect power growth as the core experience.
+- [heuristic] A fixed XP step feels slower at higher levels, so a logarithmic increase keeps perceived progression pace steady. When: Designing experience point progression. Why: Perceived change shrinks as absolute values grow, per Weber-Fechner.
+- [heuristic] Increase reward value gradually as the player progresses so later rewards still feel good. Why: Growing rewards counter habituation, and players still enjoy them even when they know the scaling is designed.
+- [heuristic] In an epic, over-the-top game, push numbers to extremes with big contrasts, and pull back only when necessary. When: games aiming for an over-the-top feel.
+- [heuristic] A damage bonus against the final or progress-gating enemy can be worth far more than its encounter share suggests, since it removes the last obstacle.
+- [procedure] 1) When a value's right size is unknown or clearly off, double or halve it in the needed direction rather than making small tweaks. 2) Once the workable range is found, narrow it with midpoints. When: tuning a value whose right range is unknown or clearly wrong. Why: Large steps reveal the value's influence and the limits of good balance sooner than small changes lost in noise. (x2)
+- [procedure] 1) Choose a guiding growth multiplier, such as 1.5 per area or doubling difficulty per level. 2) Derive all values from that rule. 3) Adjust numbers during play to reach the desired feel. When: starting a new game's balance or designing a fixed-length progression such as a ten-level RPG.
+- [procedure] 1) Select 30 to 60 comparable objects from a self-contained subset of mechanics. 2) Derive the cost math and list every assumption. 3) Build a spreadsheet showing each object's distance above or below the curve. 4) Apply a common-sense check. 5) Correct the formulas and repeat until results resemble reality.
+- [procedure] 1) Tune the baseline pace at which power is gained or lost, which sets the balance between zero-sum and positive-sum outcomes. 2) Add, remove, strengthen, or weaken feedback loops. When: game length is too long or too short.
+- [procedure] 1) Set starting and ending stat values. 2) Subtract the start from the end. 3) Divide the difference by the number of level gains to get gain per level. 4) Add random ranges for variety. When: When planning stat growth across levels.
+- [procedure] 1) Start the XP curve as an exponential. 2) After a few levels, switch to custom values. 3) Round values down to end in zeros so they are easy to remember. When: building a level curve that must soften late-game jumps. Why: Custom values after the switch reduce extreme level-to-level increases, and round numbers aid player recall.
+- [procedure] 1) Raise difficulty sharply at a set point. 2) Only players who pay keep pace. 3) Use the paying group's data to focus monetization. When: free-to-play games that want to monetize a subset of players. Why: Players who do not pay fall behind, leaving the paying group as the focus.
+- [procedure] To get growth between linear and exponential, start with a triangular curve and modify it. When: needing a growth rate between linear and exponential. Why: The triangular form is a simple base that can be adjusted.
+- [procedure] 1) Plot level on the x-axis and required XP on the y-axis. 2) Classify the overall shape. 3) Check whether the shape changes between early and late levels, and describe each segment. When: analyzing XP-per-level progression of a game.
+- [procedure] 1) Set an anchor value such as gold per point of damage. 2) Choose a starting damage and an improvement rate. 3) Compute each tier as the previous times the rate. 4) Derive costs from the anchor, rounded to the nearest 5. When: Generating a weapon progression table. Why: A fixed rate yields a predictable curve tied to a common currency.
+- [metric] If killing ten monsters worth 100 experience each gives a level needing 1000 points, progression works, but if required experience doubles each level with no cap, players may need thousands of kills. When: When experience requirements grow per level with no cap.
+- [metric] An XP requirement of 100 × 2^Level starts at 100 and doubles each level, so it reaches 200 and then 400. When: early character leveling with per-level doubling.
+- [metric] Next unit cost equals base cost × 1.1^N, where N is units already owned, rounded up to a whole number. When: idle game units whose price rises with each purchase.
+- [metric] Experience required for level N can be computed as N times (N minus 1) times a constant K, so the requirement grows quadratically with level. When: Designing a level progression curve.
+- [metric] Gate progression with stackable currency: 100 coins yield one star, unlocking the first gate; three stars open two more levels, and eight stars open the first boss area.
+- [tradeoff] Power creep pushes players to buy new content to stay competitive, but older strategies and items fall behind.
+- [tradeoff] Raising difficulty through power bonuses is cheap, while raising it through AI skill is expensive but can feel like a new game; blocking easy paths to victory forces a harder route to the same goal.
+- [tradeoff] Exponential leveling is fast early but becomes too slow later, so designers usually impose a level cap before progression grows impractical. When: designing a level curve with exponential growth. Why: Requirements at high levels can grow to millions of points, making progress unreasonably slow.
+- [pitfall] Players who notice ramp-out often object to the precise point where difficulty rises.
+- [pitfall] Changing a single rule can have a large, unexpected effect on total play time. When: When editing one rule of a game with established length. Why: Length is influenced by subtle interacting factors.
+- [pitfall] If weapons, characters, and enemies all follow the same trajectory, challenge stays constant and the game becomes boring. When: All content scales identically. Why: No variation in difficulty or reward curve.
+- [pitfall] Only the direction of supply and demand curves is fixed; their shapes may be straight, curved, or wavy. When: Modeling a market with supply and demand curves. Why: Assuming a particular curve shape can mislead analysis.
+- [pitfall] If every item sits exactly on the curve, choices seem to matter little, because every option has the same value. When: Designing item sets for player choice. Why: Equal values remove meaningful differences between options.
+- [pitfall] A single item off the plotted progression is a signal to check it, not proof that it is wrong; the designer may then rarify it, restrict it to a class, or narrow its damage range. When: Reviewing a plotted item list.
+- [fact] Level curves are often logarithmic relative to XP, while XP is often exponential up to a certain point; RPG XP curves often start exponential and later level out. When: designing level and XP progression. Why: Each level requires more XP than the last, so level grows slowly against XP.
+- [fact] Common game curve shapes include identity, linear, exponential, logarithmic, triangular, and custom curves; a curve may be straight, gently sloped, or a series of hills and valleys.
+- [fact] Linear sequences add a fixed step per term, triangular (polynomial) sequences rise gently at first then accelerate steadily, and exponential sequences multiply by a fixed factor, growing fastest over time.
+- [fact] Cost curves and their intersections reveal how weapons, creatures, characters, and loot relate to one another.
+- [fact] Some games grant no power gains at all; strength then comes only from the player's mastery.
+- [fact] Triangular curves are probably the most common increasing-returns formula in game design, and their cost pattern is easy to follow.
+- [fact] Power curves are easier to balance than skill curves because designers directly control both player power and enemy power. Why: Designers set when the player gains power and when enemies rise to counter it.
+- [fact] Adding cash jackpots and easing purchase requirements to a board game can raise typical play time from about ninety minutes to three hours or more. When: When players modify a game's rules to change its pacing. Why: Rule modifications that add rewards and loosen constraints can lengthen sessions substantially.
+- [fact] Progression curves commonly follow five patterns: linear, exponential, fast-early then slowing, repeated tension-and-release, and irregular; none suits every system.
+
+## monetization strategy
+- [model] PvP games without item costs, such as fighting games, treat character costs and benefits as equal and opposite, but aim for a positive total so characters feel useful.
+- [model] F2P developers can adjust effective price while the list price stays stable using four levers: percent-off sales, drop-rate changes, altered currency quantities, and per-player pricing.
+- [model] Player-reported monetization problems fall into eight domains: spending-driven dynamics, unmet expectations, monetized quality of life, predatory ads, confusing currency, pay-to-win, microtransactions, and other (limited-time offers, battle passes, deceptive UI).
+- [definition] ARPU is revenue over a period, such as the last thirty days, divided by all engaged users (MAU). ARPPU divides by paying users only and is usually much higher. (x3)
+- [definition] Whales are a small group of heavy spenders, sometimes spending thousands of dollars, whom designers tune the game around; one study found half of revenue came from 0.15% of players. (x2)
+- [definition] Free-to-play economies offer resources bought with real money or earned through monetizing actions such as watching ads; purchases typically trade money for time, a core hook.
+- [definition] A blockchain is a decentralized, distributed ledger that records transactions across many participants.
+- [definition] Pay-to-win designs gate the top gear behind purchases, so the biggest spenders gain a lasting power edge.
+- [definition] Pay-to-rush lets money buy speed through progression.
+- [definition] Average LTV is the average amount a player spends over their whole play history; many players pay zero while a few pay a lot.
+- [definition] ARPDAU is revenue per daily active user, showing how much players spend each day.
+- [definition] A non-fungible token (NFT) is a unique asset whose ownership and authenticity are recorded on a blockchain.
+- [mechanism] People judge prices against a prior reference: a large first figure makes later items look cheap; a crossed-out higher price makes a discount seem better even when value is unchanged. When: presenting prices, discounts or offers. Why: Anchoring: people use prior information as a reference point when judging new information. (x2)
+- [mechanism] Without consumables levels become hard, with them easy; free boosts ease early play, then players must pay, often at the point of failure, to keep progressing. When: Level-based F2P games where consumables can be bought with cash.
+- [mechanism] Gaining wealth or possessions produces a strong rush, and games can trigger it with artificial in-game wealth rather than real money. Why: Acquisition is a basic emotional trigger that does not require real-world value.
+- [mechanism] Daily chests can draw players to launch the game even without an intrinsic urge to play, and players may stay to explore new quests or invitations. When: Free-to-play daily login design. Why: Extrinsic rewards pull players in before intrinsic motivation exists.
+- [mechanism] Offering players a paid way to avoid a small certain loss exploits their urge to avoid it and can drive spending. When: a game takes away earned rewards on failure. Why: people pay to avoid a sure loss.
+- [mechanism] Without a publisher, the developer bears customer acquisition costs; spending $6 per customer on a $7 share would leave only $1.
+- [mechanism] Selling goods through an intermediate currency hides real-money cost per item, because players must convert packs before they can compare value. When: goods priced in premium virtual currency sold in packs. Why: Conversion adds a step between money paid and value received.
+- [mechanism] When in-game currency is tied to real-money purchases, cutting currency income reduces spending on those purchases. When: Currency gates a paid sink. Why: Players with less currency buy fewer gated items and so spend less real money.
+- [mechanism] A paid edge in rated play fades as the buyer's rating rises, until the buyer faces only other paying players and the advantage no longer separates them. When: competitive games with rating and paid advantages. Why: paying players reach the level of other paying players.
+- [mechanism] In a time-limited event, early rank gains build a sense of skill, and later drops can prompt purchases to regain position. When: when a time-limited event ranks players. Why: players who rose feel loss when they fall.
+- [mechanism] Currency for watching a full advertisement pays the developer directly, making ad viewing a monetized reward activity. When: when rewarding players for watching ads.
+- [mechanism] If the chance of being offered a switch depends on whether the first pick was right, switching's advantage can vanish, leaving switching and staying equally good. When: the host's offer depends on the player's pick. Why: the offer rate changes which outcomes lead to a win.
+- [mechanism] In progression games, grinding for levels or loot raises character power, so time can substitute for skill or luck in overcoming challenges. When: RPG-style progression.
+- [mechanism] A combined option is worth only its best single part if players know which part they need, but worth the sum of parts if they cannot learn it in time. When: each part is needed by a different outcome.
+- [mechanism] Adding a clearly inferior, distracting option can make a more expensive option look more attractive than it did without the decoy, shifting choices toward the pricier one. When: Users choose among several options with prices or values that are easy to compare. Why: A decoy changes the reference point, so the pricier option seems a better deal by comparison.
+- [mechanism] In free-to-play games, a decoy currency package can push players toward a pricier bundle of in-game currency bought with real money. When: Players buy virtual currency such as coins or gems with real money and see several package sizes. Why: The same decoy effect that shifts subscription choices also shifts the choice of currency package.
+- [behavior] Players generally view pay-to-win as unfair and expect to reach the same capabilities whether or not they pay. When: Free-to-play or competitive games with paid advantages. (x2)
+- [behavior] Players usually object when a closed game economy is turned open, for example when money can be purchased with real currency. When: When a closed economy gains purchasable currency.
+- [behavior] Players with cash often buy rather than work out whether they are spending money or time. When: players who can pay real money for in-game progress. Why: Buying is the quicker option, so the cost in time or money is rarely calculated.
+- [behavior] Paying an opponent to throw a match can happen regardless of whether the opponent actually delivers the loss.
+- [behavior] People paid per output produce more work of lower quality, and they stop when payment ends, while unpaid people keep going on their own. When: when a reward is tied to output quantity. Why: Payment changes the reason for doing the task.
+- [behavior] Many players feel that buying power in adventure games is cheating, because the purchase seems to sell the answer to an obstacle. When: paid power is offered as a shortcut past a challenge. Why: Buying the solution undermines the sense of earning victory.
+- [behavior] Players tolerate overt pay-to-win design less than they did earlier. When: modern collectible card games.
+- [behavior] Anchoring can lead people to buy items they care about less, buy several items, or exceed their budget, often without noticing the influence. When: purchase decisions involving discounts or comparisons. Why: Comparisons shape judgment unconsciously, including comparisons with other items on sale.
+- [behavior] Brand labels can strongly shift stated preference even when blind tests show no clear preference. When: When comparing products in blind tests versus with visible brand labels. Why: A brand cue engages emotion-related brain regions during consumption.
+- [behavior] In free-to-play games the typical design underdelivers on a key resource, often time, or makes keeping up with game speed hard without buying upgrades, pressuring players to spend money. When: In free-to-play games with paid progression. Why: Scarcity of time or speed pushes players toward purchases.
+- [behavior] Players of anywhere venue games are generally unwilling to pay much up front and prefer free games when possible. When: Choosing a pricing model for short-session games. Why: Habits formed in this venue favor low or no initial cost.
+- [behavior] Young adults aged 18 to 24 play less than children but keep playing with established tastes, and often have both time and money, making them major game consumers. When: Designing for young adults aged 18 to 24. Why: Growing income and free time combine with established tastes to make them major buyers.
+- [behavior] Players often sense that a free-to-play design deliberately creates moments that push them to pay.
+- [behavior] In a three-option subscription test, most students chose the expensive bundle when a decoy was present, but most chose the cheap option once the decoy was removed. When: Three tiers where the middle tier is nearly as costly as the top tier but worth much less. Why: The decoy made the top tier look like the obvious value, which vanished when the decoy was removed.
+- [rule] Do not expose under-18 players to gambling-like monetization such as loot boxes; they are more vulnerable to psychological pressure and cannot be reliably screened out. When: The game is likely to be played by under-18s. Why: Young players have weaker impulse control and developers cannot easily verify players' ages. (x2)
+- [rule] Keep customer acquisition spend below LTV per customer; a $5 LTV supports spending $4 per player, while a $3 LTV makes spending $4 unwise. When: self-publishing. Why: Finding the right spend level is among the hardest parts of self-publishing.
+- [rule] Ask players how they feel about price points, free-to-play, and premium pricing, and which features make them decide to buy. When: designing a monetization model. Why: Player perception of price and value guides purchases.
+- [rule] Before committing to a business model for a game meant to reshape its category, determine what audiences are willing to spend money on, and why.
+- [rule] Define the key bullet-point features for the box early, so they keep the design on track when ideas arrive from all directions.
+- [rule] The two main levers of free-to-play profit are raising LTV and lowering acquisition cost.
+- [rule] Decide personally where your monetization ethics line lies, since there is no fixed right answer and otherwise someone else will decide.
+- [rule] Avoid making paid advantages the main path to competitive success, since many players tolerate them poorly.
+- [rule] Avoid guilt-tripping quitters, charging to keep earned items, FOMO season items, punishing streaks, hidden pay-to-win, paying to skip friction or game over, gambling-like loot boxes, and forced auto-play defaults. Why: these pressure players against their own interests.
+- [rule] Check a game's business model; free-to-play games with micro-transactions can be problematic for the youngest players. When: when choosing games for young children.
+- [heuristic] Do not overweight how a player obtained their deck when judging whether a game is fun, since fun does not depend on it.
+- [heuristic] A bundled item is worth more than its parts when equipment slots or hand space are scarce, and worth less when its bonuses are situational or conflict with each other. When: valuing items that combine several bonuses. Why: Scarce slots or hand space make bundling a real advantage.
+- [heuristic] Compare marketing spend with income to judge whether acquisition is paying off.
+- [heuristic] Compare win rate with amount spent to see whether non-paying players are being punished.
+- [heuristic] When options differ greatly in value, price the object close to the value of the best option. When: options differ greatly.
+- [heuristic] Even under profitability pressure, monetization should respect players, with extra care when the audience includes minors. When: small studios with revenue pressure.
+- [procedure] 1) Study your own and competitors' data to set a starting price. 2) Test in a region that resembles your target but is not the main audience. 3) Revise based on feedback. 4) Test in further regions. 5) Launch worldwide. When: F2P games setting prices before a broad launch.
+- [procedure] 1) Divide each pack's price by its units to get cost per unit. 2) List pack combinations whose units sum exactly to the target. 3) Compare total prices of those combinations and choose the cheapest. When: packs sold in fixed sizes at different prices.
+- [metric] Profit per player equals average LTV minus customer acquisition cost; an LTV of $5 against a $3 cost leaves about $2 per player.
+- [metric] For a modest mobile game with a $500K budget, the figures in the example imply about a million players are needed to break even.
+- [metric] Portals typically share 25 to 50% of revenue with publishers.
+- [tradeoff] Paid games can tolerate onboarding friction because buyers are committed; free-to-play players drop off with each extra step since they have not paid. When: Choosing onboarding friction levels by business model; designing tutorials for free-to-play or mobile games. Why: Paying players have invested in the purchase and are more likely to persist; non-payers have less reason to persist through extra steps. (x2)
+- [tradeoff] In free-to-play competitive games, selling time savings can make results depend on spending rather than skill, so those who spend the most win. When: Competitive games where progress can be bought. Why: Players who pay gain speed that others cannot match by playing better.
+- [tradeoff] Free-to-play resources sold for real money fall into three groups: pay to win, not pay to win, and cases that depend on how they are implemented. When: Designing or assessing monetization of a free-to-play game. Why: Whether a purchase affects competitive outcome determines fairness perception.
+- [tradeoff] PC releases carry no royalty to the operating system or hardware maker, while console releases bring per-unit royalties and the maker's approval control. When: choosing between PC and console release.
+- [pitfall] A decoy option that steers users toward a pricier choice is a dark pattern: the gain goes to the business while the cost falls on the user. When: The decoy is designed to push users toward a more expensive purchase they would not otherwise make. Why: The gain goes to the business while the cost falls on the user. (x2)
+- [pitfall] A free scripting language can carry hidden legal exposure, including liability for copyright or patent breaches, and its up-front cost is only part of its total cost.
+- [pitfall] Paying for brain-unlocking programs based on the ten percent myth wastes money on unsupported claims.
+- [pitfall] Using variable rewards to monetize raises ethical concerns, especially when children are players.
+- [pitfall] Pay-to-win models can drive away non-paying players.
+- [pitfall] In pay-to-win games where players buy units for easier gameplay, the purchase unbalances the game for non-paying players while the publisher profits. When: In mobile pay-to-win games. Why: Buying advantage shifts difficulty onto players who do not pay.
+- [pitfall] Rising friction can be used to push players toward a choice between paying and leaving, which is a monetization decision rather than a balance one.
+- [pitfall] Studios often copy business models such as seasons or loot boxes without checking whether they are ethical. Why: Ethical problems are carried over unexamined.
+- [pitfall] If an item requires a secondary resource that is much harder to obtain, players may leave items unfinished without it. When: Costs require hard-to-get resources. Why: Secondary resource scarcity blocks completion.
+- [pitfall] Metrics can reveal that a monetization design extracts the most money from low-income players, who may spend more than they can afford.
+- [fact] Problematic monetization is most common in freemium games; free-to-play models raise more ethical concerns than premium upfront-paid games, though it increasingly appears in premium games. (x2)
+- [fact] Non-gameplay factors such as display hardware can shift timing and aim in competitive play. When: Competitive play where players use different setups.
+- [fact] Publishers have announced interconnected economies in which franchise items bought in one place can be used in another game, signalling intent toward interoperability.
+- [fact] Support for players who pay is typically prioritized over support for non-payers, who get minimal attention.
+- [fact] Designers and players often question the ethics of per-player pricing and drop-rate changes.
+- [fact] An economy can shift sharply when a game changes its monetization model, such as moving between pay-to-play and free-to-play.
+- [fact] Many free-to-play games build monetization around selling virtual skills.
+- [fact] Vanity items that change appearance without affecting power are a major monetization method in some popular online games. Why: Players pay to express identity, not to gain advantage.
+- [fact] Players still do not find purchase models entirely fair, so a payment system that feels fair while sustaining great games would likely be widely adopted.
+- [fact] Free-to-play games are given away to attract the most players, then charge for extras at moments when players want something.
+- [fact] In an open app store with low barriers, roughly 90 percent of games lose money and about 10 percent are profitable. When: entry is easy and the market is crowded. Why: Low barriers let many competitors enter.
+- [fact] Platform holders often sell hardware below cost and earn mainly by charging publishers for each title released. When: a console or platform business model. Why: Revenue comes from software licensing rather than hardware sales.
+- [fact] In one reviewed game, each player may give up to five random gifts per day, and ungiven gifts are wasted. When: Daily gifting systems with fixed allowances.
+- [fact] In many free-to-play games most players pay nothing, so median and mode spending are zero and ARPU can mislead; ARPPU is usually much higher than ARPU. When: Interpreting revenue in a free-to-play game where most players are non-paying. Why: Non-paying players dilute the per-player average.
+- [fact] In a variant with pick-dependent switch offers, a player who is offered a switch wins one-half of the time. When: the switch is offered only sometimes.
+- [fact] Decoy pricing is common in free-to-play currency offers and is considered ethically questionable.
+- [fact] Business metrics for free-to-play games focus mainly on retention and conversion.
+- [fact] The monetization model shapes game design; a free-to-play game is not designed the same way as a paid-upfront game.
+- [fact] Player-traded cosmetic item economies can become very large; one reported market totaled over $50 million in a single year.
+
+## pricing and valuation
+- [model] A game card can be modeled as an equation that sets its costs equal to its benefits, with each cost and benefit as an unknown to solve for.
+- [model] Five levers offset diminishing returns in item sets: repeat-purchase cost changes, fixed costs, rising income, acquisition-based costs, and switching costs; they can be combined. When: items overlap in coverage and players will likely acquire most of them.
+- [model] Market models are simplified attempts to chart a complex system, and most real market factors such as disasters, memes, politics and chance lie outside any model. When: using a market model to predict game success. Why: Real markets are nonlinear and driven by many unmodeled forces.
+- [definition] An anchor is a single reference value, such as a currency, that lets every good be priced and compared with one number instead of countless pairwise exchange rates.
+- [definition] In a prestige economy, goods cost real money but do not affect gameplay beyond status, and they are often limited edition.
+- [definition] Market price is the point where supply and demand curves intersect, and any shift in either curve moves it.
+- [definition] A comparative anchor is a number or set of features that makes one choice roughly equal to another when all factors are considered. When: options should feel fair but need not match exactly.
+- [definition] A supply curve counts how many sellers will sell at a given price or higher. It rises to the right because more sellers join as price rises. Why: Each seller has a minimum acceptable price.
+- [definition] A demand curve counts buyers willing to pay at least a given price. It never rises as price rises, because buyers drop out as price increases. Why: Each buyer has a maximum price they will pay.
+- [definition] In a fixed-price format, the vendor lists an amount and holds it open until a purchaser appears. It is the most common video game auction format.
+- [definition] Sunk costs are setup expenses that must be paid before a desired item or ability becomes available.
+- [definition] A market segment is a cluster of players grouped by hobbies, prior ability, spending level, social background, device access, or geographic region.
+- [mechanism] Market price depends on demand and availability: high demand with low supply usually raises price, while low demand with high supply usually lowers it. When: Comparing demand and supply levels in a market.
+- [mechanism] Easy distribution lowers barriers and floods the market with products, driving prices toward free, so easy store access does not mean easy profit. When: a platform makes publishing or store access very easy. Why: Supply rises faster than demand; access lowers barriers and increases competition.
+- [mechanism] Demand for a resource shifts permanently when balance changes, new content, newly found strategies or growing player wealth change how much players want it or can pay.
+- [mechanism] In player-dynamic economies, players set transaction prices, but supply and demand still bound what is reasonable: items priced too high go unsold, and trades demanding too much are rejected.
+- [mechanism] Fewer players produce larger price swings, because each player controls a bigger share of supply and demand. Why: Each participant's trades weigh more heavily in a small market.
+- [mechanism] Shopkeepers buying at steady prices keep newcomers employed, while high-level item offers are less competitive, pushing trade toward player-to-player exchange. When: Persistent worlds with a shop and player market. Why: Fixed shop prices give a guaranteed income floor that player markets cannot easily undercut at high levels.
+- [mechanism] When currency is sold in bundles at non-round rates, players find it harder to track real spending. When: When a game sells in-game currency for real money. Why: Unclear exchange rates make the real cost of purchases less visible.
+- [mechanism] A high initial price with fixed-duration percent-off sales keeps the list price constant, so players are not surprised when a sale ends.
+- [mechanism] Per-player pricing shows different prices to different players: non-spenders may see better offers, while likely buyers, especially for new items without history, may pay more.
+- [mechanism] Doubling an item's cost while doubling all rewards makes the item look pricier but leaves the real time and effort cost unchanged. Why: Prices are felt relative to the rewards that earn them.
+- [mechanism] A peak's high cost raises its sell-back value where selling is allowed, which is typically half the purchase value. When: Game allows selling items. Why: Sell value scales with purchase cost.
+- [mechanism] When each purchase of the same generator costs more, players are pushed toward a broader mix of generators. When: Repeated purchases raise cost. Why: Escalating cost makes diversifying cheaper than stacking one type.
+- [mechanism] Raising one substitute's price can increase demand and sales for the other, while lowering one substitute's price draws buyers away from the other. When: A price on one of two substitute goods changes. Why: Buyers switch between goods that replace each other.
+- [mechanism] Complementary goods have demand that rises and falls together, so owning some pieces raises demand for the rest. When: Goods are used together, such as matching gear pieces. Why: Owning part of a set makes the remaining parts more valuable.
+- [mechanism] With unchanged demand and supply, prices stay constant. Lower demand or higher supply lowers prices, while higher demand or lower supply raises them. Opposite-direction shifts have indeterminate effects when both move the same way. When: Demand or supply curves shift.
+- [mechanism] In fixed-price sales, the seller's price choice drives efficiency: a high price lets the top bidder pay their maximum, while a very low price lets even the lowest bidder buy and the seller earns far less. When: Setting a fixed price for an item.
+- [mechanism] Limitations and drawbacks act as negative costs that discount an item, such as a class restriction reducing value by a percentage or a wielder's elemental weakness. When: valuing restricted or penalized items. Why: Each drawback lowers the price the item should carry.
+- [mechanism] A switching cost reduces the diminishing-return effect in proportion to its size, because overlapping items matter less when switching is costly.
+- [mechanism] The easier a player can switch between objects, the less value within-object versatility has. When: The player can swap between objects freely. Why: Specialists can be used whenever they fit the situation.
+- [mechanism] As a player collects more objects, each new one's value falls: a fully optimizing player covers all targets with a small set, so extra objects have diminishing returns and should cost less. When: The player collects many objects covering overlapping targets. Why: Earlier objects already provide most of the added benefit.
+- [mechanism] The payoff of a trade changes with unit cost, replaceability, and location; losing a costly unit near one's base is far worse than losing it mid-map. When: strategy games with unit trades and base proximity. Why: Replacement cost and strategic stakes vary with cost and position.
+- [mechanism] Lucrative niches draw in developers, which heightens rivalry and erodes returns, so the market tends toward a state in which every niche yields roughly equal profit. When: a segment proves lucrative. Why: Competitors are drawn in by visible profit, eroding it over time.
+- [behavior] Market prices fluctuate because new items enter the market, purchases change supply, and the set of logged-in buyers changes.
+- [behavior] In player-driven economies, prices converge quickly on supply-and-demand values, so a rarer item of equal play value trades for more, even without circulation data. When: Player-driven economies with items of equal play value but different rarity.
+- [behavior] With fixed prices on overlapping items, players must decide how many is enough, so diminishing returns become a deliberate choice. When: overlapping items keep the same price. Why: each extra item adds less value.
+- [rule] Price items so that scarcity forces trade-offs; if players can buy everything they want, the game is unbalanced.
+- [rule] If a store or NPC buys an item at a set price, players will not sell it for less on the market, so that price acts as a floor.
+- [rule] In a balanced in-game economy, more expensive items should also be more powerful and useful. When: When pricing items in an in-game economy. Why: Players expect price to correlate with value.
+- [rule] Test different price ranges to learn players' price tolerance and the points where they drop off.
+- [rule] Apply each costing rule uniformly to every matching item, for example adding a flat 10% to the cost of any resurrection effect. When: Costing items with shared effects.
+- [rule] In adventure-style free-to-play games, charge for access to content such as an adventure, and let power items come as rewards earned in play. When: deciding what a paid offering should contain. Why: Purchases framed as access feel heroic instead of like cheating.
+- [rule] To survive a red ocean, become the largest player in the market or find a blue ocean to move into. When: operating in a crowded market. Why: Competition erodes profit for small players.
+- [rule] When players buy many items from one source, let later purchases cost less, optionally framed in the story as a loyalty reward.
+- [rule] Price an either-or object above its most valuable option but below the sum of all options, since the player can use only one. When: the player picks one effect from several options with known value.
+- [rule] Base a sunk cost on expected value: how many units or uses a typical game produces once the prerequisite is built. When: Estimating how many uses to spread a prerequisite cost over. Why: Typical play determines how much setup is actually recovered.
+- [heuristic] Mechanics costed similarly can still play very differently, so equal costs should not be assumed correct and the imbalance is expected. When: Early playtesting of card or mechanic costs.
+- [heuristic] In board games, expect bigger price swings with three players than with six; if stable prices matter, add rules for smaller groups. When: When designing a board game where stable trade prices matter for small player counts.
+- [heuristic] Benchmark prices against competing and trending games, using bulk currency purchases as the usual comparison; prices often match across many games, especially from one publisher.
+- [heuristic] Designers aim to shrink the low-spending segment, because big spenders barely react to price.
+- [heuristic] Cutting a price is simple, whereas increases provoke backlash, especially as public price history spreads through communities.
+- [heuristic] Prestige pricing has a window: above it nobody buys, below it so many buyers own the item that it loses prestige.
+- [heuristic] The skill needed to execute a strategy should match its effectiveness, so players climb toward the most rewarding peaks.
+- [heuristic] Barriers have a huge effect on profitability, so exploit them wherever you can. When: judging whether a market is worth entering. Why: Protected markets are much more profitable.
+- [heuristic] A game built for one audience can feel unapproachable to others; this is as designed, not unbalanced, so judge it against its own audience.
+- [heuristic] When a target quantity must be hit exactly, the lowest cost-per-unit pack alone may not reach it, so smaller packs can be needed. When: buyers need an exact amount from fixed pack sizes.
+- [heuristic] An option with a lower stat sum can be compensated with a stronger intrinsic stat, extra abilities, a gentler XP curve, or raised stats. When: a starting option falls below the anchor sum.
+- [heuristic] Base costs on the maximum damage in the range; average or minimum damage can be used instead. When: Pricing damage ranges.
+- [heuristic] Compare how similar games price the same kind of extra; a consistent pattern across them is a standard to understand. When: Pricing new item extras. Why: Shared conventions reflect what players expect.
+- [heuristic] Developers may weight team rating changes by each player's contribution, such as activity in a shooter. When: team games where contribution varies widely.
+- [heuristic] When all options are similar, begin with 1.5× one option's value, then adjust. When: all options have similar value.
+- [heuristic] With partial foreknowledge, price a bundle between the single-part price and the sum of parts, scaled by how certain players can be.
+- [heuristic] Effects tied to a target's state or composition can be worthless in most contexts and decisive in others, so their cost should reflect the range of their value, not one case. When: Effects whose usefulness depends on target state, such as healing or count-based damage. Why: Value swings from near zero to decisive with circumstances.
+- [procedure] 1) Describe every stat and effect the item provides. 2) Assign each a value in the anchor currency, such as 10 gold per HP. 3) Cost special abilities such as healing, winning ties or post-elimination effects the same way. 4) Sum all values for the item's price. When: Setting an item's price in a fixed economy as a starting point, or inventing a new item. Why: Anchoring price to stats gives a consistent baseline that testing can refine.
+- [procedure] 1) Set a cost per point of damage. 2) Multiply it by the average of the damage range. 3) Apply a multiplier for each extra hit per second above the baseline. 4) Keep one operation consistent: multiply or add the rate value throughout. When: Pricing melee weapons by damage and attack rate. Why: A consistent formula makes items comparable.
+- [procedure] 1) List the prerequisite's immediate benefits. 2) List the later benefits it enables. 3) Price the prerequisite by the sum of both. When: Pricing a prerequisite in a tech tree or progression chain.
+- [procedure] 1) Choose a price range and step size. 2) List prices in one column. 3) Use formulas in adjacent columns for demand and supply at each price. 4) Fill down the table. 5) Chart both curves against price. When: Modeling a market where quantity demanded falls and quantity supplied rises with price. Why: Formulas keep every value linked to the curve equations, so changes update the whole table.
+- [metric] Protection from a color is worth 1 point per instance.
+- [metric] Net value equals benefits minus costs: zero means on the curve, positive means above it, and negative means below it. When: Comparing a card against the cost curve.
+- [metric] Expected cost of a deferred purchase equals the chance of guessing right times the single-part price, plus the chance of guessing wrong times the sum of all parts. When: the buyer can buy the second part after learning the guess was wrong.
+- [tradeoff] A percentage trade cost discourages large trades because its perceived size grows with the amount, while a flat fee discourages small trades and favors large ones.
+- [pitfall] Reducing F2P pricing to a single number ignores the blend of market data, rival analysis, A/B tests, audience targeting, and flexibility it requires.
+- [pitfall] Treating an exclusive choice as costless because no resource is spent ignores the lost future options, which are a real cost. When: an action limits later choices.
+- [pitfall] Returns, budget overruns, withheld approvals, and schedule slips can push small publishers out of business.
+- [pitfall] Comparing tools by raw power without context is meaningless, because a tool's value depends on the opponent it faces.
+- [pitfall] Assuming the market is permanently fixed ignores the chance that a newcomer will overturn a dominant title. When: judging a market with a dominant hit.
+- [pitfall] Judging the market only by visible successes creates survivorship bias, because the many failed games are hidden from view. When: estimating a game's odds from published examples. Why: Visible winners misrepresent the true failure rate.
+- [fact] Game values such as damage, costs and XP gains only have meaning relative to other values in the economy, and a number strong at one stage can be weak at another.
+- [fact] Cost is not only financial: rarity and other access limits count as costs, so an item rarely found in a typical playthrough is effectively more expensive.
+- [fact] Raising both currency quantity and unit price is a clear price rise, not a hidden one.
+- [fact] Prestige goods rely on visibility, limited quantity, or both, and their prices follow supply and demand.
+- [fact] Prestige virtual goods have reached $10,000 or more, and designers still do not know the upper price limit, though their sense of buyer tolerance has improved.
+- [fact] Exclusive choices lock out options in tech trees, competing quests, faction-limited decks, and faction-specific resource types, where adding a faction makes resources harder to gather.
+- [fact] Portals often let players try a game free for one hour, then charge around $20 by credit card to keep playing.
+
+## player retention
+- [definition] MAU (monthly active users) counts unique or returning users active in a month; it equals DAU if the same people play daily, and high churn makes it much larger. (x2)
+- [definition] Completion is the satisfaction of finishing a goal, such as collecting all items or clearing a level.
+- [definition] Cycle time is how long a processor takes to receive one input and generate one result.
+- [definition] Incentives can be contingent on engagement, completion, or performance; non-contingent incentives are given regardless of behavior.
+- [mechanism] Rewards that vanish after a short deadline or require cumulative login days punish missed days and create fear of missing out. Why: Missed rewards push players to feel pressure to return rather than to enjoy play.
+- [mechanism] Discomfort accumulates over long sessions, so home play that often runs past an hour needs more comfort work than short sessions. When: planning VR session length.
+- [mechanism] Control feels continuous only when the game responds steadily at about 100 ms or better, because the player's processors run concurrently and can change input roughly every 240 ms. Why: Gaps in responsiveness break the flow of control even when averages look fine.
+- [mechanism] Meaningful material, repetition across varied contexts, and deeper processing all slow the rate at which memorized information is forgotten.
+- [mechanism] Depth adds complexity and confusion, which can cause frustration, loss of control and autonomy, and churn, while a lack of depth makes a game boring and also loses players.
+- [mechanism] Too few decisions bring boredom within seconds, while too many overflow the mind and break flow.
+- [mechanism] Requiring a set number of defeats before a reward drops spreads the payoff across repeated encounters with that enemy.
+- [mechanism] F2P designers funnel as many players as possible into the game, then steer them toward monetizing.
+- [mechanism] Prestige resets lower virtual skill and power but grant a permanent stacking bonus that speeds later progress. When: Idle games with prestige systems.
+- [mechanism] A craving for novelty drives game purchases, and game hardware loses value quickly as newer hardware appears.
+- [mechanism] Losing a life in a level resets that level's coins, enemies and timer, so the player gets another attempt at collecting value. When: Lives reset progress on failure. Why: Resetting the level restores the value pool the player can collect.
+- [mechanism] Fear of loss depends on two factors: the size of the potential loss and its probability. Why: Expected loss combines magnitude and likelihood.
+- [mechanism] Rewards every few minutes make long grinding periods feel shorter, so collect-and-kill loops can hide repetitive effort. When: quest loops in fast action games.
+- [mechanism] Frequent reward drops keep players on a continuous high of acquisition, so the rate of rewards strongly shapes how rich the play feels. When: When designing loot or reward systems with artificial wealth. Why: Rewards arriving often sustain the feeling of getting rich more than narrative or challenge does.
+- [behavior] Most players follow the path of least resistance and leave default settings unchanged; only a minority of power users adjust them. When: Designing default settings for a game. Why: Players rarely explore menus, so defaults effectively define the experience for most players.
+- [behavior] Players grow frustrated when they feel no closer to an answer. When: Puzzles offering only right-or-wrong feedback. Why: Lack of perceived progress removes motivation to continue.
+- [behavior] Players retell surprising or interesting game moments to others, and sharing recorded play sessions is a common way they do so. When: Game events are interesting enough to recount.
+- [behavior] Anticipation for a sequel comes partly from wanting to re-enter a familiar world, not only from curiosity about its new plot.
+- [behavior] Players resume play after unknown gaps, and games usually ignore how much time has passed.
+- [behavior] If core mechanics hold playtesters' interest, the design is considered solid. When: When testing a prototype with playtesters.
+- [behavior] Players of light-story games expect short sessions and rarely become absorbed in a plot, so story and gameplay must be established quickly. When: the opening of a light-story game. Why: Short sessions leave little time for slow story setup to pay off.
+- [behavior] Revealing hidden information produces the same emotional shift as an actual change in the player's situation. When: When information is withheld and later disclosed. Why: The unconscious registers a reveal as an equivalent change in value.
+- [behavior] Certain players never master a demanding mechanic and quit, and others end up puzzled and annoyed. When: mechanics that demand learning and retrying.
+- [behavior] Players given the option to refuse objectives or ignore allies still choose a fast, insistent core action when it is more compelling than the alternatives. When: the core action is fast and insistently presented. Why: the action's immediate pull outweighs the freedom to refuse.
+- [behavior] Highly skilled players may sit motionless while their minds search the space of possibilities, and the quality of that search makes the activity engaging.
+- [behavior] Players may keep playing a game long after they have become bored with it, because motivation mechanisms persist without enjoyment. When: games with strong motivation loops but weak fulfillment. Why: Wanting continues even when liking has faded.
+- [behavior] Rewards released in increments for consistent play over real time encourage players to return regularly. When: rewards are tied to regular play over real time. Why: each return brings a new increment.
+- [behavior] Scarcity by time or count pressures hesitant buyers into quick decisions. Why: Scarcity creates urgency.
+- [behavior] Well-balanced games can feel unfair to newcomers, since those players lack the skill needed to use the balancing strategies that keep play fair.
+- [rule] Treat player quitting as possible evidence of a design problem, and investigate and iterate the design rather than assuming players are at fault. Why: players owe the designer nothing.
+- [rule] Closure needs a chance to reflect and an inability to return to earlier phases, which loss or relief can supply. When: When designing an ending or phase transition. Why: Reflection and no return make the player able to leave the game behind.
+- [rule] Use the forgetting curve as a baseline when estimating how much players will forget between play sessions. When: planning teaching across sessions.
+- [rule] Shield low-level players by cancelling incentives to attack them, or by establishing protected starting zones.
+- [rule] Avoid removing external rewards later, and avoid reducing their value when a player disengages.
+- [rule] Treat a reward as the launch point for the next goal, not as the end of the activity.
+- [rule] Check whether rewards are too generous or penalties too harsh, since outcome values should leave player choices interesting. When: when tuning rewards and penalties.
+- [rule] Monetization should respect players' time and money, and players who disengage should not be punished.
+- [rule] For each reward, check whether it is useful, romantic, or tied to the story, and whether its timing encourages continued play. When: Auditing a prototype's rewards.
+- [heuristic] Completing and balancing a game usually adds fun, but the original spark can fade, so refinement must recover it.
+- [heuristic] Reward players for returning rather than penalizing them for leaving.
+- [procedure] 1) Align story, gameplay, and player power so they reach a satisfying conclusion together at the end of the progression.
+- [procedure] Test these possible exit causes: 1) a run of consecutive losses 2) season or tournament end dates 3) repeated sightings of the same few characters 4) weak or abrasive teammates 5) a rank or level where play turns rote 6) account age when interest fades. When: Investigating why players stop returning.
+- [metric] Retention rate equals 100% minus churn and measures how long players stay engaged; it is a key performance indicator, especially for free-to-play games. (x2)
+- [metric] Churn is the percentage of players who leave within a time unit and are replaced by new players.
+- [metric] Track session length, how often players return, and how long accounts stay active before they stop returning.
+- [tradeoff] Lives are usually treated as more-is-better with no downside, but too many make the game easy and too few make it hard; lives shape how cautiously players take risks. When: Setting starting resources such as lives.
+- [tradeoff] Always-rewarded behavior rises quickly but extinguishes quickly, while variable-ratio rewards take longest to establish but best sustain behavior over time. When: Choosing a reward schedule for a repeated action.
+- [tradeoff] Scarce lives with no save game raise stakes, but losing all lives restarts the whole game, so a run must finish in one session.
+- [tradeoff] Daily return rewards, such as free-to-play chests, encourage players to come back, but they raise ethical concerns that must be weighed.
+- [pitfall] Using loss aversion to push engagement feels controlling because it pressures players to play.
+- [pitfall] Taking away earned points is rarely used because players feel their earned points have been cheapened. When: Considering penalties that subtract score. Why: Players value points they have earned, so removing them feels unfair.
+- [pitfall] Ignoring time and money when analyzing a game's challenge is a mistake, since in many games they matter as much as skill and luck.
+- [fact] Retention indicates whether players appreciate a game, but it is too coarse a measure for most specific UX issues.
+- [fact] Lacking a re-onboarding plan is linked to increased player churn.
+- [fact] Closure can come from a failed session if the episode feels satisfying, but this is hard to design.
+- [fact] Information linked to familiar knowledge, or that is simple, organized, meaningful, or image-based, is retained better than complex, messy, or word-only content.
+- [fact] Completion can be made nearly unattainable on purpose, as with gacha collections.
+- [fact] Paid user acquisition has been costly, at upwards of $2.50 per paying player, so organically acquired players are valuable. When: Mobile F2P user acquisition at the time of writing.
+- [fact] Recoverable penalties, such as lost hit points, feel small, while irrecoverable losses, such as lost levels, cost far more play time and feel much larger. Why: Penalties that cannot be restored are perceived as costlier.
+- [fact] Stable active player counts can hide high churn when new arrivals replace departing players.
+
+## feedback loops
+- [model] Negative feedback has three sources, each shaping perceived fairness differently: player-controlled actions, outside control such as AI or dice, and known physics affecting everyone.
+- [model] Balance can be pictured as a board whose pieces are linked by rubber bands, move on their own under partly understood rules, and are partly hidden by fog.
+- [definition] A negative feedback loop damps itself: its output reduces its own input, so leaders are burdened, trailing players receive help, and the field stays together. Why: Stabilizing the game keeps players in contention.
+- [definition] A reinforcing relationship is a feedback loop where a change to one element moves another in the same direction, pushing the system toward an extreme and amplifying early advantage.
+- [definition] A positive feedback loop is a snowball effect in which a system's output amplifies its own input, rewarding leaders and punishing trailing players.
+- [definition] Zero sum games hold total power constant, so analysis focuses on each player's individual power curve.
+- [definition] The cumulative-advantage effect is the tendency for popular things to attract more popularity, so successful games gain advantages that make later success easier.
+- [mechanism] Negative loops can be written into rules, arise from how rules interact, or emerge from how players choose to play. Why: Identifying the source tells designers where to adjust the loop.
+- [mechanism] Reinforcing loops make output grow or decline steadily and support risk-reward, so a leader with an advantage tends to extend it. Why: Each gain increases the next gain's likelihood.
+- [mechanism] Reinforcements arriving mid-fight can stretch a combat many times longer than the same encounter without them. When: strategy or squad combat with arriving units. Why: Each new arrival adds fighting time.
+- [mechanism] Options landing slightly above the new curve become the next reference point, so some power inflation is always present.
+- [mechanism] With negative feedback, a player's power curve rises faster when behind and falls faster when ahead, so the curve depends on opponents.
+- [mechanism] With positive feedback, the power curve climbs or drops more sharply over time, with larger swings late in the game, and usually ignores opponents.
+- [mechanism] In PvP, feedback loops can drastically shift the balance of power and come to dominate multiplayer dynamics.
+- [mechanism] Negative feedback matters most late in the game, when large power gaps have formed, and can keep outcomes open until the end.
+- [mechanism] Randomized items that are weaker for the leader and stronger for trailing players keep competitors bunched together.
+- [mechanism] Positive feedback applied early in a game has a much larger effect than the same loop applied late in the game.
+- [mechanism] In a system that is positive-sum with negative feedback, every participant's power still rises, but leaders gain less while trailing participants gain faster, so the curves braid together.
+- [mechanism] In resource-building board games, trading supplies negative feedback when opponents refuse to trade with the leader and bank exchange rates are poor.
+- [mechanism] In racing games, forward progress toward a goal makes play positive sum, while rubber-banding and weighted item pickups keep players close.
+- [mechanism] When top seats carry many advantages, players tend to stay there, while those at the bottom struggle to climb, so rankings become self-reinforcing. When: Ranked games where ranking grants advantages for the next round. Why: Advantages compound each round, so the lead tends to persist.
+- [mechanism] A reinforcing loop that amplifies early advantage lets one player win too early and stagnates competition. When: Early leader gains compound.
+- [mechanism] A reset can be triggered by players: when enough players in succession perform a costly late-game action, everyone's economy resets.
+- [mechanism] With positive feedback in a negative sum game, the stronger player loses power more slowly, so once a losing slide begins its losses accelerate. When: in negative sum games. Why: the leader's advantage protects its power while the trailing player's losses compound.
+- [mechanism] With negative feedback in a negative sum game, stronger players lose power faster, creating a race to the bottom in which power curves braid downward. Why: players with more power are disadvantaged.
+- [mechanism] With positive feedback in a zero sum game, an early leader pushes harder and the match concludes quickly, so this pattern suits short games. Why: early advantage compounds.
+- [mechanism] With negative feedback in a zero sum game, swings in power drag the leader back toward the middle, causing repeated reversals. Why: losing ground to a leader restores balance.
+- [mechanism] In an unregulated metagame, winning brings money and fans, which buys better players, which wins more; this positive feedback loop lets successful players pull further ahead. When: Metagame systems with no limiting rules, such as free spending on talent. Why: Revenue from success is reinvested into the means of winning.
+- [mechanism] Unlimited resources create a positive feedback loop in which units or workers generate resources that fund more units. When: Resources can be harvested indefinitely. Why: Output reinvested into production compounds over time.
+- [mechanism] In competitive games, trading acts as negative feedback: players who are behind receive better deals, while players who are ahead receive worse deals or none. When: Competitive games with player-to-player trading. Why: Trade terms favor the trailing side, which pulls standings back together.
+- [mechanism] Mechanics that link actions to rewards can create positive or negative feedback loops that push play out of balance. When: When diagramming how actions pay off in a game system. Why: Reward links that compound or cancel can swing the system far from equilibrium.
+- [mechanism] Suspense weakens when the outcome is already locked, because later events no longer change the balance of consequence. When: When a match or contest is nearly decided. Why: Tension depends on whether the next event can still change the result.
+- [mechanism] Players continuously tune their own challenge by the speed of their advance, with skilled players triggering several enemy groups at once while cautious players clear each group first. When: When encounters are triggered by player movement. Why: Players control how many challenges they face at once.
+- [mechanism] In good games, changing one variable sets off chains of cause and effect that are nonlinear, emergent, and hard to predict.
+- [mechanism] A stat that improves items which raise the same stat can compound exponentially, letting power trivialize carefully crafted challenges.
+- [mechanism] Celebrity, news and political effects on a game are nonlinear and can be amplified by sociological snowball effects. When: a small change in attention affects a game's performance. Why: Social amplification makes outcomes disproportionate to the initial cause.
+- [behavior] A slim initial edge can balloon into an advantage too large to overcome by midgame, leaving trailing players feeling powerless. When: When a positive loop operates in a competitive game. Why: Compounding gains make catching up impossible.
+- [rule] Include the average expected opposing effect in the cost term so that a total of zero marks a balanced item.
+- [rule] Give players who return after a break extra progression, instead of making them pay for lost time. When: Designing progression for lapsed players. Why: Rest bonuses are a healthier model that avoids punishing disengagement.
+- [rule] If streaks are included, pair them with bonuses that raise the chance of continuing a streak, offsetting the higher chance of a miss after a run of hits. When: designing streak mechanics. Why: Streaks are statistically more likely to end after a run of hits.
+- [rule] Any reward is better than none if it gives clear feedback on the player's actions. Why: feedback connects the reward to the action.
+- [heuristic] Pair positive feedback with negative feedback so trailing players can catch up and the game does not feel futile, especially when an early lead should not hold. When: When a luck-driven early lead feels decisive. Why: Negative feedback counteracts runaway leaders.
+- [heuristic] Protect early experience even while ramping difficulty, because app store ratings depend on how new players first feel about the game.
+- [heuristic] When new player numbers drop suddenly, check whether the download page broke or changed recently.
+- [procedure] 1) Receive the input signal from the device. 2) Interpret and filter it, often into a different value range. 3) Use it to modulate a game parameter. Then ask how each parameter changes over time and how parameters relate. When: auditing how a game responds to an input.
+- [procedure] 1) Add randomness such as external events or shifting alliances. 2) Or let weaker players group together. 3) Or let them call in a third party. When: Trailing players need a way back.
+- [procedure] 1) Give each resource, ability, or option a number. 2) Sum the values per side. 3) Adjust values or resources until totals match. 4) Start with scores like low=1, medium=2, high=3. 5) After observed play, double the weight of any category that seems to decide outcomes. 6) Test the matched totals in play. When: opposing sides differ in several resources or powers.
+- [procedure] 1) Set the starting state from the first turn's score difference. 2) Apply the per-turn difference transitions to get the state distribution after each turn. 3) Sum the probability mass on the winning side of zero after each turn to get win probability by turn. When: Two players race and each turn's score change is random. Why: Stepping the chain forward turns the random process into a win probability curve over turns.
+- [procedure] 1) Model each side's progress as a count of random hits. 2) Compute, for each damage target, the probability each side reaches it first. 3) Search targets for the one whose win chance is closest to 50%. When: Two sides race to a damage target, one dealing steady damage and the other dealing random chunks. Why: Tuning the target to even odds balances a mismatched race.
+- [tradeoff] A negative loop keeps results uncertain and players in contention, preventing early endings; overused, it punishes success, rewards poor play, and lengthens the game. When: When adding or evaluating catch-up mechanics. Why: It erases early advantages, so late actions matter more and strong play is penalized.
+- [tradeoff] Positive feedback can end a game quickly once a lead is clear, but unchecked it makes the leader seem untouchable and trailing players feel futile. When: When a lead is clear, the leader seems untouchable, or the designer wants fast conclusions. Why: Ending a decided game early means players do not sit through remaining motions, while a trailing player who can never catch up loses motivation.
+- [pitfall] Rubber-banding can make players feel punished for doing well and rewarded for doing poorly. When: When computer opponents speed up when behind or slow down when ahead. Why: Visible catch-up assistance undermines the sense that skill determines the result.
+- [pitfall] If negative feedback is too strong in a zero sum game, no player can separate from the pack and the game may stalemate. Why: reversals cancel every lead.
+- [pitfall] Streak rewards that grow daily but drop after a missed day can feel punishing and damage intrinsic motivation.
+- [fact] Zero-sum transfers such as rent move currency between players without creating or destroying any, so the economy's total amount is unchanged.
+- [fact] Negative loops based on absolute power can force every player to slow near the end, and positive loops based on relative power are also possible.
+- [fact] In racing games, computer opponents may speed up when the player leads and slow down when the player trails, to keep the field bunched.
+- [fact] In a positive-sum game, one player's gain does not require another's loss; for example, when every dice roll pays out resources to all players, everyone benefits.
+
+## market and publishing
+- [model] Market barriers come in seven kinds: technical, hardware, expertise, sales and distribution, imagination, relationship, and uncertainty.
+- [model] A profit checklist is a set of questions for testing whether a game can make money; it asks where money goes, what it costs, how much it earns, and what entry barriers exist. When: while designing a game.
+- [definition] The invisible hand names the tendency of market prices to converge on whatever supply and demand imply, even when participants lack exact information.
+- [definition] Business metrics include daily active users, retention (returning after a day, week, or month), churn (quitting for good), and conversion (purchasing in-game items).
+- [definition] Market barriers keep competitors out and protect profit; recognizing which barrier you can build or use helps you find a less crowded path.
+- [definition] Burn rate is the monthly cost of keeping a studio open, including salaries, benefits, and rent.
+- [definition] Units sold counts purchases, and new pitches often estimate it from the results of similar games.
+- [definition] A blue ocean is a market with few competitors, either a new market or one protected by barriers that keep others out.
+- [definition] A free-to-play business hypothesis links engagement to later outcomes, such as retention to conversion, or marketing event engagement to item purchases.
+- [mechanism] Barriers to entry such as regulation, special hardware, expertise, and algorithms can reverse profitability, leaving most protected market participants profitable. When: a market is protected by barriers. Why: Barriers limit the number of competitors.
+- [mechanism] A markdown reserve means the publisher covers part of the loss when a title is discounted at retail. When: a retail price is reduced. Why: The publisher pays for part of the discount.
+- [mechanism] Producing a large batch at once can lower the cost per unit compared to producing in small amounts. When: Production scales with batch size. Why: Economies of scale spread fixed costs across more units.
+- [mechanism] Growing budgets and team sizes raise sales expectations, pushing publishers toward games with blockbuster potential.
+- [mechanism] A large installed base keeps an older console viable as a release platform for years after its successor launches.
+- [mechanism] Because games are nonrival, one excellent game can take nearly every customer, leaving other good games with none, so the market works like a winner-take-all tournament. When: many comparable games compete in one market. Why: Copying costs almost nothing, so the top title captures the bulk of demand.
+- [behavior] Players act unpredictably in trade, so gifting a large amount of currency to a high-level character can make out-of-reach items affordable, and designers should gate items with use requirements.
+- [behavior] Visible prestige items can sell very quickly after release, even at prices near double a regular subscription. When: Items that other players can see. Why: Their value depends on being seen by others.
+- [behavior] Every business decision is a bet on human psychology, which designers already understand, and financial details can be learned as needed.
+- [behavior] Players enjoy debating tier lists, and off-curve items give them hidden gems to find and let less popular choices win in unexpected ways. When: Games with many comparable items. Why: Discoverable outliers sustain discussion and experimentation.
+- [behavior] Players often cannot see when a reusable purchase breaks even, so choosing it can feel like a blind guess. When: Deciding whether to buy a reusable item with uncertain future use. Why: Future usage is uncertain and the break-even point is hidden.
+- [rule] Submit the publisher's required legal disclosure forms; skipping them or using your own forms gets a submission discarded.
+- [rule] If designers can predict when players usually acquire each item in an overlapping set, price each item for that typical point in the collection.
+- [heuristic] Build industry relationships through events and local meetups long before the pitch is ready, since networks take time to form. When: Preparing to pitch in the future. Why: Introductions depend on relationships that take time to build.
+- [heuristic] After the economy stabilizes, prices can be lowered over time to match earlier-game changes.
+- [heuristic] Keep the lowest tiers holding only a small share of players, so even weak players avoid feeling at the very bottom. When: when setting tier population sizes.
+- [procedure] 1) Total each labor category from line items. 2) Add benefits to each line item before rollup. 3) Add other direct costs such as software licenses and specialized services. 4) Add overhead. 5) Add production insurance if purchased. 6) Apply markup. Why: Each step feeds the next to reach the final price.
+- [metric] Worldwide game industry revenue, including hardware, was about $43 billion in 2007. When: Figures for 2007.
+- [metric] Breakeven units equal development and marketing costs divided by price per unit; a $400,000 cost at $5 per unit requires 80,000 units.
+- [metric] Effective per-use cost of a prerequisite-gated item equals (sunk cost + unit cost × uses) ÷ uses, spreading the setup cost over expected uses. When: An item requires a prerequisite that must be paid first. Why: Setup cost is shared across all units the player builds.
+- [metric] Casual publishers typically fund production budgets of $50,000 to $200,000.
+- [metric] Some aggregators let developers keep 60% of revenues while retaining all intellectual property rights.
+- [tradeoff] Introductions through a trusted contact work far better than cold outreach to busy gatekeepers, who ignore emails and cancel meetings. When: Approaching a busy publisher or executive. Why: Listeners trust people they know, so a vouched-for pitch gets a hearing.
+- [tradeoff] The casual market is huge but hard to get noticed in unless a game suddenly becomes fashionable, while hardcore players reward deep games that cost more to make but may earn more.
+- [tradeoff] Under an affiliate-label arrangement, the studio splits development and marketing expenses to reduce publisher exposure, in return for 65% to 75% royalties.
+- [tradeoff] Each business model imposes different design constraints: arcade games sell quick play, MMOs sell long subscriptions, shrink-wrapped games sell units via reviews, and noncommercial games express ideas. When: choosing a business model for a game. Why: Each model has a different revenue mechanism that drives different design goals.
+- [pitfall] Publisher letters of intent, sent when risks and return are acceptable, are not signed deals: a full contract is still needed, and the publisher can cancel for internal reasons.
+- [pitfall] A game that requires a license that is unavailable or unaffordable is likely to be rejected.
+- [pitfall] Ignoring the intended audience makes a well-made game look unbalanced. When: When evaluating difficulty. Why: Difficulty judged against the wrong target seems wrong even when it fits the intended players.
+- [pitfall] A balanced item curve can still leave free-to-play players under-supplied; the shortfall comes from the pressure curve, not the items.
+- [pitfall] In some games bulk currency purchases cost more per unit than small ones, so buying more does not always save money. When: designing currency bundle tiers. Why: Players assume larger purchases give better value, and this assumption is exploited.
+- [pitfall] Leaving out intangible value, such as an item's convenience or a shortcut's benefit, misjudges what an outcome is really worth. When: when valuing items and shortcuts.
+- [pitfall] Underestimating how many players a large budget requires leads to unrealistic free-to-play plans.
+- [pitfall] Judging a retailer as greedy without considering its low-margin position leads to a wrong conclusion. When: evaluating a retailer's share. Why: Margin pressure explains much of its share.
+- [pitfall] Relying on churn and ROI alone shows business health but reveals neither why players leave nor what to change.
+- [fact] The game industry is hit-driven: publishers earn most of their money from a few big hits, and roughly the top 20 titles generate about 80% of industry revenue. (x2)
+- [fact] An industry initiative is working to define shared ethical standards for Western game studios.
+- [fact] The United States is the largest game market, with Japan, the United Kingdom, Canada, and France also having strong industries.
+- [fact] Publishers relying on licences and sequels can release few original titles; one large independent's originals were about 16% of output.
+- [fact] Industry coalitions of over 160 companies share best practices for reducing toxic player behavior.
+- [fact] A new hardware platform, possibly patented, can be a barrier because few rivals can build a competitive product for it.
+- [fact] A simple idea nobody else has pursued can be a barrier.
+- [fact] Casual players outnumber hardcore gamers roughly a hundred to one, but each hardcore player pays far more.
+- [fact] Big-budget publishers usually want very high or negative ROI, since losses offset taxes and big hits pay for the rest; modest successes tie up money.
+- [fact] Investor enthusiasm for Web3 games peaked during the COVID-19 years and collapsed when the NFT bubble burst in 2022.
+- [fact] Businesses may find unique items and promotions more attractive than players do.
+- [fact] Salaries make up most of a game budget, and the budget is derived directly from the schedule's staffing and durations.
+- [fact] Predicting cultural success is very hard; even a small timing change could have turned a hit into an ordinary release.
+- [fact] Markets never reach perfect equilibrium, so underserved segments always exist and can yield abnormal profits, though segment sizes are hard to estimate. Why: Segment sizes are hard to estimate, segments overlap messily, and culture and technology keep shifting.
+
+## asymmetric balance
+- [model] In PvE games, score benefits positively and costs or flaws negatively, summing to a worth such as a gold price or monster difficulty.
+- [model] In PvP with resource costs, the balance curve is the identity (y = x): benefit points minus cost points equals zero for a balanced item, negative below the curve, and positive above it. When: Balancing PvP items with resource costs. Why: A common reference line makes items directly comparable.
+- [definition] Symmetric design means all players start with the same state, rules, and goals; cosmetic differences such as piece colors do not count, so any difference comes from the players. (x2)
+- [definition] Symmetric design gives all players the same abilities and paths, while asymmetric design gives players different starting advantages or resources. Why: The choice determines whether outcomes depend on skill or on the starting setup.
+- [definition] A handicap is the PvP equivalent of a difficulty setting: one player starts in an advantaged position or gains an ongoing advantage.
+- [definition] Popularity is how many times a character is chosen; in a mirror match, the character counts twice.
+- [mechanism] Unit counts can reverse basic counter relationships: enough cheap units beat a few counters before contact, and a large group of one type can beat a few units that normally counter it. When: evaluating army compositions. Why: Quantity changes the outcome of individual matchups.
+- [behavior] In competitive shooters, challenge arrives immediately because duels resolve quickly, while mastery builds across many matches. When: competitive shooter play. Why: Duels end in seconds, so skill develops over repeated sessions.
+- [behavior] In well-balanced asymmetrical games, each side has roughly equal winning chances when both sides are played skillfully. When: Designing asymmetrical sides.
+- [behavior] When every player starts with a different advantage, the outcome depends mainly on skill because each side is advantaged. When: asymmetric starting conditions. Why: Balanced compensation across asymmetric starts shifts the decider to skill.
+- [behavior] A weaker player with a strong pre-game choice, such as a deck or character, can beat a stronger player with a weak choice. When: Predicting match outcomes in games with pre-match builds or loadouts. Why: Pre-game choices can outweigh player skill differences.
+- [rule] Arrange three or more competing options in a circle so each beats one and loses to another, so each has a clear answer and none is universally best. When: Designing three or more competing options. Why: Keeps all options balanced. (x2)
+- [rule] In balanced PvP, players of equal skill should each have a reasonable, roughly equal chance to win, and outcomes should not be predetermined or outside players' control. When: Designing or balancing competitive player-versus-player games.
+- [rule] Handle disruptive players in competitive deathmatch with bans, since every other player is an opponent and each match stands alone. When: competitive deathmatch rules.
+- [rule] Choose a PvP game length based on audience and mechanical depth, then tune progression so players reach the end at a good pace.
+- [rule] Evaluate balance separately for each skill tier, since the strategies available to novices and experts differ.
+- [heuristic] Use symmetry when the design allows: symmetric PvP games are fair without balancing effort and easier to balance, since unequal starts or resources can give one side an unfair advantage. (x2)
+- [heuristic] Balance each object against a few archetype baselines instead of all pairings; this quickly reaches a reasonable ballpark for large-roster games like fighting games, MOBAs, and card games. When: Large rosters of characters, items or units. Why: Pairwise testing grows combinatorially while baseline comparisons grow linearly, giving reasonable starting balance with little effort.
+- [heuristic] A design can begin from any element, but letting story dictate every choice is a common mistake.
+- [heuristic] When player versus player combat is not central to a game, question why it exists, since it creates an easy opening for griefers.
+- [heuristic] Small differences in range, geometry, and attack rate can turn a dull unit into one that generates many tactics, at similar implementation cost. When: comparing units with similar roles.
+- [heuristic] Co-op games often aim to make players feel skilled and powerful, so balance is weighted toward the player, slightly or greatly. When: Balancing multiplayer co-op PvE encounters. Why: Players should feel they fought a strong opponent, even when they ultimately win or lose by a designed margin.
+- [procedure] 1) Identify the source of asymmetry: starting positions, resources, goals, or core rules. 2) Balance asymmetric elements on the same cost curve and stat math. 3) Where numbers cannot compare sides, add intransitive counters so no single strategy dominates. When: Balancing PvP factions or sides. Why: Shared stats allow numeric analysis; counters prevent one dominant strategy.
+- [procedure] 1) Decide whether the game should be symmetrical or asymmetrical. 2) Record the reasons for that choice. 3) Check whether the goal reliably measures skill or offers everyone an interesting challenge.
+- [procedure] 1) Confirm the game is symmetric with no dominance. 2) Set all payoffs to zero and probabilities to sum to 1. 3) Solve the equations. An odd number of options that each beat half the others yields an equal mix. When: Solving symmetric zero-sum games where each option beats and loses to equally many others.
+- [procedure] 1) Balance one character and compute its benefits minus costs. 2) Balance every other character to that same positive total. When: PvP games without item costs.
+- [procedure] Sort like objects by their computed worth and plot them in a spreadsheet to reveal the progression. When: PvE games with computer-controlled enemies.
+- [procedure] 1) Pair players of nearly equal rating. 2) Widen the allowed rating gap for each second a player waits. Closer matches cost longer waits. When: Rated games. Why: Automation prevents self-selection while keeping queues moving.
+- [procedure] 1) Set value per HP. 2) Set an improvement rate between successive weapons. 3) Give weapons with critical-hit chance a cost premium. 4) Compute each cost from averaged damage plus benefits. 5) Plot costs in list order so they trace the expected progression. 6) Investigate any point off the progression. When: Building a PvE weapon list from formulas. Why: Plotting exposes outliers that need checking.
+- [procedure] 1) Give each person a random unit. 2) Pair players randomly. 3) Rotate opponents across rounds. 4) Record each player's win-loss record, each unit's win-loss record, and final remaining health totals. When: running a balance test tournament.
+- [metric] Track the average rating of active players over time to detect rating inflation or deflation.
+- [tradeoff] Board games and most sports are symmetric, so skill and strategy decide; most games overall are asymmetric through characters, first movers, or factions. When: Choosing between symmetric and asymmetric starts. Why: Symmetry removes unequal starting advantages. (x2)
+- [tradeoff] Symmetry narrows the possibility space and keeps comparisons clear; asymmetry widens it and creates richer interactions but can overwhelm players with decisions.
+- [pitfall] Symmetric games start balanced, but symmetry alone does not guarantee balance: resources, strategies, pacing, skill gaps, or moving first (large advantage or disadvantage) can still tilt it. (x2)
+- [pitfall] Archetype balance does not guarantee pairwise balance; a unit balanced in theory may still have favorable matchups against most others, creating an unbalanced metagame. When: After archetype-based balancing. Why: Baseline comparisons miss specific matchup advantages.
+- [pitfall] Premade characters that differ sharply in abilities invite close scrutiny, so any balance gap between them is easy for players to spot. When: balancing fixed character options. Why: Players compare fixed options directly.
+- [pitfall] Asymmetric designs carry no promise of fairness and demand careful balancing so that players perceive them as fair enough.
+- [fact] Symmetry is a spectrum: small details, such as who moves first or who starts with the ball, break symmetry, so a mostly symmetric game can be asymmetric through one element. (x2)
+- [fact] PvE progression usually rises in absolute terms against a fixed yardstick, while PvP tracks power relative to opponents, leaving more options since no fixed yardstick exists.
+- [fact] Some degenerate strategies in a genre become so widely used that they turn into standard features of that genre.
+- [fact] In symmetrical games, all players start with the same units, resources, and information, so fairness mainly concerns who moves first.
+- [fact] Comparing an asymmetric starting state with a symmetric one shows how starting conditions shape play.
+- [fact] PvP games must keep providing stronger opponents, and the pool of human players is effectively unlimited.
+- [fact] In PvP, gains and losses are measured relative to opponents, so the game becomes a tug-of-war in which each player tries to reach the goal first.
+- [fact] PvP victory may be direct, such as eliminating all other players, or indirect, such as scoring points that power makes possible; some games win by exhausting opponents' power.
+- [fact] In plain Rock-Paper-Scissors, the symmetric optimal mix is one-third each throw, and any other ratio gives the opponent a counter that wins more often than it loses.
+- [fact] In a symmetric game, the solution is identical for both players; each strategy in use earns equal payoff, and in a symmetric zero-sum game every such payoff is zero. When: Applying symmetric zero-sum analysis to an intransitive game.
+- [fact] Without a special win rule, the symmetric three-player game has an equilibrium of 1:1:1 across the three throws. When: no special win rule applies. Why: the game is symmetric.
+- [fact] The first-move advantage in chess disappears at lower skill levels. When: lower-skill play.
+- [fact] In many PvP games, power grows late through stronger attacks, larger unit counts, more resources, or higher levels, and this pattern appears across card, board, strategy and online games.
+- [fact] In PvE the designer controls encounters and their generation rules, so encounter probabilities can be estimated and expected-value calculations are fairly easy, even for procedurally generated content. When: Designing PvE encounters or generated content with known rules. Why: The designer knows the generator and the typical encounter.
+- [fact] In PvP, opponents vary strategy and the metagame shifts, so expected value is unstable and playtesting and analytics are the main ways to find typical use. When: Balancing games where players face other players. Why: Opponent behavior is unknown and changes over time.
+
+## balance and fairness
+- [model] A balance sheet lists each game object in its own row and each attribute in its own column, ending with a formula that places every object on its cost/power curve.
+- [definition] Games resolve uncertainty into an unequal outcome, so they are not designed to prove that everyone is equal.
+- [definition] In rock-paper-scissors structures, each move beats one other and loses to one, so no configuration leaves a player content; this is the simplest symmetrical structure without equilibrium. When: Symmetrical games where both players share the same moves.
+- [definition] Mathematical balance covers numerical elements such as level curves, item costs, hit points, and object rarity, where rarity itself is often derived from math. Why: Most balance questions reduce to numerical relationships.
+- [definition] Perfect imbalance is the term for games that improve when small, deliberate imbalances are added to strategies.
+- [mechanism] Temporarily removing a player's powers is a gentler penalty than permanent loss of progress. When: When a penalty is needed but must stay recoverable. Why: Recoverable penalties keep failure consequential without ending investment.
+- [mechanism] Deliberately unfair asymmetric powers generate wild stories and funny interactions that strict fairness tends to suppress.
+- [mechanism] Players who build and test decks shape final balance partly through the metaeconomy, so balance is not set by the designer alone. When: Collectible card games with deck building. Why: Deck choices and trading respond to play and spread through the market.
+- [behavior] An unbalanced game usually has several interacting problems rather than one resource that is too high or too low.
+- [behavior] When a second player may answer after a first player's wrong guess, the second player gains an advantage because they have already seen the first guess. When: Games where players respond in sequence to the same question. Why: Information from earlier answers is available to later players.
+- [behavior] An overpowered item usually matters less than expected: players only pull ahead until the content catches up with their ability. When: an item is well above the curve in a progression game. Why: later content scales up to match the player's growing strength.
+- [behavior] Overpowered rare cards in head-to-head card games are resented and can create a pay-to-win perception. When: Competitive card games with rarity-based power. Why: Power tied to rarity or money feels unfair to opponents.
+- [behavior] Players may not read a pricing formula, but they can still feel whether a weapon seems balanced. When: Designing numeric item pricing. Why: Perceived fairness depends on play experience, not on visible math.
+- [rule] Set player expectations through title or packaging when imbalance is intentional or unavoidable.
+- [rule] Avoid strategy interactions with exactly one pure equilibrium, because players always settle into that choice and the decision disappears.
+- [rule] A game object is balanced when its overall profile, including stats, cost, rarity, strengths, and weaknesses, is comparable to other objects, and when it has some situation in which a player would choose it. When: When evaluating or tuning individual game objects. Why: Objects are judged in aggregate, and each needs a reason to be used.
+- [rule] Balance a tool through non-essential properties such as price, weight, vulnerability, or new mechanics, rather than changing its essential property.
+- [heuristic] Leave most balancing to designers, since player-set values tend to drift toward overpowered settings where fun is brief and returning to normal balance feels dull and restrictive. When: Considering letting players choose balance values. Why: Players want both challenge and easy wins, and overpowered settings remove challenge.
+- [heuristic] When offering two options, give them similar benefit levels so that the choice between them is interesting.
+- [heuristic] When the allowed trade size falls during a round, down to single cards, players can read that the round is nearing its end. When: Rounds where trade size decreases as play progresses.
+- [heuristic] If every playtester takes or avoids a stat, that points to an imbalance. When: Playtesting a system with stat choices.
+- [heuristic] The nature and balance of roles is a critical design consideration, especially when roles differ or players define them.
+- [heuristic] Each failure trap needs a custom solution based on how and why it emerges, since no single fix covers all traps. When: When addressing a failure trap. Why: Traps have different causes and mechanics.
+- [heuristic] Designers who understand what players find fair can affect profitability more than financial analysts can. When: setting prices or monetization features. Why: Perceived fairness drives purchase decisions.
+- [heuristic] Keep deviations from the cost curve small; large ones make items feel broken, such as a weapon that carries the player with no challenge or an enemy that traps the player for long. When: Placing items or enemies off the curve. Why: Small deviations give surprise, while large ones harm the experience.
+- [heuristic] Pick a row-per-object balance layout when you need to contrast many same-kind items, such as enemies, weapons, cards, or character classes.
+- [heuristic] Tie moral choices to gameplay only after testing whether gameplay rewards pull against the narrative. When: Before linking moral choices to mechanics.
+- [procedure] 1) Identify a character, unit, or ability that is overpowered. 2) Reduce its strength (nerf). 3) Verify the change through extensive playtesting. Why: Overpowered elements dominate play and reduce the value of other choices.
+- [metric] Multiplayer balance requires fair starts and no single dominant strategy; single player balance requires skill to match the target audience.
+- [tradeoff] Breaking conventions can create immersion that fair design cannot, but unfair design without fail-safes can wear down careless players until they quit.
+- [pitfall] Judgment players perceive as unfair will be resented rather than motivating, so feelings of unfairness should be avoided as much as possible because they generate negative emotion. (x2)
+- [pitfall] A defensible set of numbers can still feel unfair, because player perception, not the numbers alone, determines balance; check balance against how players perceive prices and power. When: When evaluating whether a balance tuning is successful. Why: Balance is judged by players' perception, which can differ from the math.
+- [pitfall] Without balancing relationships, a game can resolve too quickly.
+- [pitfall] Judging a stat within a single build hides whether it is a god stat or a dump stat.
+- [pitfall] Labeling a game as entirely skill or entirely luck ignores that the answer can depend on whether the observer is a participant or outsider. When: Classifying a game's luck or skill. Why: The role of the observer changes which uncertainty matters.
+- [pitfall] An optimal opening strategy for equal health does not carry over once health totals become uneven, since some moves can end the match outright and become equally useful. When: Analyzing a fighting game across different health states. Why: Lethal thresholds change which moves are useful.
+- [pitfall] A deliberately unfair game loses competitive legitimacy, so it cannot support a fair contest between players.
+- [pitfall] Degenerate strategies can give unfair advantages to some players and spoil the experience for those playing by the rules.
+- [pitfall] A cost formula that omits the damage an item will face from the opponent makes every item look above the curve.
+- [pitfall] Abilities on cards sitting above or below the curve can skew estimates, so check values against known game behavior before trusting one.
+- [pitfall] Balancing only for one extreme alienates either casual players or expert players.
+- [pitfall] Each fix can cause new problems elsewhere, so tuning one problem at a time does not converge.
+- [fact] Asymmetry can faithfully simulate a real situation that was itself unequal, such as a historical conflict between opposing forces.
+- [fact] Some games have only one path to victory, where the winner is the player who executes the core strategy best.
+- [fact] Two games can demand similar skill yet differ greatly in luck, depending only on whether random item or power-up effects are present.
+- [fact] Most real interactions have unequal payoffs, such as fighting-game block, jab, and throw, where each option beats another by a different amount.
+- [fact] Balancing a game for all skill levels at once is nearly impossible because the strategies multiply, so designers must choose a target skill level.
+
+## gacha and gambling
+- [model] Multiplayer loot fairness can use guild loot queues, Need vs. Greed requests, auction-house trading, or converting unwanted items into resources, fusion, or equipment upgrades. When: Designing shared or random loot systems.
+- [definition] House edge is expected loss divided by amount wagered, the share of each bet lost; it is the gap between payout and true odds, the house's average profit.
+- [definition] The hot-hand fallacy is the belief that a streak of successes makes further success more likely, the reverse of the gambler's fallacy.
+- [definition] A loot box is a chance-based reward, such as a card pack or chest, bought with in-game currency that yields either a valued item or junk.
+- [mechanism] Random loot tables can determine drops from defeated enemies; tying them to deliberate combat rewards skill, and drop chance can scale with enemy difficulty so stronger foes make good items more likely. When: Designing loot drops for combat encounters. Why: Ties rewards to player action so the reward feels earned.
+- [mechanism] In gambling games where a single currency is exchanged for cash in either direction, that exchange is the only production source and resources move between players through play.
+- [mechanism] When found equipment supplies most of the power, the gap between viable and optimal builds narrows, so enemy balance survives the player's build choices. Why: Items the player does not choose limit how far builds can diverge.
+- [mechanism] A house rake, a percentage of each hand's bets, makes a zero-sum game negative sum for players because table money drops with every hand. When: when a third party takes a cut from each round. Why: The removed money leaves the players' pool permanently.
+- [behavior] Players commonly believe earlier independent events, such as previous rolls or a run of losses, influence later ones, so a win feels due. When: watching sequences of independent random results or after several losses. Why: Independence is misread as dependence. (x2)
+- [behavior] People cannot randomize accurately: they alternate more than chance and underestimate long runs, so a short history of choices often reveals their next pick. When: the player makes repeated choices from a small set, or when predicting human randomized choices. Why: human attempts at randomness are biased and predictable. (x2)
+- [behavior] Players feel futile rather than hopeful when the perceived chance of success seems too low. When: Setting drop rates for desired items. Why: Hope requires a plausible chance of success.
+- [behavior] Facing a small certain loss versus a large probable loss, people tend to gamble rather than accept the sure loss.
+- [behavior] Players feel that spotting false patterns in chance is a real skill, and designers can use that feeling.
+- [behavior] Occasional accidental-feeling headshots let weaker players score kills, which generally suits play outside top-level competition. When: Shooter headshots are hard to land reliably at range. Why: Small, fast-moving targets make some hits feel lucky, evening the field.
+- [behavior] Humans are poor at appearing random on purpose, so skill against people lies in detecting their patterns while concealing one's own. When: Playing intransitive games against human opponents. Why: People cannot generate truly random sequences deliberately.
+- [behavior] Regular login bonuses build a habit that leads to other activity, and frequent visitors may later be tempted to spend money. When: when designing login rewards. Why: players who return for a bonus usually stay to do more.
+- [rule] When a game has player choices or changing conditions, such as a growing progressive jackpot, use the average value for changing conditions and assume the player makes optimal choices. When: calculating house edge.
+- [rule] Avoid loot boxes used to drive retention or conversion, especially when they can be bought with real money or earned as in-game currency.
+- [rule] Avoid loot boxes in games that children can access. When: games accessible to children. Why: gambling-like rewards exploit young players.
+- [heuristic] Simple games with short plays can use a low house edge, because volume makes up the earnings per play.
+- [heuristic] Games with large jackpots or big possible wins can carry a higher house edge, since players tolerate larger expected losses when the potential win is large.
+- [procedure] 1) Model the gamble as an infinite state machine with a stop state. 2) Track expected winnings per step with a Markov chain. 3) Compare the chance of ruin against the gain at each stopping point. When: deciding when to stop an open-ended gamble. Why: the chain shows how expected value and ruin risk change with each extra flip.
+- [metric] Expected occurrences of a rare event equal trials times per-trial probability: 50,000 attempts at 1/10,000 gives about five; N packs give N times a card's per-pack probability. When: many attempts, a large player base, or card-pack draws.
+- [metric] Unlikely outcomes at odds of roughly 3:1 or 4:1 start to feel wrong to players.
+- [metric] Set the exchange rate between unwanted items or grinding time and one wanted item deliberately, since it governs how the sense of progress feels. When: Designing conversion of unwanted loot. Why: The rate determines how much effort each desired item costs.
+- [metric] In a 30-item set with three equal rarity tiers weighted 10%, 30% and 60%, completing the full set takes about 293 random purchases on average. When: Calculating expected cost of completing a gacha collection. Why: Rare items are much less likely, so full collections need many draws.
+- [metric] Completing a gacha set grows steeply with set size; a 100-per-rarity set needs over 5,000 purchases. When: Estimating the cost of large gacha collections. Why: Collection cost grows faster than set size because rare items are hard to obtain.
+- [metric] A game is fair when its expected value for each player is zero; a positive expected value favors the player and a negative one favors the house. When: Checking whether a betting or reward game is balanced. Why: Zero expected value means no long-run advantage.
+- [metric] In a zero-sum rating system, P(win) = Y/(X+Y) where X is points gained for a win and Y points lost for a loss; the opponent's probability is X/(X+Y).
+- [metric] If Y is zero, P(win) is 0 whatever X is; if X is zero, P(win) is 1. If both are zero the probability is undefined. Why: A player should never be expected to both win and lose.
+- [metric] For a fair wager, the expected gain or loss per play equals the sum over outcomes of each outcome's probability times its payout.
+- [tradeoff] Bending probability to reinforce players' wrong beliefs gives them something known to be false, which is dishonest, though it may still deliver the enjoyment players want. When: designing random outcomes around players' known misconceptions. Why: Players leave with false beliefs the designer knows are untrue.
+- [tradeoff] Designers usually offer several resource generation routes, framed as a trade-off between time spent and money spent.
+- [pitfall] Hidden probability can remove agency: a small chance effect, such as a 5% critical hit, may never be perceived by players.
+- [pitfall] A fixed low price per draw hides how much a full collection costs, leading players to overspend without realizing it. When: Pricing gacha draws. Why: The per-draw price looks small while the expected total is large.
+- [pitfall] A rising revenue metric can hide player harm and erode the trust a studio and the industry will need later.
+- [fact] Only gambling disorder is recognized as a behavioral addiction in the DSM, while claims about game or social media addiction are complex.
+- [fact] Loot boxes are positively correlated with problem gambling.
+- [fact] Gambling is a special case, because external monetary rewards drive compulsion rather than the intrinsic rewards of play. When: a game involves money wagers. Why: Money rewards are external to play itself.
+- [fact] Psychological manipulation in monetization raises the same ethical question even when players can afford to pay.
+- [fact] Gacha gives a random item from a list where some items are rarer than others, found in free-to-play games, trading card games, and toy vending.
+- [fact] Some governments have considered legal limits on gacha mechanics.
+- [fact] A bet can win slightly under half of plays yet have negative expected value, because payout sizes and losing odds together set the result.
+- [fact] Under a house edge, even optimal play loses over time, and methods that shift odds toward the player are usually banned by operators.
+- [fact] Belgium bans loot boxes because they may count as gambling at a psychological level.
+
+## game balance and counters
+- [model] A fighting character's balance is set by reach, speed, damage, priority, jump, combo and stun abilities.
+- [mechanism] Intransitive counters, such as circular counters in fighting games where each side counters some moves, prevent a single dominant strategy. (x2)
+- [mechanism] A cost that grows with lead, such as extra fuel burned by the leader, forces more stops and lets trailers catch up, affecting all players equally while each chooses risk.
+- [mechanism] A multiplying effect on a fragile in-play unit stays balanced when the unit is easy to remove and rarely survives more than a few turns. When: card games where multiplied units can be removed. Why: Short survival limits how long the multiplier's power can accumulate.
+- [mechanism] When spending adds options rather than strength, a complete collection need not yield the strongest build if cards are balanced.
+- [mechanism] Factions can share identical base stats yet differ in mechanics, so each excels in different tactics. When: Designing asymmetric factions with equal stats. Why: Different mechanics let each side win through its own style.
+- [mechanism] An upgrade that raises movement speed can let a player circle a slow, stationary enemy indefinitely while attacking without taking damage, creating a degenerate strategy. When: Enemy movement and attack speed are unequal relative to the player's upgraded speed. Why: Speed advantage removes the enemy's ability to retaliate, making the fight trivial and repetitive.
+- [mechanism] Balance systems depend on one another, so resizing one element disturbs others; stronger starting characters may require retuning other systems to match. Why: Balance elements depend on one another.
+- [mechanism] Imperfect substitutes are goods that do similar jobs. When one is much cheaper, players tend to buy it instead of the other. When: Two goods serve similar purposes at different prices. Why: Players choose the cheaper option that still fulfills the same role.
+- [mechanism] Flat bonuses added per chain step grow linearly, not multiplicatively, so they add less than a multiplier that scales all points.
+- [mechanism] An action that blocks later options constrains future play, and the size of that constraint depends on how the game's mechanics interlock; it is never zero.
+- [mechanism] A board-wide effect that spares the caster's own units while hitting opposing units can wipe out most enemy forces, making it strong enough to shape the metagame. Why: Sparing one's own units while hitting the rest gives a one-sided result.
+- [mechanism] Requiring prerequisite upgrades before powerful units become available prevents players from rushing strong units early and forces all players along a similar resource path. When: Real-time strategy games with tiered unit access. Why: Gating high-tier units behind prerequisites equalizes early progression.
+- [mechanism] Rising budgets against flat prices push publishers toward fewer titles with higher production values and broader appeal, so each title must sell more units.
+- [mechanism] A hidden counter that drops after failures and rises after successes can weaken or strengthen enemies, letting challenge track player performance. When: When implementing adaptive difficulty. Why: Failures signal the player needs easier conditions and successes signal they can handle more.
+- [mechanism] Opponents may foul a poor free-throw shooter every possession, judging a missed free throw cheaper than losing the ball, which distorts play around that player. When: When an offensive player is weak at free throws.
+- [behavior] Between equal opponents, trades and tempo cause sudden alternating drops in power, which are short-term trade-offs that can be reversed later. When: when players are evenly matched. Why: trades shift power back and forth.
+- [behavior] A character that is hard to play may perform poorly for beginners yet rise to the top in expert hands. When: Comparing a high-skill-ceiling character across rating bands. Why: Its strength requires mastery that beginners lack.
+- [rule] At first playable, check balance only at the macro level by comparing broad strategies, builds, or play styles, and defer finer tuning. When: first playable stage.
+- [rule] Do not use deliberate imbalance to justify horrendously broken or ridiculously underpowered options.
+- [rule] Classify each game element as deterministic or non-deterministic before balancing, because each kind needs a different approach. Why: designers balance the two kinds differently.
+- [rule] To hold a continent, reinforce until the defending side keeps at least a 50% advantage. When: Defending a continent with a bonus in a dice combat game. Why: A defensive edge of at least 50% keeps the continent stable against attacks.
+- [rule] Give characters a relatively large health pool when their art is large and detailed, because a one-hit kill contradicts the animation, sound and visual metaphor. When: when designing fighter health for a game with detailed, well-animated characters. Why: Health totals must match the visual and audio impression of the character.
+- [heuristic] Measure each ability in isolated comparisons before valuing combinations, so one ability's value is not distorted by others. When: Before combining abilities into a card's estimate.
+- [heuristic] Good systems do not reveal a dominant strategy at first glance or after repeated play. When: Designing competitive systems.
+- [heuristic] Leave gaps between power levels, such as ranges 10 to 100 or 100 to 1000, to allow future expansion. When: Designing tiered power levels. Why: Gaps let later content slot in without rebalancing existing tiers.
+- [heuristic] In a point-buy system, a god stat that most builds max out or a dump stat that builds ignore signals a potential imbalance. When: reviewing attribute balance. Why: Players concentrate points where value is highest and avoid where it is lowest.
+- [procedure] 1) Rank each mechanic's power from play experience. 2) Decide whether returns scale linearly, polynomially, logarithmically or custom. 3) Set how many generic power equal one specific power. 4) Build a balance sheet with a formula where zero is on the curve. 5) Adjust only cost quantities until each object is near zero.
+- [procedure] Three ways to handle the build gap: target one extreme; ship tiers of difficulty; or let found equipment supply most power while attributes and passives add minor bonuses. When: designing progression balance.
+- [procedure] 1) Pass units among group members until each unit has had a balance pass. 2) Pair the modified units and balance them against each other. When: several people balancing a set of units.
+- [metric] Seven common keyword abilities in a creature card game are each worth about one cost point. When: Standard keyword valuation in a power-and-toughness card game.
+- [metric] A type-specific bonus's first-pass value is its raw extra benefit, as if always active, multiplied by how often that enemy type appears. When: as a first pass only, before adjusting for context.
+- [metric] A group buff's expected value equals its percentage times the top attack value it applies to, multiplied by the probability that the buff is used.
+- [tradeoff] Effects that take, swap, or reshuffle opponents' cards add nastiness and appeal; when the nastiness outweighs the appeal, cut them.
+- [tradeoff] An even match gives each side an equal chance, while a fair match lets the most skilled player win; handicaps are usually voluntary and players choose them only when they prefer even matches. When: when deciding whether to offer handicaps. Why: Players default to expecting fair matches, so handicaps suit those who want equal odds.
+- [tradeoff] High-skill balance requires removing any idea that could yield a degenerate strategy at any skill level, which rules out many worthwhile ideas and is costly to test. Why: Testing at high skill can take weeks or months, and degenerate strategies often surface after release, requiring long-lived patches.
+- [tradeoff] Balancing for lower skill is cheaper: degenerate strategies need only be non-obvious, testing needs no long study, and late discoveries matter little.
+- [pitfall] A hard counter that nullifies a single object and does nothing else breaks the counter condition of perfect imbalance.
+- [pitfall] Stackable multipliers that appear early can end games prematurely and make clear early-game dominant strategies. When: designing stackable multiplier effects. Why: Early multipliers accelerate outcomes before players can respond.
+- [pitfall] Ignoring color requirements makes decks with three or more colors look cheaper than they play, and more colors make the gap larger. When: Costing decks with three or more colors.
+- [pitfall] A favorite strategy that experts like is not dominant if it lacks effective counters; a balanced game can have a favorite alongside other viable options. When: Evaluating popular strategies.
+- [pitfall] Pricing an option with extra abilities the same as a plain option leaves the plain one clearly weaker.
+- [pitfall] A change players love can still harm the studio if it costs too much revenue.
+- [fact] Some attributes can be filed as either cost or benefit, such as a conditional bonus that is a strength against one target and a limitation elsewhere; the classification matters less than the total. When: Attributes with conditional effects.
+- [fact] Game masters often put parties at numerical and power disadvantage for drama, which makes defensive stats more powerful in practice. When: tabletop campaigns where the GM designs encounters. Why: sustained disadvantage raises the value of defense relative to attack.
+
+## auctions
+- [model] Each object's data can be split into costs (price and drawbacks) and benefits (usefulness that creates desire); balance is judged on the totals per object, not on any single attribute. When: Balancing items with multiple attributes. Why: Individual attributes can mislead; the totals determine fairness.
+- [definition] A peak is a manually added item that falls outside the procedural growth range, adding surprise and variety.
+- [definition] In an open auction, any player may bid at any time by exceeding the current high bid, running in real time without turns until no one raises. The most recent high bid wins.
+- [definition] A circle auction is turn-based: each player in turn either bids above the previous bid or passes.
+- [definition] In a silent auction, all bidders secretly bid at once and then reveal; the highest bid wins.
+- [definition] In a Dutch auction, the price starts high and drops at a fixed rate; the first bidder to stop the counter pays the current price.
+- [definition] Each bidder's maximum is the core quantity an auction reveals, and bidding is how that maximum is determined.
+- [mechanism] In a draft, weaker teams pick first from available players, so talent spreads across teams and weak competitors regain strength. When: Ordered drafting of available players each season. Why: Picking order is inverse to performance, so good players reach weaker teams.
+- [mechanism] A reserve price means no one wins if the top bid is below it. Hidden reserves push bidders to open higher to avoid a wasted bid, especially when bidding costs something or is limited. When: An auction has a minimum acceptable price. Why: Bidders fear losing a bid that does not win.
+- [mechanism] A buyout price lets any bidder end the auction and win immediately; depending on timing rules it either gives everyone a chance or lets early bidders deny the item to later ones. When: An auction includes an instant-win price.
+- [mechanism] In a negative auction, players bid to avoid a harmful item. Winning too often can trigger a feedback penalty or a bonus for non-winners, and such a penalty is usually unnecessary unless won items help win future auctions. When: Items are harmful and players bid to avoid them.
+- [mechanism] Hidden auction contents turn bidding into a probability problem, and players without privileged information may copy the bids of informed bidders. When: Item contents are hidden from some bidders.
+- [mechanism] In single-item auctions, bidders may wait out high prices or snipe items they see as bargains. With unknown future items, players take more calculated risks than when future items are known. When: Items are auctioned one at a time in sequence. Why: Known future items let players plan ahead; surprises change plans.
+- [mechanism] Bundling items into a lot raises stakes and can attract more players when different items suit different players. When: Several items are bid on together and go to the top bidder.
+- [mechanism] In an open auction, the sale happens as soon as the bid passes the second-highest willingness to pay. When: Bidders raise in real time.
+- [mechanism] In a multi-round circle auction, bidding continues until everyone passes, which slightly favors earlier bidders. Ties go to whoever first bid that amount. When: Circle auction runs until all but one pass.
+- [mechanism] In an all-pay auction, every bidder pays their bid whether or not they win, so players hesitate unless the item is important and bids can be very high or very low. When: Everyone pays their bid regardless of outcome.
+- [mechanism] When the top two bidders pay, middling bids become dangerous: players bid zero if others bid high, bid small if others bid zero, and bid high if others bid small. When: The top bidder wins and the second-highest also pays.
+- [mechanism] In an open auction where the top two bidders pay, a low-value item can escalate indefinitely, because the second bidder would rather lose a small amount than a larger one. When: Open auction with top-two payment.
+- [mechanism] In a second-price auction, the winner pays the second-highest bid, and in a silent auction bidding one's true maximum is the best strategy. When: Silent auction where the winner pays the second-highest bid.
+- [mechanism] Paying auction proceeds to the bank removes currency from the economy, which causes deflation. When: Auction proceeds go to the bank.
+- [mechanism] Paying auction proceeds to other players, usually the sellers, keeps the auction zero-sum for the economy. When: Auction proceeds go to players rather than the bank.
+- [mechanism] When an auction item is given away to a known recipient, others have reason to bid a nominal amount to block that player; with a random recipient, players may hold off bidding in hope of luck. When: An auction item is given to a winner chosen by the designer.
+- [mechanism] Turn-based Dutch auctions can lower costs each time a player declines, and some designs let the seller raise, hold, or lower the price. When: Designing a Dutch auction variant.
+- [mechanism] With imperfect information, the winning price usually lands well below the highest maximum, often near the second-highest maximum, since bidders cannot bid just above rivals. When: Bidders do not know rivals' maximums. Why: Bidders underbid when they lack full information.
+- [behavior] Players may bid to keep a strong item from a rival, or push prices up so a rival pays more than planned. When: Rivals compete for the same item.
+- [rule] Apply cost-curve analysis to digital games by gathering online item lists and, for thousands of objects, using spreadsheet formulas to finish in reasonable time.
+- [heuristic] Winner-pays is safest for single-item auctions since players pay only when receiving; choose it when bidding should feel safe, and all-pay or partial-pay rules for tension or extreme bids. When: Choosing a payment rule for an auction.
+- [heuristic] Auction items that have different, situational value to each player, such as an item worth more to one character class; this makes players reveal and weigh their willingness to pay. When: Deciding whether an item should be auctioned or designing an item for auction.
+- [heuristic] Make the winner pay a price for a strategic position, which raises tension and gives losers a chance to recover. When: Designing advantage positions.
+- [heuristic] Keep ample choice in all areas, and make sure nothing limits options as the game progresses. When: Designing strategic options.
+- [heuristic] Components that are weak alone can jointly produce a strong effect, so price the set together rather than each piece in isolation.
+- [procedure] 1) Top bidder picks an item. 2) Second-highest bidder picks next. 3) Continue in bid order until all items are taken. 4) If items equal players, the lowest bidder gets the leftover item, tempting zero bids; with fewer items than players, disinterested players bid a nominal amount. When: Items are distributed by bid order rather than sold (item draft auction). Why: The last pick is forced onto the lowest bidder.
+- [procedure] Unclaimed items can be discarded, removing them so the game continues as if the auction never happened; they can also be kept for the next auction or handed out over several passes of the draft. When: A draft or auction leaves unclaimed items.
+- [procedure] Price an item by cost per point of its effect, then add fixed bonuses for special conditions on top of the base price. When: pricing damage or healing items with linear value. Why: A linear base keeps prices proportional, and bonuses handle special cases.
+- [procedure] 1) Bid goes around the table once. 2) Last player either bids higher or lets the current high bidder win, effectively buying at a fixed price. When: Running a single-round circle auction.
+- [procedure] 1) If no bids arrive before the time limit, return the item to the owner. 2) Owner may relist at the same or lower price. 3) Alternatively, add items or incentives to the pool and repeat the auction until someone bids. When: An auction ends with no bids.
+- [procedure] 1) Use a tiebreaker such as a coin flip, turn order, or highest unique bid. 2) If the tiebreak also ties, all bids are lost. When: Two or more silent bids are equal.
+- [tradeoff] A seller bidding on their own item usually is a poor move, but it can keep the item cheaply if others bid low. When: The seller may bid on their own auction. Why: Seller bids are paid to the bank.
+- [tradeoff] Large, persistent choices change scope for many departments and can affect sequels, so they should be funded only when content and testing budgets allow. When: Considering a large persistent choice.
+- [fact] An unpurchased property goes to auction, which is not limited by its printed face value.
+- [fact] Circle auctions are common in analog games and rare in digital games, while open auctions are the most common format in online markets.
+- [fact] Other auction payment variants include paying the gap to the next lower bid, having the top bidder pay fully while losers pay extra, and having only the top and bottom bidders pay. When: Designing a non-standard payment rule. Why: Each variant shapes whether players bid high, low, or moderately.
+- [fact] Auctions move resources that bidders pay for with their own resources; items the game itself offers are production, not trade.
+
+## unit balance
+- [definition] A strictly dominated option is worse than another option on every attribute that matters, so it offers no real choice.
+- [definition] Within-object versatility means an object works acceptably across several situations but is never the best choice for any one of them.
+- [mechanism] Assuming uniform 1-5 for Strength and Damage (20% each), each extra Strength point adds 20% to both the chance of eliminating the opponent's card and the chance of surviving. When: Estimating card values before playtesting.
+- [mechanism] Players facing unknown future challenges favor versatile objects, since versatility's value rises with uncertainty; known situations favor specialists, who win only when predictable. When: The player must commit to equipment before learning the situation; future challenges are unknown. Why: Players do not know what they will face.
+- [mechanism] Giving each unit one numeric value lets the AI sum values to judge which side is ahead and compare value with cost to pick the best unit to build. When: strategy and board games.
+- [mechanism] When ammo is limited, players switch to weapons that have more ammo available; when ammo is plentiful, they fire freely and use more weapons. When: Ammo supply varies across a shooter. Why: Players optimize for resources they can sustain.
+- [mechanism] A low-damage stun that frequently precedes a high-damage follow-up can make a character frustrating without being overpowered, because opponents spend much of each match disabled. When: A character's win rate is middling but player complaints about play experience are high. Why: Time spent stunned removes the opponent's agency, even when damage totals look modest.
+- [mechanism] A side dealing steady damage against a side dealing rare large hits: raising the required damage changes which side is favored, so the balanced target is found by search. When: Comparing a steady attacker against an infrequent high-damage attacker in a race. Why: Larger targets give the high-variance side more chances to hit, shifting the win odds.
+- [behavior] A weapon that destroys objects needing several hits from a weaker weapon feels more powerful. When: Comparing two weapons that break the same object types. Why: Faster destruction is read as higher power, shaping how players perceive weapon strength.
+- [rule] Judge a damage, cost or reward value against the target's HP, the weapon's maximum damage and the rest of the economy, not in isolation.
+- [rule] Tune each unit's values by comparing its benefit against its cost, then verify the balance through playtesting.
+- [rule] Assign each extra point of attack and each special effect, such as healing or stat bonuses, a fixed value in the anchor unit, chosen by the designers. When: building a supporting math. Why: Each effect needs a number before items can be priced consistently.
+- [rule] Check overall balance across top, middle and low tiers, and check whether a specific concern is a real problem. When: Balancing a roster of characters.
+- [rule] Judge a new unit by three questions: is it fun with real choices, is it balanced against the baseline without extreme matchups, and do its mechanics match its theme? When: designing a new unit.
+- [rule] Judge specialized units, such as ground-only or air-only towers, against all-purpose units across every enemy type rather than a single one.
+- [rule] Weigh each balance change's benefit against its cost to fiction, pacing, player expectations, and other parts of the experience before adopting it.
+- [heuristic] When unsure of an object's strength, err weak: too-weak objects are rarely used but do little harm, while too-strong ones are always used and crowd out balanced objects.
+- [heuristic] Pair each strength with a drawback so objects are comparable and roster members are roughly equal in strength; e.g., a sword dealing more damage might be rarer or pricier. When: When designing competing items, options or rosters with trade-offs. Why: Compensating drawbacks let different objects be worth choosing in different situations; pairing gives roughly equal total value.
+- [heuristic] Unique objects that resist numerical comparison are best balanced through playtesting and analytics that reveal how players use them. When: game objects with no direct numeric equivalent. Why: numbers cannot compare them directly.
+- [heuristic] In stats-heavy games, cost-curve analysis gives a first balance estimate before playtesting.
+- [heuristic] Start by valuing a benefit that works half the time at half the value of an always-on version, then adjust for how much players value predictability and how much control they have over the outcome. When: Valuing coin-flip or probabilistic effects. Why: Expected value gives a baseline; predictability and player control shift it.
+- [heuristic] Among units, the one with the lowest average remaining health is the most balanced.
+- [heuristic] Cost specialized units that are only useful in one situation as if that situation arises nearly 100% of the time, and adjust the access cost rather than the unit's power. When: a unit is built only when a specific situation is expected. Why: players who pay to access the unit will use it when it is relevant.
+- [heuristic] A temporary damage multiplier can make a normally weak option the best choice while active, so balance must be checked in those states.
+- [heuristic] Keep small enemy groups always beatable as a reliable gear source, and reserve larger groups to guard the best treasure.
+- [procedure] 1) Pick two cards identical in cost and stats except for one ability. 2) Compare their costs. 3) Treat the cost difference as that ability's value. When: Estimating the value of a single keyword ability. Why: Isolating one difference measures each ability separately.
+- [procedure] 1) Give a unit a special advantage. 2) Pair it with a matching drawback. When: Balancing a unit or option.
+- [procedure] 1) Set starting stats from player expectations for each option. 2) Sum each option's stats. 3) Use the sum of a baseline option as the anchor for designing the others. When: designing starting characters, races, or classes.
+- [procedure] 1) Identify each extra on the item. 2) Value it as a percent increase on the base cost. 3) Offset that value for drawbacks such as rarity or cooldown. When: Pricing items with extra properties. Why: Consistent percentage valuation keeps extras comparable.
+- [procedure] 1) Learn the rules by playing the baseline against itself. 2) Play the unit against the baseline until you can call it too weak, too strong, or about right. 3) Make one or two changes to health, resources, one ability, or one roll. 4) Return the unit to rotation and repeat.
+- [procedure] 1) Place each candidate unit type in every slot of a fixed grid and total the output of each layout. 2) Divide each layout's output by its total cost. 3) Check whether the highest-output and highest-efficiency layouts match. 4) Compute each type's output per cost, crediting support units with the damage they enable. 5) Compare the types' efficiencies.
+- [procedure] 1) Compare what the player can already do with what the new object adds that nothing else provides. 2) Multiply that added benefit by the share of time it is useful. When: The player can carry many objects and swap them freely.
+- [metric] A common setup makes each weapon 25% stronger than the previous (125% of its damage) and adds 5% cost to weapons with a critical-hit chance. When: Using a fixed growth rate for PvE weapon progressions.
+- [metric] Near-identical creature pairs can reveal an exchange rate, where one point of power or toughness may equal one colorless mana. When: comparing creatures that differ by one stat point.
+- [metric] Strength's expected benefit is ((Strength-1)/5) × opponent's Damage; with average Damage 3, this is ((Strength-1)/5) × 3. When: Estimating how much a card's Strength prevents incoming damage.
+- [pitfall] Leaving an overpowered item in place distorts overall game balance, not just its own use, and changes how long players take to finish the game.
+- [pitfall] Objects fail in two ways: one so weak that no one uses it is unbalanced, and one so strong it is found early and never replaced makes the rest of a long game pointless. When: When tuning object power across a long game. Why: Both extremes remove meaningful choice.
+- [pitfall] Relying on statistics alone misses problems, so designers must also keep an intuitive sense of how the game feels. When: Balancing with data. Why: Numbers do not capture everything about play.
+- [pitfall] Raw expected value overstates high-variance actions when their benefit is capped by the situation, such as damage beyond an enemy's remaining hit points. When: Comparing attacks against low-health targets. Why: Excess benefit is never received.
+- [pitfall] Balancing for one target skill level leaves other players exposed to strategies that dominate for them.
+- [fact] A creature whose cost, power and toughness are all unknown needs three independent equations to solve. When: vanilla creatures with no abilities. Why: each unknown needs its own equation.
+- [fact] Power-ups give a player a temporary boost and are kept scarce through limited number, short duration, or use only in certain states.
+- [fact] Sparklines can show each game object's power level relative to others along a cost curve, one small chart per row.
+
+## game balance principles
+- [model] Recurring patterns of balance are called balance types, and a structured set of questions helps examine each type. When: When analyzing a game's balance systematically. Why: Recurring patterns let designers reuse examination methods across games.
+- [definition] Circular balance gives each option a counter that beats it, so no option is supreme and every option has both strengths and weaknesses.
+- [definition] Balance is fairness as players perceive it: a balanced game follows the expectations it sets from the beginning and does not jerk players around.
+- [definition] Game balance is adjusting a game's elements until they produce the experience the designer wants, mixing simple arithmetic with judgment. When: When tuning a game's elements. Why: Balance determines whether a game feels monotonous, confusing or frustrating even with strong story, art and technology.
+- [definition] Breadth is the number of distinct options such as classes or weapons; depth is how items, creatures, and effects keep increasing across the game.
+- [definition] Balance means adjusting the relative power of game mechanics, such as the speed, price, mass, health, or damage of tools, units, strategies, or characters.
+- [definition] Fairness requires that nobody holds an advantage when play begins.
+- [mechanism] A balanced game where every strategy has equal value feels flat, so good games need peaks of effectiveness and troughs of failure.
+- [behavior] Gut feeling, built with experience and not fully teachable from a book, drives much balancing; experienced designers notice imbalance before testers react and spot loopholes or dead ends immediately. Why: Accumulated design experience sharpens intuition.
+- [rule] For general balance testing, instruct testers to play to win so they reveal options that are too strong or too weak.
+- [rule] Keep deck sizes, action card effects and the set of action cards fixed; change only the cost amount of an action card, not its types. When: when rebalancing a card-based game. Why: these constraints keep decks comparable.
+- [rule] A balance change improves the game only if it creates fewer problems than it solves.
+- [rule] Write a clear problem statement before changing any balance values. When: A game is out of balance. Why: Designers who jump to fixes before understanding the real problem make a mess.
+- [rule] Prioritize the most impactful and visible parts for balance, since there is never time to fix everything. Why: Perception of balance matters to players just as much as actual fairness.
+- [rule] Balance the game fairly across good, dark, and neutral paths, and check every ramification of gameplay changes.
+- [rule] Check every balance change against fiction, flow and pacing, accessibility, and clarity, not only fairness and depth. Why: Balance affects the whole experience.
+- [heuristic] Art-focused games may be intentionally unbalanced, relying on designer intuition and small playtests because budgets rarely support large analytics. When: games balanced for an artistic statement. Why: budgets and communities rarely support large-scale analytics.
+- [heuristic] A thorough gap analysis considerably strengthens a pitch to money people.
+- [heuristic] Games earning revenue from sales, expansions or sequels must balance toward fun.
+- [heuristic] For games too large to solve, estimate balance from designer intuition, expert opinion, tournament statistics, or computer simulation, which improves as computing power grows. When: Evaluating balance of games like chess or Go. Why: Full solution is infeasible, so indirect evidence is needed.
+- [heuristic] Balance is essential to depth, because a deep game generates decisions where even experts cannot be sure of the best option.
+- [heuristic] In a skill game that supports endlessly deep play, high-skill balance is nonnegotiable.
+- [procedure] 1) Declare one object balanced. 2) Shape every other object's costs and benefits to match it. 3) Compare the shaped objects against one another to confirm they are roughly equal in power. Why: a designer-declared anchor makes the rest of the set comparable.
+- [procedure] 1) Set the game's macro structure. 2) Choose progression curves, often combining several styles such as exponential XP and logarithmic levels. 3) Set an anchor and use it to scale breadth and depth. When: final step of a first-pass balance after macros and progression.
+- [procedure] 1) Identify the goal that becomes unreachable over time. 2) Propose rule changes that add money drain or end pressure. 3) Test that match length falls. When: A goal recedes and games run too long. Why: Restoring reachable goals shortens play.
+- [procedure] 1) Total the item's benefits. 2) Total its costs and drawbacks. 3) Check whether the net value falls on the curve. When: reviewing a teammate's item or a previous version before an expansion.
+- [tradeoff] Gameplay rewards such as new abilities make players care, even non-story-focused ones, but a strong reward can override a story's moral weight so players ignore the intended consequence. When: Tying moral choices to gameplay rewards.
+- [tradeoff] Shortening or lowering the accuracy of a stun reduces frustration but can weaken the character's strategy; strengthening other moves adds viable strategies but raises overall power. When: Choosing a response to a single repeated tactic dominating play. Why: Each fix changes a different axis: play experience versus overall strength and variety.
+- [pitfall] Treating balance as a scale that weighs quantities against each other misleads; monster difficulty cannot be placed against loot to compare them.
+- [pitfall] A game can seem broken to novices while being well balanced at the top of its skill range.
+- [pitfall] A change that is fair and strategically interesting can still break the fiction, such as an unrealistically long weapon range.
+- [pitfall] Changing an expected player ability in one area, such as jump distance, defies player expectation and frustrates them even if the change is otherwise balanced.
+- [pitfall] Making a vehicle painfully slow may be fair, but driving it becomes a chore that undoes the value of the change.
+- [pitfall] Forcing symmetry onto a game whose premise is inherently asymmetric, such as a required first mover, is not an easy fix for fairness.
+- [fact] Balance spans mathematics, difficulty, progression, initial conditions, multiple strategies, and game objects, with fairness as the shared thread. Why: These dimensions together determine whether a game is fair.
+- [fact] A derived cost curve can flag items sitting above or below the original progression.
+- [fact] Fairness-focused balancing ranks among the most basic balance types, so the fairness lens suits any game.
+- [fact] Every game has many interacting factors, so no two balancing problems are exactly alike, and some balance choices follow arithmetic while others rest on designer judgment. When: When approaching a balance problem. Why: Interacting factors make each case distinct.
+- [fact] The goal of balance is to be just right for the game's purpose, reached through repeated iterative play.
+- [fact] The build gap is most visible in end-game content, where a final boss may fall in one hit or become impossible.
+- [fact] Some balance numbers are chosen by feel, picking values that seem right, rather than by calculation.
+
+## balance methods and tools
+- [model] Judge balance with three dials: difficulty (too easy, too hard, just right), quantity (too little, too much, enough), and timing (too early, too late, on time).
+- [model] Judge balance against three modifiers: target audience, designer's intent, and purpose.
+- [model] Supporting math converts every stat, special effect, and limitation into one anchor unit, such as gold, so all pieces can be summed and compared. When: pricing or checking items. Why: A common unit makes different effects directly comparable.
+- [definition] An anchor is a fixed reference value or unit against which other game values are scaled, such as currency cost or damage per hit.
+- [mechanism] Buffing a weak option raises its value to players, while nerfing a dominant option reduces its share of play in the metagame.
+- [mechanism] When someone pulls ahead, the rest coordinate against the frontrunner, forming a self-reinforcing loop that a tipping mechanism can interrupt. When: Multiplayer games with competitive leads.
+- [mechanism] A loop that balances rewards with penalties can trap players, as when profits go entirely to debt payments in a business simulation.
+- [mechanism] Removing aim assist from a powerful weapon in one mode, such as unzoomed use, weakens its close-range use without the player noticing, steering it toward its intended role. When: A weapon's strength spills into a role meant for another weapon. Why: Hidden difficulty discourages the overlapping use while the weapon's stated accuracy stays the same.
+- [rule] Show a second measure such as accuracy next to total score, so that different play styles are both credited. When: a scoring screen rewards one measure. Why: a second measure rewards a different style.
+- [rule] Objects intended to be exactly balanced should land close to zero on the curve; if they do not, the math needs correction.
+- [rule] Show a benefits-minus-costs balance column as three tiers (too weak, balanced, too strong), optionally with a close-enough threshold, or as a gradient with set minimum and maximum. When: Spreadsheets comparing benefits and costs. Why: Visual tiers make off-curve objects stand out.
+- [rule] Replace reinforcing loops with balancing ones, such as passing the turn after scoring, so power is checked. When: Designing competitive feedback.
+- [rule] Pick an anchor, a value set first and used to balance all others, because player and enemy power depend heavily on each other. When: When balancing player and enemy power. Why: Interdependence means one value must be fixed to balance the rest.
+- [rule] Balance every new unit against one fixed baseline unit, so all units are judged on the same scale. When: tuning a set of units.
+- [rule] Once mechanics will not change, build formula-based spreadsheets that show relationships between mechanics so they can serve as balancing tools. When: after core mechanics are fixed.
+- [rule] Alternate options that players choose between must have equal expected benefit, meaning benefit multiplied by probability of use should match across alternates. When: designing free alternates limited to one main and one alternate. Why: unequal expected values make one choice dominate the other.
+- [rule] To change an object's expected value, adjust its raw benefit, the game-wide frequency of its situations, or how often those situations occur where the item is found.
+- [rule] Balance the strategies available in a specific situation against a specific opponent, rather than comparing tools on an abstract power measure.
+- [heuristic] Change whichever of cost or benefit is easier to adjust: an interesting card may need only a cost change; an item weak even when free needs more power.
+- [heuristic] Locking essential properties at extremes yields distinct tools that span a broad space of possibility.
+- [procedure] 1) Form a speculative model of how elements relate, built as spreadsheet models from tuning experience. 2) Change the game to match it. 3) Playtest and compare observed play against predictions. 4) If play contradicts the model or testers favor unpredicted strategies, revise, rebalance, and test again. When: balance modeling, especially during alpha. Why: Observed play exposes gaps in the model. (x2)
+- [procedure] 1) List every resource and map how each relates to the others. 2) Choose as anchor the one all others convert into or connect to, often hit points or currency. 3) Set the anchor's value and derive the rest from it. 4) Tune individual items or stats only after this step. When: three or more resources interact and no pairwise comparison captures them, when choosing an anchor for an existing game, or when starting any balance pass. Why: Converting every resource to one anchor gives a consistent basis; a resource all others link to can organize the economy; a fixed base number gives every value a reference point.
+- [metric] A balance value is a weighted total where benefits raise and costs or limitations lower it, placing objects on the cost/power curve: zero on it, negative below, positive above. When: costs are subtracted from benefits on an identity curve.
+- [metric] Benefits are worth 1 per point of power or toughness and 1 for most keywords. When: Cards with power, toughness, and keywords.
+- [pitfall] Many equations containing conflicting data may have no consistent solution unless some values are guessed.
+- [pitfall] A worked damage-per-second calculation can contradict its own stated result when a rate such as seconds per attack is wrong, so verify the arithmetic and units. When: checking a worked example before using it as a reference. Why: A wrong rate value silently changes the final result.
+- [pitfall] Most game-balance math breaks down at extreme values, so test edge cases in playtesting and treat live games with caution when changing them.
+- [fact] No single balance method suits every project and no fixed percentage split applies; methods apply broadly, and some combine well while others contradict. Why: Designers must experiment to find the methods that suit them. (x2)
+- [fact] An economic anchor can be replaced by another resource, such as time, when that resource becomes more valuable to people than the currency.
+- [fact] A choice between two effects is worth at least as much as the better effect, because the player can always pick that one.
+- [fact] A starting balanced object is balanced only because the designer declares it so; objects shaped to it end up roughly equal in power to each other.
+- [fact] Two equations with two unknowns usually have a unique solution.
+- [fact] Cloning, reusing another game's data and numbers, is one of five balance methods, though the term is often used derisively.
+- [fact] Most games have an anchor resource, usually the win or loss stat, such as HP in RPGs or victory points in board games.
+- [fact] Common balancing methods include doubling and halving, guessing exact values to train intuition, documenting and tuning a model, planning for balance in advance, and avoiding player-driven balancing.
+- [fact] Objects that can be balance-tested include trading cards, units in miniatures or strategy games, and items, classes or feats in tabletop RPGs.
+- [fact] Hit points and currency can be the same resource when currency buys healing through spells or health packs. When: Currency can purchase healing.
+- [fact] Balance is a method for reaching goals rather than a goal itself, and it can serve fiction, clarity, simplicity, and elegance as well as fairness and depth.
+
+## card game balance
+- [definition] A flush is a five-card poker hand whose cards all share one suit; card rank does not matter.
+- [mechanism] Adding colors makes colored costs harder to pay early: with three colors, a two-of-one-color card is on average not castable before turn eight. When: Systems with three or more colors.
+- [mechanism] A deck that drives challengers away pushes its owner to keep improving it.
+- [mechanism] Drawing from a shuffled deck is dependent, because each card drawn changes which cards remain and therefore the odds of later draws.
+- [mechanism] When discarded cards are reshuffled into the deck before redrawing, a discarded card can come back, so redraw odds include that chance. When: a mulligan or redraw returns cards to the same deck. Why: the replacement draw samples from a deck that still contains the discards.
+- [mechanism] With one land per turn and no mana carryover, available mana on a turn equals the smaller of the turn number and the lands drawn so far.
+- [behavior] A property's value rises as a player nears completing a set; the final piece, like a third color-set item, is worth far more to someone holding two. When: A set of complementary items grants a bonus when completed. Why: The final piece unlocks the full set bonus, which only the holder of the partial set can use.
+- [behavior] Playtesters tend to build narrow, extreme decks that maximize power, which exposes dominant strategies in the card pool. When: during playtesting of a card pool. Why: Players search for the strongest combinations.
+- [rule] When players can build any deck, balance each card against others on the same cost curve, since individual card value matters.
+- [rule] Only the power costs of Action cards may be changed; power types, card effects, and core rules stay fixed. When: When balancing constructed cards.
+- [rule] Price colored mana above colorless mana; in a two-color setup with an even split, colored mana should cost about double. When: Two-color systems with an even split of color sources. Why: Finding a land of one specific color takes about two land draws on average.
+- [rule] Do not put cards at risk unless players opt in to playing for ante.
+- [rule] When each mulligan reshuffles and redraws, the chance of failing every attempt is the product of each attempt's failure probability. When: a player mulligans repeatedly down to smaller hands. Why: each redraw is independent of earlier attempts.
+- [heuristic] If several objects rated too high share one ability, that ability is probably overvalued in the model.
+- [heuristic] When testing starter decks, look for one starter that wins consistently, or one much weaker that can be forced on an opponent.
+- [heuristic] Do not multiply probabilities when rolls add into a shared total, since each result changes the target for the next; count those cases directly. When: rolls contribute to one running total.
+- [heuristic] When one color is the most powerful alone, reduce its self-sufficiency by making its strongest commons rare.
+- [procedure] 1) Rank hand types so rarer hands outrank common ones. 2) Count distinct card combinations forming each hand type. 3) Divide each count by total combinations of that size; the lower probability ranks higher. When: adding new hand types to a ranking. Why: rarity reflects how hard a hand is to make.
+- [procedure] 1) Give testers the modified starter decks or individual cards. 2) If testing individual cards, have testers build decks under a copy limit per card. 3) Have every player, including the designer, try to break the game. When: playtesting modified card game components.
+- [procedure] 1) Do heavy math up front, aligning card costs and benefits on a cost curve. 2) Playtest to refine the supporting math. When: tabletop card games.
+- [procedure] 1) Pick four units and balance each against the baseline. 2) Play them against each other until all four are about equal to the baseline and to one another. When: solo balancing of a small set of units.
+- [procedure] 1) Define the favorable hands, such as five or more cards of one suit. 2) Count them with the choose operator. 3) Divide by the total number of possible hands. When: computing the probability of a hand pattern from a shuffled deck. Why: favorable over total gives the probability.
+- [metric] With one card in three a land, a seven-card opening hand and one draw per turn give expected arrival turns of 1, 2, 3, 5, 8, and 11 for the first six lands. When: seven-card opening hand, one draw per turn, one card in three is a land.
+- [metric] Base 1 for existing; 1 per colorless mana; 2 and 3 for first and second colored mana; +1 at five total mana, +1 at six, +2 at seven. When: Cards with power, toughness, and mana costs.
+- [tradeoff] Keep card power fairly even, since useless cards waste design effort; a standout card is tolerable when its deck's other cards fall below average, because deck strength decides matchups. (x2)
+- [tradeoff] Single-color systems avoid colored and colorless distinctions, but their lack of variety leaves weaknesses that opponents can exploit. When: Resource systems that use only one color.
+- [tradeoff] Making each color able to paralyze or counter everything forces players out of one color, but limiting single-color self-sufficiency makes players combine resources from several sources. When: when a deck game should require multicolor decks.
+- [tradeoff] Non-digital card games can fix imbalances by restricting or banning cards, which angers owners, or by issuing errata, which is hard to spread and enforce. When: after a card game is released.
+- [pitfall] Counting deck orderings as distinct treats identical cards as different and gives a wrong total; divide out every group of duplicate cards for exact counts, since shuffle counts grow rapidly.
+- [pitfall] Changing a card's cost changes it in every deck that contains it, so recheck all matchups after each edit. When: when cards appear in several decks. Why: shared cards couple deck matchups.
+- [pitfall] Card combinations that repeat an effect can drive games into long stalls where neither side can end the game quickly. Why: Long games lead players to concede.
+- [pitfall] Mechanics that move cards between players can cause unintended behavior that goes beyond what the designer intended.
+- [pitfall] Raising a fraction to a large power by hand is impractical, so use a calculator for such probability products.
+- [pitfall] Treating face-down removals as changing the odds is a mistake, since no information is gained and the odds stay the same.
+- [pitfall] Using the original count of matching cards for a later draw ignores cards already drawn; subtract drawn cards from both the success count and the deck size.
+- [fact] Six-card poker variants can include Three and Three, which holds two three-of-a-kinds, and Four and Two, which holds a four-of-a-kind plus a pair.
+
+## trading
+- [definition] An economic system is a set of rules governing how resources are generated, acquired, traded and spent, broader than the currency players see.
+- [definition] Endogenous value is worth caused by factors inside the system; play money matters only within the game it belongs to.
+- [definition] A bet on an outcome the bettor cannot control is gambling; if the bettor has inside information or can influence the result, it is cheating. When: Classifying a wager on a contest. Why: Gambling depends on lack of control, and influence turns a bet into cheating.
+- [definition] A trade moves owned resources between players in exchange for something of value, so the giver owns the resource beforehand and both players gain something usable afterward. When: Classifying exchanges between players. Why: Keeping trade distinct from gifting lets their balance effects be analyzed separately.
+- [definition] A gift moves allocated resources the giver does not own, and nothing returns to the giver; reciprocation may be suggested but is not required. When: Classifying free transfers between players in F2P games.
+- [mechanism] A cost attached to each trade removes resources from the economy and reduces trivial trades; use trade costs to control resource flow between players or to remove currency.
+- [mechanism] When a leader's output snowballs past what they can use, or trading is central and they gain a slight lead, rivals may refuse to deal with them, slowing them. When: In economic games where production snowballs or trading is central and a player gains a slight lead. Why: Refusing trades denies the leader the means to extend the lead.
+- [mechanism] Equipping a collected reward turns it into an ability the player can use for the rest of the game.
+- [mechanism] Limiting trade partners, timing, or trade counts makes players gather resources more slowly and reduces the role of negotiation.
+- [mechanism] Holding traded items for a period, set by account security and whether traders are friends, helps block exploitation such as multi-account gifting farms.
+- [mechanism] Differing valuations create arbitrage: a trader can profit by moving items from players who ignore them to players who prize them.
+- [mechanism] If a seller must buy or keep an unsold item, a penalty makes sellers offer items that others value. When: Unsold items are forced back onto the seller.
+- [mechanism] Trading rests on mutual benefit: each side exchanges a resource it values less for one it values more, so both gain from the exchange. When: Two players hold resources of differing value to them. Why: Value differs between holders, creating gains on both sides.
+- [mechanism] Designers create the need to trade by giving each player a different assortment of resources and keeping them scarce, so no one has everything when needed. When: Designing resource distribution that should drive trading. Why: Uneven, scarce holdings make each player depend on others.
+- [rule] Limit trading to one phase of the active player's turn, to that player only, and to resources only, with at least one resource on each side. When: Designing a trading system between players. Why: Limits on partner, timing, and item type change how often and how easily trades happen. (x2)
+- [rule] Show full information about traded items; when players cannot misrepresent items, the trading system is hard to abuse.
+- [rule] Forbidding trades during dice rolls and movement avoids ambiguity about when ownership switches mid-action.
+- [rule] Tie rewards to deliberate player actions that the player understands and can control. When: Designing achievements, trophies, and goals. Why: Rewarding deliberate, controllable actions feels more meaningful than rewarding things the player did not know about or was not trying for.
+- [rule] Keep free-to-play onboarding short so players reach the core experience before they get bored. When: Designing free-to-play games. Why: Players abandon long introductions before experiencing the game.
+- [rule] Trade need not be avoided, but designers should watch for the openings it creates in a closed economy.
+- [heuristic] Light trade restrictions preserve tension and strategy, while unrestricted trade suits children's and mass-audience games where simple exchange is enough.
+- [heuristic] In a conflict over features, the party holding the money usually prevails, so designers gain influence by explaining features in financial terms. When: when negotiating features or scope with budget holders.
+- [procedure] 1) List how currency and resources are generated. 2) Identify conversions into permanent goods. 3) Note trading rules. 4) List consumption paths. 5) Check finite limits on items and buildings. 6) Identify zero-sum transfers. When: When analyzing an existing game's economy against the five mechanics. Why: Covering each mechanic reveals where the economy is incomplete or imbalanced.
+- [procedure] 1) Gather five object types with six of each. 2) Deal them randomly and evenly. 3) Define the goal and which trades are allowed. 4) Decide which information is public or hidden. 5) Ensure no starting advantage, or keep rounds short and repeat them so luck averages out. When: Designing a trading game with random starting hands. Why: Random deals can give unequal starts, so fairness needs either equal starts or averaging over rounds.
+- [procedure] 1) Limit trades per player per day with a time-based cost. 2) Cap the number of open trade postings to stop players from flooding the board with bad offers. When: When trade exploitation or spam threatens the economy.
+- [procedure] 1) Define the roles: four sellers each hold one identical resource, and four buyers want the lowest price. 2) Decide which side, if any, holds the advantage. 3) Assess whether each mechanic feels interesting, boring, tense, or frustrating to each side. When: Designing a multi-seller, multi-buyer auction.
+- [tradeoff] Trading rare items for gold makes them attainable but removes the gradual resistance curve toward a goal. When: Adding trading to a loot economy. Why: Coarse exchange gives no granular steps, so progress feels abrupt.
+- [tradeoff] Unique, resellable items can add gameplay value, but selling in-ecosystem items instead of the game copy turns play into earning.
+- [pitfall] Rewards not connected to a meaningful purpose or impact are a common pitfall that undermines motivation.
+- [pitfall] Clear rewards for effort can reward mediocrity, so a reward structure may pay out for minimal effort.
+- [pitfall] Calling gifts 'trades' blurs the distinction between owned exchanges and allocated transfers, which confuses discussion of their economic effects. When: Naming player-to-player transfers in F2P games.
+- [fact] Most games with economic systems share five mechanics: resource generation, conversion, trading, consumption and limits; a game with only one is usually not considered to have an economic system.
+- [fact] Three phrases for a game's resource framework are often used as synonyms, though players usually mean which currencies are earned and spent, and in what amounts.
+- [fact] Explicit futures enable four kinds of deals: buying on credit, lending resources, favorable deals for later considerations, and short- or long-term pacts.
+- [fact] Trade limits on item type, timing, and partner exist to prolong play, block exploitation, prevent kingmaking, and simplify rules.
+- [fact] A fixed barter economy keeps card values constant, requires trades to match in card count, and allows trading at all times.
+
+## competitive ranking
+- [definition] The K factor sets the maximum change from one game and represents the uncertainty in a rating.
+- [definition] In multilateral competition, three or more players compete directly against each other.
+- [mechanism] A larger K makes a rating react more strongly to each result, while a smaller K makes it change slowly.
+- [mechanism] Monthly resets paired with rewards for the previous month's rank let top performers start higher, saving time for skilled players.
+- [mechanism] In an open-challenge ladder, any player may challenge any other; a winner moves up one place, swapping with the player immediately above, and the loser stays put.
+- [mechanism] Players who leave permanently take their points with them: below-average leavers inflate the system, and above-average leavers deflate it.
+- [behavior] Hiding matchmaking rating and showing rank gives status without a number that could discourage low-rated players, who still feel competent when winning about half their games. When: when deciding whether to display matchmaking rating or raw skill numbers. Why: players compare outcomes to their own sense of skill, not to a number.
+- [behavior] If a hidden rating drives matchmaking while players chase a visible rank, they may intentionally drop their rating to face weaker opponents. Why: a lower hidden rating yields easier matches.
+- [behavior] Players may stop playing for a while to raise their RD, an unintended incentive that produces larger rating swings on return. When: rating systems where RD rises during inactivity. Why: a higher RD makes rating changes larger.
+- [behavior] Head-to-head play produces a personal, one-on-one contest that suits focused, competitive players. When: when two players compete directly. Why: The one-on-one structure concentrates attention on the opponent.
+- [behavior] Your game competes with dozens of similar titles for attention, so competitive context can matter as much as quality.
+- [rule] In Monrad pairing, the first-ranked player plays the second, the third plays the fourth, and so on down the full rankings.
+- [rule] Avoid stagnation, because a competition needs an eventual winner.
+- [rule] When spenders become stronger, pair players by skill in matchmaking so the game stays competitive.
+- [heuristic] Give new or provisional players a higher K so their ratings reach their true skill level quickly, then lower K for established players.
+- [heuristic] Some systems lower K above a rating threshold, and top-level tournaments may use a lower K, on the theory that top players' skill changes slowly.
+- [heuristic] Use plain Elo for two-player, skill-based games such as chess; avoid it when luck is significant, more than two players compete, or draws do not equal half a win.
+- [heuristic] Online seasons leave few gaps between them, because designers want players to keep returning.
+- [heuristic] Competitive games usually balance for expert players, since they are played intensely for long periods by skilled players.
+- [procedure] 1) For each game, compute the expected score E from the rating difference. 2) Add the E values across all games. 3) Set A to the total actual score. 4) Add K × (A - summed E) to the old rating, rounding as the system requires. When: a rating period containing several games.
+- [procedure] 1) Check whether an early leader usually wins the prototype. 2) If so, identify the reinforcing relationship. 3) Change it to a balancing one. When: Testing competitive balance in a prototype.
+- [metric] Elo expected score E = 1/(1+10^((R_opp−R_player)/400)), the score a player is expected to earn against an opponent; equivalently, with Q=10^(R/400), E = Q_player/(Q_player+Q_opp).
+- [metric] Elo update: new rating = old rating + K × (A - E), where A is 1 for a win and 0 for a loss, and E is the expected score.
+- [metric] A common scheme uses K = 32 for provisional players and K = 16 after a set number of rated games.
+- [tradeoff] Choosing K trades responsiveness against stability: a low K reacts slowly to real changes in performance, while a high K is dominated by recent games.
+- [pitfall] Half-win scoring for draws is fair only if a draw truly equals half a win; otherwise weaker players who easily force draws gain rating by challenging stronger ones. When: Games where draws are possible and the weaker side can draw often. Why: Half-win scoring rewards defensive draw-seeking against stronger opponents.
+- [pitfall] Designers hide standings so all players feel they have a chance, but this hides a growing gap; trailing players may not notice until contact ends their game quickly. When: positive feedback has built a large hidden gap. Why: Players cannot see opponents' progress and so misjudge their own position.
+- [pitfall] A simulated rating far outside the spread of opponent ratings usually signals a calculation error, since Elo ratings stay bounded by opponents' ratings.
+- [pitfall] Elo does not explicitly model luck, so it can misjudge players in games where chance strongly affects outcomes.
+- [fact] The expected scores of the two players in a game always sum to 1.
+- [fact] The divisor 400 is a chosen convention; a 200-point rating gap gives an expected score of about 0.76.
+- [fact] There is no universally accepted K value; each rating implementation chooses its own.
+- [fact] Elo assumes a much more skilled player eventually wins almost every game against a weaker one, so win chance approaches certainty as the skill gap grows.
+- [fact] Elo is designed for two-player games and must be modified to rate three or more players.
+- [fact] Most online ranking systems are objective, based on rating, results, or other performance data.
+
+## exploits
+- [definition] A game dark pattern is deliberately built design that harms players' interests, probably without their knowledge or agreement.
+- [mechanism] Because mental models can be pushed into situations impossible in reality, imagination can explore options the real world would not allow. Why: Models are not bound by physical constraints.
+- [mechanism] Indirect control can bridge the action gap in the player's mind, making possibilities feel nearly limitless despite a small set of verbs.
+- [behavior] Players seek shortcuts, exploits, and degenerate strategies that bypass intended challenge, and they resent designers who let them break the game yet still search for them. When: when a system's rules or rewards can be circumvented. Why: Players seek the fastest route to a reward or past an obstacle, and they keep hunting for breaks even while resenting them. (x2)
+- [behavior] Following required procedures even when they are less efficient is what distinguishes game behavior from ordinary behavior.
+- [behavior] Virtual skills give a feeling of power, but when they dominate and real skill matters little, the power feels hollow to players. When: game progression relies heavily on virtual skills. Why: power comes from the character rather than the player's ability.
+- [behavior] Inconsistent or unclear behavior makes players focus on the confusion instead of the fight. When: Units or enemies behave inconsistently. Why: Confusion diverts attention from play.
+- [behavior] Idle animations that have no effect on gameplay still convey personality and impatience, shaping how players perceive a character. When: when a character is left without player input. Why: expressive idle behavior signals character without changing challenge.
+- [behavior] Players find exploits quickly and share them widely, so item duplication is especially damaging when duplicates are usable or tradable.
+- [behavior] Players may exploit rating errors by targeting opponents they believe are overrated, and new players entering at median ratings are often weaker than their rating suggests. When: Open matchmaking with imprecise initial ratings. Why: Rating errors create predictable profitable matchups.
+- [heuristic] Publishers favor teams with shipped games over teams with brilliant ideas, because ideas are plentiful and implementation is scarce.
+- [heuristic] Before changing numbers for an overvalued or ignored option, first determine whether the cause is real mathematical imbalance or players misreading information the game failed to communicate. When: An attribute or skill is consistently overvalued or ignored. Why: Buffing or nerfing fixes real imbalance, but misreading is not fixed by number changes.
+- [heuristic] Steer players toward a desired behavior with indirect cues, such as a weapon lowered but still usable, visible characters conversing, or a companion suggesting restraint, rather than clunky prohibitions. When: A game wants to discourage an action without forbidding it outright. Why: Priming is more elegant than explicit rules.
+- [procedure] 1) List each progression type and its rewards. 2) Classify each as fixed or random schedule, noting that a random-seeming schedule may be fixed for an informed player. 3) Check for patterns or emphasis at certain times. 4) Estimate reward frequency and mean time between rewards. 5) Find points where many loops close together and check for closure. 6) Find long stretches with few rewards and note how they feel. 7) Model the system in a spreadsheet or Machinations.
+- [procedure] 1) Find when saving is allowed. 2) Test seed persistence: reload mid-game, trigger random events, quit, reload the same save, and see if results repeat. 3) Check how easily a save file can be duplicated. 4) List every exploit. 5) Rate each by practicality.
+- [procedure] 1) Playtest the game. 2) Ask players what they can do with a reward. 3) If they cannot say, the reward is not communicating its value and should be revised. When: checking reward clarity. Why: players who cannot name a reward's use do not perceive it.
+- [metric] Strategies sitting roughly 10% to 15% off the cost curve can create a game-within-a-game in which players hunt for exploits. When: Deliberate imbalance between strategies in a multi-strategy game. Why: A small off-curve edge rewards searching, while a perfectly balanced game gives no reason to search.
+- [tradeoff] Fixing an exploit can rework a behavior, remove the item behind it, substitute a currency reward, accept the flaw, or postpone the decision; each option carries its own cost. When: a game exploit needs a response. Why: no option is clearly best, so costs must be weighed.
+- [tradeoff] In a single-player action game, accepting an exploit is viable because perfect balance matters less than it does in competitive play. When: the game is single-player and not competitive. Why: balance errors do not harm other players.
+- [pitfall] Duplicate accounts used as farms to funnel items to a main account allow trade-based exploitation, a particular problem in social games.
+- [pitfall] If players know the game eases when they play badly, they may deliberately play badly to get past hard sections, defeating the system's purpose. When: When difficulty responds to player performance. Why: Adaptive systems create an incentive to fail on purpose.
+- [fact] Cheats that ship with a game often exist to speed up playtesting and bug hunting.
+- [fact] Game design shapes how players communicate and act, so designers should understand these effects as they can influence the human condition. Why: Games are experiences that change people, not only entertainment.
+- [fact] Almost every game has a barrier when you look low enough, such as required hardware, reading ability, or motor coordination.
+
+## loot
+- [definition] A variable deck is one whose composition changes between rounds as players add and remove cards.
+- [definition] Variety means enemies and weapons that force different responses, not simply more enemies or higher damage numbers.
+- [mechanism] A wide skill range is simple to pick up yet difficult to master, while a narrow range is either fully known or not known at all.
+- [mechanism] Lowering the drop rate of rewards forces players to buy more or play longer to obtain the same amount.
+- [mechanism] When complete card collections are attainable, rarity mainly helps players who spend more money rather than balancing power. When: collectible card games where players can buy full sets.
+- [behavior] Rewards perceived as controlling are less efficient overall at sustaining motivation. When: Rewards such as gold or loot are framed as the player being managed rather than as their own choice.
+- [rule] Place weapon pickups on the grid; a unit standing on one can use that weapon in the following round.
+- [heuristic] Test rare random drops with a pseudorandom model before shipping to see how often they appear across playthroughs. When: When a rare item has a small drop chance, such as a fraction of a percent. Why: Low probabilities are hard to judge by intuition and show their effect only in aggregate.
+- [heuristic] Give even common enemies a chance to drop a reward, so routine encounters stay worth engaging with. Why: Each encounter then carries a possible payoff.
+- [heuristic] Use rarity mainly for intricate or specialized cards, and sometimes to limit cards that are too strong in large numbers.
+- [heuristic] Loot tables that give randomized rewards at set probabilities implement variable ratio reinforcement directly and suit repeated monster fighting or looting. When: Designing loot for repeated enemy encounters. Why: Randomized payoffs at fixed probabilities keep players acting for the next possible reward.
+- [procedure] 1) List loot, healing, and experience as connected resources. 2) Verify that changing one shifts the others as intended. 3) Check the economy as a whole rather than each piece alone. When: When checking a generated dungeon's rewards. Why: Connected resources must be balanced together to avoid unintended shortages or surpluses.
+- [procedure] 1) List loot items in A1 to A6. 2) In B1 enter =INDIRECT("A"&RANDBETWEEN(1,6)). 3) Fill down for more drops. When: all items have equal chances.
+- [procedure] 1) Put each part list in its own column. 2) Pick one random entry per column with INDIRECT and RANDBETWEEN. 3) Join the picks with the & operator into one item name. When: items are built from several parts, such as a weapon's prefix, base and suffix.
+- [metric] In one action-RPG example, roughly one enemy in every hundred killed drops an item that upgrades killing power, a drop rate of about 1 percent. When: when tuning rare item drops for a repetitive combat loop. Why: A rare, unpredictable reward keeps players killing and opening containers despite tedious repetition.
+- [tradeoff] A slow-reloading close-range weapon trades reuse speed for strong damage up close, while a long-range explosive trades safety for distant damage that can also hit its user.
+- [pitfall] A specific rarer-tier item can appear more often than an item in a less rare tier when its tier is small or its slot chance is high; verify each item's per-draw probability. When: when a game picks one random item from a tier. Why: tier rank alone does not set each item's frequency.
+- [pitfall] A class that plays like another class with a thinner skill tree will be judged underpowered by players, so class balance is the first concern. Why: Players compare classes directly.
+- [pitfall] Relying on rarity to offset power assumes limited spending and limited trading, which may fail when a game becomes very popular.
+- [pitfall] A liability that appears rarely can still matter a lot if the player meets it at a bad moment. When: Rare situations where the object performs poorly. Why: The timing of the encounter can make a rare weakness decisive.
+- [fact] Weapon enhancements can add damage per shot, raise accuracy, or add bullets.
+- [fact] Weapons commonly specialize by range, close-quarters use, or effectiveness against large slow targets, while armor may resist physical or magical attacks, grant evasion, or give stat bonuses.
+- [fact] Randomized spawn timing and randomized loot drops correspond to variable-interval and variable-ratio reward schedules.
+- [fact] Some collectible card games instead make rare cards stronger, rewarding heavier spending.
+
+## numeric design and scaling
+- [definition] Pinball numbers are the practice of adding zeros to values to make rewards feel more exciting.
+- [mechanism] Perfectly regular, predictable progression makes the challenge feel constant, so players grow bored; small deviations from the curve create surprise. When: PvE item and enemy progression. Why: Predictable progression removes surprise and memorable moments.
+- [rule] State every cost and benefit as a number before comparing objects.
+- [rule] Plan for power creep in any game with repeated expansions by building each new curve around the current best options. When: game receives repeated expansions.
+- [rule] Whether a game shows its numbers or hides them, those numbers must be designed.
+- [rule] Analyze a game's number progression to determine which curve type it follows.
+- [rule] Decide early whether all options are equally overpowered (still tunable) or none are, since this fixes the range of starting figures.
+- [rule] Score partial damage as the damaged percentage of the unit's cost, and score a destroyed unit as its full cost. When: building payoffs for unit-versus-unit fights with resource costs.
+- [rule] Apply a maximum velocity to the ship's velocity vector as a catchall against runaway speed, choosing the limit mainly for pragmatic reasons. When: ship velocity can grow without bound under thrust. Why: Without a cap, accumulated thrust can push speed to unplayable levels; very high or low limits slightly change feel.
+- [heuristic] Add peaks to item and enemy progression where you want variety or memorable rewards; do not rely on the procedural curve alone. When: Designing item progression or balancing enemies and items together. Why: Pure curves feel flat; variation on both sides keeps challenge shifting.
+- [heuristic] The worth of an item or action depends on its net effect on the anchor stat, not on its face value. When: valuing items in a multi-stat system. Why: Converting every effect to the anchor reveals the true value of each option.
+- [heuristic] The highest total output and the highest output per cost can come from different configurations, so both must be checked.
+- [heuristic] Let heavier moves deal more damage and lighter moves less, so the weight of an attack is reflected in the numbers. When: when assigning damage values to attacks in a combat game. Why: Damage that matches attack weight makes the attack feel more substantial.
+- [procedure] 1) Identify nearby resources that are limited and distant ones that are effectively unlimited. 2) Defend supply lines to the distant sources. 3) Attack enemy gatherers while they are exposed. When: Maps mix limited nearby and unlimited distant resources. Why: Early control of the distant supply decides long-term income.
+- [pitfall] Applying a level-based multiplier to only one damage source let that character grow faster than the intended progression curve, with the multiplier increasing itself. When: When adding multipliers tied to growing stats. Why: A scaling bonus that feeds back into its own source creates an unintended positive loop.
+- [pitfall] In digital games, needlessly large numbers make low-end values trivial and therefore worthless. When: Digital games with large values. Why: Small rewards become negligible against huge totals.
+- [pitfall] If most options are mundane and a few are far stronger, the mundane ones become junk.
+- [pitfall] Adjusting unit counts or costs may not change the behavior you target; a new system such as an economic drain may be needed. When: a behavior persists after numeric tuning. Why: Numbers alone may not alter the incentives driving the behavior.
+- [pitfall] Choosing numbers on wildly different scales, such as life in the thousands, makes conversions messy and breaks cross-mechanic relationships.
+- [fact] Games without resource costs can use a victory or loss condition as the anchor for comparing unlike elements.
+- [fact] A new game has no established cost curve, so its first numbers are guesses, and original mechanics make guessing harder. When: Designing a game without precedent for its mechanics.
+
+## reward design principles
+- [definition] Rewards in level design do more than pay players off: they incentivize behavior, entice exploration, build curiosity, and pace the experience.
+- [mechanism] When rewards in open-ended social games become rarer and then stop, players quit or switch to other play such as decorating.
+- [rule] Reward actions that fit the fantasy, because rewarding tedious actions that contradict it works against the fantasy.
+- [rule] Treat rewards as feedback that informs players about their performance, and give them the same usability care as other feedback.
+- [rule] Show players what a reward is worth before they commit to a task. When: before players accept a task. Why: Players need to know the reward's value to commit meaningfully.
+- [rule] For creative, teamwork, ethical, or quality-focused tasks, keep extrinsic rewards non-salient, except rewards that highlight progress. When: the task involves creativity, teamwork, ethics, or quality. Why: salient external rewards can undermine intrinsic engagement.
+- [rule] Ask what purpose each reward serves, especially for progression, and why it is meaningful when received. When: designing rewards and progression. Why: unclear rewards feel arbitrary to players.
+- [rule] When the story promises a reward, level designers choose what it is and balance its value and power against the rest of the game. When: Story-driven loot or rewards.
+- [rule] Do not tie pay or prizes to measured output in creative game development work. When: Creative design and development roles. Why: Extrinsic rewards cause the problems that follow from conditional payment in creative work.
+- [heuristic] Multiplicative stat effects are rare in strategy and card games because they can break balance. When: designing card or strategy effects that multiply stats. Why: Compounding multipliers can overwhelm other game elements.
+- [heuristic] Check which rewards exist, whether players enjoy and understand them, whether they arrive too regularly, and whether they grow at the right pace. When: Auditing a game's reward system. Why: Rewards that are misunderstood, predictable or mistimed lose their motivating effect.
+- [heuristic] Award points for every meaningful action, including stunts, hits and combinations, so each action the player takes feels valuable.
+- [heuristic] Rewards are generally more efficient than punishments for shaping player behavior; non-physical punishments are central to conditioning.
+- [heuristic] Rewards that help the player win carry more weight, and rewards tied to the story or carrying romantic associations seem more valuable. When: Designing reward types.
+- [procedure] 1) Start from the power-reward schedule. 2) Add location-based and story-based rewards. 3) Locate areas with a surplus or shortage across all reward types. 4) Check whether memorable areas are explained by their rewards. 5) Check whether any reward type dominates and whether that suits the genre.
+- [pitfall] If a player loses a life while chasing a high-value target, the chase's reward is lost, so the risk can outweigh the points. When: when a reward is only granted on success and failure costs a life. Why: Lost life erases the value the player was pursuing.
+- [fact] Most in-game rewards are intrinsic, except real-money-linked currencies, player-driven economies, and esports, where rewards are largely extrinsic.
+
+## free-to-play retention
+- [model] Free-to-play health depends on three areas: acquisition (new players arriving), conversion (free players starting to pay) and retention (players staying and returning).
+- [definition] Free-to-play friction is difficulty that outpaces the player after an easy start, deliberately leaving them short of resources to force time-versus-money choices and purchases. When: games earning revenue from in-game purchases. Why: Late-game frustration may be used to push players to pay for progress. (x2)
+- [mechanism] Free-to-play games sometimes raise difficulty at a chosen point so that only paying players stay, letting product managers focus on that group. When: Free-to-play games with monetization goals. Why: Steep difficulty jumps filter out non-paying players.
+- [mechanism] In free-to-play games, challenge often rises past the player's resources around day three, forcing players to improve, grind, or spend money.
+- [mechanism] Lowering a vehicle's friction value during an input changes the resulting motion, as with a powerslide, so simulation variables can be the response target.
+- [behavior] Most players eventually hit a stage where frustration lingers long enough that they quit. When: difficulty rises steadily through ordered levels.
+- [behavior] Rather than becoming frustrated, heavy spenders often spend more to catch up, pushing prices upward like an auction with one bidder. When: After a paid advantage is cancelled by matchmaking.
+- [behavior] Players who self-identify as gamers are often willing to pay high prices for content that matters to them.
+- [behavior] Hobby game buyers are mostly men in their teens and twenties who play weekly and may spend hundreds of dollars a year on supplements.
+- [behavior] Grinding games spread quickly among casual players because they are easy to pick up, but players later exhaust the pointless loot and then seek new ideas, friends and experiences. When: Grind-based loot games over a long time span. Why: Easy entry drives rapid spread, while repetitive loot cannot sustain interest once it is exhausted.
+- [behavior] In the early days of a free-to-play game, players have what they need, so items are neither above nor below the curve. When: early days of a free-to-play game.
+- [metric] Typical F2P KPIs: average monetization, fixed-interval retention returns, average session length. Early on, Day 1 retention and session length matter most for bringing players back.
+- [metric] Churn is the percent of players lost each month; ideally it is zero, and high churn prompts retention efforts.
+- [tradeoff] Extrinsic rewards can undermine intrinsic motivation for already engaging activities, but help simple, highly repetitive tasks when the rewards are salient and their value rises with effort. When: Attaching rewards to an already enjoyable activity harms motivation; for simple, repetitive tasks, effort-scaled salient rewards sustain work. Why: External payment can replace the enjoyment that previously sustained the activity; clear, effort-scaled rewards sustain repetitive work. (x2)
+- [fact] Players who do not understand what to do and why feel incompetent and may stop playing. When: Tutorials that leave players unsure of goals. Why: Lack of understanding erodes competence and motivation.
+
+## health pools and resources
+- [definition] Hit points track health and are arguably the most important resource in a game, and the challenge of a game is largely the player's ability to manage them.
+- [definition] Health may be a standalone resource or a property of each life, and it dramatizes how close lives and units come to being lost.
+- [mechanism] Consumables such as healing potions restore hit points, armor and power-ups slow or prevent their loss, and weapons, magic, and aggressive actions cause loss.
+- [mechanism] When enemy HP is tuned to the damage weapons deal, HP becomes the anchor that weapon power is balanced against. When: skill-based games with no item prices.
+- [mechanism] Doubling a character's health doubles the value of attack bonus relative to armor class.
+- [mechanism] If enemies keep full offense until defeated, lethal focused damage is worth more than partial area damage, because removing enemies one at a time cuts enemy output. When: Enemies deal full damage until they die. Why: Each kill removes that enemy's future attacks.
+- [mechanism] Until a player earns a health container, one hit is fatal; once one exists, a hit costs a container instead of a life, and a life is lost only with none left. When: early in a run. Why: Containers add a buffer before lives are at risk.
+- [metric] HP increases can be linear with a random value in a range, for example a level 5 gain of +25 HP within a 10 percent band. When: Designing per-level HP gains.
+- [metric] Use health as the common unit for valuing cards: one point of Cost removes exactly one point of health. When: Valuing cards in a cost-paid-in-health duel.
+- [metric] A player can hold up to ten health containers, earned by collecting enough small packets that enemies drop.
+- [tradeoff] Action-game health restoration via placed medical kits is very fast but somewhat unrealistic, while role-playing restoration via eating or resting fits the story better but is slow and can frustrate players.
+- [fact] Players trade other resources for hit points, such as money for potions or time spent resting while the character heals.
+- [fact] The ratio of health to damage is arbitrary but sets each enemy's perceived strength and signals which targets are dangerous or impervious. When: when tuning health and damage values. Why: The number of hits gives direct feedback on threat.
+
+## luck and randomness
+- [model] Expected win probability equals (1 − L) times the skill-based probability plus 0.5 times L, where L is the probability that a game is decided by luck. When: Rating games that include a luck component. Why: Luck-decided games favor neither player, so they pull results toward 0.5.
+- [mechanism] In a long game of summed random rolls, an early lead from luck tends to average out, so a large early advantage can still be overturned. When: Heavily luck-based games with many accumulating rolls. Why: The law of large numbers reduces the influence of short-term gains.
+- [mechanism] Replacing a damage formula with a wide random roll raises outcome variance, devalues upgrades and resources, and can make mass unit production the only viable strategy. When: combat damage is randomized over a wide range.
+- [mechanism] Randomizing a fixed value widens outcomes: a fixed 5 damage made random from 1 to 7 yields seven outcomes instead of one.
+- [mechanism] Adding luck widens the potential audience because weaker players can win some games, but too much luck makes players feel they have no influence on the result. When: Tuning the luck level of a competitive game. Why: Luck lets weaker players win occasionally, while excessive luck removes perceived agency.
+- [mechanism] A likely-loss outcome with a small chance of winning creates underdog tension without overriding the player's choice. When: Designing combat or contests between mismatched opponents. Why: Doubt over a probable result keeps attention engaged.
+- [behavior] An option with low average value can still appeal to players when it produces sudden large swings. When: a card or action with rare but dramatic effects. Why: Players are drawn to dramatic swings.
+- [heuristic] If a pro-gamer wants to cut a mechanic because it feels unfair, it is probably too random; reduce its randomness rather than removing the mechanic.
+- [heuristic] Adding randomness to a value is generally easier than authoring many deterministic variants to widen outcomes.
+- [metric] If luck decides N percent of outcomes, expected win probability should stay between N/200 and 1 − N/200 rather than reaching 0 or 1. When: Games where chance can decide results. Why: Luck lets weaker players win sometimes, so certainty is unrealistic.
+- [pitfall] Goals driven by luck, where the player cannot improve their odds, feel futile and cause frustration when they fail. When: Designing goals with a large random component. Why: Without any means of influence, a loss after a few wins feels out of the player's hands.
+- [pitfall] Generating an entire number table from one random starting value often amuses the designer more than the player. When: Seeding a progression randomly. Why: Players gain little from arbitrary numbers.
+- [pitfall] If the game's result is predictable, players lose interest, so the outcome must remain uncertain.
+
+## expected value
+- [definition] Expected value is the sum of each result's value times its probability; it is the long-run average per trial, which observed averages over many trials approach. When: Evaluating an action with uncertain outcomes; comparing the worth of player actions. Why: It gives the long-run average payoff. (x2)
+- [definition] Gamma controls how much an action's Q-value depends on the value of the state it leads to, determining whether the learner can discover long action sequences.
+- [definition] Expected value is the reward multiplied by the chance of success; for example, 100 points at a 20 percent chance gives 20 points. When: When comparing risky and safe options. Why: It converts different risk levels into a common scale.
+- [rule] When computing expected value, use perceived probabilities as well as actual ones, since players' perceptions determine how they play.
+- [heuristic] Give hard-to-measure items, such as speed boots or a warp shortcut, a numerical estimate so they can enter the expected value calculation. When: when an item's value is hard to measure.
+- [heuristic] Estimating the chance of success is the hardest part; treat the estimate as a hypothesis and test it with prototypes, since the model and the prototype inform each other. When: When building an expected-value model of a risky action. Why: Chance estimates are rarely accurate before play testing.
+- [heuristic] Use expected value to check that probabilities are balanced, but do not rely on it alone, since player experience may disagree with the numbers.
+- [procedure] 1) Identify situations where the object is better or worse than normal. 2) Estimate each situation's probability and value difference from baseline. 3) Multiply and sum to get expected value. 4) Also check best and worst cases with their opportunity costs. When: Costing a transitive mechanic whose usefulness depends on the situation, where the player cannot realistically swap the object for another. Why: A single average can hide large swings in value.
+- [metric] A fair six-sided die has an expected value of 3.5.
+- [metric] Expected profit per play equals the chance of winning times the prize, minus the stake; a positive result means the player has a mathematical edge.
+- [pitfall] Expected values hide variance; random shuffles and acceleration or card-draw effects can make a single game deviate far from average timing.
+- [pitfall] Predicting player choices from expected value alone misses how players weigh gains, losses, and regret.
+
+## game revenue and contracts
+- [definition] Customer acquisition cost is the average spend needed to get one player to download the game and start playing it.
+- [mechanism] Design choices drive profitability, so design and management each control the other's outcome.
+- [mechanism] In a crowded free market, earning money requires reaching very large audiences, which favors publishers with large marketing budgets. When: competing in a flooded free-to-play market. Why: Monetization depends on scale of players reached.
+- [heuristic] Designing for community matters most when revenue depends on subscription renewals, sequels, or microtransactions, since extended play drives all three. When: games relying on recurring revenue. Why: Longer play directly increases renewals and in-game spending.
+- [metric] Developer royalties are commonly 10 to 15% of net sales, paid after portal revenue is received, negotiable, and higher when the developer delivers a finished product.
+- [metric] After recoupment, a developer typically receives 10% to 18% of the publisher's net sales revenue; at 15%, the publisher keeps 85%.
+- [metric] A mainstream game can cost five to ten million dollars or more to develop, with the company carrying all the risk. Why: Companies see little reason to pay outsiders for ideas.
+- [pitfall] Game development is very risky; plan for dry spells and unexpected costs, especially for a studio with only a few titles.
+- [fact] Publishers typically pay developers an advance against royalties, which the developer uses to pay staff, cover overhead, and subcontract parts of the work.
+- [fact] Specialized media contractors are usually hired for short periods on contract, charging by the hour or by the day.
+- [fact] First-time developers get lower royalty rates because they are riskier, while proven hit makers can negotiate higher rates.
+- [fact] Cultural hits often result from several factors combining, such as cheap social venues, fast infrastructure, economic recession and media coverage, and their individual contributions cannot be disentangled. When: explaining an unexpected market hit.
+
+## royalty sales accounting
+- [definition] A SKU (stock keeping unit) is a unique inventory item, and each console release and each language version counts as its own SKU.
+- [definition] Sold in means a retailer bought copies from the publisher, while sold through means a customer bought them.
+- [rule] When a publisher quotes sales, ask whether the figure is sold in or sold through before accepting it. When: when a publisher quotes sales.
+- [rule] Calculate developer royalties on the publisher's share after the portal's cut, not on the full sale price.
+- [metric] On a $10 direct download sale, the developer generally collects about $7 before marketing costs.
+- [metric] Developer royalty rates can step up at unit thresholds, for example 10% up to 60,000 units, 15% up to 120,000, and 20% up to 240,000.
+- [pitfall] Treating the 70% storefront share as pure profit ignores marketing costs, which are usually substantial and can consume most of the remainder.
+- [pitfall] Royalties calculated after deductions such as tax, duties, shipping, insurance, and returns invite creative accounting; define deductions narrowly and exclude publisher overhead.
+- [fact] Existing sales relationships and forces can be a barrier; a product needing a large field sales force can be too costly to sell market by market.
+- [fact] Subscription revenue can weaken over time, pushing a game toward a free-to-play model. When: a subscription game loses paying subscribers. Why: Players may stop paying recurring fees.
+- [fact] Some user-generated sites award cash prizes to top-rated games each week and month.
+- [fact] Publishers pay the royalty for every manufactured console unit up front, before games are delivered for retail.
+
+## sales, reviews and metrics
+- [rule] For an established game, review players' published strategies, tier lists, and derived math, then use them as a starting point or a check on your own analysis. When: Analyzing balance in a game with a player community.
+- [rule] Base revenue on comparable titles, give a range rather than one figure, and ensure the low end of the range still shows a profit. When: Presenting financial projections. Why: A range with a profitable floor shows the project is viable even when results disappoint.
+- [rule] Read ARPU and ARPPU together when most players in a free-to-play game pay nothing. When: Free-to-play game with a large non-paying majority. Why: Each figure alone gives an incomplete picture of spending.
+- [heuristic] When a press mention brings a download spike, trace where the new players came from so future content suits them.
+- [metric] Reach is worth about half a point, as the defensive half of Flying; since costs are whole numbers, a Reach-only card is rounded slightly above the curve. When: Cards whose only ability is Reach.
+- [metric] ROI = (R − C) / C, where R is total revenue and C is total cost including development, maintenance and marketing, expressed as a percentage. Breaking even gives 0%.
+- [pitfall] Obfuscated pricing depends on players trusting that buying more always saves more, which a bulk price inversion can break. When: evaluating currency bundle pricing. Why: Players who rely on that assumption may overspend.
+- [pitfall] Revenue-driven choices that damage users' interests can crowd out the UX mindset.
+- [fact] Games with extensive public online documentation make their peaks easier to identify through analysis.
+- [fact] Some games ask players for app store reviews before the difficulty ramp takes effect.
+- [fact] Total downloads and app-store rankings by downloads or revenue are related measures of a game's reach.
+- [fact] Most games lose in the market, but reviews and awards spotlight winners while failures disappear from view.
+
+## simulation for outcomes
+- [definition] A Monte Carlo simulation estimates a probability by repeating random trials many times and counting how often the event occurs.
+- [heuristic] Expect the first balance models to be inaccurate; each playtest round should revise both the mathematical model and the balance as testing and play data reveal errors. (x2)
+- [procedure] 1) Set up a projectile in an isolated simulation and fire it with the guessed parameters. 2) Advance the physics at coarse intervals, recording positions. 3) Find the nearest point on the recorded piecewise linear path to the target; that distance is the closest approach. 4) Repeat the search with new guesses. When: Simple force models give poor results and forces such as drag, lift, or wind must be modelled. Why: Reuses the engine's own physics, so any modelled force or moving target is handled.
+- [procedure] 1) Build the random formulas. 2) Trigger a forced recalculation without editing. 3) Record the result. 4) Repeat several times and check that results fall in a narrow range. When: Verifying a simulation estimate is stable.
+- [procedure] 1) Record all state needed at one time step on a single row. 2) Hardcode the initial state in row 1 with no formulas. 3) In each later row, compute the state from the row above. 4) Copy the formulas down to extend the simulation. When: Spreadsheet programs that lack iterative calculation.
+- [procedure] 1) Write a Monte Carlo simulation of the game. 2) Simplify if needed, such as treating card spaces as blank or applying a fixed buying policy. 3) Define power as cash plus chosen assets. 4) Average power over time across thousands of games. 5) Plot individual games to see single-session variation. 6) Judge sum type, feedback loops, ending speed, phases and length. When: when assessing a board game's progression with simulation. Why: Simulation reveals whether a game's economy and length suit its audience.
+- [procedure] 1) Write the starting state as a probability vector. 2) Multiply the vector by the transition matrix. 3) Repeat until the vector stops changing. The result is the steady state. When: finding the long-run share of time in each state. Why: repeated multiplication converges to the stationary distribution.
+- [procedure] 1) Simulate many complete games with random outcomes. 2) Record each game's length. 3) Average the lengths to estimate the expected game length. When: estimating game length for cases too complex to solve exactly. Why: sampling approximates the distribution when the exact matrix is impractical.
+- [tradeoff] Physics-based targeting is costly and needs an engine able to run isolated simulations, so it suits cases where simpler force assumptions visibly fail. When: Choosing between closed-form, bisection and physics-based targeting. Why: Many simulations per shot consume time.
+- [tradeoff] Playtesting and analytics give the most reliable values but need a built game and real player data, while early in design an estimated first value is the only option. When: Choosing how to set a situational cost during development.
+- [fact] Mathematical tools can analyze a game's systems, reveal relationships between objects, and identify and remove imbalances.
+- [fact] Game balance math needs only basic arithmetic and simple grade-school algebra; more advanced math can be learned just in time.
+
+## item and unit viability
+- [definition] A permanent item is a found, traded or bought object that exists in the world, cannot be consumed or used as material, and persists after the player disposes of it.
+- [definition] An item is on the curve when its total value, from stats and abilities with drawbacks counted, matches its cost.
+- [rule] Leave a blank cell at the end of an optional part column so some random picks add nothing, giving some drops no added part.
+- [heuristic] An effect that hits only a small minority of cards is often dead in typical matchups and becomes useful only when the metagame favors that minority. When: Removal that targets a card subtype or category. Why: Few opposing cards match the target, so the effect rarely has value.
+- [procedure] 1) List situations where the option is the only one covering a role. 2) Check whether remaining options cover those situations at acceptable cost. 3) Identify regions left with no viable option.
+- [metric] A unit that has valid targets only in a fraction of rounds has its effective efficiency multiplied by that fraction. When: enemy types arrive on a fixed schedule.
+- [pitfall] Items that become obsolete quickly lose their value, which can make earlier collection feel pointless if the design does not account for it.
+- [pitfall] A later skill can make earlier ones obsolete, and a branch clearly stronger than others turns the choice into no real choice. When: Designing skill progression and branches. Why: Players pick the dominant option, so the apparent choice has no real alternative.
+- [pitfall] A unit that offers no real choices fails the fun criterion.
+- [pitfall] A versatile option that is never best can make blind choices feel uninteresting unless switching or carrying several items is allowed. When: The player must choose gear before the situation is known. Why: The choice feels like guessing with no clear winner.
+
+## punishment and reset mechanics
+- [mechanism] A reset levels the field for newcomers: someone joining just before it starts has a fair shot.
+- [mechanism] A reset result that sends the score to zero can drop a near-goal score sharply, so states close to the goal are not safe from setbacks. When: A race-to-target game with a reset outcome on the random spinner. Why: The reset ignores how high the score already is.
+- [heuristic] Keep punishment gentle, understandable, and tuned through testing; avoid penalties harsh enough to make players quit, but keep punishment as a threat, which creates tension even when it rarely lands. When: Designing penalties in a game. Why: Harsh penalties make players frustrated or cautious, while mild ones make challenge meaningless; threatened punishment creates tension even when it rarely lands. (x2)
+- [heuristic] Ask what each punishment is for, whether players find it fair, whether it could be a reward with equal or better effect, and whether strong punishments are matched by strong rewards. When: Reviewing punishments in a game. Why: Fair, purposeful punishments that are balanced against rewards maintain motivation.
+- [pitfall] Even an anticipated reset leaves inflation intact, since the economy remains positive-sum and latecomers stay behind.
+- [pitfall] Punitive mechanics can drive away even engaged players, who may then stop caring about the story.
+- [fact] Economic resets are uncommon and cluster at major milestones, such as the move from alpha to beta or from pre-release testing to full release.
+- [fact] Punishment can make a game more enjoyable by giving resources value, making risk exciting, and raising challenge. Why: A resource only feels valuable when losing it is possible, and success feels sweeter when failure was possible.
+- [fact] Common punishment types are shaming, loss of points, shortened play, terminated play, setback, removal of powers, and resource depletion.
+- [fact] Resource depletion, losing money, goods, ammunition, shields, or hit points, is one of the most common forms of punishment.
+
+## hidden game formulas
+- [heuristic] When an item's cost looks right on paper but feels wrong in play, look for hidden sunk, setup, or opportunity costs; ignoring setup cost makes the item look much cheaper. When: Cost-curve analysis of items. Why: A listed price alone cannot reveal why an item feels off.
+- [procedure] Handle extreme values either by writing special-case math for the edges or by placing hard caps so players cannot reach them. When: A general formula is correct for typical values but fails at limits.
+- [pitfall] Initial values are guesses, so matched totals can mislead until observed play confirms or revises them.
+- [pitfall] Combining random values silently reshapes the outcome distribution, so check the resulting distribution rather than assuming it. Why: Designers often add random numbers without realizing how the sum changes the spread.
+- [pitfall] A single long balance formula hides mistakes that separate subtotal columns would make visible.
+- [fact] Even games without visible numbers have them, such as damage, range, ammunition, health, and object positions in a shooter.
+- [fact] Designers sometimes set values with no discernible pattern, such as a weapon with very high damage and a very low drop rate. When: tuning individual items or abilities.
+- [fact] Large numbers are hard to manage in board games.
+- [fact] Exact combat formulas are often hidden in games, so community wikis, FAQs, and strategy guides are common sources for stats and formulas. When: analyzing a combat with real game math.
+
+## metagame and deck design
+- [definition] The metagame is everything players do outside actual play that affects their chance of winning, such as studying opponents, building decks, drafting, or negotiating salaries.
+- [mechanism] A rock-paper-scissors metagame, though better than one dominant strategy, shifts focus from in-match play toward deck choice.
+- [mechanism] A special card that matches only its twin can occupy the second draw and cause failure, pulling match odds slightly below the standard-deck value. When: a deck with extra cards that match only each other. Why: a wasted draw counts as a failure.
+- [mechanism] Spreading a unit group protects it from area damage but exposes it to attackers that pick off isolated units, while concentration does the reverse. When: designing or playing positional unit fights. Why: Formation trades one vulnerability for another.
+- [rule] Use a metagame rule only when the imbalance originates in the metagame itself; avoid metagame patches for imbalances that come from cards, units, or mechanics. When: Choosing where to fix an imbalance. Why: A metagame fix for a game-level imbalance only treats a symptom and leaves the original problem in place.
+- [pitfall] Older decks can become non-viable as power rises, which can alienate veteran players. When: Power curve keeps rising. Why: Previously strong cards fall out of competitive use.
+- [pitfall] A nonviable build may be obvious immediately or hidden for a long time, and discovering it late can force a full replay and make players quit. When: Designing builds that can become nonviable. Why: Late discovery wastes player time and damages willingness to continue or recommend the game.
+- [pitfall] A high pick rate can suggest a nerf, but a pick-rate gap may stem from missing visual and sound cues on other options rather than from balance problems. When: when class or hero pick rates look skewed. Why: players cannot choose options whose strengths are not signaled.
+- [fact] Metagame rules such as drafts, salary caps, revenue sharing, and team size limits exist to keep strong competitors from pulling away, and metagame balance strongly shapes game balance. When: Designing competitive systems that must stay balanced over time. Why: They interrupt the positive feedback loop of success begetting success.
+
+## single player design
+- [definition] In a positive-sum game, total power among players grows; in negative-sum it shrinks; in zero-sum it stays constant, with power only shifting between players.
+- [definition] Single-player game length can be modeled as a Markov chain whose states are the current score below the goal plus one absorbing state for finishing, giving the mean, median and mode of turns to finish. When: A race-to-target game where each turn moves a score by a random spinner result. Why: The chain turns the random sequence of turns into a distribution of finishing times.
+- [mechanism] When each element has one purpose, a tweak changes one aspect of play, so balancing becomes methodical rather than guesswork.
+- [behavior] Prices rise when players suspect a new use for an item, since they fear what rivals will do with it. When: an item's use is rumored or inferred. Why: fear of rivals' plans.
+- [heuristic] Well-balanced single-player and cooperative titles usually lean slightly toward the player, and that lean persists as the player's mastery grows. When: single-player and cooperative games.
+- [heuristic] Story-focused games gain too little from deep balance, so they can be left somewhat imbalanced, freeing resources for world and story.
+- [procedure] If all but one term of a card's equation is known, the leftover ability can be assigned the value that balances the equation. When: a card has exactly one unknown ability.
+- [pitfall] A game can lose stability when its length or late-game trade rules change, so those structural features should be rechecked after any change. When: Changing game length or late-game trade rules.
+- [fact] In single-player RPGs, currency is produced by grinding, trading occurs only between the player and NPCs (a command economy), and most resources are unlimited while some powerful items are scarce.
+
+## competitive and esport balance
+- [mechanism] When two competitors share a positive-sum setup and feedback reinforces leaders, a slight early advantage grows until the gap becomes large by the finish.
+- [behavior] Against an unequal opponent, the weaker player loses power early and falls further over time. When: when players differ in skill. Why: the weaker side's losses compound.
+- [behavior] Temporary dominance of one option is common, and players may need time to find counters before the balance settles. When: judging a short-term imbalance after release.
+- [tradeoff] Transitive systems suit cost-to-benefit balancing, while intransitive systems like rock-paper-scissors need different balancing methods.
+- [fact] Team competitive games balance teams against each other, so numbers still matter even when players do not level up during a match.
+- [fact] Perfectly balancing a trading card game is hard, so slightly stronger cards tend to appear even when designers aim for parity. When: Designing a TCG.
+- [fact] Combining tournament entry fees with tournament rewards creates interactions that need careful balancing.
+- [fact] Newcomers often displace entrenched series, since small challengers hold edges that big studios struggle to copy.
+
+## level granularity and grids
+- [definition] Granularity is the spacing between neighboring numbers in a game's value system.
+- [mechanism] Enlarging a grid lengthens play and weakens tension when the center stops dominating; the piece count must rise to match the new cell count. When: Changing board dimensions. Why: In a seven-column grid, every horizontal or diagonal four must touch the center column.
+- [mechanism] Multiplying a value range by 10 creates room for many more items between the same minimum and maximum, as sword damage 1 to 10 scaled to 10 to 100 shows. When: Planning content that will grow over time. Why: Larger integer ranges leave gaps for future items without fractional values.
+- [rule] Make each level gain feel meaningful through gains in HP, stats, skills or spells.
+- [procedure] 1) Compute the current level from total XP. 2) Compute XP still needed for the next level. 3) Show progress as the share of the current level's XP span already earned, so the bar is empty right after leveling and full just before the next.
+- [tradeoff] Too little granularity leaves no room to add content except at the high end; too much makes differences meaningless to players. When: Choosing the scale of numeric values. Why: Tight numbers block new items; huge numbers lose perceptual meaning.
+- [pitfall] Low granularity is especially harmful in expandable games such as trading card games and online RPGs with expansions. When: Game will receive expansions. Why: Expansions need unused numeric space to add new power levels.
+- [pitfall] Joining text parts without spaces makes names run together; add a space at the end or start of each part.
+
+## player economy and resource sinks
+- [mechanism] Making actions such as moves, questions, or turns a limited resource forces players to plan so they do not waste potential actions. When: Turn-based or question-limited games where each action has a budget. Why: A finite action budget turns every action into a decision with an opportunity cost.
+- [mechanism] Action point systems charge one, two, or no points per action depending on its complexity, and some games do not use time this way at all.
+- [mechanism] Abundant resources lose value, and resources without utility become merely curious finds.
+- [mechanism] When the goal is elimination through zero-sum transfers, a positive sum economy can prolong play, because wealth keeps growing while transfers slowly remove players. When: when victory requires eliminating opponents from a growing economy. Why: Total wealth grows faster than transfers can eliminate players, so the endgame stretches out.
+- [mechanism] A fast-firing weapon can exhaust a fixed ammo supply within seconds, so sustained damage depends on ammo supply rather than peak output.
+- [procedure] 1) Find the maximum resource gained per turn from the drop rules. 2) Estimate the share of resource cards in the deck. 3) Compute the expected turn each resource unit arrives. 4) Set costs so later units cost more. When: deriving a starting cost curve for a resource-based card game. Why: units that arrive later on average are worth more.
+- [tradeoff] Building that spends resources to raise future production is a weak sink long term, since the builds pay for themselves.
+- [pitfall] Adding power cards by removing action cards keeps deck size fixed but reduces the deck's number of action cards. When: when rebalancing by trading action cards for power cards.
+
+## reward difficulty scaling
+- [mechanism] Raising a game's speed variable as the score climbs makes difficulty track the player's ability. When: Games where the score reflects player skill and speed can be scaled.
+- [mechanism] Making each successive failure about 10% less likely than pure probability dictates shortens failure streaks, and sufficiently long streaks become impossible.
+- [mechanism] Score values that rise steeply with the size of a feat can make the largest achievements dominate the total score.
+- [behavior] Enemies that hide behind cover and take three hits from the basic weapon seem stronger than their health implies. When: Enemy uses cover and requires several basic shots. Why: Cover and extra hits make the enemy feel more durable to the player.
+- [rule] Scale rewards with task difficulty or length: harder or longer content should pay off via rarer drops, more experience points, or achievements, with payoffs proportional to effort. (x2)
+- [rule] Shape difficulty as a sinusoidal curve inside the flow zone rather than a linear rise in step with mastery. Why: A linear rise can leave players feeling no growth.
+- [tradeoff] Easy, medium, and hard modes help players find their level, but each version must be created and balanced, and players may dispute which version is authentic.
+- [tradeoff] Making targets easier to hit but worth fewer points creates a risk-reward gradient, so players who take harder shots gain more.
+
+## risk reward balance
+- [mechanism] Offering a difficulty increase after success, or giving bigger shares of rewards on later missions to successful players, creates an incentive to take on harder challenges. When: Tying rewards to challenge choice. Why: Players are motivated to accept greater risk when the reward grows.
+- [mechanism] A reward gains value when finding it means facing greater risk, so scarce loot tied to danger feels more valuable. When: Loot located behind dangerous encounters. Why: Risk gives the reward its value.
+- [heuristic] In a single d6 push-your-luck turn, keep rolling below a turn total of 20 and stop above it; at exactly 20 rolling and stopping are equal. When: a 1 ends the turn and other faces add their value. Why: expected gain from one more roll is positive below 20.
+- [heuristic] When behind, accept more risk to catch up; when ahead, prefer steady gains that avoid giving the opponent a run of good luck.
+- [heuristic] Offer a choice between a safe small reward and a risky large reward, with rewards proportional to risks. Adding even a little of this can turn a monotonous game exciting. When: Designing decision points where players pick between safety and risk. Why: Risk-reward choices create tension and make dull play more engaging.
+- [procedure] 1) Estimate each option's chance of success and its reward. 2) Multiply each reward by its chance to get expected values. 3) Adjust rewards so expected values match, so neither option is strictly better. 4) Test the estimates with prototypes. When: When designing or checking choices that trade speed or safety against reward. Why: Equal expected values make the choice a real decision rather than an obvious one; expected value reveals whether risky options are worth taking.
+- [tradeoff] Give the smallest, hardest-to-hit target the highest point value so that risk and reward pull the player toward it. When: when assigning point values to targets of different size and danger. Why: Higher reward for higher risk creates a meaningful choice between safe and risky targets.
+- [pitfall] In a format with stakes, a strategy that can hardly lose lets its owner play risk-free, distorting the format's incentives.
+
+## score metric balance
+- [model] In a two-player dice race, the score difference, which changes by at most the largest per-turn gap, can serve as a finite state machine giving exact win probability instead of a simulation estimate. When: Two players accumulate scores through random dice rolls with a fixed maximum per turn. Why: Tracking only the difference keeps the reachable state range small and predictable as turns pass.
+- [mechanism] When starting lives are few, an extra life is highly valuable, and a steady coin-based extra-life reward gives a low-level, continuous incentive. When: designing reward systems with limited lives. Why: Scarcity makes each life precious, and periodic rewards keep players motivated.
+- [heuristic] Sort by a balance value to group objects of similar power, with those far from the curve collecting at the top and bottom of the list.
+- [heuristic] Show scores against the player's own previous score and against others' scores through a high-score list and achievements. Why: Comparison gives each run a reference point.
+- [metric] Point values for asteroids were 20, 50 and 100 for large, medium and small, and 200 and 1,000 for large and small saucers. When: when setting point values for a tiered set of enemies. Why: Escalating values reward the harder, smaller targets.
+- [pitfall] A single scoring metric can silently favor one play style over another, leaving the other style's skill unrewarded. When: simple scoring based on total points.
+- [fact] Changing point values shifts what play is emphasized but does not change balance; board size and the number of distinct piece types do.
+- [fact] Running counts of random outcomes move toward their expected proportions over time, so displayed counts let players watch fairness emerge.
+
+## designed friction and fairness
+- [model] Conflicting card values can result from deliberate placement above or below the curve, colors that are not truly equivalent, or metagame factors such as rarity or synergy.
+- [mechanism] Games deliberately create challenge through friction built into the design.
+- [behavior] Most people avoid barriers and follow the crowd, which eventually means competing in the most crowded space.
+- [behavior] A creative technique found by players spreads quickly through the community and can force a design response. When: after release with a large player base.
+- [rule] Use intentional imbalance only when no player can do everything well, the balance curve is understood intuitively and mathematically, and enough options exist that counters exist without hard counters. When: Deciding whether a deliberate imbalance is justified. Why: These conditions keep imbalance purposeful rather than damaging.
+- [heuristic] Aim for repetition with variation: uniform escalation feels flat, while too little consistency feels like noise. When: tuning enemy difficulty. Why: Players need consistent rules to learn from, plus variation to stay engaged.
+- [fact] A card game can be intentionally unfair: seating order and a positive feedback loop create its fun, while players accept the obvious unfairness from the start. Why: The unfairness is visible and central to the design, so players accept it.
+
+## game scope and strategy
+- [definition] A quest objective is a special item that completes a mission when obtained, traded or handed over, and it may appear as a lasting object or a single-use one.
+- [heuristic] Adding an army to a smaller territory gives a larger gain in attacker win chance than adding the same army to a larger one. When: Deciding where to place reinforcements in a dice combat game. Why: The marginal effect of an extra army is bigger when the base is smaller.
+- [procedure] 1) List every square a player can end a turn on. 2) Remove squares that are only ladder bottoms or chute tops, since a turn never rests there. 3) Count the remaining squares as states. When: building a state machine for a track board with ladders and chutes. Why: transit-only squares add states that never hold a player.
+- [tradeoff] Quantitative design, which tunes games primarily from analytics, can produce dull designs and erode trust in designers' instincts, though handled well it reveals player behavior subtly. When: When relying on analytics to drive design decisions. Why: Metrics can flatten design intent and displace designer judgment.
+- [fact] A franchise license or a partner who trusts only certain people can be a barrier.
+- [fact] The quantity dial applies to resources, players, creatures and other components.
+- [fact] Real idle games have far richer cost and benefit systems than small spreadsheet models of the same genre.
+
+## situational shadow costs
+- [definition] A situational effect is a mechanic whose benefit changes with circumstances. Situational balance is the process of setting a fixed cost for it.
+- [rule] Include shadow costs when pricing options: hidden non-resource drawbacks behind listed prices, such as sunk costs and opportunity costs, or prices will seem arbitrary. When: pricing options where past investment or unused alternatives matter. Why: hidden costs make prices seem arbitrary to designers and players.
+- [heuristic] Cost a situational option by its benefit multiplied by its probability of use when the player cannot know the situation in advance. When: an option is only useful in some game situations and the player cannot foresee which. Why: the expected benefit reflects how often the option actually pays off.
+- [heuristic] Adjust a component's share of a combo's price for its side benefits and for any drawback that can hurt its own holder.
+- [procedure] 1) Estimate the probability-weighted expected value of the benefit. 2) For some effects, find the maximum and minimum possible value. 3) Set the fixed cost within that range. When: Setting a fixed cost for a situational effect before playtest data exists.
+- [metric] The strength of substitution between two goods indicates how efficiently one good replaces the other. When: Comparing two substitute goods.
+- [pitfall] Costing a symmetric effect by its average impact on the population ignores deck construction, which players control and which can make the effect far from even. When: Symmetric effects in games where players build their own decks. Why: Players choose deck contents knowing the effect, so population averages mislead.
+
+## statistics and averages
+- [behavior] In a dice track game the mean game length sits above the median and mode, because a few very long games pull the mean upward while barely moving the median or mode. When: interpreting average game length. Why: long-tail outcomes shift the mean but not the middle of the distribution.
+- [rule] Add occasional enemies with higher or lower hit points or strength so difficulty has peaks and valleys rather than uniform levels. Why: Uniform difficulty feels flat, and outliers break predictability in a useful way.
+- [heuristic] Where card equations disagree, identify the pattern most cards follow and treat the outliers with suspicion.
+- [procedure] 1) Test with hardcore players to set the high benchmark. 2) Test with novices to set the low benchmark. 3) Tune the variables to fall in the median between the two. When: Balancing a single difficulty for a target audience when multiple levels are impractical. Why: Balancing to the median serves the largest share of the audience.
+- [procedure] 1) Store the spinner weights in cells. 2) Make the Markov chain read those weights. 3) Adjust weights by hand or with a solver until the median game length is as close to a target as possible. When: tuning a random spinner to hit a target game length. Why: weights control the spread of outcomes, which sets the median.
+- [metric] The observed rate equals successes divided by trials, and with more trials it moves closer to the theoretical probability.
+- [pitfall] Unweighted win rate averages mislead when strong characters are picked more; the play-weighted average can sit below 50% even if few exceed it.
+
+## choice and restriction design
+- [rule] In real-time games, restrict overly powerful actions so they become a resource the player must manage.
+- [rule] Score restrictions such as Defender as a cost of about 1 point, not as a negative benefit. When: Abilities that limit what a card can do. Why: A restriction takes value away from the card, so it counts against it.
+- [heuristic] Judge each option by the roles it serves in each region, since an option can be useless in some regions yet essential in others.
+- [heuristic] Use restrictions to block game-breaking loopholes or imbalances that favor early actions.
+- [pitfall] Removing a rarely chosen option based only on telemetry can cut revenue, because that option may be shaping how players choose. Why: low choice share can hide a comparison effect.
+- [fact] As the curve moves, previously banned or disallowed options may become viable again.
+
+## collectibles and progression
+- [definition] COGS (cost of goods sold) is the per-unit cost to actually make the game.
+- [mechanism] A collectible that protects players from enemies and grants extra lives gains endogenous value, because both help players finish levels.
+- [mechanism] A small collectible gains value when it feeds into a long chain of rewards that ends in a major payoff. When: when designing collectibles or currencies. Why: Value is inherited from the rewards the collectible unlocks.
+- [mechanism] Chaining unlocks from coin totals to star doors ties collection to the highest rewards, encouraging precise play to gather every coin.
+- [procedure] 1) List every cost and benefit in the game. 2) Value resource costs, which may follow any numeric relationship the game needs. 3) Value the most common benefits, those on nearly everything. 4) Work progressively toward rarer, more complex costs and benefits. When: building a supporting math from scratch.
+- [procedure] 1) Build a column of sequential numbers. 2) Add a column multiplying them by a constant for a linear curve. 3) Add a column where each value is the previous times a fixed ratio for exponential growth. 4) Chart each column alone, then all together. When: Comparing linear, triangular and exponential growth before choosing a curve for a game value. Why: Graphing each curve separately and then together shows how their shapes differ.
+
+## combo and synergy design
+- [model] Early game favors negative feedback to keep the match open; late game switches to positive feedback for a final, irreversible win.
+- [mechanism] A score multiplier that rises with consecutive successful actions without failure rewards long-term survival and foresight over single large, often lucky, combos.
+- [mechanism] Completing any event adds bonus time to every open combo, regardless of event type, so one success keeps all chains alive.
+- [rule] Count the opportunity cost of the setup action a combo needs, and offset the situational benefit by it, since the combo is useless without that action.
+- [procedure] 1) Find the total power of the combo as a whole. 2) Price the combo as a whole. 3) Split that price across components according to their standalone usefulness outside the combo.
+- [fact] Combo-based designs appear as dual-wielding, support classes, card combos, and support towers.
+
+## difficulty and skill targeting
+- [definition] Virtual challenge is enemy power such as health, attack, or speed, or sheer numbers, and it forces the player to sustain strategy longer or with more precision. Why: Stronger or more numerous enemies raise required effort.
+- [mechanism] Doubling virtual skill, such as health or damage, improves win odds even for an unskilled player. When: power-based progression. Why: Power adds to outcomes independent of player decisions.
+- [rule] Choose a target skill level for balance and accept that other levels may have degenerate strategies.
+- [pitfall] If difficulty is not adjusted for players, complaints that the game is too hard follow.
+- [fact] The appropriate failure rate depends on the audience and game goals; there is no single universal target for difficulty. When: Setting difficulty for a PvE game. Why: Different audiences and genres have different expectations for how often players fail.
+- [fact] Solving hard technical problems, such as special algorithms, a distinct look and feel, or multiplayer server technology, is a barrier because rivals cannot easily replicate it.
+
+## game information and data
+- [model] In a realistic game, numbers stay muted and cluster around average values, with large deviations treated as notable exceptions.
+- [metric] R-squared measures how closely a trendline follows the data; the trendline with the highest R-squared fits best. When: comparing trendlines fitted to the same data.
+- [fact] When hands are hidden but production is public, attentive players can track much of the game state.
+- [fact] Players can reverse engineer a shipped game's numbers, but cannot recover the designers' route or reasons.
+- [fact] The mathematical structure of most games is now publicly documented, so solving numbers has value, but it works best alongside a target experience.
+- [fact] Community wikis, FAQs, and strategy guides often publish a game's underlying numbers in charts, which are useful for balance analysis.
+
+## late-game power dynamics
+- [mechanism] In PvE, a positive power loop can make the late game suddenly easy so players rush through it; changing the loop or adding content can fix this.
+- [mechanism] When bonuses are large, the attacker's advantage grows as the game goes on, which creates a positive feedback loop that pushes the game toward a close finish even under optimal play. When: Late-game conquest with large continent bonuses and growing armies. Why: Attacker advantage at scale compounds as armies accumulate.
+- [mechanism] Rewards that unlock later in a match are more impactful, because each later event changes the overall game state more. When: When designing escalating rewards tied to progress such as kill counts. Why: Later events shift the broader state more than early ones.
+- [behavior] Where total value can grow and corrective feedback pushes back on leaders, late-game gains can be large, players keep overtaking each other, and the ending becomes exciting. When: late phase of a growing-pie contest with corrective feedback.
+- [heuristic] Very large multipliers are best saved for late game, where they bring a likely-decided game to a satisfying end. When: designing strong multiplicative effects. Why: Late placement speeds a settled endgame and gives players a sense of epic victory.
+- [fact] Mostly negative-sum games can still have late positive-sum events, such as pawn promotion in chess-like games, that pull the game toward a close finish. When: late in a mostly negative-sum game.
+
+## turn order and multiplayer
+- [model] In free-for-all games, expected results can be based on average opponent rating, strongest opponent, weakest opponent, or a weighted mix. When: Free-for-all multiplayer rating. Why: Different reference opponents predict outcomes differently.
+- [behavior] A first-player or second-player advantage can differ by skill level, so win rates across many games at varied skill levels can reveal it, while optimal play may yield a draw. When: Judging which seat or side has an edge in a simple game. Why: Novices make mistakes that favor one seat, so results depend on skill.
+- [metric] In four-player free-for-alls, plain win rate averages 25%. Define a win as finishing above a chosen opponent or in the top two to restore a 50% average. When: Multiplayer matches with more than two players.
+- [tradeoff] Real-time fixed-price sales go first-come, first-served, while turn-based versions give the first player the first option. When: Choosing how a fixed-price sale resolves.
+- [fact] Skipping the starting player's first draw reduces the advantage of going first.
+- [fact] At top tournament level, moving first in chess gives a slight advantage whose cause, tactical, strategic or psychological, is not conclusively settled. When: top-level competitive play.
+
+## armor and defense stats
+- [mechanism] In one-on-one combat, a point of attack bonus raises hit chance by the same amount that a point of armor class lowers the opponent's hit chance. When: both sides need the same number of hits to win. Why: the outcome then depends only on relative hit chances.
+- [mechanism] Against N attackers, one point of armor class is worth about N points of attack bonus, because the character is attacked N times for each attack it makes. When: each enemy attacks once per round and the character attacks once per round.
+- [mechanism] Magical attacks that ignore armor bypass the armor reduction in the damage formula.
+- [pitfall] HP, Attack, and Defense are not fully equivalent, so conversions between them are approximations. When: using anchor conversions for balance. Why: Real combat effects depend on context beyond a single conversion rate.
+- [pitfall] Treating attack bonus and armor class as interchangeable ignores encounter structure, so their true relative value can differ between fights.
+
+## licensing and licensed products
+- [mechanism] Recognizable licensed brands can sell well regardless of gameplay quality, so licensing reduces publisher risk by relying on existing exposure. Why: Brand recognition drives purchase independent of how good the game is.
+- [mechanism] Licensors raise their prices as a game's profits grow, which can push publishers to invest in original intellectual property instead.
+- [heuristic] Treat a situational weakness as a negative value and weight it by its frequency, just like a benefit. When: The object is worse than baseline in some situations. Why: Liabilities affect expected value in the same way as benefits.
+- [metric] A large licensed title may cost hundreds of thousands of dollars for the licence plus a royalty of 1% to 10% of net revenue to the rights holder.
+- [pitfall] A licence may be unavailable or too expensive to justify, a common reason a licensed project gets rejected.
+
+## build and ability design
+- [model] Builds fall into four levels: optimal (best mathematically extractable), viable (playable throughout), marginally viable (winnable by skilled players), and nonviable (hopeless even for experts). When: Evaluating character build strength and balancing content.
+- [definition] A build is the full set of choices a player makes when creating a character, including class, equipment, skills, attributes, and other customization.
+- [mechanism] The gap between viable and optimal builds widens as characters level, because min-maxing players optimize every level gain. When: characters progress through levels. Why: Optimizers compound small advantages at each level.
+- [rule] Test combinations of abilities, not just single abilities, because a model that values abilities separately misses synergy that can make low-rated objects strong.
+
+## expansions and content updates
+- [heuristic] When an expansion adds mechanics, focus balance work on those new mechanics and on how they interact with existing ones.
+- [procedure] 1) Analyze a game's released content and derive a model relating cost to power and effect. 2) Create a new mechanic and estimate its cost from the model and intuition. 3) Design five to ten objects showcasing it. 4) Balance the objects with the model, playtest, and adjust both. When: designing an expansion for an existing game.
+- [tradeoff] Expansions drive purchases, but needing to keep buying to stay competitive can push away veteran players. When: Selling card expansions. Why: Forced spending erodes loyalty among experienced players.
+- [pitfall] If new expansion cards are balanced against an older power curve, most fall behind the strongest past cards, and the trend continues indefinitely. When: Designing new expansion sets. Why: New cards are compared to the wrong baseline.
+
+## game cloning and reverse engineering
+- [rule] Reuse a balanced game's numbers only when the new game is systemically the same, since a slight mechanical difference can silently invalidate copied numbers.
+- [rule] Before copying a balanced game's numbers, understand why its elements are balanced, so similar systems are built with intent.
+- [rule] Even when cloning, analyze balance with mathematics or other methods so the new game can be fixed if it breaks.
+- [fact] Cloned games often copy another game's economy exactly, changing only names and art.
+
+## gifting mechanics
+- [mechanism] Gifting of daily allocations the giver does not own drives retention: reciprocity means giving more tends to bring receiving more, prompting repeat sessions and invites. When: Free-to-play games with daily gift allowances that reward reciprocity. Why: Allocations are not owned, so gifting drives return visits and invites rather than economic exchange; reciprocation creates repeat sessions and retention.
+- [mechanism] Unlimited gifting of an essential limited resource lets players supply each other and avoid buying it, reducing monetization. When: A gifted resource is needed for most progression and is sold in the store. Why: Friends can cover each other's needs indefinitely without spending.
+- [mechanism] When a gifted resource is rare, players recruit real-world friends to join, and communities post invitation threads, so gifting spreads the game organically. When: Gifted items that are scarce or valued. Why: Scarcity makes players want more senders, which drives invitations.
+- [heuristic] A gift of powerful items to a low-level character can make it too strong; an item restriction such as a high level requirement lets it be held but not used until the character levels up. When: When players can transfer rich items to low-level characters.
+
+## input and automation
+- [heuristic] Analog stick and gyroscope responses rarely map linearly to perceived force, so tune the response curve to match what players feel. When: Designing analog or gyroscope controls. Why: Intended movement and perceived intensity relate non-linearly.
+- [heuristic] Push AI time budgets close to the frame limit, and prefer a consistently long component over one whose cost fluctuates.
+- [pitfall] Automating a task can remove tedium but also remove meaningful decisions, so check that the removed input is not a meaningful choice before automating. When: Before automating a task.
+- [fact] AI typically receives about 5–25% of processor time, and can exceed 50% when graphics work moves to the graphics card. Why: AI shares the frame budget with graphics, physics and other systems.
+
+## transition matrices
+- [definition] In a transition matrix, columns represent the current state and rows represent the next state, so each entry gives the probability of moving from the column state to the row state. When: constructing or reading a Markov transition matrix. Why: this layout makes each column a distribution over next states.
+- [rule] Check that each column of a transition matrix sums to 1 before running a Markov chain; a missing entry can be found from the others. When: validating or building a transition matrix. Why: each column is a probability distribution over next states, so a sum other than 1 breaks the chain.
+- [fact] A board-game transition matrix over squares is sparse: each state reaches at most six next states with probability 1/6 each for a six-sided die. When: building a transition matrix for a die-driven track. Why: a single die roll limits reachable squares to six.
+
+## game feel and movement
+- [mechanism] Gravity and jump force are counterparts; together they set the feel of a jump, so tuning one changes how the other reads.
+- [fact] Juice does not change game systems, yet players perceive balance through it, so it still shapes the experience. Why: Perceived balance depends on feedback, not only on numbers.
+
+## spender concentration
+- [heuristic] Check whether revenue comes from many small spenders or a few large ones.

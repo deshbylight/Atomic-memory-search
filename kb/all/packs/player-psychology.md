@@ -1,0 +1,2092 @@
+# player-psychology
+
+## attention and cognitive limits
+- [model] Fitts's law predicts time to reach a target from its distance from the start point and its size; larger, closer targets are faster to hit. When: Placing buttons, cursor targets and touch controls. Why: Movement cost grows with distance and shrinks with target size. (x2)
+- [model] Executive control is subtracted from resources first, then the remainder is split between tasks, so split attention is slower than sequence when one task is demanding; undemanding pairs are fine. When: when at least one task is demanding. Why: both tasks compete for limited working memory resources.
+- [model] A user's mental model is their picture of how a system works, while the system image is how it actually behaves; usability errors arise when these differ.
+- [model] The Model Human Processor splits human interaction into perceptual, cognitive and motor processors, each with a cycle time.
+- [model] Signal Detection Theory treats player decisions as made under uncertainty, with the relevant cue hidden among noise; designers can tune how easily cues are detected.
+- [model] Information processing starts with perceiving an input and ends with a change in memory through synaptic modifications.
+- [model] The dual-process model has two modes: System 1 is fast, instinctive and emotional; System 2 is slow, deliberate, logical and handles effortful work.
+- [model] Attention varies along two axes: active or passive, driven by a goal or by the environment; and focused on one element or divided across several.
+- [model] The brain turns sensory input into stored memories via perception, working memory, attention, motivation and emotion; it is a simplified map. Why: The brain is still largely unexplained, so the map is simplified, not literal architecture.
+- [definition] The cocktail party effect is the ability to tune in one conversation among many talking at once, filtering out the others. When: noisy environments with several sources. Why: focused attention selects one source. (x2)
+- [definition] The Gulf of Execution is the gap between what a user intends and the physical action an input device requires.
+- [definition] Memorability is how easily players regain proficiency after a break from the game.
+- [definition] Diverse redundancy delivers the same information through different forms or channels, such as dialogue, animation, level visuals and HUD markers, rather than repeating one form.
+- [definition] The attention economy is the competition among companies for users' time across streaming, social media, games and media outlets, made constant by smartphones.
+- [definition] Focus is selective attention that ignores some inputs and concentrates on others, and it leads to the flow state.
+- [definition] The corpus callosum is a large nerve pathway connecting the two brain hemispheres so they can share information.
+- [definition] Sensation is the physical stage where sensory receptors respond to energy emitted or reflected by objects.
+- [definition] Cognition gives access to semantics, the meaning attached to what is perceived.
+- [definition] Active attention is top-down and controlled, aimed deliberately at a goal.
+- [definition] Passive attention is bottom-up, captured by an environmental stimulus that triggers a response.
+- [definition] Focused attention works like a spotlight that selects one element and leaves the rest largely unprocessed.
+- [definition] Divided attention, often called multitasking, means simultaneously processing several items.
+- [definition] Cognitive psychology (the cognitive paradigm) studies the mind's inner processes, including perception, attention, memory, motivation and emotion.
+- [definition] Attention picks out a small share of incoming signals for further processing, leaving most other input largely unprocessed.
+- [definition] Active (top-down) attention is deliberately directed by the person toward a goal, such as reading carefully.
+- [definition] Passive (bottom-up) attention is pulled toward something by the environment, such as a sudden question or noise.
+- [definition] Selective attention filters out irrelevant input so that one stream, such as one speaker in a noisy room, can be followed.
+- [definition] Cognitive load is the mental effort demanded when information is excessive or a task is highly demanding.
+- [definition] Sensation is the raw input received by receptor cells.
+- [definition] Behaviorism studies observable behavior rather than inner states.
+- [mechanism] Attention strongly affects working memory and learning, so unattended information is poorly learned, and motivation and emotion in turn shape attention. Why: Working memory depends on attentional resources. (x2)
+- [mechanism] Learning is hindered when task demands, or the attention they require, exceed working memory limits, so onboarding must be designed carefully. When: Designing tutorials and onboarding. Why: Working memory is limited, so overloaded learners retain less.
+- [mechanism] Attention determines what is perceived and how deeply it is processed, and the attention paid to a stimulus largely sets how strong its later memory is.
+- [mechanism] Attention and emotion during processing set learning quality; environmental factors such as noise and information organization affect them, and attention's impact on learning makes it key to user experience.
+- [mechanism] AR raises cognitive load because users must attend to the digital overlay and the real world at the same time.
+- [mechanism] Cognitive load theory predicts that heavy load hinders learning, unfamiliar tasks need more resources, and people multitask poorly while mostly unaware of it.
+- [mechanism] The processors run concurrently and feed one another, so new input can be perceived while earlier input is still being acted on.
+- [mechanism] A sensory substitution device helps the user perceive only when the user controls its input, and passive exposure gives no useful perception. Why: Active control turns the device's signal into meaningful information.
+- [mechanism] Two stimuli falling within the same perceptual cycle are fused, much as animation frames fuse into continuous motion.
+- [mechanism] When attention is divided between two language-based tasks, people switch back and forth between sources and fill gaps, creating a processing bottleneck.
+- [mechanism] The heavier a task loads working memory, the more attention it needs, and the more disruptive distraction becomes.
+- [mechanism] Multitasking costs more than the sum of its separate tasks, because executive control is needed to coordinate them; this is called underadditivity.
+- [mechanism] Higher working memory load increases inattentional blindness; more inputs and complex information leave less attention for new or surprising events.
+- [mechanism] A new skill takes nearly all attentional resources, so doing anything else at the same time becomes very difficult. When: while a skill is still new.
+- [mechanism] With enough practice a task becomes automatic, handled by fast intuitive processing that needs little attention and almost no executive control.
+- [mechanism] Executive control must inhibit the automatic response to a word before the target feature, such as ink color, can be detected and named. When: conflicting distractor present. Why: automatic reading competes with the task.
+- [mechanism] Multitasking is mostly rapid task switching that works only for automatic, undemanding tasks; efficient multitasking is largely a myth, and lost efficiency often goes unnoticed.
+- [mechanism] Signals flow from the amygdala to the cortex more strongly than the reverse, so fear can persist even when the threat is known to be fictional.
+- [mechanism] The limbic system regulates cortical areas, changing how broadly attention spreads and where it is directed.
+- [mechanism] Attention filters inputs, selecting some and dropping others, so players can miss important elements that are outside their focus, a effect called inattentional blindness.
+- [mechanism] Overly complex or poorly understood rules demand more from players and reduce meaningful choice and the sense of control.
+- [mechanism] Familiar, automatic activities need fewer attentional resources, freeing capacity for other tasks such as navigation. When: Once a skill has become automatic.
+- [mechanism] The amygdala and hippocampus identify a situation, compare it to stored events, and help store the new experience.
+- [behavior] Adding detailed art to a working graybox level can make puzzles unreadable, routes hard to find and enemies hard to spot, even though the mechanics are unchanged. When: When replacing gray shapes with final art. Why: Art adds shapes and colors with no mechanical meaning, which the player must mentally filter out.
+- [behavior] A distinct alert sound can trigger a rise in awareness and a fight-or-flight reaction in players. When: A game signals that an enemy has noticed the player. Why: The sound is learned as a threat cue through repeated pairing.
+- [behavior] Players must inhibit a trained reflex to shoot red targets when red elements such as teammates appear, a Stroop-like effect that may slow detection of enemies. When: red-coded allies and enemies share a colour. Why: Trained shooting reflexes conflict with the colour cue.
+- [behavior] Players give more attention and cognitive resources to things they care about once they understand why those things matter. When: Presenting goals or challenges. Why: Understanding value directs attention and working memory.
+- [behavior] Players of multiplayer shooters at home keep their attention in the arena, so these games function as arena play despite the home setting. When: multiplayer first-person shooters played at home. Why: Attention is focused on the competitive arena.
+- [behavior] Audiences assume characters from the same franchise share one world, even when creators never planned that connection. When: Multiple characters appear under one franchise.
+- [behavior] All five experiences are present to some degree at any moment, and one may come to the forefront, such as frustration or a well-timed satisfying hit. When: during play.
+- [behavior] Players think in terms of their avatar's abilities and constraints, so a new ability changes which parts of the world are reachable while the world itself stays the same.
+- [behavior] Players at very low health treat a nearby health pack as the top priority, and their attention narrows so that every motion of the game feels more heightened. When: when the player's health is very low and a health pickup is nearby. Why: Leaving the pickup to an opponent costs the player a valuable resource, so everything else matters less until it is collected.
+- [behavior] A player carrying a flag avoids fights and heads straight for their base, and movement feels slower and more urgent. When: when a player holds an objective object that must be returned to a base. Why: Carrying the object makes it the focus of all action in the space.
+- [behavior] Distraction usually erases a briefly held code, such as an eight-digit two-factor code, except perhaps its first and last digits. When: a player must hold information while distracted. Why: distraction disrupts short-term storage.
+- [behavior] People counting a target action often miss an unexpected figure walking through the scene; about half of viewers did in one study. When: attention focused on counting a target. Why: focused attention filters out unexpected events.
+- [behavior] AR players must divide attention between the real environment and virtual elements at once, which raises cognitive load. When: When AR content is shown while players move through the real world. Why: Multitasking between real and virtual information costs attention.
+- [behavior] When tasks are demanding or new, dividing attention takes longer and produces more errors. When: When multitasking on demanding or unfamiliar tasks. Why: Working memory cannot handle the switching load.
+- [behavior] Players following an established plan keep decision pace low, but a change in circumstances sharply raises it as they re-plan. When: an event invalidates or redirects the plan the player is following. Why: A changed circumstance forces new decisions into a short interval.
+- [behavior] Skill raises how much information a player can absorb, so one information density bores experts while overwhelming novices. When: setting the information density of a game for a mixed audience. Why: Experts process a game much faster than novices.
+- [behavior] Anger, fear, and intense focus inhibit creative association, so creative breakthroughs need relaxation. When: When seeking insight on a design problem. Why: Stress and focus reduce the flow of associative thinking.
+- [rule] Respect brain capabilities and limits and system limits; plan onboarding, feedback and interface load around perception, memory and attention limits. Why: Acknowledging cognitive limitations is the first step to overcoming them in design and decision making; UX guidelines rest on these capabilities.
+- [rule] Direct players to the information that matters while keeping their cognitive load low.
+- [rule] Reduce cognitive load for anything not meant to be challenging, so irrelevant information does not demand attention or memory. When: Designing HUD, menus and secondary information. Why: Limited working memory and attention are wasted on irrelevant demands, hindering learning and flow.
+- [rule] Reduce player memory load with relevant, contextual information in the HUD and interface, so the game does not depend on recall.
+- [rule] Manage cognitive load and verify, via a player action, that key details were noticed, rather than blaming players for missing something merely shown on screen.
+- [rule] Plan for players to miss signals by sending important messages several times rather than forcing attention through camera control or interrupting dialogue. Why: Forced observation breaks flow and immersion and creates new problems.
+- [rule] Where possible, direct the limited attentional resource to a single task rather than splitting it. Why: Focusing on one task is the ideal condition for performance.
+- [rule] Avoid multitasking during tasks that need undivided attention, such as operating a vehicle.
+- [rule] Keep teaching within the player's cognitive load, the mental effort needed to understand something, so players are not asked to learn too much at once.
+- [heuristic] Reduce chaos by presenting new enemies clearly and keeping enemy behavior simple and easy to read. When: Combat has many combatants or offscreen causes.
+- [heuristic] Let players perceive their immediate next goal from the environment rather than relying on walls of text. Why: Players perceive environmental cues directly, while text is a weak substitute.
+- [heuristic] Detail that looks strong in a still image often blurs into noise in fast play with many entities, so artists and designers should balance detail against the cues needed to read the scene. When: Designing art for crowded, fast-moving scenes. Why: Still renders show detail that players cannot resolve during motion.
+- [heuristic] Keep both mind and hands engaged; unthinking menial tasks let attention wander, and idle thinking makes hands fidget.
+- [heuristic] Silence notifications and other distractions when a task needs sustained attention, since distraction reduces work quality. When: tasks requiring concentration.
+- [heuristic] Use biological explanations for fast, automatic responses such as fight-or-flight arousal, not for complex deliberate decisions. When: explaining player reactions. Why: biology explains automatic responses far better than complex choices.
+- [heuristic] Automatic emotional responses help in immediate danger but can be wrong when the threat is a false alarm. When: immediate danger is perceived. Why: speed is valued over accuracy in automatic responses.
+- [metric] Ten one-hour sessions over ten days of action shooter play improved visual attention, such as tracking multiple moving elements, compared with a puzzle-game control group. When: adult non-gamers.
+- [metric] Fifty hours over nine weeks of action games improved contrast sensitivity compared with a control group playing a life simulation game.
+- [metric] In one study, 63% of participants primed with rude words interrupted a conversation, against 17% primed with polite words.
+- [tradeoff] Fast-paced games are feared to weaken attention, yet robust training studies show action games, mostly shooters, lastingly improve visual acuity, visual attention and spatial cognition, mostly via near transfer.
+- [pitfall] Dividing attention across several tasks (multitasking) lowers performance on each and hurts learning, since attention is a finite, scarce resource. When: When trying to do several tasks at once, especially during onboarding and when teaching important content. Why: Attention is limited and must be shared among tasks. (x2)
+- [pitfall] Assuming players reliably perceive, remember and retain every game element or lesson, even when well designed, ignores known limits of attention and memory.
+- [pitfall] Many game menus and HUDs ignore proximity, which adds friction when players first encounter them. When: Designing menus and HUDs. Why: Players rely on grouping cues to parse unfamiliar layouts.
+- [pitfall] Flooding players with information, such as too many tips on a loading screen, overwhelms them and reduces retention. When: Presenting tips and instructions. Why: Excess information competes for limited attention.
+- [pitfall] A mental model alone is rigid and misses the player's emotional relationship to the world, such as a feeling of open space or loneliness.
+- [pitfall] Assuming developer intent, implementation and player experience line up overlooks that the gap between them can be large.
+- [pitfall] Exploiting users' cognitive limits to maximize revenue at their expense is the opposite of the UX purpose.
+- [pitfall] If the computer behaves in ways that do not match the designer's mental model of the system, the designer may become frustrated or confused.
+- [pitfall] Making one signal louder in an already crowded scene overloads the player further rather than helping them notice it. When: a key signal is being missed in a busy scene. Why: Added volume increases total density, adding to the overload.
+- [pitfall] Assuming players who share a space will mingle; if they cannot find people they want to talk to, they quickly leave.
+- [pitfall] Treat 240 ms as a typical value, not a fixed limit, since the ranges around each processor's time are wide.
+- [pitfall] People often cannot accurately explain why they feel as they do, so introspective survey answers are unreliable. When: Interpreting survey answers about motives. Why: Self-reported reasons may not match actual causes.
+- [pitfall] Constant internal questioning during an experience is the most common cause of disrupting it, so observation should avoid long analysis. When: Self-observing during play. Why: Too many questions in the mind spoil the experience being observed.
+- [pitfall] Trying to boost creativity by stimulating one hemisphere is practically impossible in healthy people and would not help anyway.
+- [pitfall] Romanticizing or dismissing a person based on a left-brained or right-brained label has no scientific basis.
+- [pitfall] Assuming deliberate thinking always catches intuitive errors made by fast thinking.
+- [pitfall] People assume they multitask well and are often unaware of how poorly they do it.
+- [pitfall] Overloaded players may feel overwhelmed and also fail to learn the mechanics and systems being taught.
+- [pitfall] Automatic skill does not make players immune to distraction; reactions to unexpected events slow when attention is elsewhere.
+- [pitfall] Assuming that what players learn in a game will transfer automatically to other contexts.
+- [fact] Attentional resources are scarce and very restricted, performance is best when full attention goes to one task, and people are mostly unaware of those limits.
+- [fact] The brain reorganizes itself, as when learning an instrument or recovering from injury; this is real learning potential, not a hidden reserve of unused capacity.
+- [fact] Hick-Hyman reaction time for a decision grows logarithmically with the number of displayed options.
+- [fact] Noise arises from layers of aesthetic detail, signals that demand too much skill to read, and signals packed too closely together.
+- [fact] Attention is focused or divided, filters inputs, can cause inattentional blindness, and runs on finite resources.
+- [fact] Attention cannot efficiently cover several elements at once, which is the main limit on what players can take in.
+- [fact] Behaviorism ignores unobservable factors such as attention and memory and overlooks side effects.
+- [fact] Human minds did not evolve to grasp this kind of complexity. Why: cognition evolved for simpler environments.
+- [fact] What a person focuses on at any moment is a blend of unconscious desires and conscious will.
+- [fact] Perception is subjective, memory fades, and attentional resources are scarce.
+- [fact] Behaviorism studied only measurable behavior with repeatable experiments and won the early psychology split, while introspection examining experience as it occurs could not be reliably measured, leaving psychology to avoid subjective experience. Why: Scientific verification standards push psychology away from the nature of experience.
+- [fact] Gameplay rests on four mental abilities: modeling, focus, imagination, and empathy. Why: These are the working tools a player brings to any game.
+- [fact] Most of what happens in the brain is hidden from conscious awareness, yet it steers much of what people perceive, say, and do. Why: Game experiences happen largely in this hidden layer.
+- [fact] Recent studies show health benefits of mental exercise, especially for older adults.
+- [fact] Attention has never been especially strong and varies with task complexity, familiarity, motivation and the environment; it is not notably worse today than before. Why: Survival logic makes attention shift to threats and important cues.
+- [fact] The brain is not pre-wired; it is plastic, and experiences such as games, language, discussions and sports shape it throughout life, with plasticity decreasing with age. Why: Learning changes synaptic connections, so every experience leaves an effect.
+- [fact] The brain uses about 20% of the body's energy while being about 2% of body weight, and it can tolerate only a limited workload. Why: Limited capacity makes unnecessary mental effort costly for players.
+- [fact] Describing the brain as processing information is a simplification, because the brain does not work like a computer.
+- [fact] Although the hemispheres differ in some specializations, for any given activity both cooperate rather than one doing the work alone.
+- [fact] The left hemisphere is relatively better at generating words and applying grammar, while the right is relatively better at analyzing speech intonation.
+- [fact] No scientific evidence shows that either brain hemisphere specializes in creative or logical processing.
+- [fact] No scientific evidence shows that women multitask better than men.
+- [fact] Neurological differences cannot be reliably linked to cognitive or behavioral differences.
+- [fact] The dual-system approach is criticized for lacking nuance.
+- [fact] People recognize a word faster when a semantically related word was just shown, as in lexical decision tasks.
+- [fact] Masked priming, where the prime is too brief to be consciously seen, is the best-validated subliminal effect but has very limited influence.
+- [fact] Attention is essential for noticing changes but is not always sufficient.
+- [fact] Attention is tied to engagement, a central concept in video game design.
+- [fact] Running a language task alongside another task can cut its brain activation by more than half.
+- [fact] Some situations require inhibiting automatic emotional responses, since an instant reaction can create new danger. When: an automatic reaction would cause harm elsewhere.
+- [fact] The brain does not literally process, encode, or store information the way a computer does; the computer metaphor is useful but inaccurate.
+- [fact] The brain is malleable, so every interaction with the environment can rewire it, not only interactions with games.
+- [fact] The left-brain versus right-brain split is wrong, since both hemispheres collaborate on nearly any activity.
+- [fact] Adolescent media multitasking is linked to poorer working memory, weaker achievement, and reduced growth mindset.
+- [fact] Bare skin, attractive faces and alluring expressions capture attention, since human biology is tuned to notice them.
+- [fact] Games that are limitlessly deep often become multiplayer because a person can learn any game system but can never fully understand another human mind.
+- [fact] Players rarely miss signals because they are too quiet; they miss them because overall signal density overwhelms their perception. When: a player fails to notice important information. Why: Perception capacity is limited, so extra signals become noise.
+
+## motivation and needs
+- [model] Self-determination theory holds that competence (feeling good at something), autonomy and relatedness are innate needs; satisfying them makes games engaging and intrinsically motivating, while thwarting them undermines intrinsic motivation. (x3)
+- [model] Maslow's hierarchy ranks five need levels as a pyramid: physiological (food, shelter, warmth), safety, belonging, esteem, and self-actualization (pursuing one's talents). (x3)
+- [model] Four interacting motivation types: implicit biology-based drives, environment-shaped learned drives, intrinsic cognitive-need drives, and personality-based individual needs, which together shape motivation.
+- [model] The Gamer Motivation Model, built from over 250,000 gamers, has six clusters: Action, Social, Mastery, Achievement, Immersion and Creativity, containing 12 distinct motivations.
+- [model] The PENS model of player motivation is based on self-determination theory.
+- [model] Each intrinsic motivator pairs with a matching loop and reward: agency with stat gain, mastery with difficulty, curiosity with discovery, closure with accomplishment, expression with cosmetics, connection with guilds, superiority with leaderboards, community with influence. When: Designing progression around player motivations. Why: Linking each motivator to a fitting loop keeps progression tied to what players already enjoy.
+- [model] Motivations can be plotted on a matrix with internal versus external on one axis and 'hafta' versus 'wanna' on the other.
+- [model] The motivation pillar blends inner drives such as mastery, self-direction and social connection with outer incentives: clear goals on short, medium and long timescales that carry meaningful rewards.
+- [model] The same contest is skill-based for participants and random for spectators, so whether it is luck depends on the observer's role. When: Judging whether an activity is luck or skill. Why: Participants control outcomes while spectators do not, so each sees different uncertainty.
+- [model] Player ethics commitments cover inclusion, dark patterns, safety, children, localization, environment, and AI transparency.
+- [definition] Relatedness is the need to feel affiliated, connected and belonging with others, through reciprocal care, such as being part of a supportive team. (x2)
+- [definition] Autonomy is the sense of meaningful choice, volition, self-expression venues, and control over how a task is done, with clear systems letting players feel in control of their fate.
+- [definition] Meaning is a sense of purpose, value and impact, extending beyond the self, behind player actions; players engage when they understand why something matters, which enhances motivation.
+- [definition] Achievers want to win and build the most powerful character possible, collecting rare loot and topping player-versus-player rankings.
+- [definition] Socializers play for other players through conversation or role-play and may care more about appearance than stats.
+- [definition] Possibility is the pleasure of many choices, as at shopping or buffet tables.
+- [definition] The lusory attitude is a player's voluntary acceptance of rules that require less efficient means to reach an end.
+- [definition] Ludus is rule-based play and paida is free-form improvisational play; they modify the four play types.
+- [definition] Motivation is the mechanism that makes trivial game activities feel important to players, even though they never forget the activity is only a game.
+- [definition] Pleasure seeking drives play through rewards such as collecting or scoring, while pain avoidance drives play through escaping enemies or avoiding failure.
+- [definition] A 'hafta' activity is done to avoid penalties such as fines, while a 'wanna' activity is done voluntarily with no penalty for skipping it.
+- [definition] Implicit motivation consists of spontaneous physiological processes, such as hormone release, that maintain homeostasis and cannot be directly controlled.
+- [definition] The power motive is an implicit drive to dominate or influence others.
+- [definition] The affiliation motive is an implicit drive toward close, harmonious relationships with others.
+- [definition] The achievement motive is an implicit drive to improve at a task.
+- [definition] Hunger is the belief that work can always be better, paired with a drive to keep improving regardless of outside standards or expectations.
+- [definition] Player experience goals describe the situations and feelings players should have, rather than the features that create them.
+- [mechanism] Rewards added to enjoyed activities may weaken intrinsic motivation (overjustification effect); this is strongest when rewards feel external or are later removed, which reduces future play and misattributes motives. When: when rewards are added to or removed from activities players already enjoy. Why: External rewards displace the internal reason for the behavior, reframing it as external. (x2)
+- [mechanism] Forced activity with weak rewards extends play briefly but causes resentment, and players who feel held hostage leave bitter and lose interest in sequels.
+- [mechanism] The more an incentive controls a person, the more it tends to undermine intrinsic motivation.
+- [mechanism] Clear goals and rewards let players plan a strategy, such as building strength before attempting a harder challenge.
+- [mechanism] Insulting people to push them harder produces anger, which destroys creative capacity, and continued mistreatment produces helplessness that stops emotional investment in good work. When: When leaders use insults or harsh treatment to drive output. Why: Anger and helplessness consume the energy and openness creative work needs.
+- [behavior] Players who set their own goals or subgoals feel accomplishment beyond in-game rewards, even when the main goal is out of reach, since success they define feels earned. When: games offering open-ended personal goals or when the main goal is out of reach. Why: Self-made targets still give progress.
+- [behavior] When conscious and subconscious motivations align, a creator works with more passion, focus, and intensity. When: after identifying a personal theme. Why: Conscious and subconscious drives point the same way.
+- [behavior] Telling players their goal steers their attention and can make them miss details, such as hunting for a named villain. When: at the start of a playtest.
+- [behavior] Players may ignore objectives and chase kills when kills are tracked persistently and feel more rewarding than objective progress. When: objective modes that track individual kills. Why: Kills are more gratifying to watch than the team score.
+- [behavior] Players who want to look after a group will take a station that offers the best view, control of pace, and turn-sharing, then invest in using it well. When: group play where one station can steer or direct the others. Why: The role gives them a stake in how the group's experience goes.
+- [behavior] Motivation is driven by wanting, and liking can sustain it, with liking often occurring unconsciously without a conscious feeling of pleasure.
+- [behavior] People differ in implicit drives such as power, achievement, and affiliation, which change how strongly they want to dominate, improve, or connect. When: Designing for varied players. Why: Designer motives can bias a game toward some players and away from others.
+- [behavior] Puzzles are fun when they are novel, neither too easy nor too hard, and require a shift in perception.
+- [behavior] Uncertainty about the result is a key motivator that keeps players engaged.
+- [behavior] Players invent their own goals, such as racing to finish a stage within a time limit, and compete with others over them.
+- [behavior] People visit museum-like venues to escape daily routine, see exotic things, expand knowledge, and return with a new perspective.
+- [behavior] Score-chasing motivation tends to appear only after players finish all content, and very difficult games rarely let players reach it.
+- [behavior] Many players say they enjoy games because they like solving problems, a strength humans may have evolved for survival. When: when players explain why they enjoy a game. Why: Human problem solving is a strong capacity, possibly shaped by survival.
+- [behavior] A repetitive task can feel like play when the worker pursues a personal goal, such as beating their own best time. When: when a worker performs monotonous, repeated tasks. Why: A self-set goal changes the reason for acting, from pay alone to a personal challenge.
+- [behavior] Once a simple goal is set in a player's mind, it gives strong motivation to pursue it. When: after the goal is clear to players. Why: A simply stated goal is easier to visualize.
+- [behavior] People who act out high or low status behaviors soon feel superior or inferior and unconsciously adopt matching behaviors. When: During role-played status exchanges. Why: Body behavior feeds back into how a person feels about their own standing.
+- [behavior] Owning most of a set of linked items increases demand for the remaining items in that set. When: Items award bonuses for grouping. Why: Completing a set becomes more valuable as the group nears completion.
+- [behavior] A slow player who sees their pace speeding up stays motivated, while a fast player who sees pace slowing must decide whether to continue or switch loops. When: when progress velocity changes during play. Why: Rising acceleration reinforces effort, while falling pace prompts reassessment of the current activity.
+- [behavior] People with a strong achievement motive tend to prefer challenging tasks. When: choosing between tasks of different difficulty. Why: their drive is to improve, which challenge supports.
+- [behavior] Learners engage deeply when they do real, meaningful work such as a collaborative scientific study, rather than earning rewards for a chore. When: when choosing between real work and reward-driven tasks. Why: Meaningful work sustains engagement better than extrinsic rewards.
+- [behavior] When characters choose their own actions without instructions, players feel both responsibility for and surprise at the results. When: a free-will option lets characters act unprompted. Why: players cause the situation but do not fully control its outcome.
+- [behavior] The more freedom players have had during a game, the more likely they are to reject a narrow final outcome. When: Player has had extensive agency.
+- [behavior] Play becomes extrinsic when it is done for pay or to please someone else.
+- [behavior] Friends often agree to play casually, lowering skill intensity so the social experience can take priority. When: When a group wants social enjoyment over competitive intensity. Why: Lower skill intensity makes room for the social experience they want.
+- [behavior] Players enjoy repeating actions such as building, defeating enemies, or decorating, because each repetition produces a new outcome shaped by their decisions. When: a mechanic recurs many times. Why: The same tool yields different experiences as the player's choices and the situation change.
+- [behavior] Players of goal-free games invent their own objectives, such as maximizing a resource or pushing a physical skill further, and treat those objectives as the game. When: a game has no official win or lose conditions. Why: players seek challenge and visible progress, so they create it when the game does not supply it.
+- [behavior] Players feel pleasure when well-honed tactical skill lets them foresee outcomes.
+- [behavior] Player-defined tasks, such as buying a round of drinks for others, can yield social rewards.
+- [rule] Write survey and interview questions carefully and neutrally, since leading questions bias answers. When: When writing questions for playtest surveys or interviews.
+- [rule] Meet basic needs such as food, safety, and healthy relationships before creative work, and curb dangerous appetites rather than feeding them. When: when creative work stalls due to strong cravings or personal troubles. Why: strong appetites and troubles make the subconscious obsess and block creative work; fed appetites grow.
+- [rule] Show players their wins, losses and win percentage at the start of each game, so they see an accurate picture of their performance.
+- [rule] Extrinsic rewards are effective when they contribute to competence, autonomy, and relatedness.
+- [rule] In games, make the protagonist's goal the player's goal so it drives movement through the content. Why: A shared goal gives the player a reason to progress.
+- [rule] Recurring daily or weekly tasks paying out in-game currency can nudge players to log in regularly.
+- [rule] Prioritize players' best interests, including respect for their time and money, and define ethical lines for design.
+- [rule] Aim for a combination of core pleasures that complement each other and are clearly apparent to players, rather than including every type of challenge or play. When: selecting which pleasures a game should offer. Why: Cramming many pleasures dilutes each one and muddles the experience.
+- [rule] Pair motivation mechanisms with fulfilling experiences, since motivation alone can keep players playing without giving them anything they enjoy. When: designing reward and retention systems. Why: Motivation without fulfillment risks compulsive engagement without satisfaction.
+- [heuristic] Players given too much open freedom feel frustrated; short lists are easier to decide from. Autonomy must be guided, since confused players feel neither autonomous nor competent. When: when offering open-ended options to players. Why: Open freedom forces hard imaginative work. (x2)
+- [heuristic] Players pursue their own goals, such as fun or exploration, and may ignore scripted goals; consider their true motivation, not only the goal the game sets. When: A scripted goal conflicts with what players want to do.
+- [heuristic] Check that your motivation comes from your own purpose rather than habit or outside pressure.
+- [heuristic] Achievement and mastery in games correspond to the self-esteem level of the hierarchy, which many game activities provide.
+- [heuristic] Activities that connect players with others serve the belonging level, while letting players build and express themselves serves the higher levels. When: analyzing which needs a game's activities meet.
+- [heuristic] Psychological research on motivation closely matches what game designers need, so it is a valuable complement to design instinct.
+- [heuristic] Match fantasy powers to the emotional needs of the target audience, such as power over others for players who feel misunderstood. When: Designing a power fantasy for a specific audience. Why: Powers that address a felt need attract that audience.
+- [heuristic] Satisfying the needs for competence, autonomy and relatedness makes tasks feel intrinsically rewarding, per self-determination theory.
+- [heuristic] The strongest novelty changes how players see a familiar world, rather than only adding new content to it.
+- [procedure] 1) List every motivation players have for playing the game. 2) Sort motivations by how internal or external they are. 3) Separate pleasure-seeking motivations from pain-avoiding ones. 4) Identify motivations that reinforce each other. 5) Identify motivations that conflict. When: when analyzing what drives players in a game.
+- [procedure] 1) Choose a target player type and genre. 2) Answer the world-construction questions: how many interesting things to see; whether challenges are immediate or need practice; what action obstacles call for; whether other players are allies or obstacles; whether actions affect a larger narrative; what rules discourage bad behavior. 3) Use the answers as layout guidelines.
+- [procedure] 1) List the pleasures your game gives players and judge whether each can be improved. 2) List pleasures it lacks, find why, and decide whether to add them. 3) Check known pleasure lists against the game. 4) Look for unique, unclassified pleasures that could make the game stand out. When: Evaluating a game's pleasure design. Why: Comparing against known pleasures reveals gaps, and unclassified pleasures can give the game its distinct quality.
+- [metric] Motivation depends on the reward value of a behavior for a need and on the probability of obtaining that reward. When: Estimating how strongly a player will pursue a reward-producing action. Why: Hull's 1943 account ties motivation to both value and probability.
+- [tradeoff] Unmet lower needs pull attention down, so meet them before higher needs motivate; but the order is not strict, and players may pursue higher needs while lower ones stay unmet. When: when reasoning about the order of player needs. Why: Needs are ordered, so lower needs take priority; critics find fixed hierarchies too rigid. (x3)
+- [tradeoff] Pleasure theory says people pursue what feels good, with dopamine carrying pleasure; but wanting and liking can split, so players may want what they do not enjoy. When: analyzing why players keep playing. Why: Motivation and enjoyment are distinct systems.
+- [tradeoff] Awarding points for merely participating encourages attendance, but it weakens the link between points and performance. When: when designing a points system for events.
+- [pitfall] Taking players' stated requests at face value can miss what would actually satisfy them. When: Interpreting player feedback about what they want. Why: Audiences often ask for one thing while seeking another, and hidden desires may go unnoticed.
+- [pitfall] Obligations added gradually can slowly turn an activity players want to do into one they feel they have to do.
+- [pitfall] Assuming all players want open-ended goals; some find them too loose and need clearer direction.
+- [pitfall] With anonymous strangers or in competitive games, players' motivations rarely align with the narrative, so sustained rich roleplay is hard to arrange.
+- [pitfall] Treating fun as pleasure fails, since a meal or basking in sunshine is pleasurable yet rarely described as fun.
+- [pitfall] Assumptions about an audience can drive design choices, such as content that signals a narrow demographic, that deter other players from joining. When: when designing for a presumed demographic. Why: the design signals exclusion to players outside the assumed group.
+- [fact] Motivation drives all behavior, but no unified theory explains all human behavior; theories address particular aspects, like intrinsic and extrinsic motivation, so no framework predicts every player choice. (x2)
+- [fact] The intrinsic/extrinsic split is imperfect, unstable and hard to separate cleanly since they often co-occur, yet developers use it widely. (x2)
+- [fact] Motivation survey questions cover whether players look forward to goals, understand rewards, feel progress, have meaningful choices, and find the game more fun with others. When: once critical systems exist.
+- [fact] Adults often seek people who share their problems, teenagers often want different or more interesting peers, and children usually prefer friends from real life. When: Designing social features for different age groups.
+- [fact] The OCEAN model helps capture individual needs.
+- [fact] Ten player types, adapted from Bartle's basic types, describe different motivations: competitor, explorer, collector, achiever, joker, artist, director, storyteller, performer, and craftsman.
+- [fact] No unified theory of motivation exists; motivation types include implicit, intrinsic, and extrinsic, linked to biological, learned, cognitive, and individual needs.
+- [fact] Self-Determination Theory is a common intrinsic motivation framework in game development, often applied superficially and rarely questioned.
+- [fact] A platformer with rising difficulty leans on competence, while a creative open-world sandbox leans on autonomy.
+- [fact] Relatedness is often served by multiplayer features, and meaningful non-playable characters can also satisfy it.
+- [fact] Motivation directs behavior in complex, hard-to-predict ways, and focusing on meaningful activities is central to it.
+- [fact] Puzzle design shares game design's goal of keeping the player in a pleasurably challenging flow state.
+- [fact] Fun is hard to define, yet most players ask for it and recognize it when they experience it.
+- [fact] Motivations build on one another and lie on a continuum, so extrinsic motivation is not automatically low-value. Why: Motivation grows from the person's true self to varying degrees.
+- [fact] A single game can address the whole hierarchy: a survival fantasy meets lower needs, while social play, mastery, and creation meet upper ones.
+- [fact] Pleasure seeking and pain avoidance are separate motivational circuits, not opposite ends of one scale.
+- [fact] Mental needs are more than desires; when they go unmet, they harm psychological health.
+- [fact] Games commonly satisfy all three mental needs by offering mastery, freedom in how to play, and social connection.
+- [fact] Self-attributed motives can be consciously controlled, whereas implicit motives run as body events that cannot be chosen directly.
+- [fact] Shared mammalian drives include hunger, thirst, sleep, pain avoidance, and sex, regulated mainly by the hypothalamus in the limbic system.
+- [fact] Play has intrinsic incentives, so simply playing is often the main motivator for players.
+- [fact] Meaning supports the needs for competence, autonomy, and relatedness.
+- [fact] Some theorists distinguish autonomous from controlled motivation rather than intrinsic from extrinsic motivation.
+- [fact] Motivation is the core engageability pillar, because no behavior or engagement happens without it, and emotion and game flow support it.
+- [fact] Behavior requires motivation; motivated people tend to focus more closely, handle challenges more capably and memorize material more effectively.
+- [fact] Some emotional triggers are fixed by genes, others are learned, and most involve interactions between conditioning and human nature.
+- [fact] Creative game developers are mostly motivated by wanting their output to matter to the world, and this drive comes from within rather than being purchased.
+- [fact] Game development is full of hard challenges, so designers need a strong drive to overcome them, and that drive is easy to misdirect toward work that does not help the game.
+- [fact] In the needs hierarchy, physiological and safety needs rank above self-actualization needs.
+- [fact] In platform-style games, short-term goals include defeating foes, gathering boosts, collecting coins and bonus lives, and reaching each stage's exit.
+- [fact] Player time is the most basic resource in any game; most games add currency, items, hit points, and mana on top of it.
+- [fact] Players are moral agents, but their choices are bounded by what the game rules allow.
+- [fact] Letting players express creativity, such as building a character, adds another dimension of fun.
+- [fact] Performance still matters in games, unlike most software, because players favor the game that pushes the hardware furthest. Why: Faster hardware has made performance a non-issue for most other software.
+
+## player types and models
+- [model] Four MMO player types, originally proposed for multi-user dungeon games: achievers seek challenge in reaching goals; explorers seek discovery of breadth; socializers seek fellowship; killers seek competition and defeating others. (x5)
+- [model] Player types differ in what they act on: achievers act on the world, explorers interact with the world, socializers interact with players, and killers act on players.
+- [model] Five commonly observed male play tendencies are mastery, competition, destruction, spatial puzzles, and trial and error.
+- [model] Designers effectively create three games for newbies, players and elders, and each level needs its own kind of support.
+- [model] Big Five (OCEAN) traits are openness (inventive versus practical), conscientiousness (organized versus spontaneous), extraversion (outgoing versus reserved), agreeableness (trusting versus suspicious), and neuroticism (anxious versus stable).
+- [model] Extended player-type models use five personality traits and five play domains (novelty, challenge, stimulation, harmony and threat), with threat scored separately to form a 4 × 4 grid.
+- [definition] Explorers are curious, enjoy adventuring, want to see everything, map the world, experiment with mechanics, and seek the outer boundaries of the game world, physical or mental. (x2)
+- [definition] Killers, often called griefers today, enjoy ruining other players' experiences through attacks, looting bodies or abusive chat.
+- [definition] A competitor plays to beat other players, regardless of the game.
+- [definition] A collector acquires items, trophies, or knowledge and enjoys building sets and organizing history.
+- [definition] An achiever plays for levels of achievement; ladders and levels reward this type.
+- [definition] A joker plays for fun and does not take the game too seriously; jokers can annoy serious players but can also make a game more social than competitive.
+- [definition] An artist is driven by creativity, creation, and design.
+- [definition] A director likes to be in charge and to direct the play.
+- [definition] A storyteller loves to create or live in fantasy worlds.
+- [definition] A performer enjoys entertaining audiences.
+- [definition] A craftsman wants to build, engineer, or puzzle things out.
+- [definition] Player personality mapping classifies players by personality type and links each type to design choices. Why: types guide what a game should offer.
+- [definition] Psychographics group players by how they think and what they enjoy, rather than by external traits.
+- [definition] Lifestyle psychographics tie players to concrete activities or identities, such as a dog lover or a hardcore shooter player.
+- [definition] Pleasure-based psychographics classify the kinds of pleasure people seek, since much human action traces back to pleasure seeking.
+- [definition] Play is best recognized by the attitude of doing an activity for its own sake, which matters more than the activity itself. Why: People play because they like to.
+- [definition] Hardcore and casual labels hinge on whether someone considers themselves a gamer rather than on hours played, and the line between them is fuzzy.
+- [definition] The perceptual self is a person's self-image within their perceptual field, and actions that do not serve the body can still strengthen it.
+- [definition] Serious Fun is play with a purpose, such as changing behavior or doing real work; People Fun comes from cooperating, competing, and communicating with others.
+- [definition] Newbie ambition is an over-scoped proposal whose features exceed what the schedule and budget allow; it is a common reason outside ideas are dismissed.
+- [mechanism] Personality elements connect to domains of play through concerns: openness to entering a game, task approach, solo versus group play, narrative interest, and event sensitivity.
+- [mechanism] The outcome of gaming depends on the player's motivation to play and on the social and economic setting.
+- [behavior] Players approach the same level in very different ways, such as stealthy, fast, or exploratory, so one adaptive music system may not suit all of them. When: When a level supports multiple play approaches. Why: Each style produces different time spent, pacing, and exposure to the music.
+- [behavior] Very fast tutorial finishers may have found a shortcut or exploit, or skipped dialogue and missed core mechanics. When: Tutorial completion timing with a few very quick players. Why: Skipping content shortens time without learning the game.
+- [behavior] In the same playtests, many girls defended their own ship against invaders rather than hunting targets, and enjoyed the game without any assumed interest in battle. When: combat games played by mixed audiences.
+- [behavior] Men played much like boys but more reservedly, often carefully working out the optimal approach before acting. When: combat games played by mixed audiences.
+- [behavior] Adults tend to seek friends with similar interests, while children prefer to play with real-life friends. When: choosing play partners.
+- [behavior] Masocore games, which are punishing and built around repeated failure, rose in response to accessible designs, showing that players also seek deliberately hard challenge. When: When accessibility has become the norm in a market. Why: Swings in preference push designers toward the opposite extreme.
+- [behavior] Its severity depends on personality: some experts want to win even if others lose out, some timid players want a trusted leader, and some players prefer to take only their own turn. When: When assessing commander problem risk in a group. Why: Player temperament shapes whether someone takes over or defers.
+- [behavior] Players of masocore games expect to fail early and often and succeed rarely, only after mastering the game's details. When: Designing a masocore game with heavy difficulty. Why: Heavy difficulty is the core appeal for this audience.
+- [behavior] Even when rules reward attacks, players still turtle in defensible areas, but they must eventually expand or fall behind. When: when a safe, defensible region exists. Why: defensible spots feel safe until rules penalize waiting.
+- [behavior] Even experienced players in a genre misjudge unfamiliar rules and keep dying to the same hidden threat. When: when a game's rules differ from familiar genre conventions.
+- [behavior] Experienced players may cling to set habits and miss innovative strategies.
+- [behavior] A model learned from one player's choice habits can improve play against a different player, because human choice habits share common traits.
+- [behavior] Adults aged 35 to 50 are mostly casual players dominated by career and family, and they often make expensive purchases seeking games the whole family can enjoy together. When: Designing for adults aged 35 to 50. Why: Career and family demands dominate, and this group controls large purchases for shared household play.
+- [behavior] Adults aged 50 and older suddenly gain free time as children leave and retirement approaches, and they favor social experiences and return to games from their youth. When: Designing for players aged 50 and older. Why: Children leaving and retirement free up time, and this group values social play.
+- [behavior] Around age seven, children start school, read, solve harder problems, and begin choosing their own toys and games instead of accepting parental choices. When: Designing games for children around age seven and older. Why: Reading and harder problem solving open up more complex play, and children gain autonomy over their choices.
+- [behavior] People are natural explorers drawn to what is new, which is why novel products often attract more attention than familiar ones.
+- [behavior] Players perceive skill-based games as more serious than chance-based games. When: Judging the tone a game's mechanics convey. Why: Skill signals judgment and seriousness while chance signals casual risk-taking.
+- [behavior] The same content can be engaging to one player type and dull to another, so interest curves differ by player type. When: when a game serves several player types.
+- [behavior] Sickness triggers vary greatly between people, and one bad experience can create an aversion that keeps a player away from a game for years.
+- [behavior] Playing reveals how people solve problems, decide under stress, show mercy or betray others, and whom to trust, while conversation tends to be filtered toward what listeners want to hear. Why: Actions in play are less filtered than spoken words.
+- [behavior] Playing also reveals players to themselves: whether they let others win or crush them, how they handle public defeat, whom they pick as teammates, and whom they imitate.
+- [behavior] Players find probing an unfamiliar virtual world with a virtual instrument very pleasurable. Why: Active exploration engages perception more than passive viewing.
+- [behavior] First-time fighting game players often mash buttons randomly until patterns emerge. When: Players unfamiliar with a complex input scheme. Why: Results are not yet predictable.
+- [behavior] Experienced players can more easily follow a relevant threat amid heavy effects and sound than occasional players. When: busy scenes with explosions and sound effects. Why: experience improves filtering of irrelevant input.
+- [behavior] Players usually have a primary play style and switch to other styles only when it suits them.
+- [behavior] Nonconformist responses in a group may reflect attitudes toward the social setting rather than toward the idea itself. When: When interpreting dissenting focus group responses.
+- [behavior] Players rotate between playstyles within a single session.
+- [behavior] Players keep playing as they age; about 40% of PC gamers are over 36.
+- [behavior] Feeling competent may lead people with strong visuo-spatial skills to play action games more, an alternative explanation for correlations. When: when interpreting correlations between game play and skill. Why: Skill can drive play choices, not only result from play.
+- [behavior] Experts use every degree of a continuous input to optimize results, while novices succeed using only the extremes. When: a mechanic offers a continuous input range. Why: Skilled players extract precision from the full range; casual players need only coarse control.
+- [behavior] Personality labels with backstory can lead players to blame a loss on a leader's personal attachments rather than on his stats. When: a leader with a personality label loses a battle. Why: the label offers a personal explanation for the outcome.
+- [behavior] Performance on a hard test dropped for a group when they were primed with a negative stereotype about their group, and recovered when told the group performs equally. When: Evaluating people on demanding tasks where a group stereotype exists. Why: Expectations about one's group shape how well one performs under pressure.
+- [rule] Do not rely on surface changes like pink packaging to attract female players; design from research into what that audience wants, since today's female audience is discerning and technically savvy. Why: Discerning players reject titles that miss what they want.
+- [rule] Understand who players are, what they are familiar with, what they expect, and the limits of the human body and mind.
+- [rule] Make players of the target audience feel welcome, defining that audience by the games they already like.
+- [rule] Members who cannot love any game should be removed from the team, the only remedy given for this problem. When: A member cannot love any game.
+- [heuristic] Use group-level player models to widen supported motivations, not to sort players into rigid boxes; account for individual differences in needs and implicit motives. Why: generalizations can exclude people if applied rigidly. (x2)
+- [heuristic] Designers should know players better than they know themselves, through deep listening to thoughts, emotions, fears and desires, since unhappy players mean the game has failed. When: Designing for a target audience. Why: Players often cannot state what they will enjoy, and the game must satisfy the people who play it.
+- [heuristic] In random groups, assume all four Bartle player types are present with no shared preference for narrative. When: random groups. Why: Random members are not selected for shared tastes.
+- [heuristic] Examining the pleasures of each play type helps set player experience goals for a system, and choosing which types to emphasize shapes the kind of pleasure a game offers.
+- [heuristic] Exact ordinal ranks are most useful for the top few percent of players, for whom being ranked by number is itself a milestone. When: when a player is among the top few percent.
+- [heuristic] Online personalisation assumes a player's style largely persists across consecutive sessions, so the previous level's behaviour predicts the next.
+- [procedure] 1) Interview players and learn as much as possible about them. 2) Place yourself in their position and imagine how the experience feels, including what they feel while choosing and what they will later tell friends about the high points. When: Designing for a particular audience or when setting experience goals. Why: Combining player accounts with imagined perspective reveals insights a detached view misses. (x2)
+- [procedure] 1) Choose an MMO with distinct classes and list each class's role, play style and optimization strategies. 2) For each class, decide which player types it appeals to and why. 3) If none fit, name the player type it does suit.
+- [tradeoff] A niche audience can be served with a distinctive design, while a larger segment brings higher payoff but competes directly with established action-oriented titles. When: choosing a target audience for a game. Why: Segment size changes potential payoff, but large segments attract stronger competition.
+- [pitfall] The killer category is loosely defined and does not map cleanly onto other player-type taxonomies; it also covers players who mainly want to help others.
+- [pitfall] Predicting a player's behavior from a fixed type label can cause teams to overlook players the model does not describe.
+- [pitfall] The same controls can feel excellent to an expert and terrible to a novice, so feel disputes may be unresolvable because each side is correct about its own experience.
+- [pitfall] Many people with minor gifts achieve little because they lack the major gift; relying on innate talent alone rarely leads to great work. When: Assessing your own potential. Why: Without love of the work, practice is not sustained.
+- [pitfall] Assuming the games you personally like best match what the broader market likes is a common mistake. When: judging market potential from personal taste. Why: Personal preferences are not representative of most players.
+- [pitfall] The overconfidence effect can still impair expert judgment even when intuition is well trained.
+- [pitfall] Treating girls' games as one fashion, shopping, and makeup genre for ages 6 to 10 misreads a broad and diverse market.
+- [pitfall] Popular brain-labeled articles and neuro-branded products often present false or grossly simplified claims, which can seem convincing because they are easier to accept than complex explanations. When: evaluating brain-related claims about games or marketing. Why: Simple narratives promise effortless results and are more appealing than evidence-based explanations.
+- [fact] OCEAN predicts behavior imperfectly and does not explain all personality; MBTI is not scientifically validated and should not guide important decisions such as hiring.
+- [fact] The Big Five (OCEAN), found by factor analysis and tested across populations and decades, is the most robust personality model: useful for understanding differences, not predicting behavior. When: Thinking about personality differences. Why: It is useful for understanding differences but not for prediction.
+- [fact] A survey of over 140,000 gamers found three clusters: Action-Social, loosely linked to extraversion; Mastery-Achievement, to conscientiousness; Immersion-Creativity, to openness; neuroticism and agreeableness showed no link. When: Interpreting exploratory gamer clusters. Why: These mappings are exploratory, not predictive.
+- [fact] Average brain imaging differences between sexes exist, but overlap is large: variation within each sex is usually larger than the difference between the sexes.
+- [fact] Expert players often need more challenge than casual players to stay within their flow zone.
+- [fact] Many questionnaires claim to measure player traits or motivations, yet little evidence shows that they measure what they claim.
+- [fact] No current player model reliably predicts how a given type of player will behave in a specific game.
+- [fact] Men and women now play digital games in roughly equal numbers.
+- [fact] Playfulness is a state of mind, so even serious subjects can be approached playfully.
+- [fact] Self-esteem is the level of Maslow's hierarchy most closely connected to games, since people deeply need to know how they stack up against others.
+- [fact] Generational labels such as digital natives do not imply cognitive or behavioral differences; all humans share the same attention limitations, and Millennials are not better at multitasking. Why: Different environments produce slightly different wiring, not generation-level cognitive gaps.
+- [fact] Genetics and epigenetics, meaning how experience changes gene expression, influence how people process information.
+- [fact] People differ in aptitudes, but tailoring teaching to a learning style does not enhance learning.
+- [fact] Individuals perceive the same input differently because of prior knowledge, expectations, culture, genetics and environment.
+- [fact] The dark tetrad traits (Machiavellianism, narcissism, psychopathy, sadism) were linked to the competition motive in gamers, with sadism possibly indirectly tied to problematic gaming.
+- [fact] Differences between people reflect how well their competence, autonomy, and relatedness needs are satisfied or thwarted.
+- [fact] Rank-based questionnaires reduce self-report bias but do not remove it, so physiological, behavioural and implicit measures can triangulate player reports.
+- [fact] Even games with no goals need a minimum skill level, such as reading, mouse control, and understanding interface windows and buttons, before players can engage meaningfully.
+- [fact] Combat can occupy a minority of play, such as a third of the game, while management systems take the rest.
+- [fact] Community seniors showed improvement in subsyndromal depression after three months of playing a motion-based sports game.
+
+## skill learning and mastery
+- [model] Perceived challenge equals (virtual challenge plus skill challenge) minus (virtual skill plus player skill); plotting it over a playthrough gives the difficulty curve. When: analyzing difficulty across a playthrough. Why: The formula captures how challenge and capability combine to set felt difficulty.
+- [model] Model-based approaches rely on a theoretical framework mapping game context and responses to experience; model-free approaches learn an unknown function without assuming its structure; hybrids lie between the two ends.
+- [definition] Overflow is a state in which the player is overwhelmed by decisions, while flow gaps cause boredom.
+- [definition] Skill is an acquired, coordinated motor pattern that turns intent into results; measuring skill means measuring how efficiently intent becomes results.
+- [definition] An instinct is a built-in fixed behavior, such as eating or sleeping, that acts as a fixed input-output pair and can never be completely forgotten. When: Designing creatures that learn from the player.
+- [definition] Skill is the mechanic that concerns what the player must be able to do, so it shifts the focus onto the player.
+- [definition] Player skill is the real ability to make good decisions, and more of it makes challenges feel easier. Why: Decision quality is the player's own contribution to difficulty.
+- [definition] The skill barrier is the minimum skill needed before a game becomes playable.
+- [definition] Manual reinvention is moment-to-moment mechanical skill, such as aiming, placing pieces, or moving units, and every game starts here.
+- [definition] Procedural literacy is a player's familiarity with a game's rules and how they work within an established possibility space.
+- [mechanism] Learning perceives a stimulus and ends in a brain-plasticity synaptic change storing memory; attention strength largely sets memory strength, and motivation and emotion also affect learning.
+- [mechanism] Skills grow through practice like muscles, so a person with the major gift can eventually match or exceed someone who has only the minor gift. When: Comparing talent with sustained practice. Why: Practice compounds, while innate ease does not grow by itself.
+- [mechanism] Permadeath erases the save, so each death teaches what to avoid and the player reaches a little further next time.
+- [mechanism] When a player's skill rises, the same challenge becomes boring, and flow returns only if the challenge is raised or the player quits.
+- [mechanism] Deep, layered mechanics keep skill rising, with jumps when players grasp a new way of thinking.
+- [mechanism] Shallow games or games with heavy luck show a short skill rise followed by a plateau. Why: Little depth to master, so skill stops growing quickly.
+- [mechanism] Repeated reward, punishment and memory of an experience form learned drives that shape behavior efficiently through implicit systems. When: A player repeatedly experiences rewarding or aversive outcomes from the same activity. Why: The amygdala and hippocampus store whether a stimulus was rewarding or aversive, so it is approached or avoided on later encounters.
+- [mechanism] A broad range of possibilities keeps a game challenging long after players master its rules.
+- [mechanism] Practice moves an action from effortful, conscious movement to automatic, concrete movement, freeing attention for other things.
+- [mechanism] Forgotten mechanics, controls, or objectives open a gap between player skill and challenge, which can make players feel less capable.
+- [mechanism] Play can extend a learner's zone of proximal development, so the skills a child can reach with support expand over time. When: When play is designed around a child's current challenge range.
+- [mechanism] Programming and debugging a computer encourages learners to think about their own thinking and to discover rules through trial and error.
+- [mechanism] Learning feels good because lessons tied to human values, such as survival or reproduction, are inherently rewarding. Why: Play practices skills that helped ancestors survive and reproduce.
+- [mechanism] When a player's largest decisions become nondecisions, nothing new enters the mind, flow becomes impossible, and the player tends to leave.
+- [mechanism] Once a symbol is established as a reward marker, players learn to look for it wherever it appears. When: after the symbol has been repeatedly associated with rewards. Why: players learn the association and search for the marker.
+- [mechanism] Once players learn a symbol's meaning, they can interpret small variations of it.
+- [mechanism] Asymmetry can equalize challenge when opponents differ greatly in skill, such as a human facing computer-controlled opponents.
+- [mechanism] Games built only on mastery lose novelty over time, so they need new weapons, enemies or levels, or players grow bored.
+- [mechanism] Final margins carry skill information: a decisive win, such as ending well ahead, reflects more skill than a narrow win, so margins can inform ratings and point spreads. When: Measuring match results beyond win or loss. Why: Larger margins show a larger skill gap.
+- [mechanism] Games that do not let players feel growing mastery may foster antisocial behavior. When: designing progression systems.
+- [mechanism] Art paired with procedural behavior lets players build strong associations, so objects act as symbols of their mechanics rather than decoration. When: when art and scripted behavior are consistently matched. Why: Consistent pairing turns visual cues into predictions about what the object does.
+- [behavior] In iterative retry loops, small recoverable setbacks build self-efficacy and keep players trying; severe setbacks, such as losing large progress, break the loop and make players stop. When: when players repeatedly retry a challenge, or when failure resets a large amount of progress. Why: Small, recoverable failures keep success feeling within reach; large resets make the reflect-and-retry cycle too costly to continue.
+- [behavior] Developers absorbed in one task lose sight of the bigger picture; an overview poster helps them regain perspective. When: when working on individual tasks. Why: focus on one task narrows awareness of the whole game.
+- [behavior] Some players fire rapidly while others aim carefully, and each style can feel rewarding if the scoring recognizes it. When: a game with a single scoring measure.
+- [behavior] When feedback is missing, players may feel their effort is futile, which reduces enjoyment and how often they repeat the task. When: Players perform actions whose effects are not shown to them. Why: Players cannot tell whether their effort made any difference.
+- [behavior] Beginners enjoy a vast possibility space, top experts invent new strategies, and players in between mostly study established knowledge. When: Games with many viable strategies. Why: Each skill tier engages with the strategy space differently.
+- [behavior] Simple repeated interactions teach general rules: a character that always falls back after jumping implies gravity, and one that bumps into things implies solid objects. Why: Players generalize from consistent feedback.
+- [behavior] In finished games, overflow mostly affects lower-skill players, who struggle below the skill barrier even when designer test players flowed well.
+- [behavior] Players cannot attend to everything or remember everything, so they make predictable errors that designers can anticipate. When: Designing interfaces and controls. Why: Limited attention and memory cause routine mistakes.
+- [behavior] Players who earn an ability tend to show it off, which satisfies their need to express growing competence. When: after earning a new ability. Why: Displaying the ability expresses growing competence.
+- [behavior] New players often fail to use units or options efficiently, so their early performance can misrepresent a design.
+- [behavior] Players combine placed objects and physics to climb to unplanned areas, shortening levels in ways designers never intended.
+- [behavior] Players value breaking through skill barriers, doing today what they could not do yesterday.
+- [behavior] When a computer enforces rules, players stop memorizing constraints and instead try actions and learn what works. When: a game enforces its rules automatically. Why: the system reveals what is allowed through play.
+- [behavior] Novice casual players often miss or fail to respond to a small lead early on, while experienced players more readily spot imbalances and react. When: early-game slight leads in casual versus tournament play.
+- [behavior] In Learning, the player invests effort, probes boundaries, and works through the problem. Why: Active experimentation builds the understanding needed for mastery.
+- [behavior] Players assume progress is linear, so during Learning and early Mastery friction feels constant even as mastery accelerates. When: mid-challenge with no clear progress signal. Why: Players extrapolate their current pace and miss the accelerating curve.
+- [behavior] Permadeath with easy difficulty makes death costly and constantly looming, so careful players feel stronger when they win. When: permadeath games at low difficulty. Why: Lasting loss rewards caution, making victory feel earned.
+- [behavior] When an expert plays a novice, the expert becomes bored and the novice becomes frustrated; this is normal in skill-based games. When: when a skill gap exists between two PvP players. Why: Skill gaps make outcomes predictable for the stronger player and hopeless for the weaker one.
+- [behavior] Weak players overrate their expertise, while experts think they are merely average, so self-assessments of skill are unreliable. Why: Dunning–Kruger effect.
+- [behavior] Players learn timing-based controls by varying how long a button is held and how gradually directional input is applied, mapping how each change alters the result. When: learning jump timing or speed control. Why: experimenting with input magnitude reveals the response curve.
+- [behavior] Without a time limit, players are free to explore at their own pace.
+- [behavior] Players learn ledge height tiers by observing the level, so they can judge which ledges they can reach.
+- [behavior] Given a mechanic and the simple instruction to make it fun, people produce surprisingly fun results. When: Players tune mechanics open-endedly.
+- [behavior] Perceived growth in competence predicts motivated effort better than actual competence does. When: during skill training.
+- [behavior] People have limits in perception, attention, and memory, are mostly unaware of them, and overestimate their own abilities, so players often believe they can learn the game without help. When: Designing tutorials and onboarding. Why: Limits are hidden from the person who has them.
+- [behavior] Players learn the default variables of game objects intuitively through play, without reading explicit definitions of each value. When: Digital games where many object variables are shared across unit types. Why: Repeated use of similar units lets players infer what each variable means.
+- [behavior] While watching before acting, a player can plan a large strategy that takes a long time, so pace stays slow but never idle. When: the player is observing and forming a plan before acting. Why: Large-scope decisions take a long time even when little happens on screen.
+- [behavior] Novices want to learn without pressure, while experts want deep, skill-stretching play; mixing them makes novices feel pressured and insulted and experts feel bored or annoyed. When: games where skill levels mix in the same session. Why: Their goals conflict when skill gaps are large.
+- [behavior] After a loss, players change their judgment of that strategy's value, which alters their next choices. When: repeated choices with win or loss feedback. Why: Recent outcomes bias the perceived value of options.
+- [behavior] Players assume a newly found item works like a familiar one that was introduced through the same reward pattern. When: after an interaction has been learned and rewarded. Why: Players generalize from a known interaction to similar new objects.
+- [behavior] Repetition builds player expectations, so a rhythm can be taught as well as felt.
+- [behavior] Through repeated play, players map each action to its sound, and that mapping teaches them how to play.
+- [rule] Reward effort, not only success, on hard skills and give players chances to show growing mastery; hard challenges often need several playthroughs. When: when designing challenges that players must retry many times. Why: Players persist through repeated failure when their effort is visibly rewarded. (x2)
+- [rule] Check whether player skill grows at the intended rate, and change what drives growth if it does not.
+- [rule] Reduce cognitive load on tasks where the designer does not want to challenge players.
+- [rule] Listening is the most important designer skill; creativity ranks second, ahead of critical thinking, logic, and communication. When: Prioritizing skills to develop. Why: Designers must understand people before making things for them.
+- [rule] Game designers need to grasp the essence of how people experience play, beyond only the tangible components. When: Designing any game. Why: Creating experiences is the core task of game design.
+- [heuristic] Hands-on practice in meaningful settings suits games well and often beats passive reading for retaining skills and facts. (x2)
+- [heuristic] Distribute learning over time, and repeat important information with reminders, because compressing learning into one session ignores the spacing effect. When: Designing teaching and onboarding schedules. Why: Spaced repetition strengthens long-term retention.
+- [heuristic] Build skills through repeated practice rather than explanation, since skills are stored implicitly and tend to persist. When: when players must acquire a skill. Why: implicit learning is more durable than explicit learning.
+- [heuristic] When options have about equal cost and benefit, people follow instinct rather than calculate. When: when options are roughly equal in cost and benefit. Why: calculation is costly given limited attention and working memory.
+- [heuristic] Advanced AI techniques work like a spice: useful in small amounts and harmful when overused.
+- [procedure] 1) Talk while keeping your head still. 2) Talk while turning your head often. 3) Compare how each version feels. When: When learning to recognize status through body language.
+- [procedure] 1) Listen and write down every sound you hear. 2) Compare the list with someone else's. 3) Map each sound on a diagram, with circle size showing relative volume. 4) Record the sounds for reference. When: training sound design listening skill. Why: builds awareness of the layers of real environments.
+- [tradeoff] Once players learn how a trainable creature works, they can manipulate it, but the feeling of teaching a real creature is lost. When: after players learn the creature's internal workings.
+- [tradeoff] Model-based approaches build components ad hoc without machine learning, while model-free approaches learn the mapping; optimising model-based parameters through empirical studies moves them toward model-free.
+- [pitfall] Solo developers find it hard to see their own weaknesses, so evaluating your own project alone is unreliable.
+- [pitfall] Learned impotence leaves players with unpredictable and tedious recovery gameplay, since they cannot know the real effect of their feedback. When: A taught creature has become incapable of sensible behavior.
+- [pitfall] Assuming a learned skill is never forgotten. Implicit skills fade with disuse, so returning players must retrain their muscle memory.
+- [pitfall] Expecting players to master a hard skill after a short tutorial; mastery takes time and repeated trials.
+- [pitfall] Many brain training and educational games only improve performance on the exercises themselves, which is not transfer. When: when evaluating brain training or educational games. Why: Improvement on the trained task does not show skill carried to new tasks.
+- [pitfall] Adding more symbols to a rock-paper-scissors structure, such as lizard and an extra gesture, adds no new equilibrium structure or decision interest, only fiction and learning burden.
+- [fact] In the slope of enlightenment, people and businesses work out where the technology is actually useful.
+- [fact] Tacit skill built through years of practice cannot be fully transferred to a leader through instructions.
+- [fact] Objectively, skill always improves, but subjectively controls alternate between clumsy and intuitive depending on the challenge at hand.
+- [fact] Games can help people transform into their ideal selves in mind, body and spirit; this is difficult to deliver, yet demand for it is strong.
+- [fact] A clear majority of people rate themselves as above average at common everyday skills, such as driving.
+- [fact] Differences in science or language performance are more likely due to practice, cultural environment, stereotypes and social pressure than to brain wiring.
+- [fact] Practice strongly improves both multitasking and single-task performance.
+- [fact] Training on a falling-block puzzle game improved spatial ability, such as mental rotation speed, in late adolescents and young adults.
+- [fact] Skill is not a single quantity: games reward strategic thinking, reaction speed, pattern execution, or social reading, and each kind has its own skill cap. When: Evaluating the skill demands of a game. Why: Different skill kinds cannot be scored on one scale.
+- [fact] Expertise can be formal, such as what makes a rule set elegant, or about players, such as what they find challenging, fun or boring.
+
+## flow
+- [model] Flow is engagement from challenge matched to skill, lying in the channel between boredom and anxiety: too hard causes confusion and anxiety, too easy causes boredom, just-above-skill challenge engages. (x3)
+- [model] The flow zone is the challenge range where players stay engaged; it rises with ability and shifts with expertise, fatigue and perception. Too much causes frustration, too little boredom. Why: Enjoyment comes from keeping challenge balanced against a growing ability. (x2)
+- [model] Flow is supported by four components: clear goals, no distractions or limited stimulus field, direct immediate feedback, and continuous challenge. (x2)
+- [model] Game flow is an engageability pillar with three parts: difficulty curve for balanced challenge, pacing of pressure and relief over time, and learning curve (onboarding) for distributed learning by doing. (x2)
+- [model] Game feel mixes five experiences: aesthetic enjoyment of control, satisfaction of mastering a skill, sensory extension, identity extension, and interaction with a distinctive physical world. (x2)
+- [model] The game flow model equates player enjoyment, the main goal of games, with Csikszentmihalyi's psychological concept of flow, and combines usability heuristics into an enjoyment evaluation.
+- [model] A full game structure has an opening, a sequence of levels of increasing interest, and a climactic finale where the player beats the final challenge.
+- [definition] Flow is energized, enjoyable, absorbed focus in which lost self-consciousness, distorted time and real-world distractions fall away, as the mind engages through action, reaction, decision and outcome. When: when challenge is close to current ability. (x3)
+- [definition] Flow is total, concentrated, intrinsically motivating immersion in meaningful voluntary effort that stretches mind or body; it is central to happiness and must be worked for. (x2)
+- [definition] An autotelic activity is done for its own sake, unlike exotelic ones done for outside goals; games, typically autotelic, need pleasurable use as well as ease of use. (x2)
+- [definition] Flow is the zone where meaningful, clear-goal challenge is neither too easy nor too hard for the player; a well-designed game keeps players there, and it is intrinsically motivating.
+- [definition] A divergent goal is a player pursuing aims the designer did not intend, which can harm other players as well as the player who holds it.
+- [definition] Flow arises in goal-directed, rule-bounded activities that require skills; a task without needed skills feels meaningless, while one with skills but uncertain outcome feels challenging.
+- [definition] Flow describes optimal absorption under constant but not unassailable challenge; it covers only challenge, one dimension of experience.
+- [definition] A flow gap is any period when the player's mind has nothing to process, and it can last from a second to an hour.
+- [definition] Fellowship is the pleasure of friendship, cooperation, and community, and it is the main draw for some players.
+- [definition] Intense pacing leaves players few breathers; methodical pacing has players weigh many circumstances before each action.
+- [definition] Juicing extracts many interactions from one mechanic, yielding rich play from a small asset set.
+- [mechanism] Autoplay recommendations can stretch a short session well past what the player intended. When: when content plays automatically after the previous item.
+- [mechanism] Flow is not a stable point: boredom or frustration returns and the cycle repeats at higher complexity, which drives growth and discovery.
+- [mechanism] Clear goals and immediate feedback let players know what to do and how well they are doing.
+- [mechanism] Player confidence strengthens goal-directed steering: confident players follow their own instincts, while confused or doubtful players second-guess and steer weakly. When: Players pursuing goals in a world.
+- [mechanism] Improvisation produces a flow experience when the player's skill matches the challenge.
+- [mechanism] Flow must come first for immersion, because stray real-world thoughts break the mirroring between player and character. When: When building immersion through mechanics. Why: Distracting thoughts about outside concerns prevent the player from absorbing the character's state.
+- [mechanism] Flow feels enjoyable because it rests on an unbroken string of minor achievements.
+- [mechanism] Overlapping progression loops that stay open, staggered so the player is always close to completing another goal, keep players hooked. When: When designing long-term engagement in a strategy game. Why: Open tasks create lasting cognitive load and near-completion draws players on.
+- [mechanism] Fear of being caught makes stealth tense even when the player succeeds. When: Designing stealth gameplay.
+- [mechanism] Very short character lifespans with near-instant respawns keep flow unbroken, so players stay motivated to avoid death and feel gratified when they do. When: Games built around frequent deaths. Why: Near-instant respawn prevents death from interrupting play.
+- [behavior] Players in flow withdraw quietly: solo players mutter and react slowly or irritably to interruption, while multiplayer players chat cheerfully yet stay focused. When: observing play sessions.
+- [behavior] A far-off aspirational goal can feel out of reach, so progress toward it feels slow.
+- [behavior] When a player's skill matches the game's difficulty, the player stays in the flow channel.
+- [behavior] Players enjoy bounded challenges alternating with authored story, even though critics say the method is not truly interactive.
+- [behavior] Casual players may play several times a week just to kill time, and they spend less per person.
+- [behavior] Players complain about confusion more readily than they praise a challenge they enjoyed. When: Interpreting playtest feedback. Why: Negative feedback about confusion is more frequent than positive feedback about challenge.
+- [behavior] Players in flow lose track of time, so a short session can run far longer than expected. When: absorbed play. Why: Total absorption removes awareness of elapsed time.
+- [behavior] Flow works as escapism because it pushes everyday worries about money, bills and relationships out of the mind. When: absorbed play. Why: Full attention on the activity crowds out other concerns.
+- [behavior] Players in flow accept strange fiction, rough graphics and unclear interactions. When: the player is in flow. Why: Absorption in play outweighs surface flaws.
+- [rule] Vary pacing: avoid sustained tension, which exhausts players, and sustained relaxation, which bores them; alternate them for variety and anticipation. (x2)
+- [rule] Sustain flow with a gradual ramp of ever-greater challenges matching growing player skill, avoiding both boredom and frustration. When: when pacing difficulty over a game. Why: Challenge that tracks skill avoids both boredom and frustration.
+- [rule] Reduce distractions that pull players from their goals, or tie those distractions to the goals.
+- [rule] Pick two or three words that describe combat pacing, such as intense, methodical or pre-planned, or a mix of them.
+- [rule] If a game has phases, make each phase an appropriate length relative to the whole game. When: when a game is divided into phases.
+- [rule] Visual style and movement should match, since realistic visuals paired with surreal movement make the mismatch obvious. When: a character's art style and its movement rules are chosen. Why: Mismatched realism between look and motion is immediately noticeable to players.
+- [rule] Design for the player's perception of what happened, not for the computer's millisecond-level input timing, since perception is far softer than hardware precision. Why: Controls designed only around computer precision feel unresponsive.
+- [rule] Keep friction that is designed in, such as challenges to motor skill, perception, memory or emotion, and remove only frustrations that are not intended.
+- [rule] If a delay cannot be removed, fill it with a meaningful decision, such as letting the player use another action while a recharge completes.
+- [heuristic] Flow is hard to see in short sessions, and a game that induces flow early may become boring or frustrating later, so check over longer play.
+- [heuristic] Choose explicit feedback when accuracy matters more than uninterrupted play, and implicit feedback when the session must not be interrupted.
+- [heuristic] Combining behaviour with physiological signals such as eye gaze or skin conductance helps when any single signal is too unreliable.
+- [heuristic] Fun is one pleasurable emotion among many; many gripping games are not fun in the everyday sense yet still hold players strongly. When: setting emotional goals for a game.
+- [heuristic] Many apparent design problems are really flow breaks, so diagnose them by asking what interrupts the player's engagement.
+- [heuristic] When time is limited, focus on the most distinctive part of a design and drop secondary details. When: Scope must be cut to fit available time. Why: The distinctive mechanic is what players remember.
+- [heuristic] A game built on rules from a different genre can fail to capture the excitement of its source; choose mechanics that produce the desired feel. When: Designing a game for a genre with a distinct feel. Why: Rules from one genre can drain the excitement of another.
+- [heuristic] Resonance cannot be reached by logic alone; it must be felt, which requires listening to your own reactions.
+- [heuristic] In a game that cannot be failed, use a fixed round timer as the main source of challenge. When: game has no fail state. Why: Time pressure replaces the risk of losing.
+- [heuristic] Shape feel at several levels by pairing expressive controls with rules such as goals and challenges, and with context such as spatial layout.
+- [heuristic] Design for free-form play by letting players choose their own approaches within a game's systems rather than forcing one path. When: when designing systems-driven or immersive games.
+- [heuristic] Pace play in mini-arcs of about one hour, ending each with a memorable moment that brings players back. When: Structuring long games across play sessions. Why: One hour matches how long an average player sits at a game.
+- [heuristic] Treat pacing as part of the design target, so generated paths keep challenges matched to the player's progress.
+- [heuristic] Treat flow as the baseline goal for nearly any game, since most games must sustain it to work.
+- [heuristic] When a choice must be made, favor sustained flow over elaborate transitions, because flow keeps paying off during play while visual polish impresses only once.
+- [heuristic] Extrinsic rewards suit repetitive or chore-like tasks, since there is no intrinsic interest for them to displace.
+- [heuristic] Exact distances and speeds matter less to players than the felt quality of a space; a slightly slower traversal can change whether a world feels lonely. When: When tuning travel speed in open environments. Why: Players judge the feeling of a space, not its measured size.
+- [heuristic] Set up player expectations with metaphor and treatment, then exceed them through the game's interactions.
+- [heuristic] Create flow mostly in mechanics by matching the challenge to the player's skill. When: When tuning core mechanics for immersion. Why: A matched challenge keeps attention absorbed.
+- [procedure] Check that a design has: 1) a completable challenge requiring skill, 2) merged action and awareness, 3) clear goals, 4) immediate, unambiguous feedback, 5) concentration on relevant stimuli, 6) a real sense of control over an uncertain outcome, 7) loss of self-consciousness, 8) transformed time, 9) an autotelic experience, 10) personal meaning. When: Judging whether a design supports absorption. Why: Each condition supports sustained absorption in an activity. (x2)
+- [procedure] 1) Are goals clear, and if not, how can they be clarified? 2) Do players pursue the intended goals? 3) Which parts pull players off their goal? 4) Is challenge a steady stream, neither too easy nor too hard?
+- [procedure] 1) Identify each phase. 2) Plot the power curve inside each phase. 3) Contrast how long each phase lasts. 4) Adjust any phase that feels dull or drags. When: when tuning pacing in a PvP game. Why: measurement shows which phase is out of proportion.
+- [metric] Full action, perception and response loop takes under half a second; nominal processor values add to about 240 ms, the player's correction cycle and basic real-time control unit.
+- [pitfall] Distractions and fear of failure break concentration and self-absorption; remove distractions before players reach flow, since external events can pull them out once inside. (x2)
+- [pitfall] Flow is easy to miss without practice in recognizing its signs.
+- [pitfall] Unfair or misunderstood deaths and failures, lost control, losing hard-won possessions, and overly harsh punishment or insurmountable obstacles all break players' flow. When: Designing challenge, punishment, or control loss. Why: These frictions are intense enough to break suspension of disbelief and pull players out of flow.
+- [pitfall] A clumsy statement of the goal can drive players away at the start, because they cannot act with confidence without knowing what their actions are for. When: when players first learn a game.
+- [pitfall] Measuring flow only with coarse averages of skill and challenge misses the moment-to-moment decision rhythm that actually sustains it.
+- [pitfall] A harder post-game eventually tires veterans too, so plan what comes after it.
+- [pitfall] Because time is invisible and cannot be stopped, designers easily overlook it as a design factor and should examine it deliberately.
+- [pitfall] A timed scenario can end at its fixed time whether or not the player meets the objective, so the player's sense of control can be misleading.
+- [pitfall] Overwhelming pacing comes from mismatched PvP players, missing matchmaking, or AI that gives players no time to think or recover.
+- [pitfall] Missing juice makes a major moment feel anticlimactic. Why: Players judge the importance of a moment partly by its sensory feedback.
+- [fact] Pleasures beyond standard lists include anticipation, completion, schadenfreude, gift giving, humor, possibility, pride in accomplishment, surprise, thrill, triumph over adversity, and wonder.
+- [fact] Games demand active participation, unlike music or theatre, where the audience is the primary consumer.
+- [fact] Experiences are hard to analyze because they cannot be seen or touched, and each person's experience of the same thing is unique.
+- [fact] Flow can be uncomfortable during the effort that comes before a skill is mastered.
+- [fact] People who experience flow often are happier, and they report being happiest when they experience it frequently.
+- [fact] Flow occurs at every intensity level and emotional tone, including action games, contemplative puzzlers and humorous social games.
+- [fact] Flow breaks in two ways: when stimulation runs out, leaving the mind underused, and when it overflows, leaving the player overwhelmed.
+- [fact] Explicit goals are named, while implicit goals such as health are always present but rarely named until they are threatened.
+- [fact] Fluid intelligence means solving problems in unfamiliar situations, and it depends on working memory capacity.
+- [fact] Slow movement can be expressive, conveying massive scale, and forcing slow movement is a deliberate feel choice.
+- [fact] Game feel, including the 3Cs, presence and physical reality, supports the emotional experience of play.
+- [fact] Each of the five experiences traces to one or more of the three building blocks: real-time control, simulated space, or polish.
+
+## perception and cognition
+- [model] Perception biases that distort players' view of randomness include selection, self-serving, attribution, Dunning–Kruger, anchoring, gambler's, and hot-hand effects.
+- [model] The multi-store model divides memory into three components: sensory stores, a short-term store, and a long-term store.
+- [model] Norman's three design levels are visceral (automatic emotional response), behavioral (pleasure and ease of use), and reflective (meaning, values, self-image and memories).
+- [model] Five perception implications explain game feel: perception requires action; perception is whole-body; senses fuse effortlessly; perception is ongoing skill-building; and perception extends to tools.
+- [definition] Perception is the brain's subjective construction that organizes raw sensory input into meaningful shapes, groups and patterns. (x2)
+- [definition] Inattentional blindness is failing to notice an unexpected but visible event while attention is focused elsewhere, including on one intensely concentrated task. When: While concentrating intensely on one task. Why: Limited attention is consumed by the focused task. (x2)
+- [definition] The perceptual field is the player's constructed model of reality, built from experience, skills, concepts, misconceptions, system image, thoughts, feelings and generalizations, and updated as new experience arrives.
+- [definition] Apophenia is the human tendency to perceive patterns, and often intent, emotion or meaning, in complex, random or unmodeled data or events.
+- [definition] The perception window is the no-win situation where a sensible character action looks faulty to a brief observer who lacks the context behind it.
+- [definition] Contrast detectors respond to edges, lines and patches of change in the visual field.
+- [definition] The binocular effect: a close-up seen early is stored in memory, so imagination fills in distant figures afterward. Why: Viewers reuse a stored detailed image to interpret less detailed views.
+- [mechanism] Partially revealed visuals draw players to explore: the brain completes partial visual information and seeks verification, creating curiosity. When: when only part of a space is visible. Why: the brain fills in partial images, driving curiosity.
+- [mechanism] Objects are hard to see mainly because they lack contrast with their background, not because too little light reaches the eye.
+- [mechanism] Distance from real-world problems through play helps players return and see those problems as smaller. When: a player returns to real problems after play. Why: Time away reduces the apparent size of problems.
+- [mechanism] People construct information when they perceive and encode it, and reconstruct it when they remember it, so recall is not a faithful replay.
+- [mechanism] Access to knowledge lets people name what they perceive, which turns a raw pattern into a recognized thing.
+- [mechanism] Each new fact removes some options and reshapes which plans still make sense, so a death can invalidate a plan even when it was expected.
+- [mechanism] One polish effect can support several perceptions at once, such as overlapping armor motion suggesting both weight and material.
+- [behavior] When visuals conflict with motion and sound, players trust motion and sound and revise their belief about what the object is. When: visuals contradict motion or sound. Why: Motion outweighs the other cues in creating a sense of physicality.
+- [behavior] Players notice a change of behavior more than the behavior itself, so characters should switch only when the situation clearly calls for it. When: designing character behavior. Why: A switch draws attention.
+- [behavior] Players believe homing enemies with random sidesteps anticipate their shots, although the enemies do not always do so. When: enemies that home in but sidestep at random intervals. Why: Occasional unpredictable moves read as deliberate choice.
+- [behavior] Camouflage hides a unit only against backgrounds it matches; the same colors become conspicuous against a contrasting background. When: a camouflaged unit moves between different backgrounds. Why: visibility depends on contrast with the background.
+- [behavior] Whether an activity feels like a 'wanna' or a 'hafta' depends on the person's attitude and penalties, not on the activity itself. When: when some people enjoy an activity that others dread. Why: Attitude and penalties determine whether the activity feels voluntary or obligatory.
+- [behavior] Once clear, achievable goals exist, players mostly move toward places where they believe those goals can be met, so the world can be shaped around them. When: Goals are clear and achievable.
+- [behavior] Viewers who first see a rich, animated, colored version of a simple sprite-based character carry that image back and map it onto the small original. When: After watching a high-fidelity adaptation of a low-fidelity game. Why: The detailed mental image replaces the crude visuals, so the original's graphics matter less.
+- [behavior] Less visual detail lets audiences project into a character, while added detail makes alien, foreign, or frightening characters seem other. When: Designing an avatar's appearance. Why: Projection needs room to fill in, and detail signals difference.
+- [behavior] Playing a different role in a new reality with new rules often lets players see systems and relationships from a new perspective. When: games that place players in another role or world. Why: Games create realities with their own rules, so the player takes on a different viewpoint.
+- [behavior] Listeners notice interrupted rhythms, unresolved chords and hanging melodies, so music that avoids these expectations makes intensity changes less noticeable. When: Music that changes intensity during play. Why: Clear pulse and tonality set expectations whose breaking draws attention to the change.
+- [behavior] Players perceive space actively when exploring it through real-time control, and passively when only watching the same interactions.
+- [behavior] A small object that hits hard feels heavy, and players are surprised when apparent size and impact contradict each other. When: objects whose size and heft disagree.
+- [behavior] People perceive a situation against all of their prior experience, including attitudes, expectations and misconceptions, not only the immediate stimulus.
+- [behavior] Inconsistency across senses stands out immediately, such as a character passing through a wall, because real perception never produces such mismatches.
+- [behavior] Collisions with smooth response but no rebound or visible reaction leave players feeling the world is barren and empty at the tactile level. When: collisions lack rebound and visible reaction. Why: no tactile feedback is returned.
+- [behavior] An identifiably human figure lets players read states such as running, jumping or swimming, so reduced air control is accepted when the state change is visible. When: a character's state changes affect control. Why: Recognisable body language communicates the state, so players accept the change.
+- [behavior] Players notice small inconsistencies in how objects look, sound or behave, because active perception is far more acute than passive perception. When: When players actively interact with objects in the game world. Why: Active engagement makes players scrutinize how objects respond.
+- [behavior] Prior exposure determines whether people recognize a familiar figure hidden in an ambiguous abstract image. When: When viewing an ambiguous abstract image. Why: Exposure primes the viewer to recognize the familiar form.
+- [behavior] Surrounding context sets expectations that change how an ambiguous glyph is read. When: When a symbol is ambiguous and shown among other lines or shapes. Why: Expectation from context selects one interpretation.
+- [behavior] People overestimate their ability to detect changes, a tendency called change blindness blindness.
+- [behavior] Players focused on a screen can miss real hazards, because attention filters what is perceived and inattentional blindness can occur. When: When AR play happens in open, hazardous spaces such as traffic. Why: Attention is limited, so screen focus can hide the real environment.
+- [behavior] Players accustomed to one genre's or platform's control and interface conventions expect the same conventions elsewhere, so perception is not universal. When: when players move between genres or platforms. Why: learned conventions shape expectations.
+- [behavior] An accidental event involving a visually distinctive character is read as deliberate, because the distinctive trait gives the character a recognizable identity. When: a distinctive character causes an unplanned outcome. Why: identity leads players to assign motive.
+- [behavior] Players use metagame knowledge in their decisions even though it is part of neither the mechanics nor the fiction.
+- [behavior] The brain expects repeated experiences, and confirmed expectations feel pleasurable, so implied figures reinforce the player's mental model. When: when a level implies forms through structural markers or echoing negative space. Why: Confirmed expectations produce pleasure, according to one established account.
+- [behavior] Looking down on the character from above can create a sense of vertigo.
+- [behavior] A high place feels comfortable and advantageous when architecture stands between the occupant and the fall, and perilous when nothing does. When: when a player stands at elevation. Why: Physical barriers signal protection from falling.
+- [rule] Treat perception as a subjective construct of the mind and plan around it as the main limitation in game design.
+- [rule] Account for visual imagery effects such as mental rotation and for the Weber-Fechner bias when designing.
+- [rule] Measure context effects by comparing the feel of the same game across different contexts.
+- [rule] Before tuning, identify the preconceptions about movement that the chosen representation brings with it.
+- [heuristic] Use the multi-store model as a coarse framework for locating where information is lost between perception and recall.
+- [heuristic] Briefly flash a cue near where an enemy will appear to draw attention and prepare players to react quickly. When: before an expected enemy appearance. Why: attention is directed to the likely location.
+- [procedure] 1) Adopt the player's physical viewpoint, such as crouching to see at a child's eye height. 2) Adopt the player's mental viewpoint, trying to see, hear, and think as the player does. 3) Repeat this regularly during design. When: Designing for a target audience. Why: Designers drift toward their own high-level viewpoint, so projection into the player's perspective must be actively maintained.
+- [metric] Image perception cycles take roughly 50 to 200 ms, varying with the person and circumstances.
+- [metric] A person with a still head has a sight cone of about 120 degrees vertically and 220 degrees horizontally; eye and neck movement can cover 360 degrees.
+- [metric] Alternating an image with an altered copy separated by a blank flicker of about 80 ms makes the change hard to spot without attention. When: the changing element is not attended. Why: the flicker masks the transient motion cue.
+- [metric] During a brief occlusion, about half of people fail to notice a major change such as their conversation partner being swapped. Why: attention is not on the changed element.
+- [pitfall] Avoiding uncomfortable information, the ostrich effect, distorts decisions by hiding evidence that contradicts what you want to believe.
+- [pitfall] Assuming people see the world as it physically is, rather than a mental representation shaped by experience.
+- [pitfall] When players do not feel their contribution matters, their motivation drops. When: contributions have no visible effect. Why: effort without perceived impact feels pointless.
+- [pitfall] Treating processing stages as separate compartments or as strict sequences oversimplifies how the brain works. Why: The stages interact, and the brain does not process information like a computer.
+- [pitfall] Drawing attention to the opposite area before an event is likely to slow the player's reaction.
+- [fact] Human senses extend beyond sight, hearing, touch, smell and taste to include temperature, pain, balance and the position of the body in space. (x2)
+- [fact] The brain is a fast, strong pattern recognizer that accepts false positives, sometimes perceiving patterns that are not there; this is why perceptual illusions exist. (x2)
+- [fact] People who lose proprioception can still move by watching their bodies and using subtle cues, and players do something similar with virtual objects.
+- [fact] Objects must be large enough to be resolved; a person can be resolved beyond half a mile but is unlikely to be noticed unless searched for.
+- [fact] Some wavelengths are not perceived because perceiving them would be useless or harmful, such as infrared, which the eye's own glow would blind us to. Why: Perception is shaped by usefulness, not by completeness.
+- [fact] Color categories are an artifact of the retina: the spectrum is a smooth gradient, yet people perceive distinct colors because that grouping is useful.
+- [fact] Mental models leave out things rarely needed, such as microscopic life, so people are unaware of much around them. Why: Models only include what matters for everyday action.
+- [fact] The five experiences describe what players feel, not the physiological and psychological processes behind them, which require studying human perception.
+- [fact] Perception is partly learned, and people build new distinctions and skills throughout life.
+- [fact] Perception is active: people learn to perceive largely by moving and exploring, not by passively receiving stimuli. Why: Kitten studies showed passive subjects failed to develop normal perception despite identical stimulation.
+- [fact] Players judge physical properties such as mass, friction and material by perception, not by measured physics values, so a very heavy object moving like a light one reads as light. Why: Perception is what the player experiences, and most physics properties cannot be perceived by sight, sound or touch.
+- [fact] Haptic feedback originated in aircraft to restore the tactile sense that servo-controlled flight controls removed from pilots.
+- [fact] Colorblindness, influenced by DNA, affects about 8% of cisgender men and 0.5% of cisgender women.
+- [fact] The multi-store model's components are functional rather than fixed brain regions, and they are not always cleanly separated.
+- [fact] Persistence of vision, which makes about 24 images per second look like continuous motion, reflects iconic memory.
+- [fact] Mind wandering and divided attention raise the risk of missing hazards, as in driving and in mixed reality interfaces that split attention.
+- [fact] Humans, even infants, expect solid objects not to pass through each other and objects not to fit into containers that are too small.
+- [fact] Because contrast sensitivity is a clinical vision measure, such gains could in principle help eyesight.
+- [fact] Later multimedia learning research holds that audio and video work better in tandem than either alone.
+- [fact] A game's internal state is more precise and mathematical than the world the player experiences, and the system is designed to produce an experience in the player's mind.
+- [fact] Context supplies meaning and a reference for scale, speed and weight, but appeal must be judged separately from that context.
+
+## expectation
+- [model] Expectancy-value theory holds that choice, persistence and performance depend on expected success and task value, which are the best predictors of effort, performance and persistence.
+- [model] Designers work from their own mental model, which must be adjusted to system limits, while players build a separate model from the system image and prior expectations.
+- [definition] The mind uses simplified models rather than reality, since reality is too complex to handle directly, and mistakes these internal simulations for the world itself.
+- [definition] Mechanics are partly explicit rules and partly mental, describing the largely subconscious mental models players form about a game.
+- [definition] Metaphor is the player's past experience, from life, film and cartoons, of how an object should move and react.
+- [definition] Priming occurs when exposure to one stimulus influences the response to a following stimulus.
+- [definition] A mental model is the set of associations a player brings to a game, which a metaphor draws on to communicate how the system works.
+- [definition] Player modelling builds computational models of a player's behaviour, preferences or skills so that content can be tailored to that player.
+- [definition] Player experience modelling (PEM) is user modelling within games covering behaviour, cognition and affect, and it consists of signal processing and feature extraction for input, experience annotation for output, and machine learning to map between them.
+- [mechanism] Heightened expectations boost appreciation unless the experience noticeably betrays them; overinflated promotion-driven expectations make it feel less interesting. When: when promotion or hype raises expectations above what the experience delivers. Why: Betrayed expectations reverse the boost, and the gap between anticipated and actual interest lowers perceived interest. (x3)
+- [mechanism] Priming temporarily activates related thoughts that shape behavior for several minutes, and is a main source of short-term effects in lab studies. Why: A person always has something on their mind that affects what they do next. (x2)
+- [mechanism] Metaphor primes players with preconceptions about how an object should behave, and treatment sets how accurate they expect its nature and motion to be. When: when an object's look suggests a level of physical accuracy. Why: Players judge behavior against the expectations the presentation creates.
+- [mechanism] Predictable results let players infer game structure early, such as learning that falling into a hole costs a life.
+- [mechanism] Players who believe they can accomplish an objective are more motivated to complete it. Why: expectancy-value: motivation depends on both belief in success and value.
+- [mechanism] Because players supply input to run a model, they form ideas about both the model and the source system it represents.
+- [mechanism] Gaps between a designer's model and players' preconceptions make games expressive, because players test and reconcile their views against the model.
+- [mechanism] A review describing a game as challenging makes an unfair loss feel intended, while the same loss after a review calling it unfair is judged a flaw. When: the same game event is framed by prior descriptions. Why: Prior framing changes how identical experiences are judged.
+- [mechanism] People tend to live up to how they are treated: treating people as capable encourages capable work, while treating them poorly produces anger and helplessness. Why: Expectations communicated by others act as a self-fulfilling prophecy on effort and output.
+- [behavior] Pre-play labels, branding, marketing or reviews set expectations, so players judge the same item more favorably and read play as confirming them. When: when players form judgments from labels, presentation or prior opinions. Why: Expectations set before experience shape perceived quality, and confirmation bias shapes how experiences are perceived. (x2)
+- [behavior] Players arrive with conventions such as WASD movement assumed; control layouts differing from familiar ones surprise them and can leave them stuck on basic actions. Why: Players judge new controls against habits from other games, and gamers absorb conventions that others do not know.
+- [behavior] Players expect a represented object to handle, sound and react like its real counterpart, based on generalized experience, rewarding met expectations and are thrown off when they are not. When: when controlling or interacting with an object the game represents. Why: Expectations form from generalized experience, and players map visual cues onto behavior they already know.
+- [behavior] A title that signals an untested, probably unbalanced game leads players to accept the imbalance, while a title promising balance would likely be criticized. When: Games whose imbalance is intentional or unavoidable. Why: Expectations set by the title frame how players judge fairness.
+- [behavior] People reason intuitively by weighing prior experience alongside new evidence, which resembles Bayesian updating. When: judging uncertain outcomes.
+- [behavior] A clever action that differs from what the player expected can still look stupid to the player. When: Learning creatures act in ways players did not anticipate. Why: Player expectations shape how behavior is judged.
+- [behavior] Players typically hold a vague picture of a game as a story world, a set of rules, and hidden software that runs it. This is enough for playing. Why: Playing requires only a surface understanding.
+- [behavior] Real life is hard to act in because its rules are unclear, so people work to learn them without knowing whether they are acting correctly. When: when comparing real situations with game systems. Why: Unclear rules make every action uncertain.
+- [behavior] Repeating a related word beforehand biases a person's answer to a later question toward that word, even though they are unaware of the influence. When: when a player has just been exposed to a word, phrase or concept. Why: Subconscious priming shifts responses below awareness.
+- [behavior] Visual illusions can expose the brain's internal model, such as dots that appear to change color as the eyes move while staying the same. When: when a visual stimulus conflicts with the perceptual model. Why: The perceptual model produces an output that differs from the physical stimulus.
+- [behavior] Results that conflict with an audience's models produce surprise, which is visible as a collective gasp at the moment the models are broken. When: when an outcome violates what the audience expected. Why: Surprise marks the breakdown of the mental model.
+- [behavior] When advancement is tied to elapsed time, players develop timing expectations and feel progress is stalled when it arrives late. When: progression paced against playtime. Why: Pairings of progression type and time create learned pacing expectations that become embedded in genre conventions.
+- [behavior] Players assume a new system works like systems in similar games, so an unusual design such as a dump stat that matters must be clearly signaled. When: A game departs from genre conventions. Why: Players rely on prior expectations to choose, and unsignaled differences lead to misjudged choices.
+- [behavior] Players shown a large, prominent figure first overestimate their chance of winning. When: reward or jackpot figures are displayed prominently. Why: anchoring on the first large number.
+- [behavior] Absurd creatures set few behavioral expectations, so detailed physical interactions stand out against them. When: Surreal settings populated with fantastical characters.
+- [behavior] A realistic-looking vehicle leads players to expect it to handle like a real car. When: vehicle rendered with realistic appearance. Why: Visual realism signals physical realism.
+- [behavior] Players differ in expectations and mental models of a product according to their prior experience with similar games, regardless of age. When: anticipating how players approach a new game. Why: Players of shooters and players of sandbox building titles approach a game differently because of their genre experience.
+- [behavior] When players act in ways developers find weird or irrational, the behavior often reflects missing knowledge about where to look or what matters rather than irrationality. When: interpreting playtest failures. Why: Something is obvious only to those who already know where to direct attention and which information matters.
+- [behavior] People expect machines to be more objective than fallible humans, so biased automated decisions are noticed and questioned less often. When: When decisions are made or assisted by automated systems. Why: Trust in machine objectivity lowers scrutiny of its outputs.
+- [behavior] When a game world is archetypal, players can predict its storylines, character types, social dynamics and the choices they will face. Why: Familiar settings follow well-known patterns.
+- [behavior] Players expect a spatial environment containing all relevant locations, characters, and the player character. When: when playing a story-driven game. Why: a spatial world is part of what players expect from a game.
+- [behavior] Players predict outcomes by applying mental models of systems such as physics, psychology, economics and game mechanics.
+- [behavior] When each agent must act before seeing others' choices, reasoning about what others know and think they know can loop endlessly without a decisive answer. When: Simultaneous choices under uncertainty, such as a standoff. Why: Each agent must predict others' predictions, creating recursive uncertainty.
+- [behavior] Skilled players reason through branching trees of predictions about the opponent's predictions in real time, not only the immediate move. When: Fast-paced multiplayer combat.
+- [behavior] Players lacking background knowledge often read a humorous or thematic premise as straightforward and misunderstand how its pieces fit together. When: content depends on source material players may not know. Why: Players fill gaps with a default genre reading.
+- [rule] Use priming to direct attention or shift choices among options the player already has, not to manipulate players or force behavior the game cannot support. When: when designing how to influence player decisions. Why: Priming changes the balance among existing options but cannot invent motivation. (x2)
+- [rule] Set difficulty expectations up front, especially when higher levels cheat; a clearly labeled cheating level avoids player resentment.
+- [rule] Choose defaults for the mainstream audience and follow industry standards, such as subtitles on by default. When: Setting defaults for options and accessibility features. Why: Most players want the common default, and most never change it.
+- [rule] Keep cues, responses, input schemes, screens, navigation paths, and world logic consistent so players never have to relearn how things work.
+- [heuristic] Players infer unshown details, so not every detail must be shown; a simple name or label can suggest unsimulated emotions like grief or family affection. When: when deciding how much detail to render or simulate. Why: Players fill gaps with their own mental pictures and apophenia. (x2)
+- [heuristic] Where doubt is low, hand knowledge directly to characters instead of simulating how a signal physically travels to them. When: the result is not in doubt. Why: physical simulation of sound propagation is unnecessary.
+- [heuristic] Understanding players better than they understand themselves is the key to a game they will enjoy. When: Designing a game meant to be enjoyed. Why: Players cannot always articulate what will please them, so designers must infer it.
+- [procedure] 1) Ask what users already know. 2) Identify what is unknown to them. 3) Borrow familiar patterns from apps and games they use. 4) Verify the choice with a UX test on early prototypes. When: when designing a new interaction.
+- [procedure] 1) Record gameplay sessions and extract features as indicators of affect, performance and play style. 2) Select features with sequential forward selection, scoring candidates by how well simple perceptron or MLP models predict emotional states. 3) Grow network size by adding hidden nodes and layers, monitoring performance at each step.
+- [pitfall] Copying genre rules of thumb without checking them against the game's players can make controls fail for those players.
+- [pitfall] Treating motivation as easy to predict from design intent alone ignores how unpredictably it directs behavior.
+- [fact] Game designers borrow communication methods (hotkeys, tooltips, slow motion, vignettes, voiceover, a small X closing windows, fades to black) from software UI and filmmaking, adapting them to game needs. When: when choosing communication techniques for games. Why: Borrowed methods must be adapted because games have different demands than software or film.
+- [fact] Diversity and inclusion in games remain at an early stage and still need substantial progress.
+- [fact] Perception is subjective, relative and general, so people describe game physics with words such as pointy or springy rather than measured values. Why: Judgments are made by comparison with other things, as with tea and ice water.
+- [fact] Expectancy-value theory is mostly applied in education and educational games.
+- [fact] Intuition improves with experience because it draws on past reasoning and past emotional outcomes, so experienced people often outperform novices.
+- [fact] Mental reinvention, maintaining concentration and psychological play, is reached only by expert competitive players, since emotional upset or distraction can cause defeat.
+- [fact] Experienced players choose mixed strategies with close to the mathematically correct frequencies, even without computing them. When: repeated real-world randomized choices. Why: Practice and intuition approximate equilibrium play.
+- [fact] Players can model one or two opponents well; tracking three is near the limit, and beyond four players the mind game becomes impossible. When: designing competitive player counts. Why: Human attention cannot model many minds at once.
+- [fact] Players are primed before play by a game's title, cover art, and others' opinions of it.
+
+## emotion and affect
+- [model] Emotional engagement is built through formal elements such as challenge, premise and story, plus responsive AI creating presence, great music and physical believability rather than photo-realism. (x2)
+- [model] Plutchik's Wheel of Emotions has eight primary emotions arranged as polar pairs: joy-sadness, anger-fear, trust-disgust and surprise-anticipation, with intensity varying within each primary.
+- [model] Emotions vary along two dimensions: intensity and valence, the flavor of the feeling, so high-intensity emotions can differ as fury, grief, or terror. When: When plotting or comparing emotional states. Why: Two separate axes describe emotions more fully than intensity alone.
+- [model] Two-factor theory holds that emotion combines physiological arousal with a cognitive label explaining its cause; the label decides which emotion is felt.
+- [model] Eight primary game pleasures are sensation, fantasy, narrative, challenge, fellowship, discovery, expression, and submission.
+- [model] Experience bleed is the spillover of context across an experience's edges: the audience's life carries into play, and the designed context carries into their life afterward.
+- [definition] Pride in accomplishment is the lasting satisfaction of an achievement, called naches in Yiddish when it concerns children.
+- [definition] Thrill is fun that combines terror with a sense of safety.
+- [definition] Triumph over adversity is the satisfaction of winning against long odds, called fiero in Italian.
+- [definition] Wonder is awe and amazement that lead to curiosity.
+- [definition] Discovery is the pleasure of finding something new, such as world areas, secret features, or clever strategies.
+- [definition] Dramatic decisions engage the player's emotional state, while weighted decisions carry consequences on both options.
+- [definition] An experience is the full arc of emotions, thoughts, and decisions a game creates from start to finish, and it changes as it moves from setup to payoff.
+- [mechanism] Tiredness, pain, stress and hunger reduce learning efficiency.
+- [mechanism] Hours of practice build an emotional unconscious that signals which option feels better, and players act on that signal alongside conscious thought.
+- [mechanism] People make decisions by imagining a scene and judging the feeling it produces, a process called prefeeling. When: When choosing between imagined options. Why: Imagined feelings guide choices even when they misrepresent what the experience will be like.
+- [mechanism] An experience cycles from thought to emotion, emotion to idea, idea to reaction, and reaction back as feedback. Why: Each stage prompts the next, so the experience feeds itself.
+- [mechanism] Game experience forms in order: designers create mechanics, mechanics are wrapped in fiction, interaction produces a long event sequence, events trigger unconscious emotions, and emotions merge into one experience.
+- [behavior] Meeting a new enemy type excites players, because they expect repeated defeats may yield a useful ability. When: when a new creature is encountered. Why: Players anticipate the reward from repeated kills.
+- [behavior] When intensity becomes overwhelming, players want to remove the headset and their presence collapses. When: Bodily threats are pushed beyond the level players find thrilling.
+- [behavior] Fast or physically active games let players release anger and frustration on opponents in a safe setting. When: a player feels anger or frustration. Why: Safe outlets allow emotional release.
+- [behavior] Whimsical games with funny situations take the player's mind off troubles and show that fun is still possible. When: a player is distressed. Why: Humor shifts attention away from worries.
+- [behavior] Being rescued by an unseen fighter produces relief and gratitude, even though the rescuer's motive is never modeled. When: the player is pinned down and then saved. Why: players attribute intent to unexplained actions.
+- [behavior] Identical physical situations produce different emotion when the perceived consequence differs, since emotion tracks the anticipated outcome. When: the same physical event carries different perceived danger. Why: Emotion follows the anticipated consequence.
+- [rule] Interpret emotional expressions within the person's own evaluation of the event.
+- [rule] Read frustration scores as a balance question rather than a simple negative when checking whether players reach flow. When: when using the observation grid to check flow.
+- [rule] Design play to produce positive emotion, and avoid negative emotion not tied to gameplay, such as usability problems or bugs.
+- [rule] Identify small emotions individually, such as a brief flash of anger, a dash of disgust or a surge of triumph, as a chef distinguishes single flavors. When: analyzing or designing play experience.
+- [rule] Build discovery and surprise into the game as part of its emotional experience.
+- [rule] Approach games first through experience design, with technology supporting the intended experience rather than driving the design.
+- [rule] Be deliberate about which expectations your cues, labels and presentation set, because they shape how players judge a mechanic before experiencing it. When: when presenting a mechanic or item to players. Why: Pre-experience expectations can outweigh actual response.
+- [rule] An event provokes emotion only when it signals a meaningful change in a human value, so design events as shifts between value states. Why: Emotion depends on change, not on the event alone.
+- [heuristic] Upheaval, or merely the prospect of it, is always engaging and sustains attention, so key shifts should be made more dramatic.
+- [heuristic] When feeling nervous, recall a time of supreme confidence and deliberately return to that state. When: Feeling nervous before or during a pitch. Why: Recalling a confident memory can restore a steadier bodily and vocal state.
+- [heuristic] Ask whether a psychological pressure serves gameplay and is transparent to players, or mainly serves retention and conversion metrics. When: when judging any pressure mechanic. Why: separates legitimate design from exploitation.
+- [heuristic] Refinement should look for ways to add emotional pull that keeps players returning to the game.
+- [heuristic] Define one key emotional experience early and build gameplay, story, and art around it, since it can drive the whole game. When: when starting a new game concept. Why: a single emotional anchor gives the design a consistent direction.
+- [heuristic] Drawing practice trains perception, and better seeing improves drawing; the two skills reinforce each other.
+- [heuristic] Shape player expectations indirectly through control mapping, metaphorical representation and art treatment rather than relying on raw button-to-event mapping. Why: Players press imprecisely and their intent is ambiguous, so simple mapping is not enough.
+- [heuristic] Letting units grow stronger over time and risking their permanent loss can make players more emotionally invested in them. When: When adding progression to units in strategy games. Why: Players attach more feeling to units they have invested in and could lose.
+- [heuristic] Vary the experience over time, since a single sustained emotion becomes tiring and loses power. When: When designing experiences longer than a brief moment. Why: Sustained emotion exhausts attention, so variation keeps it powerful.
+- [heuristic] Ask where the experience starts and ends, and what constraints physical reality provides, before shaping the play space.
+- [pitfall] Repeated gore, creatures or spectacle numbs players, who then tune triggers out or laugh at them; spectacle not tied to earned effort deadens players, especially without a prior challenge. Why: long overuse dulls the reflex.
+- [pitfall] Reading through abusive comments in search of useful points wastes effort and damages wellbeing.
+- [pitfall] Inferring player feelings from faces is hazardous without carefully designed measurement, since expression is culturally variable and universality is doubted. When: Game development relies on facial reading without a measurement protocol. Why: Expressions vary across people and cultures, and the universal nature of expressions has been questioned.
+- [pitfall] Claims that players can be hooked by releasing oxytocin or delivering dopamine shots are oversimplified or neuromyths; how these chemicals work is poorly understood. Why: they are released in many situations, but their mechanisms are not well understood.
+- [pitfall] Physiological signals without game context may yield erroneous experience states, since a rise in galvanic skin response can mean frustration or excitement depending on the cause.
+- [pitfall] Building elaborate logic to support a feeling that seems obviously true.
+- [fact] Surprise underlies humor, strategy and problem solving, and the brain enjoys surprises; brain scans show even unpleasant surprises activate the brain's pleasure centers.
+- [fact] Reading player emotion from faces is a skill that improves with practice.
+- [fact] Perception and cognition can induce and shape emotion, not only follow from it.
+- [fact] Objective input includes ECG, photoplethysmography, galvanic skin response, respiration, EEG and electromyography, plus motion tracking of posture, facial expression and head pose, and verbal cues in social games.
+- [fact] Primal threats include filth and rotten food (revulsion), venomous creatures (recoil), visibly diseased people (avoidance) and ghastly wounds (adrenaline). Why: people are genetically wired to react to these cues.
+- [fact] In everyday life people set their own goals and need not reach every one to count as successful.
+- [fact] A game's value comes from the experience it creates when played; without play, the physical or digital artifact is worth nothing.
+- [fact] Conscious experience is all a person can know as real, since senses and minds filter the world, so experiences designed through games can feel as real and meaningful as everyday ones. Why: Experience is the only reality accessible to us.
+- [fact] Some mechanics exist to entertain rather than to solve level challenges, so utility-based evaluation can miss them.
+- [fact] Classic action arcade titles maximize thrill by layering rapid-tempo soundtracks, perilous scenarios, brutal fictional content, and head-to-head social rivalry.
+- [fact] A game's resulting experience can last minutes, days or years.
+- [fact] Emotional weight grows with the importance of the value and the size of its shift.
+- [fact] Other media provoke emotion through spectacle, character or music, while games alone provoke emotion through decision.
+
+## visual and auditory perception
+- [model] Vision has two functional systems: a fast object-identifying 'what' system and a slower action-guiding 'how' system that handles tasks like grabbing or catching.
+- [model] Perception unfolds in three levels: sensation, perception and cognition, each adding organization or meaning to sensory input.
+- [model] Tutorial levels alternate positive spaces, where players learn new mechanics, with negative spaces, where they practice them; people pass through negative spaces and dwell in positive ones. When: When structuring a tutorial level's sequence of learning and practice. Why: Alternating the two space types keeps the dwelling and moving experiences distinct.
+- [model] Gamespace is assembled from small-scale additive and subtractive volumes plus larger forms like open sandboxes, hub areas and traditional gamespaces, sized by spatial size types.
+- [definition] Parallax scrolling moves sprite layers at different speeds as the screen scrolls, so a side-scrolling 2D scene reads as having 3D depth.
+- [definition] Subjective sound presents the soundscape as the character hears it, rather than as a neutral 3D picture.
+- [definition] The Stroop effect is slower, more error-prone naming when an irrelevant word conflicts with the feature being named, such as a color word printed in a different ink. Why: automatic word reading must be inhibited.
+- [definition] Mimicry spaces are built to stage performance, anticipating choreography, lighting, orchestra pits, and scenery.
+- [definition] Landscape is the environment as perceived, especially visually.
+- [definition] One-point perspectives suit elevation-like views, two-point perspectives match typical eye level, and three-point perspectives suit tall buildings seen from above or below. When: choosing a perspective type for a level view.
+- [definition] Negative space in level design is what the player cannot see or know, such as surroundings hidden from view.
+- [mechanism] Perception is a subjective construction, often top-down: prior knowledge, input context and expectations shape what is perceived, not only the reverse.
+- [mechanism] Without a blank flicker, a changed element stands out as the only moving part and becomes easy to notice.
+- [mechanism] Constant exposure to a view makes it lose its power, while a view withheld and glimpsed briefly stays striking. When: when designing reward visibility. Why: scarcity of a view preserves its impact.
+- [mechanism] Moving through layers of 2D environments, forward and backward, adds a z-axis to side-scrolling levels.
+- [behavior] People recall where items sit on a wall far better than the contents of a list, so posted ideas help them find connections. When: Reviewing posted brainstorm ideas. Why: Spatial memory is stronger than list memory.
+- [behavior] Trailing players stay attentive because a game-changing item could appear at any moment. When: a race uses catch-up item distribution. Why: the chance of a strong item keeps them watching.
+- [behavior] People respond faster under intense focus and slower when relaxed or in poor conditions such as dim light.
+- [behavior] Players judge an AI as unintelligent when it fails to react to slow projectiles, though fast ones leave too little time to react. When: slow projectile weapons are fired at the player. Why: Slow shots give visible time for a reaction.
+- [behavior] People often miss objects they are not looking for, even when those objects are in plain view. When: attention is occupied by another task. Why: perception is directed by what the viewer is searching for.
+- [behavior] Large open spaces invite players to look outward and feel small, while tight, constrained spaces focus attention on the immediate surroundings and prompt introspection.
+- [behavior] A fast speed value feels slow on empty ground, and adds no sense of speed without nearby objects or surface texture to measure motion against. When: Moving through a space with no visual reference. Why: Impressions of speed need a frame of reference.
+- [behavior] Players' impressions of speed vary little between people, since everyone constantly judges moving objects. Why: Judging moving objects is a constant everyday activity.
+- [behavior] Players keep a running model of game physics, and interactions that contradict it stand out and shape later expectations. Why: Surprising interactions become part of the backdrop players use to predict behavior.
+- [behavior] Players associate low friction with space because of cultural exposure to astronaut footage and space films, so frictionless motion reads as believable. When: a space setting uses low-friction movement. Why: Familiar space imagery sets expectations that make drifting motion feel correct.
+- [behavior] Pilots in light aircraft feel an approaching stall through the control stick, and jetliners artificially reproduce that shaking as angle of attack nears the stall angle. Why: Tactile warning conveys a state that the player would otherwise miss.
+- [behavior] Trained listeners follow a target melody better than untrained listeners when distractor notes are added. When: noisy input with distractors. Why: training improves selective attention.
+- [behavior] Players tend to see a malformed plant as an odd visual detail rather than a gameplay problem, because vegetation usually carries little functional significance. When: when generating non-interactive scenery such as plants. Why: Scenery rarely affects play outcomes, so flaws mostly affect appearance.
+- [behavior] Vertical elements arranged in rhythm across a large open space can evoke epic hugeness. When: in open prospect spaces.
+- [behavior] Players encounter recurring symbols near helpful items or breaks in long action, so the symbol becomes linked with reward or relief. When: a symbol appears in staged game spaces. Why: Position near outcomes shapes the meaning players attach.
+- [behavior] Sounds of wading through swamps can unsettle players by making them aware of what their avatar is moving through. Why: audible material raises awareness of the environment.
+- [behavior] Randomized variations in repeated sounds, such as gunshots or footsteps, still give players the impression that their actions have effect.
+- [behavior] Well-designed spaces can strongly direct player behavior yet leave room for players to improvise their own actions within the system's mechanics. When: Designing gamespaces. Why: Spatial configuration directs behavior, as architecture has long done for building occupants.
+- [behavior] Players mentally treat an interior as a separate place, paying little attention to how it relates to the space outside. When: when a player is inside an interior. Why: Indoor thinking focuses on the interior itself.
+- [behavior] Players perceive a world as open when a fixed-perspective side view scrolls freely across a long level, even though only one screen is visible at a time. When: long horizontal levels with free scrolling. Why: Continuous scrolling suggests the world continues beyond the visible screen.
+- [behavior] Letting players fix a distant point and travel toward it creates a different kind of openness than scrolling does.
+- [rule] Artists should specify the shadows and textures they want, and engineers should match that vision rather than adopting whatever technique is fashionable.
+- [rule] Design for how players perceive gamespace through points of view and cameras, and make levels support navigation.
+- [rule] Disable rendering of foreground objects that block the character so the player does not lose the character behind structures. When: in axonometric views. Why: Downward-facing cameras place structures between the camera and the character.
+- [heuristic] Use tactile materials such as modeling clay to shape ideas physically.
+- [heuristic] Read the design documents before spotting, since sound implementation often starts before mechanics and scripting exist. When: Beginning sound work on a project. Why: Design documents reveal intended feel before features are built.
+- [heuristic] Record the map coordinates of events such as player deaths and plot them as a heat map to reveal the most dangerous areas. When: Analyzing where events happen on a map.
+- [heuristic] Alternate large open areas with small enclosed spaces that demand precise obstacle avoidance, so the level varies what it asks of the player.
+- [heuristic] Pair large open areas for circulation with covered, columned areas for lingering and stationary activity, so each space type supports the action it suits. When: Zoning a hub where players move through and also gather or pause. Why: Open space supports movement, while enclosed or covered space invites people to stay.
+- [heuristic] Use freeform layouts driven by player movement, narrative events or mechanics rather than believable building plans. When: when the layout should serve gameplay rather than realism. Why: Gamespaces need not follow physical or regulatory constraints.
+- [heuristic] In top-down games, parallax backgrounds can suggest terrain lying far below the gameplay space.
+- [heuristic] Scrolling distant layers independently of nearby geometry can convey great height even when the playable level is blocky.
+- [procedure] 1) Place a middle-height feature to set the base height. 2) Place the tallest feature beside it.
+- [fact] Perceived intensity change is logarithmic: stronger stimuli need a larger increase before the difference becomes noticeable.
+- [fact] Visible light is a narrow slice of one continuous range of electromagnetic radiation that includes infrared, ultraviolet and microwaves.
+- [fact] Perceiving motion relative to one's own body matters more to learning perception than the stimulus alone. Why: Subjects who could move freely developed normal perception; passive subjects did not.
+- [fact] Visual acuity is sharpest at the fovea and drops quickly with distance from it.
+- [fact] Gamespace architecture applies spatial arrangements from architecture and classic structures to game levels, hubs, sandboxes and camera views. Why: Spatial arrangements shape the player's experience of a level.
+- [fact] Designers plan all four prospect and refuge types, but players mainly perceive relations among refuges, prospects, and secondary refuges.
+- [fact] Square corners hide what is around them, while obtuse corners reveal part of the next room, so occupants must move around the corner to see it fully.
+- [fact] Occupant anxiety rises on higher floors, so limiting how many stories a space occupies is a spatial response to that experience.
+
+## avatars and identity
+- [model] The controlled object in a game works as a surrogate body, and the player learns its properties through handling it, as with a new physical object. Why: Feedback returns through the controlled object to the senses, so the player builds perception of it.
+- [model] The five-factor trait model covers neuroticism, agreeableness, extraversion, conscientiousness and openness to experience.
+- [model] Avatar archetypes: an ideal form that players wish to be, and an iconic blank slate with little detail anyone can fill; many successful avatars combine both.
+- [model] Avatar motion can be described by six criteria: type (linear or rotation), dimensions (axes moved or rotated along), frame of reference, position versus rate, direct versus indirect control, and integrated versus separate dimensions.
+- [definition] An avatar is the character a player controls, entering the game world through it; it is the player's instrument for both perception and expression, and all perception passes through it. (x2)
+- [definition] Imagination is the everyday capacity to fill in gaps and reason with mental pictures, used for communication and problem solving.
+- [definition] Actors are the objects that drive game events, such as triggers, lights and static meshes.
+- [definition] Primary attributes are bought directly with points, while secondary attributes are calculated from primaries plus bonuses and cannot be bought directly.
+- [definition] Pregenerated character selection lets players choose one of several fixed characters, each built around a role or play style, instead of creating one.
+- [mechanism] Time spent imagining oneself in a world increases projection into it.
+- [mechanism] Letting players customize a personal place, through relationships or surroundings, fosters a sense of belonging.
+- [mechanism] A meter that grows through in-character actions, in place of a standard stat, reinforces a character's persona.
+- [behavior] Player identity with an avatar is malleable, shifting between feeling like the character and feeling detached, so players claim credit for good outcomes and blame the avatar for falls. When: after outcomes of play. Why: identity transfer is unstable.
+- [behavior] Player criticism often means the player imagines a different game than the one being built.
+- [behavior] Players who care about computer-controlled characters want to obey, protect, help, or destroy them, which gives designers a strong tool for steering choices. When: Players have built an emotional connection to characters. Why: Care motivates players to act on characters' behalf.
+- [behavior] Audiences invest effort imagining a fictional world only if it satisfies a deep, important desire. Why: Imagining a fantasy takes effort.
+- [behavior] Players of a visible avatar wince when it is hurt and sigh with relief when it escapes harm, as if its injuries were their own. When: A visible avatar in danger. Why: Player and avatar identity merge during play.
+- [behavior] Players value visible faces, and an avatar's face shown on screen, tied to its health, lets players sense injury through peripheral vision. When: When an avatar's face is normally hidden from the player. Why: Players can read a small face image without focusing on it, so it conveys state while they look at the action.
+- [behavior] Beyond their play style, players want to express who they are, so games that offer direct identity expression tend to be more appealing. Why: Strategy shows how players play, but identity needs its own outlet.
+- [behavior] Observing enough interactions lets players assemble a coherent picture of a world's physical traits, such as heavy, sticky, soft or sharp.
+- [behavior] Players can feel as much or more empathy for customized avatars they create as for story-driven predesigned characters. When: Games offering character customization and identity investment. Why: Investment in one's own created identity builds emotional attachment.
+- [behavior] Players relate to specific personal details even without sharing the designer's background, because the details reflect common human experiences.
+- [behavior] Players become possessive of a protagonist they built and object to dialogue or plot moments that force an attitude or decision. When: When writing for a customizable protagonist. Why: Players see the character as their own identity, so out-of-character content feels like a violation.
+- [behavior] Players care about characters when they share history with them, so attachment to a character often depends on established history rather than on the character alone.
+- [behavior] Players tend to engage less with NPCs introduced purely as reflections of the player character. When: an NPC exists only to mirror the protagonist.
+- [behavior] Players who care about a specific person work hard to protect that person, even when the wider world is saved or destroyed by accident. When: When a character is tied to a personal stake.
+- [behavior] A directly controlled avatar lets the player feel they are the character, adding an interpretive layer and sense of identity that board games lack. When: when a game has a player-controlled avatar. Why: Direct control makes the player embody the character rather than move pieces.
+- [behavior] Players viewing crude symbols can build vivid scenes and relationships, such as characters sharing a quiet moment, that detailed graphics would replace. When: the display uses abstract symbols or minimal graphics. Why: the player's mind supplies the emotional detail.
+- [behavior] A vulnerable avatar becomes relatable because the player must protect it, making its safety a personal concern.
+- [rule] Closeness alone can create intimacy without contact, provided the proximity is welcome and the other party is not a stranger or unwanted. When: Designing interpersonal or sensual interactions.
+- [rule] Build systems that stop players seizing things not rightfully theirs; this makes griefing harder.
+- [rule] Build ownership by combining many states with high-utility objects spaced so that transitions between any two are easy.
+- [heuristic] Players enjoy characters who surprise them, so each character should be designed with surprises to discover, as a toy is designed. When: When designing characters for play. Why: Fun is pleasure with surprises.
+- [heuristic] Use real players as narrative characters mainly in face-to-face groups where participants know and respond to one another. Why: social pressure encourages good-faith participation.
+- [tradeoff] Pregenerated characters suit short play that needs fast entry, while attribute and skill systems suit games where the character is central and used in many ways. When: choosing a character creation approach.
+- [pitfall] Annoyance, tedium, or unclear links between what a player intends and what happens can disrupt identity transfer to the avatar.
+- [pitfall] Treating the avatar purely as a tool limits how deeply players project into it; projection is stronger when players relate to the character.
+- [pitfall] Letting players insert their own photo into an avatar seems appealing but does not last, because players prefer an aspirational self over their actual appearance.
+- [pitfall] Overlapping abilities or units across races blur each race's identity, so overlaps should be cut even though removing content may upset fans. When: finalizing race and hero kits. Why: Redundant kits make races feel interchangeable.
+- [fact] Identity transfer to an avatar cannot be forced directly by design.
+- [fact] The brief moment of half-sleep is short and unpredictable, yet can still be enough for the mind to be refreshed.
+- [fact] Imagination serves two functions in play: communication, especially storytelling, and problem solving.
+- [fact] Imagination matters as much as empathy, since every experience builds a small world in the guest's mind.
+- [fact] Power comes in four types: Bio, Gear, Magic, and Science.
+- [fact] An object's position is a common attribute, and the play space is usually treated as distinct from objects.
+- [fact] The new element of VR and AR is letting the player's body enter the simulated world.
+- [fact] Expressive multiplayer avatars created in childhood may remain part of people's personal and professional lives for decades. Why: Multiplayer worlds offer the most expressive online identity.
+- [fact] Pregenerated characters are common in team arena games, fighting and melee games, driving-race games, and cooperative board games, and serve as quickstarts in longer RPGs.
+- [fact] A game can pair a directly controlled character with an indirectly controlled avatar, such as a camera operator, which the player can override.
+
+## memory systems and recall
+- [model] Memory lapses come from three sources: encoding deficits, storage deficits, and recall deficits. They often occur in combination.
+- [model] Working memory has a central executive that supervises a phonological loop for language and a visuospatial sketchpad for visual and spatial information.
+- [model] The mind is a leaky cup: decisions are the water, and flow requires them to drain in steadily without overflowing.
+- [definition] Working memory is short-term, lasting a few minutes at most, and holds and processes information at once, replacing the older short-term store and being more relevant to video game play. (x2)
+- [definition] Sensory memory briefly holds raw sensory input, for under a second to a few seconds, and fades unless attended; it is usually considered part of perception.
+- [definition] A recall deficit occurs when information is stored but temporarily inaccessible, as in the tip-of-the-tongue phenomenon.
+- [definition] Short-term memory holds a limited number of items for under about a minute, and its capacity at any moment is limited.
+- [definition] An item is the largest meaningful unit, such as a word, number, or date, so grouping information into meaningful chunks increases what can be held.
+- [definition] The zone of proximal development is the range between what a child can do alone and what they cannot yet do even with help.
+- [mechanism] Memory is reconstructive: it is encoded, decoded and re-encoded at each recall, introducing errors and biases, so people can recall events that never happened. Why: cognition distorts recollection just as it distorts perception. (x2)
+- [mechanism] Information processed more deeply in working memory is retained better over the long term than information processed shallowly. Why: deeper processing creates more durable memory traces.
+- [mechanism] Recall favors the first items in a list (primacy effect) and the last items (recency effect).
+- [mechanism] Stress, anxiety and young age all reduce working memory capacity.
+- [mechanism] Processing ends in changes to memory through synaptic modifications, such as forming new connections between neurons.
+- [mechanism] Working memory controls attention for executive functions, such as reasoning, deciding and completing complex tasks.
+- [behavior] Sudden insight, an aha moment, occurs when reframing makes a solution clear at once, making previously random components' purpose visible and pleasurable; payoff depends on earlier gathered information. When: When a puzzle's solution depends on an unnoticed property of the controls or world. Why: A reframed understanding restructures the perceptual field at once. (x2)
+- [behavior] Players memorize winning patterns against deterministic enemy behavior, because the same positions always produce the same responses. When: enemy AI depends only on current positions. Why: identical states always yield identical responses.
+- [behavior] When a new fact arrives, people reshape their mental picture and change earlier answers they gave about it. When: when a game reveals information that contradicts or refines an earlier impression. Why: Mental models are flexible and get rebuilt around new evidence.
+- [behavior] The pleasure of an insight is triggered by seeing the answer, and a mind that has seriously considered a problem gets a strong rush from it. When: Players who see a solution after genuine effort. Why: Prior consideration primes the mind to enjoy the revealed answer.
+- [behavior] Players overestimate how likely memorable, rare events are, because such events stand out in memory. Why: selection bias.
+- [behavior] Players remember dramatic wins far better than humiliating losses, so without tracked statistics they overestimate their win rate and skill.
+- [behavior] Players infer broad world rules from tiny cues, and later interactions that confirm those rules make the world feel real and consistent. When: interactions reveal physical behavior over time. Why: Players generalize from small evidence and then test that generalization.
+- [behavior] Replays and other artifacts generated from player input become valuable to players and help them identify with the game and their achievements. Why: Owned expression produces artifacts players want to show others.
+- [behavior] A single leading word in a question can change later recall, raising estimates and producing false memories of details that never occurred. When: When people are asked about a past event with suggestive wording. Why: Memory is rebuilt at each recall and can absorb the question's framing.
+- [behavior] Creative people, and children with weak associative barriers, readily link unrelated pictures into a coherent story. When: given randomly chosen picture prompts. Why: weak barriers between unrelated ideas ease story making.
+- [behavior] Responsive input keeps players delighted across a game's whole length, while unresponsive or mushy input turns simple actions into frustrating chores. Why: Input is felt constantly, so its quality shapes the entire experience.
+- [rule] Do not rely on players remembering what they were taught; counter recall deficits with frequent reminders so players need not retrieve information unaided.
+- [rule] Use only the playing style from the most recent level when personalising during play, because learning effects change behaviour across a series of levels. When: during a series of consecutive levels. Why: learning during play makes older behaviour a poor predictor of the player.
+- [metric] Adults can hold roughly three to four items at once in working memory; children have even less capacity, and capacity can be lower for some people. (x2)
+- [metric] Short-term span is about seven items (plus or minus two) recalled error-free after rote encoding, a limit mainly applicable to rote memorization without other processing, uncommon in daily life. When: rote memorization right after encoding.
+- [metric] After studying a list of about 20 words for one minute, people typically recall roughly 5 to 9 words.
+- [metric] Working memory holds about three items and lasts a few minutes, and it demands heavy attention.
+- [metric] For meaningless syllables, about 40% is forgotten after 20 minutes and close to 70% after a day. When: When learning content that has no meaning, as a worst case. Why: Later studies replicated this forgetting pattern.
+- [pitfall] Assuming all players of a generation share one mental model leads to wrong expectations about how they will read a game.
+- [pitfall] Treating perception, attention, memory, motivation and emotion as independent sequential stages misrepresents how they interact in the brain.
+- [pitfall] Reading the multi-store model as a strict serial pipeline in which information always passes through each store in order.
+- [pitfall] Interruptions can make a person forget an ongoing step in a process.
+- [fact] No known limits govern how long or how much long-term memory holds; the brain need not delete older memories to acquire new ones, though forgetting still happens. (x2)
+- [fact] Long-term explicit (declarative) memory stores knowledge and implicit (procedural, conditioning) memory stores how to do things, using different brain regions; both are subject to the forgetting curve.
+- [fact] The Zeigarnik effect is that people remember incomplete tasks better than completed ones, so open tasks create lasting cognitive load and completing them brings relief.
+- [fact] People with hippocampal damage can learn new motor skills while being unable to recall the sessions in which they learned them.
+- [fact] The decline of long-term memory is commonly described as exponential.
+- [fact] Remembering requires encoding, storing, and retrieving information, so memory is more than storage alone.
+- [fact] Iconic memory stores visual input and echoic memory stores auditory input. Other sensory stores exist but have received less research.
+- [fact] Thirteen unrelated digits are hard to hold, while three meaningful numbers are manageable. Why: meaningful grouping reduces the number of items.
+- [fact] Working memory limits also constrain attention and long-term retention, not only immediate task performance.
+- [fact] Manipulating the environment helps learners think and learn; perception alone teaches object properties, but active manipulation still matters.
+- [fact] Human memory consists of three parts: short-lived sensory stores belonging to perception, working memory, and long-term memory.
+- [fact] Tasks needing many items at once, such as multiplying two three-digit numbers mentally, overload working memory.
+
+## risk and decision-making
+- [definition] A blind choice is one the player cannot evaluate, so a build that looks fine early but fails later is a design failure, not a player failure.
+- [definition] In the ultimatum game, one player proposes how to split a sum and the other accepts or rejects; rejection leaves both with nothing.
+- [definition] Somatic markers are bodily feelings, such as stomach knots or relief after finishing a task, that flag the likely negative or positive outcome of an option.
+- [definition] An opportunity cost is the value lost by giving up another option, which reduces versatility later.
+- [mechanism] An element is detected better when it contrasts with its surroundings, through colour, motion or sound. When: Drawing player attention to important elements. Why: Contrast with the environment makes an element stand out.
+- [mechanism] Atmospheric ambiguity, such as dim lighting, motivates players to proceed cautiously even when no danger is immediately present. When: When creating an unfamiliar or enclosed space. Why: Uncertainty about what lies ahead encourages careful behavior.
+- [mechanism] Believing that something is a trick lets people explain impossible-looking results without accepting supernatural causes. When: when an outcome seems impossible. Why: A trick explanation preserves the existing model.
+- [mechanism] Somatic markers help people reject options with negative outcomes, supporting better long-term choices, though people can numb the feeling and ignore it. When: when choosing between options with different consequences.
+- [mechanism] Failed attempts in risky situations still provide information for another try, so risk supports the iterative learning cycle. When: when players fail a risky challenge. Why: Each failure reveals something about the unknown, improving the next attempt.
+- [mechanism] Low odds of success deter players from risky actions, while high odds make characters act like superheroes. When: Dice-based systems with risky actions. Why: Success probability sets how readily players attempt risk.
+- [mechanism] In simulation games with limited resources, overinvesting in one part can cause the whole system to fail.
+- [behavior] Players tolerate inefficient means or routes when rules make them the way to play, or when the added challenge gives achievement; such costs are accepted for significant experiences. When: when means are rule-required or a goal is blocked by inefficient means. Why: The challenge is the price of a sense of achievement. (x2)
+- [behavior] Trade encourages participation: players become conduits of item value rather than hoarders, and more players raise both demand and, if they can gather or craft, supply.
+- [behavior] Sandbagging is when a player deliberately plays below their best to stay in second place, then rushes to win after the leader is crippled.
+- [behavior] Players may refuse to trade with a dominant trader, and others may join embargoes against anyone who deals with that trader. When: one trader becomes highly successful.
+- [behavior] Players accept a visible advantage that fits the setting or story, and playing the weaker side can become a source of pride. When: an asymmetric advantage is justified by the fiction. Why: the advantage matches the setting, so it feels fair.
+- [behavior] When neither side sees the other's contents, a trade decision reduces to judging whether the other party's offer is good. When: Trades where both sides' contents are unknown.
+- [behavior] Fighting draws retaliation and may burn resources even on a successful attack, so waiting and becoming the least tempting target can feel safer. When: when starting a fight is costly. Why: retaliation and resource loss make standing by look rational.
+- [behavior] When opponents can seize cards, players destroy their own assets first or even concede to protect their decks. When: hostile card effects threaten a player's cards. Why: players try to avoid losing cards to opponents.
+- [behavior] A character that ignores a noise without checking, or turns away from it, looks stupid or faulty to an observer who cannot see the reason. When: when the reason for an action is hidden from the observer. Why: observers judge by the cues they can see.
+- [behavior] Players who notice a predictor always waiting on its favoured option switch to the other option, so the predictor's choices stop matching play. When: the AI's predictions are visible to the player. Why: the player learns the predictor and avoids the predicted choice.
+- [behavior] Expert players resign once they head into a known losing ending, so tablebases are rarely needed in expert play. When: a known losing ending is approaching. Why: the outcome is already settled by theory.
+- [behavior] Given a certain gain versus a gamble with higher expected value, most players take the certain gain, because they avoid the regret of a small chance of getting nothing. When: choosing between a sure payoff and a riskier gamble. Why: regret over a small chance of a zero outcome.
+- [behavior] Players constantly weigh expected value when choosing between playing safe and gambling on each action. When: each action in a game with risk.
+- [behavior] When a player has more choices than things they want to do, the player feels overwhelmed. When: Choice count exceeds player desires.
+- [behavior] When a player has fewer choices than things they want to do, the player feels frustrated. When: Choice count falls short of player desires.
+- [behavior] Players given a choice rarely notice options that were never shown to them, so a choice can feel complete with alternatives hidden. When: Presenting a choice with some options withheld.
+- [behavior] When odds favor the player, an unlikely setback can seem almost impossible. Why: self-serving bias.
+- [behavior] Players may refuse a bet with a large percentage edge when stakes are tiny, because the possible gain does not seem worth the time spent. When: offered very small-stake favorable bets. Why: Time cost outweighs trivial monetary gain.
+- [behavior] Players enjoy large gains far more than small ones, and tolerate small losses easily while strongly disliking large unexpected losses.
+- [behavior] When rare, dramatic events are more memorable than common ones, people overestimate the rare risks and underestimate the common, larger dangers. Why: Memorability is mistaken for frequency.
+- [behavior] Players weigh risk against reward, considering remaining lives and how close they are to the next extra life. When: when a player must choose between a risky high-value target and a safer option. Why: Lives and extra-life progress change how much a risk is worth.
+- [behavior] People often reject clearly unfair splits, such as around 70/30, even at personal cost, though accepting would still yield something. When: when a split is perceived as unfair. Why: unfairness is a strong emotional trigger; responses vary by culture.
+- [rule] A benefit is never negative, even if it applies rarely; an ability that helps only against a rare enemy is still worth at least zero.
+- [rule] Avoid repeatedly making a wager with negative expected value; take it only when the potential gain justifies the expected loss.
+- [heuristic] Withhold card lists until cards are sold, since discovering what cards do is part of the play experience.
+- [procedure] Sandbagging requires three conditions: players recognize a clear leader, see eliminating the leader as their best chance to win, and can coordinate an attack.
+- [procedure] 1) Find the actual chance of each significant event. 2) Compare it with the chance players perceive. 3) Quantify each outcome's value, including intangible value. 4) Update value estimates as playtests show how players value outcomes. When: when balancing events and rewards.
+- [tradeoff] Random selection spreads a small built-in advantage evenly across many games, whereas giving the edge to the less skilled player actively levels skill between players. When: a small built-in advantage such as moving first needs offsetting.
+- [tradeoff] Very light penalties make battles boring because nothing is at risk, while harsh penalties make players overly cautious. When: Choosing how severe a failure penalty should be. Why: Risk must be perceptible without discouraging engagement; a middle setting usually works best.
+- [pitfall] Evaluating mechanics only by utility misses experiential qualities such as flow, tactility, and immersion. When: when judging generated game mechanics. Why: Utility measures functional solvability, not how the mechanic feels to play.
+- [pitfall] Players can profit from gaps between a device's true odds and its payout odds, so equipment bias is a serious risk.
+- [pitfall] A positive expected value at each step does not make continuing optimal; the chance of losing everything can outweigh the expected gain. When: evaluating a repeated gamble with a total-loss outcome. Why: expected value ignores the probability of ruin.
+- [fact] Even games decided purely by skill, such as chess or baseball, involve risk from a player's point of view.
+- [fact] Most people's intuition about probability is often wrong, so a mathematically fair random system can still be perceived as unfair.
+- [fact] It is easier to spot biased reasoning in others than in oneself, and recognizing one's own biases is affected by hindsight.
+- [fact] Damage to the ventromedial prefrontal cortex makes people insensitive to future consequences and reckless, and weakens value-based decisions while general reasoning stays intact.
+- [fact] Cognitive biases are systematic errors that arise from how cognition is designed, and they are predictable.
+- [fact] The balance of risk and reward is central to the emotional experience of a level. When: when tuning how risky a level feels.
+
+## problematic play and addiction
+- [model] Proposed Internet gaming disorder symptoms are: preoccupation, withdrawal, tolerance, failed attempts to cut back, giving up other activities, continuing despite problems, deceiving others about time, using gaming to escape bad moods, and jeopardizing a job or relationship. When: when assessing possible gaming disorder.
+- [definition] Addiction is compulsive play that continues despite clear harm to school, work, health, or relationships, not merely heavy play; its definition is still debated. Why: Too much of anything can be harmful, but harm is the defining feature. (x2)
+- [definition] Anticipation is the enjoyment of waiting for a known pleasure.
+- [definition] Player well-being covers ethics, accessibility, trust and safety, and inclusion for all players.
+- [mechanism] Because players can stop a game whenever they like, games add a further layer of autonomy beyond in-game freedom.
+- [mechanism] Games occupy the brain with something unconnected to worries, giving a much-needed emotional rest. When: a player is overwhelmed by worries. Why: Absorbing attention displaces rumination.
+- [mechanism] Short sessions of prosocial games increased both low-cost helping and high-cost helping, compared with playing a neutral puzzle game. When: after 8 to 10 minutes of prosocial play. Why: Brief exposure to helping behavior in play raises helping in later situations.
+- [mechanism] Three proposed ways gaming disrupts sleep: play displaces sleep time, action-packed play causes arousal, and bright light affects the circadian rhythm.
+- [mechanism] Knowing something exciting is coming keeps players playing and motivates them to return. When: when a level or game has a planned payoff. Why: Anticipation of a reward sustains engagement.
+- [behavior] Characters usually change behavior once the player comes close or has been noticed, in platform games and real-time strategy.
+- [behavior] Players who have lost money often take greater risks to recover it. When: after losses. Why: small certain losses are hard to accept, so they gamble.
+- [behavior] Players can keep engaging in self-destructive, seemingly irrational play under carefully tuned reinforcement schedules. When: games tuned to maximize motivation. Why: The brain has no evolved defense against such schedules.
+- [behavior] Players learn to press inputs slightly early to offset control latency, and the required lead grows with the amount of latency. When: Timing actions against moving targets in laggy games. Why: Delayed feedback makes the on-screen result lag behind the player's intent.
+- [rule] Anyone worried about their own or someone else's play habits should consult a trained counselor or therapist. When: play is causing harm or worry. Why: There is no single treatment for compulsive play.
+- [rule] Take disruptive behavior seriously, encourage fair play, and moderate content to block extremism on studio platforms.
+- [heuristic] Be wary of sensational brain claims; extraordinary claims need extraordinary evidence. When: When evaluating popular claims about the brain.
+- [metric] Diagnosis of Internet gaming disorder requires significant impairment or distress and at least five symptoms within a year; zero to four symptoms are within the normal range. When: when assessing possible gaming disorder. (x2)
+- [metric] Roughly 0.3% to 1% of the wider public may meet criteria for a gaming disorder diagnosis.
+- [metric] Teen gamers spent 34% less time on homework than non-gamers.
+- [metric] In an experiment with 17 teenage boys, 150 minutes of violent play cut total sleep by 27 minutes compared with regular 50-minute play.
+- [metric] About 24% of American teenagers report playing video games after 9 pm.
+- [pitfall] Claims that games are designed to be addictive through dopamine shots overstate the evidence, since dopamine is a general messenger rather than an addiction signal. (x2)
+- [pitfall] Equating heavy play with addiction or pathology is a mistake; playing for hours does not by itself indicate addiction. (x2)
+- [pitfall] Results from animal reward experiments, including reinforcement effects seen only in specific contexts, cannot be transposed directly to humans.
+- [pitfall] Sensationalist headlines can push parents toward expensive treatment, even when gaming is a symptom of depression or anxiety.
+- [pitfall] Reports that omit study design and game details can mislead readers about what a study actually shows.
+- [pitfall] Assuming any single symptom indicates pathology is a mistake; a diagnosis requires multiple symptoms plus impairment. When: when interpreting gaming symptoms.
+- [pitfall] Aggressive people may be drawn to violent games, so the link between violent games and aggression can run in reverse.
+- [fact] Internet gaming disorder symptoms, such as withdrawal when gaming is impossible, are borrowed from substance addiction and are heavily debated.
+- [fact] A major international health classification added gaming disorder in 2019, though experts disagree that it is a distinct addiction.
+- [fact] Many researchers see problematic gaming as a coping mechanism linked to depression and anxiety.
+- [fact] If games were as addictive as illegal drugs, a visible epidemic would appear across the more than two billion players. When: when evaluating addiction claims about games.
+- [fact] Sports and games give people reasons and motivation to be physically active.
+- [fact] Players need time after an intense victory to process it and feel the emotion the designer intended.
+- [fact] Playing a prosocial game rather than a neutral puzzle game promoted empathy.
+- [fact] Prosocial games were linked to cooperation, sharing, empathy, and helping in adolescents.
+- [fact] Very few studies have examined prosocial game effects, compared with the many on aggression. Why: The prosocial evidence base is much smaller than the aggression evidence base.
+- [fact] Substance addictions, such as alcohol, opioids, and tobacco, often create physical dependence, while behavioral addictions, such as gambling, sex, shopping, and sports, are not substance-related.
+- [fact] The WHO planned to add gaming disorder to ICD-11, while the APA and the Psychological Society of Ireland disagreed and called it possibly a product of moral panic.
+- [fact] Problematic gaming is associated with large amounts of play time, lack of sleep, and few social contacts.
+- [fact] Most gamers, including teenagers, play moderately.
+- [fact] TV, total game time, and violent game exposure were each linked to poorer teenage grades.
+- [fact] Frequent gaming correlates with longer sleep onset, shorter total sleep, and daytime tiredness, though causal evidence is limited.
+- [fact] Players keep engaging with a bare fixed-interval reward loop even when all content is stripped away, such as clicking an empty patch of ground. When: designing reward schedules. Why: The reward loop alone can drive repeated behavior regardless of content.
+- [fact] Electrically stimulating animals' brain reward centers made them compulsively repeat the lever press that delivered the stimulation.
+- [fact] How much responsibility for compulsive play belongs to the player and how much to the designer is an open question, especially when children play.
+- [fact] Three basic reward setups are: a reward for every action, a reward for every Nth action, and a reward with a fixed chance on each action.
+
+## community and cooperation
+- [definition] In cooperative play, all players form one team against the game system itself rather than competing with each other. (x2)
+- [definition] Sharing an activity or place with the same people does not by itself create community, while strangers who share an obscure interest may feel a strong one.
+- [definition] A community is a collection of people bound by a common interest, aim, or objective who grow more familiar with one another over time.
+- [definition] The period of contagion is the time a player talks constantly about a game; interest spreads through people during this window, modeled like an epidemic.
+- [definition] Cognitive socialization is the knowledge and cognitive skills a society expects its members to have, which play helps build.
+- [definition] Community property is an asset owned by several players rather than one, such as a ship no single player can afford.
+- [definition] Children's games target ages 2 to 12, where entertainment is the primary goal and education is only a possible component.
+- [mechanism] Community keeps players talking about a game longer, because the game becomes part of their daily life and gives them things to discuss.
+- [mechanism] A game that creates community can stay in play for a long time even when its other qualities are weak, such as simple rules with few decisions. Why: Social interaction alone can hold a group together for hours.
+- [mechanism] Players who assist each other toward a shared objective show reduced negative effects from violent games compared with solo players. When: violent games played with teammates.
+- [mechanism] Cooperative play increases later cooperation with a partner compared with solo play.
+- [mechanism] Guilds joined in childhood can shape social networks for life, much as sports team loyalty does today.
+- [mechanism] When pieces move, capture, or otherwise interact, their relationships to the board and to each other shift, so the system's state keeps changing.
+- [mechanism] Coupling a mechanic's roles, such as restricting movement while an action is used, creates new tactical choices for the player.
+- [behavior] The commander problem usually appears when player skill differs a lot, such as an expert teaching beginners. When: When players have uneven skill in co-op play. Why: Skill gaps make experts' directions accepted by others.
+- [behavior] Collaboration declines as the end of a play session approaches. When: near the end of a session. Why: Players expect fewer future interactions with their partners.
+- [behavior] Players often start a game for its gameplay but stay for the community around it.
+- [behavior] Players with known friends can make shared plans and respond to each other's intentions, which reduces the guesswork needed about teammates. Why: Communication and familiarity reveal intent.
+- [behavior] Highly committed designers keep thinking about their project during everyday life, carry notebooks, research solutions and work at odd hours. When: When a developer has self-identified commitment to the work. Why: The work has become part of their identity, so it occupies them off the clock.
+- [rule] Give competitive social games a quick, built-in way to resolve disputes so that group play does not stall.
+- [rule] Design situations where players must communicate and cooperate to succeed, rather than letting a single player master the game alone, so that community gains real value. When: When designing multiplayer systems. Why: Mandatory interaction makes community meaningful; solo mastery reduces its value.
+- [rule] When a game supports social loops formally, design their progression and integrate it with other arcs and loops.
+- [rule] In team-based PvP, celebrate actions that help the team and its objectives, and value support roles as much as offensive roles. When: team-based PvP.
+- [rule] Define what counts as inappropriate behavior and require players to read and accept a code of conduct.
+- [rule] Treat protecting game communities, especially minors, as an ethical responsibility of developers.
+- [rule] Give each cooperating player a specific role and a way to clearly contribute to the team's success.
+- [rule] Design for friendship deliberately rather than leaving it to chance, since people love to play with friends.
+- [rule] Define participants explicitly: PvP or PvE, single-player or multiplayer, team or solo, AI or humans, and squad or single character.
+- [rule] Design casual games for everyone by avoiding twitch play, violence, and complex rules, so players of any gender and age can pick them up. When: when aiming for the broadest possible audience. Why: Those elements exclude many potential players.
+- [heuristic] Cooperative play often engages players more than competition, so competitive games benefit from adding cooperative modes.
+- [heuristic] A cooperative game should provide communication opportunities, suit both friends and strangers, create synergy rather than antergy, assign roles where useful, and include tasks no one can finish alone or that force communication. When: Designing or reviewing cooperative play. Why: Communication, roles and interdependent tasks make teamwork produce more than the sum of its members.
+- [heuristic] Audiences are delighted more by the care put into planning for their reaction than by the object alone.
+- [heuristic] A code of ethics matters most for large studios and popular games, especially those played by under-18s.
+- [procedure] 1) Identify a player who dominates discussion and ruins fun. 2) Treat the problem as a player issue rather than a game flaw. 3) Remove that player from the group, as tabletop RPG groups sometimes do. When: When one player consistently ruins the group's fun. Why: Social problems may be better solved socially than by redesigning the game.
+- [procedure] 1) Identify whether the core conflict pits players against each other, against the game, or both. 2) Check whether the world layout and gathering places bring players together again. 3) Confirm newbies, players and elders each have suitable experiences. 4) Schedule regular community events. 5) Give players real reasons to cooperate and stay in contact. When: when checking whether a game fosters a strong community. Why: Community depends on how these areas interact, so review them together.
+- [pitfall] Unrestricted PvP can make the whole community feel unsafe, not only the players who are attacked.
+- [fact] Cooperation reflects that a team with many eyes, hands, and abilities is more powerful than one person.
+- [fact] Player-made wikis dissecting all components of a game reveal how communities uncover information designers keep hidden.
+- [fact] Designing for community serves three goals: meeting players' social needs, extending the period in which they recommend the game, and keeping them playing for many more hours.
+- [fact] Cooperative play has received more attention in children's board games than in games for adults.
+- [fact] Role-playing games often place cooperative quests inside a competitive overall structure.
+- [fact] Cooperative games can be non-zero-sum because one player's gain does not necessarily mean another's loss.
+- [fact] Cooperative players of a protein-folding puzzle game identified a monkey virus crystal structure within weeks, far faster than researchers who had worked on it for years. Why: Human pattern recognition in puzzle form can solve structural problems quickly.
+- [fact] Designed social experiences include building and breaking trust, joking, beating opponents, rescuing companions, and finishing a task together.
+
+## cognitive bias and designers
+- [definition] The curse of knowledge is the difficulty of ignoring what you already know, so designers who understand a system cannot easily perceive or predict how new players will perceive it. Why: Familiarity hides what is confusing to newcomers.
+- [definition] Anchoring is overweighting the first number seen, so all later numbers are judged relative to it.
+- [definition] Dunning–Kruger effect: people with low skill overestimate their ability, because judging competence depends on the competence being judged.
+- [definition] Cognitive biases, also called cognitive illusions, are systematic patterns of thought that distort judgment and decision making, arising from intuitive shortcuts called heuristics. Why: Heuristics produce predictable reasoning errors.
+- [definition] Cognitive dissonance is the discomfort of holding inconsistent beliefs, which motivates people to reduce the inconsistency.
+- [mechanism] Appearing weaker can lure an opponent into risky actions that succeed only against a weak player.
+- [mechanism] If the designer does not believe enough to champion the game in person, others are unlikely to believe in it either.
+- [mechanism] Cognitive biases mostly arise because System 1 runs automatically and produces intuitive errors.
+- [behavior] Designers who know a game well or are highly skilled assume familiar features are obvious, so they stop noticing barriers and miss where first-time players get stuck. When: evaluating onboarding and interface clarity. Why: Familiarity and skill hide the difficulty newcomers face. (x2)
+- [behavior] Designers lose objectivity about their work as development goes on, and especially when they built the features they test, since personal investment dulls critical judgment. When: late in long development, or when the designer builds the features they test. Why: Prolonged involvement and personal investment dull critical judgment.
+- [behavior] Designers often fear players will dislike work they invested heavily in, and may avoid playtests by delaying them, missing them, or drifting off during them.
+- [behavior] Experts lose their feel for what a new player expects, so watching a first-time player shows whether the opening is too hard or well judged. When: When the designer has played the game many times. Why: Long familiarity with a game hides the experience of newcomers.
+- [behavior] Designer confidence must be rebuilt at every stage: novices doubt their ability, practitioners fear past success was luck, and veterans fear they have lost their touch. When: Working through each career stage. Why: Each stage brings different doubts about skill and success.
+- [behavior] People underestimate common everyday risks and overestimate rare dramatic ones, and the distortion seems to follow their fears. When: estimating how likely different events are. Why: estimates are shaped by fear rather than frequency.
+- [behavior] Players who believe the first mover has an edge may perform worse as the second mover, a possible psychological cause of the advantage. When: top-level play when the second player holds this belief. Why: Belief in an edge can lower the second player's performance.
+- [behavior] Players often refuse bets with positive expected profit when stakes are high or wins are very rare, because expected value does not match how the bet feels. When: offered favorable gambles with large stakes or rare wins. Why: Felt risk and rarity outweigh the calculated edge.
+- [behavior] When an action and its response fall within the same perceptual cycle, the player reads the response as caused by the action. Why: Shared perceptual cycles bind cause and effect in perception.
+- [behavior] When response does not harmonize with the metaphor, players experience dissonance and frustration and may disengage; when everything harmonizes, designer and player both benefit. When: when a game's elements disagree in fidelity. Why: Dissonance undermines immersion and engagement.
+- [behavior] People reduce dissonance by changing a belief, such as deciding an unreachable goal is not worth having or that a risky habit is worth its cost.
+- [behavior] Adding a third, dominated option steers choices toward a target option; removing the decoy shifts choices toward the cheaper alternative. When: when players compare several priced options. Why: relative comparison makes the target look like the best value.
+- [behavior] People rarely change default settings, so defaults strongly shape outcomes and deserve careful design. When: when designing default options. Why: status quo bias keeps people with preset choices.
+- [behavior] In an otherwise even contest, consumers favor familiar titles, so an already popular game beats an unknown one. When: two games of similar quality compete. Why: Familiarity lowers perceived risk for consumers.
+- [rule] Let developers see their own progress directly, such as a designer watching their playtests or a programmer seeing tests pass, rather than only through reviewers. When: When organizing feedback for creative staff. Why: Progress that only a reviewer sees may not register with the person who made it.
+- [rule] Include the lusory attitude in the psychological state a designer considers when designing for players. When: playcentric design.
+- [rule] Loss aversion is acceptable when the loss is known, consented gameplay, but charging a fee to avoid that loss is exploitative.
+- [heuristic] Check whether your intuitions about the interest curve match what players actually show.
+- [heuristic] Designers are inevitably wrong about how systems will play out, so plans should be treated as hypotheses to be tested. When: When writing a plan that predicts player experience. Why: Emergent system behavior is hard to predict from the design document alone.
+- [heuristic] When a designer feels 90% sure a design will work, its real chance of success is closer to 30%. When: when judging how likely a new design is to succeed. Why: Overconfidence from optimism bias.
+- [pitfall] Assuming players think and perceive things the way the designer does is a pitfall, since perception is constructed individually; teams without user research tend to make this assumption. When: teams without user research. (x2)
+- [pitfall] Designers who play constantly or know their game too well have biased difficulty judgment and cannot see when it is too hard; empathy with the player is needed. When: judging difficulty as the designer. Why: Familiarity hides the newcomer's experience. (x2)
+- [pitfall] Assuming your own enjoyment predicts your audience's enjoyment fails: designers have unusual tastes, teammates may disagree, and many audiences are shut out. Why: Personal enjoyment does not predict other people's enjoyment.
+- [pitfall] Believing awareness of a bias makes you immune is a mistake: biases are mostly implicit and persist after you know they exist, like optical illusions. Why: They do not disappear through knowledge alone.
+- [pitfall] A designer who knows an encounter too well cannot play as a real player would, so self-testing stops revealing new problems. Why: Familiarity hides how newcomers approach the challenge.
+- [pitfall] Players are more creative than designers expect, so the designer's own testing will not catch every loophole.
+- [pitfall] Creators focused on individual parts may fail to notice that the overall sequence has a poor shape.
+- [pitfall] Assuming the designer's intended reading of a visual element matches the player's reading of it.
+- [pitfall] What designers, programmers or artists perceive may differ from the audience, because culture, gaming references and generation shape perception.
+- [fact] Gambling operators, politicians, marketers and scammers exploit the same cognitive biases designers face, so recognizing these mechanisms helps designers avoid misusing them.
+- [fact] People believe their decisions are rational, but research shows strong biases in judgment; designers must account for their own biases as well as players' biases. Why: Decision making is systematically influenced by biases that people do not perceive.
+- [fact] Developers suffer from the curse of knowledge, so they cannot see the game as a new player does; researchers help by observing how the target audience discovers it. Why: Designers who know the game cannot judge its clarity for newcomers.
+
+## immersion
+- [model] Immersion is built in three steps: flow strips the real world from the mind, raw arousal is produced by mechanics, and fiction labels that arousal to match the character's feelings. When: When the goal is for players to share a character's feelings. Why: Each step supplies a layer needed for the player to mirror the character.
+- [model] The avatar acts more as a perceptual substitute than a tool: it has its own bodily space, and the world is reachable only through its actions. Why: Perception is extended one step removed from the player's body.
+- [model] Immersion has four measurable dimensions: inclusiveness (real world cut off), extensiveness (senses served), surrounding (field of view), and vividness (fidelity).
+- [definition] Immersion objectively gauges how well a system shuts out the physical world; presence describes the felt sense of inhabiting that space. Interchangeable use blurs platform properties with player experience.
+- [definition] Immersion arises as the psychological boundary separating real identity from the character blurs, making avatar events feel personally significant.
+- [definition] Immersion is a state in which the player's mind forgets it is being entertained and accepts what it perceives as reality.
+- [definition] Extended reality (XR) is an umbrella term for technologies that alter reality or generate a virtual one, including AR, VR, and mixed reality.
+- [definition] Embodiment occurs when players perceive their virtual body's movement as their own movement.
+- [mechanism] Full immersion makes people lose track of time and disregard hunger, thirst or sleep, and full concentration can enhance learning.
+- [behavior] Players set aside everyday rules when entering a game's bounded space and resume ordinary rules when they leave it. When: starting and finishing a game session. Why: The bounded space marks a temporary shift in rules.
+- [behavior] Immersed players describe their actions as things done in the game world, such as running and swinging a sword, rather than as button presses. When: During immersive play. Why: The interface has become second nature to them.
+- [behavior] In the first seconds of an encounter, players absorb information, make assumptions, and prepare to fight or flee.
+- [behavior] The five experiences of game feel can surface within seconds of picking up a controller and blend together into one feel. When: first moments of play.
+- [behavior] Players who feel they are really there experience senses extended into the game, with game feedback overriding direct sensory input. When: immersive real-time play. Why: feedback from the game becomes the dominant sensation.
+- [behavior] Players' choices are shaped by the environment and by which options are shown, so choice telemetry needs that context. When: when analyzing player choices. Why: presented options and surroundings steer decisions.
+- [behavior] In first person, players assume they can only do what a real person could do in a similar situation. When: in first-person games. Why: Players judge options against their real-world experience.
+- [behavior] A scene triggered by someone else's action rather than the player's own may be rejected by the player. When: RPG cutscenes tied to player choices. Why: The player feels the scene does not reflect what they did.
+- [behavior] Players plan their next steps only as far as they can read the space from the entry point. When: when a player enters a new space. Why: Sight lines from the entry determine how much of the space is readable.
+- [behavior] Players offer opinions, advice or warnings to one another during play, which counts as positive experience bleed. When: when an experience is played in a shared physical space. Why: Shared physical output lets bystanders and players interact around the experience.
+- [behavior] Audiences carry worries, stresses and plans into an experience, so they take time to settle in and lose functional play time after entering. When: when a timed experience begins with a live audience. Why: Incoming personal context competes with attention at the start.
+- [behavior] First-person shooters already show that players can perceive physical presence when the avatar itself is never seen.
+- [rule] Judge spatial interaction by whether the player feels it directly, not by whether the computer simulates it. When: assessing whether a game has simulated space.
+- [rule] Give characters physical personality through animation, such as distinctive running poses, so movement expresses who they are.
+- [heuristic] Familiar places such as a car interior, fast food counter or basketball court need only a few relevant details, as the brain fills in the rest without looking. When: Depicting a place players already know, such as a city street or house interior, or the player is in a setting they already know. Why: players already know what such places are like and imagine the rest.
+- [heuristic] Use the right amount of familiarity, especially in the player's immediate surroundings, to produce unexpectedly strong presence. When: Designing the starting environment of a VR scene. Why: Familiar detail lets the brain build the space quickly.
+- [pitfall] Removing the HUD to increase immersion can make the experience less immersive, because it adds memory load and menu trips.
+- [pitfall] Focusing only on graphics or fiction misses the internal mirroring between player and character that is missing in most failed attempts at immersion.
+- [pitfall] Designing for total immersion can ignore that players bring outside knowledge and personality into the game and knowingly play within its frame.
+- [fact] Familiar conventions, such as mechanics borrowed from a known game or recognizable races and situations, help players learn quickly and overcome wariness of a new IP. When: the audience knows the source game; when launching a new IP. Why: familiar conventions transfer; recognizable elements lower fear of the unfamiliar. (x2)
+- [fact] A first-person view does not make sound subjective by itself, because listeners choose what to attend to.
+- [fact] Every experience, such as watching a film, practicing an instrument or reading, changes neural connections, so claims that one technology uniquely rewires the brain are overstated.
+- [fact] Player experience models may target enjoyment, challenge, difficulty, or frustration; content is then tuned to the chosen target.
+- [fact] Every experience, including playing a game, reading or conversing, happens in the mind, which is a product of the brain and body.
+- [fact] Graphical fidelity, believable fiction, relatable protagonists and dim lighting do not reliably produce immersion; some games have them without immersion and some immersive games lack them.
+- [fact] Players can be objectively immersed without feeling present, for example when a technical fault breaks the virtual interaction.
+
+## narrative and presence
+- [definition] Narrative space is the amount of player time and attention available for story, which differs by genre and expands or contracts during play.
+- [definition] Presence is a felt sense of belonging inside a virtual environment, experienced subjectively.
+- [mechanism] Narrative presence is strongest when player choices have real consequences.
+- [mechanism] Control and camera build physical presence, character design builds narrative presence, and all three together build emotional presence.
+- [mechanism] Because players experience the game through the player character, they feel more immersed in the setting, the narrative, and the decisions they face.
+- [mechanism] Narrative space contracts during intense moments, leaving little time for text or voice, and expands again after the fight ends. When: during and after intense encounters. Why: Players have little attention to spare mid-fight and more afterward.
+- [mechanism] Physical presence grows as the virtual body matches the player's real movements.
+- [behavior] Players resent cutscenes that interrupt progress, feeling the designer takes control, and tolerate them more readily at natural breaks such as loading a level or opening a door. When: when a cutscene interrupts play or when deciding when a cutscene should start. Why: It removes the player's control at a moment they expected to act; interrupting action breaks the player's focus.
+- [behavior] Griefers bar a path so others cannot reach their destination, a simple move that annoys other players.
+- [behavior] In free-form play, players treat each deck as a character with its own personality and quirks, and often give decks names. When: during free-form, unstructured play.
+- [behavior] Players perceive an underlying goal when simple reactive rules combine, such as hunting enemies while retreating at low health. When: simple behaviours respond to different needs at once. Why: Combined reactions to different needs read as a single aim.
+- [behavior] Some adult fans revisit a world only as an occasional mental break, using a physical object such as a display toy as a quick gateway back. When: A fan who wants a short mental escape.
+- [behavior] Some devoted fans engage with a world every day, to the point of adopting its identity in their own lives.
+- [behavior] Large persistent worlds with social obligations and multiyear goals can draw some players into self-destructive patterns. When: a game has social obligations and long goals. Why: Social ties and long-term goals make leaving costly.
+- [behavior] Players read NPC reactions to violence as a signal of how normal it is, so curious onlookers make events feel commonplace.
+- [behavior] Many players in open narratives prefer gameplay over story and accept a disjointed narrative for total freedom.
+- [behavior] Players want to act on the world rather than passively watch or read, so time for text and non-interactive story is limited in many genres. Why: Players prefer interaction to passive consumption.
+- [behavior] Overly long cutscenes cause players to disengage from the story.
+- [behavior] With managed survival resources, the same space plays differently depending on the player's current health and supplies.
+- [behavior] In fast-paced games players tend to run toward the next fight, but an interesting visual asset or animation makes them stop. When: in games with near-constant action. Why: players are pulled forward by action unless something visual holds their attention.
+- [heuristic] Combining objective observation with empathetic introspection reveals insights that a detached viewpoint cannot. When: Understanding what an audience will enjoy. Why: Feeling the experience from inside exposes what outside observation misses.
+- [pitfall] A single reference to something outside the imagined world can destroy the player's immersion in it.
+- [pitfall] When players recognize a game's systems too well, they may dismiss areas built to create atmosphere.
+- [fact] Presence depends on game feel, the look and feel of an experience, which developers often call immersion. (x2)
+- [fact] An experience whose appeal rests mainly on presentation quality becomes dull when its performance is poor.
+- [fact] Presence in VR and AR is invisible, ephemeral and fragile, so it can be lost quietly as the design changes.
+- [fact] Presence can be measured with questionnaires, and presence has been linked to enjoyment.
+- [fact] Games that satisfy players' motivational needs allow better presence.
+- [fact] Non-player characters with social and emotional behaviour can trigger desired player experiences.
+- [fact] Players differ in preferred atmospheres, such as scary, intense or contemplative, so adaptation should not target difficulty alone.
+- [fact] Real head movement in VR stays comfortable and is a unique strength of the medium.
+- [fact] Narrative presence can occur without sensory immersion when player choices visibly change the story, as in some mobile games.
+
+## violence and aggression
+- [model] The catalyst model attributes aggression to genetic predispositions, harsh early environments, and current stress.
+- [mechanism] Lack of felt competence is linked to more aggressive thoughts, feelings, and behavior in players.
+- [mechanism] Under the General Learning Model, prosocial games increase prosocial behavior and violent games increase aggressive behavior.
+- [behavior] Abstract or cartoonish violence draws little concern, even after a real school shooting, because it feels remote; visible gore draws the most parental concern. Why: Stylized settings feel detached from real life.
+- [behavior] Males enjoy destroying things, and games can offer virtual destruction far beyond what is possible in reality.
+- [behavior] Games without blood can still draw protest when they reward harming people, especially when the framing of the victims is not believed.
+- [behavior] At close range, players can mash fire and get responses about as fast as the button can be pressed. When: targets one or two tiles away. Why: Shots leave quickly, freeing slots for new ones.
+- [behavior] Players can find harming others more dramatic and rewarding than cooperating, so cooperation often needs deliberate reward to stand out. When: in early playtests of player-to-player interaction. Why: harmful actions can feel more exciting than cooperative ones.
+- [behavior] If a game has only combat before a social encounter, players tend to attack non-combatants on sight. When: A social scene follows a stretch of play that is entirely combat. Why: Combat priming makes violent action the most available response.
+- [rule] Most action games contain violence, so most action-game studies involve adults; when studying children, use non-violent action titles.
+- [rule] Do not punish disengagement; players should not feel pressured to play.
+- [rule] Provide content warnings so players can make informed choices about what they play. Why: informed choice respects players.
+- [rule] Excessive play that displaces homework, physical activity, or sleep is harmful even before it becomes pathological.
+- [rule] Avoid long sessions of violent play before bed, since they can cut sleep.
+- [heuristic] Ask which specific games produce which effects rather than asking about games in general.
+- [pitfall] Treating correlational or lab findings on violent games as proof of real-world violence is a mistake.
+- [fact] Video games are neither good nor bad; there is no single effect, since effects depend on which games, how played, and context, as with books, film and TV.
+- [fact] Feeling pulled to return to a game is different from a game damaging a person's life. When: assessing a player's habits. Why: Strong engagement is not the same as harm.
+- [fact] The core concern about violent play is that it may desensitize players or make violence seem fun, and evidence on this remains unclear.
+- [fact] Children are a greater concern than adults for violent game content, though some violent play is natural and healthy for development.
+- [fact] The medium a person is immersed in while young shapes how they think for the rest of their life.
+- [fact] Decades of research found no evidence that violent video games are linked to aggression in teenagers, including vulnerable groups.
+- [fact] A 2018 global estimate found about one in three women has experienced violence at least once.
+- [fact] After 30 minutes, players of non-violent games showed less aggression than players of violent games and less than a no-game group.
+- [fact] Violent games show the most downsides of the game types examined.
+- [fact] A meta-analysis of correlational, experimental, and longitudinal studies linked violent games to aggression, desensitization, low empathy, and low prosocial behavior.
+- [fact] A re-analysis of the same dataset judged experimental support weaker and attributed short-term effects to priming.
+- [fact] A study of over 1,000 teenagers aged 14 and 15 found no observable link between violent games and aggressive behavior.
+- [fact] A two-month longitudinal study of adults found no relevant negative effects from playing a violent game.
+- [fact] An expert review found violent games a risk factor for adverse outcomes, but evidence on delinquency or criminal behavior was insufficient.
+- [fact] A 2020 professional resolution said real-life violence should not be attributed to violent game use, though one of its divisions disagreed.
+- [fact] Grunge-style rock raised hostility, fatigue, sadness, and tension, while lowering caring, relaxation, clarity, and vigor.
+
+## vr presence and comfort
+- [model] Presence has three kinds: physical (feeling of being in the world), emotional (events feel like they happen to the player), and narrative (players care about believable, relatable characters and story).
+- [definition] Cybersickness, simulation sickness and motion sickness share symptoms such as nausea, dizziness, disorientation and cold sweats; VR is well known for inducing cybersickness.
+- [definition] The headspace no-no zone is the area too close to the eyes for content to be comfortable, so virtual elements should not breach a set minimum distance.
+- [mechanism] Presence weakens when the virtual body differs from the real body in posture, scale, position or appearance, or when virtual objects pass through it; strong alignment increases presence.
+- [mechanism] HUDs and 2D overlays in VR cause visual fatigue because the eyes must keep refocusing between near and far elements.
+- [mechanism] Empathy for characters rises as they look more human, then drops sharply when they look nearly human but not quite, creating a dip called the uncanny valley. When: Designing characters that aim for human or realistic appearance. Why: Near-human figures are perceived as diseased or dangerous, provoking revulsion.
+- [mechanism] VR and AR communication can feel more natural than a screen video call because the other person seems physically present.
+- [mechanism] Through practice, a tool's effortful use becomes automatic and part of the user's perceptual field, extending their reach.
+- [mechanism] Varying speed and pattern of contact prevents the nervous system from predicting input, which is why people cannot tickle themselves. When: Designing touch sensations. Why: Predicted input is attenuated in perception.
+- [mechanism] Combined visual, aural and tactile feedback creates a virtual proprioception that players experience as real.
+- [mechanism] In positionally tracked VR, the player's avatar keeps their real height, unlike fixed-size avatars in most games.
+- [behavior] Players in a presence-filled VR world expect objects to support varied, multi-purpose interactions, not only single-purpose uses. When: VR environments. Why: Real-world objects are used in many ways, so narrow interactions break expectation.
+- [behavior] Players' sense of closeness to their avatar varies: sometimes they feel distant from it, and at other times their own state merges with it. When: During play with a controllable character.
+- [behavior] A sudden force on an otherwise inert wheel makes it seem to come alive and can distract the player. When: when force feedback fires abruptly.
+- [rule] Show no avatar body rather than a visible body that sits out of place with the player's real body. When: Choosing whether to display the player's avatar. Why: Misaligned visible bodies fall into the uncanny valley of VR avatars.
+- [rule] Use teleport instead of walking, limit head movements, and provide a stable rest frame to reduce cybersickness. When: when players move through large 3D spaces. Why: These reduce the conflict between visual motion and the stationary body.
+- [rule] Avoid virtual camera movement that the inner ear does not match.
+- [rule] If the camera must move in VR, keep the motion linear and avoid acceleration. When: virtual camera movement is unavoidable. Why: the inner ear senses speed changes.
+- [metric] Arm fatigue, called the gorilla arm effect, can begin after about 10 seconds of holding hands in front above the waist. Why: Headsets are heavy and arms are unsupported.
+- [metric] Treat 60 fps as the absolute minimum frame rate for VR and aim for 90 fps or more. When: designing or tuning VR.
+- [tradeoff] Teleportation avoids motion sickness but weakens presence, because the mind builds a model only of spaces it has actually looked at. When: choosing locomotion in VR.
+- [pitfall] Players often misjudge distances when grabbing objects by hand, so grabbing needs careful feedback.
+- [pitfall] Short VR players may not feel heroic or powerful, especially when shorter than all the NPCs around them. When: tracked VR with variable player height.
+- [pitfall] Very tall VR users can exceed trigger volumes and break scripting that assumes a fixed player size. When: tracked VR with variable player height.
+- [fact] The choice of avatar decides who the player relates to and implicitly limits what the player will try, since different avatars invite different actions. When: Choosing a player avatar.
+- [fact] AR currently causes less sickness because it gives less false information to peripheral vision, which the brain uses to sense motion. When: Compared with fully virtual displays. Why: Peripheral vision carries motion cues that AR leaves mostly accurate.
+- [fact] Rich avatar creation and chat features that convey emotion or let players choose text colors and styles are popular with online players.
+- [fact] AR shares VR's physical fatigue, such as headset weight or arm strain from holding a phone, and visual fatigue from refocusing between near and far.
+- [fact] VR can produce far stronger thrill and fear than screens because it can activate the brain's system that tracks objects approaching the body. Why: Traditional screen games cannot activate this system, while VR and AR can.
+- [fact] Virtual embodiment, letting people inhabit a virtual body, may reduce pain perception, aid stroke rehabilitation and let players experience a different body.
+- [fact] VR is more likely than mobile, PC, or console games to elicit presence, especially physical presence in a 3D space.
+
+## emotion and arousal
+- [definition] Cognitive reappraisal changes how a situation is evaluated, which in turn changes the emotion the situation produces.
+- [mechanism] When one source of arousal can stand in for another, the character's fear and the player's excitement merge into one feeling. When: When the character's threat and the player's mechanical challenge coincide. Why: Substitutable sources of arousal blend into a single emotion.
+- [mechanism] Humans mirror the emotions they see in others, which is why watching characters in conflict is compelling. Why: Mirroring makes observed emotion feel shared.
+- [mechanism] Games can use danger directly because failure risk is built in; players enjoy the release that follows overcoming it. Why: Architecture aims for safety, so buildings rarely use danger this directly.
+- [behavior] Players can enjoy manipulating a system even without knowing its goal, as with rotating blocks in falling-block puzzles.
+- [behavior] Players often like a game without knowing why, usually because its elements all reinforce something that interests them.
+- [behavior] Audiences want fictional worlds to be real and believe they might someday be reachable, so these worlds feel more real than their defining media.
+- [behavior] Players feel tense when health is low and lives are scarce, because a final loss would send them back to the start. When: low health with few lives and no saves. Why: A full restart makes each loss costly.
+- [behavior] Feeling humiliated, or believing the game is unfair, does more damage to players than losing itself. When: when players lose a match.
+- [behavior] Players can express dissatisfaction with a game by plotting games they enjoy in other quadrants.
+- [behavior] Narrow hallways paired with tank-style controls intensify claustrophobia, and removing those controls changes the feel of the same space.
+- [rule] Put reactions into concrete words, since feelings are abstract and designers need concrete words to describe the experiences they want to create. When: Describing target experiences. Why: Concrete language makes experiences designable.
+- [heuristic] Prototypes can be used to discover which mechanics evoke a target feeling, such as relaxation or freedom.
+- [heuristic] Use intense bodily threats for thrill, but stop short of the point where players want the experience to end. When: Designing fear or danger for a VR experience.
+- [heuristic] To horrify modern audiences, threats must disturb at a deeper level than the basic reflex the trigger produces. When: designing horror.
+- [procedure] 1) Identify a negative emotion that follows from gameplay, such as losing a match. 2) Help players reinterpret it, such as by pointing out what they did well. When: negative emotion is tied to gameplay and cannot be avoided. Why: reappraising an event changes its emotional weight.
+- [procedure] 1) Check whether players understood what to do. 2) Check whether they felt free to make decisions. 3) Check whether any character depictions were uncomfortable or biased. 4) Check whether they expected polish not yet in place. When: finding the cause of a negative reaction.
+- [metric] Listener mood can be scored across eight dimensions (tension, vigor, caring, hostility, mental clarity, fatigue, relaxation, sadness) using a 45-item questionnaire.
+- [tradeoff] The limbic system (hypothalamus, hippocampus, amygdala) is generally regarded as the emotion system, though it is loosely defined and some researchers doubt it exists as a unit. (x2)
+- [fact] Pleasure depends on context: dancing can delight at a party yet embarrass at a job interview.
+- [fact] The brain empathizes with mental models, so people can feel emotion toward drawings, photos, or characters that have no real subject. When: Designing characters and images meant to evoke emotion. Why: Empathy responds to representations as well as to real beings.
+- [fact] Combat can produce shock, panic, closure, tension, chaos, anticipation, struggle, and the realization of mastery.
+- [fact] Discrete emotions serve different functions: interest supports selective attention, joy opens social interaction, sadness slows activity to scrutinize trouble, anger mobilizes energy, and fear drives escape.
+- [fact] Cognition influences emotion, so how players interpret events changes how they feel about them.
+- [fact] People can attribute physiological arousal from a frightening situation to an unrelated cause, such as attraction to someone they meet there. Why: Emotions do not reliably report their true causes; arousal is interpreted in context.
+- [fact] Common emotional triggers include physical danger, changes in social status, learning, acquiring possessions, sexual opportunity, family and safety, and certain natural environments.
+
+## team play
+- [model] DPS deals large damage; Tank draws enemy attacks away from DPS; Support keeps Tanks alive and/or buffs DPS damage. When: Team-based games with three roles.
+- [model] Team love for a game can break down in three ways: members who cannot love any game, members who love a different kind of game, and passionate members who hold different visions of the same game.
+- [definition] In team competition, two or more groups compete against each other.
+- [mechanism] A small group of uncivil players can spoil the game for the majority, reducing retention and revenue.
+- [mechanism] Team play raises cohesion, which activates trust norms, which in turn increases cooperative behavior.
+- [behavior] Watching others play forms virtual theaters: esports tournaments draw millions and recorded streams spread online. Spectating has existed for thousands of years, but only for games worth watching.
+- [behavior] Experienced players often enjoy giving hints to struggling newcomers, so mixed-skill play can help both groups. When: newcomers and veterans play in the same activity.
+- [behavior] Veteran players leave a leveling game once it stops offering new discoveries, unless given a different game to play. When: after progression runs out. Why: the novelty that held them is gone.
+- [behavior] In unrestricted PvP, players feel they are never safe and become wary of talking to strangers. When: unrestricted PvP. Why: any player may attack without warning.
+- [behavior] Some griefers befriend a player, build trust, then unexpectedly kill them and take their inventory, gaining no game advantage. When: open PvP games. Why: they do it to torment others.
+- [behavior] When a game does not formally support social loops, players often form their own groups. When: Games without official guilds or social systems. Why: Players build their own scaffolding for social progression.
+- [behavior] Players are more likely to troll or exploit random teammates they will never meet again. When: when teammates are anonymous and one-off. Why: No trust relationship needs to be maintained.
+- [behavior] Players often shift from strangers to friends after a shared play experience.
+- [behavior] In multiplayer elimination games, players may team up to eliminate a rival, while two-player games lack this option. When: when three or more players compete. Why: Coalitions form against a leading player, but cannot form in a duel.
+- [behavior] When many states and transitions are available, no two runs match, and players chain long sequences and share recordings of them. When: When a system offers many states and easy transitions between them. Why: Flexible recombination makes each run distinct and worth sharing.
+- [behavior] Team play attracts fans as well as players, and clans or guilds form quickly around multiplayer games. When: in multiplayer games with team play.
+- [behavior] In public matches, players assume teammates are skilled enough to take good routes and shots, but know little else about their plans. When: unknown teammates on public servers. Why: Only general skill can be assumed without communication.
+- [rule] A team must eventually settle on a decision everyone accepts, even when individuals still disagree, and must not leave differences unresolved. When: Disagreement persists after debate. Why: Unresolved disagreement eventually shows up in the game.
+- [heuristic] No single recipe makes a compelling game; each team should find its own mix of design ingredients for its specific audience.
+- [heuristic] Strong game teams build a sense of eliteness through camaraderie around a shared symbol or idea that sets them apart from others. When: When trying to motivate a team, especially one in a plain or impersonal organization. Why: A set-apart identity gives people a precedent to live up to.
+- [pitfall] On a team, a single disconnect can unjustly punish all teammates. When: in team games.
+- [fact] Older games were largely communal, meaning people gathered physically and played together face to face.
+- [fact] Team competition blends competition and cooperation, is common in athletics, and has grown with networked gaming.
+- [fact] In team games, distinct positions together make up the full team, and every position must be filled.
+- [fact] The team fully controls mechanics, but cannot directly control the dynamics players invent with them.
+
+## emotion physiology
+- [model] Basic emotion theory holds that a small set of emotions is innate and universal, rooted in evolutionary psychology and linked to universal facial expressions.
+- [model] An affective game framework has four areas: narrative, interface (usability and appeal), avatars (player identification), and NPCs (believability).
+- [definition] Appraisal theory holds that emotion depends on how a person evaluates a situation, so the same event can trigger different emotions in different people.
+- [definition] Bottom-up emotion arises from perception and attention; top-down emotion arises from prior knowledge, expectation, and appraisal.
+- [mechanism] An under-used brain feels restless, and games engaging eyes, ears, hands, and mind together leave no spare restlessness. When: only part of the mind is occupied. Why: Idle attention produces restless behavior such as fidgeting.
+- [mechanism] Believed bodily feedback can change how strongly people rate a stimulus, even when their actual arousal has not changed. When: a stimulus is rated while the person receives false feedback. Why: people use perceived arousal as evidence for their feelings.
+- [mechanism] Once aroused, people extend that arousal to the whole experience, not only to the element that caused it.
+- [mechanism] Cognition shapes emotional experience: the same item feels better in a setting with a strong reputation than in a plain one. Why: Appraisal changes how an experience feels.
+- [mechanism] In a biofeedback game, calm breathing makes the in-game light shine brightly while stress dims it, so physiological state directly drives game feedback. When: when designing biofeedback-driven games for anxiety. Why: Real-time feedback lets players learn to regulate their own arousal.
+- [behavior] People misattribute arousal to a nearby person or stimulus, such as reading fear as attraction, and this is hard to avoid because arousal is difficult to distinguish from its actual source. When: arousal occurs near a person or stimulus, such as a frightening moment coinciding with a social encounter. Why: the nearby source receives the blame for the arousal. (x2)
+- [behavior] Players expect to win far more often than displayed odds imply; at a shown 75–80% chance, many expect wins around 95% of the time. Why: Self-serving bias.
+- [behavior] Fear can trigger quick automatic reactions, and reacting to a possible threat is safer than ignoring it. When: a threat is possible but uncertain. Why: a false alarm costs less than a missed threat.
+- [behavior] People given unexplained arousal adopt the emotion suggested by surrounding cues, and people told the true cause of their arousal report no emotion. When: unexplained physiological arousal. Why: Arousal is interpreted through a label; a known cause removes the need for one.
+- [behavior] A player in a quiet turn-based duel can cycle through strain, relief, dominance and suspense within minutes, while observers see only calm moves. When: turn-based competitive play. Why: emotions pulse with every move while the visible actions look unchanged.
+- [behavior] Decision emotions respond to what might happen, whereas most emotional triggers respond to something happening in the present. When: the player faces a choice with an uncertain outcome. Why: Decisions concern possible futures rather than current events.
+- [behavior] Players are more willing to pass layered barriers when they know a reward waits at the end, even if the reward is not shown.
+- [pitfall] Over-promising rewards creates disappointment when they arrive, which discourages players from returning. When: Advertising or building up a reward. Why: A reward that falls short of expectations reduces motivation to continue.
+- [pitfall] Treating biochemistry as fully determining behavior ignores impulse control and social rules, which also shape conduct.
+- [fact] Galvanic skin response measures sweat-based arousal but not whether an emotion is positive or negative; it is costly and slow to analyze, so it suits short sessions or a trailer climax. When: Considering biometric measures. Why: Arousal alone does not identify valence, and analysis is expensive.
+- [fact] The hypothalamus controls the pituitary gland, which in turn regulates other endocrine glands.
+- [fact] How biochemicals shape complex decisions is still poorly understood.
+- [fact] Game content forms the link between content and experience, covering the game environment and its effect on spatial and affective involvement.
+- [fact] Gaming activates reward patterns involving dopamine, similar to gambling, drugs, and food.
+- [fact] Electrically stimulating human reward centers has produced overwhelming euphoria, strong enough to make people repeat the stimulation.
+
+## learning
+- [model] Each challenge passes through four phases: Discovery, Learning, Mastery, and Fluency. Why: The phases describe how players move from unknown problem to internalized skill.
+- [model] The General Learning Model holds that any stimulus, including games, can have short- and long-term effects through learning mechanisms.
+- [model] Cognitive science supplies knowledge of how the mind takes in, handles and stores information, while UX supplies the methodology and procedures for applying it.
+- [definition] Implicit (procedural) memory holds skills and conditioned responses performed without being able to describe them, such as motor skills and fighting-game combos; it is usually more durable than explicit memory. (x2)
+- [definition] Constructionism holds that learners discover rules more efficiently by actively building knowledge while exploring in meaningful contexts toward goals they care about, such as programming. (x2)
+- [definition] The forgetting curve plots how memorized material is lost over time, with the steepest loss occurring soon after learning.
+- [definition] A growth mindset treats intelligence as a process that effort can develop, so success or failure reflects effort rather than fixed ability.
+- [definition] Cognitive science examines how minds perceive, recall, focus, acquire skills, infer and solve puzzles, which players rely on during play; neuroscience instead investigates the nervous system as a separate discipline.
+- [definition] The Montessori method learns through the senses first, then applies intellect to practical problems. When: when designing how players learn a game's mechanics. Why: Sensory absorption builds the base that later problem solving depends on.
+- [mechanism] A repeated stimulus gradually loses its interest and attention (habituation), and attention returns when the stimulus changes (dishabituation).
+- [behavior] Studying a detailed pattern catalog trains people to notice the same qualities in everyday surroundings they previously overlooked. When: after studying a detailed pattern catalog.
+- [rule] Design learning around human limits in perception, attention, memory, motivation, and emotion.
+- [heuristic] Grading learning can undermine its intrinsic reward, because the learner's reason for engaging shifts to the external grade. When: learning is intrinsically rewarding for the learner. Why: external grades replace internal interest.
+- [heuristic] Purposeful learning, often achieved through play, works better than forced teaching. Why: learners engage more when the learning has meaning.
+- [heuristic] Newer approaches have not replaced these paradigms; each explains a different facet of learning, so they can be used together.
+- [heuristic] Childhood play is a rich source of design material, since children learn social order and group dynamics through play.
+- [heuristic] Design non-obvious properties that reveal lessons in sequence, because the subtler and less visible an insight is, the more satisfying it feels to learn. Why: Obvious lessons give little satisfaction.
+- [metric] The classic forgetting curve loses about 40% of memorized material after 20 minutes and nearly 70% after one day; it is a worst case because it uses meaningless content. When: meaningless material with no purpose and no mnemonic aids. Why: worst-case baseline. (x2)
+- [fact] Implicit learning is often considered more robust than explicit learning and tends to last longer, though it can still be forgotten.
+- [fact] When people judge word meaning rather than letter case, without expecting a memory test, their later recognition of those words is far higher. When: incidental learning conditions. Why: meaning-based judgment forces deep processing.
+- [fact] Most memory-based rhythm games use fixed repeating patterns rather than randomly generated sequences.
+- [fact] A custom-designed driving game reduced multitasking costs in adults aged 60 to 85 compared with controls, with gains lasting six months.
+- [fact] Players of research games can contribute scientific results; over two million people played a spatial navigation game whose data helped study early signs of Alzheimer's disease.
+
+## loss
+- [definition] Loss aversion is the tendency for losses to weigh more heavily than gains of comparable value.
+- [definition] Player's remorse is the regret a player feels after spending time on a game that motivated them but did not fulfill them.
+- [definition] Limited saves let players save anywhere but cap the total number of saves.
+- [mechanism] An extra losing condition, such as forming a line of three first, can create forcing moves where one player dictates the other's reply, producing rewarding sequences.
+- [mechanism] When a kill takes many shots, the first shot loses importance and play becomes mostly aim and dodge with little hidden information. When: Low-lethality weapons.
+- [behavior] Projection is stronger when a guest watches a risky act in person, because they can imagine the danger falling on them. When: when a guest watches a risky act live. Why: the guest can imagine the danger happening to them.
+- [behavior] Fear of losing progress makes players cautious, and if pushed too far it can make them quit. When: games with progress loss. Why: Loss aversion shapes risk-taking and motivation.
+- [behavior] Players who regret purchases leave unhappy and return less often, shrinking the future audience for games from the same and other studios. When: Players feel pressured into spending. Why: Regret reduces trust and return visits.
+- [behavior] Ladder challengers rarely lose standing if they fail, so many ladder games feel risk-free and climbing gives a sense of progression. When: ladder play with challenge matches. Why: a failed challenge does not drop the challenger's rank.
+- [behavior] Gamers tend to reload a checkpoint after a severe loss, yet usually shrug off minor ones. When: Games offering manual saves.
+- [behavior] People often post-rationalize decisions or failures to avoid the discomfort of inconsistency.
+- [behavior] Players facing repeated hurdles and failures may stop playing and conclude the game is not worth playing. When: repeated failure. Why: dissonance between effort and failure.
+- [behavior] Players may repeat the same obstacle because of missing information, a missed opportunity, or a lack of experience or intuition.
+- [behavior] People accept or reject the same option differently depending on whether it is framed as a payment or as a possible loss. When: When an option is framed as a possible loss rather than as a cost. Why: Losses weigh more heavily than equal gains, which is loss aversion.
+- [rule] A player instantly loses the game once their hand or draw pile has no cards left.
+- [rule] A player whose Cost is at least their remaining health loses at reveal, before battle or damage resolve. When: Card duels where cost is paid in health.
+- [heuristic] Use cognitive reappraisal to reframe unavoidable losses, emphasising what the player did well or improved on personal metrics, so they accept losses they understand. When: after a loss; when the negative outcome cannot be avoided. Why: Reappraisal regulates negative emotions tied to losing; reframing helps players accept losses they understand.
+- [heuristic] Combine limited carrying capacity, limited combat, quick running, and a timer before hostiles fill the map to create tension in a looting mode.
+- [pitfall] Predictable outcomes lead players to concede or quit early, as chess players resign once they calculate a certain loss.
+- [pitfall] Reframing cannot make an unfair or unbalanced outcome feel fair, since it only supports players who understand their loss.
+- [fact] Losing hard-won possessions is a strong flow breaker because loss aversion is a strong psychological effect. When: Designing item loss or permanent penalties. Why: Losses weigh more heavily than equivalent gains.
+- [fact] Prospect space recalls open ground early humans crossed for food and water, exposed to predators and weather.
+- [fact] Games with no failure, no time pressure, and freely leaving at any time reduce stress and suit relaxing experiences.
+
+## emotion theory
+- [model] Russell's circumplex places emotions on a plane defined by valence, running from negative to positive, and arousal, running from deactivated to activated.
+- [model] An emotional response has five components: expression, action tendency, bodily reaction, feeling, and appraisal. When: Analyzing or designing for an emotional response. Why: All three theory families describe emotion as multi-component, though they emphasize different parts.
+- [model] Emotions play five roles in games: providing sensation, focusing attention, aiding decisions, affecting performance, and motivating learning.
+- [definition] Emotion is a state of physiological arousal, such as a faster heartbeat or sweaty palms, that may or may not include cognition about it, which people experience as a feeling. (x2)
+- [definition] Schadenfreude is delight when an unjust person gets their comeuppance, important in competitive games.
+- [mechanism] Fiction relabels raw arousal as a specific emotion, and without fiction arousal remains generalized excitement. When: When mechanics produce arousal that should carry a specific feeling. Why: The label gives the arousal a particular emotional meaning.
+- [behavior] For many female players, emotion is the goal of play itself rather than an add-on, so emotional storylines and relationships can drive engagement. When: designing for broad audiences.
+- [behavior] Events happening to the player feel more interesting than events happening to others, and projection closes this gap. When: when comparing events involving the player with events involving others. Why: projection lets the guest place themselves in the event.
+- [pitfall] Pleasure categories overlap and most people combine several, so labeling a player with a single category oversimplifies them.
+- [fact] Six core emotions are recognized across cultures from facial configurations: fear, anger, disgust, sadness, happiness, surprise; contempt was later added as a seventh.
+- [fact] Later emotion research expanded the taxonomy to over twenty emotional states.
+- [fact] Emotion theories fall into three loosely bounded families, appraisal, basic emotion and dimensional, which disagree on many points. Why: No consensus exists on what emotions are, and the family boundaries are fuzzy.
+- [fact] A feeling of influence over chance is part of what makes gambling exciting; removing it from a pure chance game drains much of its fun.
+- [fact] VR can simulate bodily fears such as falling from a height, drowning, swarming insects, and creatures touching the player.
+- [fact] Emotion's core function is to motivate behavior that supports survival and reproduction.
+- [fact] Conscious feelings are only the visible part of emotion; several physiological systems, evolved for different purposes, generate it.
+- [fact] Emotion steers conduct: humans pursue whatever feels good and shun whatever feels unpleasant or painful.
+- [fact] Three views on emotion and motivation: emotion drives motivation; motivation comes first and emotion gives feedback; or motivation has primacy and emotion serves it. Why: the order is debated.
+- [fact] Players' faces can display seven measurable emotions: rage, dread, revulsion, joy, grief, astonishment, and curiosity.
+- [fact] Emotion supports survival but can also drive irrational choices.
+- [fact] Emotion mostly arrives as many small pulses that climb and drop with each stimulus, not merely as extreme states like rage or grief.
+
+## toxic multiplayer behavior
+- [definition] In individuals versus game, several players face the system in each other's company without acting on one another.
+- [definition] A human value is anything important to people that moves through positive, neutral and negative states, such as life/death, victory/defeat, wealth/poverty and freedom/slavery.
+- [behavior] Rubber-banding, where trailing AI gets impossible speed boosts, is disliked because it feels unfair compared with real competition. When: Racing or competitive games with catch-up mechanics. Why: Players notice artificial help that breaks the expectation of a real contest.
+- [behavior] Players in multiplayer shooters camp near spawn points to shoot opponents right after they respawn, which victims often feel is unfair despite following the rules. When: Multiplayer shooters with fixed spawn points and more than two players.
+- [behavior] Solo players in open player-versus-player worlds may struggle to survive because they lack group protection. When: A new player has no group in an open combat world. Why: Groups hunt and protect their own members.
+- [behavior] In group play, mistakes turn into friendly ribbing that keeps players engaged, while the same activity played alone can feel like studying. When: Playing games with others versus alone, especially early on. Why: Social interaction makes errors entertaining rather than tedious.
+- [rule] Human interests should take priority over business considerations when they conflict.
+- [heuristic] Solve griefing that entertains the griefer but destroys others' play; ignore low-severity cases like passive play rather than distorting core design, since they fade without reaction. When: the behavior is unwanted but does not break the game. Why: Ignored behavior stops once it earns no interesting response, and players feel less controlled than under prohibitions or punishments.
+- [procedure] 1) Before adding a feature, review its griefing potential for cheap ways to spoil others' play, especially player-versus-player combat, item transfer, theft, trading, chat and movement blocking. 2) Make disruption dull: limit PvP to special areas, withhold feedback from abusers, prevent item seizure. 3) Hunt loopholes such as disconnect tricks, server-stressing actions and vandalism of shared spaces. When: Adding features to a multiplayer game, or protecting a game from griefing.
+- [procedure] 1) Align player goals with sensible objectives such as conquest, exploration, communication and impact, as first defense against griefing. 2) Use large player counts to dilute divergent goals. 3) Fix severe griefing directly, such as letting players pass through each other or adding safe zones. 4) Add policing systems such as voting or moderators when the design cannot protect the game from within.
+- [procedure] 1) Anticipate how the game may affect social behavior. 2) Set a code of conduct. 3) Enforce it, for example with temporary bans after warnings. 4) Reward fair play.
+- [pitfall] Conflict that players face alone, such as in solitaire, will not produce community no matter how engaging it is.
+- [pitfall] Showing a player stuck at the bottom of global rank with no change can drive them to quit.
+- [pitfall] Rewarding players for recruiting friends in pyramid fashion, or impersonating players to recruit, exploits social obligation and standing.
+- [fact] Social interaction influences player experience but is excluded from elicitors in this framework because it poses a hard problem for AI, signal processing and experience-driven PCG. Why: it is a hard problem for AI, signal processing and experience-driven PCG.
+- [fact] Common griefer loopholes include disconnecting mid-battle to deny a reward, crashing the server through an exploitable spot, arranging public objects to spell obscenities, and stealing resources.
+- [fact] Gifting between players drove much of the viral spread of social games on Facebook. When: When designing social or social-network games.
+- [fact] Most games throughout history were designed to be played with or against others, and solo games such as solitaire were rare before computers.
+- [fact] Group-owned property has been a major factor in the sustained success of some large online games.
+- [fact] The individuals-versus-game pattern is rare in digital games despite its social appeal.
+- [fact] Outwit games that use in-game knowledge create social dynamics that are largely unexplored in digital games.
+
+## mastery and challenge
+- [definition] A masterpoint system awards points for taking part in organized events and for performance, and a player's rating is the lifetime sum of those points, so points only accumulate.
+- [definition] Metagame information is outside knowledge, such as expected length from genre, difficulty from friends, plot predictions from clichés or studio habits, technical limits, and trailers.
+- [mechanism] A lighthearted failure state that costs little time and resource loss keeps players trying again, while still making them feel setbacks. When: Designing how players recover from losing a fight. Why: Low-stakes recovery keeps frustration down so players return to play quickly.
+- [mechanism] Successful outcomes from a player's own choices create a sense of mastery and control, which can counter a run of real-life failures. When: a player faces repeated real-life setbacks. Why: Success from own choices restores a sense of control.
+- [mechanism] In Mastery, understanding reaches critical mass and the pieces fall together, so solving speeds up until the problem is complete. Why: Accumulated understanding compounds once enough pieces connect.
+- [mechanism] In games where players steadily lose power, the player may feel ground down for the whole game. When: when power declines throughout play. Why: Continuous loss without relief produces a sense of punishment.
+- [behavior] Low-skill players are more likely to quit, which tends to push a rating system toward inflation.
+- [behavior] As a player gains mastery, a task that once engaged them stops engaging, so challenge must keep rising with skill. When: Players improve over time with a fixed task. Why: Skill growth shrinks the gap between ability and challenge.
+- [behavior] Males often enjoy mastering challenging things even when the mastery serves no practical purpose, while many females want mastery to serve a meaningful purpose.
+- [behavior] Players who die from misused abilities, missed dangers, or misunderstood rules feel no growing mastery and are likely to quit or grow hostile. When: when deaths come from misunderstood rules, threats, or abilities. Why: Players do not perceive their competence growing.
+- [behavior] Skill-based games can yield deep mastery, and competitive players often exploit unintended mechanics such as movement tricks. When: games with high skill ceilings.
+- [behavior] When combos are linked across event types, players keep seeking the next target and care less about incidental collisions. When: linked combo systems. Why: Continuing chains reward chasing the next event.
+- [behavior] Winning a competitive match raises appreciation of the game more than losing lowers it. When: players finish a player-versus-player match. Why: the outcome colors the whole experience.
+- [heuristic] Practicing isolated sub-skills such as aiming and tracking before full play is a way to build the base skills a game requires.
+- [heuristic] A skill is joyful when it is interesting and rewarding and its challenge sits between too easy and too hard. When: when tuning skill challenge.
+- [pitfall] A winning run may take dozens of hours and many deaths, a steep barrier for new players.
+- [pitfall] Treating every player struggle as a defect removes deliberate tension; a struggle that produces the intended emotion is a design success.
+- [fact] Midway through Mastery the downward trend in difficulty becomes visible, while completion is often closer than it appears. Why: The late-stage trend becomes apparent only after enough progress has been made.
+
+## addiction and problematic play
+- [model] Problematic gaming can reflect underlying depression or anxiety that gaming helps manage; players likeliest to show disorder symptoms are those whose needs gaming meets but real life does not.
+- [definition] Substance addictions involve physical dependence and tolerance, while behavioral addictions, such as to sex, shopping or sports, do not involve a substance.
+- [behavior] Short, repeatable matches with a stake can be replayed compulsively, with players repeating until they grow bored. When: a simple two-player format with an ante. Why: easy repetition with stakes keeps players returning.
+- [behavior] Tweens and teenagers are particularly vulnerable to streak mechanics, because friendship matters to them, they dislike breaking long streaks, and their brains are still developing. When: streak-based engagement features.
+- [behavior] Players expect streaks to end or continue more or less than probability allows. Why: gambler's and hot-hand fallacies.
+- [rule] To tell whether outcomes depend on earlier ones, examine statistics across many trials, since single sequences cannot separate skill, confidence or chance. When: judging whether success streaks change later odds. Why: Short sequences cannot reveal whether streaks change later success rates.
+- [metric] Among people who play, more than two in three report no gaming disorder symptoms.
+- [pitfall] Treating variable rewards as automatically addictive ignores that personality and life circumstances shape how players respond.
+- [pitfall] Streaks that exploit loss aversion or fear of missing out are dark patterns, especially harmful for children and teenagers.
+- [pitfall] Gaming detox camps may distract from underlying causes such as child neglect or anxiety.
+- [fact] The main clinical diagnostic manual recognizes only gambling disorder as a behavioral addiction; internet gaming disorder is listed as needing more research.
+- [fact] Players are drawn to different aspects of persistent games, and outside life problems can also drive compulsive play, so causes vary by player. When: analyzing why a player plays compulsively. Why: Individual motives and circumstances differ.
+- [fact] In real play the streak effect is minor and slightly reversed: the more consecutive hits a player scores, the less likely a further consecutive hit becomes.
+- [fact] Knowing cognitive science and behavioral psychology does not by itself prove that UX professionals exploit users.
+- [fact] Teenagers may feel pressure to keep buying until they get a fashionable item, and peer pressure and bullying can occur around virtual goods.
+
+## difficulty and fairness
+- [mechanism] Players who must trust that a leap is survivable without seeing the outcome can experience emotionally interesting moments of blind trust. When: when a level withholds visibility of a safe landing. Why: Forced trust heightens tension and makes the choice feel meaningful.
+- [behavior] Players who cannot explain a loss blame the game, so even a fair game feels unfair; visible counters keep blame on their own choices. When: losing players lack an explanation. (x2)
+- [behavior] Hidden randomness lets players suspect secret result alteration, since computers could do so; unexplained losses draw the strongest complaints because they invite cheating suspicion. When: number generation is not visible.
+- [behavior] If players believe designers inflate power on purpose to drive purchases, they may leave the game. When: players perceive inflation as deliberate.
+- [behavior] Players who lack an equal chance to reach the goals feel cheated and lose interest. When: a built-in advantage favors some players.
+- [behavior] When players blame control flaws or game flaws, or believe success requires superhuman performance, they see the game as unfair and reject it. When: When players fail a challenge. Why: Perceived unfairness ends engagement.
+- [behavior] When cheating is possible and cheaters cannot be identified, fair players may quit, fearing they cannot win without cheating or that they will lose to a cheater. When: in competitive games where cheaters are hard to spot. Why: Players cannot trust the outcome of matches.
+- [behavior] Players may report too much combat when total combat is reasonable, because spacing or variety is wrong, such as a large fight followed directly by a small one. When: Players complain about combat volume. Why: Back-to-back strong encounters cause fatigue without recovery time.
+- [behavior] Repeated setbacks make players call a game unfair, and heavily invested players may accuse others of cheating. When: repeated losses, high stakes. Why: losses are blamed on external causes.
+- [behavior] Players tend to trust computer random generators less than physical dice, cards and tokens, perhaps because they cannot physically handle the randomizer. Why: Lacking tactile involvement may reduce perceived legitimacy.
+- [behavior] Stuck players may press every control at random for minutes, and mounting frustration can lead them to quit quickly. When: unresolved obstacles.
+- [behavior] Players may struggle far longer than designers expect with a step that looks trivial, and watching this makes the problem hard to dismiss. When: a step the designer expected to take seconds.
+- [pitfall] When turn results depend on several players' simultaneous choices and are not explained, players perceive outcomes as arbitrary and lose trust in the game. When: simultaneous-choice games with unclear feedback. Why: Players cannot see how their actions connected to results.
+- [pitfall] Trial and error can mislead: repeated misses on a 20% attack can convince a player it never hits, so they value it at zero.
+- [fact] Tuning for a hardcore audience was common in early 1980s games but is not always in fashion. When: Choosing a difficulty target for a game's audience.
+
+## learning and feedback
+- [definition] Listeners are the game characters interested in events, and events can represent sight, radio messages, specific times, or any other game data.
+- [mechanism] Players learn challenges through a cycle: attempt an obstacle, reflect on the outcome, form a strategy, then test the new strategy in a fresh attempt. When: when a player faces a challenge that requires repeated tries. Why: Freedom to experiment combined with feedback on outcomes lets players build understanding from concrete experience.
+- [behavior] Player feedback mostly concerns an action from about a second earlier. When: when players give feedback on a creature's action. Why: players need time to position the cursor.
+- [behavior] When events come faster than players can consider them, players cannot form a response, become frustrated and quit. When: combat outpaces decision time.
+- [behavior] When combat is too slow, players have already decided their moves and grow bored waiting for the outcome. When: combat pacing is slow.
+- [behavior] In Fluency, the player internalizes the lesson and applies it to similar problems with little friction. Why: Learned solutions become reusable, so later problems cost less effort.
+- [behavior] People who see ability as fixed tend to prefer performance goals, while those who see it as malleable prefer learning goals. When: choosing goals for a task. Why: beliefs about ability shape goal preference.
+- [behavior] Players read a teammate's loadout as a signal of intended play, such as long-range rifles suggesting aggressive engagement.
+- [behavior] Players assume the designer uses metaphor to teach and that not every property is simulated, so they must work out which fictional elements are real mechanics. When: A game's fiction suggests actions that the mechanics may not support. Why: Metaphors promise more than the game simulates.
+- [procedure] 1) New players feel clumsy and accept frustration, trusting that effort will be rewarded. 2) The pleasure of control soothes frustration until the first success. 3) Skills become automatic. 4) The player breaks through, and the next challenge restarts the cycle.
+- [tradeoff] Explicit feedback is accurate and reliable but can interrupt play; implicit feedback from behaviour is unobtrusive but noisy and depends on assumptions about what behaviour means.
+- [pitfall] Treating seven as a fixed limit for everyday processing, where people also process information while holding it.
+- [fact] Three main factors shape learning quality: attention, motivation and emotion.
+- [fact] System 2 may be unaware that System 1 errors are happening.
+- [fact] Whether far transfer can be reliably achieved is still debated in psychology research.
+
+## reward effects on motivation
+- [mechanism] Rewards increase how often the behavior that produced them occurs, while punishments decrease it. When: A behavior is consistently followed by a reward or punishment. Why: Conditioning links the behavior to its consequence over repeated experience.
+- [mechanism] A surprising reward after each completion raises a new question about what comes next, keeping players curious.
+- [mechanism] Extrinsic rewards damage motivation only when the task is already interesting, and the damage grows as the task's interest rises.
+- [mechanism] Rewards distract mental energy toward gaming the system instead of solving problems, and threatened punishment is worst because fear consumes the thinking creative work needs. When: When rewards or punishments are used to drive creative work. Why: Attention spent on the incentive is taken from the problem itself.
+- [behavior] Rewarding an already-enjoyed activity leaves people less spontaneously engaged with it later than never-rewarded people, and after rewards stop, interest often falls below its original level. When: rewards offered for an enjoyed activity. Why: Rewards displace the intrinsic motivation for the activity. (x2)
+- [behavior] Rewards for creative or exploratory tasks make players stop exploring and do only what the reward requires, and make their output less interesting. When: exploratory or creative tasks. Why: The payout becomes the goal instead of the activity.
+- [behavior] Music or animation alone as a reward rarely satisfies players on its own. When: Using audiovisual flourishes as the only reward for progress. Why: Players want rewards with tangible meaning, not only sensory celebration.
+- [rule] Reward the desired opposite behavior rather than punishing the unwanted one, since punishment can cause stress or aggression. When: When trying to reduce an unwanted behavior. Why: Punishment can harm learning.
+- [rule] Reward puzzle solutions with resources or items to reinforce correct play.
+- [heuristic] Rewards suit rote tasks, but achievements and trophies can become counterproductive over the long term for nontrivial goals. When: Choosing reward systems for complex activities. Why: External rewards can undermine interest in challenging goals.
+- [pitfall] Simplified pop-science accounts of a single brain reward center or of brain chemicals are misleading, since reward involves several interacting regions and chemicals.
+- [pitfall] Research on rewards and intrinsic motivation is contradictory, so rewards cannot be assumed to always harm or always help motivation.
+- [fact] Because games are autotelic, in-game rewards can be seen as intrinsic, except in serious games aiming at real-life benefits or games with valued player economies.
+- [fact] Proposed explanations for reward-caused loss of motivation: people infer rewarded work is not worth doing for itself, they resist control, and they reframe the activity as a trade.
+
+## competition and conflict
+- [model] Conflict is central to communities. Conflict against other players, or against the game resolved through cooperation, builds community, because cooperating on game conflict builds shared ties.
+- [behavior] Girls rarely start large spontaneous games because disputes stop play and are hard to resolve, whereas boys argue, resolve the dispute, and continue. When: unstructured group play with competition.
+- [behavior] Males enjoy competing to prove they are best, while many females find the bad feelings of losing, or of causing another's loss, outweigh the pleasure of winning.
+- [behavior] Competitive players model a game's balance to find items or strategies furthest above or below the curve, gaining an edge. When: Competitive play in an established game.
+- [behavior] Players who choose their opponents may collude with friends to throw games, and may run second accounts that feed easy wins or swap losses. When: when players can pick opponents. Why: control over pairing enables coordinated losses.
+- [behavior] Competition produces losers, and losing is frustrating, especially when the game feels unfair or humiliation is possible.
+- [behavior] Constant conflict between characters pulls players into taking sides, making them invested in the drama. When: Characters argue in front of the player.
+- [behavior] Conflict against other players lets people show they are better than others, creating status-driven rivalry.
+- [behavior] Players compete fiercely inside a game's boundaries and then part amicably, because the conflict stays within the play space. When: after a competitive game ends. Why: Boundaries keep conflict from spilling into relationships.
+- [behavior] Intense skill-based competition absorbs all attention, so it conflicts with relaxed social enjoyment such as laughing with friends. When: When high-skill competitive play occurs alongside social play. Why: Full attention on competition leaves no room for relaxation.
+- [tradeoff] Being the best clearly expresses competence, but only one player can hold the top spot, so others may feel demoralised.
+- [fact] Competition helps individuals establish their status among others.
+- [fact] The conflict effect also appears with shapes: naming one shape while ignoring a word that names another slows responses.
+
+## emotion and cognition
+- [definition] An emotional trigger is anything in a situation that causes emotion, because the unconscious mind evaluates situations automatically and produces a feeling.
+- [mechanism] Emotion influences perception, cognition and behavior; it can enhance or impair reasoning and push choices toward good or poor outcomes, so its role is not black or white.
+- [mechanism] Strong emotional cues draw player attention; a dangerous hazard draws more attention than an ordinary environment. Why: Emotion focuses attention on what the player must notice.
+- [mechanism] Emotionally charged choices are easier to decide than neutral ones, because strong feelings about the outcomes make the options clear.
+- [mechanism] Negative emotions can drive repetitive, cautious play, while positive emotions can support creative problem solving.
+- [behavior] Emotion and cognition influence each other both ways: emotion can precede, occur without, or be shaped by cognition; perception and cognition can induce emotion; emotion guides behavior.
+- [behavior] Logical explanations players give for a game are often rationalizations; the underlying feelings are what shape how the game is experienced. When: interpreting player feedback. Why: people justify feelings after the fact.
+- [behavior] When players choose, emotion drives the decision far more than logic, although they explain it afterward in logical terms. When: players face a decision. Why: A purely rational decision is a myth; explanations are logical but choices are emotional.
+- [behavior] Panicked players attack prematurely and greedy players chase expensive targets, distorting their payoff evaluation. When: high-pressure competitive decisions. Why: Emotion overrides careful assessment of payoffs.
+- [heuristic] Events matter to players only when they provoke emotion, so design each event around the feeling it should create.
+- [pitfall] Blaming all irrational decisions on emotion is too simple; many systematic reasoning errors come from how cognition itself is built.
+- [fact] Emotions are automatic and do not report their causes; the mind attaches plausible reasons to a feeling, often incorrectly, usually crediting the most noticeable thing in view.
+- [fact] Emotions reward and motivate learning, and all games teach.
+
+## learning and retention
+- [definition] Constructivism holds that people actively build knowledge through interaction with their environment rather than receiving it passively.
+- [mechanism] Deeper processing of material improves retention more than shallow passive exposure. (x2)
+- [mechanism] Game time displaces homework and other learning activities, since time spent on one activity is not spent on another.
+- [behavior] Curious learners teach themselves more and retain what they learn, because they pursue knowledge by choice. When: learners pursue topics they choose. Why: Self-chosen learning feels owned and is remembered.
+- [behavior] Exposure to a concept, such as conflict or care, makes behavior matching that concept more likely for several minutes afterward. When: A person has recently encountered a concept. Why: The activated concept influences behavior without conscious intent.
+- [behavior] Priming a concept also activates behaviors linked to it in memory, such as walking more slowly after age-related words are primed.
+- [heuristic] Structure challenges, feedback, and setbacks so players are motivated to iterate toward mastery.
+- [tradeoff] Deep processing costs more time and cognitive resources than shallow processing, but it produces stronger long-term retention.
+- [fact] Distributed learning, with teaching spread over time, works better than massed learning, where material is concentrated in one block.
+- [fact] Strategies that learners develop in discovery settings can transfer to other contexts.
+- [fact] Deep learning recognises patterns across multiple signals, produces complex spatio-temporal attributes, and can fuse data from several players or from player input combined with game content.
+- [fact] Twelve hours of non-violent action mini-games improved visual attention and reading speed in children with dyslexia, compared with a control group, with benefits lasting two months.
+- [fact] Constructivism is a strong single account of how players learn games, because it combines freedom with feedback.
+
+## fairness and randomness
+- [behavior] Where players expect a fair fight, imbalance reduces enjoyment; where they expect progression or an unfair setup, imbalance is accepted. When: Competitive versus progression-focused play. Why: Player expectations set the tolerance for imbalance.
+- [behavior] People resent unfair judgment rather than judgment itself, and when dissatisfied with their judgment they work harder until judged favorably. When: when players receive a poor evaluation from a game. Why: Judgment perceived as fair motivates improvement.
+- [behavior] Even with exposed true odds and a fair generator, players may complain because their flawed probability model makes the game feel wrong.
+- [behavior] Players expect random sequences to look balanced and assume a losing or winning streak must end soon, even though each trial is independent. When: watching independent random trials. Why: Intuition expects short sequences to mirror the long-run proportion.
+- [behavior] Players accept losses as legitimate only in fair games; in an unfair game a win reveals nothing and the loser blames the game.
+- [rule] Standard probability calculations assume the shuffle is fair and the deck is unmarked, so every unseen face-down card is equally likely to be any card not yet seen. When: Computing odds from a shuffled or face-down set. Why: Equal likelihood of unseen cards is the premise of the standard calculations.
+- [heuristic] Assume a die is fair in probability problems unless the problem states otherwise.
+- [tradeoff] A balanced deal set by hand leaves only play choices to supply luck, while a random deal adds input luck to every game. When: Choosing whether a card game's starting setup should be randomized or fixed. Why: Manual placement removes deal luck, so outcomes depend on decisions during play.
+- [pitfall] Too many surprises alienate players.
+- [pitfall] Relying only on enforcement against antisocial play is less efficient than designing out the rewards that encourage it.
+- [pitfall] Assuming the two remaining options are equally likely after a reveal is wrong; the reveal shifts probability toward the unopened option.
+- [fact] Coins, spinners, wheels, and teetotums with equally likely outcomes behave like dice with the same number of outcomes, so the same probability methods apply. When: Modeling odds for coins, spinners, wheels, or teetotums. Why: Each device produces independent, equally weighted outcomes, so balance reasoning can treat them identically.
+
+## interface and ux feedback
+- [definition] A storage deficit occurs when information is encoded correctly but weakens over time, following the forgetting curve.
+- [behavior] Players expect a button press to act immediately; when a control gives no feedback or an unseen delay, they keep pressing or think it is broken and may reject the scheme. When: when a control gives no feedback or has a delay players cannot see. Why: Players expect immediate response to input. (x2)
+- [behavior] Under negative feedback, players try to avoid being mid-decline when the game finishes. When: when a turn or time limit is near. Why: ending on a down-swing loses the declared lead.
+- [behavior] Earlier games often made AI activation visible to the player, such as characters waking as the player approaches; modern practice hides it better.
+- [behavior] Changes to visible mechanics, such as platformer physics, are more obvious to players than changes to hidden formulas.
+- [behavior] Frustration from poor framerate, long loading times, or ad pop-ups may be blamed on the gameplay itself. When: players experience technical friction. Why: players misattribute the source of their frustration.
+- [behavior] When one action triggers both a musical flourish and a visual change, players experience several sensory effects at once, a synesthesia-like response. When: actions that produce matching sound and visuals. Why: one input drives multiple senses.
+- [rule] Pick one word for how players should feel as they approach and enter combat, such as scared, tense, coordinated or hopeful.
+- [rule] Counter storage deficits by reconsolidating information through repetition across different contexts.
+- [pitfall] A character that should change behavior but does not looks wrong, breaking the sense that it is aware, such as when a companion is removed or the player appears.
+- [fact] Both thinking systems are active whenever a person is awake, and they influence each other.
+- [fact] What ultimately matters is the player's perception, understanding, behavior, and emotion.
+
+## judgment biases and framing
+- [mechanism] Polished visuals bias judgment of underlying design via a halo effect: players forgive rough mechanics, and inexperienced reviewers may reject an excellent graybox for looking unfinished. When: when a game has rough mechanics but polished visuals; when reviewing a graybox. Why: The halo effect makes visual quality distort judgment of the underlying design. (x2)
+- [mechanism] People rate a product more highly when they took part in creating it, so players tend to value elements they helped build or design. When: Players build or design game elements. Why: A known cognitive bias, often called the self-built effect, raises perceived value of self-made items.
+- [mechanism] Gut feelings come from bodily signals that steer focus and working memory inside the prefrontal cortex.
+- [mechanism] Each in-game impression primes related ideas for a few minutes, so what the player sees and hears shapes what they are inclined to do next.
+- [behavior] Identical values framed as penalties below an average or as losses weigh more than when framed as base plus increments or gains, even though the math is identical. When: presenting stat-based values, or options framed as losses versus gains. Why: Players respond to framing, not only to numbers; framing changes the emotional weight of the same numbers. (x2)
+- [behavior] Friends and family tend to be either too harsh or too forgiving, depending on their habits with the designer.
+- [behavior] Players work hard to avoid the embarrassment of imagined judgment, such as an in-game evaluator scoring their creations. When: A game scores or judges the player's creations. Why: Imagined judgment feels embarrassing.
+- [behavior] Identical odds or payouts feel different depending on framing: a larger-looking first number can make an equal trade seem enticing or unacceptable. When: presenting odds, payouts or prices. Why: anchoring on the first number.
+- [behavior] After an outcome is known, people recall their earlier predictions as more accurate, remembering confidence in correct guesses and doubt in wrong ones. When: when reviewing past predictions after results are known. Why: Memory is edited to make past events look more predictable than they were.
+- [heuristic] Humility helps designers notice unexpected opportunities and counters the bias of judging from only the information at hand. Why: it makes designers more observant and thoughtful.
+- [fact] Anthropology views people holistically, covering physical, mental, and cultural aspects, and compares peoples across places and history.
+- [fact] Honest probability does not automatically drive players away; some games remain popular and profitable while punishing any flaw in probabilistic thinking.
+
+## player motivation and curiosity
+- [behavior] Play is driven by curious questions, such as what a control does, whether a team can win, or what lies past the end of a level. Why: Players act to answer questions they care about.
+- [behavior] Discovery encourages audiences to visit a world through many different gateways. When: A world offers new parts to discover.
+- [behavior] In Discovery, the player learns that a problem exists and how large its scope is. Why: Players must recognize a problem before they can invest effort in it.
+- [behavior] Discovery brings pleasure, and that pleasure motivates players to behave efficiently.
+- [heuristic] Pleasure seeking and pain avoidance are both valid and can work well when used together in one game.
+- [heuristic] Most people want to be helpful, so framing player goals as helping someone channels their behavior into engaging play.
+- [heuristic] Games create displeasure through failed challenges and lost resources, so they need motivation to keep players from quitting at the first setback.
+- [fact] Designers can shape the environment to stimulate intrinsic motivation and use feedback, rewards, and punishments, but cannot control biology, mood, or personal needs.
+- [fact] One event can be both intrinsic and extrinsic: gaining a skill point can signal growing competence and can also be spent.
+- [fact] Curiosity is useful to consider when judging inherent interest.
+- [fact] A curious mind may become one of the most valuable personal assets in coming decades.
+- [fact] It is unknown whether curiosity is innate or can be taught and strengthened; if it can be nurtured, it should be a top educational priority. When: planning education. Why: Curiosity may drive learning outcomes.
+
+## projection onto characters and objects
+- [definition] Proxied embodiment is when an avatar stops being a separate character and becomes the player's own self-representation.
+- [definition] Projection is the degree to which a guest uses empathy and imagination to put themselves into an experience.
+- [mechanism] When opponents believe your skill is greater than it is, they make fewer bold moves and feel doubt.
+- [mechanism] Players project themselves onto ciphers because the character has no discernible personality.
+- [mechanism] Once players read a system as an agent, their minds add wants, obligations, perceptions, and relationships that the system never represented. When: a system is perceived as an intelligent agent. Why: apophenia extends perceived intent into a full inner life.
+- [behavior] When players teach a learning creature through example and feedback, bad habits can leave it unable to perform even basic actions, which players find frustrating. When: when a player trains a learning AI by example and feedback. Why: learned behavior depends entirely on what it was taught.
+- [behavior] People project themselves onto things they control, describing a car as their own body or feeling a collision as being hit personally. Why: Control makes the object feel like part of the self.
+- [behavior] Under time pressure, players mentally follow each option toward a predicted outcome, weighing how likely and how desirable those blurry outcomes are. When: split-second decisions. Why: Cause and effect are uncertain, so outcomes stay blurry.
+- [heuristic] Check projection when a game relies on strong player identification or is weak in inherent interest, poetry or presentation; projection can carry such an experience.
+- [heuristic] Projection grows when players can relate to what they see, imagine being the character, and do things they cannot do in real life.
+- [heuristic] View the game through the player's eyes; solid gameplay, more than graphics or story, is what keeps players engaged.
+- [fact] Player projection into a game depends on the interface becoming second nature to the player.
+
+## stress and attention
+- [mechanism] Two tasks that draw on the same working memory subsystem compete strongly, while tasks using different subsystems, such as language and vision, split more easily.
+- [mechanism] In danger, the hypothalamus regulates hormones such as adrenaline and cortisol, raising awareness and tensing muscles. When: When a situation is perceived as dangerous.
+- [mechanism] Withholding a threat and showing only its point of view can make it seem to be the environment itself.
+- [behavior] A visible enemy can still go unseen when the lights are out or the character faces away from it. When: low light or facing away from the enemy. Why: sight depends on both illumination and orientation.
+- [behavior] An enemy that moves mostly predictably but has random vertical motion and fires more often when the player is close creates pressure that rises with proximity. When: when designing an enemy that shoots back at a nearby player. Why: Proximity-weighted firing makes close range the most dangerous.
+- [behavior] Sustained attention fatigues quickly, and its capacity varies with motivation, task complexity and individual differences.
+- [behavior] Under stress, anxiety narrows attention into tunnel vision, focusing a person on the most urgent cues in the environment. When: under acute stress or threat. Why: arousal narrows attention to the information needed for immediate action.
+- [behavior] Under immediate threat, a player may have to choose between staying safe and taking a risk within a moment. When: the player is under fire with a risky alternative available. Why: Threat leaves little time, so the decision is compressed.
+- [behavior] A threat that spawns at random around the player, with unknown location, feels present everywhere and raises anxiety. When: during pursuit or search. Why: Unknown location keeps the player from ever feeling safe.
+- [behavior] Mixed friendly, hostile and neutral cues leave players unsure whether a room is safe. When: in spaces with mixed atmosphere cues. Why: Conflicting indicators remove a reliable sense of safety.
+- [heuristic] Stress and emotional pressure that suits adults can overwhelm younger players, so intensity should be calibrated to the target audience's emotional development. When: Designing for teen or younger audiences. Why: Emotion-regulating brain regions mature around age 25.
+- [pitfall] Excessive cognitive load can impair learning even when the learner is unaware of it. When: When information or task demands are too high.
+
+## control and competence
+- [definition] Competence is feeling in control and skillful, with growing mastery, desire to be challenged, impact, and progression via positive feedback; without visible progress, motivation drops. (x2)
+- [definition] The shared aim of the game feel principles is a sense of control and mastery strong enough that players use it as a tool for self-expression.
+- [behavior] Players modulate held continuous inputs in small, quick increments over time, below conscious thought, like a driver steering; this works only if the game keeps responding consistently.
+- [behavior] Letting players choose powers that suit their skills makes them feel powerful and shapes the game around their preferred style.
+- [behavior] Players satisfy their need for certainty either through control, such as improving drop rates, or by accepting randomness and grinding until luck delivers. When: Players face random drops. Why: Both control and randomness provide certainty about eventual success.
+- [behavior] Players feel competent when their actions have impact, accomplishments are celebrated, they learn how to improve after failure, and they can see progress toward goals.
+- [behavior] Adding more customization options, such as avatar looks, emotes, or base names, generally increases players' sense of autonomy. When: Designing player-facing customization. Why: Choosing among options gives players control over how they present themselves.
+- [behavior] Players who feel in control also tend to feel powerful, so both feelings should be checked and increased together.
+- [behavior] Players describe responsive control with words such as floaty, smooth or loose, which name how controlled objects respond. When: describing how controls feel.
+- [behavior] Ongoing action, perception and contemplation of one object produce control fusion, the feeling of controlling something external to oneself.
+- [behavior] New players may need hours of practice to map on-screen movement onto controller inputs. When: a game uses complex control mappings. Why: Translating screen motion into input takes time before play feels natural.
+
+## emotion and memory
+- [definition] Explicit (declarative) memory holds facts and events a person can consciously recall and describe. It has two forms: semantic memory for facts and episodic memory for events. (x2)
+- [definition] An encoding deficit occurs when information is stored superficially because attention was low or processing was shallow.
+- [behavior] Leading wording can implant false memories of details that never appeared, and these persist about a week later. When: When a leading question is asked and recall is tested after a delay. Why: Distorted information is reconstructed into memory.
+- [rule] Counter encoding deficits by drawing attention to important information and making players process it deeply.
+- [pitfall] Many design mistakes come from believing we understand things that we do not. Why: overconfidence hides gaps in knowledge.
+- [fact] Emotions are the foundation of memorable experience.
+- [fact] Eyewitness testimony is a major contributor to wrongful convictions.
+- [fact] Players forget much of what they learn, and their recall is a fallible reconstruction rather than an accurate copy.
+- [fact] Better recall of emotional events is correlated with greater amygdala activity during the event.
+- [fact] Flashbulb memories are overstated: people recall one or two central details accurately but feel highly confident about the whole memory, which is often as distorted as ordinary memory.
+- [fact] Eyewitness memory is not fully reliable.
+
+## game effects on behavior
+- [model] The General Aggression Model predicts violent play increases aggressive cognition, affect and conduct over the short run.
+- [behavior] Players' brains substitute game stimuli such as sights, sounds, rumble, button push-back and finger position for the physical-world cues they normally use. When: while playing a game. Why: A game's world is a reduced subset of reality.
+- [rule] Evaluate games for enjoyment as well as task completion, since games are meant to be enjoyed rather than used to accomplish a task.
+- [pitfall] Treating correlational evidence of game persistence as proof that games cause perseverance overstates what the data shows. Why: Transfer of perseverance beyond games is still unproven.
+- [pitfall] The General Aggression Model has drawn significant criticism, and some studies have found no support for it.
+- [fact] Game skills and real-world skills are learned the same way, though game skills use smaller, more focused movements and are not bound by physics.
+- [fact] Debate persists over whether games leave lasting effects on the mind, with views ranging from no effect, to harm, to a cornerstone of education.
+- [fact] Games are unlikely to make players smarter in general, just as music and chess training do not.
+- [fact] In one study, children who played video games scored higher on creativity measures than children who did not play.
+- [fact] Long-term studies of over 1,000 children linked game and TV exposure to teacher-reported attention problems, without separating game types.
+- [fact] In an experiment with 64 boys aged 6 to 9, immediate console access produced worse reading and writing post-tests than access delayed by four months.
+
+## media violence and regulation
+- [mechanism] The General Aggression Model also predicts long-term effects: aggressive attitudes and desensitization to aggression.
+- [behavior] Players form expectations about how long a kill should take and complain when fights drag or end too quickly. When: fights that run much longer or shorter than expected. Why: Their sense of fair fight length depends on expected kill time.
+- [rule] Games played by under-18s need stricter enforcement of all commitments, plus guardrails against child sexual exploitation. When: games played by under-18s. Why: minors are more vulnerable.
+- [rule] Children have specific rights, so studios targeting minors carry extra ethical responsibility.
+- [rule] Teach children and parents media literacy, since offline problems such as bullying and sexting now appear online.
+- [heuristic] Judge game effects by specific game and play context, since video games as one category are too broad for a single verdict.
+- [pitfall] Lab studies mostly measure mild, prank-level aggression rather than fighting or pushing, so they say little about serious violence.
+- [fact] Internet access may widen the gap between curious people, who become experts in their interests, and incurious people. When: people have wide internet access. Why: Curious people use available information to pursue their interests.
+- [fact] Concern about new media, including games, has followed earlier media such as comic books, rock music, and radio once they became popular.
+- [fact] Longitudinal studies have been used to argue that violent games are a causal risk factor for long-term harm.
+
+## perception and motor systems
+- [definition] Proprioception is the mind's sense of where the body is in space and how it is positioned, letting a person touch their nose with eyes closed. (x2)
+- [mechanism] Proprioception lets players reconcile hand position with on-screen results, so they ease off an input when movement proves too fast.
+- [mechanism] Spray timing and intensity can change perceived mass while the underlying collision simulation stays the same. When: Adjusting the feel of a collision. Why: Polish cues are read as evidence of mass, independent of the simulation.
+- [behavior] A character's perceived speed depends on the speed of other characters on screen, so a slow character seems ponderous next to a faster one. When: Characters with different movement speeds appear together. Why: Perceived speed is relative to nearby moving objects.
+- [heuristic] The more a game engages primal brain functions, the more intuitive and powerful it tends to feel.
+- [heuristic] To judge whether an activity is primal, ask whether animals can do it; this is a practical substitute for brain-region research.
+- [metric] Nominal cycle times: perceptual about 100 ms (range 50–200), cognitive about 70 ms (range 30–100), motor about 70 ms (range 25–170).
+- [fact] The processors are abstractions, not literal brain structures, but they let designers attach numbers to an interactivity diagram.
+- [fact] Touching is primal behavior animals have practiced for hundreds of millions of years, while tool use is relatively recent and relies on higher brain function.
+- [fact] No scientific evidence shows that either sex is prewired for language or for math and spatial tasks.
+
+## real-world framing of play
+- [mechanism] When earning pressure is built into a game, play can feel like work and lose its enjoyment as an end in itself. Why: Autotelic play depends on enjoyment for its own sake.
+- [behavior] Games that succeed on tablets are easier, simpler and more relaxing than those that succeed on consoles or PCs. When: play in relaxed venues such as a reading nook. Why: Lean-back play suits low-demand experiences.
+- [behavior] Girls more often take real-world roles such as home, care, or dress-up, while boys more often take fantasy roles.
+- [behavior] Children playing with figures from a film rarely reenact the film; they invent stories, rename characters, and change relationships. When: Children playing with licensed toys. Why: The toys act as entry points into the world rather than retellings of its story, so the world itself is the draw.
+- [behavior] Players from different communities can have very different speed preferences, so one tuning can overwhelm one group while boring another.
+- [behavior] Players judge virtual vehicles against extensive real-world driving experience, which makes them sensitive to subtle handling differences. When: driving games and vehicle-avatar games. Why: Most people have ridden in or driven real cars.
+- [behavior] Learning that a peer with equal or less experience earns more can reduce satisfaction with one's own reward. When: when comparing one's reward with peers. Why: satisfaction depends on relative comparison, not only absolute reward.
+- [behavior] Players who grew up in the game's world feel jarred when the protagonist constantly asks about basic facts of their own culture.
+- [heuristic] Reframing an obligation as a personal challenge, such as beating one's own daily record, can move it toward play.
+- [fact] Real-world framing of a creative activity can outsell a fantasy framing of the same activity with some audiences.
+
+## chance and probability perception
+- [behavior] Players keep trusting that a puzzle is solvable even when solving it takes far more moves than the scramble. When: the puzzle was scrambled from a known solved state. Why: the known solvability sustains confidence.
+- [behavior] Players roll dice a certain way, carry lucky charms, or follow rituals to influence fate. Why: people seek cause and effect and want to feel they influence outcomes.
+- [behavior] Fans of physical skill sports track statistics and bet on single-play outcomes, treating them much like random events. When: watching or betting on skill-based sports. Why: individual plays are uncertain, so fans reason about them probabilistically.
+- [behavior] Skilled players in random games estimate their odds, factor in opponents' likely reactions, and size their actions to match. When: randomized games where players can respond with bets or choices.
+- [behavior] When a few recipients receive only correct predictions over repeated rounds, they assume a working system exists, since chance successes look like skill. When: repeated predictions sent to split groups. Why: Coincidental hits are mistaken for genuine ability.
+- [behavior] Highly skilled people may assume tasks are easy for everyone, so they underrate their own abilities.
+- [rule] Use emotional triggers that work regardless of skill, such as art, characters, music, shared humor, and tech demos, to keep new players engaged early. When: During early play, before players can handle skill-based activities like puzzles, creation, or combat. Why: Such triggers engage players who lack the skill needed for the core activities.
+- [heuristic] Showing players the actual odds can prevent misjudgments of chance.
+- [fact] Skilled estimators and other players form very different perceived probabilities for the same event.
+
+## children and adolescents
+- [behavior] Children aged 10 to 13 often become passionately absorbed in particular interests, often games for boys, as rapid neurological growth supports deeper and more nuanced thinking. When: Designing for tweens aged 10 to 13. Why: Rapid neurological growth supports deeper thinking, and the intense absorption is sometimes called the age of obsession.
+- [behavior] Teens aged 13 to 18 prepare for adulthood, male and female interests diverge significantly, and all teens eagerly seek new experiences that gameplay can provide. When: Designing for teens aged 13 to 18. Why: Preparing for adulthood drives experimentation, and interests split by gender.
+- [behavior] Most adults separate game fantasy from reality and focus on mechanics and skill rather than on violence.
+- [behavior] Children and teenagers face higher risk of harm in online games than adults. When: online games. Why: limited self-regulation and susceptibility to peer pressure.
+- [rule] Parents should check content rating systems before letting children play a game. When: choosing games for children.
+- [fact] Children regulate their emotions less well than adults, and they are especially vulnerable to time pressure and peer pressure. When: Designing for players under 18. Why: The prefrontal cortex that regulates emotion is not fully mature until about age 25.
+- [fact] Adult age groups are separated mainly by family and career transitions, and time, money, and responsibilities shape how much and what adults play.
+- [fact] Children aged 0 to 3 find abstract interfaces such as gamepads beyond them, while direct interfaces such as touch screens fascinate them. When: Designing games for children aged 0 to 3. Why: Direct manipulation matches their developing motor and cognitive abilities.
+- [fact] Video games can support cognitive development, as long as children also have diverse kinds of play.
+
+## dopamine and reward
+- [mechanism] Dopamine is released slowly when people are motivated and spikes on unexpected rewards, not expected ones, signalling the gap between predicted and actual outcomes. Why: Dopamine has many roles, such as being critical to movement. (x2)
+- [metric] Measured dopamine rises: about 100% during video game play, about 65% in meditation, 150–300% from food or sex, and over 1000% from methamphetamine. (x2)
+- [pitfall] Dopamine fasting advice is misleading, since lowering dopamine is harmful rather than healthy.
+- [pitfall] Judging addiction risk by dopamine increases is a pitfall, since dopamine level does not predict how many people become addicted or how severe addiction is.
+- [fact] Dopamine supports learning, motor control and motivation, and its low levels accompany Parkinson's disease.
+- [fact] No recent studies have measured dopamine during modern video games, so current evidence on games and dopamine is lacking.
+- [fact] Without motivation there is no behavior; disrupting dopamine in animals can stop them seeking food.
+- [fact] Dopamine rises before a reward arrives and marks motivation, wanting, rather than pleasure in the moment of receiving it. When: interpreting reward and motivation in players. Why: Anticipation drives seeking, separately from enjoyment.
+- [fact] The brain's reward center normally releases dopamine in response to everyday stimuli such as food, money, or an attractive mate.
+
+## extrinsic motivation
+- [model] Motivation depends on the reward value of a behavior and the probability of obtaining that reward, and players learn which behaviors lead to pleasant outcomes. When: Designing reward systems. Why: Learned needs form from noticing which actions produce pleasant or negative results.
+- [definition] Extrinsic motivation is doing something to obtain a reward separate from the task itself, such as money, a badge or loot.
+- [definition] Extrinsic rewards sit outside an activity, like gold for a defeated enemy, while intrinsic rewards are inseparable from it, like satisfaction in a good fight.
+- [mechanism] Extrinsic rewards can distort, displace or destroy intrinsic motivation, mainly by undermining competence, autonomy or relatedness; a reward signaling growing mastery reinforces competence instead. (x2)
+- [mechanism] Extrinsic rewards give useful immediate feedback, but motivation can vanish when they are removed, and skills transfer poorly to other contexts.
+- [tradeoff] Extrinsic rewards can enhance performance and creativity when instrumentally important and valuable to the player's goals, but tend to undermine creativity in tasks that require creativity. When: Enhancing when rewards serve valued player goals; undermining when the task requires creativity.
+- [pitfall] Cute animations and extrinsic badges added to dull exercises do not make them fun; extrinsic rewards alone do not sustain engagement, so games also need intrinsic motivation. When: when designing educational games. Why: Motivation driven by external rewards fades once the rewards stop.
+- [pitfall] Treating the intrinsic or extrinsic label of an event as fixed ignores that it depends on how the player perceives it.
+- [pitfall] A reward loop without fulfilling content can keep players returning, which can be exploited as an abusive pattern. When: designing timed-reward or retention mechanics. Why: Returning behavior does not imply enjoyment.
+
+## interaction and agency
+- [model] Bodily space exists through degrees of freedom and skilled use; learning a skill changes it, and clothing, tools and prostheses also change it.
+- [behavior] A player who alone makes every decision and whose success depends on their performance feels intense projection, even with repetitive content. When: when content is simple and repetitive. Why: the player's own decisions and outcomes carry the stakes.
+- [behavior] Players act on virtual objects with their bodies even while knowing intellectually that the objects are not real. When: playing VR. Why: proprioception responds to the body's experience regardless of belief.
+- [behavior] Hooking almost any point gives players a sense of improvisation and freedom to use the environment.
+- [behavior] Heading and speed changes made in the air appear on touchdown, which matches what players expect airborne control to do. When: player steers or accelerates while airborne. Why: Players expect airborne input to take effect when the vehicle lands.
+- [behavior] Controls driven by the player's body, such as shadows or arm movement, can make play physical, with players bumping, blocking, and wrestling. When: Input is tied to the player's physical movement.
+- [behavior] Players readily attribute personality, fear, or desire to inanimate objects that merely move or respond. When: objects move or respond in ways that look purposeful. Why: the mind is especially eager to find personality and intent.
+- [behavior] Large open prospect space creates agoraphobia, the opposite of the claustrophobia that narrow space creates.
+- [behavior] Lower ceilings create a stronger feeling of protection than high ones.
+
+## interface and control
+- [behavior] In modern 3D games, players generally know every action available to them, so action discovery is not a source of play. Why: Visible action sets remove the need to guess the interface's vocabulary.
+- [behavior] Players often ignore the interface unless it becomes confusing. When: The interface works smoothly.
+- [behavior] When an object is controlled as a large cursor with no simulated response, players orient easily but perceive no mass, weight or presence. When: input maps directly to object position. Why: no simulated response adds inertia.
+- [behavior] Players reach maximum jump height by holding the button for most of the jump.
+- [behavior] Players notice crosshairs moving on their own but not a few pixels of early stopping or slight direction bending, because surrounding motion masks these small changes. When: Adjusting aim without player awareness. Why: Motion around the small correction hides it from perception.
+- [heuristic] Design situations where players need help and can easily ask for it, because helping others is satisfying and others will come to aid when asked, even though players often hesitate to offer help. When: When designing cooperative assistance. Why: Players hesitate to offer help unprompted, but respond when a clear need is visible and easy to voice.
+- [heuristic] Intuitive interfaces produce a sense of control, so judge how easy or hard the interface is to master.
+- [heuristic] Check whether the interface has become invisible by listing how players describe their actions; world-based wording signals success. When: During playtesting.
+- [pitfall] Judging control by intuition alone misleads, because the same scheme feels different to a novice and to a practiced player. When: evaluating control schemes. Why: feel depends on skill level.
+
+## multisensory feedback
+- [definition] Pitch confidence means knowing all details, staying steady under hard questions, and believing the team suits the game. It is separate from passion. When: Presenting a game to a publisher or funder. Why: Confidence signals that the team can deliver, which listeners need to trust.
+- [rule] Teach tutorial information through several senses used together and repeated, rather than through a single text channel. Why: Multimedia learning works by using multiple senses repeatedly.
+- [metric] Human decisions use information about one tenth of a second old, so events happening within roughly that window are effectively hidden from the decider.
+- [pitfall] Per-room delivery cannot capture that a loud noise may be heard down a corridor while a gentle noise is inaudible a meter away. When: sounds vary in loudness across distance. Why: room membership ignores loudness and distance.
+- [fact] Music can comment on player actions positively to reward them, or negatively to punish them and steer their behavior.
+- [fact] Events falling within one perceptual cycle of about 100 ms are seen as a single moving object rather than separate static images.
+- [fact] Visual, aural, tactile and proprioceptive input combine into one sensation, so controller rumble and finger position both contribute to the game experience.
+- [fact] Visual, aural and tactile clues let players build a detailed mental model of how virtual objects behave.
+- [fact] Player experience can be modelled from three data sources: subjective self-reports, objective head movements from video, and gameplay features from logged actions.
+
+## game design and ai
+- [behavior] Opponents stop challenging a clearly strong deck for ante unless a handicap applies. When: a deck is clearly stronger than its opponents' decks. Why: challenging it for ante is unattractive.
+- [behavior] In an arcade, players move from game to game, try each, and settle on the ones they like best.
+- [behavior] Expert players tend toward optimal builds, while most players end up with viable builds.
+- [behavior] Chaos grows with the number of combatants, and multiplayer adds causes that happen offscreen. When: Designing large or multiplayer combat.
+- [behavior] Players avoid repeating their last choice, so countering their previous move wins more than chance in repeated rounds, and the advantage grows as rounds accumulate. When: head-to-head choice games with repeated rounds.
+- [behavior] Players use the basic punch more than specialty moves when encounters, such as boss fights, require it. When: encounters that demand the basic attack. Why: Encounter design dictates which attacks players rely on.
+- [behavior] Beating a human feels different from beating a computer, even with identical play, because the social meaning adds a layer to the win. When: competitive play with the same mechanics against people or AI. Why: social meaning adds emotional weight.
+- [procedure] 1) Equip agents with computer-based representations of thought, conduct, and feeling. 2) Ground them in theoretical frameworks such as OCC so the player feels absorbed. When: when agents must immerse the player emotionally.
+
+## game design craft
+- [definition] Yomi refers to the psychological contest of anticipating, misleading and outmaneuvering an opponent beyond what game-theoretic calculation captures; the word comes from Japanese for reading. When: competitive games with imperfect information. Why: It labels the psychological layer that equilibrium analysis misses.
+- [mechanism] A solid, impressive-looking world makes players take the game more seriously and raises the value they assign to it.
+- [behavior] When filter workarounds take more effort, they become less fun for griefers, so fewer of them keep trying.
+- [behavior] Words can conflict with body language, such as saying 'I'm fine' while frowning and avoiding eye contact, which signals a need to discuss a serious problem. When: Talking with players or teammates. Why: Tone and body language carry meaning that words hide.
+- [behavior] Workbench games are often difficult and demand hours at a time, usually without family, though online players who share the same commitment may join. When: playing games at the workbench.
+- [behavior] Workbench play is a leaning-forward activity, in contrast to the relaxed posture of reading.
+- [behavior] Skillful control can lead to a zone state in which self-consciousness drops away and time passes unnoticed. When: control is fluent and well matched to skill. Why: attention shifts fully to acting.
+- [behavior] Writers attached to their stories often miss the flaws in them. When: after long work on the story. Why: Deep attachment hides problems from the person who wrote them.
+
+## goals and progress feedback
+- [mechanism] Recording and displaying how long an action takes sets a benchmark on the first run, and later gains become harder, pushing players toward new strategies.
+- [behavior] Visible progress, such as completed work or leveling up, feels satisfying, makes advancement clear and motivates players and learners. When: a task's progress is otherwise invisible, or a learner works through a long activity. Why: visible results give a sense of accomplishment; clear progress signals achievement.
+- [behavior] In unstructured play, players largely set their own goals, so trading and deck building often matter more than individual duels. When: unstructured, free-form play. Why: Players define their own objectives.
+- [behavior] Completing a visible portion of a large task makes the remainder feel reachable, which keeps players engaged. When: Multi-part manipulation puzzles. Why: Perceived nearness to completion sustains effort.
+- [behavior] Players feel motivated by contribution when they can clearly see their own impact on a shared goal. When: players contribute to a collective goal. Why: visible impact makes effort feel meaningful.
+- [behavior] Most people stop once they meet standards, beat competitors or earn approval, doing only what is needed to reach that goal.
+- [procedure] 1) Define what progress means in the challenge. 2) Check whether there are enough interim steps of success, adding more if not. 3) Identify which progress is hidden and reveal it to the player where possible. When: Any extended challenge where players must solve a difficult problem over time.
+- [pitfall] Artificial gating through cheap psychological tricks can make players feel their time was wasted.
+
+## group dynamics
+- [mechanism] Pressure from a group, such as guild members demanding more play, can turn voluntary play into an obligation.
+- [mechanism] Group discussion pushes attitudes toward more extreme positions, which can distort measurements taken from focus groups. When: When using group discussion to gauge player opinion.
+- [behavior] In family playtests, boys played offensively, hunting every enemy target while communicating and focusing on skillful destruction of enemies. When: mixed-skill family audiences playing a combat game together.
+- [behavior] People favor and help those close to them in their social circles, a tendency called ingroup bias. When: Designing social features. Why: Trust and willingness to help are higher toward known people.
+- [behavior] Affiliation with a group such as a guild, clan, or faction makes players feel their actions matter beyond themselves. When: players belong to a group with a shared identity. Why: belonging gives actions a larger purpose.
+- [pitfall] Play tendencies described for a group are averages that do not describe every individual in that group, so apply them with care. When: designing for mixed audiences. (x2)
+- [fact] Many MMO participants cite duty toward their guild as a top reason for logging in regularly, driven partly by seeking high status and partly by avoiding low status. When: When players belong to a persistent guild or group.
+- [fact] Groups are either short-term, formed for one challenge, or long-term, such as guilds or clans; long-term ties encourage members to care for one another.
+
+## ownership and attachment
+- [definition] Ownership is the personal investment that keeps players playing after they have mastered a mechanic; the industry often calls it replayability.
+- [mechanism] When players can express themselves meaningfully through a game, ownership forms; they then take pride in achievements and want to share them. Why: Expression through input produces identification with the game and its results.
+- [mechanism] Customizable homes, shops, and towns give players a sense of ownership and belonging, which encourages repeat visits and social exchange.
+- [behavior] Optional link-cable trading in a handheld game is used only occasionally, because most players mainly play alone. When: A single-player handheld game with optional link trading.
+- [behavior] Small physical customizations, like marks players add to their character cards, prompt them to invent stories about how their characters got that way. When: tabletop or offline games. Why: Visible personal touches invite narrative and social conversation.
+- [behavior] Once a game is on a major console storefront, many owners are likely to buy it. When: when a game reaches a console storefront.
+- [behavior] Named units that survive while their squadmates die lead players to imagine bonds between them, making later orders to sacrifice one feel dreadful. When: a named unit is ordered into a risky task. Why: names make individual units feel personal.
+- [behavior] Players tear off and keep physical artifacts from play, and later share them with others, extending the experience beyond the session. When: when an experience produces a tangible take-home object. Why: A physical artifact carries the experience into the player's life.
+
+## social conduct and cheating
+- [definition] Antisocial behavior in online multiplayer games includes discrimination, trash talk, bullying, and trolling. When: online multiplayer play.
+- [mechanism] A game's communication system can change how players treat each other; a menu-based chat with mostly supportive phrases encouraged polite, cooperative behavior. When: Online games where chat is restricted to predefined options. Why: Limiting expressible phrases steers social conduct, even reducing trash talk common in competitive communities.
+- [mechanism] Cheating against or among other players breaches the social contract and draws shaming from others, while cheating alone mainly harms only the cheater. When: in multiplayer or competitive games. Why: Other players are affected and expect fair play.
+- [mechanism] Antisocial behavior reduces player engagement and makes online games feel toxic.
+- [behavior] Players who believe others can cheat feel like chumps, and many stop playing even if no one cheats. When: a game is perceived as cheatable. Why: they feel like chumps.
+- [behavior] People form strong emotional bonds with chatbots and disclose sensitive information to them, even simple early ones. When: When people converse with a chatbot. Why: Conversational interfaces invite personal disclosure.
+- [rule] Help players find people they might like, then offer a low-pressure way to show a little of who they are.
+- [fact] A simple audio phone call also creates a sense of being in a social space with another person.
+
+## audiovisual atmosphere and spectacle
+- [mechanism] Big visual spectacle gives a quick emotional rise but a shallow payoff.
+- [behavior] Well-made sound feedback makes players enjoy an interface, but they often cannot say exactly why. When: Sound is used well as a stand-in for touch.
+- [behavior] Room tone makes an environment feel more real and can set the mood of a place. When: a looping background sound fills a space. Why: constant sound grounds the player in the space.
+- [behavior] Spectacular failures attract observers, who become tempted to play. When: When failures are visually entertaining to watch. Why: Watching an impressive failure creates curiosity about playing.
+- [behavior] Players learn to anticipate repeated rhythms, and with practice may feel the game is playing them rather than the reverse. When: rhythms repeat over play. Why: learned timing builds expectation.
+- [rule] Reserve spectacle for moments that amplify relief or pride the player has already earned, like a blast after a hard fight is won.
+- [procedure] 1) Stop interacting. 2) Wait in the game's space. 3) Notice the emotional background that remains. When: When checking whether a game has atmosphere. Why: Atmosphere is felt in the background, so pausing reveals it.
+
+## blame and frustration
+- [mechanism] Blaming the avatar for a failure releases frustration and keeps the player engaged, returning them quickly to the pleasure of control. When: after a failure.
+- [behavior] Players blame themselves when the cause is visible (such as an unused counter), but blame the game or controls when cause is missing, though their skill may be at fault. When: a failure occurs. Why: Without a visible cause, players attribute failure to the system. (x3)
+- [behavior] Players attribute random setbacks to luck rather than their own choices; weaker competitors who lose blame luck, cheating, glitches or poor balance. When: random setbacks occur or competitive losses happen. Why: attribution bias.
+- [behavior] A single puzzle that blocks progress can make players quit the game entirely. When: progress depends on one puzzle. Why: a stuck player has nothing else to do.
+- [behavior] When reloads are fast and death is framed as learning, players cycle through dying and retrying calmly.
+- [behavior] Players who struggle without guidance often blame the game and quit in anger. When: Players lack guidance on a difficult task. Why: Missing guidance makes failure feel like the game's fault.
+- [pitfall] Blaming technology for a supposed collapse in attention overlooks how attention normally works and that people may simply face more distractions.
+
+## emotion sensing features
+- [procedure] 1) Name the emotions the player should feel and why. 2) Identify the emotions players, including the designer, actually feel while playing and why. 3) Plan changes that close the gap between the two. When: Reviewing whether a design produces its intended emotions. Why: Comparing target and actual emotion reveals where the design falls short.
+- [procedure] While playing, record your emotional cycles, such as frustration, exhilaration, confidence, uncertainty, pride, tension, and curiosity, because they are hard to recall later. When: When keeping a game journal. Why: Emotional states fade quickly from memory.
+- [fact] Watching players' faces reveals how they feel, which surveys and postgame interviews often miss.
+- [fact] A large part of the brain processes human faces and gestures, so seeing another person matters greatly for social experience.
+- [fact] The mapping from content features to fitness may depend on a model of a player's playing style, preferences, or affective state.
+- [fact] Chosen features differ for each reported emotional state, so each emotion (engagement, frustration, challenge) needs its own feature subset and network topology.
+- [fact] Traditional extraction techniques include principal component analysis and linear discriminant projection; traditional selection techniques include forward sequential selection and evolutionary-search-driven selection.
+
+## novelty and purchasing
+- [mechanism] Players take default options, so switching a default from opt-in to opt-out sharply raises participation; nudging changes defaults and presentation without removing choices. Why: Least-resistance behavior makes defaults and obvious routes dominant; default bias keeps people with the preset option. (x2)
+- [mechanism] Promising something new just ahead, such as on the next level, gives players a strong reason to keep going.
+- [behavior] People expect a new technology to be life-changing, reject it when it is not, then use it for what it does well. When: a new technology is announced. Why: Inflated expectations are followed by disappointment before realistic use.
+- [behavior] Players buy games partly because they are new, which creates constant pressure on designers to offer novelty. Why: Newness is a strong purchase motive.
+- [behavior] Players become more willing to pay for the last few units when they are close to a goal. When: Players near completing an upgrade or set. Why: Proximity to the goal raises the value of the remaining units.
+- [pitfall] Making a game too novel can alienate players who need familiar anchors to understand and enjoy it.
+- [pitfall] Relying only on novelty can slow presence in the player's immediate space.
+
+## reward timing and value
+- [mechanism] Reward timing often matters more to motivation than the reward itself, and small schedule changes can cause large behavior changes because timing shapes responses in non-obvious ways.
+- [mechanism] The closer a reward comes to the action in time, the more efficiently the action-reward association is learned.
+- [mechanism] Anticipating a reward releases dopamine and raises motivation to pursue the goal.
+- [mechanism] Rewards gain value from scarcity, so items like health, new weapons, ammunition, and quest items motivate players to pursue them. Why: scarcity makes a reward worth the effort to obtain.
+- [mechanism] Rewards attract players and hold their attention over longer play sessions.
+- [rule] Make progress visible to the player with flourishes that draw attention to gains, since unnoticed rewards do little.
+- [heuristic] Pairing a short timer with rewards for every skill and high-level achievements can keep players returning.
+
+## spatial navigation and landscape
+- [behavior] Players assemble a mental model of a virtual space from whatever cues exist; when visuals, sound, touch and motion agree, the illusion feels seamless.
+- [behavior] Players build a mental map of an avatar-driven world, forming a general feel first and then learning landmarks and detail. When: When exploring a new game world. Why: Learning a new physical place follows the same order: overall impression, then specifics.
+- [behavior] People prefer landscapes they grew up in, and no group of people wanted to live in a desert or rainforest they had not known. Why: Acquired familiarity shapes landscape preference alongside innate taste.
+- [behavior] Players who can see other layers of a maze can observe enemies, gather information about challenges, and find rewards before entering. When: when a maze has see-through layers.
+- [behavior] When players learn that enemies never attack in a space, they feel safe there and the space's tension deflates. When: tense spaces where enemies rarely attack.
+- [fact] Mental rotation time grows with the angle to be rotated; a 180-degree rotation takes nearly twice as long as a 90-degree one.
+- [fact] Humans have innate landscape preferences: the ideal habitat combines open grassland, patches of woods and running water, neither too hot nor too cold, and neither too open nor overgrown. Why: Such habitats were fertile and safe for early humans.
+
+## subconscious influence
+- [mechanism] Emotion arises from anticipating future change, so suspense depends on how much remains in the balance. Why: The emotional unconscious looks ahead for threats and opportunities and signals them with emotion.
+- [behavior] When two audio streams differ enough, listeners can repeat the attended one but usually retain little or nothing of the unattended stream. When: dichotic listening with headphones, one voice per ear. Why: Attention filters what reaches conscious memory.
+- [behavior] Players often sense a game's theme without being able to name it, because theme works at a subconscious level.
+- [behavior] Players unconsciously simulate possible futures, including winning, losing, living and dying, even when those outcomes never occur.
+- [pitfall] Overstating subliminal priming's influence on player behavior is a pitfall: it is too weak to stealthily control behavior, so persuaders tend to exploit cognitive biases instead.
+- [fact] Subconscious processing anticipates what comes next and shapes speech and reactions, often without reasoning the person can report.
+- [fact] How subconscious mental processes work is still largely unknown, though psychology is slowly making progress.
+
+## ai and realism expectations
+- [mechanism] Sequence mining finds the most frequent event sequences across input modalities and game context, and uses them as features for player models.
+- [behavior] Sports game players expect human-level competence from the AI.
+- [behavior] Players cannot tell simulation from polish; both are experienced as the object's physical behavior.
+- [behavior] In a restricted, controlled environment, AR players can focus more fully on the task, as with training simulations. When: When AR is integrated into a controlled space such as a training room. Why: Fewer real-world hazards let attention stay on the virtual task.
+- [pitfall] Confusing better performance on a game-like test with general intelligence or smartness overstates what training shows.
+- [fact] Shared VR and AR experiences are expected to become common once connected headsets pass ten million.
+
+## fear and threat
+- [mechanism] Players with ongoing group obligations keep showing up to avoid low status and the shame of letting teammates down, since broken commitments lower others' opinions. When: When players have ongoing obligations to a group that depends on them. Why: People dislike being judged negatively and avoid social pain; broken commitments damage standing.
+- [mechanism] Vivid, well-publicized rare events can be used to stir fear of unlikely dangers, because people overweight outcomes they can easily picture.
+- [mechanism] When sensory input signals threat, the hypothalamus triggers hormones such as epinephrine, norepinephrine, or cortisol, which raise heart rate and focus attention. When: a threat is perceived. Why: hormones prepare the body for rapid action.
+- [mechanism] Pattern detection is very fast because quick recognition of threats mattered for survival.
+- [mechanism] Anger and fear make people hold back risks and ideas, and observers quietly adjust their own risk taking, so the team's creativity declines even when pressure looks effective. When: When a leader uses anger or harsh criticism on a team. Why: Fear makes people avoid exposure, and the effect spreads beyond the person targeted.
+- [procedure] 1) Senses relay input to cortical and subcortical areas. 2) The thalamus relays it to the hypothalamus and amygdala. 3) The hypothalamus triggers adrenaline, noradrenaline and cortisol release, raising heart rate, dilating pupils, raising glucose and blood pressure, and tensing muscles. 4) The amygdala and hippocampus identify the input, compare it with stored memories, and store the event.
+
+## genres and narrative
+- [behavior] Players who recognize a classic game reference need less explanation, because the reference signals skills they already have. When: When a game borrows gameplay or naming from a well-known classic. Why: Familiar genre conventions carry prior knowledge that players bring in.
+- [behavior] Many players find game worlds appealing because they offer simple logic and clear rewards for effort. When: Playing a game world with defined rules. Why: Simple logic makes effort-to-reward relations easy to read.
+- [behavior] Players do not expect much story in every genre, so brief story details are often enough to add meaning. When: in genres where story is not central. Why: Expectations of story depth vary by genre.
+- [behavior] Historical scenarios are often unfair because the real events were unfair, and players want to explore history rather than compete.
+- [metric] Narrative space by game genre: sandbox hours to days, single-player RPG hours, RTS and MMO minutes, action RPG and FPS seconds, each contracting and expanding during play.
+- [fact] Hidden-object games are popular with women; the popularity is well established even though evolutionary explanations for it are disputed.
+
+## learning and teaching
+- [model] Operant conditioning reinforces actions, Montessori sequencing orders challenges, and constructivism structures iterative problem solving; each does a distinct job.
+- [definition] People learn by observing others as well as through direct interaction with their environment.
+- [rule] Make the learning process itself rewarding for newbies. Why: newbies overwhelmed by learning quit before engaging, shrinking the audience.
+- [heuristic] Repeat important information over time using the spacing effect, rather than presenting it once. When: any feature players must learn and remember. Why: spaced repetition strengthens memory.
+- [heuristic] Explaining content in your own words is a way to process it more deeply and so improve retention. When: When trying to learn or remember material.
+- [fact] Most human knowledge is learned from others rather than firsthand, and relying on others is an adaptive necessity since learning everything firsthand would often be fatal.
+
+## learning styles and theories
+- [rule] Scalar ratings or class labels suit regression and classification learners such as deep nets, Bayesian models, trees, SVMs and linear regression.
+- [heuristic] Order puzzles so players can deduce solutions from recognizable elements, even when those elements are used in new ways.
+- [pitfall] Applying the learning-styles concept to instruction can sometimes be damaging to learners.
+- [fact] A learning pyramid ranks being able to do at its top, so game-based learning focuses almost entirely on doing.
+- [fact] Matching instruction to a preferred learning style, such as visual or verbal, has no solid scientific support as a way to improve learning.
+- [fact] Preferred learning styles are hard to measure, and the criteria used to classify them are inconsistent.
+
+## luck and skill perception
+- [behavior] Invented coin flips switch outcomes after a repeat about 60% of the time and rarely contain runs of four, which real flips produce regularly. When: people generating random-looking sequences from memory or without a physical randomizer. Why: Invented sequences avoid long runs that seem non-random, so people are poor at producing random sequences from imagination.
+- [behavior] After several wins, players tend to expect that another win is likely.
+- [behavior] Card games such as Poker mix luck of the draw with skill in reading opponents and knowing odds, and the balance between them is a design question to weigh.
+- [behavior] Young children tolerate luck-only games because they are learning turn-taking and counting, while most adults find them dull due to few decisions. When: Designing luck-only games for different age groups. Why: Children value the social and counting practice, whereas adults need meaningful choices to stay engaged.
+- [behavior] Players who lose two even-odds contests in a row often suspect foul play, although such losing runs are expected in fair random games. When: short sessions of even-odds random bets. Why: Short runs are mistaken for evidence of manipulation.
+- [pitfall] Judging skill from randomness is misleading: identical randomness feels different across games, heavily random games can still seem skillful, and games without randomness can lack followings.
+
+## social and fandom
+- [behavior] Enthusiast players perceive differences in flavor, texture and feel between driving games that casual players often miss.
+- [behavior] Fans of a licensed property often know its source material better than developers do, and they will notice nearly any detail placed in the game. When: licensed or established-fanbase properties. Why: Fans are more engaged and remember every detail.
+- [pitfall] Supporting only meeting and early friendship lets bonds fade, because players cannot find each other again.
+- [fact] Event passing is the natural choice when a character's perception must be simulated in more detail.
+- [fact] Extraversion may correlate with social play in games, though this association needs replication.
+- [fact] Fan conclusions about hidden content may be wrong, yet any content placed in the game can be found, even when deeply buried.
+
+## culture and demographics
+- [behavior] Hand designs with closed cards and small text discourage showing cards, and a theme that reinforces personal decisions encourages each player to make their own choices. When: When a co-op game faces one player dominating. Why: Expectations set by the theme and components shape player behavior.
+- [behavior] PC gamers are generally older than console players and split more evenly between men and women. When: When choosing a platform for a target audience.
+- [rule] Ask whether the intended audience, such as an age bracket or niche interest group, will like the game enough.
+- [fact] Demographics such as age, gender, income, and ethnicity are external; grouping by them is a proxy for finding what people find pleasurable.
+- [fact] Games set in familiar real-world settings may require cultural knowledge, such as the meaning of everyday rooms, objects, and social events, before players can interpret in-game events. When: the game depicts a familiar real-world culture. Why: players read events through their own cultural knowledge.
+
+## empathy in play
+- [definition] Empathy is projecting oneself into another person and sharing their thoughts and feelings.
+- [definition] In immersion, the player's experience mirrors the character's: the player perceives what the character perceives, and also thinks and feels as the character does.
+- [behavior] Everyone has some innate ability for empathy, and practice improves it.
+- [behavior] People take on others' emotions and matching facial expressions without meaning to, and empathy can shift between people quickly and extends to animals. When: Staging emotional interaction between characters or people. Why: Empathy is triggered automatically by visible emotional cues.
+- [procedure] 1) Think of people you know in the target demographic and imagine being them. 2) Spend time with the audience, talking with them and observing them. 3) Imagine their experience from the inside. Mentally taking on many player types reveals needs a narrow viewpoint misses. When: Designing for an audience outside your own experience; expanding a game's audience beyond your own. Why: Empathy with people you have not been can be built through direct contact and imagination, and it widens the players your designs reach.
+
+## fantasy and escapism
+- [behavior] Players act out fantasies in games, living aspirational roles and striving to become what they secretly wished to be, including scenarios they would avoid in real life. When: a game lets players take on an idealized role. (x2)
+- [behavior] Strong transmedia worlds become a personal utopia that fans fantasize about visiting, a brief escape for some and a lifelong draw for others. When: A world with a strong fantasy core. Why: Fans are drawn by the wish to enter the fantasy.
+- [behavior] Once an enemy looks human, its attacks seem angry, its retreats seem afraid and its pursuits seem like desire, even though the underlying behavior is code. When: enemies or characters given human appearance. Why: Players project emotional intent onto behavior that their appearance suggests.
+- [heuristic] Escapism comes mainly from flow and mechanics rather than from an appealing fictional protagonist.
+- [fact] People instantly fill in unstated details of a short story with invented specifics, and revise those details when new information arrives. Why: Ordinary mental gap-filling, not creative fantasy, operates on any story or scene.
+
+## griefing and toxicity
+- [definition] Griefing is deliberately destroying other players' experiences for one's own amusement.
+- [behavior] Some players find tormenting others more enjoyable than the game itself and gain higher status by spoiling games others care about, especially with tricks victims don't know. When: Multiplayer games with player-versus-player or shared spaces; exploits unknown to victims. Why: Spoiling others' fun gives them a feeling of power over the community.
+- [behavior] When a likely winner appears, other players cooperate to stop them, a common social negative loop. When: In multiplayer games where players can interact to hinder others. Why: Players act together to prevent a leader from winning.
+- [behavior] Negative behaviors such as griefing usually emerge from systems that accidentally enable them rather than from deliberate design. When: Analysing toxic player behavior. Why: Unintended system affordances let players exploit or harass others.
+- [fact] Harassment of strangers is perceived as either harassment or unfairness, and both feelings demotivate players. When: Multiplayer communities. Why: Negative social experiences reduce willingness to keep playing.
+
+## identity and agency
+- [mechanism] Players can feel free while having few or no real choices, which lets the designer keep control of the interest curve and events. When: Real freedom is limited.
+- [behavior] Under real-time control, senses extend into the avatar as an extended body acting on and perceiving the world; self flows into it: success brings pride, crashes separate self from it.
+- [behavior] People come to feel a vehicle or tool they control as part of their body, extending their sense of self to it. When: using a controlled object or tool.
+- [behavior] Culture and social presence affect how much people mask negative facial expressions, so faces are an unreliable readout of feeling. When: Observing players' faces to infer emotion, especially when others are present. Why: Participants masked negative expressions when an experimenter entered, and some people are less expressive than others.
+- [behavior] Players feel cared for when a game helps them become better people, because it shows that someone cares what they become. When: a game is designed to build positive qualities in players. Why: Players value being cared for.
+
+## observation and spectating
+- [behavior] Games demanding many parallel tasks at once, such as life and farm simulations, attract majority-female audiences.
+- [behavior] Observing an experience while it happens changes it, so activities such as watching yourself enjoy a movie or play a game tend to fade or falter. When: Observing your own experience during play. Why: Attention on the activity itself disrupts it, a version of the Heisenberg problem.
+- [behavior] Visible, noisy physical output invites onlookers even though reading over someone's shoulder is socially taboo. When: when a device prints or displays output in a shared space. Why: Printed paper and its noise attract attention that private screens do not.
+- [heuristic] Watching real players predicts their enjoyment better than imagining them, and the more you watch, the more accurate the prediction becomes.
+- [fact] Incidental characters may be on screen for seconds, while significant enemies can be visible for minutes.
+
+## screen time and sleep
+- [behavior] After too little sleep, the subconscious seems absent and creative work suffers. When: when sleep is cut short during a creative push.
+- [heuristic] Screen time is too broad a measure for games, since screens also host films, work, reading and video calls; it alone has slight sleep effects, so specific activity matters more.
+- [metric] Experiments found only modest sleep effects after about 50 minutes of play before bed.
+- [metric] Each hour of digital screen time was linked to 3 to 8 fewer minutes of sleep among over 50,000 American children.
+- [fact] Sleep supports creativity: sorting and reorganizing of ideas seems to happen during sleep, and the dreaming phase shows the subconscious is active.
+
+## insight and problem solving
+- [definition] Insight occurs when one new piece of information triggers a chain reaction that makes many earlier clues suddenly make sense.
+- [behavior] Solvers who cannot make a required conceptual leap stare and strain for inspiration rather than making incremental headway. When: Puzzles needing a sudden change in assumptions. Why: No partial progress is available to them.
+- [behavior] Players sense clues before insight, fail to interpret them, and interpret them afterward, producing a feeling of having missed something obvious.
+- [behavior] Insight makes players believe they can predict similar surprises next time, which is why it feels valuable.
+
+## instruction and trust
+- [behavior] Operators who trust an incorrect automated warning act on it far more often than those using a checklist, with errors of 75% versus 25% in one simulation. When: When an automated alert conflicts with the correct action. Why: Reliance on automation lowers attention to errors.
+- [procedure] 1) Identify each critical action. 2) Show an on-screen instruction at the moment the action matters. 3) Let novices play imperfectly without total confusion. When: teaching action-based games with critical moments. Why: Prompts guide novices through key decisions as they occur.
+- [pitfall] Non-binding promises can be broken, causing frustration and mistrust that can damage friendships.
+- [pitfall] Telling people to avoid a concept can make it more available, so they produce more of the behavior the instruction forbids.
+
+## misconceptions and research claims
+- [behavior] Subjective rankings can be contested by fans, especially when used for tournament seeding. When: when subjective rankings determine tournament seeding.
+- [fact] One hypothesis holds that the brain treats sensory mismatch like poisoning, which would explain why the response includes vomiting.
+- [fact] The claim that people use only ten percent of their brain is false; people use essentially all of it.
+
+## motion sickness
+- [mechanism] Motion sickness occurs when the inner ear and eyes disagree about motion: hair cells in the inner ear detect acceleration and rotation, and conflict with vision can trigger nausea.
+- [tradeoff] Motion sickness drugs block the response but tend to make people drowsy and disconnected from the experience. When: A player takes medication to prevent nausea.
+- [fact] Triggers include real motion (boats, cars, roller coasters, spinning rides), apparent motion (large-format films, VR racing) and reading in a moving car.
+
+## music and audio
+- [definition] Deep listening goes beyond hearing words to attend to body language, facial expression, tone of voice, and gestures, and to what people mean beneath what they say.
+- [behavior] Diegetic music feels closer to reality and can carry cultural meaning about time, place and listeners. When: Choosing diegetic music for a game. Why: Music sourced from the world ties it to the setting.
+- [fact] Designer music increased caring, relaxation, clarity, and vigor, while lowering hostility, fatigue, sadness, and tension.
+
+## youth player psychology
+- [behavior] Children and teens find it harder than adults to stop enjoyable activities or resist pressure to keep playing, as the impulse-controlling prefrontal cortex matures only around age 25. When: when an enjoyable activity could be stopped. Why: Impulse control is still developing in young players.
+- [behavior] Children and teenagers often struggle to regulate emotion, showing tantrums and risk-seeking. When: during emotional arousal. Why: the prefrontal cortex that regulates emotion is not yet mature.
+- [rule] Do not design for children as small adults; account for their different experience, attention, memory, and emotional regulation, and consult child development experts. When: The audience includes players under 18. Why: Children differ from adults in perception, attention, working memory, and emotion regulation.
+
+## brain development and regulation
+- [behavior] Children aged 4 to 6 first show interest in games, which must be very simple, and parents often bend the rules to keep play enjoyable. When: Designing games for children aged 4 to 6. Why: Young children need simple rules, and parent-led play adjusts rules to keep it fun.
+- [fact] Prefrontal cortex, linked to the limbic system, regulates emotion including automatic responses and helps control impulses; it matures until about age 25, so children and teenagers find self-control harder. (x2)
+
+## mood and entrainment
+- [definition] Entrainment is the process by which a living thing aligns its own timing with an outside rhythm or with other organisms.
+- [mechanism] Landscape, weather, time of day and season each evoke different feelings, from depression to giddy triumph, so environment can be tuned to accentuate a target emotion.
+
+## player trust and fairness
+- [behavior] Players expect a designer to lead them toward a better world; when they stop caring about new games, they have lost faith that the designer knows the way.
+- [heuristic] Players' perception of fairness matters more than the design's actual fairness, so design for how fair the game feels. Why: perception is a construct of the brain.
+
+## obligation and social pressure
+- [tradeoff] Player-to-player commitments such as agreed meetups and repaid favors drive regular play, but imposed obligations feel like work and can cause avoidance-driven return and abandonment. When: Designing player-to-player commitment systems favors commitments; obligations such as return deadlines or friend invitations added after pleasure-based rewards in free-to-play designs, or any required activity, shift players toward pain avoidance. Why: People feel obligated to honor promises and return favors, which strengthens community; play depends on freedom of choice, so felt obligation feels like work; avoidance keeps players returning after enjoyment fades.
+
+## replay after disturbing play
+- [behavior] Players may not want to replay a game that made them feel complicit in a disturbing act. When: Games with morally troubling reflective content. Why: Reflective meaning lingers after play.
+
+## social emotion design
+- [fact] Games can foster compassion, feeling and bonding via decisions and flow, social play, physical movement, and remote connection between players.

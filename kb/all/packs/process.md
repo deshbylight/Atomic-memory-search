@@ -1,0 +1,3135 @@
+# process
+
+## playtesting practice
+- [model] Testing types answer different questions: internal reviews discuss design, QA finds bugs, focus groups rank features, gauge purchase intent and marketing appeal, usability checks interfaces, playtesting checks intended player experience. (x2)
+- [model] Each playtest is framed by six probing questions covering purpose, participants, timing, setting, focus and method; purpose comes first because the rest depend on it.
+- [model] A session observation form has three parts: in-game observations and questions, postgame questions, and revision ideas.
+- [model] Playtesting can be split into discrete phases, each focused on specific design aspects and perfected before advancing, moving the game from core prototype to complete model. Why: Each phase keeps the designer in control of revision.
+- [model] A branch test plan table lists each quest step as a row, with columns for implementation, dialogue, task, reward, and balancing, and marks each cell OK, BUG, N/A, or TODO. When: testing a branching quest.
+- [definition] A playthrough test has players play most or all of a game to find engageability problems, such as difficulty spikes and goals that stop being exciting.
+- [definition] One-on-one testing observes a player directly, with notes taken and questions asked before and after play; it is the norm in professional usability testing.
+- [definition] An interview is a face-to-face, in-depth oral session after play, closer to a verbal quiz than a discussion.
+- [definition] Playtesting checks whether the game delivers the designer's intended player experience goals; it is an ongoing designer activity.
+- [definition] A closed beta is a nearly finished game tested from home by a few thousand players, often answering online surveys.
+- [definition] Kleenex testing uses people who have never played the game, reveals reactions in the first critical moments, and uses each tester only once.
+- [definition] Over-the-shoulder testing means watching others play, either informally beside a coworker or in a staged room with cameras.
+- [definition] A playtest protocol lays out how a session is run, intended to show how the design performs in practice.
+- [definition] Focus testing is market research in which participants discuss product ideas in a group, and it does not require a working game.
+- [definition] A task analysis test checks whether players can complete one specific task, such as building a deck or navigating a map, measured by completion time and number of errors.
+- [definition] Confidants are friends and colleagues outside the design team who notice things the designer has missed.
+- [definition] A closed beta is invite-only, while an open beta lets anyone sign up.
+- [definition] Probability predicts outcomes from a known random process, while statistics infers the process that produced observed data.
+- [definition] A testing plan documents every way to play through content, so that every branch is tested.
+- [definition] LTV is the revenue from a player between first play and quitting, and it sets the ceiling on acquisition budget per user.
+- [mechanism] In live-service titles, players expect patches and new content after launch, so shipping acts as the largest playtest. When: Games delivered as ongoing services. Why: Post-launch player behavior and expectations reveal problems that pre-release testing missed.
+- [mechanism] After roughly 10 to 20 playtests, a designer shifts from thinking in single stories to thinking in systems, and can predict how a change ripples through the whole game. Why: Many observations combine into a model of cause and effect.
+- [mechanism] A rule change on a paper prototype can be tested almost at once, for example by swapping a turn structure and replaying.
+- [mechanism] Studies with non-rejected null hypotheses are often not submitted or accepted, which biases the published record toward confirmation and hides potentially useful findings.
+- [mechanism] Playthrough tests in alpha reveal how players progress and where engagement drops, and can expose missing telemetry hooks. When: Alpha, once the game is feature complete or sooner.
+- [mechanism] Focus groups surface common wisdom and key disagreements, and group interaction pushes people to sharpen their own ideas. When: When generating ideas with a group. Why: Differences of opinion prompt people to refine positions and try alternatives.
+- [mechanism] Involving QA early makes them more invested and more likely to prioritize the game during crunch time.
+- [mechanism] When one column has values far smaller than the others, its line appears flat along the bottom of a shared chart. Charting that column alone reveals its real shape. When: Plotting several columns with very different magnitudes on one chart. Why: The shared vertical axis is scaled to the largest values, compressing the small ones.
+- [behavior] A playtest exposes decisions the team felt sure about but got wrong, which is why it feels uncomfortable.
+- [behavior] Memory favors expected or wanted comments, so written notes are needed to preserve important surprises. When: after a playtest session. Why: recall is biased toward what was anticipated.
+- [behavior] Once a game is playable, the whole team, including artists, designers, and programmers, plays it informally, and excessive team play signals that the game is fun. When: Game is playable, before beta.
+- [behavior] Watching testers get bored, hit a difficulty spike or find a game-breaking bug motivates developers to fix the design.
+- [behavior] Expert gamers compare a game to its genre using technical terms and specific examples, but they are often jaded and prefer complex challenges that only a small share of the public shares. When: When choosing expert playtesters. Why: Experienced players have played many similar games and hold demanding tastes.
+- [behavior] Fresh players who have never seen the game notice things the team has grown used to and are suited to usability, communication, and first-impression questions, but they cannot reveal boredom that appears over many sessions. When: When choosing playtesters for a given question. Why: Fresh players have no prior exposure, so they judge first impressions and miss long-term fatigue.
+- [behavior] Remarks such as 'the rules don't say either way,' 'I'm completely stuck,' and 'you can't do that!' signal rule gaps. When: Observing playtests. Why: They reveal unclear rules, dead ends, and unclear permissions.
+- [behavior] A bad client suggestion usually means the client is trying to help and reacting to an unstated problem, not that they are foolish.
+- [behavior] Input quality is hard to evaluate because the work is hidden; players credit graphics or balance for successes actually due to good input. Why: Good input looks effortless, so its contribution goes unseen.
+- [behavior] The first outside playtest of a fully planned game typically exposes degenerate strategies, missed story beats, and unlearned mechanics that the plan did not anticipate. When: at the first outside playtest.
+- [behavior] A leader who watches one review can feel they fully understand a design, though it may play out in thousands of different ways. When: A leader judging a design from a single review session. Why: What is seen in one session feels like the whole picture.
+- [behavior] Some players freeze or fall silent when they must play and talk at once, which is exactly when insight is most valuable. When: during think-aloud sessions.
+- [behavior] Players may react to intended content with an unintended emotion, so their response can differ from the designed tone.
+- [behavior] A tester new to the game exposes the obstacles that will trip up first-time players.
+- [behavior] When challenge and skill fall out of balance, players become bored or frustrated and may stop playing.
+- [behavior] Testers who do not regularly play your type of game give less useful feedback. When: Choosing testers for a genre.
+- [behavior] When players cannot heal themselves and must rely on others, they tend to ask for help and assist each other, even though designers may fear this frustrates players. When: When a designer removes a player's ability to fully succeed alone. Why: Dependence on others prompts requests for help and mutual assistance.
+- [behavior] Talking aloud makes participants focus more than usual, so they work out the system more than they would alone. When: Running think-aloud tests. Why: Verbalizing reasoning increases attention to the task.
+- [behavior] Almost every card-mix decision meets strong opposition from a segment of players.
+- [behavior] Testers who want to please the host say what they think the designer wants to hear, and refusing criticism makes this more likely. When: the designer rejects criticism. Why: Testers who fear displeasing the host tailor their answers.
+- [behavior] A vocal tester can sway the whole group, which is why professional labs isolate testers from each other.
+- [behavior] A vague note using a word like awesome usually means the commenter wanted to feel strong and in control, and the scene did not deliver that.
+- [behavior] Players who know the real sport notice when a sports game lacks tried and tested plays. When: a sports game uses invented or missing plays. Why: fans of the real sport know the authentic plays.
+- [behavior] Players often cannot tell what their actions will teach, because feedback spreads across many input-output pairs and the network generalizes. When: Players teaching a neural network creature through feedback. Why: Neural networks learn by generalizing, so feedback is distributed over several actions.
+- [behavior] People recognize well-designed things through experience even when they cannot name the qualities that make them good. When: Judging whether a space, object, or game feels right. Why: The nameless quality is felt rather than articulated.
+- [behavior] Players learn most by pushing simulations until they break, and seeing why a failure occurs builds insight into the whole system. When: when failure is allowed in a simulation. Why: Failures reveal how the parts of the system interact.
+- [behavior] Many people believe they understand game design because they experience games as players and humans, so their feedback can seem expert. When: when non-designers give design feedback. Why: Personal experience as a user feels like design expertise.
+- [behavior] Playtesters found a flat 2D view of a flying game unemotional, and a 3D world locked to a 2D plane conflicted between clarity and freedom. When: prototyping a flight game with an emotional goal. Why: A restricted view limits the sense of freedom that players value.
+- [behavior] Players were astonished that machine-generated titles could be so simple and fun, and designers accepted such games while they stayed lightweight. When: when players first encounter machine-generated games. Why: Simple, obvious rules were unexpected from a generator.
+- [behavior] Players may harm sympathetic characters purely to test whether a mechanic works, not out of hostility toward the character. When: a mechanic is untested or its outcome is uncertain. Why: curiosity about mechanics outweighs the character's relationships.
+- [behavior] Problems such as degenerate strategies often appear only after skilled players test a system.
+- [behavior] Designer intuition for balance improves with practice when each exact guess is tested and the result informs the next guess. When: When tuning values by feel over many iterations. Why: Each test provides data that sharpens the next judgment.
+- [rule] Record screen, face and hands together with several cameras in one split-screen image; observe what players see, feel, and whether controls work as expected; review when time allows. (x2)
+- [rule] Testers should report problems and experiences, not design solutions: ask which parts felt boring rather than for difficulty changes; the designer chooses and builds the fix. (x2)
+- [rule] Recruit playtesters similar to the target market, diverse across that audience rather than a narrow slice, and as many as possible. Why: Representative and sufficiently large samples filter out random variation and bias. (x2)
+- [rule] Give help only when testers are truly stuck and record where and why; hints hide the flaw and turn the test into a test of a different game. (x2)
+- [rule] Answer a tester's question with a question, such as asking what they think they should do; repeat their last words when they trail off rather than finishing them. When: Moderating a think-aloud session. Why: Completing a participant's thoughts biases what they report. (x2)
+- [rule] Test early: watching a few playtesters is most valuable on a rough prototype, because changes become too costly to make meaningfully later. When: early prototype stage. (x2)
+- [rule] Recruit outside players who did not take part in the design to extend testing beyond the team; without in-house QA, arrange them as regular testers. (x2)
+- [rule] Playtest when useful and at least weekly; testing only when convenient causes long feedback gaps where problems accumulate unseen. Why: A fixed minimum frequency turns playtesting into a routine habit and prevents long feedback gaps.
+- [rule] Choose the playtest venue from the questions it must answer, since each venue trades convenience, comfort, cost, realism, and reach.
+- [rule] Help testers in unfamiliar surroundings get comfortable, for example by inviting friends. When: testing at a studio or lab.
+- [rule] Hold group interviews after private ones, to see whether friends reveal new information together.
+- [rule] Avoid asking about specific moments after play; players forget details irrelevant to their goal, so ask about those during play.
+- [rule] Give every planned question a way to produce an answer.
+- [rule] Keep bringing in new playtesters, because long-term testers become experts and cannot judge the true difficulty of the easiest mode.
+- [rule] At the first playable stage, test with a small pool such as the dev team, trusted friends under NDA, or a designer's local playtest group. When: first playable stage.
+- [rule] Do not let griefer testers advocate for changes, but test with them to learn what players can do to each other and where boundaries are needed.
+- [rule] Have testers take every spiteful or self-serving action that gives even a slight advantage, short of cheating, and refuse cooperation unless it pays materially. When: checking for incentives that reward harming others.
+- [rule] Tell testers what is being tested and how to approach it, unless secrecy is needed for valid results, since vague requests leave them unsure what to do.
+- [rule] Ask programmers for test cheats, since many shipped cheats began as aids that sped up testing.
+- [rule] Observe real players when judging a design, because a game system's effect is measured by the experience it creates for those players.
+- [rule] Invite players who match the target audience and do not know you personally, since friends, family and teammates are too close to the game.
+- [rule] Find usability problems by observing what players actually do, rather than relying on their explanations or social media complaints about the game. When: when diagnosing why players are frustrated. Why: Players often feel frustrated without knowing the cause and may misattribute it, which can send the team to the wrong fix.
+- [rule] In playthrough playtests, let players play without guidance, as they would at home, so their unassisted behavior is what gets observed.
+- [rule] Test key visual and audio designs with players, because perception varies between people and designers cannot judge it objectively. Why: Designers suffer from the curse of knowledge.
+- [rule] Run playthrough studies with bigger participant pools so results reflect differences between players, including those who have impairments.
+- [rule] Limit each moderator to observing two players at once, because multitasking makes observation unreliable.
+- [rule] During sessions with testers, record where their eyes travel, where they click or move while stuck, annoyed or disengaged, and capture every remark they make.
+- [rule] Playtest throughout development with the designer, the team, office visitors and groups matching the target audience.
+- [rule] Do not skip playtesting because your setup is imperfect; adapt the method to your environment.
+- [rule] Record every playtest session with its date, feedback and observations in a chronological record.
+- [rule] During play, record your own thoughts and questions, such as why a choice was made or whether a rule seems confusing.
+- [rule] Disclose any recording or observers at the start of a playtest and assure testers that recordings stay within the design team. When: Starting a playtest session.
+- [rule] Write a session script covering your open questions, phrased so it does not lead testers. When: Preparing a playtest session. Why: A written script keeps the designer observing rather than steering.
+- [rule] Listen to testers and analyze what they say so you see mechanics as they actually are, not as you want or imagine them to be. When: Reviewing playtest feedback.
+- [rule] Make sure the game works as intended, is internally complete, balanced, and fun. When: Setting priorities during testing.
+- [rule] Do not lead testers; when they ask what to do, ask them what they think they should do. When: Testers ask for guidance during a session. Why: Answering directly steers behavior and hides how the design works unaided.
+- [rule] Give the prototype to people who have never played it, give no verbal instructions beyond the challenge to play, and watch whether they reach the end unaided. When: Checking whether a prototype is functional.
+- [rule] Stay open, neutral and professional; ask in a wondering, not accusatory, way; do not reward 'right' answers; show gratitude, since testers are doing a favor. When: during playtest questioning.
+- [rule] Recruit testers who differ in skill, age, gender, temperament, culture, socioeconomic background, interests and game knowledge, do not know the game like the designer, and resemble the final players. Why: Testers who vary and lack the designer's knowledge respond more like real players.
+- [rule] Use external participants whenever available; internal testers see games differently and may know the designer, heavily biasing their reactions. Why: Internal testing is only a stopgap; familiarity and insider knowledge distort reactions.
+- [rule] Observers stay neutral and silent, showing no laughter, sighs or cheering, and developers wait for the report rather than judging early. When: Observing a UX test. Why: Visible reactions and early judgments can steer participants and distort analysis.
+- [rule] Games with goals beyond fun, such as teaching or activism, need different test goals than fun. When: Game aims at non-entertainment outcomes.
+- [rule] Find starvation problems through playtesting before release, when they can still be fixed, because they are always found eventually.
+- [rule] Playtests should reveal what players experience, not just collect suggestions, because designers are too close to the game to feel what another player feels.
+- [rule] Observe many sessions to map the experiences a game can produce, including its branch points and how they interact. Why: A single path cannot reveal interactions between branches.
+- [rule] Stop running playtests when testers repeatedly show the same experiences, since the designer then understands enough to decide.
+- [rule] Avoid leading questions such as asking whether a player noticed a specific object, because players answer yes to appear perceptive or to please the interviewer.
+- [rule] When players genuinely need information the game lacks, deliver it through a method planned in advance as part of the test protocol.
+- [rule] Playtest at every development stage, not only at beta, because waiting leaves fundamental design issues too late to fix. Why: late discovery of core problems is costly.
+- [rule] Choose non-digital or digital test forms according to the development stage. When: choosing how to test a design. Why: early stages can be tested before digital work exists.
+- [rule] Prepare focused questions or a paper survey before a playtest, and record extra comments while holding to the test's goals. When: planning a playtest. Why: focus keeps results useful.
+- [rule] Vet enthusiastic player suggestions against the game's core vision, and dismiss them kindly if they do not fit. When: players offer design suggestions. Why: a coherent vision matters more than any single idea.
+- [rule] Match each tester group to the questions you need answered, and use a mix of expert and fresh testers at different times, since most games need both. When: When planning playtest sessions. Why: Each tester group reveals different kinds of problems.
+- [rule] Log important game events during each session, such as time spent in character creation, hits needed to defeat a boss, average score, and most-used weapons. When: When evaluating player behavior during playtests or live play. Why: Logged events reveal how players actually play.
+- [rule] Phrase suggestions as options for the team to weigh rather than as orders, since the researcher clarifies problems and does not take control of design. When: Writing fix suggestions in a UX report. Why: Directive wording makes the report feel bossy and reduces its usefulness.
+- [rule] Play the build first and prepare an observation sheet with specific objectives; give feedback on features ready for testing, not unfinished ones. When: Preparing for a UX test. Why: Developers dislike feedback on incomplete work, and objectives focus observation.
+- [rule] Participants must not watch each other play, to avoid peer pressure and copying. When: Running group or sequential sessions. Why: Watching others changes how a participant behaves.
+- [rule] Tell participants the game is being tested rather than their skill, that mild confusion is worth reporting, and that researchers do not work on the game so harsh feedback will not hurt anyone. When: Briefing participants before a test. Why: Framing reduces politeness bias and encourages honest criticism.
+- [rule] Participants sign an NDA, and recording devices are stored in a locker whose key the participant keeps. When: Running a UX test with external participants. Why: Protects confidentiality and recordings.
+- [rule] Run task analysis sessions one-on-one, with one participant observed by one researcher.
+- [rule] Build a studio-wide UX strategy so that user experience becomes everyone's concern.
+- [rule] Do not answer criticism; write it down and listen carefully.
+- [rule] Aim playtests to discover what players dislike or misunderstand, not to collect praise.
+- [rule] Set ground rules at the start of group sessions: everyone respects opinions, everyone gets a chance to speak, and no one criticizes another tester's ideas.
+- [rule] Observe testers from behind one-way glass, through a video feed, or quietly from inside the room.
+- [rule] Observe confidant testers without asking leading questions.
+- [rule] Playtest your own prototype and record your thoughts in a playtesting notebook.
+- [rule] For most tests, recruit new testers for fresh input; later, bring back articulate testers to see progress and whether removed features were missed.
+- [rule] Test regularly with target-audience participants who know nothing about the game, not friends or family, who please the team with soft feedback; developers cannot see their own knowledge gaps. Why: Developers cannot perceive their own knowledge gaps; biased testers distort conclusions.
+- [rule] Before building a complex choice, check with QA testers whether a simpler one looks the same to players.
+- [rule] When humor derails a group discussion, the facilitator must steer it back to the topic. When: Brainstorming sessions that include jokes. Why: Unchecked jokes can take over the session.
+- [rule] Log every playtest fix in writing, because an unrecorded patch tends to resurface later. When: during playtesting.
+- [rule] Test interface sounds with other people to check that each one reads as its intended meaning.
+- [rule] Do not graph a single value, whether discrete or continuous; state the number directly.
+- [rule] Plot each metric as a time series and mark significant patch dates on the graph. When: Tracking a live game's metrics across updates. Why: Averages hide change, while time plots reveal when shifts happened.
+- [rule] Build a small representative set of content for playtesting, such as three roles or one baseline character, rather than full content. When: early in content creation. Why: keeps early builds playable and cheap to change.
+- [rule] When a group is underrepresented, each candidate cause implies a different fix, so test the causes separately before choosing an intervention. When: investigating a gap in applicants or hires. Why: Different causes such as outreach, wording, bias, offers or chance require different responses.
+- [rule] Test reward strategies with players, since predicting which rewards will hamper intrinsic motivation is difficult. When: choosing rewards. Why: intuition about reward effects is often wrong.
+- [rule] Use standardized protocols to test hypotheses, because biases affect developers and players alike.
+- [rule] Write test questions that match the specific feedback you need.
+- [rule] Test against predefined UX goals, pillars, and metrics, and guard analysis against cognitive biases.
+- [rule] Test VR with a wide range of physical attributes, not only typical player segments, since body size and mobility issues are missed otherwise.
+- [rule] Do not treat a single small test as proof that a design change works. When: interpreting playtest results. Why: Single studies can be wrong or later discredited.
+- [rule] With a dedicated UX team, use an integrated UX process to plan what needs testing and when. When: Dedicated UX team exists.
+- [rule] Hold editing sessions on different days from brainstorming so ideas mature; mixing the two reduces the productivity of both.
+- [rule] Use focus groups to generate ideas, not to judge the quality or popularity of an idea. Why: Group dynamics distort judgments of ideas.
+- [rule] Accessibility testers must belong to the target market, be objective rather than friends or relatives, and have never played the game; earlier playtesters are disqualified. When: recruiting accessibility testers. Why: Prior exposure or personal ties bias what testers notice and tolerate.
+- [rule] Treat participant struggles as valid evidence; a designer's opinion that a feature is obvious does not outweigh observed confusion. When: interpreting accessibility test results. Why: Observed confusion reflects the actual experience of new players.
+- [rule] Give remote playtesters a channel to talk to each other so social and competitive exchange can still surface. When: remote playtests. Why: Room cues are lost when testers are apart.
+- [rule] Test whether an audience wants freedom to set its own goals before adding open-ended personal goal setting.
+- [rule] Route requests through the lead or technical director rather than going around them, because bypassing them undercuts their authority.
+- [rule] Send change requests to the owner of the decision, such as the art director rather than the person who would carry it out, and consult the technical director before changing the database or interface.
+- [rule] Use geopolitical review to catch cultural problems before release; handling sensitive themes is a judgment about audience and region, not censorship.
+- [rule] Agree with the client on what player experience to measure in beta testing and which questions to ask beta testers.
+- [rule] Ask reviewers to sign a non-disclosure agreement to protect your ideas, since industry people are used to signing them. When: you worry about idea theft.
+- [rule] Discuss how reviewers' ideas could improve the design, but make the final decision yourself.
+- [rule] Thank every reviewer, whether or not you plan to use their comment.
+- [rule] In each test row, note what key information the step conveys, how it fits the story, and any design concerns such as weak side quests or overly hard encounters. When: recording test results.
+- [rule] In a party-based RPG, test party compositions that lack key abilities, such as no lockpicker or no healing magic, and teams made only of one class. When: testing a party-based RPG.
+- [rule] Validate designs with real users instead of assuming they work, because perception is subjective.
+- [rule] After each match, highlight one standout moment and show personal statistics compared with the player's past performance, so players feel good even on a losing team. Why: positive feedback on individual performance offsets team loss.
+- [rule] Study other games' cost curves for insight rather than copying their math. When: Researching balance in comparable games.
+- [rule] To test whether a balance model finds the most broken objects, pick clearly overpowered, clearly underpowered and well-balanced objects, focusing on extremes rather than slightly off ones.
+- [rule] Simplifying a simulation by removing player choices, such as fixed buying policies, limits what it can reveal about the game's balance. When: when building a simulation for balance analysis. Why: Fixed policies remove the decisions that shape real outcomes.
+- [rule] Repeat a shuffle simulation many times and average the results, because a single trial gives no meaningful average.
+- [rule] Balance with structured, systematic approaches, because haphazard changes make the game swing between imbalanced states.
+- [heuristic] Playtest at every development stage, from pre-idea to shipped, starting as early as possible; 'the game isn't ready' should not delay testing. Why: Problems are discovered earlier, and a design becomes harder to change the longer it is held back. (x2)
+- [heuristic] Watching playtest video can reveal play styles that score data alone does not show.
+- [heuristic] Playtest with both novices and experienced players, since insiders alone frustrate newcomers and newcomers alone bore experts. Why: Each group exposes different failure points in the game.
+- [heuristic] Observe players closely, as an anthropologist would, because watching their struggles informs every interface decision.
+- [heuristic] When you cannot predict how players will move through a space, leave routes unbuilt at first, watch actual use, and only then build the routes people wear in. When: Designing spaces or paths whose use cannot be predicted in advance. Why: Paving before observing risks locking in routes that do not match real behavior.
+- [heuristic] Use developers for repeated, detailed sessions and friends or family for easy, early access.
+- [heuristic] Either result is useful: if players like the game, good; if not, ask why and fix the cause.
+- [heuristic] Interrupt players only when they do something surprising that you cannot explain.
+- [heuristic] Good playtest questions target specific outcomes like understanding, fairness, boredom, confusion, frustration, dominant strategies, loopholes, hidden bugs, group differences, favorite and least favorite parts, control mapping, level length, puzzle difficulty.
+- [heuristic] Some tests should reveal nothing, letting players work out the game on their own.
+- [heuristic] If parts of the game are irrelevant to the planned questions, consider testing a trimmed version. When: planning a playtest.
+- [heuristic] A large mismatch between model and real play more often means the model is wrong than that players found an unmodeled exploit.
+- [heuristic] Small playtests lack data for statistical significance, so focus on key questions and on what answers should look like, then watch for those answers during play. When: running small playtests.
+- [heuristic] End a playtest once the core questions are answered, unless the tester wants to keep playing; ending early respects the tester's time.
+- [heuristic] Run usability observation throughout development and repeat it with each iteration, not only at the end. Why: Testing and redesign are always needed in the development cycle.
+- [heuristic] Closed beta and alpha tests can reach larger samples, and even about eight players is better than none.
+- [heuristic] More testers tend to improve a game when individual matches feel like parts of one larger game.
+- [heuristic] Tailor the observation form to the test focus; interface tests may need fewer overall play-experience questions.
+- [heuristic] Keep play sessions to about 15-20 minutes, because testers tend to tire after longer. When: Scheduling playtest play time.
+- [heuristic] Recruit strangers through many varied channels, since more sources produce a larger and better candidate pool. When: Finding playtesters.
+- [heuristic] Playtest results stay trustworthy when testers judge objectively rather than agree with a leader; using playtests to validate a leader's assumptions undermines them.
+- [heuristic] Focus tests suit both small indie studios and large studios, and small teams without a QA department can use them.
+- [heuristic] Testers who know the game but not a specific encounter approximate a player who has played for hours and reached a new challenge. Coworkers can serve. When: testing a specific new encounter. Why: Their knowledge matches a mid-game player.
+- [heuristic] Ask a tester to tell the story of what just happened. Elements left out may be dead weight, and the recalled story often differs from the intended one. When: interviewing a tester after a session. Why: Recall reveals what players actually perceived.
+- [heuristic] A test protocol is a craft for extracting the most useful knowledge from limited resources, not a set of universally right answers.
+- [heuristic] Early playtests address large-scale design questions, while later playtests polish individual moments and geometry pieces. Why: scope of questions narrows as design matures.
+- [heuristic] If play shows one attribute matters more than its score suggests, raise its weight, for example by doubling its points, then retest.
+- [heuristic] Keep veteran players: they are often the most vocal advocates of a game and can point out how to improve it.
+- [heuristic] Small playtests are less useful for games with millions of players, so open betas help gather balance data at scale. When: games with very large player bases.
+- [heuristic] The more asymmetric a game and the harder its sides are to compare mathematically, the more it depends on playtesting before release and analytics after.
+- [heuristic] Avoid focus groups unless a very experienced researcher moderates them, because peer pressure introduces many biases. When: Considering group discussion as a research method. Why: Group dynamics distort individual responses.
+- [heuristic] Use task analysis for short, specific checks of one task or a single feature.
+- [heuristic] If the team does not respond to an idea, reconsider the idea or the approach used to present it.
+- [heuristic] Incorporate player feedback on the fly during a paper playtest session.
+- [heuristic] Early design theories are often partly wrong, so test each one in play; even a wrong theory may contain a useful grain of truth.
+- [heuristic] If a test seat is unfilled, play it yourself so the rule variant can still be tested. When: no second tester is available.
+- [heuristic] Let testers make mistakes, since their confusion reveals rules that need clarifying.
+- [heuristic] Keep self-testing throughout the project, but rely more on outside testers as the game evolves.
+- [heuristic] Analyzing a memory is easier than analyzing live play; fresh and powerful memories give the best results, though memory is imperfect. When: Analysis is needed after an experience. Why: Memory allows reflection without interrupting the experience.
+- [heuristic] Intending to analyze an experience afterward, without letting that intention interfere with the experience, improves recall. When: Playing while planning to review. Why: Expectation of review strengthens memory of the event.
+- [heuristic] On paper, circle ideas, sketch, connect them with arrows, and cross things out, then type up the good material later. When: Early brainstorming on paper.
+- [heuristic] Designers can understand players by using their own modeling, focus, empathy and imagination to notice how those same powers work in players' minds. When: when trying to learn how players think. Why: The designer's own mind shares the player's cognitive tools.
+- [heuristic] Examining the interest players actually show is the best measure of an experience's quality.
+- [heuristic] Observing which disciplines eat together reveals trust gaps; artists eating apart from programmers may signal pipeline problems, and separate console teams may signal porting problems.
+- [heuristic] Playing only the first few minutes of a game is usually enough to learn its core mechanics; finishing it is not required. When: analyzing a game's mechanics.
+- [heuristic] Have other researchers run UX tests when attachment to a feature could bias results. Why: Attachment to the game can bias observation and interpretation.
+- [heuristic] Establish a good development process early, built on playtesting, to help a team avoid releasing a game that is dead on arrival.
+- [heuristic] Setting a firm play-length target, such as under an hour, can shape a game's whole design. When: early in design for a constrained format.
+- [heuristic] Aim to have about 90% of planned content in the game before beta, and leave open slots for later additions. When: preparing for beta testing.
+- [heuristic] Playtesting during production and QA reveals smaller problems that call for focused changes.
+- [heuristic] A game that staff immediately want to replay is likely to be scheduled for publication.
+- [heuristic] A gameplay video is most credible when rendered from the actual game code. When: making a video for a pitch.
+- [heuristic] Watch focus tests in person when possible, since seeing real players is more persuasive than a written summary.
+- [heuristic] Talk with testers informally where possible, since a relaxed conversation often reveals more than a feedback form.
+- [heuristic] Reviewers may understand the project better than you, especially if you are junior, so adjust how much weight you give their comments.
+- [heuristic] Testers who already know the story stop noticing minor glitches, so decide how often to bring in new testers. When: planning tester rotation.
+- [heuristic] Test ideas under heavy repeated use, since many ideas that sound great once become tiresome by their thousandth use.
+- [heuristic] Large beta or post-launch data sets can support analytics-based balancing; use them to update mathematical models so they match real play. When: large beta or post-launch player data is available.
+- [heuristic] When full-scale trials become too costly, build a cheaper apparatus that measures the same properties of the parts. When: Full-size tests are expensive.
+- [heuristic] Build spaces and scripts with placeholder geometry during art production rather than waiting for final art, since gameplay can be tested earlier. When: planning production order for levels. Why: Waiting for art delays testing that could begin with placeholder geometry.
+- [heuristic] Use screenshots and video to mark moments in play so you can analyze them later.
+- [heuristic] Playtesting can reveal recurring layout patterns that either support play or cause unfair deaths, so catalog both kinds deliberately.
+- [heuristic] Testers who play to win find optimal solutions and exploits quickly; if one wins using a single option exclusively, that option is probably overpowered.
+- [heuristic] Letting players annotate their own video playthroughs reduces memory and cognitive-load bias in post-experience annotation.
+- [heuristic] Unanimous agreement in a team often signals mental laziness or fear rather than real cohesion. When: when a design team shows no disagreement in discussions. Why: Agreement without thought hides flaws, and fear discourages people from voicing dissent.
+- [heuristic] Balance can be protected by structure: similar starts so late entry is not a disadvantage, late-game trades that are hard to exploit, and a game length that ends before inflation becomes severe.
+- [heuristic] If power can be measured, tune game length by trial and error, adjusting values and replaying until length lands in the target range. When: power is measurable.
+- [heuristic] Use at least one tester per supported play style who always plays the same way, to confirm each intended strategy is actually viable. Why: Such testers may be the only ones trying a given strategy.
+- [heuristic] Make large changes when the right value is unknown, such as doubling or halving; when more confident, change by at least 10 percent, since smaller changes often go unnoticed. When: Adjusting numeric values during tuning. Why: Small changes can be invisible in play.
+- [heuristic] A simulation should roughly match an exact calculation; if it does not, check both the math and the simulation. When: both exact and simulated answers are available.
+- [heuristic] Before fixing an imbalance, ask why it happens and what causes it, then fix it in the system where the root cause lives rather than in an interconnected system. When: Diagnosing balance problems reported in playtesting. Why: Imbalances can spread to other systems, so the reported symptom is not always the thing to fix.
+- [heuristic] Expert players play more and at a higher skill level than designers, so changes after beta are likely to be needed. When: planning post-beta balance work.
+- [procedure] 1) Solo play to remove obvious problems that waste others' time. 2) Close friends, co-workers or other designers for outside opinions. 3) Friends-of-friends or strangers while observing or collecting one-on-one feedback. Why: Each audience widens in familiarity and reveals different problems. (x2)
+- [procedure] Ask six post-play questions in this order: 1) Ask what was most frustrating. 2) Ask the favorite moment. 3) Ask what they wanted to do but could not. 4) Ask what they would change, add, or remove. 5) Ask what they were trying to do. 6) Ask how they would describe the game to friends. When: after a playtest session.
+- [procedure] 1) State the specific questions the playtest must answer. 2) Pick testers who match those questions. 3) Choose the development stage for the test. 4) Pick a venue suited to the questions. 5) List what to watch for, including unexpected things. 6) Plan how to capture information during and after play. When: before running a playtest.
+- [procedure] 1) Pre-idea: gather a focus group of target players and ask what they enjoy. 2) Concept: describe the idea and ask for reactions. 3) Paper prototype: have players try a barely playable version. 4) Whitebox: test without art, stating caveats first. 5) Working prototype: keep testing as late as possible. 6) Shipped: treat post-launch feedback as ongoing playtesting. Why: Each stage gives different information, and testing continues across all of them.
+- [procedure] 1) Decide the question first, such as whether the game is fun or balanced. 2) Design the playtest so it answers that question. When: planning any playtest.
+- [procedure] To check whether one item is overpowered in a specific situation, force that situation, such as arranging the deck so the item is drawn early.
+- [procedure] 1) Log each relevant variable, such as button state, physics state or a flag, every frame. 2) Draw each one as a line on a scrolling graph. 3) Mark events such as leap, touchdown, drop, high leap, delayed leap and crouch as labelled vertical lines. 4) While paused, scroll and zoom to the area where the problem occurred. When: when players report that controls feel wrong.
+- [procedure] 1) Introduce yourself, thank testers, state the purpose, and disclose any recording or observers (2-3 min). 2) Warm-up questions about games they play (about 5 min). 3) Play session (15-20 min). 4) Discussion probing appeal, interest, challenge, and understanding (15-20 min). 5) Wrap up: thank testers, keep contact details, optionally give a small gift. When: Running a playtest session with outside testers. Why: Timed parts keep the designer focused on observing and stop sessions running past the point where testers tire.
+- [procedure] 1) Collect enough applicants first. 2) Screen for people who explain their opinions clearly, for example in a short phone call. 3) Ask about hobbies, motive for responding, and how often they buy this type of game. When: Selecting playtesters from applicants. Why: Articulate testers give usable feedback, and genre habits predict how they judge your game.
+- [procedure] 1) Obtain approval from the company's leadership and production staff to show the build outside the studio. 2) Have every tester sign a non-disclosure agreement. 3) Recruit outside players from the target audience, run the session yourself or hire a focus-testing agency, and give them the game with no instructions. When: before inviting outside testers. Why: Outside players give realistic feedback on an unexplained game.
+- [procedure] 1) Watch testers' reactions and struggles without explaining the game. 2) Afterward, ask how they experienced particular elements. When: during and after a focus test.
+- [procedure] 1) Early in development, have participants test a prototype with specific tasks, such as finding and crafting an item. 2) Later, have them play as they would at home.
+- [procedure] 1) Record mistakes, long confusion, and missed important information. 2) Follow observation with a survey using non-leading questions, such as asking what an icon represents.
+- [procedure] 1) Watch where players look, what they do, and their faces. 2) Ask players to tell the story of what happened. 3) Test knowledge of noticed details. 4) Ask players to walk through a decision. When: when watching is not enough.
+- [procedure] 1) When a tester suggests a change, identify the experience behind it. 2) Test whether the cause is aiming, ammo economy, or a misunderstood feature. 3) Fix the underlying problem. Why: Suggestions at face value hide the real problem.
+- [procedure] 1) Watch an unfamiliar tester play without speaking. 2) Note each failure. 3) Apply a fix, often ready within half a day. 4) Repeat with a fresh tester, about 10 to 20 cycles over two or three weeks. When: after self-testing no longer reveals new problems. Why: Fresh testers expose failures the designer cannot see.
+- [procedure] 1) Ask why the player chose a path. 2) If they mention an element and why they rejected it, they perceived it. 3) If not, they may never have noticed it.
+- [procedure] 1) Place a short text box of two to three lines below the game. 2) Ask players how to make the game better. 3) Allow one message per session, then hide the box. 4) Route messages to a mailing list all team members can join. When: When collecting player feedback during an alpha or live test.
+- [procedure] 1) Prepare a private space with a camera and the questions visible. 2) Let each participant enter alone, read one question, reflect, and answer on camera. 3) Share the recordings with the team. When: When collecting interview or focus group responses. Why: Individual answers counter groupthink and let quieter participants contribute.
+- [procedure] 1) Set up pop-up targets at varied distances. 2) Observe whether players overshoot or stop short. 3) Make controls less sensitive if they overshoot, and less stiff if they stop short. When: Tuning twitch-skill controls. Why: Overshooting signals excess sensitivity and stopping short signals excess stiffness.
+- [procedure] Compile moderators' notes at the end of the day and compare them across observers. When: Synthesizing observations from a UX test. Why: Cross-checking notes reduces individual observer error.
+- [procedure] Recruit participants matching the target audience profile; allow at least a week for recruiting a good sample. When: Planning UX test recruitment. Why: Matching the audience and allowing time improves validity.
+- [procedure] 1) Record your own actions and feelings while playing a game. 2) Observe another player of the same game and note their behavior. 3) Compare the two sets of notes.
+- [procedure] 1) Play and note the choices you make. 2) Record how you felt. 3) Identify the underlying mechanics behind the experience. When: each day of play.
+- [procedure] 1) Write more questions than you need. 2) Rank them by importance. 3) Group the top questions by category.
+- [procedure] 1) Test the prototype for completeness. 2) Watch for impasses, rule questions, and judgment calls. 3) If players argue or reach a dead end, revise and test again. When: Testing a prototype for completeness.
+- [procedure] 1) Use control situations to isolate parts of the system. 2) Run playtests where familiar testers try to disrupt the system. 3) Recruit players who enjoy subversive solutions and challenge them to find the most creative subversion.
+- [procedure] Test checkpoint spacing: 1) place only one or two checkpoints in a level 2) playtest and note how failing feels 3) add checkpoints at the start of each challenge scene 4) retest and ask which retries felt better.
+- [procedure] Test whether cues teach better: 1) graybox a level teaching two or three mechanics, including movement 2) add sound and graphics that trigger in teaching areas 3) test graphics only, sound only, then both 4) log with several playtesters which works best.
+- [procedure] 1) Have a player who has never played the game play it. 2) Observe whether they get stuck often or follow potential pathways clearly. 3) If they get stuck, identify what the game could do to communicate pathways better. When: When testing whether a game's exploration pathways are understandable to new players. Why: New players reveal communication gaps that designers miss.
+- [procedure] 1) Mentally play the unbuilt game as a player would, emulating its systems. 2) Track what happens, what is known and unknown, which decisions appear, and the thinking each needs. 3) Move through every second in real time, including animations, loading screens and idle button presses. When: analyzing decision pacing before a prototype exists. Why: The mind naturally skips to the most interesting parts of imagined or remembered experiences, hiding the flow gaps that need finding.
+- [procedure] 1) Have the experience without stopping. 2) Replay it in memory while analyzing everything, taking notes if useful. When: Analyzing a game or other experience. Why: The first pass preserves the experience; the second pass allows reflection on how it felt and why.
+- [procedure] 1) Take brief, quick looks at the experience, judging whether it is engaging enough. 2) Return immediately to the experience. 3) Repeat habitually so the looks go unnoticed. When: Observing play experience without disrupting it. Why: Brief glances interrupt less than sustained analysis and are less noticeable to oneself.
+- [procedure] 1) Roll up and store posted sheets. 2) Unroll them later. 3) Resume the session as if it had never stopped, even weeks or a year later. When: Brainstorming that spans long gaps. Why: Stored sheets preserve the layout of earlier ideas.
+- [procedure] 1) Ask the client what problem they are trying to solve. 2) Confirm the underlying problem with the team. 3) Find a fix that solves that problem, even if it differs from the client's suggestion. When: When a client proposes an idea that seems wrong.
+- [procedure] 1) Right-click a floor in the editor and choose Play from here. 2) Press Esc to return to the editor. 3) To test the whole level from the start, use Play this level in an editor window.
+- [procedure] 1) Bring the writer, who knows the dialogue's intent best. 2) Bring a character biography sheet with background and reference voices. 3) Bring a pronunciation sheet of phonetic spellings, so every actor says each word the same way. When: Preparing for a voice recording session. Why: Shared intent and pronunciation keep delivery consistent across actors and sessions.
+- [procedure] 1) Record narrative lines in linear story order so actors track their character's arc. 2) Group lines by mood to avoid switching emotions. 3) Schedule shouting or strenuous lines near the end of the session. When: Planning the order of a dialogue recording session. Why: Story order and mood grouping ease performance, and strained voices should not affect other lines.
+- [procedure] 1) Split a character's kit into individual moves. 2) For each move, measure frequency per match, hit rate and total damage per match. 3) Compute total damage as frequency × hit rate × damage. 4) Rank moves by share of total damage. When: Evaluating whether a fighter's strength or frustration comes from a few specific moves. Why: Overall win rate hides which moves drive damage and how often they are used.
+- [procedure] 1) Segment move usage and win contribution by skill level. 2) Identify which moves dominate low-rated matches. 3) Compare those moves against high-rated usage before changing values. When: Finding which specific moves drive a skill-dependent imbalance. Why: Moves that dominate one skill band may be irrelevant to another.
+- [procedure] 1) Compare final standings with rating-predicted rankings. 2) Measure how often players finish differently than expected. When: Validating a rating system in free-for-all games. Why: Multi-player finishes test predictions beyond win or loss.
+- [procedure] Run regular UX tests on the work, including tests of iconography, to check how players actually read inputs.
+- [procedure] 1) Meet the main stakeholders after the report. 2) Review each issue and classify it as intentional, to be redone soon, or to be fixed and re-tested later. 3) Track fixes in a shared project-tracking tool so progress is visible. When: after a user research report.
+- [procedure] 1) Run the UX test. 2) Identify changes everyone agrees on. 3) Assign those changes as tasks. When: After a UX test.
+- [procedure] 1) Warn participants before the test. 2) Monitor their discomfort during play. 3) If aftereffects occur, allow at least 45 minutes of readjustment, especially before driving.
+- [procedure] 1) Invite dissidents to speak. 2) Clarify vague statements. 3) Point out healthy consensus. 4) Draw parallels between different ideas. 5) Ask people to explain ideas clearly and constructively, then combine and build on them. When: When moderating an ideation focus group.
+- [procedure] 1) Start a test session already in the rare state. 2) Vary the relevant conditions. 3) Observe results over a short period. When: testing rare game events.
+- [procedure] 1) Ask testers to plot the game on the play matrix. 2) Ask whether outcomes depend more on chance or skill, and on mental or physical ability. 3) Ask which direction they would move it and why. When: gathering tester perceptions of game nature.
+- [procedure] 1) In the foundation stage, test basic functionality without judging balance or fairness. 2) In later stages, hunt loopholes and dead ends, and check interface accessibility and navigation. When: planning test focus across development.
+- [procedure] 1) Seat each participant at a partitioned station with headphones. 2) Collect opinions through a web questionnaire. 3) Keep participants isolated so one participant's opinions do not influence another's. When: Running group playtests where independent opinions matter. Why: Isolation prevents participants from influencing each other.
+- [procedure] 1) Pick one type of choice. 2) Add an element of surprise to its outcome. 3) Observe how the gameplay changes. When: Testing the effect of surprise on a choice.
+- [procedure] 1) Ask a math-minded person nearby. 2) If none is available, post the question on a forum or mailing list. 3) Describe the question as probably too hard, or frame it as a puzzle. 4) Do not hold back questions that seem naive. When: a probability problem beyond basic rules and simulation, too hard to solve alone. Why: Experts often enjoy solving problems that others consider too difficult.
+- [procedure] 1) Group mechanics into logical categories. 2) Give each category its own subtotal column. 3) Feed the subtotal columns into the final balance column. When: a balance formula combines many traits or mechanics. Why: Each part becomes easier to understand and check.
+- [procedure] 1) Add an in-game button players press to flag a perceived problem. 2) Record it alongside game data. 3) Review recordings at flagged moments. When: Perceived problems that are rare or hard to reproduce in playtests. Why: Flagged moments show exactly what players experienced.
+- [procedure] 1) Watch playtesters struggle with the content. 2) Question them afterward about what they believed it was. 3) Compare their answers with the intended premise to find missing context.
+- [procedure] 1) Play your own game as each player type would. 2) Note where that type's goals are blocked or served. 3) Adjust the design to fit each type. When: testing a design from several player perspectives. Why: Designers can test how a design serves different player types by playing as each.
+- [procedure] 1) Pick one unknown ability and evaluate it alone. 2) Change one variable at a time to measure its effect. 3) Finish it before examining the next, because two unknowns analyzed together give no clear individual costs. When: more than one new ability is unknown. Why: combined unknowns hide each ability's individual cost.
+- [procedure] 1) Put real playtest time or turns on the horizontal axis. 2) Put a numeric power formula for each player on the vertical axis. 3) Plot each player's power to see how the game unfolds. When: measuring a playtested game's length or power balance.
+- [procedure] 1) Fill a row with random die results, one column per die. 2) Sum each row. 3) Fill the rows down for thousands of trials. 4) Divide the rows meeting the target by the total rows. When: code is not available.
+- [metric] Simple constrained games may need two or three playtests, shooter combat around six to twelve, and open systems-driven games many more.
+- [metric] Confidence in an untested element can rise from about 40 percent on paper to about 90 percent after several playtests.
+- [metric] A total score on the observation grid summarizes the intensity of the flow state across its three dimensions. When: when using the observation grid.
+- [metric] Task analysis tests should use at least 15 participants. When: when planning a task analysis test. Why: smaller samples weaken the evidence.
+- [metric] Plan about 50 to 80 lines per hour for ensembles with typical 10-word lines, and about 100 lines per hour for a solo actor averaging two takes per line. When: Estimating studio time for dialogue sessions. Why: Realistic rates prevent under-scheduling sessions.
+- [metric] Chance a positive result is real equals prevalence times sensitivity, divided by that product plus (1 - prevalence) times (1 - specificity). Why: true positives divided by all positive results.
+- [metric] Large samples reveal small differences that playtests cannot measure, such as a character winning 55% of matches. When: Balancing with metrics from many players. Why: Small effects need large samples to be distinguished from noise.
+- [tradeoff] Interrupting players with questions reveals insight but disturbs natural play, and constant questioning can ruin the session; waiting until the end risks players forgetting the moment.
+- [tradeoff] A studio is convenient and lets the whole team watch real players, but unfamiliar surroundings can make testers uneasy.
+- [tradeoff] Public venues such as malls, campus events, games festivals, or street tables are cheap and reach many testers, but finding the right demographic and avoiding distraction are harder.
+- [tradeoff] Testing at the playtester's home shows natural play and social interaction, but few observers fit and hardware may need carrying.
+- [tradeoff] Online testing reaches many machine configurations and suits stress and massively multiplayer questions, but gives less insight and makes secrecy harder.
+- [tradeoff] Multi-day lab sessions give deep data but are hard to recruit for, while remote tools are easier to run but make observation harder.
+- [tradeoff] Group testing generates ideas well but evaluates them poorly, while one-on-one testing is better suited to evaluating ideas.
+- [tradeoff] Strangers give objective, fresh perspectives that close contacts cannot, so use strangers when objectivity matters most. When: Choosing between friends and strangers as testers. Why: Close contacts bring familiarity and bias that blur judgment.
+- [tradeoff] Developers can watch from a one-way mirror, which keeps them out of the room, or together in a room, which sparks useful discussion. When: Arranging observer seating for a test. Why: Separate viewing reduces interference, while shared viewing aids discussion.
+- [tradeoff] Use eyetracking or biometrics only when budget justifies them and for short, specific moments; efficient observation is usually better otherwise. When: Choosing lab instruments. Why: Expensive instruments cost more than their insight in most tests.
+- [tradeoff] Observation suits small groups and early prototypes; analytics needs large samples, so near launch beta-scale play data guides balance once observers are impractical to recruit. When: Choosing a balance method based on player scale. Why: Large player counts make observation-based playtesting impractical.
+- [tradeoff] Programmers supplying navigation data directly means every new level needs new data, which hurts reuse across games and makes simple level changes difficult.
+- [tradeoff] Ensemble recording makes dialogue flow naturally and builds chemistry, but adds pressure, ego conflicts, misunderstandings and retakes; solo sessions are easier to plan. When: Choosing how to record a dialogue scene. Why: Actors reacting to each other sound more natural but cost more time and coordination.
+- [tradeoff] Lab research reveals causes in depth but struggles to predict how much a lab-observed behavior matters across a larger audience. When: when deciding whether a lab finding needs scale validation. Why: small samples cannot estimate how common a behavior is.
+- [tradeoff] An imagined real-time walkthrough is less accurate than playtesting but far cheaper and easier, and it is better than no pacing analysis. When: before playtesting is possible.
+- [pitfall] Testers close to the game, such as friends, family or invited guests, give politer feedback, may bend the truth and like it, so they overlook flaws and hide problems. (x2)
+- [pitfall] Developers and designers are biased and a poor proxy for target players: insiders bring skills the audience lacks and may misjudge difficulty, such as making a children's game too hard. (x2)
+- [pitfall] Relying only on playtesting has limits: early decisions precede any playable game, playtesters may reject unfinished unusual ideas, and playtests are occasional while decisions are daily. When: early design decisions.
+- [pitfall] A vague goal like 'is my game fun?' cannot guide a session and wastes playtesting time.
+- [pitfall] Focus groups suit ranking well-defined features, but are often poorly run or manipulated.
+- [pitfall] A careless remark before play starts can spoil the whole test.
+- [pitfall] A sample can be large yet unrepresentative of the target audience, skewing conclusions; a playtest that looks large can still mislead if its composition differs from the market. Why: Sample composition determines whether feedback reflects the target audience.
+- [pitfall] Testing broken or incomplete features wastes time; features must work, though placeholder visuals are acceptable.
+- [pitfall] Common excuses for skipping playtests are tight schedules, fear of changing beloved ideas, cost, and the belief that testing is marketing's job.
+- [pitfall] Testers who share a room and coordinate informally can mask designs that depend on team coordination, which strangers playing online will expose. When: testing multiplayer designs. Why: Strangers lack shared context and tactics.
+- [pitfall] Focus testing is often used as a synonym for playtesting, which is incorrect because it answers a different question.
+- [pitfall] Recruiting minors requires extra legal care. When: Recruiting participants who may be under age. Why: Minors carry additional legal protections.
+- [pitfall] Spending weeks on an engine or infrastructure before testing the core idea means the prototype has failed.
+- [pitfall] One negative tester can skew results, so do not draw conclusions from a single person's feedback.
+- [pitfall] A small group of confidants cannot provide the broad, objective criticism needed in later stages.
+- [pitfall] Trusting players' survey recollections at face value ignores that memory is reconstructed at recall time, so reports are biased rather than exact. When: When players answer post-play surveys.
+- [pitfall] Misclassification can take extensive playtesting to find and fix, and weighted nodes make it worse.
+- [pitfall] Surface listening takes people's words at face value and misses what they actually mean. When: Gathering feedback from others. Why: Words alone can mislead.
+- [pitfall] Rationalizing away testing, such as believing a design is so good it needs no testing, leads to repeated costly failures.
+- [pitfall] Strike probabilities computed from steady-state values misrepresent early turns, which must be analyzed separately because the starting state differs. Why: the answer depends on steady-state probabilities, not the starting state.
+- [pitfall] Presuming every player interprets an identical stimulus identically leads to misread interfaces.
+- [pitfall] Unremoved biases in testing lead to wrong conclusions.
+- [pitfall] Vocal players, such as forum posters, may not represent the majority, so their feedback should not be treated as representative.
+- [pitfall] Group pressure can make apparent consensus look stronger than it is, and dissent is suppressed because disagreeing takes effort and social courage. When: When reading focus group results.
+- [pitfall] Beta testing cannot reproduce the scale and variety of release play.
+- [pitfall] In group tests participants may hide confusion or copy a neighbor, so test one-on-one unless the game requires multiplayer. When: running accessibility tests with several testers. Why: Social pressure and copying distort what the test reveals.
+- [pitfall] Feedback that does not move the project forward wastes everyone's time.
+- [pitfall] Stopping after one test, rather than repeating the loop, leaves design problems unresolved.
+- [pitfall] Assuming moderation tools have solved antisocial behavior; it remains far from solved in online games.
+- [pitfall] Hidden input complexity is costly to build and hard to review, so teams may underinvest in it.
+- [pitfall] A convincing result in one's own play or one designer's reaction does not guarantee that other players will respond the same way. When: When validating a feature only through personal testing. Why: Players differ in how they perceive threat, safety, and fun.
+- [pitfall] Expecting psychology to answer all design questions about experience is a mistake, because it is useful but does not cover experience directly. Why: Its scientific standards exclude much of subjective experience.
+- [pitfall] Breaking a motif's link before it has been established through repetition weakens the surprise it was meant to create.
+- [pitfall] Repeating one simple action with long waits can feel manipulative to players.
+- [pitfall] Treating one streak as proof that the random number generator is broken is a false alarm when the player base is large enough for rare streaks to occur regularly. When: large player base or many attempts.
+- [pitfall] A simulation gives an approximate result that changes from run to run, so it is a ballpark estimate rather than an exact answer.
+- [pitfall] Testing an enemy alone in isolation, rather than alongside other enemies, can miss a flaw that appears only in combination. When: Testing encounters before a whole-game playtest. Why: Isolation removes the interactions that expose exploits.
+- [pitfall] Assuming average LTV is the same across games is a mistake, since it varies widely.
+- [fact] Watching people play reveals problems the team never anticipated; these unplanned surprises are among the most valuable findings because they show what the designer does not yet understand. (x2)
+- [fact] Playtesting is arguably the most important filter; getting to a playable build early reveals needed changes and tunes the other filters.
+- [fact] Friends and family are highly available and comfortable giving feedback, and often share ideas after the session.
+- [fact] Playtesting finds problems early, builds confidence that the game suits its audience, and is essential to making a good game.
+- [fact] Asking what a player was doing reveals their goal, and asking how they would describe the game reveals the point they perceive.
+- [fact] A playtesting lab offers one-way mirrors, cameras, and expert note-takers, but is usually expensive; some third parties offer lab testing.
+- [fact] Watching a playtest in person reveals more than surveys or recordings alone.
+- [fact] Cognitive load is hard to measure, since brain scanning during playtests is impractical and restricted in some countries.
+- [fact] Playthrough tests explain why players do what telemetry records, adding context that analytics alone cannot give.
+- [fact] Watching other people use a prototype improves the designer's judgment.
+- [fact] Four playtest structures are one-on-one observation, group play, feedback forms, and oral interviews.
+- [fact] Group play suits physical prototypes and digital prototypes run in a lab with several computers.
+- [fact] Playtesting is essential to design work, cannot be hurried or skipped, and keeps the designer seeing the game as players will first encounter it. Why: Playtesters act as the designer's eyes and ears, showing how the game feels in practice.
+- [fact] Playtesting ranges from informal sessions with 10 to 20 people to large facilities; one large studio project logged over 3000 hours with more than 600 players.
+- [fact] A functional game has components that interact properly and a reachable resolution; players in a paper prototype follow rules without reaching an impasse.
+- [fact] Judging functionality is a matter of judgment, since testing every permutation under all conditions is impractical.
+- [fact] A small representative sample of about eight participants is usually enough in a playtest to reveal mistakes and delays through observation.
+- [fact] Watching playtests reveals difficulty that is too hard, instant victory that signals too easy, and missed instructions or opportunities that signal unclear design.
+- [fact] Self-testing is the cheapest playtest protocol and reveals flow, pacing, balance and technical bugs. Early iteration loops should end with self-tests.
+- [fact] Playtests aim to reveal player confusion, difficulty imbalance, overall balance, degenerate strategies, and whether the story is understood.
+- [fact] Game testing includes playtesting, usability testing, QA testing and focus testing, and each returns a different kind of knowledge.
+- [fact] Playtesting ranks as the top form of testing for games.
+- [fact] An in-game suggestion box can yield around thirty messages per day with high-quality content, including bug reports, usability problems, and good ideas. When: When a sample of players is exposed to the feedback box.
+- [fact] Free tools such as OBS record gameplay and webcam feed, and input overlays can show controller or keyboard input and local time to measure task duration. When: Setting up recording for a UX test. Why: Recordings and overlays provide evidence for reports and timing.
+- [fact] Strong opposition to card decisions led fans to build their own playtest variants, each involving roughly 4000 cards.
+- [fact] Target-audience testers can compare your game with others they have played, providing market research.
+- [fact] Companies usually pay testers in cash or free games, while independent and personal projects typically pay nothing and testers gain satisfaction instead.
+- [fact] The risks of using testers are small compared with other production risks.
+- [fact] Early playtests usually reveal many problems, so the designer must decide which to tackle first.
+- [fact] Lessons from one playtest do not carry over reliably to the next game; detailing is learned through practice.
+- [fact] Digital games hide many loopholes because their possibilities are too numerous for designers to test exhaustively.
+- [fact] Objectivity is the team communication key most likely to go wrong.
+- [fact] A player walkthrough usually appears too late to change the game it covers, but its findings help the next project. When: After release.
+- [fact] Population size does not change the chance that a positive result is correct, but a larger population flags more healthy people wrongly.
+- [fact] Probability can state the chance of each outcome but cannot predict any single actual result.
+- [fact] UX analysis gives a less biased view of how consumers react than creative intuition alone.
+- [fact] A later revision of UX maturity uses six levels, listed from highest to lowest: User-Driven, Integrated, Structured, Emergent, Limited, and Absent.
+- [fact] Design, art, engineering, marketing, business intelligence, and executives all contribute to the player experience.
+- [fact] A geopolitical review may be done by a localization team member or by external services for large games.
+- [fact] A geopolitical review covers the whole game: menus, writing, graphics, packaging, audio and branding.
+- [fact] Testers want the best and most fun experience for players, so even tough feedback serves the same goal as yours.
+- [fact] Common responses to antisocial play are a code of conduct, player reporting, and temporary bans for confirmed violators.
+- [fact] Field testing can reveal behavior that calculations miss; the placement of a single part can change how a craft fails.
+- [fact] Playtests can show whether environmental teaching methods are sufficient and whether players appreciate the narrative tone.
+- [fact] Six tester types reveal different problems: the winner, the angry tester, the same-approach tester, the newcomer, the griefer, and the pro-gamer who dislikes luck.
+- [fact] Most extreme experiments fail, so their knobs usually must be turned back down.
+- [fact] Repeated simulation captures real-world factors, such as a weighted die, that the theoretical math leaves out.
+- [fact] For an executive, the key issue is the commercial revenue a game can generate and its scale. When: Pitching to an executive. Why: Executives judge a pitch mainly by commercial return.
+- [fact] Deep specialized knowledge that rivals struggle to match is a barrier.
+- [fact] Tabletop designers can rely on software simulations to tune their titles, so the same randomness standards apply to them.
+- [fact] Linking UX issues to retention or revenue drops is hard because many factors affect those metrics at once.
+
+## iteration
+- [model] Design has four steps: foundations, where the core idea is tested for fun; structure, where enough rules exist for people without your vision to play; formal details; refinement.
+- [model] Playtesting follows a continuous loop of playtest, evaluate and revise, repeated from the first moment of design onward.
+- [model] The formal details stage has three goals: make the game functional, make it internally complete, and make it balanced.
+- [model] Design thinking manages creativity through repeated cycles of generating ideas, prototyping, testing, and iterating until the design satisfies from a UX standpoint.
+- [model] Design thinking runs in three stages: understand users, explore through ideas and prototypes, and materialize through testing and iteration.
+- [model] Three levels: vision (why: concepts, purpose), organization (how: systems, links, org and flow charts), execution (what: breakdowns, asset lists, technical, legal and human constraints).
+- [model] Development has five stages: concept, preproduction, production, QA/polish, and maintenance.
+- [model] A complete game design covers four tetrad elements: technology, mechanics, story, and aesthetics.
+- [model] Iteration is a loop of short-range planning, implementation, and testing, where each test checks assumptions against reality and informs the next cycle.
+- [model] Real knowledge creation is organic: many activities overlap, testing is unscheduled, and the approach adapts daily, so no fixed loop fully describes it. Why: Invention is an ever-changing frontier rather than an assembly line.
+- [model] Decisions have eight kinds of effects: design, implementation cost, immaturity burden, critical failure risk, process burden, political, cultural, and decision cost. When: When evaluating a design decision beyond its effect on the game.
+- [model] Play can be structured in three levels: newbies, who get a separate, low-stakes challenge; players, who face the main challenge; and elders, who create challenges for others.
+- [model] Each card has three stats: Cost is paid in health at reveal, Strength decides battles, and Damage is dealt if the card stays in play. When: Simultaneous-reveal card duels.
+- [model] A designer must listen to five targets: team, audience, game, client, and self. The five are interconnected.
+- [model] Five technology bets most likely to lead toward a better world: magical interfaces, fair payment, less artificial AI, play with family and friends, and self-transformation.
+- [model] Skill mastery in games passes through three reinventions: the manual level of mechanical interface skill, the situational level of reading and deciding, and the mental level of concentration and psychological play.
+- [definition] Iterative design is repeated cycles of prototyping, testing, analyzing and refining, in which the design is shaped by how players experience it. (x2)
+- [definition] A game is functional when a person who knows nothing about it can play from start to finish without the designer's help; it may still be clunky and unsatisfying.
+- [definition] RITE, Rapid Iterative Testing and Evaluation, tests a narrow element with one participant at a time and fixes discovered issues before the next participant tests the revised version. When: Iterating quickly on one feature. Why: Fast fixes between sessions speed up improvement.
+- [definition] Design thinking finds the right problem, weighs several solutions, and chooses the most suitable one, which is often imperfect.
+- [definition] Evaluation asks whether an insight is valuable and original.
+- [definition] Elaboration is usually the longest and hardest stage, and much of invention is sustained effort rather than inspiration.
+- [definition] Development means financing a team and managing it to deliver a high-quality game on time and within budget.
+- [definition] Therapeutic planning is planning mainly to feel better about an uncertain future rather than to coordinate work.
+- [definition] Debate exists to find flaws in ideas, exposing hidden assumptions and logical fallacies.
+- [definition] The designer owns the player experience from start to finish, making sure mechanics function at every level and working with almost every team member. Why: Gameplay depends on how it is programmed, visualized, and supported by sound and voice.
+- [definition] Explicit futures let players trade a future favor for a present resource.
+- [definition] Finishing means reaching the single stated long-term goal, while completing means finishing all tasks, including optional quests and locations.
+- [definition] Foundational technology enables an experience that was not possible before; decorational technology enhances one that already exists.
+- [definition] A transformation check asks how a game can change players for better or worse, since games change people through the experiences they create.
+- [definition] Transformational games aim to change players in a specific way, and the term is preferred over serious games, which implies seriousness matters more than fun.
+- [definition] A design knob is a tunable number on a game object that can be changed to adjust how the object plays.
+- [definition] A transition is an arrow between states, labeled with the condition, such as a die roll or fixed requirement, that allows the change.
+- [definition] Feature design is proposing a focused addition to an existing game rather than a whole new game.
+- [definition] The creative core, or X, is a concise concept that serves as both a razor for cutting features and a slogan that conveys the game.
+- [definition] Game development is deciding which appealing features can be built within limited time and limited cash.
+- [definition] Under the tool metaphor, PCG is an instrument that extends a designer's capabilities by adding a generative component to the workflow.
+- [definition] The crazy method calls the player's bluff by being unfair, arbitrary, or beyond technical norms, showing that the designer's rules do not follow convention.
+- [definition] Design effects are how a decision changes what players experience, and predicting them is the main work of game design.
+- [definition] Flow charts map the decisions a player faces as abstract nodes and branches, approximating what the player is thinking rather than physical level geometry.
+- [definition] Degenerative design breaks a game's established rules to surprise players, and designers can plan such breaks so the game's logic stays intact.
+- [mechanism] As production advances, playtest-revise cycles tighten, so the issues found and the changes made become smaller.
+- [mechanism] When a disruptive technology becomes good enough, being faster, better and cheaper, customers can switch to it almost overnight. When: the disruptive technology reaches a good-enough threshold.
+- [mechanism] Short iterations followed by review force strong team communication and build bonds among members.
+- [mechanism] Going into detail forces the team to think the game through from high-level vision down to file types and font sizes, exposing gaps early.
+- [mechanism] Demanding perfection at every stage stretches each loop through overanalysis, which means fewer cycles and a weaker final game. When: when each stage is held to near-final quality.
+- [mechanism] Iterative processes avoid long-range assumptions and run constant reality checks, so disasters tend to surface early.
+- [mechanism] The main cost of a critical failure is the disruption it causes to other processes, not the fix itself, and damage is worst when it hits during a time-critical event. When: When a hidden flaw surfaces late in development. Why: Failures cascade into blocked work for everyone depending on the broken part.
+- [behavior] Designers focus on current problems and ignore potential ones, because existing problems carry emotional weight while potential problems stay abstract.
+- [behavior] Design churn comes less from uncertainty in individual pieces than from change shockwaves propagating through dependencies, so concepts can persist while specifics change repeatedly. When: Explaining repeated redesign of upper-layer features. Why: Changes in foundations force revisions upward through every dependent system.
+- [behavior] Players expect novelty and careful balance, so designers must iterate constantly, and waiting on engineers or slow recompiles breaks creative flow. When: Planning production workflows for designer-facing behavior. Why: Constant iteration means long turnaround on each change interrupts design momentum.
+- [behavior] Designers often understand the case for iteration intellectually but only come to believe it emotionally after painful planning failures on a complete, significant game. When: When a designer has read about iteration but still plans deeply. Why: Belief depends on felt consequences, not on abstract argument.
+- [behavior] Strong designers signal uncertainty with phrases such as 'my gut says' or 'the way I see it', which keeps discussion open. Why: Such phrasing reflects that all knowledge is uncertain and leaves room for others' better ideas.
+- [rule] Fail early and often, learning from each failure, so that success arrives sooner. When: Iterating on design and prototypes. Why: Failures before large investment pay off, and rapid failure yields information faster than extended planning.
+- [rule] At foundation, playtest alone to confirm the core idea is fun; defer loopholes, dead ends, and questions like movement range, interaction, and conflict resolution. When: Testing a bare core-mechanic prototype during foundation prototyping. Why: Answering every question early slows progress; answers emerge through play.
+- [rule] Use the framework's pillars to structure team discussions and to organize research and analytics questions.
+- [rule] Divide the design problem into small, manageable pieces, since building every system at once amounts to building the full game and tends to fail.
+- [rule] The foundation stage goal is to make the game work, even as a rough approximation.
+- [rule] Begin formal detailing only after the foundation shows promise and the structure lets others play the game.
+- [rule] Make only one change per iteration and retest the whole system afterward to gauge its effects.
+- [rule] Check each refinement change against the experience originally intended, since changes can drift from the vision.
+- [rule] The highest priority is keeping clients happy by shipping useful software early and on an ongoing basis. When: when planning a development project.
+- [rule] Treat ideas as cheap and disposable, and reverse an early decision as soon as evidence shows it is not working. When: when an early choice starts failing. Why: Attachment to a decision keeps teams committed to designs that are clearly failing.
+- [rule] Make every design loop count and loop as fast as possible, because loops are expensive for large games. When: when a game needs long test-and-improve cycles. Why: Large computer games can afford few loops, so each one must produce useful information.
+- [rule] No decision is final until the whole team agrees it is final.
+- [rule] Do not wait for a template before starting to design; begin recording ideas now. When: Before a design template is available.
+- [rule] Know the design thoroughly and have at least a reasoned guess for unsettled parts, including play hours, time to finish a level, and how multiplayer works. When: Preparing for a pitch. Why: Listeners probe design details, and gaps reduce confidence.
+- [rule] Do important self-reflection now rather than postponing it, since time runs out without warning. Why: Life and career are short.
+- [rule] Identify your personal theme as early as possible in a project or career.
+- [rule] Discuss ideas as a conversation rather than an argument. When: Disagreeing with team members about design.
+- [rule] In the earliest development stages, make core moment-to-moment gameplay fun first, since balance is not yet meaningful while mechanics keep shifting. When: earliest development stages. Why: Mechanics shift constantly at this stage.
+- [rule] Enrich the game UX framework with academic research and the game UX community's work rather than treating it as fixed.
+- [rule] Draw the design document's table of contents from the prototype, flowchart, and wireframes.
+- [rule] Decide early who will engage with the product, what they will spend on it, and why, and choose the target market, since casual and hardcore markets need quite different approaches.
+- [rule] A design is finished only when it passes all eight filters without further change; filters may be adjusted when constraints demand, such as retargeting a different demographic. When: when reviewing a design before committing time, or when project constraints force change.
+- [rule] Before revising, duplicate the source document as a fresh draft labeled with its filename and date, enabling reversion to the prior version. When: before starting a revision pass. Why: Allows reversing edits that fail to pan out.
+- [rule] Plan only the current loop in detail, since there is no need to predict events deep into the future. When: during iterative development.
+- [rule] Apply iteration loops to a whole game or to smaller parts such as a level, tool, or interface, and run many loops in parallel on large teams.
+- [rule] Keep the design fluid rather than locking in unchangeable decisions, and check dependency-driven risk every day.
+- [rule] A finished game should be functional, complete, balanced, fun, and accessible.
+- [rule] Understand a game's internal anatomy, not just its surface, so you can find the true cause of a problem and choose the best fix. When: When a game is failing or being revised. Why: A fix aimed at the wrong cause can leave the game failing.
+- [rule] To bring learners into readiness, paint concrete scenarios and pose problems that make the information matter. When: teaching new knowledge. Why: Concrete problems create the state in which learners absorb information.
+- [rule] Ask both how the game can change players for the better and how it can change them for the worse. When: during game design. Why: The same design can produce either outcome.
+- [rule] Describe why a feature matters from the player's view, such as being left barehanded against monsters without a crafted weapon.
+- [rule] Players should be informed when advanced AI, including generative models, is used, and such systems must be safe.
+- [rule] Treat framework terms as a launch pad rather than a limit, and move beyond them as design experience grows. When: after gaining design experience. Why: A framework structures design work but should not restrict the designer.
+- [rule] Generate conflict via regulations, routines, and circumstances like competitive multiplayer matches.
+- [rule] Design dungeons from the intended gameplay experience outward to the space, not from a complex space toward the experience.
+- [rule] Choose designs that fit the content already built, instead of making the rest of the game bend to them.
+- [rule] Build the core first, then draw features from the design backlog and iterate outward from the core.
+- [rule] Use differently shaped nodes for different node types and keep the visual language consistent; keep node content to short text. When: drawing flow charts. Why: Consistent shapes let a reader tell event types apart at a glance.
+- [heuristic] Good design comes from understanding what you have built and improving it step by step over months or years, not from a single flash of brilliance.
+- [heuristic] The iteration loop is a good basic approach but is not sufficient on its own.
+- [heuristic] If playtests show a mechanic works better reversed, change the story to support the reversed version.
+- [heuristic] Do not agonize over the first iteration of numbers; every designer's first numbers will be off. When: Early numeric design.
+- [heuristic] Time to figure out a task is more informative than success or failure, since think-aloud changes how long players take to understand. When: Measuring think-aloud results. Why: Speaking changes the task, so duration reveals more than outcome.
+- [heuristic] Keep adding, testing and removing optional rules, since each addition can spark new design ideas.
+- [heuristic] Early definitions can be revised later, but they give the team a framework that prevents aimless trial and error during production.
+- [heuristic] Minimize the time to a prototype's first failure, meaning its first rejected hypothesis, and be willing to stop early once it occurs.
+- [heuristic] Single-change discipline matters most in late fine-tuning, when many playtester requests arrive at once and tempt batching. When: Late fine-tuning.
+- [heuristic] Each design loop sharpens the problem statement, and early prototypes expose serious problems while they are cheap to fix.
+- [heuristic] The number of loops needed to resolve a design cannot be planned in advance.
+- [heuristic] Simple card or board games can be built and tweaked repeatedly rather than following a strict loop-count plan. When: when the game is cheap to build and change.
+- [heuristic] Loop as fast as possible by building many rough prototypes rather than polished ones. When: Iterating on design questions during development. Why: Rough prototypes are cheap, so more loops fit into the available time.
+- [heuristic] With online distribution, the iteration loop continues long after launch, so balancing never fully ends. When: Games distributed online and updated after release. Why: Patches and value changes can be delivered after the game ships.
+- [heuristic] If you feel pulled toward work that connects to no purpose you can name, question whether to pursue it.
+- [heuristic] Some inconsistencies are unavoidable in production, and awareness of them helps reduce their impact.
+- [heuristic] Rank issues by severity to players and by importance of the feature affected; a core-pillar issue can outrank a more severe minor one.
+- [heuristic] Iterative design should include checking whether players are actually having fun.
+- [heuristic] Shared frameworks keep discussions about fun productive and prevent endless debate when fun is subjective.
+- [heuristic] Ideas are cheap; execution matters more, and a well-matured average idea can beat a poorly implemented great one.
+- [heuristic] Discussing high-level goals while facing constraints, and staying concrete while dreaming, unifies design work and keeps it deliverable.
+- [heuristic] Make training fun, since fun both drives productivity and reflects it.
+- [heuristic] Speeding up a fun game is simpler than making a fast game entertaining. When: prioritizing early game development. Why: Gameplay design is harder to retrofit onto optimized code than performance is to add later.
+- [heuristic] Give level editors undo, because designers become frustrated when they cannot reverse edits. When: building game levels with an editor tool.
+- [heuristic] Step away from the script for a day, a weekend, or a week before a full revision, to gain distance and spot mistakes you could not see while writing. When: before a full revision.
+- [heuristic] Each repeated revision pass usually needs fewer rewrites than the pass before it. When: repeating revision cycles.
+- [heuristic] Use the interaction-count check early as a rule of thumb; this judgment improves with experience and is not a substitute for testing. When: evaluating designs before implementation.
+- [heuristic] Expect progress in small increments over years rather than a single breakthrough; no one moment marks the work as complete.
+- [heuristic] Make future deals explicit when players strike many complex, ongoing deals; skip it when deals are simple enough to remember.
+- [heuristic] When player-written FAQs make a game noticeably better, the game is likely starved of information.
+- [heuristic] Each outside field supports a design task: economics informs in-game resource economies, and mathematics covers probability, risk, and scoring systems. When: Choosing which outside knowledge to study. Why: Matching fields to concrete tasks shows where they are useful.
+- [heuristic] To test for the major gift, start designing and notice whether the work makes you happy; early confidence does not settle it. When: Deciding whether design suits you. Why: Enjoyment shows only once you actually design.
+- [heuristic] A mechanics taxonomy should aim to produce great games rather than philosophical completeness, accepting some gray areas for practical use. When: when classifying a game's mechanics.
+- [heuristic] In a fair seeding, each lower rank has a lower title chance than the rank above it; if a lower seed has an easier path, the seeding is unfair. When: when comparing candidate bracket seedings.
+- [heuristic] Higher visual realism demands more detailed control, simulation and effects, since players notice inconsistencies more. When: Increasing rendering realism.
+- [heuristic] A fascination with a subject, such as social insects, seen as a system to study and deconstruct, can generate original game concepts. When: when seeking original concepts from the world.
+- [heuristic] Modifying existing genre mechanics attracts core genre players because it appeals to their taste for novelty while keeping familiar play. When: When your idea fits an established genre and its audience.
+- [heuristic] The future of game design depends more on serving deeper play and interaction than on immersive devices.
+- [heuristic] The greatest competitive win is a value no other game offers, since such a value attracts players who have nowhere else to go. When: When looking for a distinctive design position. Why: Players seeking an unserved experience have no alternatives and must choose the game.
+- [heuristic] Flow charts suit branching stories and complex systems, and also work for mapping key gameplay points in a level. When: choosing a diagram for branching or systemic design.
+- [heuristic] Define the core experience first, then extend the design beyond its edges so important content is not lost at the boundaries. When: when planning the scope of an experience with no hard cutoff. Why: Audience context blurs where the experience starts and ends, so content placed exactly at the edge gets cut.
+- [procedure] 1) Observe players. 2) Generate ideas. 3) Prototype and try it out. 4) Test and revise. 5) Repeat until the design is satisfying, or good enough. (x2)
+- [procedure] 1) Make the game functional. 2) Make it internally complete and balanced. 3) Refine it only after that, restoring and strengthening the originally envisioned fun. When: ordering design work.
+- [procedure] Run prototypes concurrently by discipline: engineers test technology, artists test art, and designers test gameplay at once, using many small independent prototypes. When: Multiple team members are available and several questions are open at once. Why: Parallel independent prototypes answer more questions in less elapsed time than a single sequential prototype, multiplying the design loops completed in a given time.
+- [procedure] Discover deep object interactions by repeated playtesting, since they rarely appear in design documents.
+- [procedure] 1) Build an analytics plan listing key questions and what good answers look like. 2) Run the playtest. 3) Note each problem. 4) Modify game objects or fix the cost curve and its math. 5) Repeat as time allows. When: balancing a game through repeated playtests. Why: The goal is balance as close to perfect as time allows.
+- [procedure] 1) Observe players during the session. 2) Ask them questions. 3) Adjust the design based on what you saw. 4) Test again. When: after each playtest session.
+- [procedure] 1) Modify one element of a working prototype, such as its board, units, goal or play procedures. 2) Change one aspect at a time so its effect is identifiable. 3) Play the variant with a partner. 4) Describe the change's effect on play in writing. 5) Note any new system that emerges and consider spinning it off.
+- [procedure] Iterative design cycle: 1) Produce a prototype. 2) Test whether a user can interact with it properly. 3) Evaluate the results. 4) Change the design. 5) Test again. When: during any stage of development. Why: each loop tightens the design against real use.
+- [procedure] 1) Test the design against all eight filters. 2) If any filter fails, change the design. 3) Rerun all eight filters on the revised design.
+- [procedure] 1) Test the narrow element with one participant. 2) Fix the issues found. 3) Test the revised prototype with the next participant. 4) Repeat. When: Running RITE on a single feature. Why: Each session tests the latest fixes.
+- [procedure] 1) Analyze the formal system: part sizes and counts, starting positions, and purpose of special areas. 2) Decide whether skill or chance decides outcomes. 3) Set a player experience goal. 4) Brainstorm several goals before changing anything. 5) Choose a metaphor matching the goal. 6) Modify or rebuild the prototype. 7) Playtest and check whether the goal was met.
+- [procedure] 1) Find a loophole or dead end. 2) Tweak the system. 3) Playtest again. 4) Repeat until no critical deficiencies remain. When: Fixing loopholes and dead ends. Why: Each fix can take days or weeks.
+- [procedure] 1) Write several original solutions to a design problem. 2) List the pros and cons of each solution.
+- [procedure] 1) Run the game. 2) Navigate to the test spot. 3) Test. 4) Write or change code while the game keeps running. 5) Return to testing without restarting. When: when the scripting system supports code changes during play. Why: Avoids the compile, link, and restart cost of each cycle, allowing more loops per day.
+- [procedure] 1) Write code. 2) Compile and link. 3) Run the game. 4) Navigate to the test spot. 5) Test. 6) Restart the cycle if the result is bad. When: when changes require a full rebuild before testing.
+- [procedure] 1) State the problem. 2) Brainstorm possible solutions. 3) Choose a solution. 4) List the risks of that solution. 5) Build prototypes to mitigate those risks. 6) Test the prototypes; stop if good enough. 7) State the new problems and return to step 2. When: when iterating on a design problem. Why: Each round makes the problem statement more specific.
+- [procedure] 1) If results show a fundamentally flawed idea, return to step one. 2) If results point to improvements, modify and retest. 3) If positive, the loop is complete. Without funding at step three, return to step one. When: after each playtest in the playcentric process.
+- [procedure] 1) Each person writes an article and an adjective, folds the paper, and passes it on. 2) Each then adds a noun, a verb, an article and adjective, and a noun. 3) Unfold the paper and read the sentences aloud.
+- [procedure] 1) Give each team a key feature to test. 2) Allow 20 minutes to build a physical prototype of it. 3) Play and compare results with the team. When: Run as a short exercise when teams rarely build physical prototypes. Why: Time limits force quick, cheap builds whose results are often surprising.
+- [procedure] 1) Pick one challenge. 2) Set a 60-minute limit. 3) Aim for 100 ideas. 4) Number ideas as they are written. 5) Keep energy high throughout. When: When running a rapid brainstorm. Why: A high quantity target pushes past obvious ideas.
+- [procedure] 1) Finish every revision step. 2) Take a break. 3) Run the whole checklist again. 4) Repeat until the script is polished enough for the lead, editor, or producer to review. When: after each full pass.
+- [procedure] 1) Sketch and prototype designs guided by HCI principles. 2) Gather user feedback on the prototype. 3) Redefine the design from that feedback. 4) Test again, repeating until the target is met or time or budget runs out.
+- [procedure] 1) Fix the number of loops in advance, or 2) loop until quality is acceptable or budget runs out. When: when deciding how long to keep iterating.
+- [procedure] 1) State the design problem. 2) Generate an initial idea. 3) Push the idea through all eight filters, revising until it passes.
+- [procedure] 1) Propose a definition. 2) Find fun things that lack pleasure. 3) Find pleasurable things with surprises that are not fun. 4) Revise the definition to fit both kinds of case. When: when defining a design term.
+- [procedure] 1) State your theme clearly enough to guide decisions. 2) Check whether every available means reinforces that theme. 3) Separate the elements with the elemental tetrad and test each against the theme. When: When checking whether a game's parts serve one central theme.
+- [procedure] 1) List ten favorite games. 2) Name each game's objective. 3) Look for shared objective types. 4) Define the kinds of games that appeal to you.
+- [procedure] Before keeping a task, check that it is necessary and that its decision is neither obvious, hollow, nor uninformed.
+- [tradeoff] Iterative gains climb toward good-enough solutions, but can trap a design on a low hill; reaching a higher peak needs large untested jumps, taken only when refinement stalls. When: when deciding whether small iterative refinements will reach a good design. Why: Small steps cannot cross the valley between a low hill and a higher mountain. (x2)
+- [tradeoff] An exhaustive up-front design document rarely matches the final game, whereas iteration is more efficient and robust.
+- [tradeoff] Retesting the whole system after each change is slow, but batching several changes saves time at the cost of unclear cause and effect.
+- [tradeoff] One-liner descriptions suit internal use, while comparisons suit outside gatekeepers who need market, gameplay, audience and similar-game information. When: Choosing how to present an idea to a given audience. Why: Each format gives different information.
+- [tradeoff] Revisions made to cut cost, ease production or support marketing can lower the quality of the narrative.
+- [tradeoff] Committing early to a detailed, high-stack decision may cost more in rework risk than its business or marketing benefit is worth.
+- [tradeoff] Characters may share one slot layout, or classes may differ in slot count and in which item types each slot accepts. When: designing character equipment. Why: Differing slots add class identity but increase balance work.
+- [tradeoff] Time, budget and technical capacity are limited, so a new feature competes with fixing existing UX issues. When: when a proposal would take resources from UX fixes. Why: resources are finite.
+- [pitfall] Cloning the biggest hit with rushed, budget-cut copies saturates the niche and lowers production values; adding features without removing anything leaves no value above competitors and predictable market failure. When: When building a clone of a successful game. (x2)
+- [pitfall] Many games are not thoroughly prototyped, so they fail to reach their full potential.
+- [pitfall] Letting the design get ahead of iterative research removes room for change, and some assumptions will prove wrong.
+- [pitfall] Iterating in any order other than dependency order wastes much of the benefit of iteration.
+- [pitfall] Designing AI around a fixed set of game inputs leads to rework late in the project.
+- [pitfall] Small incremental steps can trap a designer on a local maximum that only a larger redesign would escape.
+- [pitfall] No save design is perfect; if the designer does not decide, the gameplay programmer will decide by what is easiest to code.
+- [pitfall] Depth cannot be reliably predicted during design, so it must be tested with players rather than assumed.
+- [pitfall] Assuming any single enjoyment or fun framework is empirically proven leads to overconfidence in its predictions.
+- [pitfall] Designers too close to their work may fix one problem while creating several others, and keep changing the game until it loses its appeal. Why: Lack of outside perspective and repeated unchecked changes.
+- [pitfall] Starting a prototype without a stated purpose produces results that answer nothing specific.
+- [pitfall] Expecting high-level work early is unrealistic. It is not the norm, though it can happen.
+- [pitfall] A design document specifying everything in advance can contradict real play; building strictly from it wastes effort, and trusting it over observed play leads to ignoring discoveries or discarding it. When: when a full design document is treated as fixed and observed play contradicts it.
+- [pitfall] Early negative focus-group results and executive doubt can wrongly kill an unconventional concept, so a skunkworks effort can keep it alive until it proves itself. When: When testing an unfamiliar concept with a small group. Why: Unfamiliar concepts often test badly because audiences and executives judge them against familiar categories.
+- [pitfall] Treating the current best standard as the ceiling on what is achievable limits progress.
+- [pitfall] Using existing games as the main reference from the start makes the new design derivative.
+- [pitfall] Decorative technology cannot rescue a boring game; a novel feature added to weak core gameplay will still flop.
+- [pitfall] Accepting a professional obligation without thinking it through is risky, because a commitment like this is hard to set aside once made.
+- [pitfall] Many submitted games are rejected because they are not fun to play.
+- [fact] Game design is at once an individual craft and a shared, collaborative conversation between designers and players.
+- [fact] Iterative design comes from human-computer interface design and resembles the scientific method, repeatedly testing a hypothesis.
+- [fact] The usability and engageability framework can guide collaboration across teams, iterative design, user research and analytics.
+- [fact] The formal details stage can make or break a game.
+- [fact] Iteration loops vary by project: narrative games iterate story beats first, and loops may involve one person or ten over weeks.
+- [fact] In the trough of disillusionment a technology fails to meet its hype and can become unfashionable or despised.
+- [fact] Expansions may introduce entirely new mechanics, and their development follows a process similar to the original game's, usually on a shorter timeline.
+- [fact] Many structures and ideas from one driving implementation generalize to other driving mechanics, even when specific implementations differ.
+- [fact] The game UX framework was built from team-level practice and has not yet been tested academically.
+- [fact] Fun rating scales are not a good predictor of a game's later success or enjoyment.
+- [fact] User research helps teams identify early which problems to solve, rank their severity, and find solutions.
+- [fact] A game degree helps but is not required; many successful developers never earned one.
+- [fact] Understanding, changing and cleaning up code is an ongoing loop that never truly ends.
+- [fact] Revision checks cover the outline, wireframe, cuts, character consistency, and player agency, and should be repeated after each revision pass. When: during any revision.
+- [fact] A design framework lists fifteen properties shared by things that feel alive; the first five are levels of scale, strong centers, boundaries, alternating repetition and positive space.
+- [fact] No standard notation exists for foundational rules, so designers usually write them down only as needed.
+- [fact] Games have different target lengths, ranging from about 3 minutes for an arcade game to about 100 hours for a CRPG, and progression can be tuned to keep play within that range.
+- [fact] A designer's plan becomes an interactive experience only when players take part, much as a blueprint or script waits for use.
+
+## ideation
+- [model] Creativity is described as five stages: preparation, incubation, insight, evaluation, and elaboration.
+- [definition] Procedural literacy covers knowing how machines operate, how code is organized, and the broad principles of game programming.
+- [definition] A blue sky project assumes a technology is possible even though it cannot be built today, so ideas are not limited by current capability.
+- [definition] Incubation is a period when ideas churn below conscious awareness; it can last years or only a few hours.
+- [definition] Insight is the 'aha' moment when separate pieces come together into an idea.
+- [definition] Brainstorming is a semiformal group process for quickly producing large numbers of diverse ideas.
+- [definition] The nameless quality is a hard-to-name trait of well-designed things that makes them feel alive, whole, comfortable, free, and free from inner contradictions; people recognize it by experience. When: Evaluating whether a design feels special or lifeless. Why: It resists verbal definition but is recognized in well-made places and objects.
+- [mechanism] A change in one part of a game system can alter how players perceive other parts, so fixes produce ripple effects. When: Changing one element of an interrelated system. Why: Game systems are interrelated.
+- [mechanism] Silly prompts loosen thinking and reveal new perspectives, and new perspectives tend to produce strong ideas. When: Stuck or rigid brainstorming sessions. Why: Playful framing breaks habitual thinking.
+- [mechanism] Crunch, tiredness and stress all reduce performance.
+- [mechanism] Rumination forms new connections between old ideas, so a larger store of knowledge yields more possible connections. Why: Creative association draws on existing material.
+- [mechanism] A group's output is shaped more by how its structure, culture and hierarchy route knowledge, power and resources than by the personalities of its members. Why: Capable individuals in a badly routed organization can collectively act foolishly.
+- [mechanism] Ants find food through random wandering, then lay pheromone trails on the return trip; other ants follow, and each successful trip reinforces the trail, making rich sources' paths straighter and stronger.
+- [mechanism] Before speaking up, people weigh credit and learning against wasted time and public rejection; a good climate tips this toward sharing ideas, and a fearful one tips it toward silence.
+- [mechanism] Open-ended creation without set goals, and focused on building rather than destroying, can become a breakout genre with a broad audience. Why: Players are drawn to making things on their own terms.
+- [mechanism] Letting outside elements into a game, such as real money or extra cards, turns it into a different game.
+- [mechanism] Because interactions multiply, a small rule set can generate endless different games, from long struggles to quick sweeps.
+- [behavior] Designers feel a strong sense of accomplishment when a mechanic finally works, and searching for starvation threatens that feeling, so they may avoid testing.
+- [behavior] Playing a real, even crude, build produces concrete ideas that come while inspiration is fresh, which thinking on paper rarely yields. When: Early prototyping of a concept. Why: Concrete play experience exposes problems and possibilities imagination cannot reach.
+- [behavior] An odd idea can be explored by extending it until it becomes a distinct concept, even if it is later rejected. When: when a strange idea surfaces during brainstorming. Why: exploration turns a random thought into a usable concept.
+- [behavior] Most people who offer design ideas want to be heard, not to take control of the design.
+- [behavior] People tend to jump to solutions before they have clearly defined the problem.
+- [behavior] Unconscious rumination keeps working on a problem after conscious effort stops, so surprising insights can arrive during idle time with unpredictable timing. When: Taking a break from direct testing of a problem. Why: The mind continues connecting ideas during unrelated activity.
+- [behavior] Rereading your own script after a break often surprises you with your earlier choices, and this reaction is normal. When: rereading a script after a break. Why: Distance from the writing process.
+- [behavior] Quick, low-effort handling of unimportant decisions can look like laziness but is rational indifference, since the decision barely affects the game. When: When a minor design decision has no significant effect. Why: Spending heavy effort on trivial choices wastes time better used elsewhere.
+- [behavior] Going along with the group takes little thought and avoids social risk, but flaws go unnoticed and spread through the design.
+- [rule] While generating ideas, do not self-censor when working alone; in a team, do not censor, dismiss or criticize others' ideas before they are developed. When: during idea generation. (x2)
+- [rule] Record ideas constantly in a notebook, handheld device, cheap voice recorder or app, and transcribe periodically before they fade. When: throughout the creative process. Why: Human memory is poor, and unrecorded ideas keep occupying mental energy until recorded, freeing the mind to relax. (x2)
+- [rule] Look for design inspiration outside games and outside your own genre; cultivate unusual interests to escape the echo chamber and gain distinct design material. Why: Unusual sources supply ideas peers do not share. (x2)
+- [rule] Write down everything related to the problem, including silly ideas, since a silly idea can inspire a good one; memory is poor and combining ideas requires paper. Why: Writing also clears the mind of crowded ideas.
+- [rule] Use several brainstorming structures and vary them from project to project, letting leaders try unfamiliar ones and inviting members to suggest and lead sessions, and develop your own. When: when the usual structure stops producing ideas. Why: Each designer and game needs a different process, since fixed processes tend to produce the same results.
+- [rule] State the emotional response you want each asset to produce, not only what it depicts.
+- [rule] Start designing games now instead of waiting for permission to become a designer. When: Deciding how to begin a career in game design. Why: Designers become designers by doing the work, not by waiting for approval.
+- [rule] Immerse yourself in the problem: observe your audience in real settings, learn your technology deeply, study adaptations of your story, and play games with and without your core mechanic. When: Preparing for brainstorming on a game concept. Why: Deep exposure supplies material for new ideas.
+- [rule] Use the rational mind for planning, taking precautions, and practical matters such as paying taxes.
+- [rule] After brainstorming, narrow the broad list of ideas and develop the best ones into something useful.
+- [rule] Take odd thoughts, feelings, and dreams seriously and reflect on them briefly, since the subconscious offers more when its ideas are valued. When: during brainstorming or idle moments. Why: serious consideration encourages the subconscious to keep contributing.
+- [rule] Limit brainstorming groups to four people or fewer, since adding more people does not necessarily help. When: when forming a brainstorming session.
+- [rule] Maximize the work not done, and have the team regularly reflect and adjust its behavior. When: when planning and running development.
+- [rule] Before choosing a seed idea, consider what it must grow into to survive later evaluation. When: when selecting a seed idea.
+- [rule] Judge ideas by how well they solve the stated problem rather than by personal preference, using the problem statement as the anchor.
+- [rule] Refer to ideas by their content rather than their owner, so the whole team takes ownership of them.
+- [rule] Before brainstorming, state a precise challenge, ideally as a player experience goal, and set aside solutions you already have in mind. When: at the start of each session.
+- [rule] Open contributions with an affirming 'yes, and' response so that each idea builds on the previous one.
+- [rule] Hold brainstorms in a neutral space away from normal desks, and use simple playful objects to help people relax.
+- [rule] Post ideas on whiteboards or large taped paper so the whole group can see and build on them; this gets people standing and talking.
+- [rule] Number each idea so the group can cross-reference during a session and track output.
+- [rule] Develop ideas left over from a brainstorm in the following days rather than extending the session.
+- [rule] When an idea cannot be built yet, brainstorm workarounds or keep it for when technology catches up.
+- [rule] Cut ideas that are too expensive or ambitious unless they can be scaled down, and keep them on a list for a future larger project.
+- [rule] Discuss the top five to ten ideas in a positive tone, weighing each idea's merits rather than bashing it. When: when choosing among shortlisted ideas.
+- [rule] Begin an open-ended list of proposals, accepting that some will never be adopted.
+- [rule] Run brainstorming sessions that anyone may join during design, from production assistants to QA staff. When: During the design phase.
+- [rule] Designers should understand the stage structure and work with a producer on it, even if they never manage a project. Why: Knowing expected outcomes at each stage helps design ideas succeed.
+- [rule] If you want no payment or lawsuits, state in writing that the company may use the idea with no strings attached. When: you do not want money or legal claims.
+- [rule] Do not count on an unsolicited idea reaching decision makers.
+- [rule] Before moving to production, the core of the project must be clear and communicable, the team must understand the key design concepts it depends on, and one sentence must expand into a full pitch document. When: Finishing the concept phase. Why: Production builds on a clear, shared core.
+- [rule] Assess how developed a concept is, for example whether it has concept art or a prototype, before estimating the narrative work it needs.
+- [rule] Work on several problems in alternation so the unconscious can process one while you attend to another. When: Hard problems that focused effort has not solved. Why: Background processing continues on the unattended problem.
+- [rule] Offer several ways to overcome a challenge, and story changes, so choices feel meaningful.
+- [rule] Keep inspiration concrete and grounded in real life so it can guide concrete design decisions.
+- [rule] Ask what a number emphasizes, not only whether it is balanced, because designers also change numbers to encourage particular play.
+- [heuristic] Unrelated subjects, such as a simulation economy from another game, a biological system from microbiology, or high-brow with low-brow knowledge, can spark mechanics and original designs. Why: Cross-domain analogy transfers structures into new systems; unlikely combinations produce ideas existing designs lack. (x2)
+- [heuristic] Do the groundwork yourself and rely heavily on the subconscious silent partner, which supplies inspiration when its work is respected. When: When brainstorming or creative tasks, especially about games. Why: Division of labor keeps the partnership productive.
+- [heuristic] Begin variant design with very simple games, since minor tweaks to a finely tuned setup may produce major effects.
+- [heuristic] Add AI editor support and level-editor markers for tactical locations and areas, so designers can place them without code.
+- [heuristic] Keep asking questions while listening: Is that right? Why is it this way? Is this how they really feel? What does this now imply? When: Listening to feedback or observations. Why: Questions turn what you hear into understanding.
+- [heuristic] Change your physical viewpoint and location, such as standing on a chair or working in a bus, on a beach, in a mall, or in a toy store. When: Brainstorming when ideas feel stuck. Why: New viewpoints and places generate new perspectives.
+- [heuristic] Use partners or small groups for narrow problems rather than broad, open-ended ones. When: when choosing a brainstorming format. Why: groups work better on narrow problems.
+- [heuristic] Committing quickly to one seed idea is more productive than waiting for a perfect option, provided you stay ready to drop it when it fails. When: when a long list of ideas leaves you stuck in indecision. Why: Committing makes an idea's flaws and benefits visible, which indecision hides.
+- [heuristic] Phrase alternatives as questions, such as asking what would happen if the team did B instead of A, so everyone weighs both options neutrally. When: when comparing competing design options. Why: Questions keep the debate from becoming a contest of positions.
+- [heuristic] Random combinations of category options work for brainstorming and can force a creative constraint on a short project such as a game jam.
+- [heuristic] Game ideas only have value once someone executes them, so speculative concepts should be prototyped rather than only discussed.
+- [heuristic] Identify the right problem before reacting, since identifying it matters more than reacting quickly. When: Live operation issues.
+- [heuristic] Use brainstorming when an idea must be produced on a schedule rather than waiting for inspiration to arrive.
+- [heuristic] Creative stages recur rather than run in order, so reaching insight may take several loops through the stages.
+- [heuristic] Spend a significant part of each day on non-game inputs such as reading, film, music, sketching, exercise, or volunteering to keep a steady supply of ideas. When: when a steady supply of raw design ideas is needed. Why: ideas depend on rich input.
+- [heuristic] A source topic may inspire a systemic mechanic that looks nothing like the topic itself.
+- [heuristic] Most good ideas arise when the subconscious combines dissimilar things in new ways. When: When generating new game ideas.
+- [heuristic] Expect iteration in every phase and keep alternative plans ready; treat concept-phase plans as iterative drafts, since production constraints will change them. When: Concept and pitch phases. Why: No plan survives production unchanged.
+- [heuristic] Many fiction clichés persist because they justify good mechanics; changing one can damage mechanics players depend on, so check the mechanical need first.
+- [heuristic] Systems designers need frequent narrative input and feedback on the systems they design when story is central. When: Story-driven game development.
+- [heuristic] Derivative designs, clones, and ports can be planned almost completely because they rely on established knowledge. When: when the design reuses a proven core.
+- [heuristic] Parti studies are cheap and noncommittal, usually skipping measurement so designers focus on spatial and formal ideas. When: exploring overall level shape early. Why: Skipping measurement keeps early exploration fast and focused on form.
+- [heuristic] Meaningful complexity should grow out of a simple system rather than being stacked on top of it through added explicit rules.
+- [heuristic] Roughly 20% of features drive about 80% of usage, so prioritise the core features in the default experience. When: Deciding which features to surface by default. Why: The Pareto principle says a minority of variables drive most results.
+- [heuristic] Study patterns of use rather than hardware to gain insight into the past, present, and future of gameplay. When: deciding what kind of game suits a setting.
+- [heuristic] While playing, observe your own experience and reason at the same time about the elements causing it. This combined skill takes practice. When: When analyzing or revising a game. Why: Experience and structure reveal their causal link only when assessed together.
+- [heuristic] Emergent strategies are fragile, so interesting ones should be noticed and nurtured, much as a garden is tended.
+- [heuristic] The brain handles concrete examples better than abstract principles, so manipulable systems that show concepts aid learning. When: teaching a concept. Why: Concrete instances are easier to process and remember.
+- [heuristic] While playing, notice the numbers behind decisions, since even simple games contain many design choices that affect gameplay.
+- [heuristic] Designers combine deterministic and non-deterministic mechanics to shape the player experience rather than using only one kind.
+- [heuristic] Examine a game both as separate elements and as a whole in play, since each view reveals different things.
+- [heuristic] Real originality changes fundamentals rather than surface details, and unique content can still use familiar symbols to communicate.
+- [procedure] 1) Record yourself speaking freely about the topic for about five minutes. 2) Transcribe the recording afterward. 3) Mine the transcript for valuable ideas. When: When brainstorming ideas aloud. Why: Spoken, unedited ideas feel more real and often contain useful concepts hidden among rambling. (x2)
+- [procedure] 1) Gather random words and images from a printed page, web searches, or a dictionary, or write one idea per index card. 2) Cut out or draw two to four pieces at random. 3) Combine them into a game concept; wilder pieces yield richer combinations. When: When needing outside stimulation during brainstorming. Why: Random pairing of unrelated pieces creates novel concepts.
+- [procedure] 1) Score leading ideas on technical feasibility, market opportunity, artistic merit, and cost or scope, fitting the team's scope. 2) Trim to about three ideas. 3) Brainstorm features for those ideas. 4) Write one-page descriptions and test them with an informal feedback group. When: When choosing which of several game ideas to pursue, before committing to one. Why: Scoring against four qualities filters out ideas the team cannot build, sell, or scope.
+- [procedure] 1) Invent a computer puzzle inspired by a news headline. 2) Define its rules precisely. 3) Create an easy and a hard level. 4) Build a paper prototype. 5) Test with others and record enjoyment and confusion points. 6) Revise rules based on feedback. When: Designing a puzzle game where the solution must be exactly defined. Why: Precise rules and iterative testing reveal where players enjoy, get stuck, or get confused.
+- [procedure] Add rules and procedures incrementally so people without your full vision can play, and playtest after each addition. When: Building structure in a prototype. Why: Incremental additions keep faults traceable to the latest change.
+- [procedure] Check whether the foundation survives real players, the game has beginning, middle, and end, players can reach the objective, they engage with the designed conflict, and they enjoy it. When: Evaluating a structured prototype.
+- [procedure] 1) Sit upright in a firm chair with head tilted back and arms relaxed. 2) Hold a heavy key loosely over an upturned plate on the floor. 3) Relax into drowsiness. 4) When the grip loosens and the key drops, its noise wakes you to note the idea. When: when seeking ideas during a brief rest. Why: the falling key's noise wakes you at the moment of half-sleep, when the mind is refreshed.
+- [procedure] 1) State the problem clearly. 2) Make its importance clear. 3) Leave it alone so it incubates. Answers may arrive quickly, slowly, or not at all. When: when stuck on a creative problem. Why: straining for an answer slows the process.
+- [procedure] 1) Each person brainstorms independently first. 2) The group then shares, mixes, and solves problems together. When: when running a team brainstorm. Why: a group that gathers cold to brainstorm wastes time.
+- [procedure] Use the ten puzzle principles as a review checklist when evaluating any puzzle design. When: Evaluating a puzzle design. Why: A checklist catches common puzzle design failures.
+- [procedure] 1) Draw a large, detailed pencil sketch of the whole. 2) Pick one key element. 3) Render that element fully with color, clean lines and shading. Viewers then see the scope of the whole and the quality of finished detail. When: presenting concept art. Why: viewers can imagine the whole finished at that same level.
+- [procedure] 1) Have art and design teams work together. 2) Produce concept images showing how elements will look within the game design. 3) Spread these images across design overview, detailed design document, and technical documents. Why: Technical documents use concept images to show the look technology should aim for.
+- [procedure] 1) Note topics the listener raises during the pitch. 2) Reuse those topics in later examples. 3) Adapt examples on the fly to include their ideas. When: Delivering a live pitch. Why: Reflecting the listener's contributions makes them feel ownership of the game.
+- [procedure] 1) Compute the exact win probability for each side and for a tie. 2) Confirm the three sum to 1. 3) Verify with a simulation of a few thousand games. When: race-to-damage games with multiple outcomes.
+- [procedure] 1) Create one column per category, such as genre, setting or theme, or platform. 2) Fill each column with several options. 3) Pick one item per column at random with INDIRECT. 4) Join the picks into one string. When: generating brainstorming prompts.
+- [procedure] 1) Pick five games you have played. 2) Write each game's premise. 3) Describe how each premise enhances the play experience. When: when studying how premises support gameplay.
+- [procedure] 1) Pick a subject, such as a character or role. 2) Identify what about it would be engaging to control. 3) Decide how it reacts and whether it acts freely. 4) Design its controls, allowing unusual functions. 5) Generate as many ideas as possible.
+- [procedure] 1) Pick a book, article, or hobby. 2) List its systematic elements. 3) Repeat several times a week using different subjects.
+- [procedure] 1) Write continuously about the game for about 10 minutes without editing for coherence, spelling, or punctuation. 2) Stop and read back the output. When: When brainstorming ideas. Why: Unedited writing avoids self-criticism and can surface better ideas than polished work.
+- [procedure] 1) Pick something apparently unrelated to a stuck problem. 2) Look for links between it and the problem. 3) Develop those links into a concept. When: When stuck on a design problem. Why: Unrelated input breaks fixation on existing solutions.
+- [procedure] 1) List concrete alternatives. 2) Survey each person individually. 3) Ask them to choose or rank items. 4) Frame choices as realistic trade-offs. When: When deciding between alternative ideas or features. Why: Individual ranked choices among real options produce clearer, more actionable answers than open group discussion.
+- [procedure] 1) Place the core idea at the center. 2) Radiate related ideas outward with linked lines. 3) Add the verbs the player performs and the feelings tied to those actions. When: When generating or structuring ideas for a game concept. Why: Mind mapping structures nonlinear thinking, and mapping player verbs and feelings gives the team shared vocabulary.
+- [procedure] 1) Brainstorm widely and generate far more race and hero ideas than can fit. 2) Cut, modify, or keep each idea as a cornerstone. 3) Repeat narrowing until the set fits the game's roles. When: early design of factions and heroes. Why: Early abundance gives options, but a focused final set keeps each faction clear.
+- [procedure] 1) Hold an open brainstorm with the team. 2) Invite executives so they can offer advice. 3) Let them see implementation issues firsthand. When: Design disagreements with management. Why: Shared discussion turns conflict into shared ownership of decisions.
+- [procedure] 1) Pitch high concepts for favorite games with teammates. 2) Study high concepts from films and other games. When: Learning to write one-liners.
+- [procedure] 1) Notice strange behavior or nonsensical results in a system you understand. 2) Investigate the hint instead of dismissing it. 3) Reorganize your thinking around the observation rather than forcing it to fit your worldview. When: When a system behaves unexpectedly during design or testing. Why: Valuable opportunities appear as anomalies inside well-understood systems.
+- [procedure] 1) Keep a notebook at hand. 2) Record ideas the moment they arrive, including during easy tasks. 3) Review the notes later. When: Harvesting results of unconscious rumination. Why: Ideas arrive unpredictably and fade if not captured.
+- [procedure] 1) Ask what the protagonist's goal is and why they care about it. 2) List the obstacles between them and the goal. 3) Identify any antagonist and their relationship to the protagonist. 4) Check that obstacles gradually increase in difficulty. 5) Check that obstacles are big enough, and could they be bigger. 6) Ask how the protagonist transforms to overcome them. When: After setting a goal, to confirm obstacles give the goal meaning. Why: A goal with no meaningful obstacle is not worth pursuing.
+- [procedure] 1) List alternative points of view on a broad subject, such as documentary, conflict, quest, or antagonist. 2) Gather research from history, existing works, original builders, staff, and players. 3) Ask what the subject is fundamentally about, and commit to one theme drawn from that. When: When a topic is too broad to guide design. Why: A specific point of view gives design a direction.
+- [procedure] 1) Make a separate idea list for each tetrad element. 2) Write a dozen or more entries per list. 3) Combine entries across lists into complete concepts. 4) Create new categories whenever you need them.
+- [procedure] 1) Ask whether the design feels alive and which parts feel dead. 2) Identify which of Alexander's fifteen qualities the design already has. 3) Find ways to add more of those qualities. When: Reviewing a design that feels mechanical. Why: Checking for organic qualities reveals lifeless parts.
+- [procedure] 1) Set small milestones along the way to the grand goal. 2) Advertise each milestone to the player. 3) Reward each accomplishment. When: Designing progression for campaigns or long games. Why: Players enjoy visible progress, and small payoffs can feel sweeter than the final victory.
+- [metric] Aim for dozens of ideas per brainstorm and about 100 ideas per hour, welcoming wild ideas. (x2)
+- [metric] Limit a brainstorm session to about an hour, because group energy drops after that.
+- [metric] Mini-expansion sizes: card game 5–10 new cards; strategy game 5–10 new units; miniatures game units for one faction or a new mini-faction; tabletop RPG abilities, feats, or a class.
+- [tradeoff] Acting enthusiastic may slowly create real enthusiasm when other options fail, but faked enthusiasm shows in the finished game; aim to restore real feeling. When: When real enthusiasm is absent for a dreary task and other options have failed. Why: Faked enthusiasm makes the finished game mediocre at best.
+- [tradeoff] Brainstorming with many developers quickly generates many unproven ideas, while high-skill balance testing slowly explores the nuances of an existing design.
+- [tradeoff] Brainstorming yields volume but refines poorly with uneven quality, while written analysis yields depth but can take weeks. When: Brainstorm when generating options; use written analysis when a question needs depth. Why: Each method suits a different stage of thinking.
+- [tradeoff] Rumination is slow and cannot be scheduled, so it suits hard problems but cannot guarantee timely answers. When: Hard, unsolved problems. Why: Insight timing is unpredictable.
+- [tradeoff] Fear gives fast, obvious results but is a weak fuel for creativity, while love and appreciation work slowly, indirectly and quietly, and need patience before they pay off. When: Deciding how to motivate a creative team. Why: Speed of results trades against the durability of creative output.
+- [tradeoff] When rules allow only one-to-one requests, each request risks losing the turn and reveals to others that the asker holds that rank. When: card games requiring indirect requests. Why: Indirect routes trade speed for information exposure.
+- [tradeoff] Observer gives looser coupling and lets you reason about a subject alone, but makes communication flow harder to trace than an explicit call, since targets exist only at runtime. Why: Observer targets are determined dynamically, unlike a statically findable call.
+- [pitfall] Adding more visual or sound work than the question needs wastes valuable prototyping time.
+- [pitfall] Being paranoid about idea theft is counterproductive; an estimated 99.99% of people have no intention of stealing ideas.
+- [pitfall] Fighting for one's own ideas against the team damages trust and slows the project. When: Working in a design team.
+- [pitfall] Doubts about past luck, narrow skills, or a changing field can stop you from attempting design work. When: Deciding whether to start a design project. Why: Doubt replaces action and so prevents learning.
+- [pitfall] Nagging or looming over the creative process slows it down, and straining for an immediate answer blocks the answer from surfacing.
+- [pitfall] Partners who poke holes in every idea, or who have very narrow tastes, make poor brainstorming partners. When: when choosing a brainstorming partner.
+- [pitfall] Letting engineers choose whatever shadow algorithm is trendy can produce a look that does not match the artistic vision.
+- [pitfall] Assuming creative people are excused from being organized undermines trust with listeners. When: Preparing a pitch as a creative professional. Why: Disorganization reads as unreliability to decision-makers.
+- [pitfall] Each change in metric-driven design is a guess in a huge design space, so trial and error can be slow and unfocused.
+- [pitfall] Worrying about losing control of a brainstorm is itself a sign that control is already slipping.
+- [pitfall] Unsolicited game ideas are usually ignored, deleted, or returned unread, because a later dispute over a similar idea would be costly. Why: Legal risk from ownership disputes.
+- [pitfall] Sending a game unasked, showing up at a publisher's office, or using wacky demos to impress is not recommended.
+- [pitfall] Assuming an idea alone has value is a pitfall; hard work and contribution to a company's goals are what get things done.
+- [pitfall] Developers in the same codebase often reinvent solutions that already exist elsewhere in it, because proven patterns go undocumented and undiscovered. When: large teams sharing a codebase without a shared pattern vocabulary. Why: Good solutions stay buried in code and are not written down for others to find.
+- [pitfall] Studios often give ethics little careful consideration during development.
+- [pitfall] Early enthusiasm in blue-sky meetings does not show a project is on track. Why: Excitement about ideas hides the lack of a shared, concrete plan.
+- [pitfall] Intense focus on a problem can block the insight you need, so pushing harder is not always productive. When: Stuck on a design problem. Why: Focus suppresses the associative thinking that produces insight.
+- [pitfall] Teams often pour effort into the component that is established and easy to fund, even when it is not the real bottleneck to the goal. Why: Established components have known designs and budgets, so effort is easy to direct there.
+- [pitfall] A trivial code change can cost days when other people are blocked waiting for it, and problems in immature systems can stay hidden for months. When: When making small changes in a shared pipeline or immature system. Why: Blocked dependents turn a small fix into a large schedule cost.
+- [pitfall] Political thinking can lead a designer to avoid good ideas, which signals organizational deficiencies but may still be the best choice for the process.
+- [pitfall] Treating a fixed, certain stance as strength closes off better ideas.
+- [pitfall] Designers often focus on the physical level of rules and overlook assigning meaning to objects, wasting a major design asset.
+- [pitfall] Important resonant ideas are often buried in a designer's thinking and can be hard to notice at first.
+- [pitfall] Open-ended puzzles with little feedback about whether the player is on track frustrate most players. Why: Without feedback players cannot tell if they are making progress.
+- [pitfall] Self-expression is important but easy to forget during design; keep it in mind as a deliberate lens to avoid leaving it out.
+- [pitfall] Trying to replace an entire curriculum usually produces a game that does everything poorly.
+- [pitfall] Playing many games does not by itself confer design expertise; design knowledge has to be studied explicitly.
+- [fact] Generating ideas on demand, a learnable skill, gets faster and better with practice; expert brainstormers build on teammates' contributions as a team activity. (x2)
+- [fact] Software design patterns descend from an architecture pattern language, adapted to software; game researchers adapted pattern languages to catalogue recurring game elements and the player problems they solve. (x2)
+- [fact] Across playtest versions, core rules can stay largely stable while the card mix, player count and art change.
+- [fact] Dreams can deliver solutions to hard problems, since the subconscious communicates through images.
+- [fact] Good concept art makes the idea clear to the team, helps people imagine entering the world, excites players and workers, and can help secure funding.
+- [fact] Suitable games for balance work include TCGs, LCGs, deckbuilding games, miniatures games, tabletop RPGs with combat rules, and TBS or RTS computer games with mod tools. When: choosing a game.
+- [fact] In games, macro-level ideas come from a studio, a prototype group, or a game jam, and micro-level UX work asks what problems players meet with a specific system.
+- [fact] Conception outlines game pillars, gameplay loops, progression, features, design and artistic intents, target audience, and business goals.
+- [fact] Many chance-based idea methods come from surrealist and dadaist artists, who used chance to draw on the unconscious mind.
+- [fact] Most ideas build on earlier ideas, so no idea may be truly original.
+- [fact] Good game ideas grow through successive layers and iterations that refine an original concept rather than appearing in a single flash.
+- [fact] For teams, whiteboards gave better mind-mapping results than software tools.
+- [fact] The concept/contract stage ends with a signed agreement covering rights, deliverables, and payment schedules; the opening checkpoint is executing the contract and approving the project plan.
+- [fact] Many revolutionary designs are stumbled upon, and famous games changed fundamentally during production; their best qualities often could not have been planned on paper.
+- [fact] Game companies usually have more of their own ideas than they can produce.
+- [fact] Relaxation is a second ingredient of rumination, since new ideas often arrive during relaxed activities such as showering or commuting.
+- [fact] Harsh, fear-based standards suit procedural work with clearly visible mistakes, such as following defined cooking steps, but fail creative game development. When: Choosing a management style for a team's work. Why: Creative work needs risk taking and failure, which fear suppresses.
+- [fact] A catalog of 253 architectural patterns, from town-scale layouts to window-scale details, influenced game design and the software design-patterns movement.
+- [fact] Practitioners in music, architecture, writing, film, product, web, visual design and choreography all hold principles about human experience.
+- [fact] Combining entries from different idea lists produces concepts that feel complete and unexpected, each with its own life.
+- [fact] Some elements are not beautiful alone but become beautiful in combination, so composition is part of presentation.
+- [fact] People matter more than ideas: a good idea given to a mediocre team gets ruined, while a mediocre idea given to a good team gets fixed.
+- [fact] Speech recognition, artificial intelligence and brainwave sensing are technologies that many designers currently ignore despite their potential.
+- [fact] Pillars are decided non-linearly, with each decision informing the others.
+- [fact] No reliable formula for game success exists; design can only draw on ingredients from cognitive science and development best practices.
+- [fact] Every design shapes user behavior, so no design is neutral.
+- [fact] The next few decades of designers will decide whether games live up to the medium's promise.
+- [fact] The game pattern catalog has thirteen patterns in four categories: sequencing, behavioral, decoupling, and optimization.
+- [fact] A single game can have several possible cores, and each choice yields a functional but different game.
+- [fact] Architectural pattern theory can bridge handmade and procedural design, letting both coexist.
+
+## prototyping practice
+- [model] Aesthetic prototyping methods include comic-strip sequences, visual design sketches, motion previews, screen mockups, and sound sketches.
+- [model] Digital prototyping has four areas: game mechanics, aesthetics, kinesthetics (the feel of play), and technology.
+- [model] A playable graybox reveals nearly as much as a screenplay, while a design document reveals far less, since it specifies mechanics but not the events they produce. Why: Mentally simulating every mechanic and player choice from a document is impractical.
+- [definition] A prototype answers a question, and a playtest is a prototype of the game experience.
+- [definition] A hypothesis is a specific idea being tested in a prototype, more precise than the question it answers.
+- [definition] A prototype formalizes an idea or isolates an issue so the team can learn what works before committing to the final design.
+- [definition] A storyboard is a rough sketch of a visual sequence, useful for planning cutscenes and mapping potential play within a level.
+- [definition] Technology prototypes test the software a game needs, such as graphics, AI, physics, game-specific problems, and the content pipeline.
+- [definition] Rapid prototyping builds many small, fast, throwaway projects, each posing one question about gameplay.
+- [definition] Brownboxing mocks up a VR scene with cardboard boxes and playtests it physically, with a person acting as game master. When: Early in VR prototyping, before any digital work starts.
+- [definition] Constructionism holds that learners build knowledge most effectively when they create something meaningful with material, and learning is driven by making rather than being taught.
+- [definition] Early prototypes should be judged by four qualities: fast, cheap, public, and physical.
+- [definition] A storyboard visualizes a feature as a sequence of incrementally changed images, often built from edited screenshots.
+- [definition] A prototype is a rough, playable working model of a design idea, built to test feasibility and find improvements by isolating a few core mechanics.
+- [mechanism] Prototypes are cheaper to change than engine implementations, and teams become attached to implemented or polished features, making later change harder.
+- [mechanism] A cheap prototype can be thrown away or radically changed, and cheapness removes the need to ask permission to build it. Why: Teams hesitate to try ideas that require approval or large investment.
+- [mechanism] When testing is cheap, a shorter planning horizon is appropriate, and good tools make risky experiments practical by lowering the cost of failure. When: when deciding how far ahead to plan.
+- [mechanism] Sketching drives discovery: a shape suggests another, a mistake is covered by a new object, and each change forces further changes until something new emerges. Why: Physical marks and mistakes push the artist toward ideas hard to put into words.
+- [behavior] A designer who can sketch is perceived as having a clear creative vision.
+- [behavior] Showing the effect of each sketch stroke in the 3D world immediately lets designers specify procedural operations, see their results, and build worlds iteratively.
+- [behavior] A first emotional target can shape a whole game even when the final prototype changes tone and music. When: when a prototype departs from its initial mood. Why: the original emotional idea persists as the seed of the design.
+- [behavior] Designers often discover a game's strongest direction by playing prototypes, such as a camera moving closer, rather than by following the initial concept. When: When a prototype shows unexpected appeal. Why: Playing a working system reveals qualities that a written concept cannot predict.
+- [rule] Build a playable version as fast as possible and playtest it as much as possible; without an early one, months may pass before testing, leaving core problems late. When: Early development of a new game or long project. Why: Late testing leaves little time to fix core problems. (x2)
+- [rule] Start every prototype with a clearly stated question, such as how to control a school of fish with a mouse, or it becomes a time-wasting project. (x2)
+- [rule] Build a playable demo to pitch an interactive idea: games are visual and playable, so a demo is easier to judge than a document or verbal pitch. When: Pitching an interactive idea, if you can program or prototype, or when the team must feel the idea rather than read about it; a modifiable existing product or paper-and-dice analog version works. Why: Playing communicates the idea better than description, and a demo shows seriousness. (x2)
+- [rule] Build prototypes and iterations quickly, and do not hold early work to final-quality standards, since the number of iteration loops is the most important factor in quality. Why: Quick iterations let the team test many versions in a short time. (x2)
+- [rule] Test mechanics and aesthetics with analog methods first, but kinesthetics can only be prototyped digitally and must be tested in a playable build.
+- [rule] Do not stake your career on technology you have not seen work; test it before relying on it in a pitch, since trusting untested technology risks a failed presentation. Why: Equipment and connections often fail unexpectedly.
+- [rule] Prototype rules without computers first, because non-digital tests quickly reveal how a game works. When: early game design. Why: Fast tests cost less than building software.
+- [rule] If one test cannot cover every question, run several minitests.
+- [rule] Test difficulty with a small sample of the target audience, and add telemetry once the game reaches beta.
+- [rule] Replace unbuilt features with paper materials, such as a tutorial printed on sheets, and stay honest about what those substitutes cannot show. When: when a feature is not yet implemented.
+- [rule] Stay completely silent during over-the-shoulder tests, with no talking, laughing, groaning or signaling. If asked, reply neutrally. Why: Any reaction can steer the tester and corrupt results.
+- [rule] Document what worked and what should change after each prototype test. When: after each prototype test. Why: records guide the next iteration.
+- [rule] Build prototypes that are fast, cheap, public and physical, since they get the team talking.
+- [rule] When testing movement values such as jump height, attack specifications, or run speed, use primitive shapes and prioritize function over style.
+- [rule] Keep each prototype focused on one open question instead of combining several questions into one early prototype.
+- [rule] Build a digital gameplay prototype when a mechanic is hard to model physically, since paper cannot model it well.
+- [rule] Build a kinesthetic prototype when the game's appeal depends on how its controls feel. When: the appeal depends on control feel.
+- [rule] Use technology prototypes to test and debug tools and workflow, not to do full software engineering.
+- [rule] Effective quick prototypes state something testable and yield learning you can act on.
+- [rule] A physical prototype needs a full set of written rules; a software prototype needs a working interface or written rules, so testers can play with little designer help.
+- [rule] Build prototypes rough and fast, caring only whether they answer the question, because polish hides problems and creates false confidence. Why: Rough work invites testers to point out flaws.
+- [rule] Expect to throw many prototypes away, keep the pieces that work, and combine them. Why: Planning to discard the first version is standard practice.
+- [rule] Draw interface ideas to check whether they are possible before committing to them.
+- [rule] Prototype a proposed change of combat time model before rejecting it, since switching between real-time and turn-based can transform a game. When: considering a major change to combat timing.
+- [rule] Request a dedicated test space when research grows, so the test environment can be controlled better. When: Developers want more user research.
+- [rule] Test a nudge's consequences on a small scale before rolling it out widely. When: before wide rollout of any nudge.
+- [rule] Let the whole team see and experience prototypes together; shared play can beat isolated work on a large design document.
+- [rule] Add a rule to a physical prototype only when it is absolutely necessary for playability, and keep the core mechanic to as few rules as possible. When: During early physical prototyping. Why: Extra rules added early obscure whether the core mechanic works.
+- [rule] Do not polish a digital prototype like a finished game, since minimal art and sound are enough to answer questions. When: building a digital prototype. Why: Polish consumes time without advancing the purpose of the prototype.
+- [rule] Build a software prototype only when paper cannot test the game well, such as when accounting overwhelms players; otherwise use a cheaper paper playtest. When: choosing between paper and software prototyping. Why: Software adds build cost and can grow more complex than the problem it solves.
+- [rule] If no prototype was built during concept, build and playtest one during preproduction before committing to full production.
+- [rule] If prototype code might end up in the product, write it defensively and well enough to survive being kept. When: prototype code with a real chance of being kept.
+- [rule] Use a small graph-paper booklet as a portable sketchbook for level design notes and idea collection. Why: A portable book lets you capture ideas wherever you encounter levels.
+- [rule] Show the designer's sketch beside generated suggestions so the designer can compare them directly.
+- [heuristic] Playtest core mechanics with paper or interactive prototypes early, before engine and art polish, since design problems surface fastest and cheapest; jumping straight into full production skips this stage. When: before committing to full production. Why: Early prototypes expose design problems at the cheapest stage. Problems found late cost far more to fix. (x2)
+- [heuristic] At first playable, testing targets engagement, core mechanics, and fit with the designer's vision; expect many problems and repeat the fix-and-test cycle. When: first playable stage.
+- [heuristic] Start icon testing early, since it needs minimal effort, and repeat it as the build matures to confirm players read icons as intended.
+- [heuristic] Sketch the game's physical places early, since drawing a place prompts questions about its inhabitants, their occupations and motives, shaping the story. When: Story ideas have not yet formed.
+- [heuristic] Test features with cheap paper prototypes before investing in software, since this helps justify software spending. When: when a feature would be costly to implement in code.
+- [heuristic] A paper prototype can have the designer act as the game program, processing each turn and tracking scores by hand, to test rules cheaply.
+- [heuristic] Core rules proven in a text-only, turn-by-turn version can often be carried into a graphical version with little alteration. When: moving a tested design to a fuller presentation. Why: Logic validated early needs little redesign.
+- [heuristic] Judge a paper prototype by whether its rules let someone grasp the game and give feedback, not by its crude artwork.
+- [heuristic] Make many rough sketches or experiments before committing to a finished version, as artists do before a finished piece. Why: Early variants reveal which ideas work.
+- [heuristic] A working paper system can be adapted to other modes, such as capture the flag, cooperative missions, or deathmatch, to test its range.
+- [heuristic] Make prototypes fun and exciting; when the designer and peers feel compelled, players usually feel that way too.
+- [heuristic] Use physical prototypes to test board games and turn-based systems, and to rough out the structure of any game.
+- [heuristic] Physical prototypes suit many cheap experiments in a short time, since they need little cost or resources.
+- [heuristic] A playable prototype conveys a complex system to newcomers better than a written spec, though a written treatment also helps. When: explaining a design to team members unfamiliar with it.
+- [heuristic] Begin digital prototyping with the core mechanic and add features only after it works.
+- [heuristic] A rough prototype can explain a concept to the team and then be refined into a fuller version that shapes much of the gameplay.
+- [heuristic] In the foundation stage, the designer is the best tester, trying out core mechanics and fundamental concepts. When: foundation stage.
+- [heuristic] Early loops can run in minutes and typically test three to eight large concept changes; within a few hours a working concept emerges, after which loops lengthen to two or three hours and changes shrink to adjusting walls and pillars. When: Early concept prototyping. Why: Early loops test broad ideas while later loops refine details.
+- [heuristic] Playtest demonstration scenes several times before settling on the room layout.
+- [heuristic] Start with placeholder behaviors and flesh them out once the AI infrastructure works. When: Early AI development.
+- [heuristic] Sketch even if you cannot draw, since drawings trigger new ideas.
+- [heuristic] Test a technical limit with a throwaway prototype that isolates only that limit, such as the number of on-screen items. When: when unsure whether an engine can handle a planned scale. Why: isolating the limit answers the question cheaply.
+- [heuristic] Prototypes need not be digital or interactive; board games, paper versions, and animated sketches can capture gameplay and reveal problems sooner. Why: They are quick to make and can test the same gameplay.
+- [heuristic] Having other people help run a paper prototype is the best approach. When: when running a paper prototype.
+- [heuristic] Noninteractive animations and sketches can answer gameplay questions before interactive systems are built, letting the team plan how to build them. When: when a movement or animation system is hard to specify.
+- [heuristic] Mechanics can be abstracted into simple shapes and playtested before art exists, technical limits can be tested with a prototype that only counts on-screen items, and content cost can be measured by timing one sample asset. When: when reducing technical, art, or mechanics risk.
+- [heuristic] Every game should be explainable on a poster diagram showing how the whole game fits together.
+- [heuristic] Build prototypes of music systems to learn how they behave in play, so you can describe a desired effect precisely to a programmer. When: Designing interactive music. Why: Knowing the behaviour lets a programmer implement it efficiently.
+- [heuristic] Review wireframes with the QA manager and usability test them before building the game, since interface changes are still cheap then. Why: Design problems are caught before implementation.
+- [heuristic] Avoid games with long histories and very large card pools, since an original mechanic is hard to fit and cards take long to sort. When: choosing a game to expand.
+- [heuristic] Simple mechanics make a game easy to learn and modify, so they suit a first prototype better than large trading card games. When: choosing a first prototype.
+- [heuristic] Use analytics to catch objects or strategies never used, always used or used suboptimally, and players not learning or not winning enough.
+- [heuristic] Physical prototypes are underrated: they engage the whole brain and help teams find their blind spots.
+- [heuristic] Use a paper and dice prototype to work out a game's metagame and scoring systems before building software. When: When testing scoring or metagame structure.
+- [heuristic] A playable, fun prototype is not finished; a good game is not necessarily a brilliant one, so keep improving it before moving on. When: When a prototype already works. Why: Further iteration can turn a good design into a great one.
+- [heuristic] For games aiming at an emotional experience rather than conflict, build the prototype around the core feeling and cut features that playtesters find distracting. When: designing a relaxation or wonder-focused game. Why: Extra features can dilute the core experience players care about.
+- [heuristic] Use a nonvisual tool to handle accounting in a prototype, keeping visuals on paper, and make values editable at runtime rather than hard-coded. When: building a software tool for a prototype. Why: Editable values let designers tune during playtests without recompiling.
+- [heuristic] Choose a simple concept as an early commercial project when its prototype has already solved many design problems, lowering the risk.
+- [heuristic] Build ideas quickly in garage-style programming, trying them immediately to see what happens rather than deliberating at length first. When: Generating and testing new game ideas.
+- [heuristic] A technical executive asking for technical details during publisher review is a good sign.
+- [heuristic] Good packaging matches a developer's technology to a suitable property, since both technology and property count as content.
+- [heuristic] Storyboards help reviewers who are away from a computer by giving a visual walkthrough and character profiles. When: reviewers cannot play the game.
+- [heuristic] Test whether a game idea is fun before polishing its code, because polishing time is lost if the idea gets cut. When: early exploration of a new game idea. Why: Polish spent on an idea that gets cut is wasted.
+- [heuristic] Write a prototype in a different language from the game so it must be rewritten before it can enter the real project. When: when you want to stop throwaway code from being kept. Why: Forced rewriting prevents prototype code from slipping into production unchanged.
+- [heuristic] Some computer science knowledge helps narrative designers communicate with programmers.
+- [heuristic] Building a paper prototype forces the designer to work out how game elements interact and to define each one precisely. When: early in development.
+- [heuristic] To test a mechanic, ask how one added rule or piece of information changes a familiar activity, then build a rough version to see.
+- [heuristic] Use the feel of an early prototype as the guide for later design decisions, since it solidifies the core concept and keeps the design coherent.
+- [procedure] 1) Start with paper prototypes, building a working nonelectronic version quickly. 2) Play and analyze it to test mechanics. 3) Refine the design. 4) Move to interactive prototypes. 5) Implement in the engine only after that. When: when testing mechanics early or working alone. Why: Traditional prototypes avoid digital technical limits and reveal design issues faster. (x2)
+- [procedure] 1) Draw the play area on paper. 2) Represent moving elements with cutouts or tokens. 3) Have one person control each element. 4) Advance with a fixed timer or slow shared clock, such as a metronome, so players can think through decisions and notice map size, room shapes, weapon properties, and spatial details fast play hides. When: Prototyping real-time or action games on paper at a slow tempo.
+- [procedure] 1) Take the set of pre-built decks. 2) Have every deck play every other deck once, giving a minimum of six matches for four decks. 3) Note which deck and which mechanic seem most and least powerful. When: Building intuition about balance across a set of competing decks. Why: Round-robin matches reveal relative strength of each option quickly.
+- [procedure] 1) Build a cheap, playable model of the core mechanics using paper, index cards or acting out. 2) Play it with friends. 3) Refine it before programmers, producers or artists join. 4) Check whether player experience goals are met. When: right after brainstorming, before production.
+- [procedure] 1) Draw a grid and give each player a distinct marker. 2) Decide who moves first. 3) On each turn, a player drops a marker into a column, where it stacks on the lowest free cell. 4) Time each session. 5) Write questions and a session script before testing. 6) Recruit testers, introduce the game, and let them begin.
+- [procedure] 1) Identify elements that depend on nothing. 2) Iterate and playtest them until reliable. 3) Build the next layer on that solid base. 4) Repeat upward one layer at a time. When: designs containing original, unproven elements. Why: Building in dependency order limits cascading change from lower layers.
+- [procedure] Prototyping a level: 1) Build a paper version using pieces whose movement roughly mimics the game's movement style. 2) Write rules for the other core mechanics. 3) Graybox the level in an engine around one mechanic. When: a level idea is being tested before digital work. Why: cheap prototypes reveal problems early.
+- [procedure] 1) Start with a cheap paper prototype where the designer resolves turns by hand. 2) Move to a text-only version to test core logic. 3) Build the graphical version, reusing proven logic, and playtest at each stage. When: developing a new multiplayer game. Why: Each stage tests the design cheaply before more production is invested.
+- [procedure] 1) Diagram the idea on paper. 2) Work out as many details as possible before writing code. 3) Write the prototype code. Why: unfinished thinking leads to implementing ideas that are not fully formed; diagramming also speeds up coding.
+- [procedure] 1) Give each player a concealed placement grid and a separate guess grid, each 10x10 with rows A-J and columns 1-10. 2) Keep the placement grid hidden from the opponent. 3) Place five straight, non-diagonal pieces of lengths 5, 4, 3, 3 and 2. When: Designing two-player hidden-information grid games. Why: Separating concealed placements from recorded guesses keeps each player's information clear.
+- [procedure] 1) On a turn, call a coordinate such as B5. 2) The opponent answers hit or miss. 3) When every segment of a ship is hit, announce it sunk. 4) Record hits and misses on the Target Grid, for example with an H. 5) The first player to sink all five opposing ships wins.
+- [procedure] 1) Build the paper system exactly as specified, logging every problem and open question. 2) Add each feature, noting how it changes play. 3) Test unusual additions too, since they can reveal unexpected designs.
+- [procedure] 1) Cut paper into equal-sized pieces. 2) Line them up as a track. 3) Mark special sections on specific pieces. 4) Make an end card with numbered goal slots across its top.
+- [procedure] 1) State what the prototype is for. 2) Identify who will use it. 3) Identify what matters, such as look, feel, load time, or persuasion. 4) Build only enough programming, art, and interface to test that.
+- [procedure] 1) Decide whether the prototype is symmetrical or asymmetrical. 2) Describe how and why the sides differ or match. When: Reviewing a prototype's structure.
+- [procedure] 1) Create a variant of the prototype with asymmetrical objectives. 2) If single player, offer a choice of objectives. 3) Note how the gameplay changes. When: Testing objective asymmetry.
+- [procedure] 1) Build a rough version of a basic fight within an hour. 2) Play it immediately. 3) Note what fails. 4) Remove failing elements and rearrange cover, weapons, and enemies. 5) Repeat. When: Early in concept exploration, when testing broad ideas. Why: Playing a crude version surfaces concrete ideas that imagination alone cannot reach.
+- [procedure] 1) Turn the design brief into a list of risks. 2) For each risk, build a small prototype or measurement that tests it early. 3) Use results to cut, reuse, or redirect content. When: when a project is long and risks remain untested. Why: early playable builds reveal problems before much of the schedule is spent.
+- [procedure] 1) Rank prototypes by the biggest risks they address. 2) Put first any prototype whose result could make other prototypes pointless. 3) Build the top-ranked prototype first. When: Planning which prototypes to build when many questions are open. Why: Facing the largest risks first avoids wasting effort on work that a single early answer could invalidate.
+- [procedure] 1) Build the VR scene from cardboard boxes. 2) Playtest it with a game master who describes what happens when the player touches, picks up or manipulates each object. 3) Iterate on the brownbox. 4) Measure it and pass the measurements to a modeler to create a first whiteboxed digital prototype.
+- [procedure] 1) Brainstorm with as much of the team as possible. 2) Core members design independently. 3) Core members discuss and work toward consensus. 4) Core team presents progress to the whole team and invites criticism. Why: Staging limits debate to a small group while keeping the whole team informed and involved.
+- [procedure] 1) Save a copy of the project first, with a name that includes the date and version. 2) Save later changes under a new version number. When: before changing a project. Why: keeps earlier working states recoverable.
+- [procedure] 1) Break or misuse existing tools to test a sound idea quickly. 2) If the idea is accepted, have programmers implement it properly.
+- [procedure] 1) Plan the layout on paper. 2) Implement findings and prototype digitally in an engine. 3) Playtest it against the original design goals. 4) Iterate until the experience matches the goals, keeping layouts aligned with the intended player experience. When: when building a level. Why: Playtesting checks whether the level fulfills its design goals.
+- [procedure] 1) Cut out printed card sheets, or hand-make cards from index cards, which can be larger and easier to handle. 2) Mark each card's deck label on its bottom edge. 3) Separate the cards into labeled decks. When: building a physical card prototype.
+- [procedure] 1) Build a test level with near-final character, animations and moves, plus many interactive objects. 2) Tune jump heights and running speed alongside object spacing. 3) Adjust spacing and mechanics together rather than sequentially. When: Developing movement mechanics alongside levels. Why: Object size, spacing, jump height and speed form one interdependent system.
+- [procedure] 1) Describe what the control would feel like. 2) Prototype that feel first. 3) Only then add goals, constraints and mini-game rules. When: Designing a new control scheme. Why: Starting from imposed constraints can ask the wrong design questions and produce frustrating controls.
+- [procedure] 1) Devise dramatic elements for a simple game, such as backstory, distinct piece looks, or special areas. 2) Play it with others. 3) Note their reactions. When: Testing whether added drama changes player engagement. Why: Player reactions show whether the added elements work.
+- [procedure] 1) Take screenshots of the existing game. 2) Edit them to show the feature's start and interface changes. 3) Add a series of slightly different stills. 4) Assemble them in slides with minimal text. 5) Rehearse the presentation flow. When: When visualizing a new feature. Why: Showing successive small changes simulates play and makes the feature understandable.
+- [procedure] 1) Build the core gameplay with cheap materials such as cardboard, paper, glue, and pens. 2) Draw a rough board or map. 3) Create basic objects such as setting, units, and resources, plus the key repeated action cycles. 4) Play the core alone. When: When starting a physical prototype of a new concept. Why: A foundation prototype reveals whether the concept is worth pursuing before details are added.
+- [procedure] 1) Carry core mechanics, map, and objects over from the physical prototype. 2) Replace card or turn systems with real-time logic. 3) Create a control map for the target input device. 4) Design the visual display for the target screen. When: When moving a validated physical prototype into software. Why: Core mechanics stay valid across media, while input and display must be redesigned for the platform.
+- [procedure] 1) Name the purpose: answer design or technical questions, prove a production pipeline, or communicate the vision to a team or publisher. 2) Build models only of the systems whose questions matter, such as logic, physics, environments, or levels. When: before starting a digital prototype. Why: A stated purpose prevents prototypes that answer nothing specific.
+- [procedure] 1) Ask whether the tool is really needed. 2) Define its requirements. 3) Choose the quickest build. 4) Confirm it will be flexible enough for changes. When: before building a software prototype tool. Why: Planning keeps the tool small and useful for answering the design question.
+- [procedure] Build the first prototype around the core mechanic, testing only that interaction before adding any content. When: start of prototyping.
+- [procedure] 1) Keep the team small. 2) Build one playable level or environment that proves the differentiating features and risky technology. 3) Refine design, technology, staffing, schedule, and deliverables. 4) Write a thorough design brief and engineering spec or wiki. 5) Present the prototype, progress, documents, and plan for funding. When: Preproduction, roughly months 2 to 6. Why: Proves feasibility before the full team is hired.
+- [procedure] 1) Build a playable prototype first. 2) Flowchart the entire game. 3) Sketch a wireframe for every screen, showing all features the interface needs. 4) Add callouts explaining each feature, supported by bullet points. When: Before drafting the design document text. Why: Inconsistencies surface while changes are still cheap.
+- [procedure] 1) Add abstraction only when confident it is needed. 2) Plan for performance throughout, delaying lock-in optimizations. 3) Explore the design space quickly without leaving a mess. 4) Discard prototype code without polishing it when it will be thrown away. When: moving through prototyping, mid-development, and pre-ship stages. Why: Each step balances flexibility, performance, and exploration against lasting code quality.
+- [procedure] 1) Lock all reads and writes to both buffers. 2) Exchange the two buffer pointers. 3) Release the lock. Keep this step as fast as possible. When: Swapping double buffers by pointer. Why: Pointer exchange takes a few assignments regardless of buffer size, minimizing the locked interval.
+- [procedure] 1) Build a paper prototype of a mixed-initiative tool. 2) Have a partner play the designer while you act as the AI. 3) Limit your responses to what a real AI system could do.
+- [procedure] 1) Make paper or cardboard mockups of buttons and menus. 2) Have people act out playing the game using those mockups. 3) Observe where they struggle and what they intend at each moment. When: Building interface prototypes well before the game is complete.
+- [procedure] In 2D engines without primitives, use placeholder art such as squares, circles and triangles, often called programmer art. When: blocking out 2D levels before final art.
+- [procedure] Prototype a level with physical materials: 1) pick a scale, macro for a whole game layout or micro for one room 2) represent walls, enemies and props with tokens 3) write simple movement rules 4) play and rearrange pieces. When: early in development, before digital work.
+- [metric] A prototype that covers design, build, testing and revision should take two days to two weeks; longer is a warning sign.
+- [metric] In one survey of publishers, 77 percent of respondents called a playable demo essential to a pitch.
+- [metric] Laying out screens on a 32-pixel cell grid gives a 1280 by 960 pixel screen a 40 by 30 cell layout. When: mocking up screens in a spreadsheet.
+- [tradeoff] Developers are available for long sessions and give thoughtful feedback with no NDA, since they know the material; but their playtests are unrepresentative, being more skilled and knowing internals. (x2)
+- [tradeoff] Carry forward ideas, not prototype code, since prototypes show intended behaviour, not implementation; but evolving code directly into the final game is practical for a team using one language. Why: A dedicated programmer would implement the systems at a lower level. (x2)
+- [tradeoff] A paper arena tests weapon balance, territorial control and layout cheaply, but cannot show the feel of running, aiming and shooting in 3D.
+- [tradeoff] Inventing toys before deciding on games can uncover ideas you would not otherwise find, but it is risky when a schedule is fixed. When: when developing new ideas under a deadline.
+- [tradeoff] Brownboxing cannot test everything, but it teaches interaction design quickly before any digital production begins.
+- [tradeoff] Quick throwaway code is cheap to write but unmaintainable; clean architecture costs more up front but pays off for long-lived code. When: deciding how much structure to build.
+- [tradeoff] A pencil can serve as viewfinder and straightedge: hold the thumb halfway up the shaft to measure and lower down to read angles. When: measuring proportions from life.
+- [tradeoff] Non-digital prototypes are cheap and quick to rearrange, but give an abstracted trial that cannot fully test a specific environment's gameplay; use digital prototypes for that.
+- [pitfall] Attachment to a prototype's look or rules makes designers resist iteration changes; paper prototypes ease changes because no code has been invested. When: when prototyping on paper instead of in code. Why: Paper avoids the attachment teams develop to their code.
+- [pitfall] A developer's own appraisal of players' faces can cause anxiety that the evidence does not support.
+- [pitfall] Starting code before the mechanics are understood, because a game seems safe as a variation on standard mechanics, leaves the design unproven.
+- [pitfall] Prototyping in a different language from the final game, such as Java for a C++ game, discourages reuse of the prototype code.
+- [pitfall] Unreliable hardware makes software fail in many ways, so testing across configurations can be a major development cost. When: target hardware varies widely and is unreliable.
+- [pitfall] Not everything can be tested with prototypes; some systems can only be tested efficiently in closed beta, so some issues appear late.
+- [pitfall] Beginning designers often abandon a workable concept too early when a prototype feels flawed. When: When a playable prototype has balance or flow problems. Why: Problems are often isolable and fixable rather than fatal.
+- [pitfall] Prototype code that works on screen is tempting to ship, yet it usually lacks tests, documentation and stable structure.
+- [pitfall] A prototype that feels good conceals what its restrictions cost, and the real price is usually higher than anticipated.
+- [pitfall] Rejecting rough early iterations because they are imperfect reduces the number of loops and produces inferior work.
+- [pitfall] Blacking out unimportant elements can make them look more important than the subject, pulling attention away from it. Why: Dark values attract the eye regardless of importance.
+- [pitfall] Chicken-scratch lines and hurried shapes distract from a drawing's meaning.
+- [fact] Early playtesting is inexpensive: no professional test lab is needed, just the designer's time and some volunteers, and designers can run the methods alone.
+- [fact] Prototypes need no game engine or standalone program; a rough build or spreadsheet can serve as a gameplay prototype.
+- [fact] Paper prototypes allow quick iteration on the fly, and the same testing and revising process applies across digital prototype revisions.
+- [fact] Degenerate strategies usually surface in playtesting, and visual polish does not remove them.
+- [fact] Many teams skip physical prototypes, moving from concept to write-up to implementation.
+- [fact] Building a paper version makes abstract rules concrete, so a designer can see how the mechanics fit together.
+- [fact] Major game concepts can grow from small prototypes kept in a studio archive.
+- [fact] Physical prototypes can be built from paper, cardboard, drawn-on markings, miniatures, or parts taken from other games.
+- [fact] Prototypes come in physical, visual, video and software forms, and a project may need several, each answering a different question.
+- [fact] Paper prototypes cannot replace play of real-time or 3D games, but they still greatly help a game's overall system in early development.
+- [fact] Some prototyping tools, such as multimedia animation software, are useful for prototypes but are not full game engines.
+- [fact] Prototypes validate or refute ideas but do not generate them.
+- [fact] A first rough prototype is expected to be poor, with placeholder geometry, badly scaled objects, and sometimes missing weapons. When: Building the first version of a fight. Why: Rough builds are for testing the idea, not for judging polish.
+- [fact] Professional game designers commonly work through this idea-test-revise loop, so it is standard practice rather than an amateur habit.
+- [fact] Well-known genres like falling-block puzzlers and first-person shooters can be mocked up on paper in minutes using cardboard cutouts, graph paper, and counters. When: Testing core concepts before any code is written. Why: Paper versions require minimal production work, so they can be assembled and evaluated right away.
+- [fact] Brownboxing reveals how players want to use their hands and what they can reach.
+- [fact] Creating simple, rough but useful sketches is a skill that needs practice.
+- [fact] A working prototype is now expected in a pitch; sketches and descriptions that once sufficed for a publisher deal no longer do.
+- [fact] Common early prototype types include paper setups with playing cards and dice, three-dimensional physical models, and basic software prototypes.
+- [fact] Physical prototyping lets a team focus on mechanics without production or programming distractions, and saves time because everyone understands the game.
+- [fact] A digital prototype tests the essence of a game in the format it will ship in and extends the physical prototype rather than replacing it with a fresh start. When: a game will ship on a digital platform. Why: Physical prototypes have limits that digital testing can overcome.
+- [fact] A technology and art prototype proves the engine and asset pipeline, and differs from a block-based gameplay prototype. When: early project planning. Why: Each prototype type answers different questions.
+- [fact] Swapping buffers by pointer is the most common double-buffering approach for graphics.
+- [fact] Interface prototypes may take the form of static boards or animated mock-ups, and may begin on paper before going digital.
+
+## team roles
+- [model] Producer responsibilities include delivery planning, schedule and budget, resource tracking and allocation, forecasting needs, team leadership and motivation, solving production problems, and publisher liaison.
+- [model] Large productions can organize Scrum teams around game features, letting many creative people work without heavy top-down management. When: Large productions.
+- [model] Large AAA teams usually include executive producers, lead designers, lead artists, level and systems designers, animators, artists, programmers and QA testers. Titles differ between studios.
+- [definition] The producer is the project leader on the developer team, responsible for delivering the game to the publisher as promised.
+- [definition] A technical artist has an artist's eye and a programmer's mind, bridging both teams and building tools so artists feel in command of technology and engineers feel in command of art.
+- [definition] Programmers are everyone who technically implements the game: coders working at both upper and lower layers, network and systems engineers, database developers, and hardware support.
+- [definition] The lead designer owns the creative vision for narrative and gameplay, and the lead artist owns the game's visual look.
+- [definition] Natural authority is a developer's right to make any decision that they understand better than anyone else on the team. Why: Local knowledge is hard to relay to a distant leader.
+- [definition] Immaturity burden is the steady cost imposed on people whose work depends on buggy tools, half-made mechanics or a shifting story.
+- [mechanism] One member who does not buy in slows the whole team and can eventually split it apart, like a single misfiring cylinder in an engine. When: A team member does not accept the team's direction.
+- [mechanism] Tight control over each worker's actions does not produce careful work; people do attentive, quality work only when they are committed. Why: Attention and care cannot be enforced through direction alone.
+- [mechanism] A strong trail draws specialized roles such as obstacle clearers, patrollers and bridge-builders, so colony-level behavior emerges without any individual understanding the overall strategy.
+- [mechanism] When intent flows down and summaries flow up, leaders iterate on broad strokes and workers iterate on details, so outstanding games do not require genius developers. Why: Combined knowledge is applied efficiently.
+- [behavior] Groups follow confident leaders over rationally uncertain experts, even when the confident leader is less accurate. When: group planning under uncertainty. Why: People are drawn to those who seem to see the future clearly.
+- [behavior] Team members who love the game look forward to finishing it, eager for release in the way children anticipate a holiday.
+- [behavior] A designer seen as objective receives more honest feedback from the team and can calm tense debates between others. Why: Impartiality makes people trust the designer's judgment.
+- [behavior] Artists put more enthusiasm into projects that match their interests, so a poor style match can reduce their effort. When: when a project's style does not suit an artist. Why: Effort follows personal interest.
+- [rule] Learn what other disciplines need, who teammates are, and what they enjoy; communicate with them and make sure they know your own role. (x2)
+- [rule] Call tests of a team's own features internal design reviews rather than playtests.
+- [rule] A producer must make tough calls, such as hiring and firing and refusing excessive resource or spending requests.
+- [rule] Listen deeply to the team and communicate for real, so that key decisions are made together and the team acts as one unit. When: Making key design decisions. Why: Shared listening lets people act as if they shared the same skills.
+- [rule] Listen with an open, childlike stance: assume nothing, observe everything, and withhold judgment and rebuke. When: Gathering input from any source. Why: Assumptions and judgment filter out what people actually say.
+- [rule] A designer without drawing talent should find an artistic partner with whom communication is good, rather than relying on their own sketches. When: the designer lacks drawing skill. Why: a vague concept can turn into a firm visual target quickly.
+- [rule] Let artists set the artistic destination, while engineers navigate, recommending routes, shortcuts and improvements to reach it. Why: artists have trained for years to define integrated artistic visions.
+- [rule] Check that others understand you, illustrate ideas when possible, and never pretend to understand; keep asking until you do.
+- [rule] When emailing about design, include the whole team so no one is left out or feels left out.
+- [rule] Design every polish clue together across designer, artist and programmer, since perception is multisensory and draws on past experience.
+- [rule] Consider human capabilities, performance and limits throughout development and after launch, while still checking viability and profitability.
+- [rule] Disruptive or antisocial behavior between colleagues should not be tolerated.
+- [rule] Protect and support staff who interact with players on platforms or social media, and cover respect for them in the code of conduct.
+- [rule] If no game program is available, build your own curriculum from existing courses at your school, covering the same game-related areas. When: No game program is offered locally.
+- [rule] Hold one-on-one creative talks with key team members.
+- [rule] Before hiring artists, decide what the game needs, such as predominantly 3D art, animation, or an interface aimed at a specific market.
+- [rule] Beginners should first join an established developer or publisher and build a track record before pitching their own projects. When: when new to the industry. Why: New teams must establish credibility before winning funding.
+- [rule] Act as an information nexus: know the answer, find it with the time and work needed, or know who holds it.
+- [rule] Juniors can ask for pitch and concept documents once ready, and giving feedback on them is an effective way to learn.
+- [rule] Learn the mechanics of colleagues' jobs and general game design, plus your own project's design, so you share their language and can support them.
+- [rule] Avoid potentially insulting terms in pitches, since the reader may be the executive who approves the deal. When: Writing any pitch for outside decision makers. Why: Offense can end a deal before the idea is judged.
+- [rule] Understand what teammates rely on you for, what you rely on them for, and which techniques make narrative come alive.
+- [rule] Ask reviewers from several disciplines, including narrative, programming, art, sound, game design and marketing, since each spots different strengths, weaknesses and technical limits.
+- [rule] Pursue improvement for the pleasure of doing the work better, rather than for external rewards or approval.
+- [rule] Treat music as collaborative work between composer and developer, so the score is shaped alongside the design.
+- [heuristic] Employers often value flexibility, fast learning, and being easy to work with and communicating well above mastery of specific software or knowledge, since tools change and studios use in-house tools. Why: Tools change and studios use in-house tools.
+- [heuristic] Combine design with another role only when the project is small and the individual's skill allows it. When: Staffing a project with combined roles. Why: Effect of combining roles depends on scope and skill.
+- [heuristic] Run individual answer sessions after related group questions, so participants can go deeper on their own. When: When combining focus groups with individual interviews. Why: Individuals can expand on group discussion without social pressure.
+- [heuristic] Let nontechnical team members contribute to paper prototypes, widening the range of perspectives at a high level.
+- [heuristic] Hiring people who already run fan communities or statistics sites can supply valuable analysis skills and game knowledge. When: Staffing a game team. Why: Enthusiasts bring domain knowledge and tooling.
+- [heuristic] The lead designer acts as holder of the game's vision and conduit for team ideas, rather than the main idea generator. When: Leading a design team.
+- [heuristic] No designer masters every field, so growth comes from working beyond your current limits. When: Building design skill over time. Why: Stretching into unfamiliar fields expands what you can design.
+- [heuristic] Listening to yourself is often the hardest kind of listening, but mastering it makes it a powerful tool and a source of creativity. When: Developing personal creative judgment. Why: Self-awareness drives creative work.
+- [heuristic] Choose a small core design team from people who both enjoy and are productive at detailed design debate, since not everyone can sustain hours of argument over fine details.
+- [heuristic] Leave some detailed design open, especially in areas you are unsure about, so the developers closest to that feature can work out details and feel ownership. Why: Those who shape a feature feel pride when it ships.
+- [heuristic] Open offices help build trust because constant face-to-face contact about anything strengthens relationships.
+- [heuristic] Decision-makers who control schedule and budget listen most to people they know, like, and trust, so build those relationships before the pitch. When: Pitching inside an organization. Why: Trust makes busy decision-makers receptive to proposals.
+- [heuristic] An inside advocate already sold on the concept can defend it to colleagues in the room. When: Pitching to a group with decision-makers. Why: Peers trust a fellow insider's endorsement.
+- [heuristic] Be willing to lose a small argument if it helps you win the larger goal.
+- [heuristic] Having one person own both mechanic design and level design, at least initially, keeps the two tightly tuned together. When: Staffing a movement-driven game.
+- [heuristic] Listen to teammates and compromise; ideas you do not use may spark ones you do, and involving teammates gives them authorship.
+- [heuristic] When presenting a design visually, clarity matters more than artistic polish; simple imagery is enough. When: When creating storyboards or concept visuals.
+- [heuristic] Fresh playtesters detect micromanagement best, and complaints of too much work are a warning sign.
+- [heuristic] No single method structures a team; treat team rules as a starting point and adapt them to your project and people.
+- [heuristic] The best executive combines game development experience, deep market understanding, and a hands-on approach.
+- [heuristic] Aim for a programming team that actively joins iterative improvement, for example by asking when the next playtest is.
+- [heuristic] Hire artists for specific tasks such as 3D modeling, animation, texture mapping, or interface design, since skill in one area does not carry over to another. Why: Artists strong at cityscapes may be unable to animate characters.
+- [heuristic] Agents look for established developers with proven technology, or new developers with strong talent and capable management.
+- [heuristic] Hiring in-house business development staff can cost no more than hunting agents charge, so large developers may prefer it. When: large developers deciding how to find deals.
+- [heuristic] A single reassignment is usually routine, but repeated reassignment is a sign to discuss with your lead why the work is moving.
+- [heuristic] Use centralized control only for simple, repetitive work; for complex creative work a central manager overloads, ignores details, oversimplifies and wastes effort. When: Choosing how to organize a task. Why: Knowledge volume and tacit skill then exceed what one mind can hold.
+- [heuristic] Climate affects how people relate, think and act every moment, so it is among the strongest factors in game quality.
+- [heuristic] Compare how much time coordination consumes against production time to judge how much process machinery a project truly needs. When: when deciding whether to add coordination tools or roles to a project.
+- [procedure] 1) List every skill the game demands, both general and specific. 2) Include physical skills, resource management, and memorization. 3) Compare the list with the skills you intended to test. When: Reviewing a game design before or during playtesting. Why: Designers often overlook the skills that dominate the experience.
+- [procedure] 1) Agree beforehand on who answers which questions. 2) Answer as a group, not individually. 3) Keep the team's answers consistent. When: Presenting as a team. Why: Clear roles make the team look unified and prepared.
+- [procedure] 1) Compare matches where one team is all strangers against matches where the other team has played together many times. 2) Measure the win-rate difference to estimate the effect of team experience. When: Measuring how much prior teamwork affects team games. Why: Contrasting experienced and unfamiliar teams isolates the familiarity effect.
+- [procedure] 1) Map the usual team roles onto your prototype. 2) Identify the positions you cannot fill yourself. 3) Recruit for them through local bulletin boards or websites, since many people want to work on game projects. When: Prototype needs collaborators.
+- [procedure] 1) Narrative design supplies profile and psychology. 2) Concept art creates distinctive visual signifiers. 3) Character modeling builds the model from concept art and narrative cues. 4) Animation creates tailored animations reflecting psychology. 5) Cinematics combines all departments' work to place characters in settings.
+- [procedure] 1) Leader states the purpose and goals of the work. 2) Worker chooses the detailed methods to reach them. 3) Team iterates on methods during development instead of returning to the leader for each detail. When: Delegating creative or design work. Why: The worker holds the detailed knowledge and can find problems and solutions the leader did not anticipate.
+- [procedure] 1) Picture a future self with more skills, knowledge, emotional range and work discipline. 2) Take a step toward that self every day. Why: Small daily efforts accumulate over years into large gains.
+- [tradeoff] Community managers must balance a hands-on approach against a hands-off approach, and each carries its own costs. When: managing online communities.
+- [tradeoff] On a team assigned by a large company, you either adapt your vision to the team's skills or communicate ideas clearly enough for them to implement. When: when a large company assigns you an art team.
+- [tradeoff] Large word budgets justify hiring an editor, or bringing one on contract once most writing is done, and editors can make cost-saving arguments that appeal to management. When: The project has a large dialogue or script word budget.
+- [pitfall] Leaders who command low-level specifics that subordinates understand better degrade decisions by overriding the people closest to the work, who often have the long iteration and testing leaders lack.
+- [pitfall] Hubris causes overplanning, overconfident quick judgments of others' work, and too little playtesting, which misses serious design flaws. When: a designer is overconfident. Why: overconfidence skips testing and checking.
+- [pitfall] Designers who try to replace skilled teachers insult them and ignore their experience.
+- [pitfall] A director who cannot decide what they want upsets actors more than almost anything else.
+- [pitfall] A separate UX team alone will not have enough impact; the whole studio has to adopt UX methods.
+- [pitfall] Teams that lack shared key vocabulary, or use the same words to mean different things, struggle to align on a design.
+- [pitfall] Going directly to a database engineer for a quick change, bypassing the technical director, turns the technical director into an adversary.
+- [pitfall] Dismissing producers and executives as people who do not understand creative teams makes collaboration harder, since few people enter the industry to make bad games.
+- [pitfall] Excluding people from the design process breeds cliques and can cost you good ideas.
+- [pitfall] Brilliant people who cannot interact productively with teammates can cost more trouble than their contribution is worth.
+- [pitfall] Team members making decisions with the other company without producers involved risks inconsistent outcomes.
+- [pitfall] Assuming you must be an expert scripter or level designer before becoming a narrative designer is a mistake. Some strong narrative designers cannot script.
+- [pitfall] Do not assign a task to a specific role from a table layout whose markings are unclear; verify ownership against the original source before deciding. When: A task table's columns or marks are ambiguous. Why: Misread marks lead to wrong role ownership.
+- [pitfall] Without a shared plan, team members cannot see how their work fits the whole, causing technical incompatibilities such as non-standard models or memory-hungry subsystems, and creative clashes in story, design, and art style. When: When a team grows beyond a couple of developers. Why: Coordination across people requires a shared view of the whole product.
+- [pitfall] Clean post-project stories hide the messy false predictions where the real lessons lie, so teams lose the lessons they most need. When: when writing up a finished project.
+- [pitfall] Designers who protect a beloved, costly plan may discard surprises that would have improved the game. When: when a detailed plan is attached to a large investment.
+- [pitfall] Teams that hire people who think like themselves lose the diversity that makes debate useful. Why: People naturally hire similar thinkers, so diversity must be deliberately fostered.
+- [pitfall] The best people are the hardest to motivate, so generic incentive approaches tend to fail them. When: When designing motivation for a studio's most capable staff. Why: Top performers respond to meaningful, identity-based work rather than standard incentives.
+- [fact] Everyone who touches the game affects its design, even if not everyone shapes it, so respect every suggestion and pull together for the shared vision reaching the final game. (x2)
+- [fact] Some companies have no dedicated designer, and programmers, artists, executives, or producers take on design work.
+- [fact] Producers sit on both publisher and developer teams and act as a single point of contact that keeps both sides on the same assumptions.
+- [fact] The producer's office often becomes the place where team members air grievances and concerns.
+- [fact] Producers interact with publisher contacts more than anyone else and may represent the team at conferences or to the press.
+- [fact] Artists and engineers are both empowered and restrained by technology.
+- [fact] Modern game teams mix artistic, technical, design, and business people who often have different backgrounds and priorities.
+- [fact] Related roles include studio engineer, location audio recorder, orchestrator, score copyist, editor of music, editor of dialogue, voice-over director, and casting and localization staff.
+- [fact] Advanced programmer titles include senior programmer, lead programmer, technical director, and CTO. Studios also name specialists such as tools, engine, graphics, and database programmers.
+- [fact] Typical programmer duties include drafting technical specifications, building prototypes, tools, modules, engines, and data structures, managing communication, documenting code, and working with QA on bugs.
+- [fact] The publisher's producer coordinates with internal executives, marketing, and QA, spending less time with production and more time with marketing.
+- [fact] A producer has a stake in market success and can sometimes judge a game's potential more objectively than its designer.
+- [fact] Hiring talented people is not enough on its own, since team structure and working environment largely determine whether they succeed.
+- [fact] Lateral communication does not remove hierarchy: the producer and department leads still set the big-picture vision and each group's daily tasks.
+- [fact] Team sizes, budgets, and development timelines for A-list console titles have grown steadily, and A-list PC games have grown similarly.
+- [fact] In the 1970s, one person with solid programming knowledge could produce a complete commercial game, acting as designer, producer, programmer, artist, and sound designer.
+- [fact] Senior art positions are lead animator, art director, and senior art director; some studios add creative directors who keep one consistent look across the product line.
+- [fact] Artists come from varied backgrounds, and a degree is not required; some learned traditional tools before moving to computer tools.
+- [fact] In production, programmers write game code, artists build art and animation, sound designers make effects and music, writers produce dialogue and in-game text, QA engineers do light testing, and the producer manages communication, schedule, and resources.
+- [fact] Working inside a studio greatly improves the chance your ideas get noticed, since most legal concerns fall away.
+- [fact] Game companies rarely hire people for ideas alone; progress comes from hands-on contribution.
+- [fact] Industry terms are not standardised. Mechanics may be called systems, so underlying principles matter more than the labels.
+- [fact] Job titles such as writer, game writer, narrative designer and quest designer vary between studios, so the role is best defined by its functions.
+- [fact] Teamwork is part of game design rather than a separate discipline, and a strong story reaches its potential only when integrated into production.
+- [fact] Freelance narrative designers often wear several hats, acting as both game designer and game writer.
+- [fact] Work is reassigned for varied reasons, such as a teammate preferring certain missions, a junior's task becoming an emergency for a senior writer, or tasks being shuffled.
+- [fact] Hunger is not talent: a driven designer may be no more able than peers but is not bound by the standards around them.
+
+## production planning
+- [model] The V-model shows that creative flexibility is broad early and narrows as production advances, so changes are cheap early and costly late. Why: Late changes force rework of art, animation, and code; only variables built to be flexible adjust cheaply.
+- [definition] Beta is the content-complete, bug-focused stage, entered when all features are complete and no priority 1 bugs remain; it is the final chance to tune balance, especially individual numbers. (x2)
+- [definition] Alpha is usually the feature-complete point where all mechanics are in and the engine works, no new features are added, and content and bugs remain; core design is largely locked. When: Production milestone. Why: Marks the transition from building features to producing and balancing content. (x2)
+- [definition] A nondisclosure agreement is a simple promise not to reveal a product before release.
+- [definition] A prioritized backlog is a sorted feature list where new ideas are added and reprioritized each sprint, with the top item taken next.
+- [definition] Preproduction lasts until two publishable levels are fully finished with all necessary features, at which point the core design is known well enough to schedule the rest.
+- [definition] The project schedule lists tasks, durations, deadlines, and assignees, and is usually the most frequently updated document.
+- [definition] Preparation means immersing yourself in a domain and its open problems.
+- [definition] Unknown unknowns are mistakes and assumptions that designers do not realize they are making, and they often matter more than known unknowns.
+- [definition] Process burden is the time cost of coordinating work, including notes, specs, meetings, production staff, bug tracking and design wikis.
+- [mechanism] Approve developer work against milestones, since each publisher-approved stage triggers a milestone payment to the developer.
+- [mechanism] Without a clear scope, producers fall back on canned numbers or rough estimates, making schedule and budget inaccurate, possibly insufficient, and stressful.
+- [mechanism] Once approved, the project plan becomes an addendum to the signed contract, legally binding the developer to it.
+- [mechanism] Work done without a plan is often discarded because it turns out to be superfluous or gets overtaken by later progress. When: When starting tasks without a plan. Why: A plan reveals the minimum steps needed and removes unneeded work before it is done.
+- [mechanism] Without shared planning, performance budgets get consumed by parallel work, funding becomes hard to secure, and design drifts across genres, forcing late cuts and crunch. Why: Unaligned content and systems accumulate cost that surfaces near release.
+- [mechanism] Nonfatal bugs and unstable balance slow down everyone working with them, and an unfinished story adds uncertainty that makes level polishing harder. When: When a team builds on unfinished tools, mechanics or narrative. Why: Dependents must work around instability, which costs them time.
+- [mechanism] Coordination cost and complexity grow as teams get larger, so the share of time spent on tracking and scheduling work rises with team size.
+- [mechanism] Design changes requested mid-production increase cost, so documented approvals and change requests are needed to justify added budget. When: Publisher requests changes during production.
+- [mechanism] Milestone payments for development act as an advance on royalties, so the publisher keeps all revenue until sales repay the advance and the developer earns royalties afterward. When: in a standard publisher-developer deal.
+- [behavior] People often do not see why a seemingly small change is costly to implement, so feedback may ignore coding cost. When: when stakeholders request small-looking changes. Why: Implementation effort is often invisible outside engineering.
+- [behavior] People find uncertainty unpleasant and judge uncertain people as ineffective, so they plan to soothe their anxiety rather than to coordinate work. When: when facing an uncertain future.
+- [rule] Before sharing an unpublished game idea with a company, ask whether it wants to hear it and offer to sign a nondisclosure agreement, since companies usually require one to view unpublished material. When: before sharing a game idea with a company. (x2)
+- [rule] Have another team member, or each group lead, review the production plan, even in a two-person studio, to estimate its cost and duration. Why: Approval makes the plan binding. (x2)
+- [rule] Treat predicted playtest problems as hypotheses, and confirm them through prototyping and playtesting before changing the design.
+- [rule] Rate issue severity by how much it blocks players, how much frustration it causes, and which feature it affects; raise severity for issues affecting a core pillar or monetization even when players find a workaround. When: Assigning severity to UX issues. Why: Blocking, frustration, and core-feature impact determine how much an issue harms the game.
+- [rule] Add visual or sound work to a prototype only when it clarifies a mechanic or answers an aesthetic question early.
+- [rule] Apply the same safe-environment rules to production meetings so team members speak freely without personal attacks.
+- [rule] Consult an intellectual property lawyer before committing to an open source scripting language for a distributed product. Why: Licence and liability obligations can be hidden.
+- [rule] Design so that if half the budget were removed, a shippable game would still remain. When: when scoping a project. Why: Forces simple systems and guarantees a shippable result when cuts are needed.
+- [rule] Treat unexpected extra development time as an opportunity to run more iteration loops, discarding what failed and refining what worked. When: Schedule slips or platform changes unexpectedly give the team extra time. Why: Additional loops let the team improve what works and cut what does not, as happened with Halo's platform moves.
+- [rule] Check the target platform's audio RAM budget before designing any sound, since sounds that cannot fit in memory will not play, however good they sound. When: Starting any game audio project. Why: Most sounds must reside in RAM to play instantly.
+- [rule] Sort beta bugs into three groups: those blocking testing, those to fix before release, and those that can wait. When: beta testing.
+- [rule] During beta, designers answer whether behavior is working as intended and tune numbers, while programmers handle bugs.
+- [rule] Plan UX tests well in advance for each milestone, since milestones are usually when the build is most stable.
+- [rule] Have each team leave with a rough preproduction schedule built on a movable board, such as a whiteboard with repositionable notes, so it can be revised.
+- [rule] Get legal and project management approval before discussing NDA-protected material with anyone outside the company. When: sharing project information with consultants. Why: Outside disclosure can breach confidentiality obligations.
+- [rule] Plan far ahead when plans are likely to work and only a short distance when plans are uncertain. When: when setting how far ahead to plan before testing.
+- [rule] Identify the missing capability that limits the whole goal and focus on it, even when little knowledge or industry supply exists for it.
+- [rule] Link into the official plan only the elements that will be worked on soon.
+- [rule] When an outside group requests a very detailed high-stack decision, negotiate a compromise instead of committing to it immediately.
+- [rule] Plan a level before building it rather than placing objects freely in an editor, and answer layout questions with non-digital sketches first. When: when starting a level. Why: sketches answer layout questions without consuming production time.
+- [heuristic] To notice surprises, first write predictions about how players will behave.
+- [heuristic] Iterate when player experience cannot be predicted from paper alone, which is always true to some degree.
+- [heuristic] Welcome changing requirements, even late in development, and treat them as a competitive advantage. When: when requirements shift during production.
+- [heuristic] Measure progress primarily by working software, and maintain a sustainable pace. When: when assessing project progress.
+- [heuristic] Build one representative unit of a large content set to measure its production time before committing to the full set. When: when content scope may exceed the schedule. Why: a single sample reveals the real cost per unit.
+- [heuristic] Specify deliverables concretely, including format, length, and deadline, since vague promises invite confusion. When: assigning design work. Why: Specific requirements leave less room for misreading.
+- [heuristic] Rare risks still matter at scale: a one-in-a-million event happens about five times among five million players. When: large player populations.
+- [heuristic] New art, custom animation and recorded dialogue usually cost more time and money than writers expect, so plan them early.
+- [heuristic] Trivial, small exercises are too simple to tempt designers into deep planning, so they rarely produce the conviction that iteration matters. When: When designing a learning project about iteration. Why: Deep planning tempts only when the project has enough scope to need it.
+- [heuristic] Avoid overplanning by tolerating the stress of uncertainty and reevaluating constantly, rather than locking decisions away. When: when a team feels pressure to fix decisions early.
+- [heuristic] Elements above the solid foundation are usually too uncertain to implement; at paper stage their certainty may fall below 50%.
+- [heuristic] Plan several moves ahead on political effects, and drop an idea early if it could not be cut later, since others would become too invested in it. When: When proposing ideas in group design. Why: Early abandonment avoids entrenched investment that is costly to reverse.
+- [heuristic] Build a library of level precedents from notes and screenshots, and draw on it when designing your own levels. When: when designing a new level. Why: Studying existing levels supplies reusable ideas.
+- [heuristic] Build mid-game first when players control complex mechanics, so designers quickly learn what players already understand.
+- [heuristic] Each new gameplay element needs more balancing time, so add balancing time when adding new elements.
+- [heuristic] Record how long key milestones take to reach, then scale the progression curves so the game ends within a target length range.
+- [procedure] 1) Set the expected game length. 2) Derive the target level for that length. 3) Divide levels by hours for a levels-per-hour rate. 4) Derive stages, enemy configurations, and stat gains from those targets. When: Before production, for any game with a fixed or expected length. Why: Targets derived from length keep content volume matched to play time.
+- [procedure] 1) List what could keep the game from being great. 2) List how to stop each of those from happening. 3) Solve the most dangerous problems first. When: when deciding what to prototype or work on next. Why: Working on riskiest parts first yields more useful loops than polishing comfortable parts.
+- [procedure] 1) Hold a team review listing everything that might jeopardize the project. 2) For each risk, choose a mitigation. 3) Reduce each risk early, usually with a small prototype. When: before committing to full production. Why: Avoids discovering fatal problems months into development.
+- [procedure] 1) Before committing time to a game, ask whether making it is worth your time. 2) Answer by consulting what matters to you, not only the market, team, or client. When: choosing among projects or deciding whether to continue a time-consuming game. Why: Keeps effort focused on important work.
+- [procedure] 1) Build and tune the core simulation until basic interactions feel satisfying. 2) Build the larger world. 3) Reward every physical interaction with scoring events. 4) Layer a combo system on top. When: building a physics-driven game. Why: Each layer rests on the feel established below it.
+- [procedure] 1) Confirm the ultimate goal is clear. 2) Check that players always move toward it. 3) Check that milestones exist. 4) Describe how the system motivates the final goal. When: Auditing a prototype's goal structure.
+- [procedure] Number each build so bugs can be traced to the build where they first appeared.
+- [procedure] Send the alpha build to the publisher's QA; if approved, the publisher pays the milestone and the team moves into QA/polish.
+- [procedure] 1) Revise goals first. 2) Shorten deliverables to match the revised goals. 3) Shorten the schedule to match. 4) Lower the budget to match. Work item by item from goals down. When: The first budget is far above the publisher's advance or a requested cut. Why: Changing numbers while keeping goals risks overpromising and underbudgeting.
+- [procedure] 1) Accumulate elapsed time. 2) Run fixed updates while accumulated time exceeds the step. 3) Cap the number of updates per frame. 4) Accept slowdown instead of freezing when the cap is reached. When: Running a fixed-step simulation that must survive slow frames. Why: The cap prevents an unbounded catch-up loop that would lock the game up on slow hardware.
+- [procedure] 1) Decide what the sequence should tell. 2) Work out how a character would move or stand there. 3) Check what looks believable. 4) See whether existing animation can be reused. 5) Estimate how often it can play. When: before building a sequence. Why: These questions decide whether a sequence is worth its cost.
+- [procedure] 1) Choose the audience: professional designers or players with no design experience. 2) Choose which content aspects users can manipulate, guided by generator priorities. 3) Balance direct manipulation against computer suggestions. 4) Decide how conflicting desires are handled. 5) Ensure the computer can generate everything the human can produce. 6) Plan how the computer explains its actions. When: when scoping a new mixed-initiative design tool.
+- [procedure] 1) List tasks on a wall. 2) Keep each task small enough that two or three can be finished per day. 3) Cross off each completed task in a visible color. When: When a team or individual needs visible daily progress. Why: Completed tasks give a mood boost and make progress observable.
+- [metric] The transition from preproduction to production typically occurs after about 30% of the necessary budget is spent.
+- [metric] A vision statement should run about 500 words, opening with a one-sentence logline, followed by a gameplay synopsis of no more than a couple of pages.
+- [metric] A 90% confidence estimate range should contain the true value about nine times in ten; most people's ranges capture only two to four of ten answers. When: when judging whether estimates are well calibrated. Why: Most people are overconfident in their numerical estimates.
+- [metric] In one solo level-design case, process burden was about 4 percent of total work time; in a large studio case it was about 50 percent.
+- [tradeoff] The waterfall model's one good quality is encouraging more planning and design before coding, at the cost of rigid sequencing that blocks iteration. When: Evaluating upfront planning against iteration. Why: Heavy upfront planning helps, but a fixed linear sequence cannot absorb what is learned later.
+- [tradeoff] Clean architecture, fast runtime performance, and quick delivery of current features pull against each other, so each decision must weigh all three rather than follow one universal rule. When: making a development decision. Why: Optimizing for one goal usually costs another.
+- [tradeoff] Deep planning can reveal distant design peaks, but planned leaps may land on foothills; tight iteration refines a known direction more reliably. When: when choosing between a conceptual leap and refining a known direction.
+- [tradeoff] Too little planning causes parts of the team and game to work against each other, while too much detailed planning breaks on contact with reality. Why: Both extremes carry harm, so planning must balance structure against uncertainty.
+- [pitfall] Overplanning consumes time, makes cutting plans costly, and creates false certainty; planning too far ahead also defeats iteration because plans age before they can be tested. When: When deciding how much detail to write into a design plan. Why: Written plans feel certain even though they are built on untested assumptions.
+- [pitfall] Building upper layers on an untested foundation exposes them to excessive cascading change when lower elements are revised.
+- [pitfall] Starting a large unfinished project before proving its core ideas with small prototypes is the real failure mode. Why: Large projects built without prototypes often die unfinished.
+- [pitfall] Milestone code that is patched until it cannot be removed often ships as the final AI.
+- [pitfall] The linear waterfall process, with each step finished before the next starts and no return to earlier steps, ignores the iteration that real development needs. When: Choosing a development process for software or games. Why: Complex software reveals problems late, and forbidding a return to earlier steps makes those problems costly to fix.
+- [pitfall] Underestimating the effort needed to debug and balance multiplayer games is a common mistake.
+- [pitfall] Repeatedly offering options without asking about purpose frustrates both the designer and the client.
+- [pitfall] An excellent transformational game without a funding or distribution plan may never reach the people it is meant to help.
+- [pitfall] Each added variable multiplies the relationships to track, so physics-heavy games can become spreadsheet-like and need visualization tools.
+- [pitfall] Warning signs of weak preproduction include unclear game design, unclear key roles and processes, low urgency, and panic late in preproduction.
+- [pitfall] Each added element, such as more player characters, a new dimension, or an unfinished platform, multiplies control and design problems during production.
+- [pitfall] Self-publishing without a production or marketing budget makes traffic very hard to build, and user-generated sites are intensely competitive.
+- [pitfall] Funding an independent game with debts you cannot repay, such as loans or credit, risks serious financial harm.
+- [pitfall] Starting production with only a brief kickoff lets each discipline build its own version of the game, producing an incoherent product that struggles to ship. Why: Disciplines lack a shared picture of the final game, so their work diverges.
+- [pitfall] Overly serious or explicit penalties make people paranoid and degrade team climate.
+- [pitfall] Reactive decisions made in a panic during live operations can damage both player experience and revenue. When: Live operation.
+- [pitfall] Developers who overspend during concept and preproduction, expecting the upcoming milestone check to cover the shortfall, risk going out of business.
+- [fact] Many studios build mid-game levels first, leaving opening levels for last; teams also start mid-game early for trailer footage, a demo level, and budget and staffing reasons.
+- [fact] Beta spaces on distribution services help control player expectations.
+- [fact] Production or build time is the wait before an upgrade or item is ready to use.
+- [fact] In a mass-market game, programming is a small share of effort; most time goes to models, textures, environments, sound, music, animation and detailed level design.
+- [fact] Publisher milestones often demand early functionality, so temporary code is written and later replaced.
+- [fact] Some risks, such as an outside request to retheme the game, cannot be solved by prototypes and need management decisions or contingency plans.
+- [fact] The waterfall model became widely adopted in the 1970s as a seven-step process, often pushed by nontechnical management, and was taught in universities and corporations.
+- [fact] A full production cycle, from conception through post-release, has distinct balance concerns at each stage.
+- [fact] Modern expectations include cinematic effects, music, voice acting, animation, performances by well-known actors, and live orchestras.
+- [fact] At the end of preproduction the publisher either funds full production or cancels the project, and a cancelled developer keeps the preproduction milestone payment.
+- [fact] Production, roughly months 7 to 22, is the longest and most expensive stage; its goal is to build all features and reach alpha, when feature work stops.
+- [fact] Production covers how narrative design works with upstream and downstream teams, cinematics, and quality assurance.
+- [fact] Non-developer clients commission games to build brand loyalty, reach new customers, earn mobile or social revenue, or teach skills to employees or children.
+- [fact] Online games need constant content updates, and meeting that need often forces development teams into regular overtime.
+- [fact] Planning is taught from childhood and has enabled major projects with precise designs, but game design's uncertainty makes the same habit mislead developers into overplanning. When: When applying general planning habits to game development. Why: Game discoveries can change the core of the product, unlike fixed-spec construction.
+- [fact] In game design, overplanning harms more projects than underplanning does.
+- [fact] Setbacks in hard invention include designs that fail basic function, wrong reference data, missing components that must be invented, and no off-the-shelf part light enough.
+- [fact] A large study of creative workers found that those most interested in money were not the most creative.
+
+## analytics and telemetry
+- [model] Four analytics investigation types: building intuition by finding unknown correlations, finding general problems by comparing play to the ideal, answering specific suspicions, and monitoring past changes.
+- [model] Analytics claims, from weakest to strongest, are: observation, correlation, plausible causality, verified causality and statistical model. When: Judging how much evidence a finding supports. Why: Each level supports different decisions with different certainty.
+- [definition] Game analytics collects and interprets player telemetry to show what players do at scale, such as where they die, get stuck or ignore features, to inform decisions within business intelligence. (x2)
+- [definition] An A/B test randomly divides players into two groups, changes the game for only one, and compares metrics to verify causality, such as which button color yields higher conversion. (x2)
+- [definition] Analytics collects quantitative data from large player samples at home, outside the lab, showing what is happening, such as many players dying at one point; it complements lab methods. When: Planning post-launch or large-scale data collection. Why: It captures behavior at a scale and setting labs cannot reach.
+- [definition] Data hooks are instrumentation built into the game engine that record player movement and actions.
+- [definition] Frequentism estimates probabilities from expected values and significance tests on observed outcomes.
+- [definition] Hard metrics are finite, quantifiable measurements such as timings, scores and play durations.
+- [definition] Soft metrics capture impressions of fun, such as silent strategic thought, raucous laughter or relief after a hard day.
+- [definition] Discrete values are one of several distinct options, such as a character chosen in a fighting game. Time counted in months is also discrete.
+- [definition] Continuous values can be any number within a range, such as a timestamp.
+- [definition] A heat map shows spatial values through color intensity, so brighter areas mark higher counts.
+- [definition] Analytics asks what players and systems are up to, what follows from those actions, and how effective each one is.
+- [definition] DAU is the number of unique players active on a given day. MAU is the number of unique players who played at least once in a month.
+- [definition] Analytics is balance assessment built on data from real games, turning soft human aspects of design into quantitative analysis, complementing playtesting and mathematical models.
+- [definition] Telemetry is remote data gathering from players' devices, showing live behavior at scale, such as play frequency, session length and events that cause churn.
+- [mechanism] A design change alters player behavior, which then alters the metric, so a metric can move without revealing the reason.
+- [behavior] Once a UX finding is explained it seems obvious due to hindsight bias; recognizing this is the first step toward compensating when reviewing past predictions. When: when reviewing UX findings after they are revealed. Why: People forget the uncertainty they felt before learning it; hindsight bias makes people feel they knew the answer all along. (x2)
+- [behavior] Analyzing an experience while it happens is hard because the analytic part of the mind is busy with the experience itself. When: Trying to analyze play as it happens. Why: Attention is divided between experiencing and analyzing.
+- [behavior] People avoid heavy cognitive work and therefore reach quick, less nuanced conclusions from data. When: when interpreting charts or dashboards. Why: cognitive effort is costly, so people economize on it.
+- [rule] Find and clean collected data: fix or remove collection bugs, corrupt values, outliers and gaps, since uncleaned errors distort every later result.
+- [rule] Design analytics hooks early, choosing which data to record and store, and add them during beta so data can be analyzed before release and inform balance decisions. When: Preparing a game for beta testing. Why: Early data lets designers refine systems before launch.
+- [rule] Raw records are not knowledge, and knowledge is not insight; genuine analytics needs statistical analysis and predictive modeling, not merely gathering numbers.
+- [rule] Analysis needs clear objectives and critical interpretation; check qualitative feedback before acting on a quantitative pattern rather than treating it as a complete diagnosis.
+- [rule] Combine primitive tactical analyses only with weighted linear sums, so a simple data file can describe how compound values are formed.
+- [rule] Rely on analytics only when the game can gather live data and be patched after release.
+- [rule] Look at raw collected data to check whether it makes sense before drawing conclusions from it. Why: bugs can corrupt data silently.
+- [rule] Graph or otherwise visualize raw data before trusting statistics derived from it. Why: plots reveal shapes that numbers hide.
+- [rule] Anchor each dashboard panel to one central value, such as DAU, and draw each series as its own line graph against it. When: Many values must be compared at once.
+- [rule] Show MAU as a rolling 30-day average and the DAU/MAU ratio, each as a line graph over time.
+- [rule] Split every metric by player rating so that averages can be read in context and changes can target the right skill level. When: A game has player accounts and a matchmaking rating system. Why: Averages across all skill levels can hide opposite trends for different players.
+- [rule] Check each update, such as new characters, maps or core mechanic changes, against the metrics that motivated it. When: Evaluating whether an update achieved its goal. Why: Linking updates to their motivating metrics shows whether they worked.
+- [rule] Use forward Markov steps to find the likely state after many repetitions; use recursion when a complex event reduces to simpler events with easier probabilities. When: Deciding how to analyze a repeated random process. Why: Each method fits a different shape of question.
+- [rule] Use UX methods to find the root cause of a problem, since problems must be discovered rather than assumed to be obvious.
+- [rule] Use analytics only after understanding its limits and human biases, and guide it with a strong UX strategy.
+- [rule] Tracking an ability requires logging its use, timing and context; for complex rules, capture the full situation at the key event, such as a death. When: when a hypothesis depends on an ability or a rule. Why: use alone cannot explain outcomes.
+- [rule] Validate telemetry hooks; bad data is worse than no data, because broken events can silently inflate metrics. Why: silent failures look like real results.
+- [rule] Near the end of production, define analytics hypotheses and questions so telemetry hooks can be scheduled for gameplay and business intelligence. When: End of production.
+- [rule] From alpha onward, have the analytics pipeline ready and reliable, since marketing and publishing become more involved. When: Alpha and later.
+- [heuristic] When mean and median are close, the data has no strong extremes or its extremes balance on both sides.
+- [heuristic] Analytics can show which repeated causes of defeat correlate most strongly with quitting, so check those causes first. When: when reviewing data from a live game.
+- [heuristic] When decomposing a design problem, expect some pieces to connect in non-obvious ways.
+- [heuristic] Choose measures by the problem: time each procedure for a clunky, slow start, and use qualitative questions for a game that feels undramatic.
+- [heuristic] A retrospective split should be framed as a hypothetical A/B test; if it cannot be, causal conclusions may not be meaningful. When: when analysing data without a planned experiment. Why: Causal claims need a comparison of comparable groups.
+- [heuristic] Compare discrete values side by side with bars, and use a pie chart to highlight the largest or smallest value. When: Comparing two values where one or both are discrete.
+- [heuristic] An extremely long session usually means the game was paused or left idle rather than played. When: a single session far longer than the rest.
+- [heuristic] A genuine problem hidden inside abusive feedback is usually noticed and raised constructively by others.
+- [heuristic] Measure preference through activities players already perform, such as shooting, trading or surviving, rather than asking them to rate content. Why: Explicit evaluation requires repeated effort, which causes fatigue.
+- [procedure] 1) Spread per-location updates over many frames. 2) Compute static values offline or at level load. 3) Compute rarely needed values only when requested.
+- [procedure] 1) Use a dynamic trigger volume to detect the event. 2) Route each event to a sound playback object. 3) Assign the appropriate cue to each playback object. When: sounds trigger from gameplay events.
+- [procedure] 1) Start from a design whose information is fully visible to all players. 2) Add an element of hidden information, adding new concepts if needed. 3) Playtest the modified design. 4) Note how strategy changes and why.
+- [procedure] 1) Schedule actions with varied priorities, expiry times and interrupt abilities. 2) Observe how the queue and active set respond. When: Learning how an action manager behaves. Why: Watching queue changes reveals how settings interact.
+- [procedure] Show each node's region in the editor so designers can spot and diagnose misassigned areas faster.
+- [procedure] 1) Restate each key question in quantitative terms the data can answer. 2) Query the data for a smaller relevant set. 3) Check whether a meaningful pattern exists or the result is noise; if questions cannot be answered, revisit earlier steps. 4) Ask why repeatedly, listing all plausible root causes and drilling down until the core cause is found. 5) Present findings through visuals, narrative and key metrics, and keep a record. 6) Change the game to fix problems, or make no change if none are found. When: when analysing game data to inform design. Why: A structured path turns data into justified design decisions.
+- [procedure] 1) Designer sets key questions 2) Analyst chooses metrics that answer them 3) Gameplay programmer adds tracking hooks 4) Database programmer plans storage for easy access 5) Ship updates and collect data over time 6) Clean data before analysis When: Planning game balance analytics.
+- [procedure] 1) List each unknown that affects outcomes, such as how much luck matters. 2) Express each as a variable in the rating formula. 3) Give each variable an initial guess. 4) Use analytics to estimate its true value. When: designing a rating system with missing information.
+- [procedure] 1) List each distinct value with its probability. 2) Mean = sum of value × probability. 3) Median from cumulative probability. 4) Standard deviation = square root of probability-weighted squared deviations from the mean. When: Finding statistics for a value drawn at random from a weighted set.
+- [procedure] 1) Remove redundant data. 2) Interpret what remains. 3) Discard noise.
+- [procedure] 1) Read the Intent section to find a pattern matching your current problem. 2) Study Motivation and the distilled Pattern. 3) Check When to Use It and Keep in Mind. 4) Read Design Decisions before implementing. When: choosing and applying a pattern from a pattern catalog. Why: Each use of a pattern differs, so the options must be weighed before coding.
+- [procedure] 1) Take screenshots and notes during play 2) turn them into analysis sketches afterward.
+- [metric] Concentration is scored from 0 to 4, from attention on the environment (0) to attention fully absorbed in the activity (4). When: when using the observation grid.
+- [metric] Frustration is scored from 0 to 3, from no signs (0) to exclamations or swearing during or after play (3). When: when using the observation grid.
+- [metric] A solo session rate can reach 200 lines per hour with an experienced actor and fall to 50 for complex emotional scenes. When: Adjusting session plans for actor skill and scene difficulty. Why: Experience speeds delivery while emotional complexity slows it.
+- [metric] COUNT tallies cells containing numbers, so comparing that tally with total rows shows how many records are complete. When: checking how many playtest rows produced usable data.
+- [tradeoff] Analytics can show causes and effects that explain why metrics move, but telemetry alone shows what players do, not why; pair it with qualitative research. (x3)
+- [tradeoff] Analytics hooks compete with gameplay work for programmer time, and collected data costs bandwidth, storage and framerate; in high-action games, recording everything can hurt performance, so choose the most important data.
+- [tradeoff] Data collection code competes with feature work for limited programming time, so the team must weigh one against the other. When: planning development tasks. Why: programmer hours are finite.
+- [tradeoff] Frequentist methods are simpler but ignore prior knowledge, while Bayesian methods need heavier math yet can give more realistic estimates. When: choosing an estimation method.
+- [tradeoff] An exact full-state transition matrix is accurate but grows explosively with player count, while sampling per-player finish times scales easily but gives an estimate that improves with trial count. When: Modeling a multi-player race where the joint state space is too large to store. Why: Exact joint states are infeasible beyond small cases, so sampling trades exactness for tractability.
+- [tradeoff] Data-driven decisions can mean reacting passively to numbers; data-informed decisions keep decision makers in control while using data.
+- [pitfall] Self-serve exploration by people with basic statistics but little bias awareness turns noise into apparent patterns, and a self-serve culture without fallacy training can cause harmful changes. When: when self-serve exploring data. Why: unchecked biases turn noise into apparent findings.
+- [pitfall] People use the word average for either mean or median, so confirm which measure is meant before comparing numbers.
+- [pitfall] Choosing which data set serves as the baseline changes the z test result. When: comparing two data sets.
+- [pitfall] Assuming hard, fact-based data is automatically better than observed enjoyment is a mistake.
+- [pitfall] Hasty interpretation by observers or developers behind the mirror can contaminate the whole analysis. When: Analyzing UX test results. Why: Early conclusions shape how later evidence is read.
+- [pitfall] The hardest part of a sense simulation is the source data, so designers need tools to mark where each modality can pass.
+- [pitfall] Charts, formulas and level maps pile up quickly, so keep analysis material manageable.
+- [pitfall] Aggregating metrics across several patches can hide the effect of any single patch, because the largest and most recent periods dominate the totals. When: Summarizing data that spans multiple updates. Why: Periods with more players carry more weight in combined totals.
+- [pitfall] Results are biased when the protocol does not isolate the variable being tested.
+- [pitfall] Media headlines often drop the caveats researchers attach to their findings, distorting public understanding.
+- [pitfall] Two groups can share the same average while their spreads differ widely, so compare variance before treating a difference in means as meaningful. When: when comparing group averages. Why: large within-group variation can make a difference random.
+- [pitfall] Hasty conclusions can cost more time, and possibly money, than careful analysis.
+- [pitfall] Acting on cache-profiler numbers without understanding them can lead to restructuring that does not address the real bottleneck. When: Reading cache miss reports for the first time. Why: Profiler figures are complex and easy to misread.
+- [pitfall] Explaining away an odd result to protect the current design can hide the most valuable discovery. When: When a test produces an unexpected outcome. Why: A worldview held too tightly filters out signs of value.
+- [pitfall] Recorded data can show that an event occurred without revealing how players experienced it. Why: Logged variables do not capture perceived effects.
+- [fact] Four 11-point sets can share nearly identical means, spreads and correlation yet show a noisy trend, a parabola, a near-perfect line and a vertical stack, two of them outlier-pulled.
+- [fact] Analysis is only as good as the data it is built on.
+- [fact] Data hooks show where players progress as expected and where they slow down or get stuck.
+- [fact] Automatic data collection gathers more data than manual notes, making the data more useful for analysis. When: When choosing how to record playtest or live data.
+- [fact] Playtest data quality depends on programmers implementing the collection code that designers request.
+- [fact] Probability has built-in sanity checks, such as results that must lie between 0 and 1, but statistics often lacks a known expected answer.
+- [fact] Hard metrics can be compared across playtests, but assigning them meaning is a design judgment.
+- [fact] Useful sources for analyzing a game include strategy guides, FAQs or wikis, reviews, developer interviews or talks, and Let's Play videos; keep a list of them.
+- [fact] Analytics gains statistical power as the player base grows, and it requires a playable game with a large number of players, so it usually comes late in development. When: Planning when to rely on analytics in a development cycle. Why: Reliable patterns need many players and a playable build.
+- [fact] Ratings predict match outcomes only partly, and other factors such as chosen objects, team synergy, familiarity and margins can refine them.
+- [fact] True ratings are unknown in live play, so a rating system is validated by comparing predicted and observed win rates across players to find over- and underestimates. When: Checking a rating system against live match data. Why: The true skill of each player cannot be measured directly.
+- [fact] Randomly splitting one identical process into two groups yields slightly different means and standard deviations. When: comparing two random groups from the same process. Why: Random sampling produces variation even when nothing has changed.
+- [fact] Analytics often sits in the business intelligence team, whose findings feed marketing and publishing decisions.
+- [fact] Studios gather more telemetry each year, but the main bottleneck is making sense of it, which requires data analysts and data scientists.
+- [fact] Perception is shaped by prior knowledge and expectations, so people can misread charts; visualization design needs deliberate care.
+- [fact] Gameplay metrics are game-specific. Examples: deaths, deaths by type (bullet, melee, fall), progression events at mission start and completion, weapon accuracy and weapon power.
+- [fact] Data shows what is happening, not why; external context such as competing releases, sports events, server issues or collection bugs must be investigated separately.
+- [fact] Massive datasets alone don't ensure success; worth emerges when information pairs with leadership, engineering and analytical capability.
+- [fact] Telemetry can expose missions where players fail massively and paths players take that designers did not intend, guiding targeted fixes.
+- [fact] Data mining in companies is more often aimed at retention and conversion than at user experience, and it usually requires working closely with busy data scientists.
+
+## design documentation
+- [model] A design document expresses the author's current theories about what will make a game good, and only practice shows whether those theories hold.
+- [model] Spreadsheet cells can be classed into five roles: data (hardcoded values), inputs (hand-tuned values), calculations (intermediate formulas), controls (choose between alternatives), outputs (final results).
+- [model] A game design document's opening sections cover the vision, target audience, platform and system requirements, competitor analysis, sales expectations, and legal obligations.
+- [model] A game design overview covers story, mechanics, level outline, controls, interfaces, art and music style, feature list, milestone schedule and team bios.
+- [model] A one-page game design sample covers: one-liner comparison, setting, target audience, genre, key features, gameplay summary, story, platforms and a gameplay example. When: Writing a one-page game design document. Why: Gives a complete overview on a single page.
+- [definition] A design document covers overview and vision, target audience, platform and marketing, gameplay, interfaces, controls, levels, and media list, plus characters, story and world where the game has them.
+- [definition] A technical design document covers systems such as screen rendering and network data, and helps new team members understand how the system is meant to work.
+- [definition] A system limitations document records hard limits such as polygons on screen, update messages per second, or simultaneous explosions.
+- [definition] Tech artists keep visuals working inside the limits set by the engine and code.
+- [definition] A game is functional but incomplete when its rules have gaps, even if its core systems run. When: Reviewing a prototype.
+- [definition] An internally complete game lets players operate it without any point where gameplay or functionality is compromised.
+- [definition] Laws are explicit clarifications of rules, written once competitive play becomes serious enough to need records of sportsmanship or rule interpretation. Over time they can merge into official rules. When: A game has a competitive scene. Why: Competitive play exposes ambiguities that require written answers.
+- [definition] Advisory rules are tips for playing better and are not mechanics in the strict sense. When: Distinguishing strategy advice from game rules. Why: They guide play without changing how the game works.
+- [definition] The design overview is a brief, high-level document of a few pages that explains what the title is and its target audience, without deep detail.
+- [definition] Intent is the purpose behind work: what a piece of content is for, which goals it serves, and what role a system plays in the overall design.
+- [definition] The detailed design document describes all game mechanics and interfaces, serving designers' memory and helping engineers and artists.
+- [definition] The game design document is the written plan that communicates a game's vision and how to execute it to everyone on the team.
+- [mechanism] A game design contains thousands of decisions, and people forget many of them within weeks.
+- [mechanism] A written decision invites discussion, and someone will find a flaw or propose an improvement, which strengthens the design.
+- [mechanism] Writing a document makes people think differently than they do alone, allowing diagrams, references, and logical chains that reveal details impromptu thinking misses. Why: Written form forces structure and exposes gaps.
+- [behavior] The detailed design document is often the thickest yet seldom kept current, and often abandoned midway because the running game holds the details; keep it small enough to be useful. When: Mid-project in development. Why: The running game becomes the authoritative record of details.
+- [behavior] Faced with a list of use cases, programmers tend to code each case separately because it is the least effortful approach. When: when a problem arrives as a list of use cases. Why: Handling each case separately requires the least upfront effort.
+- [behavior] A detailed design document may be weighed more than it is read, and a clear presentation of why the game will sell is even better.
+- [rule] The game designer is the primary author of the living design document or game bible, keeping it current throughout production as the team makes decisions. (x2)
+- [rule] Technical details may sit in the design document or a separate technical specification, usually by the technical director or lead engineer, covering technology, risks, tools, delivery, engine and specific systems.
+- [rule] Write a technical design document when more than one engineer works on the code. When: More than one engineer works on the code.
+- [rule] Internal development tools have a user experience; tools programmers should understand UX because poor tools waste time.
+- [rule] Technical analysis should identify new technology, major software tasks such as building versus licensing or reusing an engine, risks, lower-risk alternatives, and resources needed.
+- [rule] List and describe system parameters such as maximum players, servers, customization, persistence, saving, and loading.
+- [rule] When briefing audio or art teams, state the specific intent, not just a label: say whether a sigh is exasperated, bored or weary. Why: Vague labels lead to assets that miss the goal.
+- [rule] Test card wording with fresh readers, since they may interpret effects differently from the designer. Why: Designers cannot easily see second readings of their own wording.
+- [rule] Keep between-level learning short, keep its bugs replicable, and store game data in a format that is easy to extract. When: learning runs between levels. Why: Load times are part of acceptance criteria, and replicability and data extraction are needed for debugging and analysis.
+- [rule] Every central mechanic should be fully playable by the midpoint of the schedule. When: when planning a production schedule. Why: Leaves time for the loops that make the game great, even when problems occur.
+- [rule] Tailor each design document to the team: a common core can stay consistent, but structure and style change with each game. When: Writing design documents for a new game.
+- [rule] Write down decisions you may later forget or that others must act on.
+- [rule] Use a design-notes text column for notes covering a whole row or group, and attach a note to a cell when the comment targets that specific cell. When: Documenting a spreadsheet's formulas or layout. Why: Placement tells readers exactly which data a note explains.
+- [rule] Explain what cells do with cell comments, or with notes in headers or a notes field.
+- [rule] Do not rest on proven genres; ask how an idea might break new ground artistically.
+- [rule] Create a subdocument for any area that needs more detail as production moves forward, especially areas expected to expand during production. When: An area grows during production.
+- [rule] Organize the design document in modules from the start so it stays manageable as it grows.
+- [rule] On a wiki, create a separate page for each area, with subpages for deeper detail, images, and charts. When: The document lives on a wiki. Why: A wiki enforces modularity naturally.
+- [rule] Keep a design history listing each version and its major changes in word-processor documents; on a wiki, rely on the edit history instead. When: Tracking document versions.
+- [rule] A gameplay synopsis should cover what makes the game unique, its core mechanics, its setting, and its look and feel.
+- [rule] Be the team's go-to person for documentation, and express ideas concisely, since colleagues often prefer not to read long material.
+- [rule] Make a game bible easy to navigate: include a table of contents listing every section, subsections and page numbers. When: For any bible that more than one person edits or reads. Why: Anyone must find information quickly in a reference.
+- [rule] Show the version and date on the cover page of each bible update, and keep a change history recording what was added or removed and why. When: For any bible that more than one person edits or reads.
+- [rule] In linked web archives, create cross-linked pages; in word-processing files, avoid bloat by moving ancillary material to separate documents.
+- [rule] When a document is missing, explain to the client and developers why it matters.
+- [rule] If you can write a missing document, offer to do it and negotiate a fee as part of your scope.
+- [rule] Designers should play widely and learn unrelated fields such as economics or history, since any field can supply analogies for a solution. Why: Humans think by analogy, so broader knowledge gives more material.
+- [rule] Omit the characters, story, world, or media list section of the design document when the game does not need it. When: Writing the design document outline. Why: Each of these sections applies only to some games.
+- [rule] When asked to simplify a pitch, clarify whether the request means making it clearer or dumbing it down. When: Receiving feedback to simplify.
+- [rule] If the client can only pay for documentation, make sure they can explain the narrative design and every document themselves. When: client budget covers only documents.
+- [heuristic] Each game needs its own memory and communication documents, discovered for that game; no magic or industry-standard template exists, or ever will, so shape structure around the game. (x2)
+- [heuristic] Co-authored by the whole team, a living design document becomes a shared platform that unites everyone and helps them understand the evolving game; solo-written documents are less valuable. Why: Collaboration engages the team and focuses it on the current project.
+- [heuristic] Break the game into modules when many systems interact and changes keep causing surprise side effects.
+- [heuristic] Number lists of ideas, since numbering lets items be referred to easily in discussion and makes them seem more important.
+- [heuristic] Label every element in a flow diagram so that each one clearly represents something specific.
+- [heuristic] Consistent formatting makes data easier to find and reduces errors when editing or adding entries to a spreadsheet. When: a spreadsheet is edited or extended by others.
+- [heuristic] Answer basic questions such as victory conditions, screen density, and time pressure by trying options in play. Why: Play gives answers that speculation cannot.
+- [heuristic] A strong design document can be brief, around 50 to 100 pages, as long as it holds the essential information for building the game. Why: Busy executives and programmers can then find their sections quickly.
+- [heuristic] Write the document in repeated passes, filling sections as they become clear and revising earlier sections after later ones, since each design aspect depends on the others. Why: Finishing the document in a single pass is a pitfall.
+- [heuristic] Writing that neither draws on other disciplines nor enhances them will not reach its potential.
+- [heuristic] No fixed recipe exists for diagram symbols, so designers should develop a consistent personal grammar. When: creating a diagram language. Why: Consistency lets a reader decode symbols.
+- [procedure] Analyzing an open design decision: 1) Hold a brainstorm. 2) Run targeted research. 3) Write each candidate idea on a card. 4) Allow time for unconscious rumination before deciding. When: a design decision is undecided and costly. Why: each step adds information or fresh perspective.
+- [procedure] Test written movement rules: 1) build a paper prototype of a level 2) write movement rules 3) have a player read and execute them, noting what was clear and what was wrong 4) read the rules aloud and see if performance changes 5) reword and retest.
+- [procedure] 1) Ask what must be remembered while making the game. 2) Ask what must be communicated. 3) Create documents that serve those needs and skip those that serve neither. 4) Repeat as the project changes. When: Before creating any new document or when an existing one goes stale. Why: Memory and communication needs shift over the project.
+- [procedure] 1) Identify who needs to see the document. 2) Decide what it should contain based on those readers. When: Before deciding a document's contents.
+- [procedure] 1) Ask why you are doing this work. 2) Look past surface reasons to your underlying purpose. 3) Check that your current work serves that purpose. When: before starting a new game or major phase, or when work feels unfocused or lacks energy.
+- [procedure] To explore an intransitive game, ask which option is best against a new opponent, how much of the outcome comes from luck versus skill, and how a new option changes the optimal strategy, then judge whether it belongs in the core game. When: Evaluating a proposed change to an intransitive game.
+- [procedure] 1) List everything you can think of on a topic. 2) Make lists of variations on that topic. Writing items down supports free association and organization together. When: When brainstorming a topic.
+- [procedure] 1) Write gameplay and technical goals. 2) List every deliverable and check it with the team. 3) Build a detailed schedule with all tasks specified and dependencies marked. 4) Draft a budget from a sample, using best guesses. 5) Cut the budget by a set percentage, revising goals first, then deliverables, schedule, and budget. When: Building a project plan for a game idea. Why: Practices how the pieces of a plan fit together; accuracy matters less.
+- [procedure] 1) Set goals, covering gameplay aims, technical aims, target platform, and launch date. 2) Derive deliverables grouped by the stage that creates them. 3) Give media deliverables concrete counts and durations. 4) Allocate budget and a schedule slot to each deliverable. Why: Goals shape deliverables, which set schedule and budget.
+- [procedure] 1) Put all essential information on exactly one page, printed as large as possible. 2) Use visuals wherever possible. 3) Place the main mockup at the center and explain it through callouts. When: Giving a quick visual overview of a character, location or idea.
+- [procedure] 1) Collect the concept summary, the sales pitch, the Game Design Document, the world or universe bible, the narrative bible, and any art or prototypes. 2) Check them with later playtesting in mind.
+- [tradeoff] Use tabs in one document for related data that must cross-reference; use separate files when the data groups are completely independent. When: Deciding how to split game data across spreadsheets. Why: Cross-referencing within one file is simpler than linking to another file.
+- [tradeoff] Cutting a flat section removes its problem but wastes invested work; keeping it means finding a fix such as a shortcut. When: late in development with work already invested.
+- [tradeoff] Early in a project, many small documents covering separate subsystems are usually better than one giant document. When: Early project stage.
+- [tradeoff] Strong vision keeps design directed, but loosening control to explore possibilities and seize emerging value captures serendipity; the two must be balanced. When: When balancing a clear vision against exploration. Why: A vision held too tightly blinds the designer to what players actually do.
+- [tradeoff] Architectural drawing must be more precise than artistic sketching because it exists to communicate spatial relationships. When: drawing spaces for planning rather than expression.
+- [tradeoff] Emergent story hands much authorship to systems and players, yielding near-endless story variety at the cost of the designer's direct control over outcomes.
+- [pitfall] Treating design documents as specifications, scripts, blueprints or fixed plans to follow without question causes confusion, since they are theories that practice must test.
+- [pitfall] Sentimental attachment to a design makes it hard to abandon even when it is clearly failing.
+- [pitfall] Google Sheets comments look like cell notes but behave differently, so the two should not be treated as interchangeable. When: Using notes or comments in a shared sheet. Why: Their names, reply threads and resolution behave differently.
+- [pitfall] Treating the design document as an end in itself, rather than as a means of communication, undermines its value.
+- [pitfall] Assuming everyone has read and understood the written vision after it is published; documentation does not replace meetings and in-person discussion.
+- [pitfall] Design documents tend to grow very large, especially on collaborative wikis where content expands easily.
+- [pitfall] Writing documents for yourself produces material the team will not read, since the team is the real audience. Why: The team has a full workload of documents to read.
+- [pitfall] Complicated phrasing confuses readers, so a description should communicate rather than puzzle. When: Writing a one-liner description. Why: Readers who are confused cannot judge the idea.
+- [pitfall] Niche jargon confuses readers whose background is unknown, so use everyday terms instead. When: The reader's background is unknown. Why: Unfamiliar terms block understanding.
+- [pitfall] Trusting inherited formulas and reference data without testing them can lock in errors.
+- [pitfall] Beginners often describe features instead of the experiences they should create, and seeing past features to player experience is hard.
+- [fact] A technical design document rarely stays current past the midpoint, yet writing it is often essential to architecting systems and starting code.
+- [fact] A technical design overview states the engine, tools, hardware, code history and middleware in terms non-engineers can follow.
+- [fact] Story content is implemented with level and quest editors, spreadsheets or scripting languages, often needing level design, art production and programming help.
+- [fact] Novel questions may require custom protocols, such as for elderly players, new data analysis for unusual economies, or new brainstorming formats for teams across continents.
+- [fact] The detailed design document is seldom seen by outsiders and is often messy, with just enough detail to spark discussion.
+- [fact] A design document is out of date as soon as it is written.
+- [fact] Game documents serve exactly two purposes: memory and communication, and their form should follow from what the team must remember and share.
+- [fact] A project plan covers goals, deliverables, schedule, and budget, showing the team has thought them through.
+- [fact] A developer's project plan is arguably the top deliverable, and once approved it is typically attached to the contract.
+- [fact] Each discipline uses the document differently: artists lay out interfaces, programmers define modules, level designers place levels in the story arc, producers build budgets and schedules, and QA writes test plans.
+- [fact] Large teams and complex games make written documentation essential, and most publishers expect a design document before production starts.
+- [fact] A design document typically takes about a dozen passes to complete, and it keeps needing updates as development changes the design.
+
+## pitch document writing
+- [model] Premise, character, and story give formal elements context and emotional meaning: premise sets context and involves players emotionally, character gives an agent or vessel, story unfolds during play. Why: Context helps players understand their choices.
+- [model] A pitch package has nine parts: sell sheet, playable demo, gameplay video, game design overview, company prospectus, storyboards, presentation deck, technical design overview, competitive analysis.
+- [model] A pitch interest curve has four stages: a hook, a build, tension and release, and a climax. When: Structuring a pitch. Why: Pacing the pitch like a story keeps listeners engaged to the end.
+- [model] A premise can frame abstract points as concrete rewards, such as treasure, turning scoring into a meaningful goal.
+- [definition] A pitch is the presentation to a publisher, and it must show the strength of the team, the plan, and the idea together.
+- [definition] A pitch is a negotiation in which you seek what you want while showing the listener that your game helps them get what they want.
+- [definition] Power is the ability to get what you want, made of two parts: the ability to get, and knowing what you want.
+- [definition] The summary of conflict states the central tension in the world.
+- [mechanism] Presenting progress to the whole team often reveals new problems and sparks fresh brainstorming, which begins the next round of the design cycle.
+- [behavior] Slick visuals are hard for teams and funders to resist, so polish alone can strongly sway decisions about a concept.
+- [behavior] A rejected game can open a better opportunity when the rejecter is willing to hear a different idea from the same designer. When: A publisher rejects a specific concept but remains open. Why: Rejection of one proposal can prompt a request for a different, more fitting one.
+- [behavior] Silence after a pitch rarely means rejection; listeners often thank the presenter and promise a reply, then get busy. When: No response follows a pitch. Why: Busy decision-makers delay replies without rejecting the idea.
+- [behavior] Elegant designs are hard to spot early because they lack gimmicks, so evaluators favor more exciting-sounding concepts. When: reviewing or pitching game concepts. Why: pitches emphasize surface hooks over underlying depth.
+- [rule] Before leaving a pitch meeting, ask when to expect a preliminary response. When: at the end of a pitch meeting.
+- [rule] Do not pitch while playing; have a colleague play while you talk and answer questions, since pitching while playing wastes time and sounds unfocused.
+- [rule] Write the opening speech in advance and deliver the same introduction to every tester.
+- [rule] Rehearse the pitch by memorizing the chain of ideas rather than exact wording, so it sounds natural.
+- [rule] Rehearse on anyone willing to listen, and rehearse any demo you plan to show.
+- [rule] Back a prototype with evidence of design, market, and monetization thinking, since a prototype alone is not enough.
+- [rule] Know your market's top sellers before pitching, since funders will know them. When: preparing a pitch to funders. Why: Funders judge your market understanding by the top games.
+- [rule] Wrap a sheet name containing spaces in single quotes before the exclamation point, such as ='Sheet Name'!A3.
+- [rule] Frame a pitch around the company's needs, for example by asking which kinds of games it wants to review.
+- [rule] Send a short thank-you email right after a pitch, with any materials the publisher requested during the meeting.
+- [rule] Build a playable demo that lets the publisher judge gameplay; it may vary in completeness but must show how the game plays. When: preparing a pitch.
+- [rule] Pitch with a gameplay video or storyboards as a fallback when no playable demo can be built. When: no playable demo is possible.
+- [rule] Pitch in person when possible, dressed professionally but not necessarily in a suit.
+- [rule] Keep a checklist or spreadsheet of every publisher and contact, since one publisher may have several evaluators to track.
+- [rule] After writing a clear comparison, add a hint of what will be enjoyable in the finished game. When: Writing a pitch that already follows the clear template. Why: Clarity alone rarely excites anyone.
+- [rule] Choose well-known reference games, since audiences recognize them more quickly than obscure ones. When: Adding an optional reference game to a comparison. Why: Recognition speeds up understanding.
+- [rule] Use the reference game to convey how the final product will feel, not as a showy description of that game. When: Adding an optional reference game to a comparison. Why: The reference should set expectations about play feel.
+- [rule] For a sequel, explain clearly how the project differs from the original. When: Pitching a sequel. Why: Listeners need to see why the sequel is new.
+- [rule] Stay relaxed during a pitch, since stiffness makes the audience uncomfortable in informal game companies. When: Presenting a pitch in person. Why: Informal settings favor a relaxed presenter.
+- [rule] Keep a pitch to its high points: what the game is, how it feels to play, what the player accomplishes, and which audience need no other game meets. When: Presenting a pitch in limited time. Why: These points carry the concept.
+- [rule] Keep pitch documents visual with many pictures, state technical information only in broad strokes, and mark and cite any material that is not your own. When: writing a game pitch document. Why: Visuals convey the idea quickly, and unattributed material creates legal risk.
+- [rule] A designer who wants a specific feeling must plan how to deliver it, since emergent play rarely produces it reliably.
+- [rule] Explain the game plainly, avoid jargon, and test the explanation on people unfamiliar with the idea. When: Preparing any pitch. Why: The listener has never seen the game and must understand it quickly.
+- [rule] Open by stating platform, audience, and genre. Hiding these makes listeners fixate on guessing what the game is. When: Opening any game pitch. Why: Unstated basics force the listener to guess and distract from the idea.
+- [rule] Design the pitch as an experience with the same care as the game, applying the same design lenses. When: Preparing a pitch. Why: A pitch that is accessible and surprising holds listeners better.
+- [rule] Add showmanship such as detailed animation, unexpected sound, humorous images, or physical props to make the pitch memorable. When: Staging a pitch. Why: Vivid sensory moments make the pitch stick in memory.
+- [rule] Only pitch a game you are genuinely excited about, since ambivalence fails to excite listeners. When: Choosing which game to pitch. Why: Presenter ambivalence transfers to the audience.
+- [rule] Use the negotiation framing before any pitch to decide what to ask for and who should hear it. When: before any pitch.
+- [rule] A premise can be minimal and still create tension; elaborate backstory is not required for emotional engagement.
+- [rule] Narrative designers are usually expected to write pitches that are clear, well written and easy to communicate. When: Writing a concept pitch.
+- [heuristic] Favor images over words, such as concept art, to make the idea concrete, and focus on what is unique, why it beats competitors, and why it suits this listener. When: Building pitch slides or presenting a game idea to a game company. Why: Visuals communicate faster, and many game company executives came up through art. (x2)
+- [heuristic] Refine the opening speech over several sessions until it is clear and efficient, since it can become the basis of the in-game tutorial.
+- [heuristic] Let skeptics play a prototype, since experiencing an unusual idea can convince them where descriptions fail.
+- [heuristic] A rough playable build that mimics the intended control feel can sell a concept quickly to decision makers. Why: Players judge feel by using controls, which words and static visuals cannot convey.
+- [heuristic] Write on one side of each sheet in large letters so sheets can be laid out side by side and read from a distance.
+- [heuristic] The venue can affect a pitch's impact, so choose a setting that reinforces the game's theme when practical. When: Choosing where to pitch. Why: A thematically fitting setting can make the idea more persuasive.
+- [heuristic] Organized presenters seem lower risk to publishers, so planning logistics signals seriousness and builds trust. When: Preparing any pitch from internal meetings to publisher presentations. Why: Publishers judge reliability partly by how well a pitch is prepared.
+- [heuristic] A one-line design brief can be enough for a small, short project when the core concept is specific and concrete. When: small team on a short schedule. Why: A concrete concept keeps the build focused.
+- [heuristic] Pitch reviewers judge the team first, creative materials second and the project plan third.
+- [heuristic] Pitch to a publisher after you have industry experience, a strong idea and a solid project plan, since publishers favor experienced teams.
+- [heuristic] Name a clear intended audience in a pitch, since it makes the pitch's appeal concrete. When: Writing any game pitch. Why: A named audience shows who the appeal is for.
+- [heuristic] Evoke the feel of works the audience loved earlier, or invoke fans' nostalgia for a known series, to make a pitch resonate. When: Pitching to an audience with shared past favorites. Why: Familiar feelings create interest quickly.
+- [heuristic] Use humor, such as a surprising contrast or a cartoon showing a market need, to make a pitch feel fun. When: Presenting a pitch. Why: Humor keeps the audience engaged.
+- [heuristic] Put a single defining idea in one sentence on the first page, since many readers will not read beyond it. When: writing a game pitch document. Why: The first page must carry the idea on its own.
+- [heuristic] Open with an early spike of interest, a hook, to grab attention, such as a striking opening number, sound, or early playable moment.
+- [heuristic] Beautiful presentation of inherently interesting events is the best case.
+- [heuristic] Learn about the listener beforehand. If the game does not fit the listener's needs, do not pitch it. When: Before scheduling or delivering a pitch. Why: A pitch aimed at a mismatched listener wastes both sides' time.
+- [heuristic] Get to the point quickly, skip points that bore the listener, and let them ask for details. When: Pitching to busy listeners who have heard many pitches. Why: Busy listeners have seen hundreds of pitches and tune out long setups.
+- [heuristic] Plan for a listener who loves the pitch but must persuade colleagues, and make that persuasion easy for them. When: Preparing materials for a decision-making listener. Why: The listener may need to sell the game to others without you present.
+- [heuristic] Know precisely what you want from a pitch, since without that focus you keep grasping and are never satisfied.
+- [heuristic] A combat system is a formal exchange between data sets, and a premise gives that same exchange emotional meaning.
+- [heuristic] Give the gist of the idea in a pitch rather than too much detail. When: Writing a short pitch document.
+- [heuristic] A well-written one-liner shows the creator has a clear vision and can serve as the core vision during development. When: Writing a high concept.
+- [heuristic] Pitch a new IP as a known genre formula plus one distinctive twist, such as a familiar fantasy setup with one inverted social rule.
+- [procedure] 1) Within a few days of the pitch, or if no reply comes within 7 to 10 days, send a follow-up with a real reason, such as answering a question the listener asked. 2) Follow up at most one email and one phone call per week. Demanding an answer or following up too often damages goodwill and invites a quick no. When: After a pitch without response. Why: A useful reason keeps contact warm; pressure makes listeners decline rather than deliberate. (x2)
+- [procedure] 1) Plan each moment, including when teammates join and when the prototype appears; planning does not drain energy and frees attention for the listener. 2) Keep the plan loose enough to deviate when needed. When: Preparing a live pitch. Why: Planning removes uncertainty about timing and keeps room to adapt.
+- [procedure] 1) Name the biggest project risks briefly across technical, gameplay, aesthetic, marketing, financial and legal areas. 2) Plan how to manage each risk. 3) Predict the questions listeners will ask and prepare strong answers. When: When preparing a project pitch.
+- [procedure] 1) Ask why this game is being pitched to this specific listener. 2) Define what success looks like for you. 3) Identify what the listener gains by saying yes. 4) Identify what the listener must learn about the game. When: Preparing a pitch before delivering it. Why: Answering these questions focuses the pitch on purpose and the listener's benefit.
+- [procedure] 1) Confirm the date and time of the meeting. 2) Bring enough printed handouts that are easy to reach. 3) Bring all needed cables. 4) Arrive early and test projectors, computers, and internet connection. When: Preparing for a pitch meeting. Why: Testing in advance prevents technical failures from disrupting the pitch.
+- [procedure] 1) Compose a headline line that hooks purchasers. 2) Draft highlight captions for the three or four headline features. 3) Pick visuals like screenshots, characters or bespoke art, labeling which aspects each depicts. 4) Run an informal focus session with testers on the packaging, then revise the pitch based on their input. When: Presenting a game to buyers.
+- [procedure] 1) Find and read two sample design documents. 2) Note each one's strengths and weaknesses. 3) Decide whether you could execute the described design. 4) List the questions you would ask its designers. When: Learning design document practice.
+- [procedure] 1) Assemble the pitch materials with your team, including the prototype, design document and project plan. 2) Build a target list of companies from your contacts and research. 3) Find a contact inside each company. 4) Arrange a pitch with each.
+- [procedure] 1) Lead the audience through the interactive experience across slides. 2) Mix traditional presentation with choose-your-own-adventure style interactivity. When: Pitching an interactive experience.
+- [procedure] 1) Confirm every approver knows the referenced sources. 2) Informally share the gist of the idea. 3) Send the formal document only afterward. When: Before submitting a formal pitch.
+- [procedure] 1) State the basic concept. 2) Name the genre. 3) Add the protagonist and story. 4) Add an appeal hint and a clear audience. 5) Trim the whole pitch to under forty words. When: Building a short game pitch from a basic concept. Why: Covers genre, concept, protagonist and story in one brief statement.
+- [procedure] 1) End the presentation on the initial pitch. 2) If questions arise, restate the pitch before leaving. When: Concluding a pitch meeting. Why: People remember the last thing they hear.
+- [procedure] 1) Start the experience before the room, such as theming the entry area. 2) Have the host perform rather than read. 3) Send reminder messages tied to the narrative before arrival. When: when audiences need to be focused and ready at the start. Why: Pre-start cues move the audience's attention into the experience early.
+- [procedure] 1) Describe the player characters. 2) Describe important NPCs. 3) Describe the main storyline and conflict. Narrative-driven games need more detail here. When: Writing the story section of a pitch.
+- [procedure] Describe a challenge, what the player might do, and how gameplay and story combine in that scenario. When: Writing the gameplay example of a pitch.
+- [tradeoff] Sources disagree on pitch length: two to five pages including cover, never over eight, versus one page plus cover, single-spaced, no longer than a page and a paragraph. When: writing a game pitch document. Why: A pitch is a marketing document meant to be read quickly, not a novel.
+- [tradeoff] Selling from your own site or a user-generated site gives full creative control and direct access to players, but offers little money or marketing support and makes traffic hard to earn. When: Budget for marketing is small.
+- [pitfall] Pushy, sales-first presentations put listeners off; the pitch should serve the listener's problems. When: Delivering a pitch. Why: Listeners respond to relevance to their needs, not to pressure.
+- [pitfall] Overly long pitch documents are often skimmed or missed by executives, so keep each item brief.
+- [pitfall] Pitching before the package is complete leaves reviewers without the materials they need to judge the project.
+- [pitfall] Discussing specific scenes or abilities lets participants fixate on one detail and lose the overall concept. When: Presenting a pitch with many details. Why: Attention narrows onto vivid specifics.
+- [pitfall] Opening with a long backstory or saving the game's identity for later weakens the pitch, since story quality does not predict game quality. When: Structuring the opening of a pitch. Why: Listeners judge the game by its concrete identity, and backstory alone does not show it.
+- [pitfall] Expecting the released game to match your original concept exactly sets you up for frustration, since compromises are normal.
+- [fact] A publisher may return months after a pitch, so impatience about timing is usually misplaced. When: Waiting for a publisher's answer. Why: Decision timing depends on the listener's schedule, not the presenter's.
+- [fact] Pitches occur throughout development, from rough concepts and prototype approval to publisher, crowdfunding, change, and post-release press pitches.
+- [fact] Pitch size varies from multimillion-dollar funding requests to small changes, and both part-time indies and large studio staff pitch heavily.
+- [fact] Gaps in row numbers or column letters, and small arrows in headers, are the visual signs that adjacent rows or columns are hidden.
+- [fact] A pitch usually reaches business and legal first, which then builds consensus among the other groups, and those groups may compete with each other.
+- [fact] A sell sheet is a short document giving title, genre, player count, platform, ship date, a two-paragraph description, feature bullets and art.
+- [fact] A presentation deck of key visuals and points lets a pitch carry on when the presenter is not in the room.
+- [fact] A full pitch document is usually produced by a team of professionals from several game design and development areas, not by one writer alone.
+- [fact] A pitch document is the basis for the later Game Design Document, which records the design team's intentions.
+- [fact] Pitching an interactive experience requires basic game-design vocabulary, such as mechanic, core mechanic and dynamic.
+- [fact] Serious games often aim for transformational play as a primary goal, teaching players through direct experience.
+- [fact] The concept phase is where a new game, game part, or story first takes shape, and the central idea everything else is built on is formed.
+
+## team culture
+- [model] Team health has six parts to check: right team for the project, objective communication, clear communication, comfort with each other, trust and respect, and ability to unify around decisions.
+- [model] Meaningful work has eight qualities: a creative outlet, fitting difficulty, pride, acknowledgment, ownership, belonging, accountability, and freedom. When: When designing or assigning work for a team.
+- [definition] A braintrust is a recurring group that meets every few months to assess each project in production.
+- [definition] Arrogation is a leader claiming decisions that belong to someone else with natural authority over them, often through micromanagement.
+- [definition] Political effects are shifts in influence and relationships among developers caused by a design decision, and group design works like trading favors.
+- [definition] Cultural effects are changes to a team's shared expectations, assumptions and habits, which shape its long-term health.
+- [mechanism] Trust builds over time through the quantity of communication, especially face-to-face, because people read trust through subtle cues.
+- [mechanism] Quick wins from iterative cycles build trust in UX quickly.
+- [mechanism] Pairing free camera zoom with free movement can resolve both interface clarity and emotional immersion problems in a 3D game. When: prototyping a 3D exploration game. Why: Players can choose the scale at which they view the world.
+- [mechanism] Debate is productive only when debaters are skilled and hold diverse perspectives; weak debaters waste time attacking strong points or missing fallacies. Why: Skill and diversity determine whether flaws are found efficiently.
+- [mechanism] Self-identified commitment, where a developer sees the work as part of who they are, is the strongest motivator; money carrots and dehumanizing environments kill it before it grows. When: When trying to motivate developers over the long term. Why: Identity-based commitment is internal, so external pay or control undermines it.
+- [behavior] A reputation for dishonesty in any area makes others afraid to speak candidly with you.
+- [behavior] Designers often want executives to fund a game and then leave them alone, which creates friction. When: Developer and executive relations. Why: Designers tend to expect autonomy once funded.
+- [behavior] People with different knowledge, experiences, and assumptions spot weaknesses in others' ideas that they cannot find in their own. Why: Blind spots differ across people with different backgrounds.
+- [behavior] Arrogation springs from leaders who do not trust their subordinates and fear others will ruin important decisions.
+- [behavior] In a productive climate people feel energized and safe, take risks, ask questions and stay focused on work; in a fearful climate they feel angry and afraid and spend energy dodging blame. Why: Climate sets whether people weigh the cost of speaking up.
+- [rule] Answer tough questions with a firm affirmative backed by evidence; hedged yes or probably signals uncertainty, and absolutely without evidence sounds empty. When: Answering a challenging question in a pitch. Why: Evidence makes the answer credible; unsupported certainty is quickly exposed by follow-up questions.
+- [rule] Treat UX as a mindset for the whole product team, ideally the whole company, not as a single role, deliverable or step.
+- [rule] Consult players with disabilities throughout development.
+- [rule] Provide a quiet space at a comfortable temperature, with enough chairs and a large writing surface for design discussions.
+- [rule] If you offend someone, apologize sincerely rather than defending what you said.
+- [rule] Team members must always feel they are getting the truth from you, even when politics tempts you to stretch it.
+- [rule] When a team wants a game built around an unproven technology, explain the Hype Cycle before committing to that direction. When: a team proposes a game built around an untested technology. Why: Explaining the cycle can prevent a dangerous decision made in the grip of hype.
+- [rule] Do not immediately explain why a client's suggestion is bad; this usually backfires, so seek the client's reasoning first. Why: Immediate rejection tends to alienate the client.
+- [rule] Pursue a game's positive effect quietly within the design rather than pitching social improvement as the goal to management. When: management may read the goal as misaligned priorities. Why: A stated social goal can be seen as conflicting with commercial aims.
+- [rule] Attend as many team meetings as you can and take part in the wider team, not only your own discipline.
+- [rule] Rehearse arguments beforehand and present them calmly and reasonably, avoiding irritability. When: Raising a disagreement with colleagues.
+- [rule] Include business and economic constraints in a UX strategy, but keep the approach human-centered rather than business-centered.
+- [rule] A UX culture needs clearly established values, a commitment to inclusion, and accessibility.
+- [rule] To advance from the Centralized stage, link UX metrics to business KPIs, such as tying UX issues to retention drops. When: UX operates as an internal service.
+- [rule] Coordinate UX at the project, production, and studio levels.
+- [rule] Celebrate small UX victories together with the development team.
+- [rule] Question and test UX theories, including ones drawn from practice, because the scientific method depends on challenging every idea.
+- [rule] Share the goal and agenda in advance so attendees can gather what they need, such as research for brainstorming or a workload review for status meetings.
+- [rule] Discard abusive or insulting feedback, because no one should risk their mental health for their job. When: reviewing feedback from playtesters or colleagues. Why: Personal attacks harm the receiver and carry no actionable design content.
+- [rule] Do not be possessive of reassigned work or take frustration out on the new writer; resolve any issues with your lead.
+- [rule] Check company policy before working on personal projects, since some employers require approval and may take intellectual property rights.
+- [rule] Participants must feel no dread toward each other, since those holding less authority won't argue candidly out of fear of reprisal. When: Any debate involving unequal power, such as a manager and subordinates. Why: Power imbalance corrupts honest critique.
+- [rule] Choose people you can count on and then fully trust them, because no leader can cover others' mistakes or understand every decision across a large team.
+- [rule] Assign a decision to the person who holds the most relevant knowledge about it, not to the person with the most seniority.
+- [heuristic] Shared love for the game and its audience, not mutual liking, lets members set differences aside to make the game as good as possible; mutual liking helps but is optional. When: teams with mixed disciplines. Why: Common affection for the work outweighs disagreements about approach.
+- [heuristic] When designers control their own marketing, they can set productive givens about who their players are. When: designers run their own marketing. Why: marketing shapes player expectations.
+- [heuristic] Do not judge whether a task is possible before attempting it; some major innovations came from people unaware the task was considered impossible. When: Facing a design task that seems too hard. Why: Assumed impossibility can stop attempts that would have worked.
+- [heuristic] Team members who are hungry, thirsty, or overtired communicate poorly, so make sure basic physical needs are met before important discussions. Why: Physical discomfort degrades communication quality.
+- [heuristic] Talk one-on-one with each team member, since people share painful truths and pride-laden concerns more easily in private, and these talks build trust in a self-reinforcing cycle. Why: Privacy lowers the risk of sharing candidly, and candor deepens trust.
+- [heuristic] Schedule relaxed shared time with developers, since watching players struggle in UX tests is painful for the team. When: After UX sessions. Why: Shared enjoyment gives the team something besides problems to solve together.
+- [heuristic] Explaining core design pillars of a systemic game to outside partners such as publishers may need UX support. When: Pitching to publishers.
+- [heuristic] Use a UX maturity model to evaluate the studio's current level and identify tools to move forward.
+- [heuristic] Cut ideas the team is not passionate about, since a lack of passion at the start makes a project feel worse after months of work.
+- [heuristic] Credit where an idea came from, because failing to do so causes confusion and awkward disputes. When: When an idea is borrowed or adapted from another source.
+- [heuristic] If a relationship with an executive stays difficult, note the behavior that frustrates you and avoid repeating it with your own team.
+- [heuristic] Give artists freedom beyond your initial concept, since shared authorship builds their investment in the result.
+- [heuristic] Assign each team member a role within a larger system so collective intelligence emerges from local actions rather than from one person's grasp of everything. When: Teams where the work exceeds any single person's understanding. Why: Game development is too complex for one mind to hold.
+- [heuristic] Protect team culture even at the cost of short-term gains, since culture drives every action each person takes. When: When a choice trades short-term results against team climate. Why: Culture shapes the long-term output of all team members.
+- [procedure] 1) Build trust around UX practices. 2) Demonstrate quick wins. 3) Establish a common language and common UX processes. 4) Build a studio-level UX culture.
+- [procedure] 1) Find one element you can be proud of, such as a moment, mechanic, or interface. 2) If you are not in the target audience, think of the game as a gift for its intended players. 3) As a last resort, act enthusiastic until real feeling returns. When: when a designer has stopped loving the project. Why: Each step restores motivation with increasing effort.
+- [procedure] 1) Count the games each player has played with each teammate. 2) Treat frequent partners as effectively higher-rated. When: Adjusting team ratings for familiarity. Why: Familiar teams coordinate better than strangers.
+- [procedure] 1) Set the Tutorial order values. 2) Filter the table by Tutorial order. 3) Read the result as the chronological teaching plan.
+- [procedure] 1) Run a brainstorming session. 2) Have each team member contribute personal experiences. 3) Turn those details into characters, locations and storylines.
+- [procedure] 1) Establish that disagreement will not be punished. 2) Prove evenhandedness through consistent behavior. 3) Only then debate subordinates' ideas. When: A manager debating with direct reports. Why: Subordinates soften critique of a boss's ideas if they fear punishment.
+- [procedure] 1) Subordinates send condensed summaries of newly gained knowledge upward. 2) Leaders use these to iterate on broad structure such as level progression, plot and market positioning. 3) Leaders receive results of decisions, not moment-to-moment detail. When: Coordinating a team with distributed decisions. Why: Leaders can guide the whole without being everywhere.
+- [procedure] 1) Set the target you need. 2) Reframe it as a bigger aim beyond that target. 3) Let the team reach the original target as a natural result. When: When a team needs to hit a demanding goal. Why: A more ambitious framing makes the real target feel reachable.
+- [metric] In a 2015 developer survey, 62% of developers reported experiencing overtime.
+- [tradeoff] A producer owns schedule and budget while a designer argues for more time and money on gameplay, making the designer-producer combination the sharpest role conflict. When: Designer and producer roles combined.
+- [tradeoff] Prestigious schools offer industry connections, while small community college programs may suit a budget or location better.
+- [pitfall] Blaming individuals for a bad outcome misses the real cause, often a poor structure or a communication gap between disciplines; blaming the worker is usually wrong.
+- [pitfall] Teams working long hours can forget the player and drift away from what players need. When: Long development crunch. Why: Long hours narrow perspective and familiarity replaces fresh player viewpoints.
+- [pitfall] Designers often talk too much and reveal plans; a script and an objective facilitator help prevent this.
+- [pitfall] Passion can mislead because it is an emotion, so take it seriously without relying on it alone.
+- [pitfall] Blaming a client for not knowing what they want, instead of helping them find out, damages the working relationship.
+- [pitfall] Being caught unprepared by a predictable question can undermine an otherwise strong pitch.
+- [pitfall] Presenting ideas without a prototype or evidence signals low commitment, and enthusiasm alone does not prove fun or profitability.
+- [pitfall] Dismissing business people as beneath you is a mistake, since they are essential to the industry.
+- [pitfall] Obscurity can let designers slip out of personal responsibility for what they ship, because nobody asks them to answer for their work.
+- [pitfall] Interpreting test failures as player irrationality rather than as a teaching gap hides the real design problem.
+- [pitfall] UX without its own budget at the Centralized stage is often treated as a service rather than a strategic area. When: Centralized stage.
+- [pitfall] Using scientific findings against developers, or reporting their mistakes upward, damages trust.
+- [pitfall] Arriving unprepared wastes the time of everyone else in the room.
+- [pitfall] Assigning one team member several parallel tasks makes the schedule unrealistic, since they finish far fewer than planned.
+- [pitfall] If a narrative designer cannot work well with other disciplines, narrative delivery suffers on both large and small teams.
+- [pitfall] Guarding decisions against people you judge less capable than yourself only hobbles the team.
+- [pitfall] Treating skilled people as incompetent is among the most demotivating things a leader can do.
+- [fact] Skill at building compromises that delight both designer and client strongly predicts a designer's long-term job happiness.
+- [fact] Some professions, such as engineering, mark graduation with a ritual that reminds practitioners of their lifelong duty to society.
+- [fact] Onboarding continues for as long as players keep learning new gameplay, not only at the start.
+- [fact] At the Unintentional UX stage, UX emerges from necessity; the usual barrier is unawareness or rejection rooted in misconceptions, addressed by training and explaining what UX is and is not.
+- [fact] At the Centralized stage, UX roles are spread across teams and research is consistent, but scalability is limited and UX is treated as an internal service.
+- [fact] Shared authorship aims for every team member to take pride in having contributed to the game.
+- [fact] Distributing authority does not mean each person works alone; decisions drawing on many people's knowledge still require communication.
+- [fact] Results once considered extraordinary, such as early Olympic times, often become ordinary as later performers surpass them through training and expectation changes. Why: Expectations held people back; with enough effort, earlier limits were beatable.
+
+## publisher and distribution deals
+- [model] Publishers reject games for ten reasons: poor gameplay, unoriginal mechanics, wrong category, theme over gameplay, missing legal forms, narrow appeal, infeasible production, license dependency, unclear rules, cannibalization.
+- [model] Publisher teams fall into three divisions: marketing and sales, production, and business and legal affairs.
+- [model] Publishers weigh seven risks in a pitch: time to market, design, technology, team, platform, marketing, and cost.
+- [definition] The publisher's producer is the publisher-side project leader, the main link to the developer one step removed from daily production, owning schedule and budget and tracking, allocating and forecasting resources.
+- [definition] In a publisher-developer arrangement, the developer builds the product while the publisher finances and distributes it.
+- [definition] Publishing takes a game from concept to store shelves through four elements: development, licensing, marketing, and distribution.
+- [definition] American specialty is a catchall category for abstract strategy games, war games, and physical play, usually released in small print runs by small publishers.
+- [definition] A red ocean is a crowded market flooded with suppliers, where competition erodes profit.
+- [mechanism] Build acceptance triggers a payment to the developer, so a build must pass publisher QA and its strict technical requirements before payment follows.
+- [mechanism] When a resource economy only adds resources and rarely removes them, average production per turn rises over time, causing inflation. When: Turn-based economies where production outpaces removal. Why: Growing builds raise future production.
+- [mechanism] Publishers recoup their investment before paying developer royalties.
+- [mechanism] A data entry with a prototype field inherits every property it lacks from the named entry, so it lists only what differs. When: when authoring monster or item data as property bags. Why: shared values are defined once and changes propagate to all inheriting entries.
+- [behavior] Publishers favor top developers or projects built on known content. When: evaluating developers or projects for a deal. Why: Publishers are risk averse.
+- [behavior] Retailers work on thin margins, so they cut every corner they can, which keeps their share of a sale high. When: evaluating retailer shares of revenue. Why: Low margins force high percentage cuts.
+- [behavior] Publishers may cancel weaker products mid-development to save money for titles they expect to sell. When: when a product looks unlikely to sell well. Why: Cutting losses frees budget for likely hits.
+- [rule] Developers may attend playtests only if they stay objective and police their own behavior, and must not interact with participants, since contact inflates hype and biases feedback. Why: Developer presence or contact biases testers' expectations and feedback. (x2)
+- [rule] Assign one designated contact on each side for communication; veteran developers want a single publisher-side person who can approve work and authorize payments.
+- [rule] Build AI in a PC project, where changes compile and test without a full console build; mini-applications and shared libraries help.
+- [rule] Ask instructors what problems they need solved, and make the game a tool for them rather than a replacement.
+- [rule] Understand the audience's prior knowledge and expectations before designing inputs they must read. Why: Players may perceive the same input differently.
+- [rule] Pitch to casual publishers with a playable demo, which is generally expected; relationships with company staff also help.
+- [rule] Choose a publisher whose focus, market, and past games match your game, rather than defaulting to the largest or best-known.
+- [rule] Research a publisher's product lines before submitting, since publishers reject games for lines they do not produce. Why: Many rejections happen because the inventor did not research the publisher.
+- [rule] Be courteous and persistent in following up with publishers, because calls and emails often go unreturned.
+- [rule] Define the target audience with an age range and an interest group. When: Writing a game design document. Why: Specific audiences make design choices clearer.
+- [rule] Do not advertise a detailed high-stack feature until it has been iterated, since changes below it are likely to alter it.
+- [rule] Ask where the money goes in the business model and why, what production, marketing, distribution and maintenance cost, how much it will earn and on what reasoning, and what barriers to entry exist. When: while designing a game.
+- [heuristic] Public beta tests help find loopholes, especially in massively multiplayer games, because large player bases expose flaws that small groups miss. When: Planning late-stage testing.
+- [heuristic] The idea itself matters least to publishers, who rely on market data about which genres audiences will buy.
+- [heuristic] Publishers weigh a team's track record most heavily, then its project plan, when deciding whether to fund a concept.
+- [heuristic] A developer with many PC titles may be judged riskier for a console game than one with a single console hit.
+- [heuristic] Consider a PC or Mac release when the target audience is older or more gender-balanced.
+- [procedure] Open Science practices include transparency and pre-registration, where peer review happens before data collection so publication does not depend on the result. When: planning a study whose result you could be tempted to over-interpret.
+- [procedure] 1) Survey the target audience. 2) Interview its members. 3) Observe them in play study groups. 4) Design the product from these findings. When: Before designing a game for a specific audience. Why: Design grounded in audience evidence rather than assumptions or copied hits.
+- [procedure] 1) Check the publisher's attitude toward external developers. 2) Check the genres and trends it follows. 3) Review its recent products. 4) Frame your pitch around its focus. When: Before approaching a publisher with a game. Why: A well-matched pitch is more likely to be accepted.
+- [procedure] 1) Buy games from publishers. 2) Warehouse them. 3) Mark them up about 50%. 4) Send retailers a catalog to order from.
+- [procedure] 1) Invent a game for one consumer type and fix problems strangers reveal. 2) Research publishers whose lines target that consumer. 3) Contact them by cold call, email, convention, or agent. 4) If interested, send a prototype or video demo. 5) Wait for the decision. 6) If declined, get feedback and keep trying with several games. 7) If accepted, negotiate a contract.
+- [procedure] 1) Find the publisher's website or main switchboard. 2) Ask for the contact who handles third-party product acquisitions.
+- [procedure] 1) Take the wholesale price as about 64% of retail. 2) Subtract goods (about $5), co-op advertising (15% of wholesale), marketing (8%), and return reserve (12%). 3) The remainder is the publisher's net, about 32% of retail. When: physical retail distribution of a console game.
+- [metric] A publisher's portfolio can be split between new concepts, sequels, and licensed properties, for example 41%, 50%, and 10%. When: Comparing publisher strategies.
+- [metric] A single mass-market chain accounted for 19% of US tabletop sales. When: US tabletop sales in the surveyed period.
+- [metric] Fewer than 4 percent of the thousands of submissions publishers receive each year get published, and only one or two of those become hits.
+- [tradeoff] Publishers may decide within about six weeks at most, yet reviews can take 4 to 16 weeks, depending largely on how aggressively you follow up. When: after submitting a game to a publisher.
+- [tradeoff] Publishing on your own web site gives full creative and marketing control, but provides no budget and little help.
+- [tradeoff] Each distribution route trades creative control, funding, marketing, and IP ownership differently, so choose based on which factor matters most for your project. When: when selecting how to publish an independent game.
+- [tradeoff] Developers aim for the highest quality within their resources, while publishers aim for a bestseller with low cost and risk. These goals overlap but conflict over time and money.
+- [tradeoff] Retail leaves publishers about 32% of the price after costs and returns, while digital delivery lets them keep the full sale price, lowering risk and encouraging innovation.
+- [pitfall] Assuming your audience reads cues the way you do, or relying on abstract market segmentation instead of a concrete user profile, leads to unnoticed usability problems. When: Planning audience analysis. Why: Designers' own reading of cues differs from players', and segments lack concrete behavior.
+- [pitfall] Showing content publicly before beta makes later cuts visible and controversial, so reveal material only once the set is largely settled. When: deciding when to publicize unfinished content. Why: Players react strongly to content they saw and then lost.
+- [pitfall] Developers working with casual publishers usually give up creative control and do not own the intellectual property.
+- [pitfall] Comparing game revenue directly to box office is imprecise, since films also earn from DVD, broadcast, cable, and foreign rights.
+- [pitfall] Publishers reject games that compete with an existing hit from the same company, a problem called cannibalization.
+- [fact] Most physical games stay on shelves three to six months; unsold copies are returned, leaving publishers holding stock, so sold-in and sold-through figures differ greatly; only sold-through matters. (x2)
+- [fact] Profit funds the game industry, so designers should keep profit in view while designing, and people who enjoy managing money are needed for it.
+- [fact] Most game deals reportedly start with a mutual friend making an introduction. When: Seeking a publishing deal. Why: Personal introductions are a common path to deals.
+- [fact] The split varies: a developer may handle everything except marketing and sales, or a publisher may develop titles entirely in-house.
+- [fact] A publisher-owned studio still has a publisher-developer relationship with its parent, so it must manage its own cash flow, profit and loss, schedule, and staffing.
+- [fact] Casual publishers fund games they believe will earn money, manage production through completion, check quality, and market the game to over 500 casual game sites worldwide.
+- [fact] Publishers examine each area's leaders, how the team operates, obstacles it has overcome, and its history with previous publishers.
+- [fact] Some aggregators seek quirky, innovative, offbeat titles that mainstream retail would be unlikely to stock.
+- [fact] Some aggregators publish anthologies of indie games on physical discs sold through retailers and accept submissions through a web site.
+- [fact] Some aggregators do not publish casual games.
+- [fact] Publisher rejection does not prove weak demand; a self-published niche title can still sell strongly.
+- [fact] PC and Mac games form a smaller market than console games, split between the two dominant operating systems.
+- [fact] Some platform-focused publishers invest heavily in original ideas, with about 45% of one publisher's releases being new intellectual properties.
+- [fact] Publishers are the main source of game funding.
+- [fact] Crossover appeal can bring players of one hobby into another product line, which is why licensed products are common.
+- [fact] Large publishers can sell directly to big chains, while small publishers depend on distributors.
+- [fact] Mail order, auction sites, company websites, educational distributors, and sporting goods stores are other channels, though none match the traditional markets' sales.
+- [fact] American specialty is the easiest tabletop category for a new inventor to enter.
+- [fact] After weighing risks, publishers prepare a return-on-investment analysis of a title's profit potential.
+- [fact] Publishers are expected to rely on agents and independent producers to supply packages.
+- [fact] Proactive Hollywood-style agents package developers with film projects and earn a share of the package budget.
+- [fact] A publisher picking up an independent game usually offers better ownership and royalty terms, and a finished product lowers the publisher's advance risk.
+- [fact] Console makers and app stores impose strict quality rules, and a single crash bug can block a release. When: Planning release risk for platform-certified games. Why: Platform certification makes stability a gate that hard-coded changes must pass.
+- [fact] A finite property market with currency and auctions lets market value emerge from player competition after purchase.
+- [fact] A publisher controls card release quantities and rarity but not how cards are traded or priced.
+- [fact] Publishers coordinate many parties and absorb losses from failed titles, including buying back unsold copies, so they take a large share. When: a title sells poorly. Why: Publishers carry the financial risk of unsold stock.
+
+## research methods
+- [model] UX research follows the hypothetico-deductive scientific method: state a hypothesis, measure a predicted effect with a standardized protocol defined beforehand, then confirm or reject; iterative, like design thinking. Why: Reduces bias from gut feelings and subjective memory. (x2)
+- [model] Knowledge creation uses a deck of methods, including playtesting, brainstorming, discussion, debate and daydreaming, each with its own effect and resource cost.
+- [definition] Semirandom research is study without a specific question, building a store of ideas that feeds rumination; it is the counterpart to targeted research.
+- [definition] Bayesianism treats a probability as itself uncertain and combines prior knowledge with new evidence to update it.
+- [definition] A natural experiment is a retrospective study in which chance divides players as an A/B test would, without designer intervention.
+- [definition] A gameplay hypothesis links an early player behavior or understanding to later engagement or retention, such as disengagement from unclear features.
+- [definition] Targeted research is study done to answer a specific question the project currently has, such as how a historical setting looked or how a mechanic works in other games.
+- [definition] Knowledge-creation methods include mathematical calculation, field testing, lab testing, rumination, argument and debate, and research and study.
+- [definition] The behavioral paradigm focuses on environment, stimuli and observable responses, and on how rewards and punishments shape behavior.
+- [mechanism] Task analysis answers specific-task questions with time and error metrics; usability tests cover section-level usability with several participants; think-aloud shows first reactions one participant at a time. When: Choosing among observational test methods. Why: Each method captures a different level of player behavior.
+- [mechanism] Playthroughs assess engageability across a whole game and benefit from larger samples; surveys suit closed beta or testing with many respondents. When: Choosing methods for run-level or large-audience feedback. Why: Whole-game engagement and broad sampling need different scale than section tests.
+- [mechanism] Heuristic evaluation suits rough builds or when tests cannot be run; RITE suits rapid iteration on one narrow feature; personas suit conception and preproduction for team alignment. When: Choosing methods for early or constrained stages. Why: These methods work without full target-audience testing.
+- [mechanism] Lowering prevalence or raising the false-positive rate lowers the chance that a positive result is correct. Why: fewer true cases or more false alarms shift positives toward wrong results.
+- [behavior] Knowledge emerges constantly from designers' thoughts, artists examining scenes, and programmers running the game briefly to check a widget. When: Larger teams in production. Why: Many small observations accumulate into design knowledge.
+- [behavior] A player whose view is whited out but whose controls still work relies on remembered position and listened-for sounds to keep acting. When: When perception is blocked but control is kept. Why: Memory and audio cues stay usable when sight is removed.
+- [rule] Choose methods by question and stage, reacting as conditions shift, since no algorithm picks them; when none fit, return to first principles and invent one. (x2)
+- [rule] Test insights against predetermined hypotheses and combine quantitative analytics with qualitative user research before deciding, since quantitative data alone lacks context. (x2)
+- [rule] Playtest with people from the intended audience, such as buyers of similar games, not only the designer or friends, since they give more relevant and detailed feedback. When: Balancing difficulty, pacing, or choice quality for a specific group. Why: Insiders misjudge difficulty for players outside their circle.
+- [rule] User research and analytics both apply the scientific method with different tools; pair a researcher with a data analyst, or embed hybrid-skill researchers, so both drive decisions together.
+- [rule] Treat a prototype as a hypothesis and accept results that contradict it, even when they are unwelcome.
+- [rule] For a game built around an activity, study closely the preferences of players who already love that activity. When: designing a game themed on a specific hobby or activity.
+- [rule] Write down assumptions and purpose, then design the measurement to affirm or deny a stated hypothesis.
+- [rule] The whole team should agree on the level of evidence rigor required before the project starts. When: planning assessment of a transformational game. Why: Different projects need different levels of proof.
+- [rule] Researchers should give objective analysis based on data and scientific knowledge, not personal opinions or an agenda, so developers can decide.
+- [rule] Keep the researcher embedded in the team for trust, but keep emotional distance from the game.
+- [rule] Collect data tied to gameplay and business hypotheses; without hypotheses, finding a meaningful pattern is like searching for a needle in a haystack. When: before deciding what to track. Why: unfocused data hides the patterns that matter.
+- [rule] Form strong hypotheses before reading live data, so results can be checked against predictions. When: Live operation analytics.
+- [rule] Research UX challenges of a new technology in scholarly databases and HCI papers, not only in LLM answers, which can be biased or misinformed. When: when learning the UX challenges of a new technology.
+- [rule] Study a topic thoroughly, gain hands-on experience with the mechanics you intend to simulate, and check whether any discovery could inspire a game idea. When: Looking for game concepts rooted in real-world activity. Why: Firsthand knowledge reveals which details matter and which to drop, even if the final game is not meant to be realistic.
+- [rule] Frame user research as studying the product, not the people who use it.
+- [rule] Specify which game, genre, mode and play style a study examines, since video games are not one category. When: when reporting or comparing game research. Why: games vary widely in genre, mode and competitive or cooperative play.
+- [heuristic] Treat small experiments, including failed or unusual ones, as studies: failures show which ideas to pursue, and silly-seeming interactions can lead to later successes. Why: Small experiments build design skill and inform larger projects.
+- [heuristic] Designers build intuition for soft metrics by staying attuned to them across many projects.
+- [heuristic] Good listening accepts being upset or having your assumptions contradicted, rather than holding a fixed position. When: Receiving criticism of a design. Why: Staying off balance lets new information change your view.
+- [heuristic] Designers may combine behavioral experiments with introspection and use whatever seems true in subjective experience, since they are not bound by scientific rigor. When: Gathering evidence about player experience. Why: Designers need practical truth about experience rather than verifiable proof.
+- [heuristic] Partner with subject matter experts, who are often eager to share detail and help get the content right.
+- [heuristic] Plausible causality, backed by reasoning about game systems and confounders, may be enough to act; verify the causal link when more certainty is needed. When: Deciding whether to change a game based on a suspected cause. Why: Acting on a weak cause risks wasted or harmful changes.
+- [heuristic] Clear hypotheses save implementation and testing time and help anticipate the effects of behaviors and of their absence.
+- [heuristic] Anger from hypersensitive testers flags imbalances and rough spots that disturb the flow of play, even when such testers are unpleasant to be around.
+- [procedure] 1) Define who the target players are. 2) Identify their skills and needs. 3) Build a process for recruiting them into playtesting. 4) Balance the game for them. When: Before tuning a game for a specific audience. Why: Balancing without a clear target produces a mismatched difficulty.
+- [procedure] 1) Float the idea informally with the affected stakeholder to gauge reaction. 2) Ask a knowledgeable team member how feasible the change is. 3) Seek several outside opinions. 4) Decide once the knowledge gap has narrowed. When: Uncertainty is high and premature commitment would be costly. Why: Information gathered cheaply reduces the risk of a costly wrong decision.
+- [procedure] 1) Set aside mechanics and ask which basic human needs the game serves. 2) Identify which Maslow levels it operates on. 3) Check whether it fills competence, autonomy and relatedness needs. 4) Ask how it could fill more basic needs. 5) For served needs, ask how to fill them better. When: when evaluating a game's fit with player needs.
+- [procedure] 1) Pick a convenient population size. 2) Apply prevalence to get the affected group. 3) Apply sensitivity to find true positives. 4) Apply the false-positive rate to the unaffected group. 5) Divide true positives by all positives. When: estimating what a positive result means. Why: counting people avoids confusing conditional probabilities.
+- [procedure] 1) Review general theories and literature. 2) Make broad observations and define questions. 3) Form hypotheses. 4) Design a standardized experimental protocol. 5) Run the test. 6) Analyze results. 7) Confirm, reject, or refine the hypothesis, then return to theory.
+- [procedure] 1) Define gameplay and business hypotheses and exploratory questions. 2) Map each to events to track. 3) Assign each question to user research or analytics. 4) Pick visualizations such as heatmaps, histograms or lines to fit each hypothesis.
+- [procedure] 1) Use analytics to locate problem spots at scale. 2) Use user research to explain why they occur.
+- [procedure] 1) Learn what the target audience already plays. 2) Observe them interacting with existing games and with each other. 3) Ask what they feel is missing. When: When designing for a specific audience. Why: Observing real play grounds design in actual behavior and reveals unmet needs, unlike a focus group.
+- [procedure] 1) Decide all research topics before production begins. 2) Split topics among team members, including non-writers such as artists. 3) Narrow research over time from general to specific subjects. When: planning worldbuilding research. Why: Assigning topics early keeps the research on schedule.
+- [procedure] 1) Before sharing, write down your own perceived strengths and weaknesses, and keep the list private. 2) Share the work with reviewers without stating your view. 3) Compare their findings with your list and ask about anything they did not mention. Why: Stating your view first can influence reviewers.
+- [procedure] 1) Check whether the study is correlational or experimental. 2) Note the number of participants and their ages. 3) Identify which game was used. 4) Identify what was measured. When: when reading news reports of game research.
+- [procedure] 1) Name the design question, such as which mechanics made a genre succeed. 2) Choose existing games in that genre. 3) Play them, noting which mechanics worked and why. When: A specific design question needs answers from outside sources.
+- [procedure] 1) Note how the experience made you feel. 2) Note what it made you think. 3) Note what it made you do. When: Playing your own or others' games. Why: These three responses break an experience into analyzable parts.
+- [tradeoff] Rigorous scientific testing by skilled researchers is the ideal proof but costs time and money, so game teams must balance rigor against time and resources. When: a project needs strong proof. (x2)
+- [pitfall] Accepting the first plausible explanation of playtest data without checking other explanations.
+- [pitfall] A badly run playtest is worse than none, because it creates false knowledge, and its flaws often look smooth and are hard to notice.
+- [pitfall] Relying on one method alone misses what others reveal: analytics shows what happened, while tests explain why it happened. When: Designing a research plan. Why: Telemetry and observation answer different questions.
+- [pitfall] Omitting positive findings and fixed issues makes a UX report feel one-sided. When: Writing a UX report. Why: Balanced reporting keeps the team's trust and tracks progress.
+- [pitfall] Relying on gut instinct alone to find a structure that enables the intended experience leans heavily on luck. When: Searching for a mechanic that produces a target feel. Why: Without method, finding a working structure depends on chance.
+- [pitfall] Sloppy studies with loose protocols and small samples damage trust in the results.
+- [pitfall] Falling in love with the game introduces bias into observation and interpretation.
+- [pitfall] Surveying only engaged beta testers misses players who left, so feedback can wrongly suggest that features like competition are unneeded. When: when sampling only active or engaged players. Why: players who churned are absent from the sample.
+- [pitfall] Describing an idea as 'X mixed with Y' can signal that the idea has already been made. When: Writing a one-liner description. Why: Blended references suggest an existing product.
+- [pitfall] Assuming a leader can capture and direct the team's knowledge through instructions alone leads to waste in creative work.
+- [pitfall] Useful signals are hard to extract from raw player telemetry, and improvised statistical feature crafting frequently degrades player-experience model performance.
+- [pitfall] Few experimental studies exist, so the causal link between play and sleep remains unclear.
+- [fact] Measurable options include time to read rules, clicks to perform a function, speed of level progression, and 1-to-10 ratings of features.
+- [fact] Gut feelings are unreliable because perception is subjective, attention is scarce, and memory is fallible.
+- [fact] Anecdotes of clear behavior change inspire and sell well but do not prove a game's effectiveness. When: evidence is based on stories. Why: Individual stories cannot show the cause of change.
+- [fact] Replication means repeating an experiment and getting the same outcome; it shows the method was sound and the effect was not due to chance, while failure to replicate is a warning sign.
+- [fact] Knowledge creation includes inventing, refining, testing, debating, and linking ideas, not only generating them.
+- [fact] A small team with little money can beat a larger, well-funded rival by mastering how it creates knowledge, not by relying on connections or budget.
+- [fact] Experience annotations take three formats: ratings on scaled items, class judgements such as yes or no, and preference comparisons between sessions or variants.
+
+## ux research
+- [definition] A love deficit is a team condition where shared enthusiasm for the game is missing, and experienced members recognize it readily.
+- [definition] Correlation means two variables rise and fall together, but it does not show which one, if either, causes the other.
+- [mechanism] A usability facility with observation glass and an adjacent viewing room lets developers watch sessions as they happen and discuss them.
+- [mechanism] The earlier UX issues are identified, the less they cost to fix.
+- [mechanism] Usability testing run throughout development can substantially raise sales when a game is designed to reach a wider audience. Why: Fixes from repeated testing make the game accessible to more players.
+- [behavior] Story audiences constantly ask what happens next, what the hero should do, and where something went, making decisions even in noninteractive stories. Why: the desire to decide exists in noninteractive stories too. (x2)
+- [behavior] Once testers are told how a game works, their natural first impression can no longer be observed.
+- [behavior] Nervous manner suggests the presenter does not believe what they say, so listeners discount the message. When: Presenting a pitch. Why: Listeners read body language and hesitation as doubt about the content.
+- [behavior] Players may interpret cues differently than developers intended, and even experienced players can get stuck when a hold-button prompt reads like a loading message. When: Designing unfamiliar input prompts or start screens. Why: Designers' familiarity with a cue does not mean the audience shares their reading.
+- [behavior] Strong artwork draws in players who would otherwise pass over a game. When: when deciding whether a game gets noticed or tried.
+- [behavior] Faked enthusiasm reads as phony, while genuine excitement is contagious and draws the audience in. When: Presenting a game. Why: Audiences detect insincerity and respond to real energy.
+- [behavior] Audiences often prefer particular play-matrix quadrants, and young children tend to prefer physical and chance play, moving toward mental and chance play as they age.
+- [behavior] The unconscious can reach a feeling through inferences the person cannot consciously trace, as in a detective's hunch. When: When a feeling arises without a clear conscious reason. Why: Emotional evaluation can combine cues the conscious mind does not register.
+- [behavior] A designer cannot control the audience once they join an experience, but can control the context they bring in, which gives the most leverage. When: when designing an experience with a live audience. Why: Audience members' prior circumstances shape how they engage from the start.
+- [rule] Plan UX within the iteration pipeline early in development, following development's rhythm and constraints rather than running on a separate schedule. When: early in development.
+- [rule] Prepare a question script with space for answers and for notes on unexpected turns.
+- [rule] Interview players privately when possible, since people speak more honestly without others listening.
+- [rule] During playtester interviews, do not defend the game; focus only on how the tester feels and why, using neutral prompts such as 'What don't you like about it?' or 'Can you tell me more about that?' When: When interviewing playtesters. Why: Defending the game biases answers and hides the real reaction.
+- [rule] Code observed behavior literally, such as stayed a long time on the naming screen, and do not infer intent until notes, performance, and survey data are combined. When: Coding observations during analysis. Why: Early intent guesses can contaminate the analysis.
+- [rule] Run UX testing only once content is mature enough to produce useful feedback.
+- [rule] Expect to iterate on UX findings, since identifying the right problem is often not easy.
+- [rule] Build lasting UX influence with neutral, data-driven insight grounded in science and cognitive science.
+- [rule] Appeal to a broad population unless deliberately targeting a specific group, because designers with strong power motives may build games that favor dominant players. When: Setting the target audience. Why: Designers' own drives can alienate other players.
+- [rule] Fit puzzle design to the audience's interests and skills, since enjoyment varies from person to person.
+- [rule] Learn the target audience's prior knowledge, familiarity and expectations before designing visual communication.
+- [heuristic] Treat team love for the project as a necessity rather than a luxury, since a great game is unlikely without it.
+- [heuristic] Look for curious developers within the game team; they will try a few UX methods on their own. When: Building UX adoption.
+- [heuristic] When research requests keep increasing, propose a dedicated UX team.
+- [heuristic] Game studios can progress quickly through early UX maturity stages by building trust and delivering quick wins developers can own. When: Early UX maturity stages.
+- [heuristic] Prefer ranking annotation schemes over rating scales, because ratings showed order-of-play effects, inconsistent answers and lower inter-rater agreement. When: when collecting experience annotations for player models. Why: rating scales show order-of-play effects and inconsistent answers.
+- [heuristic] Lead creative teams through inspiration, collaboration and appreciation, and set people up to look smart, rather than through fear. When: Leading creative game development teams. Why: Love and appreciation encourage voluntary risk taking that fear cannot produce.
+- [heuristic] Prior player knowledge changes how much cognitive load a mechanic introduces, so know the target audience before introducing it.
+- [heuristic] Check a design against the list of player types to see whether it appeals to a range of motivations or serves only a few. When: Evaluating whether a game's appeal is too narrow. Why: Different motivations need different rewards; a list reveals neglected audiences.
+- [heuristic] The same scene can demand different attention from different players, so judge how much a scene can carry against the intended audience.
+- [heuristic] Audience comprehension drives enjoyment, so creative leads should imagine the game from the audience's view.
+- [heuristic] A negative reaction may come from someone outside the target audience; you can set it aside, but still ask why the reviewer reacted that way. When: the reviewer is not in the target audience.
+- [procedure] Show concept art and storyboards to the target audience to test whether characters, story, and audience appeal work before the game exists. When: when appeal of characters, story, or audience is uncertain or being validated.
+- [procedure] 1) Categorize each issue by type, such as UI, learning curve, or metagame. 2) Rate its severity as critical, medium, or low. 3) Give each issue a short headline and a detailed description with screenshots or clips. 4) Suggest options tied to developers' goals. 5) List what worked well and issues fixed since the last build. When: Writing a report after a UX test. Why: A consistent structure makes findings traceable and shows progress.
+- [procedure] 1) Pose hypotheses with the game team. 2) Design a standardized protocol. 3) Collect and analyze data. 4) Remove human biases where possible.
+- [procedure] 1) Ask whether you love the project; if not, find how to change that. 2) Ask whether everyone on the team loves it; if not, find how to change that. When: enthusiasm seems to be fading. Why: Team love is a predictor of project success.
+- [procedure] 1) Write a detailed UX report to keep research rigor. 2) Send a short email listing the top five issues needing immediate attention. When: Production teams with little time. Why: Balances rigor with brevity.
+- [procedure] 1) Form hypotheses about users. 2) Generate ideas. 3) Build prototypes. 4) Test with users. 5) Iterate on the findings. When: same loop applies to PC, VR, AR, and AI-based products.
+- [procedure] 1) Observe your own experience of games. 2) Observe others playing. 3) Imagine yourself in their place. 4) Build a picture of how their experiences differ from yours. 5) Predict which experiences they will and will not enjoy.
+- [procedure] 1) Define the target market before development starts. 2) Research what that audience does in its spare time, what it plays now, and what it likes and dislikes. 3) Design from those answers, not assumptions. When: when targeting a specific audience such as women.
+- [metric] Asking 20 or more questions in a row exhausts testers and degrades their answers. Why: Tired testers stop answering accurately, so answer quality matters more than question count.
+- [metric] Lost play time on entry can reach about five minutes, which is over 8% of a sixty-minute experience. When: when a timed experience has a fixed duration.
+- [tradeoff] Context-free modelling is desirable but less studied than context-aware modelling; objective measures require sensors and recordings, so gameplay input is more readily available.
+- [pitfall] Treating correlation as proof of causation, e.g., assuming games improve player skills or cause attention problems, ignores that struggling students may play more.
+- [pitfall] Long, exhaustive UX reports sent to a busy team are likely to be ignored.
+- [pitfall] Forgetting earlier UX findings when a feature returns for rework can repeat old mistakes.
+- [pitfall] Inventing answers on the spot to look competent misleads the team. Find the right answer or point people to whoever has it.
+- [pitfall] Judging an audience by cheap lookalike products can create a lasting stereotype and the false conclusion that it does not buy games.
+- [fact] Good quality and usability are necessary for an enjoyable game but not sufficient on their own.
+- [fact] Postgame interviews handle questions too complex for surveys and reveal how players really felt.
+- [fact] Post-play surveys collect quantifiable answers after a session.
+- [fact] Postgame questions can cover general impressions, formal elements, dramatic elements, procedures and controls, and end-of-session appeal.
+- [fact] Professional usability labs tend to produce superior results, and their methods can be adapted for in-house sessions.
+- [fact] Recorded facial expressions can be coded into emotional categories to quantify enjoyment, though designers rarely do this.
+- [fact] Postgame question themes include first impression, frustration, pacing, satisfaction, most exciting moment, and whether the game felt too long or short.
+- [fact] UX research labs were part of production at some AAA studios in the 2000s, and a few UX experts such as usability specialists worked in games during that period.
+- [fact] At the Expert stage, a small dedicated team or one person does UX, but the process is not yet deep or consistent; quantifying research and comparing tested and untested projects advances it.
+- [fact] Clear proof of UX value for upper management often appears only after launch, when business metrics can be linked to UX issues.
+- [fact] An earlier UX maturity model has eight stages, from hostility toward usability at stage 1 to a user-driven corporation at stage 8.
+- [fact] During production, usability and game feel are tested first, and engageability follows as systems start to mesh.
+- [fact] Studies report casual game audiences are 60 to 70% female, making casual design an easier route to female-friendly titles.
+
+## statistics and metrics
+- [definition] The mean is the sum of all values divided by the number of values, and it approaches the expected value with many samples.
+- [definition] Standard deviation measures how spread out data is around its mean; larger values mean the data is more scattered.
+- [definition] Metrics are measurements, often called KPIs, that report what changed in a game.
+- [definition] Verified causality changes the suspected root cause and watches the correlate, either prospectively by changing then observing, or retrospectively by checking past events. When: Confirming a suspected cause of a metric change. Why: Only a deliberate change or historical check separates cause from correlation.
+- [definition] Statistical significance is the minimum confidence required before concluding that two data sets truly differ.
+- [definition] A null hypothesis states that the tested variable has no impact on the outcome.
+- [mechanism] A few extreme values pull the mean toward them while the median barely moves, so a large gap between mean and median signals skew or outliers. When: reading a data set's shape.
+- [mechanism] Large-scale play data surfaces rare degenerate strategies that small internal playtests miss, since one player in a million produces a visible spike. When: Public betas or large player populations. Why: Rare behavior is statistically invisible in small samples.
+- [behavior] Consistent wrong answers on the test set suggest too few training examples or examples that are not varied enough. When: Network is evaluated on held-out scenarios.
+- [rule] Verify statistical results with several independent methods rather than trusting a single calculation.
+- [rule] The z test needs an established mean from prior data; when comparing two data sets, treat one as the baseline and the other as the new sample.
+- [rule] Use the z test only for roughly normal data and avoid it for strongly non-normal distributions, such as flat single-die roll results.
+- [rule] Use hard metrics to compare timing and performance between playtests, and soft metrics to judge whether players are actually enjoying themselves.
+- [rule] Do not substitute trial-and-error metric chasing for understanding the system behind the numbers.
+- [rule] Before relying on a spreadsheet method, rebuild a known published result with it and confirm the numbers match. Why: Matching a trusted result confirms the method works before using it on new problems.
+- [heuristic] Strong agreement between the model's ranking and real play increases confidence that the cost curve is reasonably accurate.
+- [heuristic] When the median exceeds the mean, most players take longer than the mean suggests, and the level probably runs long. When: Completion-time distributions. Why: A few fast finishers pull the mean below the typical time.
+- [heuristic] Playtesting and metrics can reveal the effects of small changes on player feeling, but the inner mechanism causing the feeling stays hidden.
+- [heuristic] A very small effect, such as a win-rate shift of a few thousandths of a percent, is probably noise and smaller than the system's random variation. When: Judging whether a measured change matters. Why: Tiny differences are usually within normal random fluctuation.
+- [heuristic] A Z test is a good starting point for statistical significance but not always the right test; chi-squared and ANOVA are other common choices, each suited to different data. When: Choosing a significance test for game metrics. Why: Different tests fit different data types and assumptions.
+- [heuristic] Aim for heuristic estimates close to the true cost but slightly below it.
+- [heuristic] Use a random comparand or the median of a small sample, such as three keys, to greatly improve the worst case while barely changing the average. When: Choosing a quicksort comparand. Why: Sampling makes consistently bad splits unlikely.
+- [procedure] 1) Compute standard error by taking the spread and dividing it by sqrt(n). 2) Compute z as sample mean minus established mean, divided by standard error. 3) Convert z to a probability using a normal table or cumulative distribution function. When: Comparing a small playtest mean against a large baseline or established mean. Why: The z test shows whether an observed difference is likely real.
+- [procedure] 1) Compile and analyze notes from all sessions. 2) Compare each variant with the original design. 3) Record how each change affected the player experience. 4) Decide which changes to make based on the sessions. 5) Check whether the notes support firm conclusions.
+- [procedure] 1) Sort the values from smallest to largest. 2) Take the middle value. 3) If the count is even, average the two middle values.
+- [procedure] 1) Compute the mean. 2) Subtract it from each value and square the result. 3) Average the squared differences. 4) Take the square root of that average.
+- [procedure] 1) Make a design change 2) Watch a chosen metric 3) Keep the change if the metric improves 4) Undo it if the metric worsens 5) Repeat the cycle When: Tuning a game by metric response.
+- [procedure] 1) Compute the analytic answer. 2) Check it with a Monte Carlo simulation. 3) Investigate any disagreement. Why: Double-counting is an easy error in hand-calculated probabilities.
+- [procedure] 1) Add one rule with input randomness and one with output randomness triggered by player moves. 2) Play a matched series: unmodified, each rule alone, and both. 3) Rank which variant is most interesting, most skill-based and most luck-based, and explain why. When: testing how randomness types affect perceived skill.
+- [procedure] 1) Compute an expected value with a Markov chain. 2) Check it with a Monte Carlo simulation. 3) Confirm it with an algebraic solution of the recursion. When: Validating a probability or expected-value result from a chain model. Why: Three independent methods agreeing gives confidence in the result.
+- [procedure] 1) Code each category outcome as 1 or 0. 2) Compute the sample mean, which equals the proportion, and the standard deviation. 3) Apply a Z test against the reference proportion. When: comparing a category share, such as gender, against a known benchmark. Why: Z tests need numeric data, and 0/1 coding turns a category into a proportion.
+- [procedure] 1) Compute the probability that the observed difference arises by chance. 2) Set a confidence bar. 3) Declare a difference only if its confidence clears that bar. When: deciding whether a playtest or analytics change is real.
+- [procedure] 1) Record events such as position, health, time, and key actions. 2) Aggregate many sessions. 3) Graph results to find problem areas. When: Tuning balance and pacing with play data. Why: Aggregated graphs reveal patterns single sessions hide.
+- [metric] A common significance standard requires about 95% confidence that a change is not random variation, accepting at most a 5% chance of a wrong conclusion. When: setting a significance bar.
+- [metric] In roughly bell-shaped data, about two-thirds of values lie within one standard deviation of the mean and well over 90% within two. When: data is roughly normal.
+- [metric] A 95% confidence interval is the usual research minimum; an 80% interval can justify an internal default despite not passing research standards. When: Deciding how strict a comparison must be. Why: Looser thresholds suit fast internal decisions where some uncertainty is acceptable.
+- [metric] MAU/DAU equals MAU divided by the mean of the month's DAU values. It ranges from 1, when everyone logs in daily, to about 28–31, when each player logs in once in the month. When: Measuring how often the average player returns. Why: It shows typical login frequency in a single number.
+- [metric] The null hypothesis is rejected when significance tests show results are unlikely under it, typically at 95% confidence or higher.
+- [metric] A confidence interval shows how much uncertainty the data contains around an estimate.
+- [metric] A Markov process is conservative when every row of its transition matrix sums to 1.
+- [metric] With 1000 random pairs the correlation is usually under about 0.05, while with 10 pairs its size can exceed 0.8. When: Random independent data in a spreadsheet.
+- [tradeoff] A confidence bar set too low produces many false trends, while a bar set too high discards genuine trends. When: choosing a confidence threshold.
+- [tradeoff] Demanding higher confidence requires much larger samples, which many developers cannot collect, so 95% is a practical balance. When: planning playtest or analytics sample sizes.
+- [pitfall] A visible improvement in a mean is not enough on its own; sample size determines whether it is statistically significant. Why: Small samples can show differences that are just random variation.
+- [pitfall] Relying only on mean, median and standard deviation can hide very different data shapes, including curves and outliers.
+- [pitfall] Assuming the most obvious causal link without additional evidence leads to wrong conclusions.
+- [pitfall] A result not significant at 95% does not prove no difference; the sample may simply be too small to detect one. When: Interpreting small-sample comparisons. Why: Lack of significance reflects limited data, not confirmed equality.
+- [pitfall] Statistics can mislead, so designer judgment is still needed when interpreting measured results.
+- [pitfall] Noise can look like a meaningful pattern, so a critical check for statistical significance must precede any design decision. When: when interpreting analytics results. Why: Random variation can produce apparent trends that do not reflect real player behavior.
+- [pitfall] Focusing on money ignores whether players enjoy the game, whether it enriches or harms their lives, and whether they are burning out.
+- [pitfall] Treating a tiny sample's average as a trend is a mistake; if only a couple of players out of millions do something, their average says little. When: Reading results from very few data points. Why: Small samples are dominated by outliers and chance.
+- [pitfall] Probability answers can feel intuitively right and still be wrong, so verify them with explicit calculation or simulation.
+- [pitfall] Using cumulative probability directly as the per-transition figure gives wrong results; subtract the previous value first.
+- [fact] About half of the values in a data set fall below the median and half above it.
+- [fact] Validated engagement questionnaires include PXI, FSS, GEQ, IEQ, and PENS; GEQ, IEQ, and PENS converge considerably. When: Choosing an existing questionnaire. Why: Validated instruments avoid designing unreliable items from scratch.
+- [fact] Confidence in a finding grows with a sustained trend, a longer observation period, a larger data set and a larger effect. When: Deciding how much to trust an observed pattern. Why: More data and longer duration reduce the chance the pattern is random.
+- [fact] Standard error shrinks as the amount of data grows.
+- [fact] Statistical conclusions carry a built-in chance of error that more data reduces but never eliminates.
+- [fact] A null result can itself be a scientific achievement.
+- [fact] Keeping 30% of users active on day two is regarded as an excellent result in mobile games.
+- [fact] Dividing a follow-on's count by the window total gives a probability that can estimate how accurate a prediction is likely to be.
+
+## feedback on work
+- [mechanism] Playtest feedback is not capped by a leader's understanding, so developers can keep improving, while a leader's judgment caps the achievement it grants.
+- [mechanism] Only a complete game released to real players gives feedback strong enough to change a designer's planning beliefs; friendly testers and unfinished prototypes soften the lesson. When: When deciding whether feedback will change a designer's habits. Why: Players with no reason to be kind reveal a game's true worth.
+- [behavior] Customers judge an immature new technology as not good enough, but do not treat that verdict as final; it keeps improving in the background. When: a new technology is still immature. Why: Customers judge against current needs; ignoring a new technology while improving the old one misses its progress.
+- [behavior] Developers become more receptive to UX findings when they feel the UX team is not always there to criticize their work.
+- [behavior] Good editors work at both word level, catching errors such as typos that change meaning, and story level, catching missing steps in dialogue and plot pacing.
+- [behavior] Strong QA testers have played widely, are practised at spotting plot holes, and reason more like a typical player than any other teammate. When: Choosing narrative reviewers.
+- [rule] Developers sit closer to the game, so their opinions are distorted; test with them anyway but take their feedback with a grain of salt.
+- [rule] State precisely what you like or dislike, why, and how it could improve; a vague verdict like 'it was just bad' gives no direction. When: Analyzing any experience or evaluating a design. Why: Specific reactions point to specific changes; judgments by feel alone do not show how to improve.
+- [rule] Distinguish expertise from preference when weighing feedback, even from non-designers; test, review and data findings count as evidence, most neutral when practitioners understand design and business goals.
+- [rule] State your design opinions directly, including flaws in a superior's idea; hedging a position until it is vague weakens its value. Why: Candor requires moral courage and effort in expression, not just mental effort in forming ideas.
+- [rule] Match feedback to the development stage: early playtests address gameplay and art, while late playtests focus on bugs. When: collecting playtest feedback. Why: each stage has different open questions.
+- [rule] Ask participants for blunt feedback and a short reason for each reaction, since participants tend to be too polite. When: Collecting feedback in a UX test. Why: Politeness bias softens honest reactions.
+- [rule] Accept editor notes, and learn from recurring mistakes and frequently misspelled words, since clear-seeming text may be unclear to others.
+- [rule] Critique the work, never the person, and avoid personal attacks or derisive language.
+- [rule] Ask the writer what kind of feedback they want, and tailor your notes to that focus.
+- [rule] Explain why you are raising an issue, so the writer has something concrete to act on.
+- [rule] Point out what works as well as what needs improvement.
+- [rule] Sort each feedback comment into one of three groups: Useful, Not Sure, or Will Not Use (WNU). When: reviewing a pile of feedback.
+- [rule] Fix glitches and trim content with QA feedback until the core of the story comes across clearly. When: time remains before release.
+- [heuristic] Value feedback by its form: a complaint flags a problem, a complaint with a reason gives its cause, and a suggested change needs probing because the real fix often differs.
+- [heuristic] Defining design terms is worthwhile even if the definitions stay imperfect, because the effort sharpens analytic thinking.
+- [heuristic] Client opinions range from wise to foolish or hypocritical, so designers must learn to handle both kinds well.
+- [heuristic] A live demonstration can overcome a skeptic's doubt more effectively than argument alone.
+- [heuristic] When UX feedback clashes with team goals, the cause is usually mismatched priorities or poor communication, not UX itself.
+- [heuristic] Frequent questions from an editor about intent signal that the draft is not yet ready, and the writer should offer to take it back for revision. When: An editor repeatedly asks what a writer meant. Why: What is clear in the writer's head may not work on the page.
+- [heuristic] Treat a reviewer's reported feelings as valid, but treat their suggested fixes with more caution, since suggesters often know the material less well.
+- [heuristic] Fix feedback that takes under about five minutes first, unless it sits in a section likely to be cut anyway. When: triaging feedback.
+- [heuristic] A percentage in a note usually signals a local problem that does not need a complete rewrite.
+- [procedure] 1) Build a storyboard following a player who succeeds with the feature. 2) Show the progression from beginner to success. 3) Present it to peers for critique. When: When testing how a feature communicates to others.
+- [pitfall] Critique only after understanding the team's intentions, constraints and challenges, or critique is uninformed; nitpicking without clearly stated intent yields confused work, so leaders must state intent first. (x2)
+- [pitfall] Verbal playtest reports are distorted by memory editing, mixed-in design suggestions, and feelings about the designer or studio.
+- [pitfall] Censoring ideas early can block good ones, which often appear only after the poor ideas are out.
+- [pitfall] Designers who cannot cope with strong client opinions tend to become unhappy in the role.
+- [pitfall] Designers invested in their games may dismiss audience feedback to ease their own internal conflict.
+- [pitfall] UX feedback on work that will be redone within a month wastes effort.
+- [pitfall] Getting defensive when testers say they did not have fun blocks learning why the experience fell short; listen instead of defending the plan.
+- [pitfall] Dismissing criticism because one comment was positive is a mistake; use positive remarks as a gut check and double-check the criticism instead. When: deciding whether to act on criticism.
+- [pitfall] Undirected media intake that matches peers' consumption yields the same ideas as peers, producing homogeneous designs. Why: Shared references lead to similar games across the industry.
+- [fact] Feedback forms with standard questions produce quantitative data, which survey tools or spreadsheets can collect.
+- [fact] At the Distributed stage, UX sits at the same level as finance, production, and marketing, which requires senior executive buy-in.
+- [fact] The long-term aim of UX practice is a distributed UX culture across the whole studio.
+- [fact] Online developer communities, including engine and software forums and mod communities, are places to find reviewers.
+- [fact] Game development work is hard to judge from outside: contributions are intertwined and uncertain, so good work can end in failure while shirking can look fine. When: When assessing individual contributions to a game project. Why: Outcomes are shaped by uncertainty and mixed contributions, not just individual effort.
+- [fact] Critics argue the hero's journey is over-formulaic and forces many different stories into one pattern.
+
+## player data and metrics
+- [model] The Flow Observational Grid is an observer-scored model with three dimensions: concentration, enjoyment, and frustration. When: when an observer watches players in play.
+- [model] Two complementary methods analyze repeated random state transitions: stepping a Markov chain forward to track state probabilities, and working backward by recursion, splitting a complex event into simpler events. When: Analyzing a chance game's length or outcome, or choosing decisions under uncertainty. Why: Each method answers different questions about the same process.
+- [definition] Conversion rate is the percentage of free players who start paying, counting any amount however small. (x2)
+- [definition] Exploratory analyses include clustering players by behavior, engagement and spending, and factor analysis to find what drives retention, such as what early churners do or skip.
+- [definition] Analytics means gathering and examining big volumes of gameplay telemetry from actual players.
+- [behavior] People treat their first experience of a game as the whole game, so a single playtest can be mistaken for the entire design. When: judging a design after one session. Why: The WYSIATI effect favors what has been seen and ignores what has not.
+- [behavior] Some player desires are so hidden that players are not consciously aware of them, and these are often the most important. When: Analyzing what drives player enjoyment. Why: Unconscious desires shape enjoyment without being reported, so they go unstated.
+- [behavior] Few players finish games; in one popular title only 10 percent reached the final mission. Why: Players often leave before the ending, so the journey carries much of the experience.
+- [rule] If design decisions depend on statistical feedback, push for data collection to be built early in development. When: design relies on playtest metrics. Why: late data leaves no time to act.
+- [rule] Make a game easy to learn by iterating until its basic skills are simple to pick up.
+- [heuristic] When only a small share of players uses an important feature, investigate why rather than assuming the feature is unwanted. When: Analytics shows low adoption of a key feature.
+- [heuristic] Near-duplicate data entries that repeat stats such as health and resistances should inherit from a common entry, since otherwise every balance change must be applied to each copy. When: when many game entries share most of their values. Why: duplicated values are error-prone to keep in sync.
+- [procedure] 1) Observe players and note the moment that pulls them out of flow. 2) Remove or change that moment in the next prototype.
+- [procedure] 1) Plot the curve the designer expects. 2) Plot the observed curve from playtests. 3) Compare the two to find gaps. 4) Plot separate curves per player group. When: before release, to find trouble spots.
+- [procedure] 1) Break each hit into its features. 2) Run statistics comparing feature presence with sales. 3) Keep the features that correlate with success. When: analyzing a dataset of commercial games. Why: Statistics show which features drive success.
+- [procedure] 1) Compute the standard error for each group. 2) Plot error bars for each group. 3) If the bars do not overlap, the groups are probably distinct. When: Quick visual check of whether two groups differ. Why: Non-overlapping error bars suggest a real difference between groups.
+- [procedure] 1) Plan a target emotion profile at the start of design. 2) Choose mechanics intended to produce each target emotion. 3) Test whether those mechanics actually produce the emotions. When: designing for specific player emotions.
+- [procedure] Testing for hidden assumptions: 1) Have a non-gamer play a game with a tutorial. 2) Note what they find hard to learn. 3) List the assumptions the game makes about the player's background. When: checking whether a game assumes gaming knowledge. Why: non-gamers reveal conventions that gamers take for granted.
+- [procedure] 1) Collect play statistics such as win rates by matchup and map. 2) Check whether a suspected imbalance appears in the data. 3) If the problem is only perceived, wait before changing anything. 4) Combine the data with designer judgment before adjusting. When: Investigating a suspected imbalance. Why: Some perceived problems are not real.
+- [metric] DAU (daily active users) is the number of unique users active per day, counted over the last 24 hours with no minimum play time. (x2)
+- [metric] Enjoyment is scored from 0 to 3, from no expressed enjoyment (0) to exclamations of enjoyment during or after play (3). When: when using the observation grid.
+- [metric] Engagement cannot be measured objectively in a simple way, and self-reported fun is biased.
+- [metric] A 2019 industry report found that 73% of U.S. residents age 2 and up play video games.
+- [metric] The DAU-to-MAU ratio is a high-level engagement indicator showing the share of monthly players who engage on an average day.
+- [tradeoff] Analytics-driven balance suits games that can be patched and monitored, but is much harder for tabletop trading card games, since home games cannot be uploaded and printed cards are harder to patch. When: When choosing balance methods for a game type. Why: Patchability and data upload determine whether analytics is feasible.
+- [pitfall] Facial expressions are unreliable indicators of player appreciation or emotion; webcam footage needs advanced micro-expression analysis before it can reveal feelings. When: Using facial expressions or webcam footage to read player emotion or appreciation. Why: Surface expressions do not reliably reveal feelings.
+- [pitfall] Eyetracking shows where players look, not necessarily what they attend to; heatmaps suit still HUD elements, trailers, or cutscenes. When: Interpreting eyetracking data. Why: Gaze does not always equal attention.
+- [pitfall] Treating a positive test result as near-certain disease is a mistake when the condition is rare, even if the test is highly sensitive and specific. When: the condition being detected is rare. Why: false positives from the large healthy group can outnumber true positives.
+- [pitfall] Assuming hours played defines the casual or hardcore category is a mistake, since some casual players play long stretches and some hardcore fans play briefly.
+- [fact] Experienced designers can predict the effect of a balance change with a high degree of accuracy.
+- [fact] Flow can be measured by self-report questionnaires, physiological measures such as electroencephalography, or direct observation of players.
+- [fact] The Flow-State Scale is the most popular self-report questionnaire for flow and can be applied to games. When: when players rate their own flow during or after an activity.
+- [fact] The player experience spans trailers, website, downloading, menus, gameplay, customer service, community management and the online platform.
+- [fact] Engageability pillars are unvalidated guidelines for video games, used to reveal engagement strengths and weaknesses, fix issues early, and interpret telemetry after Beta.
+- [fact] Average Day-1 retention for mobile games is reported below 30%, so the first 10 minutes on mobile and the first hour on PC and console are critical for keeping players. When: free-to-play and mobile games. Why: Players who quit early never reach later content.
+- [fact] Other exploratory questions cover paths players take, items they unlock, missions they play, and heroes they pick.
+- [fact] Game user research demands strong grounding in ergonomics, human-machine interaction, and cognitive psychology.
+- [fact] Gameplay input covers player actions and real-time preferences; game metrics include generic measures such as performance and time on task, and game-specific measures such as items picked and used.
+- [fact] Living games such as MMOs and games earning ad or free-to-play revenue test balance mainly through analytics, since the only way to test balance success is to let players in and analyze their data. When: When balancing live games with large player populations. Why: Live ecosystems can only be validated by real players in the wild.
+- [fact] Dates matter for game balance mainly through timestamped analytics collected from a game server.
+- [fact] In beta and live, analytics are read together with UX test insights, and focus shifts to difficulty, progression balancing, and monetization. When: Beta and live operation.
+
+## team dynamics and organization
+- [model] Commitments toward studio staff cover inclusion, UX priority, limits on crunch, protection from community abuse, and environmental responsibility.
+- [model] Team structure diagrams show vertical reporting lines to the producer and horizontal lines that let groups interact directly with each other.
+- [model] A team runs at full creative capacity when three conditions hold: the right people hold authority in the right places, knowledge flows to where it is needed, and members trust one another.
+- [definition] Climate is the daily emotional tone of work, shaped by expectations about how failure and questioning are received.
+- [mechanism] Richer art, audio, and production values require large specialized teams drawn from many backgrounds, ranging from database engineers to UI designers and 3D artists.
+- [mechanism] Repeated silence in a fearful climate leaves ideas unspoken, so the game becomes bland and unoriginal, and the cause is hard to notice. Why: The harm is an absence of ideas and debates, which teams rarely see.
+- [behavior] Small teams keep process burden naturally low, which gives them a major advantage over large teams.
+- [rule] Use confidants once the prototype is playable with defined rules, and stop relying on them as the game matures.
+- [rule] Have business people and developers work together daily, and build projects around motivated, trusted individuals. When: when organizing a project team.
+- [rule] State the confidence level whenever drawing balance conclusions from playtest or analytics data. When: reporting balance findings. Why: Statistics can mislead even under ideal conditions.
+- [rule] Non-specialists should work with data analysts to extract and interpret meaningful information.
+- [rule] Walking away over a design decision should be a last resort, since your vision may not have been communicated clearly.
+- [rule] Schedule a standing weekly gathering of department heads to review project status, so information moves across teams.
+- [rule] Fund your own project through work-for-hire while you develop it, as many independent developers do. When: you need income during independent development.
+- [rule] Ask colleagues for low-budget creative solutions, since troubleshooting narrative problems is a team effort.
+- [rule] Spread decision authority across the team; removing decisions from workers prevents the distributed intelligence that complex development needs.
+- [rule] Organizations should keep providing work that has the qualities of meaningful work, because that is their central task in motivating developers. When: When managing a creative team. Why: Developers stay engaged when the work continuously offers those qualities.
+- [heuristic] Steering behaviors are easy to expose to designers because they are simple, parameterized by physical capabilities, and identical across characters.
+- [heuristic] When a discussion stalls over whether something is a game, have each side state its own working definition and continue the discussion. When: when people disagree about what counts as a game. Why: Stated definitions let the debate move forward without a standard vocabulary.
+- [heuristic] Keep a concrete worst-case scenario, such as a headline about a child abduction caused by missing safeguards, in mind within the team, without showing it outside. When: designing safety features. Why: Concrete worst cases make abstract safety risks harder to dismiss.
+- [heuristic] Build a team environment where everyone can contribute at their fullest. Why: Team results depend on members contributing fully.
+- [heuristic] After a strong idea, building the right team is the most critical step toward producing a great game.
+- [heuristic] A team that has shipped together is a lower risk to publishers than a talented group that has never worked together.
+- [heuristic] Learn each team's culture, choose which battles are worth fighting, know your allies and protect your energy. Reassess when changing team. When: when joining or changing a company or team. Why: Each company and team has its own culture.
+- [heuristic] Pitches may be work in progress, since aspects change during development and readers do not expect a finished product. When: Writing an early pitch.
+- [heuristic] Use centralized, prescribed-method management only when a job involves little knowledge, since a central manager can then hold all relevant knowledge. When: Organizing simple, repetitive jobs.
+- [heuristic] Small teams especially need visible progress, since they lack group momentum, and detailed to-do lists help sustain motivation. When: When managing small development teams. Why: Without a crowd's momentum, individual visible wins carry more of the motivation.
+- [procedure] 1) Hand over your work in an organized, clear and concise way. 2) Answer the new writer's questions. 3) Be ready to move on to your next task.
+- [metric] Each workshop team should include six to ten leads from the major disciplines, and three to ten teams can attend one session.
+- [tradeoff] Involving the whole team costs time and energy, and it pays off in the long run only if the team can communicate well.
+- [pitfall] Silencing critics defeats the purpose of playtesting.
+- [pitfall] Rewarding only flashy, visible presentations breeds resentment toward unseen technical work and makes people perform for the reward instead of improving the game. When: When rewards are tied to demonstrations or showcases. Why: Unrewarded invisible work feels devalued, and visible performance is favored over real progress.
+- [fact] Frequent checking of email and chat, open offices and instant messaging add distraction, even though multitasking is often praised at work.
+- [fact] Game development is collaborative, and development teams keep growing larger and more complex.
+- [fact] Talent has limits, and the right mix of talent and personality matters even more than talent alone.
+- [fact] Specialization in programming and art has created new job categories, increasing the number of distinct roles on a team.
+- [fact] On small teams the narrative designer may also implement story content, handle in-game text, and take on game design and level design. When: when the team is small.
+- [fact] Writers are usually not narrative designers, but narrative designers can also write, and on small teams one person may cover both roles.
+- [fact] Great games need committed teams, and commitment hinges on working habits, company ethos, inner drive, and how the organization is arranged.
+- [fact] Even with good communication, some knowledge stays tacit or too voluminous to share, so the person with natural authority usually makes the final call.
+
+## change and scope management
+- [mechanism] Once a feature is committed, teams resist drastic change; late changes cost more because they ripple through production and force rework of art, animation and code. (x2)
+- [mechanism] As production proceeds, core design and software become harder to change, since the goal is an eventual release; early prototyping prevents costly mistakes.
+- [mechanism] Stretch goals, such as an added feature at a higher total, give backers a free reason to promote the campaign. When: Designing a crowdfunding campaign with stretch goals. Why: Backers gain from the added content and so spread the word at no cost.
+- [mechanism] Late changes to a console game are costly and can delay the release date, causing a team to miss its market window.
+- [rule] Change one thing at a time in response to playtest notes, because batch changes make it hard to tell which change caused which effect. When: Revising a prototype from playtest feedback.
+- [rule] Once a game is functional, complete, and balanced, test whether its fun essence survived rather than whether the core idea is fun. When: Late testing stage.
+- [rule] After alpha, additions to core design usually need a formal Change Request process. When: Post-alpha production. Why: Locked design makes unplanned changes costly.
+- [rule] Change a game system only to serve a chosen player experience goal, not for its own sake.
+- [rule] Make prototype changes based on problems observed in play, not on problems imagined in advance. When: Iterating a prototype. Why: Observed failures are real; imagined ones may never occur in play.
+- [rule] When scope exceeds capacity, cut anything that does not enhance the game's core actions.
+- [rule] Designers can only steer the broad strokes of a creative process; no loop or schedule can direct its details. Why: Knowledge arises from many unscheduled sources.
+- [heuristic] Apply controlled-change techniques at every revision stage, most of all when fine-tuning a game that works marginally well, so earlier work is preserved. When: Revising any stage of the game.
+- [procedure] Develop a system through successive spiral iterations, starting from the middle and cycling through four quadrants: 1) Create a basic design. 2) Identify the greatest risks. 3) Build prototypes that mitigate them. 4) Test the prototypes. 5) Produce a more detailed design from what was learned. 6) Return to the risk step. Repeat until the system is done. When: Developing a system through successive iterations. Why: Each iteration addresses the greatest remaining risks while refining the design, converting test results into a more detailed design and new risk assessment.
+- [procedure] 1) List concerns about gameplay, aesthetics, kinesthetics and technology. 2) Rank them and mark any that would kill the game if they failed. 3) Focus the first digital prototype on the top concern. 4) Propose a simple solution, starting with something like controls or interface. 5) Build the prototype and test it.
+- [procedure] 1) Everyone experiences what the sprint produced at a demo day. 2) The team performs risk analysis. 3) The team plans the next sprint. 4) The team holds a retrospective on what works, what fails, and how to adjust. When: at the end of each sprint.
+- [procedure] 1) Record each publisher approval and decision in writing. 2) Log every requested change as a change request. 3) Use these records to justify extra budget for added features.
+- [procedure] 1) Put the point of contact first, even if it is not you. 2) Give a short high-level summary with only critical data. 3) Add a bullet list, one sentence per point. 4) Organise sections by discipline or topic. 5) Link in-depth material. 6) Edit repeatedly, with an editor if available, and update the document. When: when writing emails, documents or wiki pages for the team. Why: Team readers have heavy workloads and skip walls of text.
+- [metric] A sprint lasts a few weeks and ends with a concrete working deliverable.
+- [tradeoff] Involve artists and sound designers early to avoid late catch-up and visual-driven design change; add art and audio as late as possible so they still yield useful test data. When: Scheduling art and audio work. Why: Early involvement avoids late catch-up and design change; late addition keeps test data useful. (x3)
+- [tradeoff] New animations close to content lock are expensive and risk breaking other systems, while removing an existing upgrade is cheap but can disrupt economy balance. When: Choosing between a new feature and removing an existing one late in development. Why: Each option carries different cost and risk profiles.
+- [pitfall] Testing late, whether playtests, usability tests or core mechanics, leaves too little time to fix flaws; essential elements can no longer change and critical UX issues become costlier to fix. (x3)
+- [pitfall] Waiting for beta or content lock to playtest lets critical flaws survive into costly late development, leaving core problems unfixable and only top-level features changeable. When: Planning playtest schedule for a large project. Why: Late discovery leaves little room to redesign dependent content. (x2)
+- [pitfall] Deferring analytics, balance work or marketing input to late development leaves too little time to act on what they reveal. Why: Late involvement removes time to act on that insight. (x2)
+- [pitfall] Testing only at beta, after assets are finished, is too late to fix basic design problems, so playtest level ideas at every production stage.
+- [pitfall] Leaving compound actions out of an AI design until late forces a rewrite of the decision tool, including save and load formats, engine links and scripting bindings.
+- [pitfall] Cutting content late in development to save the schedule is a common cause of games that are dead on arrival. When: late production with schedule pressure.
+- [pitfall] Focus tests often aim to sell a game rather than improve it, and they often happen too late to change much.
+- [pitfall] Adding research topics midway, especially near deadlines, makes completing the research harder and slows progress. When: running worldbuilding research under a schedule. Why: Late additions compete with work already due.
+- [pitfall] Environmental storytelling cannot patch plot holes found late in production; planning late leaves writers filling gaps with desperate text. When: Late-stage narrative production. Why: Environment and mechanics need lead time.
+- [pitfall] Building an area that exists only after a player choice is expensive, and few players will see it, so the team must agree early. Why: Such content is hard to add at the end of development.
+- [pitfall] Treating game UX as a late task or as only interface design misses its role; it should guide every development step.
+- [pitfall] Finished content can be destroyed by a late change to something it depends on.
+- [fact] Story changes are cheap, gameplay changes can take weeks of balancing, and technology changes can take months of reprogramming.
+- [fact] Standardized content pipelines with run-time tools integrated into development tools are considered essential for large games and are spreading to smaller studios.
+- [fact] The last UX maturity stages are much harder to reach than the early ones, especially the final stage.
+- [fact] Games are built in approved stages, each ending at a milestone, and developers are usually paid a fixed amount when each milestone is reached. Why: Publisher contracts tie payment to milestones.
+- [fact] Close to shipping, story problems such as plot holes may be marked Will Not Fix, since only crash-level changes are accepted that late. When: near release.
+
+## estimation
+- [model] Each design change can be assessed across design effects, implementation cost, immaturity burden, critical failure risk, economy risk, political effects, and uncertainty, since one option often shifts all of them at once. When: Weighing a difficult design change. Why: Listing all effect types exposes hidden costs that a single view misses.
+- [mechanism] Total project cost cannot be known until the transition point is reached, so predictability arrives as early as is realistically possible.
+- [mechanism] Fixing usability issues early leaves more time later for systemic and game-balancing problems.
+- [behavior] Professional estimators are overconfident: fewer than one percent got nine of ten ranges right, over ninety percent got five or fewer; optimism bias makes 90%-confident estimates act like 30%-confident ones. When: when estimating software or project work. Why: Optimism bias drives the overconfidence.
+- [behavior] Consumers expect RPGs to feel epic in length, so development tends to add content rather than remove it. Why: players equate length with value.
+- [rule] The schedule should respect that one person should not work more than forty hours per week and that some tasks depend on others.
+- [rule] In early content work, aim numbers at playability and tone rather than final balance. When: before core systems are stable.
+- [rule] Do not treat a first cost estimate as final once playtesting or analytics data becomes available; revise it from observed use. When: After a built game produces play data. Why: Early estimates are educated guesses made before real data exists.
+- [rule] Plan sequences carefully with the art and animation departments to tell more with less.
+- [rule] Ask the team which content might be cut or changed, and assess how each change affects the narrative and writing.
+- [heuristic] Make schedules realistic, since listeners lose confidence quickly in unrealistic timelines, and expect to be held to any fastest-finish answer. When: Estimating development time. Why: Overpromising damages credibility once a listener checks it.
+- [heuristic] A demo for a major showcase creates a real deadline that forces the game to be self-contained, stable, and comparable to other titles on its platform.
+- [heuristic] Expect understanding the existing code to take longer than writing the change; once the problem is clear, the typing is often trivial. When: estimating how long a code change will take. Why: Comprehension of the affected code usually dominates programming time.
+- [heuristic] Willingness to write whatever a project needs can open the way to critical-path work and pitching.
+- [heuristic] Match the effort spent on a decision to its importance: fast individual judgment for small choices, full deliberation for major ones. When: When deciding how much process a design choice deserves. Why: Deliberation has its own cost in time and research, which is wasteful on minor choices.
+- [procedure] 1) Play many games in the target genre. 2) Or run user research to learn how players respond to difficulty. 3) Use the result as the baseline for the market average. When: Before setting a game's difficulty target.
+- [procedure] 1) Write the design document. 2) Build a first playable. 3) Reach first alpha, then second alpha. 4) Reach beta and launch. 5) Plan post-launch update frequency. When: Presenting a development schedule. Why: Named milestones show the team understands how the project progresses.
+- [procedure] 1) Count headcount and duration. 2) Add other expenses. 3) Compare the total with the revenue range. When: Estimating a game's budget. Why: A complete cost basis is needed to judge profitability.
+- [procedure] 1) At the start of production, review the full design with the producer. 2) Producer builds schedule and budget from that scope. 3) Designer checks every line item against the design vision and raises issues early. When: Start of any production. Why: Realistic schedules and budgets need a clear scope.
+- [procedure] When behind schedule, the producer may cut ambitious low-priority features rather than delay the milestone. When: Production is behind schedule.
+- [procedure] 1) Break each deliverable into tasks. 2) Assign team members and estimate each task's duration in days. 3) Set a start date for each task. 4) Mark dependencies to find parallel and sequential tasks. 5) Balance each person's workload. 6) Output a timeline and resource list that becomes the budget basis.
+- [metric] If reaching the preproduction end point costs one million dollars, the remainder of the project will probably cost about 2.3 million dollars. When: when estimating total cost from early spending.
+- [metric] Keep preproduction exercises to 15 to 20 minutes so teams must collaborate immediately.
+- [tradeoff] Early design should favor flexibility over raw speed: code can be optimized later, but flexible behavior is hard to add to rigid code late. When: Early AI architecture decisions.
+- [tradeoff] A restriction's benefits are immediate and concentrated, while its costs spread over years and fall mainly on other team members.
+- [pitfall] An 80/20 plan (working game, then polish) lets overruns eat polish time, shipping a late, weak game; too little refinement time ships a noticeably weaker game. Why: Overruns usually eat the time reserved for polish first. (x2)
+- [pitfall] Plans that create false certainty drive overplanning; precision that ignores real-world uncertainty becomes ridiculous and wastes effort. Why: Unexpected factors invalidate detailed plans.
+- [pitfall] Developers overestimate the challenge players need, partly because of the curse of knowledge, and QA testers are especially prone to this.
+- [pitfall] Underestimating the time needed for optimization and bug fixing can consume a large part of the schedule.
+- [fact] Time and cost estimates reflect large console and boxed titles; PC, phone, and online projects or teams with different experience differ, and mobile makes single-person teams feasible though costs rise. (x2)
+- [fact] Once programmers and artists are in place, changing core gameplay becomes very hard.
+- [fact] Schedule and budget often prevent full completion work, so released games still hide flaws. When: Planning production.
+- [fact] On a medium or large game, keeping the schedule current can be a full-time job, and it changes weekly at least. When: Medium or large game production.
+- [fact] At the peak of inflated expectations, far more people talk about a technology than have used it.
+- [fact] How high the plateau of productivity sits depends on the breadth of a technology's usefulness.
+- [fact] Schedules are commonly drawn as Gantt charts using project-management software, spreadsheets, or a paper calendar.
+- [fact] A thorough study of an intricate design can take weeks and draw on broad research and formal statistical or mathematical methods, yielding knowledge guessing cannot. When: Complex design questions.
+
+## game tools
+- [definition] An asset tracker records what has been created and its state, covering code, levels, art, sound, music, and design documents.
+- [mechanism] After a pointer swap, the buffer being read holds data from two frames ago, so any technique reusing old data must account for an extra frame of age. When: Buffers alternate with pointer swaps and old data is reused. Why: Each buffer is only rewritten every other frame, so its contents lag by one extra frame.
+- [mechanism] If lighting results require compiling or rendering, lighting quality suffers because iteration is too slow to compare options. When: evaluating lighting workflows.
+- [rule] Choose a language and tools you already know so you can change things quickly.
+- [rule] Track approvals for every asset, recording whether the right people have approved it, not only the finished ones.
+- [rule] Understanding a tool means knowing its basic concepts and limits, not being an expert in using it.
+- [rule] When programmers build narrative tools, ask whether they can think of a scenario that fits the gameplay.
+- [rule] Record each branch choice as a quest state condition, such as flag true or false, so testers can confirm that both outcomes are tracked. When: testing a branching quest.
+- [rule] If a complex feature must stay, make its representation clear or introduce it after players understand the core systems.
+- [rule] Handle user mistakes gracefully in creative authoring tools, for example by providing undo. When: Designing an authoring tool for creative work. Why: Mistakes are normal in creative work.
+- [rule] Design creativity tools to be intuitive, powerful and expressive, giving instant creative results that beat what users make alone while preserving their original intent.
+- [rule] An asset browser should show names, scale, 3D previews and usage, since relying on memory limits the palette and leaves good assets unused. When: evaluating asset management in editors.
+- [rule] Use a camera that matches the player's first-person view, since orbit controls in confined spaces misrepresent what the player sees. When: judging room size and navigation during building.
+- [heuristic] Use a graphical authoring interface, such as dragging blocks or menus, for authors who are not highly technical. When: Authors are non-programmers or not highly technical. Why: Text syntax errors constantly frustrate people without programming experience.
+- [heuristic] Choose tools that fit the project's workflow and scale; lightweight tools suit small projects, and a feature-rich 3D engine may be overkill. When: when selecting level design tools.
+- [heuristic] Spend the most effort on what will be noticed, and on what cannot be approximated easily, such as a motorbike headlight whose round shape exposes corners. Why: Viewers readily detect flaws on simple curved shapes.
+- [procedure] 1) Right-click the cell and choose Insert Note. 2) A corner marker appears and the text shows on hover. 3) Reopen Insert Note to edit, or use Clear Notes to remove it. When: Explaining one specific cell's formula or value.
+- [procedure] 1) On the first change, launch a fixed-length countdown. 2) When it expires, process all accumulated changes. The lag between input and response is called hysteresis, and the countdown length tunes how often work happens. When: Processing changes while the player keeps playing.
+- [procedure] 1) Whoever breaks the build fixes it. 2) They receive a visible symbolic token, such as a rubber chicken. 3) The token passes on when someone else breaks the build, with no confrontation needed. When: Teams where broken builds happen often. Why: Breaking the build costs the whole team, so individuals have little reason to avoid it on their own.
+- [procedure] 1) Open the Content Browser's Scene tab. 2) Select Persistent level to list all actors in the level. 3) Select an actor and press F to focus the viewports on it. Tick Auto Focus to focus on every selection.
+- [procedure] 1) Switch to the Top view. 2) Hold the middle mouse button and drag. 3) Read the distance from the readout. Why: Helps set radii and other distances.
+- [procedure] The editor has four viewports: Front, Side, Top and Perspective. Change a viewport's type from its Viewport Options menu, or cycle with the P button. Use Maximize Viewport to restore the four-view layout.
+- [tradeoff] Each abstraction layer or extension point costs time to develop, debug, and maintain, and pays off only if the flexibility is actually needed later. When: deciding whether to add an extension point. Why: Predicting future needs is unreliable, so speculative flexibility often goes unused.
+- [tradeoff] Modes add variety to a game, but each one is something players must learn and understand.
+- [tradeoff] Showing many object types at once clutters the editor view and can slow the editor; use default visibility settings unless a specific type is needed. Why: Each displayed object type adds to what the editor must draw.
+- [tradeoff] A graphical authoring tool can stop mistakes as they happen, while a text tool sees nothing until a whole file is submitted; the graphical tool requires building a user interface.
+- [pitfall] Text baked into art is much harder to localize than dialogue; plan for this early in multi-language releases. Why: Changing art for each language is costly.
+- [pitfall] The reasons for bytecode describe much of a typical game, so they alone do not justify the pattern and it should be adopted deliberately. When: Evaluating whether to introduce a bytecode VM. Why: Bytecode adds significant complexity, so broad reasons are not enough on their own.
+- [pitfall] Producing axonometrics takes time that could go toward prototyping the level in an engine. When: deciding how much diagramming to do before building.
+- [fact] Designing and refining tools for building knowledge is a core part of game design work.
+- [fact] Several engines are designed for beginners, with tutorials and low prices for students and independent developers.
+- [fact] Toolset quality is a major factor in publisher funding decisions.
+- [fact] A cross-sheet reference with dollar signs, such as =Sheet!$B$5, stays fixed when copied, while a relative one shifts with each copied cell.
+- [fact] Interfaces of real complexity require modes.
+- [fact] Left mouse button pans and moves forward and back; right mouse button gives mouse look; holding both moves left/right and up/down; holding right button with W, A, S, D flies, with Q and E for up and down.
+
+## spreadsheet tools
+- [definition] In a cost-curve sheet, any column that is not a core stat is a mechanic, such as keywords, unit classes, unit abilities or feats.
+- [behavior] A tool can introduce design problems the designer does not notice, and skill can offset a weak tool but a poorly designed tool still holds back strong designers.
+- [rule] Test number-heavy mechanics in a spreadsheet that embeds the game logic, so many rule permutations can be checked quickly. When: the question is mostly arithmetic and rule permutations.
+- [rule] Generate AI knowledge offline from raw level information when levels change often and the run-time processing budget is limited. When: Levels change often and run-time processing budget is limited.
+- [rule] Keep purchase amounts in their own input columns, so different buying strategies can be tested without rewriting the simulation formulas. When: building a spreadsheet simulation to compare strategies.
+- [rule] Plot several discrete series on one line graph, with one line per series, to show their differences or similarities.
+- [rule] If data must be hidden, move intermediate values to a separate worksheet and reference them from formulas instead. When: hidden data cannot be avoided. Why: keeps working values out of view while formulas still reach them.
+- [rule] Remove noise, meaning unnecessary elements, to focus on core pillars and improve usability.
+- [rule] Perform the buffer swap at the end of a display refresh, so the whole frame appears at once. When: Presenting double-buffered graphics on a refreshing display. Why: Swapping mid-refresh shows part of the old frame and part of the new, causing tearing.
+- [heuristic] Spreadsheets are often both code and user interface and are shared directly as the deliverable, so format them clearly for readers, since clear presentation saves considerable time. Why: They exist to communicate calculation results to the author or team.
+- [heuristic] Prefer offline learning when results must be tested exhaustively or when reproducibility matters. When: choosing a learning mode.
+- [heuristic] Generate balance tables in a spreadsheet and enter manual inputs in separate marked cells to reduce input errors. When: Building numeric tables. Why: Generated values stay consistent when inputs change.
+- [heuristic] Build heat maps with a custom tool connected to the game engine, since spreadsheets handle them poorly.
+- [heuristic] Split complex formulas into simpler intermediate calculation cells, which makes the sheet easier to troubleshoot.
+- [procedure] 1) Lay out the spreadsheet with the technical team so it mirrors the game's systems. 2) Give each subsystem, such as combat, economy, or social systems, its own interconnecting tables. 3) Apply purity of purpose and modularity to each table. 4) Use the sheet to start the design and to refine and perfect gameplay. When: Organizing design data. Why: A mirrored layout eases communication with programmers.
+- [procedure] To reference a cell on another sheet, write the sheet name, an exclamation point and the cell address, such as =Weapons!B5. Or: 1) Type = in the target cell. 2) Click the other sheet's tab. 3) Click the source cell. 4) Press Enter.
+- [procedure] 1) Create one worksheet per purpose, such as stats, weapons, armor, or level curve. 2) Rename each tab to describe its contents. 3) Keep related groups in one document so cells can reference each other. When: Organizing game design data that has several related but distinct tables. Why: Separate tabs are easier to navigate than hidden rows and columns, which can conceal content unnoticed.
+- [procedure] 1) Watch one playtester on one level. 2) Count the events of interest by hand, such as deaths. 3) Compare the manual count with the count the software reports. When: validating analytics output. Why: reveals collection errors.
+- [procedure] 1) Create the audio package and add subgroups to organise assets. 2) Import sounds. 3) Store the package via the context-menu Save option or with Ctrl+S before using the sounds.
+- [procedure] 1) Give each line a row with character, line ID, actor, location, context, inflection, effect, filename, take number and keeper flag. 2) Tag lines by mission, area and character, using generic for ambient lines. 3) Mark good takes as keepers during the session. When: Tracking dialogue through recording and integration. Why: A structured record makes lines searchable and avoids searching raw takes later.
+- [procedure] 1) Make a time column in seconds starting at zero. 2) Add gold, unit count, income and next-cost columns. 3) Set each row's gold and counts from the previous row and its purchases. 4) Fill rows down to the horizon. When: simulating an idle game in a spreadsheet.
+- [procedure] 1) Write a solver or simulation that picks moves randomly weighted by a candidate strategy and current state. 2) Have candidate strategies play many thousands of games against each other. 3) Compare results and discuss why winners won. When: Testing candidate strategies for an intransitive game. Why: Simulated play exposes which strategies outperform others.
+- [procedure] 1) Click the row or column headings to select them. 2) Right-click the selection. 3) Choose Hide Rows or Hide Columns. 4) To reveal hidden cells, click the small arrow in the header.
+- [procedure] 1) Select the cells holding formulas. 2) Copy them. 3) Paste Special, then Values, into the same cells. 4) Recalculate. The cells keep their current numbers and no longer change. When: you need a fixed snapshot of generated or random data. Why: Formulas recalculate and pasted values do not, so frozen data stays stable.
+- [metric] A 10-hour, 30-level game needs about 15 stages, since adjacent stages overlap to give about 29 effective challenge stages, and at least 45 enemy configurations, about three per stage. When: As a starting point for a 10-hour, 30-level RPG. Why: Adjacent stages overlap, so fewer stages are needed.
+- [tradeoff] Connecting the editor over a network to the running game gives direct manipulation and instant testing, but takes significant effort and some platforms make it harder.
+- [tradeoff] Cleaning a dirty flag on demand avoids unused calculation but may cause a noticeable pause when the work is slow. When: Deciding to process flagged data only when its result is used. Why: Work happens at use time, so slow work lands on the user-facing path.
+- [tradeoff] Harder tools require cross-disciplinary knowledge, but learning them builds new skills and respect for colleagues' work.
+- [pitfall] Hiding rows and columns can conceal content without making it obvious that anything is hidden. When: Managing large design spreadsheets. Why: Hidden data is easy to forget and hard to notice.
+- [pitfall] Hand calculation mistakes happen even when the code is bug-free, and wrong statistics can look plausible. Why: statistics offers few built-in sanity checks.
+- [pitfall] Offline pipelines that need long post-processing of huge log files are impractical.
+- [pitfall] Copying, pasting, or referencing ranges that cross unnoticed hidden rows or columns can give unexpected results and errors that are hard to trace.
+- [fact] Google Sheets Insert Comment records the author's name, has a Resolve button and supports threaded replies, so teams can discuss a cell in a shared sheet. When: Collaborating on a shared online spreadsheet. Why: Comments are built for team questions rather than static notes.
+
+## marketing
+- [model] A one-liner comparison uses a template: a genre, an optional reference game, a character type who reaches a goal, and a type of game world. When: Pitching a game to executives or gatekeepers. Why: Executives expect this familiar structure.
+- [definition] Mass market tabletop games are family and party titles sold in big-box stores, including long-running classics.
+- [definition] A one-liner description is a short statement of a game's core idea that does not rely on comparison to existing games. When: Summarizing a game idea. Why: Shows creativity and mood without referencing other products.
+- [mechanism] Most crowdfunding funding arrives in the first week from committed backers and in the last week from people who wait; middle weeks contribute less. When: Planning crowdfunding campaign length. Why: Early supporters and deadline pressure drive most pledges.
+- [behavior] Buyers often choose a product on word of mouth about its quality and reliability before trying it themselves. When: buyers cannot test the product first. Why: Trusted reports stand in for firsthand experience.
+- [behavior] 'X meets Y' comparisons give listeners an immediate understanding and excitement, even though they are often mocked. When: Listeners hear a short comparison pitch. Why: Two familiar references create an instant mental picture.
+- [behavior] Word of mouth is the most powerful expectation setter, since people adjust opinions and even memories toward the perceived consensus, especially from high-status sources. When: a game's reception spreads through a community. Why: Social pressure makes people conform to shared opinions.
+- [rule] Avoid shorthand and jargon with media professionals, who are often not hardcore gamers, and learn enough about their specialty to guide them.
+- [rule] Include marketers as core members of the development team, because they know which parts of the game need careful introduction. When: planning a game's development team. Why: Marketing knowledge about which features need introduction is otherwise missing.
+- [heuristic] A campaign suited to pacing analysis has a clearly defined beginning and ending and can be completed in 20 hours or less. When: choosing a game to analyze.
+- [heuristic] Market conditions shift with world events, competitors, the economy, and technology cycles; follow trends to make sound business decisions, not to copy others.
+- [heuristic] Trash talk in face-to-face playtests reveals what players care about and what drives their competitive motivation. When: face-to-face playtests.
+- [procedure] 1) Identify what is genuinely new about the game. 2) Check whether novelties appear throughout or only at the start. 3) Judge whether the mix of novel and familiar elements is right. 4) Consider whether players will still enjoy it after novelty fades. When: when evaluating a game's novelty and staying power.
+- [procedure] 1) Post updates often. 2) Set small milestones such as nearly ten percent funded. 3) Ask influential people to spread the word. When: Running a crowdfunding campaign. Why: Active promotion keeps momentum up through the campaign.
+- [procedure] 1) Lead with the game's genre, naming its category. 2) Give the idea short handles that summarize it. 3) Show a working build or video of its best features. 4) Supply signature screenshots, brief clips, and bullet lists that explain themselves. When: Preparing materials for a listener who must pitch the game to others. Why: Ready-made materials let a supporter sell the game without the designer present.
+- [procedure] 1) List the top ten moneymaking games of the last year on your main platform. 2) Compare the list with actual sales data. 3) Treat each mismatch as a blind spot to study. When: checking your market knowledge before pitching or designing. Why: Gaps in market knowledge are easy to miss.
+- [procedure] 1) Write the idea in as few sentences as possible. 2) Shorten it to one or two sentences. 3) Check the draft for one unique element and one familiar element. When: Drafting a one-liner description. Why: Tight wording keeps the core idea clear.
+- [metric] Subscription MMORPGs exceeded $1 billion a year in North America and Europe, a market demanding skill in social play and game economies.
+- [metric] Marketing budgets are typically double development budgets, so a $10 million game would carry about a $20 million marketing budget.
+- [tradeoff] Marketing runs from concept until a game is unsaleable, yet it may only offer concept feedback and character focus groups, or not appear until nearly ready to ship.
+- [tradeoff] Shorter campaigns tend to do better than long ones, which cost more effort and give backers more time to forget. When: Choosing crowdfunding campaign duration. Why: Long campaigns drain effort and attention.
+- [pitfall] Assuming a campaign will sustain itself without active promotion leads to stalled funding. When: Running a crowdfunding campaign. Why: Campaigns need continuous effort to keep backers engaged.
+- [pitfall] Pitching to a publisher whose focus does not match the game wastes effort on both sides.
+- [pitfall] Games whose subject appeals to too small an audience are rejected for weak marketing potential.
+- [fact] Games from creators with an existing following are most likely to be funded; without one, the game should sound exceptional or have a very small goal. When: Assessing crowdfunding prospects. Why: An existing audience supplies early backers who drive funding.
+- [fact] Genres suited to campaign analysis include CRPGs, tactical RPGs, action RPGs, roguelikes, FPSs, behind-view shooters, idle games, Metroidvanias, horror-survival and stealth games. When: choosing a game to analyze.
+- [fact] Marketing's goal is to find ways to sell the game to buyers, and it is the strongest link to buyer demand.
+- [fact] Marketing studies projected processor penetration, consumer RAM, and average screen sizes, which affect target hardware for PC titles. When: Targeting PC titles.
+- [fact] A competitive analysis compares rival titles, your market position, and their pros and cons, adding sales figures when available.
+- [fact] One-liner descriptions work for characters, quests, regions and mechanics, not only whole games. When: Describing a sub-element of a game. Why: The same unique-plus-familiar structure applies at any scale.
+- [fact] Personal recommendations from friends are the most influential factor in a player's decision to buy a game.
+
+## stakeholder and client management
+- [behavior] Even when clients expect designers to be the experts, they typically have firm views on how the title ought to look, behave and play.
+- [behavior] Clients do not always tell the truth about their motives, so asking is only a starting point for understanding what they want.
+- [rule] Clients fund the project and may take work elsewhere or end it if their wishes go unmet, so listen deeply to learn what they really want. When: Working with a paying client. Why: Stated requests can hide the real need.
+- [rule] Align business and design goals before giving UX recommendations, because developers, publishers and executives may hold different targets. When: when stakeholders have different goals, such as a hardcore title versus a mainstream freemium title. Why: Recommendations must account for both business and design goals.
+- [rule] Define exactly what you need before contractors start, because time spent working out their task wastes paid hours.
+- [rule] Make stakeholders understand that prototype code which looks like it works may still be unmaintainable and need rewriting.
+- [rule] Keep cold contact with consultants short, to the point, and respectful of their time, and thank them again if they decline or do not reply. When: approaching outside experts. Why: Experts are often willing to help but value their time.
+- [rule] Pay consultants appropriately through in-game credits, a copy of the game, or actual payment, and never take advantage of consultants who help for free. When: engaging subject-matter consultants. Why: Fair treatment keeps experts willing to help.
+- [rule] Consult the client directly and early, even when they already work with a development team, since you may be their first narrative contact.
+- [rule] Prepare the client for testing early, because you may not be present when QA begins.
+- [heuristic] Clients often want ownership of the work; giving them a real creative role keeps them supportive of the project.
+- [heuristic] When a client's concern comes from how the work looks to them, letting them help adjust it can satisfy them more than explaining the technical reason.
+- [heuristic] Designers should come to know the client better than the client knows themselves, much as they know their audience.
+- [heuristic] Learn a client's real goals by asking whether they want quick money or a reputation, whether the market is new or existing, and what they think makes a good game.
+- [heuristic] Designers benefit from understanding the concerns of executives and marketing staff, even when they are not in negotiations.
+- [heuristic] Early involvement in development builds the knowledge needed later to write pitches for missions and quests.
+- [procedure] When a client cannot say what they want, help them discover it rather than offering endless guesses. 1) Ask what kind of result they want. 2) Ask what it will be used for. 3) Use that purpose to choose a strong candidate and check it with the client. When: When the client is unsure of the specifics or cannot describe the result they want.
+- [procedure] 1) Note what the client says they want. 2) Note what they think they want. 3) Work out what they really want deep down. When: Before proposing a new idea to a client, or when making a game for someone else.
+- [procedure] 1) Ask the report readers what information they need and what they do not need yet. 2) Involve stakeholders in preparing the test, which builds relevance and trust. When: before running a user research test.
+- [tradeoff] When several stakeholders request work that cannot all fit before a deadline, a shared UX strategy ranks tasks by their impact on the whole experience. When: Several stakeholders request work before a deadline.
+- [pitfall] Removing a feature that fans already anticipate, or that appears in tie-in media, meets resistance from fans and stakeholders. When: a feature is publicly known or promoted. Why: audience expectations and existing material make removal costly.
+- [pitfall] Relying on email alone can mean messages never get read, so decisions and questions go unanswered.
+- [fact] Designers often must satisfy a client, such as a publisher, rights holder or non-expert buyer, as well as their team and players.
+- [fact] How a designer handles the client affects the client relationship, the designer's reputation, the designer's happiness, and the quality of the game.
+- [fact] Clients offer more than funding, including connections, business expertise and insight into the audience.
+- [fact] A client who knew exactly what they wanted would already have the design, so clarifying their wishes is part of the designer's job.
+- [fact] Competing demands are common: publishing may want monetization events, researchers may flag retention problems, and developers may want more features before a deadline.
+- [fact] One company can act as both publisher and developer, which makes the publisher-developer relationship easy to confuse.
+- [fact] A publisher's success can rest on one flagship franchise developed in-house.
+- [fact] Non-developer clients may not know specialized roles such as systems designer or character rigger.
+
+## narrative design
+- [model] The core narrative bible sections are story brief, setting and world, character list, and expanded story breakout.
+- [model] Narrative designers depend on upstream teams for tools and approval to start, and downstream teams need finished narrative work before they can proceed.
+- [definition] Execution covers how the story operates and reaches viewers, plus how players engage with it, unlike pre-production preparation.
+- [mechanism] The later narrative work begins, the more fixed level design, gameplay, and cinematics are, so narrative has less room to change them.
+- [rule] Expect narrative elements like barks, questlines or characters to be cut, since other departments or core leads usually drive cut decisions; prepare backup plans. When: Narrative content depends on other departments' decisions or is removed during production. Why: Production constraints and cuts often serve gameplay, animation or programming needs.
+- [rule] Choose a team member who has never read the script and explain nothing to them before they read it. When: before a full revision. Why: A fresh reader can expose fatal plot holes and information-flow problems that the writer cannot see.
+- [rule] State the theme concretely so it is easier to decide what belongs in the game and to explain those decisions to the team.
+- [rule] Narrative designers and writers must agree on the right relationship between story and gameplay for each project.
+- [rule] Narrative designers should engage with each department from conception through scenes and locations, respecting each field's expertise and adjusting to technical and budget constraints.
+- [rule] Use narrative tools without harming the work of other disciplines.
+- [rule] If an established in-house script format works well, conform to it, and propose improvements only after you understand the current method. When: joining a team with an existing scripting pipeline. Why: Learning the current method first shows why it works and makes proposed changes more credible.
+- [rule] Make the narrative plan clear enough that clients and team members can relay it, contribute to it, carry it out, and test it without you. Why: Clients often relay the plan to the whole team.
+- [rule] Whether a client hired one developer or several freelancers, expect to evaluate the narrative design and make critical revisions.
+- [rule] Create testing plans for your narrative material, even when an in-house QA team exists.
+- [rule] Reread the entire script before changing anything. When: at the start of revision.
+- [heuristic] A team saying a mechanic cannot be built because it goes against the story signals that story has taken over the design.
+- [heuristic] An impasse during play signals a problem that needs fixing.
+- [heuristic] Iteration is the narrative designer's main tool, and its value grows on team projects with many contributors.
+- [procedure] 1) Set parameters so the game begins at a desired late state, such as an ending. 2) Test that state repeatedly. 3) Vary parameters to see many outcomes quickly. When: testing rare or late-game outcomes. Why: Waiting for rare events by normal play wastes time.
+- [procedure] 1) Draft a narrative bible from a standard template. 2) Adapt its format to genre, project needs, and lead expectations. 3) Keep it high level first, adding depth at each approval phase. 4) Summarize each section in a visible place. 5) Let other disciplines read the overview and choose what to read further.
+- [procedure] 1) Confirm that working tools are chosen or built. 2) Get the game concept approved. 3) Draft an initial level-design plan listing the environments before narrative work begins. When: before starting narrative work.
+- [procedure] 1) Describe what the player sees on arrival. 2) Describe the choices available and the route. 3) Describe the challenges in order. 4) Describe the intended emotion for each area. When: Planning how a level will be experienced by a player. Why: Makes emergent play predictable for planning.
+- [metric] Keep the story brief to half a page or a full page, with the pitch first, until the story is approved. When: before story approval.
+- [pitfall] Well-funded studios short on creative energy tend to lean on spectacle, which crowds out subtler emotion.
+- [fact] Because story can explain almost any situation, it tends to dominate the design process.
+- [fact] Creators often do not recognize a truth-based theme until later drafts, because it stays hidden from them at first.
+- [fact] Narrative design is usually the smallest specialty on a team, often one writer among many artists, programmers and designers, even at story-driven studios.
+- [fact] Narrative designers often handle planning and management as well as writing and design, so project planning and management methods are useful.
+- [fact] Narrative work can be split so writers own written content while level designers own its implementation.
+
+## surveys
+- [definition] Player experience can be elicited by many game parts through short- and long-term interaction with core elements, including game content, mechanics, narrative, rewards, audiovisuals, camera and effects.
+- [behavior] Players probe a game world thoroughly, testing every action and response, so rules must hold up under free exploration rather than a fixed path.
+- [behavior] The wording of a question about an event changes the details people report, such as estimates that differ between two verbs. When: When asking people to report details of an event they witnessed. Why: Wording pushes the answer toward the implied framing.
+- [rule] Keep surveys short and wording simple, and show a progress bar, since people tune out near the end. When: Designing a player survey. Why: Short, clear surveys reduce drop-off and confusion. (x2)
+- [rule] Use precise, objective survey questions without leading wording, since leading questions bias answers. When: When writing player surveys. Why: Leading wording skews responses. (x2)
+- [rule] Use pictures of game elements or scenes in surveys so players know exactly what you mean.
+- [rule] Hand out the survey right after play, while the experience is fresh.
+- [rule] Have someone available to answer testers' clarifying questions during the survey.
+- [rule] Record each tester's age and gender so you can check whether they relate to opinions.
+- [rule] Ask one question at a time and avoid combined items such as clear and powerful, and avoid leading questions by using open-ended prompts. When: Writing survey items for UX research. Why: Combined or leading items produce ambiguous answers.
+- [rule] Ask why as well as whether, and ask objective questions such as what a tutorial taught rather than whether it was clear. When: Designing survey questions about experience. Why: Reasons and objective recall are more informative than yes-or-no ratings.
+- [rule] Build survey items from the engageability pillars, covering compulsion, mastery, control, meaningful choices, and perceived progress. When: Writing engagement survey items. Why: Pillar-based items measure the experience the design targets.
+- [rule] Design each test to answer one specific question, and invent new test methods or apparatus when existing ones cannot answer it. When: Solving a hard problem through experiments.
+- [rule] Do not take a player's stated reason for a feeling at face value, since the reason is often an automatic addition. When: when interpreting playtest feedback. Why: The raw feeling is real, but the attributed cause may be wrong.
+- [rule] Ranked preference annotations require preference learning methods, such as neuro-evolutionary preference learning, rank-based support vector machines or linear discriminant analysis, since standard supervised learning does not apply.
+- [heuristic] Lower the selection burden in interactive evolution by using a five-star or like/dislike scale or pairwise rankings instead of detailed ratings.
+- [procedure] Ask for the top three favorite and least favorite things, and ask how the player would describe the game to a friend. When: Ending a player survey. Why: These prompts surface priorities and framing in players' own words.
+- [procedure] 1) Match survey answers to gameplay data. 2) Keep respondent identity confidential. 3) Read which players do what and what they liked or found confusing. When: where confidentiality allows.
+- [procedure] 1) What do your players generally like? 2) What do they dislike, and why? 3) What do they expect in a game? 4) If you stood in their place, what would you want to see? 5) What would they like or dislike about your game?
+- [metric] Prefer a five-level scale with explicit wording like awful, poor, mediocre, fine, and superb over a one-through-ten numeric rating.
+- [metric] The effort a player puts toward a game's objective is a measure of how involved that player is.
+- [metric] Interactive evolution fitness can come from a like/dislike choice or a 1-to-5 star rating.
+- [pitfall] Survey data is not truly scientific, and testers tend to make up answers when unsure, so do not treat it as gospel.
+- [pitfall] Survey respondents may let a chatbot write open-ended answers, which undermines research into how players actually feel. When: When collecting open-ended player feedback.
+- [pitfall] Analysing rating-based questionnaire data after the fact is unreliable because the data carries several critical biases.
+- [fact] Free or cheap online survey tools are easy to set up for playtest surveys.
+- [fact] A small number of user selections is enough to capture a user's taste in an adaptive aesthetic model, which reduces fatigue.
+- [fact] Player questionnaires can include tick boxes or multiple choice, free-text answers, player experience instruments such as the Game Experience Questionnaire, demographics, and personality traits.
+
+## console platform and licensing
+- [model] Direct download sells games straight to consumers over an internet connection, removing publisher, retailer, platform holder, and disc manufacturer; developer keeps roughly 70% of price. When: self-publishing via storefronts. (x2)
+- [model] Console licensing splits the work: the publisher handles concept, development, testing, marketing, and distribution; the console maker approves the concept, tests, approves the final version, and manufactures.
+- [mechanism] A new console with a high price and few games sells slowly; price cuts and a growing game library are needed to lift adoption. When: when launching a console with a small library at a high price. Why: Buyers need affordable hardware and a large selection before they commit.
+- [rule] List all the software and hardware needed to produce the game.
+- [rule] Expect the console maker to hold final approval, able to block release or return a game with significant flaws until they are fixed.
+- [metric] High-end console development costs have risen since the 1980s and now typically run $13 to $30 million, while launch prices stayed at about $50.
+- [metric] Early commercial games were tiny, ranging from roughly 4 to 28 kilobytes including all art and sound.
+- [metric] Console frame rates impose fixed deadlines: processing must finish within about 33 ms at 30 Hz, 20 ms at 50 Hz, and 16 ms at 60 Hz. When: targeting 30, 50 or 60 Hz frame rates. Why: Consoles require steady frame rates.
+- [metric] A typical console title has several thousand bugs in its database.
+- [metric] Downloadable console games typically sell for $5 to $15.
+- [tradeoff] Console releases pay per-unit royalties to platform holders, while computer releases avoid them but reach a smaller market.
+- [pitfall] On consoles with a separate SIMD unit, communication and synchronization can outweigh the speed gain for short code sections. When: short sections on a console with a separate SIMD unit. Why: transfer and sync overhead.
+- [fact] Console developers know the exact target machine, so AI budgets can be fixed in milliseconds and algorithms judged against a known limit.
+- [fact] Console technical requirements fix standards such as frame rate, which can differ by region.
+- [fact] Faster processors help, but they do not solve the core problem of slow algorithms.
+- [fact] Some consoles and many handheld devices lack the general networking that remote AI debugging requires.
+- [fact] State the distribution method, such as DVD, internet, or wireless, and the requirements that method imposes on the game.
+- [fact] Games written for one known machine could assume its CPU speed, so their pacing depended only on how much work each frame did. When: fixed console or home computer with known hardware. Why: The developer knew the exact hardware, so timing could be tuned to it.
+- [fact] Consoles require a demo mode that runs automatically when the player is idle at the main menu, to prevent screen burn-in and suit store kiosks. When: Shipping a game on consoles or kiosk displays. Why: Static menus can burn in screens, and kiosks need attract-mode play.
+- [fact] Config-driven locating mattered less for standardized consoles, but matters more now that games target many different mobile devices.
+- [fact] Early 3D games used vector worlds and perspective projections, and first-person shooters became practical 3D gamespaces once they could present interactive worlds convincingly. When: Tracing the history of 3D game spaces. Why: Technical limits shaped what kinds of 3D spaces early games could offer.
+- [fact] Licence-driven publishers can focus heavily on consoles; one publisher's releases were 69% console, 22% handheld, and 9% computer.
+- [fact] Digital games hold far more data than tabletop games, so working backward from their numbers is harder.
+- [fact] Console publishers owe the hardware maker a per-unit license fee, typically $3 to $10, in addition to retail margin, marketing, freight, operating expenses, and creation costs.
+- [fact] Consoles account for roughly two thirds of video game sales, and the hardware market has historically been dominated by one or two companies.
+- [fact] New console hardware arrives every three to five years.
+
+## software engineering
+- [mechanism] Larger storage media raised player expectations for graphics, sound, and gameplay, which raised production costs.
+- [behavior] Software can reveal emergent behavior that is hard to see when tracking many interacting systems by hand. When: a game has many interacting systems. Why: Computers track bookkeeping that overwhelms manual tracking.
+- [rule] Build cheat codes that disable hidden systems or grant extreme resources to test specific situations, such as monitoring AI behind fog of war. When: prototyping and testing. Why: They isolate systems that are hard to observe under normal play.
+- [rule] Give QA the information a complete test plan needs, because a design document alone does not give them full understanding of the game.
+- [rule] Copy the next buffer into the current buffer when state is small and outside code holds pointers that must stay valid. When: State is small and pointers into it must remain valid. Why: Copying a small value costs little and keeps the current buffer no more than one frame old.
+- [rule] When no reliable instrument exists for measuring what you need, build your own test apparatus.
+- [procedure] 1) Add input fields for character and monster stats, formatted so users see they can change them. 2) Add output fields showing the combat outcome. 3) Run the simulator at points flagged as very fast or very slow and compare with prior intuition.
+- [procedure] 1) Make a significant change to the properties, behaviors, or relationships of core objects. 2) Play and check whether balance changed and the game is still playable. 3) If playable, repeat with another change. 4) When unplayable, identify the crucial change that broke it and explain why. When: Stress-testing a game's rule system. Why: Stepwise changes isolate which rule carries the system's balance.
+- [procedure] 1) Write a script that covers the most needed words. 2) Record those words in the least recording time. When: Planning a concatenation recording session.
+- [procedure] 1) Choose a meaningful goal for the learner. 2) Break the goal into a sub-task the learner must first solve. 3) Let the learner program that sub-task through trial and error. 4) Reuse the solved sub-task to reach the larger goal. When: Designing learning activities where a complex result is built from simpler verified parts. Why: Building up from solved parts makes the underlying principles, such as the geometry of a square, discoverable through mistakes and successes.
+- [procedure] 1) Load the relevant existing code into your head. 2) Decide on a solution. 3) Write the code. 4) Clean up. Then repeat for the next change. When: each code change.
+- [procedure] 1) Measure the code with timers to find slow sections. 2) Profile those sections for cache misses with a cache-aware profiler. 3) Restructure data only if misses are confirmed as the bottleneck. When: Deciding whether to apply data locality changes. Why: Timers show slowness but not cause, and restructuring without evidence adds complexity.
+- [procedure] Run the game in demo mode continuously for days to expose creeping fragmentation or leaks, which commonly cause long-run failures. When: Validating long-running stability before release. Why: Long-run failures appear only after extended operation.
+- [tradeoff] Processing dirty data at natural checkpoints, such as docking or loading screens, hides the work and gives timing control, but checkpoints can be missed if the player never reaches them. When: The game has natural pauses where work can be hidden. Why: Missed checkpoints defer work longer than planned.
+- [pitfall] Waiting for full console builds to test each AI change greatly slows iteration.
+- [pitfall] Character-specific code slows level creation and limits how much AI code can be reused between projects.
+- [pitfall] Outside code holding a persistent pointer into an alternating buffer can silently refer to the other buffer after a swap. When: Buffers are swapped by pointer and alternate each frame. Why: Pointers still refer to the buffer's old address, which now holds the other frame's data.
+- [pitfall] Sleeping only pads frames that finish early; a frame that overruns its budget produces negative sleep time and the game slows down. When: A frame takes longer than its time budget. Why: Sleeping cannot shorten work already done.
+- [fact] Stable toolchains let artists and designers create content and insert it into the game without manual help from engineers.
+- [fact] Because all checks run in one location, it is easy to log every check and its result.
+- [fact] Building effective concatenation systems is complex, so better synthesis and processing tools are needed to reduce repetitive recording work.
+- [fact] Developers often keep cheat codes in final releases so players can experiment with situations that would otherwise be impossible.
+
+## bug tracking and triage
+- [rule] Judge completeness only after the game is functional.
+- [rule] Include player state, such as tutorial or progression position, and platform details like version and memory in feedback, because this information helps find bugs. When: When collecting bug reports from players. Why: Progression state and platform specs narrow down where a bug occurs.
+- [rule] Fix problems under pressure with small, controlled, iterative changes, because a rushed fix can unbalance the game and create new problems. When: when schedule or crisis pressure invites a quick fix. Why: Interdependent systems let one rushed change spread side effects.
+- [rule] Observe QA going through the game element by element, since experienced testers can offer insights no one else has.
+- [rule] Each bug record should hold a description, exact steps to reproduce, severity, and the name of the tester who found it.
+- [rule] Assign each bug to a specific owner, such as sending a database bug to the database programmer, so fixes can be tracked by build.
+- [rule] Near the end of production, a producer may defer remaining minor bugs, such as small non-gameplay cosmetic errors, since nearly every game ships with some. When: near the end of production. Why: Nearly every shipped game has some remaining minor bugs.
+- [heuristic] Treat a bug report about your design as a chance to fix the problem before players see it.
+- [procedure] 1) Check the design document or rule sheet first. 2) Plug each hole so the rules make sense. 3) Expect fixes to affect other parts of the game and plan several testing sessions. When: Fixing rule gaps found in testing.
+- [procedure] 1) Owner fixes the bug and the fix is tied to a build. 2) The bug returns to QA. 3) QA retests it. 4) QA marks it resolved only when satisfied.
+- [procedure] 1) Hold a triage meeting to assess the current code state. 2) Prioritize bugs. 3) Work through the database starting from the highest priority.
+- [procedure] Separate the playability checker from the generator and run it as a machine playtester to flag flaws in hand-made levels. When: Validating levels with automated checks.
+- [pitfall] Dismissing a game as just polished underrates how polish sells interaction, and how it supports game feel and the player's sense of discovery. When: Evaluating or discussing a game's feel.
+- [pitfall] Apparent common-sense usability problems still ship, due to the curse of knowledge, habituation, or competing priorities. Why: Developers know the game too well, stop noticing familiar issues, or face other priorities.
+- [pitfall] Getting defensive about bug reports on your features undermines the working relationship with QA.
+- [pitfall] Cosmetic and low-severity issues are usually not patched, so players may keep complaining about them after launch.
+- [fact] Common playtest failure sources are unblinded testers with expectations, group tests creating social competition, think-aloud requests changing behavior, biased tester selection, and small samples with high variance.
+- [fact] Free open-source bug trackers are recommended for tracking bugs, though paid bug databases also exist.
+- [fact] Scripting debug tools may never ship in the final game but are needed to ship it, and in a moddable game they ship too.
+
+## engine systems
+- [model] The engine holds a central pool of AI algorithms, and each character's data names which techniques it uses, how they are parameterized, and how they are combined.
+- [model] A dirty flag can be cleaned on demand, at checkpoints, or in the background; each option trades responsiveness, timing control, and redundant work. When: Choosing when to process flagged data.
+- [mechanism] Deferring work moves its cost to a later point, often the moment the result is needed; if that work is slow, the player sees a pause. When: Batched or postponed computation is needed right when requested. Why: The deferred cost lands at the moment of use rather than being spread out.
+- [rule] Use an engine when a quick, working prototype matters more than engine-independent design.
+- [rule] Design AI for the lowest common denominator, the minimum specification in the technical design document; faster machines simply use less of their AI budget.
+- [rule] Prefer simple, parameterized behaviors when designers must author AI through a tool. When: designers author AI through a tool.
+- [rule] Buffer shared per-frame state so every actor reads the previous frame's values, and write new values separately, then commit them together after all actors have updated. When: Multiple actors react to each other's state within one update pass. Why: Keeps results independent of update order so actors appear to act simultaneously.
+- [rule] Store game behavior in data files loaded and executed by the engine so designers and patches can change logic without recompiling. When: Designers, patches, or mods need to change behavior often. Why: Hard-coded behavior forces an engineer and a full recompile into every tuning cycle.
+- [heuristic] Working in an engine's level editor, which exposes grids, rooms, units, and objects, helps you learn a genre's formal elements.
+- [heuristic] Keep formation patterns and roles out of code, defining them with separate tools. When: Authoring formation content. Why: Most developers prefer this separation.
+- [heuristic] Displaying or recording the events delivered to each character makes complex decision making easier to debug. When: decision making is complex. Why: delivered events show what each character reacted to.
+- [heuristic] Draw the interest curve even when opinions on ideal shapes differ, since skipping it risks missing the big picture.
+- [procedure] 1) Hold Ctrl and drag with the left mouse button to move an actor along X. 2) Hold Ctrl and drag with the right button for Y. 3) Hold Ctrl with both buttons for Z.
+- [procedure] Right-click an actor and choose Go to Actor, or press Home, to make all viewports focus on it. Then fine-tune the position. When: when navigating a large level. Why: Home jumps to a rough area quickly.
+- [tradeoff] An engine saves time and resources, but its capabilities can push design toward what it does well; letting engine features determine the game instead of design goals distorts design.
+- [tradeoff] Data binding automates updating a UI element whenever a bound value changes, while keeping imperative code; it suits UI and non-critical areas but is probably too slow and complex for a core engine. When: Choosing an update mechanism for a game's UI. Why: It removes repetitive update code without building the whole program around a dataflow graph.
+- [pitfall] Re-sorting groups by dynamic priority every frame adds time for little gain; a cooperative arbitration system may be a better choice. When: group priorities change dynamically.
+- [fact] Reusing engines across titles has reduced programming effort.
+
+## audio and narrative production
+- [behavior] Colleagues often underrate sound and music because they do not know what these can do, which is a gap in knowledge rather than intelligence. When: Audio is often underrepresented in team decisions. Why: Others lack knowledge of sound and music's capabilities.
+- [rule] Name audio packages with the prefix A_, for example A_TutorialTestpackage. When: creating a package for imported sounds. Why: follows the engine's naming convention.
+- [rule] Attend voice-over sessions when possible to clarify unclear notes and advise the voice director on delivery.
+- [heuristic] The only reliable way to judge an interactive music solution is to test it in the game it belongs to.
+- [heuristic] Plan branching dialogue carefully before recording, since its line count grows fast enough to make late changes costly.
+- [heuristic] Keep actors' voices fresh with plain water, avoid milk, tea and coffee which build phlegm, and offer gum or green apples to stimulate saliva. When: Running long voice recording sessions. Why: Some drinks and dryness impair vocal clarity and comfort.
+- [heuristic] Start new stories with a linear core concept, which shows whether a more complex structure would actually improve the story. When: Developing any new story. Why: A linear draft tests whether added complexity pays off.
+- [heuristic] A story reaches its potential only when it is integrated into game production, so teamwork is essential.
+- [procedure] 1) Pick colleagues who know nothing about the feature and fit the target audience. 2) Test the feature with each one. 3) Tweak the design and retest with another colleague. When: Studios that cannot recruit external participants. Why: Internal testing gives quick feedback when external recruiting is impossible.
+- [procedure] 1) Write the script early. 2) Have voice actors record and improvise lines. 3) Revise lines and design characters around the performances. 4) Repeat recording sessions as the project evolves. When: Developing narrative-heavy games where emotional performance matters. Why: Iterative recording lets performance drive character design and produces stronger emotional impact.
+- [procedure] 1) Open the Content Browser. 2) Use the package tree to find the sound's group. 3) Search by name, or filter by object type such as Sounds. 4) Double-click a sound name to hear it.
+- [procedure] Track ambient lines in a spreadsheet or similar tool, since they are numerous, separate and disconnected from one another. When: A project contains many ambient lines.
+- [procedure] Repetition check: 1) Ask QA testers to log how often each ambient line plays. 2) Add variants for lines that repeat too often. When: Testing ambient or bark audio before release.
+- [procedure] 1) Show the evaluator ten sample levels per generator. 2) Let them play one level. 3) Show an estimated playability from simulation. 4) Show a cloud overlay of levels to reveal shared patterns. When: judging generators whose output varies. Why: Multiple samples reveal the generator's real range, not one artefact.
+- [pitfall] Audio job titles are used inconsistently across studios. One studio's audio engineer may run recording sessions while another's audio engineer is an audio programmer. Why: Titles do not reliably indicate duties, so role descriptions must be read closely.
+- [fact] Audio director, audio manager, audio lead, sound designer, audio designer, technical sound designer, audio engineer, audio programmer, audio integrator, audio implementer, voice director, note tracker, music transcriber, composer, music director.
+- [fact] Junior writers frequently aren't brought in during a project's earliest conception or planning, especially on writing teams. This is normal.
+
+## budget and funding
+- [definition] Overhead covers nonlabor costs needed to run the business, such as rent, utilities, supplies, and insurance; an accountant should calculate the true overhead percentage from real costs.
+- [definition] Markup is the percentage charged above costs, letting a developer earn money on a production if it is managed closely and meets expectations.
+- [rule] Finance is not beyond you: learn enough business to think and talk with producers, executives, and marketers, without mastering every detail, to be a valuable team member, not a specialist. (x2)
+- [rule] Treat memory budgeting as part of the creative process, because RAM is limited and costs money. When: Planning sound design scope. Why: Memory limits shape which sounds can be made.
+- [rule] Learn the goals of every party involved, including publishers, console makers, and retailers, and understand the contract and deal structure for your own game. Why: Knowing each party's needs helps get original ideas produced and published.
+- [rule] Choose tactic weights so that no connection's total cost can become negative, since standard algorithms such as A* do not support negative costs. When: Setting weights for tactical pathfinding. Why: A* assumes non-negative costs; negative costs break the search.
+- [rule] Even a basic cost/power sheet needs two subtotal columns, one summing costs and one summing benefits.
+- [heuristic] Business skill matters as much as design skill for transformational games, since sustainable business models for them are hard to find. Why: A game cannot change anyone if its makers cannot afford to build it or deliver it.
+- [heuristic] Treat every business interaction as a chance to learn, since the relationships built with businesspeople make a designer better at the craft.
+- [heuristic] Designers who understand players, the market, and how deals are structured make better commercial decisions about a design.
+- [procedure] 1) Collaborate tightly with all departments to estimate tasks. 2) Keep the budget evolving to stay within allocation. When: Estimating and tracking game cost. Why: The producer alone cannot estimate accurately.
+- [pitfall] Arguing against a funder who is fully caught up in inflated expectations rarely changes their mind.
+- [pitfall] Aggregators provide no production funds, so the developer must finance the game.
+- [pitfall] Calculating overhead incorrectly causes developers to underprice their work and lose money.
+- [fact] The budget is often one of the first documents made, because it helps secure funding.
+- [fact] A company prospectus works as a studio résumé, listing location, project history, technologies, staff by department and shipped titles.
+- [fact] Pitches can be made more concrete than text through one-page design, prototyping, or journeys, each making the idea experienceable rather than only described. When: Presenting a game idea to an audience.
+
+## market, funding, and genre
+- [model] The Hype Cycle has five phases: technology trigger, peak of inflated expectations, trough of disillusionment, slope of enlightenment, plateau of productivity.
+- [model] Game agents use three deal structures: a monthly retainer; a success fee as a percentage of client compensation; or a smaller retainer plus a smaller success fee.
+- [model] Game agents come in three types: hunting agents, packaging agents, and Hollywood-style agents representing film talent. Each earns money differently.
+- [definition] The game budget is usually a spreadsheet listing all work with time estimates that translate into dollars.
+- [definition] The Hype Cycle plots a technology's visibility, meaning how many people talk about it, over time.
+- [definition] Genres are shorthand for styles of play, helping teams define target market, platform, and development team.
+- [behavior] Funders swept up in inflated expectations may back a game for a technology's promise rather than its design. When: a funder believes the hype around a technology.
+- [heuristic] A game outside a top-selling genre is harder to fund.
+- [heuristic] A pitch outside a team's known genre is seen as riskier, since publishers often pigeonhole developers into the genre they already know.
+- [procedure] 1) Secure funding before the technology reaches its trough of disillusionment. 2) Build a strong game despite the technology's limits. When: a game depends on a hyped technology. Why: Funding obtained at the height of hype is safer than funding obtained after disappointment sets in.
+- [procedure] 1) Identify the genre your game fits. 2) Explain why it fits. 3) Choose the release platform. 4) Name the target audience. 5) Check that platform and audience follow from the genre. When: when planning a new original game.
+- [fact] Understanding the Hype Cycle helps a designer avoid untested bets, inoculate a team against hype, and handle funders swept up in expectations.
+- [fact] Publishers use results from internal and external development groups to judge which is more cost effective.
+- [fact] Publishers judge where a game sits among current buying trends, and genre labels make that judgment easier.
+- [fact] Game agents are expected to come to resemble film agents as the industry matures.
+- [fact] Hunting agents phone publishers about work-for-hire opportunities, find a developer, and present the deal; the developer pays them a modest percentage of the resulting compensation.
+- [fact] Many major franchises started small and grew over years of developer and fan effort, so a first release is only the start of a long process.
+
+## art direction and production
+- [definition] An animatic is an animated mock-up built without real game technology, so it cannot convey kinesthetic feel.
+- [behavior] Gathering art and music with personal meaning often produces stronger game ideas than brainstorming alone. When: when generating early concepts for a prototype. Why: personal material evokes mood and a clear core idea.
+- [rule] Create an art bible, a guideline document giving several artists shared rules for one consistent look, when they work on one title. When: Several artists work on one title.
+- [rule] Attach concrete references such as images, sound files and sketches when briefing other teams.
+- [rule] Check whether the design feels right to the designer; team gut feelings also count, and other filters balance their errors.
+- [rule] List every asset to be produced, grouped into categories fitted to the game, such as interface, environments, characters, animation, music, and sound effects.
+- [rule] Give off-site artists reference material early, since narrative designers need time to find the references they require. When: when art is outsourced to off-site artists. Why: finding references takes time and delays the art.
+- [procedure] 1) Prove mechanics on gray boxes. 2) Replace gray shapes with real art. 3) Retest the loop, since art changes how players perceive the encounter. 4) Widen the loop to dialogue, audio, writing, and bug-fix testing before shipping.
+- [procedure] 1) Build an abstract prototype. 2) Let it suggest how the game should look. 3) Let the art suggest how it should play. 4) Build a new prototype from those insights. 5) Repeat until art and gameplay complement each other. When: early in a project, while the design is still abstract. Why: each cycle grounds the design in both visuals and play.
+- [procedure] 1) Explain your vision to the lead artist or art director. 2) Listen to their response. 3) Review references together, naming what you like and dislike about each.
+- [pitfall] Covering design faults with art hides the mechanical core, so fixing the weakness later means tearing the art off. When: after a failed playtest.
+- [fact] Iteration loops grow to several days once art is involved, because art is slow to produce. When: After art is added to a level.
+- [fact] When art and technology are out of balance, the game feels split down the middle; when balanced, it can be striking.
+- [fact] An art bible may hold character sheets, environment examples, color usage, interface mockups, or any other material that establishes how game elements look.
+- [fact] Making art keeps the hands working while ideas are recorded, pulls people into flow, reducing inhibitions, and puts thoughts on paper that words cannot express.
+- [fact] Modular, reusable art assets save production time and also support teaching methods.
+
+## sample size
+- [mechanism] Larger samples make groups match more closely, but they never match exactly and never remove the chance of a false difference.
+- [rule] Add testers when a result is suggestive but not significant; more data points shrink the standard error, so the same difference becomes more statistically significant. Why: Larger samples narrow the standard error and improve significance.
+- [rule] Surveys, closed beta telemetry, and A/B tests with larger samples need a defined acceptable uncertainty level before analysis. When: Analyzing results from large samples. Why: Without a set threshold, conclusions become arbitrary.
+- [rule] For hundreds or thousands of respondents use seven-point Likert scales; for smaller samples five points are enough. When: Choosing Likert scale length. Why: Larger samples support finer distinctions.
+- [rule] Check whether a sample is representative; a closed beta group is often self-selected and more extreme than the mainstream audience. When: when generalizing from a beta or small sample. Why: self-selection skews opinions and behavior.
+- [heuristic] Use a line graph to compare two continuous values, or discrete values with a clear order such as months in sequence.
+- [heuristic] Real innovation usually comes from long-term development and experimentation, not from the first spark of an idea.
+- [procedure] 1) Measure completion times and compute mean, median and standard deviation. 2) Compare mean with median to infer skew. 3) Inspect very fast and very slow outliers. 4) Generate several candidate explanations. 5) Test them in follow-up playtests. When: Analyzing playtest completion times. Why: Statistics point to questions, not causes.
+- [procedure] 1) Compute the probability of the observed streak. 2) If it is very small, check the random number generator for a fault before blaming chance. When: evaluating a suspiciously long run of failures.
+- [procedure] 1) For each player, draw a finish turn from the single-player finish distribution. 2) Sort the draws to rank finishers. 3) Repeat many trials and average the placements. When: Estimating multiplayer race outcomes from single-player finish distributions. Why: Independent per-player draws reproduce the race without storing the joint state.
+- [procedure] 1) Give a standardized pre-test of the target skill. 2) Train the experimental group on the target game and the control group on another game. 3) Give a post-test to both groups. When: when testing whether a game changes skills. Why: Comparing change against a control shows whether training caused the gain.
+- [tradeoff] A 15-participant task test gives stronger evidence but is slow for quick prototypes; a smaller sample is faster but gives weaker evidence. When: when prototyping quickly.
+- [pitfall] Working in isolation misses valuable context held by other teams.
+- [fact] Small samples make significance hard to reach and conclusions unreliable; three testers make timing statistics nearly meaningless, while a few thousand make them much more reliable.
+- [fact] Logging input and system state every frame turns a vague complaint about controls into millisecond-level data on input and system output.
+- [fact] UX lab samples are rarely large enough for reliable statistics, so comparing conditions in a lab is difficult. When: Analyzing results from small playtest groups. Why: Few participants give wide uncertainty.
+
+## experimental design and controls
+- [definition] A control situation forces testers into a specific part of the game, such as the ending, a rare event, or a new feature, instead of waiting for it by chance.
+- [mechanism] Control situations matter most when time is limited, because some games take days to reach their later states.
+- [rule] Use control groups for comparison; to learn what engaged players like, also survey less-engaged players. When: when interpreting differences between player groups. Why: without a comparison group, group differences cannot be attributed.
+- [rule] Test controls with players, because first control attempts are rarely as intuitive as designers expect.
+- [rule] Choose control targets among the game's end, rare random events, special situations, particular levels, and new features. When: planning control tests.
+- [rule] Control testing aims to see what happens under every condition, not to make testers comfortable or the game fair.
+- [heuristic] Pick a user research method by development stage, research question, and available resources. No single method answers every question, so combine several. When: Planning which UX research method to use at a given stage. Why: Each method answers a different kind of question and fits different constraints.
+- [heuristic] Changing one rule variable often reveals the need to change other variables, so test those connected changes next.
+- [procedure] Before attributing a measured difference to a design change: 1) Write the experimental hypothesis and its null hypothesis. 2) List every variable that differs between test groups, such as time spent or encounter count. 3) Control or measure those variables. 4) Run significance testing. 5) Attribute the effect only if no confound explains it. Why: A significant result can still come from a hidden variable.
+- [procedure] 1) For each condition, compute the mean and standard deviation of the metric. 2) Compare the difference against a chosen confidence interval. 3) State the threshold used so the uncertainty is known. When: Comparing two designs or settings on a measured metric. Why: Confidence intervals show how much of a difference could be noise.
+- [procedure] 1) List which inputs map to which parameters. 2) Count controlled objects and avatars. 3) Classify each avatar's motion type, dimensions, frame and directness. 4) Quantify each input's modulation as an ADSR envelope. 5) Infer whether filtering, simulation or both produced it. When: when analyzing how a game's control feels. Why: to identify the tuned variables and their relationships.
+- [procedure] 1) Define three control situations for the prototype. 2) For each, state its purpose and function. 3) Run each and record observations. When: planning prototype test sessions.
+- [procedure] 1) Generate random combinations of themes and conditions 2) playtest each combination 3) keep the ones that feel intuitive and drop those that feel overwhelming.
+- [pitfall] Changing two or more variables together makes it hard to separate their individual effects on the system.
+- [fact] Combining methods can reveal differences: individual forms after a group discussion yield different responses than group discussion alone.
+
+## correlation and causation
+- [model] An observed correlation can have four explanations: X causes Y, Y causes X, a hidden third factor such as player expertise drives both, or chance produces it. When: Interpreting a correlation, such as two behaviors moving together. (x3)
+- [definition] A confounding variable is a hidden third factor that changes with the tested variable and drives both measured variables, producing a correlation or difference instead of the design change. Why: Such a factor makes the two variables correlate without either causing the other. (x2)
+- [definition] Correlation describes whether two data sets move together (direct, positive) or in opposite directions (inverse, negative).
+- [definition] CORREL pairs two equally sized ranges cell by cell and returns a correlation coefficient describing how the two move together.
+- [rule] When computing a correlation, use two ranges of identical dimensions with each value aligned to its matching value in the other range. When: Computing a correlation coefficient in a spreadsheet or script. Why: Mismatched pairs or differently sized ranges produce a meaningless coefficient.
+- [rule] Correlational studies alone cannot show whether a game built a skill or whether already-skilled people chose the game. When: when evaluating claims that games improve skills. Why: Self-selection and reverse causation confound correlations.
+- [heuristic] Correlated variables can have several distinct root causes, so list alternative explanations before acting on a correlation.
+- [heuristic] Correlational findings suggest leads, but usually need further research before a causal conclusion is drawn.
+- [metric] The correlation coefficient ranges from -1 to 1: 1 means perfect direct correlation, -1 perfect inverse correlation, and 0 no correlation.
+- [pitfall] Acting on a correlation as if it were an actionable cause without further evidence can lead to changes that do not work or do nothing. (x2)
+- [pitfall] Treating a correlation as proof of cause is a common mistake: co-movement does not show which variable causes the other or whether a third factor drives both. When: Interpreting two metrics or behaviors that move together. Why: Two variables can move together without one causing the other; the coefficient only measures that co-movement.
+- [pitfall] Treating a correlation between gaming and a problem as proof that gaming caused it. When: reading negative-impact studies. Why: many such studies are correlational.
+- [fact] When many unrelated variables are compared, some strong correlations appear by chance, and small samples make such chance results more likely.
+- [fact] Correlations describe general trends rather than absolutes; random variance can occasionally reverse them, so strong real correlations rarely reach exactly ±1. Why: Noise shifts observed coefficients away from the extremes.
+
+## critical judgment habits
+- [definition] Cognitive biases distort how analysts read data and how players behave, so telemetry must be interpreted in context. Named types include survivorship, self-fulfilling prophecy, confirmation and decoy effects.
+- [definition] Candor means forming your own opinions and stating them clearly, even when disagreeing with a superior or a group is uncomfortable.
+- [rule] Tell testers you need help finding problems, since they avoid hurting feelings, especially if they think you made the game.
+- [rule] Recompute worked numerical examples from the stated formula before using them as test cases, since printed figures may not follow the formula. When: Using example numbers from design documents or books as expected values. Why: Printed arithmetic can contain errors.
+- [rule] Read the whole text carefully before commenting, since skimming produces weak notes.
+- [heuristic] Being honest with yourself and with players about results tends to yield the most useful insight.
+- [heuristic] Before dismissing criticism, check your own sensitivity, whether the criticism is truly harmful, and how other testers react to it.
+- [heuristic] When a disagreement stalls, ask whether you might be wrong.
+- [heuristic] Check whether a motivational tactic points people toward the game or toward personal rewards before using it. When: When choosing how to motivate a team. Why: Tactics aimed at personal rewards can pull effort away from the game.
+- [procedure] 1) Assess each applicant alone and as a fit for the group. 2) Review their past work record. 3) Consult former collaborators about personal output and how they behave within a group.
+- [pitfall] Common sense only holds what is already established, so it cannot anticipate undiscovered usability issues; assuming it suffices to skip iteration is a fallacy.
+- [pitfall] Pressure to confirm a hypothesis can introduce unconscious bias, and in extreme cases fraud. People seek data supporting existing beliefs and ignore contrary evidence, which social media feeds amplify.
+- [pitfall] Treating sound spotting as a checklist of assets, such as hearing a shaft because it is seen, misses what each sound is for.
+- [fact] Completeness is partly objective and partly subjective, and any game can be called complete until someone finds a flaw.
+
+## player feedback handling
+- [mechanism] Interacting with players throughout design gives experimental ideas time to mature into workable experiences. When: when developing unusual or experimental ideas.
+- [mechanism] Complaints left unaddressed at the testing stage can resurface after release as forum posts or memes.
+- [heuristic] Rely on personal judgment early and daily, and use playtesting to check audience reactions once there is something playable to test.
+- [heuristic] Players expect games to be updated based on their feedback, so keep an ongoing feedback loop between designers and players.
+- [heuristic] Treat playtesters as guides who reveal design problems below the surface of the game.
+- [heuristic] When playtest feedback piles up, sort it into a prioritized list of changes and address one phase at a time. When: Playtest comments overwhelm the designer.
+- [heuristic] When a matchup looks unusual, gather replays from top-level players to see how they actually play it. When: Competitive games with suspected imbalances. Why: Expert play reveals the strategies that matter.
+- [heuristic] Responding to player complaints about a disruptive problem is a form of playtesting and can close the problem.
+- [tradeoff] User-generated game sites accept free uploads, let players rate games, and feature top-rated titles; they offer high traffic but face heavy competition and provide no development budgets.
+- [pitfall] Hoping a community forms on its own is not a plan; without tools and management it may never develop.
+- [pitfall] An unfinished version released online shapes first impressions, so the player base may need restricting.
+- [pitfall] Teammates rarely reread the whole design document at each release, so significant changes go unnoticed unless they are announced.
+- [pitfall] Presenting personal preference as if it were a problem with the work makes notes hard to act on.
+- [fact] Playtest results are natural consequences of real play rather than rewards set up by one person to manage another, so they do not feel controlling.
+
+## cross-discipline collaboration
+- [mechanism] Relying on other people for knowledge raises process burden, because every task then needs spec writing and discussion.
+- [behavior] Designers tend to treat their own discipline's element as primary: designers favor mechanics, artists favor aesthetics, engineers favor technology and writers favor story. When: when a team discusses which element matters most. Why: Each discipline sees the game through its own element.
+- [behavior] Designers tell narrative staff about changes only when they feel comfortable doing so, so building good working relationships with them matters. When: cross-discipline projects. Why: comfort determines whether changes get communicated.
+- [rule] Learn the language of other disciplines so you can understand their problems and find solutions that serve both sides.
+- [rule] Communicate with other disciplines at all times and keep iterating on narrative content.
+- [rule] Balance narrative needs against interdependent departments, and know when to put others' needs ahead of your own work.
+- [rule] If a change affects another discipline, clear it by email first and get agreement from everyone involved.
+- [heuristic] Understanding how your ideas affect other teams' work makes you more useful and welcome on a team.
+- [heuristic] Consult domain experts, such as geologists for terrain, to ground an environment in realistic natural processes.
+- [procedure] Confer with every discipline while writing the design document, since the writing process itself creates communication across the team.
+- [procedure] 1) Involve sound, design, and art teams early so they take ownership. 2) Explain how each team can contribute, with examples. 3) Make narrative decisions early. 4) For each element, state its purpose and what mechanics or levels can say. When: Planning environmental narrative with teams. Why: Each narrative use adds time to another department's schedule.
+- [fact] Narrative designers work with programming, game design, level design, art and sound to integrate story with the available mechanics, designs and assets.
+
+## qa testing
+- [definition] QA testing is performed by dedicated testers to find technical bugs and is essential in any video game production process.
+- [definition] QA tests levels and plot points, reports most bugs, and verifies that changes do not break the game or narrative flow.
+- [behavior] QA may want to play the game before hearing your input, in order to stay objective. When: Early in testing, when QA receives design information. Why: Testers want to form independent impressions.
+- [rule] Test narrative material before release so players are not the first to report that they do not understand what is happening.
+- [procedure] 1) Build a test plan from the design and technical specifications. 2) Execute the plan. 3) Record unexpected behavior. 4) Categorize and prioritize issues. 5) Retest after fixes.
+- [procedure] 1) List the areas and features of the product. 2) Specify the conditions under which each will be tested, based on the design document or wiki. 3) Run tests against the current build. 4) Log each deviation from the specification as a bug.
+- [procedure] 1) Meet the QA lead to share your testing requests. 2) Ask when feedback will arrive. 3) Ask to review QA's final plan before testing starts. When: working with QA. Why: QA writes its own final plan but should welcome input on what matters.
+- [fact] Developer and publisher teams both employ QA engineers; publisher QA tests before accepting code delivery, knows the game less than developer QA, and decides whether to accept the build. Why: Publisher QA does not work alongside production.
+- [fact] Quantitative feedback from forms reveals trends and helps prioritize how severe issues are.
+- [fact] QA engineers are also called testers, and many people start in QA before moving into producer, programmer, or designer roles. QA lead and QA manager are advanced positions.
+- [fact] The QA/polish stage, roughly months 23 to 24, shifts focus from new features to correctness and polish, refining the alpha build into the shipping product.
+- [fact] QA feedback shows how someone unfamiliar with the story perceives it, revealing what testers understood and what they missed.
+
+## executive and stakeholder input
+- [definition] The executive producer oversees the whole project and carries final responsibility for it.
+- [behavior] Marketing and business staff often request design decisions earlier than the dependency order allows. When: The game is still early and its details are unstable.
+- [rule] When criticism reflects a different imagined game, fix the presentation so the intended game is clear, or change the game itself.
+- [rule] Executives need to understand both the value and the limits of a player-centered approach.
+- [heuristic] Do not expect executives to play your prototype unless they are already excited, since they may embarrass themselves or crash it. When: when showing a prototype to executives.
+- [heuristic] Before dismissing an executive's input, learn which games they have worked on and what their expertise was.
+- [heuristic] Before blaming management, check whether they had a clear view of the game, since they may not have read the design documents or played a recent build.
+- [heuristic] Incorporating executive suggestions that improve gameplay helps the publisher back the game when it ships.
+- [fact] Executive management includes the CEO, president, CFO, COO, vice presidents, and directors, who run the company and oversee departments.
+- [fact] Developer executives are often founders or former core designers, while publisher executives often come from business, marketing, other industries, or hobbyist gaming.
+- [fact] Outside parties such as advertisers, marketers, investors, hiring managers, and retailers need product information months ahead, so underplanning also harms them. When: When scheduling a game's release and external commitments. Why: Advertising, marketing, hiring, and distribution all run on long lead times.
+
+## player-centric design
+- [definition] Playcentric design is an iterative method building mechanics from the ground up around player experience, inviting early feedback and playtesting prototypes until gameplay delights testers and meets experience goals.
+- [definition] A persona is a named, human-like profile of a hypothetical user, built from market research and interviews, used to guide design decisions. When: Defining target players for design. Why: A concrete profile helps teams make consistent decisions.
+- [definition] Human-centered design, called player-centric design in games, means considering the user experience throughout development.
+- [rule] Look at the game through the player's eyes rather than the designer's, and keep that perspective throughout production, not only at the start.
+- [rule] Design around user goals rather than user tasks, since goals explain why players act and let the design adapt to different actions. When: Writing persona-driven design requirements. Why: Tasks change with the design, while goals stay constant across features.
+- [rule] Have developers watch real players rather than relying only on the persona. When: Validating design decisions made with personas. Why: Real observation corrects assumptions a persona may hide.
+- [procedure] 1) Conduct field research on the target audience. 2) Distill it into a profile of goals, preferences, expectations and behaviors. 3) Share that profile across development, marketing and publishing. When: Aligning a team on its core player. Why: A shared concrete profile replaces abstract market segments and keeps the audience in view.
+- [procedure] 1) Marketing provides market segmentation. 2) Development provides core pillars and intended experience. 3) Field research and interviews define goals, desires, and expectations. 4) Give the profile a name, photo, and summary. When: Building personas during conception or preproduction. Why: Combining market, design, and player data keeps the persona grounded.
+- [procedure] Use one primary persona for the core audience, a secondary persona for broader reach, and optionally an anti-persona for players the design does not target. When: Defining the set of personas for a project. Why: A small set keeps prioritization clear.
+- [procedure] 1) Brainstorm player experience goals, pick top three concepts, write a one-page concept, test with players. 2) Physical prototype, playtest, write 3-6 page treatment. 3) Optional presentation for funding or team feedback. 4) Software prototype with temporary graphics, playtest until goals met. 5) Draft design document or living wiki. 6) Check production feasibility, keep testing. 7) Playtest usability and accessibility across audience. When: when developing a new game with the playcentric process. Why: Each step reduces risk before the more costly step begins.
+- [pitfall] Personas are often reused as generic player types across games; a persona is not a real person, so teams may design for a stereotype unless the data stays accurate and current. When: Using personas over the life of a project. Why: Stale or stereotyped profiles mislead design decisions.
+
+## studio operations and business
+- [definition] Specialized media contractors include writers, sound designers, musicians, motion-capture operators, martial arts instructors, and dialogue coaches.
+- [rule] Define the studio's creative vision along with its impact on user experience.
+- [rule] Assess the game's environmental impact and work to reduce carbon emissions, using external sustainability initiatives for guidance.
+- [heuristic] Have studio leaders co-lead training so that local leaders can carry the practice forward.
+- [heuristic] Presentation tips apply to small internal pitches as well as formal presentations. When: Presenting to a small internal group. Why: The same listening patterns apply.
+- [tradeoff] Studios with no budget may rely on internal testers, which accepts higher bias in exchange for feedback. When: Studios lacking budget for external testing. Why: Internal testers are cheaper but see the game differently from players.
+- [pitfall] Committing money you expect from a deal before it is paid is risky.
+- [fact] Studios often kept AI techniques secret, and developers adapt the same algorithm differently, so implementations are hard to recognize across studios.
+- [fact] Most studios start as small groups of friends who worked or studied together, and many never move past the concept stage.
+- [fact] Few teams win a production deal and fewer still produce a hit; small studios with only one or two games often close after a dry spell. Why: They lack a financial cushion for unexpected costs.
+- [fact] Talent from a closed developer often reappears at another company under a new name, and a successful developer may be bought outright by a publisher.
+
+## team feedback and critique
+- [mechanism] Repeated wrong confident predictions normally teach a group to stop listening to the predictor, which corrects overconfidence. Why: Visible failures erode trust in the confident voice.
+- [mechanism] Relaxed, friendly interaction makes colleagues more likely to listen to UX critique.
+- [rule] Respond to curveballs such as a hostile listener, a shortened meeting, or a rejection with composure, because walking out insulted closes the door on later opportunities. When: A pitch goes off plan or is rejected. Why: The goal is publishing games in general, so one rejected concept need not end the relationship; leaving badly ends the chance to offer something else.
+- [heuristic] When reviewing work, limit comments to general deficiencies and offers of help rather than prescribing specific fixes. When: Reviewing a teammate's work. Why: Specific orders block the worker from using knowledge the leader lacks.
+- [pitfall] Game design hides cause and effect, so results arrive years later and blur, and overconfident predictions persist, letting confident leaders gain more followers than accurate ones. When: long development cycles with delayed results. Why: The correction that normally exposes bad predictions is broken.
+- [pitfall] A stakeholder's past unpredictability on changes adds uncertainty that the stakeholder may not recognize, so their likely reaction should be checked rather than assumed. When: Proposing a change that affects a stakeholder's work. Why: Hidden uncertainty makes outcomes harder to predict.
+- [pitfall] Ignoring the subconscious's suggestions causes it to stop making them.
+- [pitfall] Taking a client's words at face value and ignoring their real motives tends to cause resistance and erratic behavior later in the project.
+- [pitfall] Ignoring topics the listener raised earlier makes them feel unheard and weakens ownership. When: Delivering a pitch. Why: Listeners want to see their input acknowledged.
+- [pitfall] Harsh comments make team members hold back their ideas, which damages the group's creativity.
+- [pitfall] Letting the wish for team harmony replace honest criticism allows design flaws to persist.
+
+## visual and audio art
+- [definition] Visual artist is a catch-all term for everyone designing a game's visuals, including character creators, illustrators, animators, UI designers and 3D modelers.
+- [definition] Concept art explores characterization, mood, or a space; storyboards fix framing, coloring, and sequencing; previsualizations explore ways to communicate an idea.
+- [rule] Use visual references such as other games, magazines, art books, captured video of real motion, and motion textbooks when briefing artists.
+- [rule] Finalize voice-recorded dialogue well in advance so actors can be booked, cast and recorded, and translations can follow.
+- [rule] Schedule time for a voice-over comment pass in the production plan, because rushed comments can hurt performances.
+- [heuristic] Choose a cheaper actor who understands games over a famous name, and budget for experienced voice actors. Why: Well-known actors are not shown to increase game sales.
+- [heuristic] Communicate design through a mix of text, wireframes, concept art, and flowcharts, because game developers tend to be visual thinkers.
+- [tradeoff] Scripts-first production lets voice shape characters and performance, while voice-last production suits volatile scripts but makes voice acting weaker and costlier to revise. When: Deciding when to record voice in development. Why: Late script changes are cheap for voice-last but building characters around voice is expensive.
+- [fact] Some middleware shows complex Boolean conditions and state machines graphically, so designers can author them without writing code.
+- [fact] Each editor viewport has its own perspective, so moving an actor looks different in each one.
+- [fact] Visual artists design characters, worlds and world objects, interfaces, animations, and cutscenes.
+
+## agile practices and backlog
+- [model] A software statement ranks four pairs: responding to change over following a plan, customer collaboration over contract negotiation, working software over documentation, and interactions between individuals over processes and tools.
+- [model] Agile teams use a prioritized backlog, short sprints ending in working deliverables, daily scrums, demo days, and retrospectives.
+- [model] Agile is a modular, adaptive, people-centered framework for software development.
+- [rule] Keep backlog ideas unconnected; do not fix them into a plan, since that implies certainty the designer does not have.
+- [procedure] 1) Once the foundation is solid, choose an idea from the backlog. 2) Place it on top of the stack. 3) Repeat after each layer solidifies.
+- [fact] The Agile Manifesto was written in 2001 by software engineers and sets out values and principles for building software.
+- [fact] Over 80% of videogame developers report using some version of agile.
+- [fact] Agile is a philosophy rather than a prescribed method, so implementations vary between teams.
+- [fact] Agile development is the most successful descendant of the spiral model.
+- [fact] Most backlog ideas will never be implemented, so ideas that do get used are likely strong.
+
+## feature scope and cutting
+- [mechanism] Cramming features in quickly accumulates hacks and inconsistencies that steadily drain future productivity. When: under pressure to finish current work. Why: Shortcuts left in code slow every later change.
+- [heuristic] Cut features once systems take shape, ideally at end of pre-production before the core experience settles, since teams tend to add features; more features do not guarantee success. When: late pre-production when systems are forming.
+- [procedure] 1) Write a one-page description of the feature: why it matters, how it works and all its possible states. 2) List every state. 3) Derive the signs and feedback needed for each state. 4) Share the list early so UI, art and sound teams can prepare assets. When: As soon as a feature, mechanic or behaviour is defined. Why: Late sign and feedback planning makes it hard to produce assets in time, and unlisted states ship without signals.
+- [procedure] 1) Time how long players take to reach a point with the feature and without it. 2) Ask players how they feel about the feature.
+- [procedure] 1) Take a teammate's idea. 2) Reshape it so it fits the overall framework from a systems perspective. 3) Work with the teammate rather than arguing against the idea. When: A team idea does not fit the framework. Why: Collaboration builds trust.
+- [procedure] 1) Design the feature 2) Prototype or implement it 3) Test it 4) Analyze results 5) Define changes 6) Repeat.
+- [procedure] 1) Choose a favorite game. 2) Pick a feature you would add. 3) Ignore technical difficulty. 4) Illustrate how it works with words and storyboards. When: When proposing a feature for an existing game. Why: Feasibility is set aside so the concept can be explored and communicated first.
+- [procedure] After playtesting, remove features that do not support the core experience, such as weather, cycles, or terrain, when they distract from it. When: an emotional prototype is losing focus. Why: Playtester responses show which features help the core feel.
+- [pitfall] Journal entries that only review features miss the point; entries should discuss experience and the reasons behind it.
+- [fact] A strong feature concept can serve as a portfolio piece, since designers at established companies often receive feature work early in their careers.
+
+## market and genre
+- [definition] The unique element is what no one has done before, found by asking what is new or makes the game distinct. When: Revising a one-liner description. Why: It is the reason to make and buy this product.
+- [rule] Use genre labels when describing a game to publishers or judging its market fit. When: Pitching a game or assessing commercial fit.
+- [rule] Show the idea is unique even when it is compared to an existing property. When: Comparing a new game to an existing one. Why: A comparison must not suggest the idea is already made.
+- [rule] Pair a unique element with a familiar element in a one-liner description. When: Writing a one-liner description. Why: The unique part sets the idea apart while the familiar part makes it understandable.
+- [heuristic] A geopolitical review also considers unintended audiences, which can widen the market.
+- [metric] US annual game revenue was about $12.5 billion; software alone was about $7.5 billion, projected to reach $10 billion by 2010.
+- [pitfall] Assumptions about which audience will enjoy a theme can be wrong, so test them with players instead of relying on guesses.
+- [pitfall] A pitch built on cultural shortcuts can be rejected even when well written, if approvers do not know the referenced source. When: Using one-liner comparisons to films, comics or books. Why: Approvers may not share the reference.
+- [fact] Top-selling genres differ by platform and by market segment.
+- [fact] The unique-plus-familiar approach originated in screenwriting and transfers to game pitches. When: Choosing a method for writing a one-liner. Why: The same structure works across storytelling media.
+
+## meetings and delivery cadence
+- [definition] The design backlog is an informal, unordered pool of ideas, concepts, and impressions that are not being worked on soon.
+- [rule] Commit to a build that runs every day so artists can place new assets in the engine immediately; bugs remain, but progress stays visible. When: early production of a new 3D game. Why: Immediate asset testing in the real engine reveals integration problems early.
+- [heuristic] Schedule the debrief roughly 20 minutes into play, preferably once one or several stages are complete. When: Planning a post-play discussion.
+- [heuristic] Frequent deadlines increase how much gets done. When: when setting sprint or milestone cadence.
+- [procedure] 1) Identify the dependency stack of the design. 2) Iterate the lowest-layer foundations first. 3) Move upward only as each layer settles. When: Iterating a design with many dependent systems. Why: Upper layers change whenever their foundations change, so iterating them first wastes work.
+- [procedure] 1) Hold a 10 to 15 minute, often standing, meeting. 2) Each member reports yesterday's work, today's plan, and current problems. 3) Discuss solutions one-on-one afterward. When: during an agile sprint.
+- [procedure] 1) Discuss the work in person and raise questions and uncertainties. 2) Send a brief bulleted email confirming what was agreed. 3) Iterate on the agreed result. When: when coordinating across departments. Why: The written confirmation serves as a record and a reminder for everyone involved.
+- [procedure] 1) Identify which decision is at stake. 2) Invite everyone who holds knowledge the decision needs. 3) Exclude people who add no needed knowledge. When: Making a decision that draws on several disciplines. Why: Missing knowledge starves the decision, while extra attendees add nothing.
+- [metric] Ship working software frequently, every two weeks to two months, with shorter intervals preferred. When: when setting a delivery schedule.
+- [tradeoff] Losing a day to gather information before deciding costs little compared with the gain in decision quality when uncertainty is high. When: High uncertainty and costly premature commitment. Why: A better-informed decision usually outweighs a short delay.
+
+## shared design communication
+- [mechanism] When everyone shares an understanding of the design, small implementation decisions by programmers, artists, and executives reinforce it and unify the project.
+- [mechanism] Shared documents let more people examine the design sooner, so weaknesses are found and fixed faster.
+- [behavior] Without a shared reference, team members interpret the game in their own ways, so their work may fail to integrate, such as art built to unusable specs. When: Team members lack a common design document. Why: Each discipline fills gaps with its own assumptions.
+- [rule] Share ideas with the rest of the team as soon as the core team reaches consensus, rather than waiting for a later milestone.
+- [rule] Within a studio, agree on shared production terms so that the same term means the same thing to everyone.
+- [rule] Describe the game as shared work by saying 'we' rather than 'I' when you speak.
+- [heuristic] Broad design pillars rather than exhaustive lists help design teams share a common language.
+- [pitfall] Trusting a friend not to repeat details of unreleased work is a mistake, because leaks can happen by accident and the writer who shared it is responsible. When: sharing an unreleased script outside the team.
+- [fact] Shared online documents have become the usual way to draft and revise game design documents.
+- [fact] Teams and studios use the usability and engageability framework to create a common language across roles.
+
+## team conflict and pressure
+- [behavior] Colleagues tend to respect people who stand behind their ideas, even when they disagree with those ideas.
+- [rule] Treat teammates as you want to be treated: do not cut them off or roll your eyes, be polite and patient, find something positive to say, and look for common ground.
+- [rule] When someone seems not to buy in despite saying they agree, stop and find out why. When: A member agrees verbally but acts otherwise. Why: A member who secretly disagrees can quietly lose love for the project and their contributions are lost.
+- [rule] Show legitimacy and talent in a submission, since publishers screen out overconfident pitches before they reach a reviewer.
+- [rule] Debaters must respect each other and separate personal feelings from the logical process. Why: Otherwise debate damages relationships and becomes counterproductive.
+- [heuristic] Designs that satisfy a client's stated request, private plans and personal motives together, such as using their ideas or giving them credit, can earn lasting loyalty.
+- [pitfall] Shutting out team or tester input drains the team's love for the game, misses chances to improve, and predictably produces a design that pleases no one. Why: Designers who feel threatened by others' ideas build alone and crush contributions. (x2)
+- [pitfall] Ideas tend to fail when owners are overprotective, judge work unready, dismiss feedback, explain away responses, or trust only their own opinion.
+- [pitfall] Assuming the publisher or its lawyers will keep harmful content out of a game is risky; confirm the content yourself.
+- [pitfall] Closed studios and audio's underdog status can encourage a siege mentality, which damages collaboration with the rest of the team.
+
+## ui and onboarding
+- [definition] An onboarding plan is a spreadsheet listing every element players must learn, grouped by system, with priority, timing, order, difficulty, rationale, teaching method, and narrative support.
+- [rule] Set onboarding priority from the UX view of what players must learn, not from the production schedule. Use a 0 to 3 scale from must-learn to ok-if-never-learned. Why: Priority should reflect what players need, not what is convenient to build first.
+- [rule] Fill in the WHY column, the player's reason to learn, for every feature that is not simple to learn. When: building the onboarding plan, early in development. Why: Skipping WHY for complex features loses the meaning of teaching them.
+- [heuristic] Use marquee selection in the Top view, where a selection box is easiest to draw. When: selecting several actors by box. Why: a flat top-down view makes the box easy to place.
+- [heuristic] Invest in lowering skill barriers, since a large community of potential players would enjoy the game with lower entry costs.
+- [procedure] 1) Hold Ctrl and click to select several actors. 2) Hold Ctrl and Alt and drag a marquee in any non-Perspective view to select everything inside the box.
+- [procedure] 1) List the main elements players must be taught. 2) Estimate how hard each is to learn, rating original mechanics as harder than familiar ones. 3) Prioritize the list. 4) Plan onboarding early and schedule its production with the team. When: Early production when time and budget are limited. Why: Teams rarely have time to give every lesson its own quest or map.
+- [procedure] 1) List the elements to learn in WHAT. 2) Assign each to a Category. 3) Set Priority 0-3. 4) Give approximate WHEN timing. 5) Assign unique decimal Tutorial order values such as 1.1, 1.2, 2.1. 6) Rate Difficulty as Difficult, Moderate, or Simple. 7) Add WHY, HOW, Narrative wrapper, and UX feedback. Why: Unique decimal order values let the table be sorted into a chronological teaching sequence.
+- [pitfall] Without a shared UX strategy, each group pushes its own priorities and the team loses sight of the overall experience.
+- [fact] Observing players as they use a tutorial, through playtesting, reveals how they internalize skills.
+
+## balancing and pacing
+- [definition] On a 1-5 pacing scale: 1 is slow grind (very hard on first encounter, roadblocks, oversized or artificially slow), 3 is average, and 5 is fast and easy (overleveled or overprepared, little resistance). When: Rating sections of a game's progression.
+- [behavior] Patches typically fix pervasive problems that escaped testing: feature problems, incompatibility issues, and medium- and high-severity bugs.
+- [rule] Give content creators a path to add plays, because programmers rarely know every play and do not want to test every combination.
+- [rule] Expect to balance the game from the start, and build systems that make the values you will need to change easy to change. When: Early in production, while you can still choose how values are stored and exposed. Why: Balancing is continuous, so values must be adjustable without rewriting code.
+- [heuristic] Check whether a fix overshot its target, since monitoring can reveal that a correction went too far. When: Monitoring a change meant to fix slow progression or difficulty.
+- [procedure] 1) Track hit points and actions on paper or a whiteboard. 2) Add or remove rules. 3) Repeat until the rules feel ready to code. When: when balancing turn-based combat before coding.
+- [metric] Pacing ratings: 2 is slight grind, a little slower than normal without standing out as frustrating; 4 is slightly easy, a little faster than normal but not instantly blasted through. When: Refining the 1-5 pacing scale for sections near average.
+- [pitfall] Matching paper totals don't guarantee balance; play is the final judge of fairness, and workable values like grid size, hex size or wall density can only be learned by playing. (x2)
+- [pitfall] Learning by doing takes more time, so those players meet fewer enemies and die less, which can make a tutorial look better because of pacing rather than teaching. When: comparing tutorial methods by death counts. Why: Time spent and encounter rate differ between groups and drive the outcome.
+
+## independent game production
+- [model] Independent developers can publish through five routes, ranked easiest to hardest to enter: a personal website, user-generated game hubs, indie aggregators, casual publishers and portals, and downloadable console games.
+- [definition] An indie aggregator distributes and markets independent games on the developer's behalf, handling online distribution, marketing, and sales.
+- [definition] An independent publisher is not owned by a platform company.
+- [definition] Independent production means a developer self-funds and produces a game, keeping ownership and creative control while accepting long odds of success.
+- [rule] If no publisher picks up an independent game, sell it directly online or use it as a demo to win a publishing deal for another game. When: no publisher deal is offered.
+- [heuristic] Choose independent production only with a truly original idea and the passion and resources to finish it. When: deciding whether to self-produce a game.
+- [tradeoff] Independent production keeps full ownership of the idea and its implementation and allows mid-project changes, at the cost of high financial and completion risk.
+- [pitfall] Underestimating the effort to finish and distribute a game leads many independent projects to stall or never reach a release channel.
+- [fact] Independent developers fund projects through other jobs, work-for-hire, credit cards, or loans from friends and family.
+
+## narrative, theme, and market
+- [definition] The familiar element connects people to the idea through emotion or understandable definitions, found by asking how someone can relate to it. When: Revising a one-liner description. Why: It makes the unique idea easy to grasp.
+- [rule] Ask what someone who truly loved the game would say and do, then start doing those things.
+- [rule] Expect near transfer from game training, not broad gains in general intelligence. When: when setting expectations for game-based cognitive training.
+- [heuristic] Surround the workspace with toys and objects, some related to the problem and some not, to prompt conversation and ideas. When: Setting up a brainstorming space. Why: Physical objects act as prompts that trigger new associations.
+- [heuristic] Plan for external theme demands by pushing for a fast decision, designing for easy rethemes, or planning for two games. When: when a publisher may impose a theme late. Why: outside constraints can change the whole project.
+- [heuristic] A famous creator's attachment to a project can outweigh the usual reluctance to take outside ideas.
+- [heuristic] If environmental narrative is used consistently throughout a project, give it its own section in the bible.
+- [fact] European tabletop games, mostly from German publishers, tend to be more intricate, abstract, and strategic than their American counterparts, leaning on mechanics over theme.
+- [fact] Few European tabletop games are translated for the US market.
+
+## player psychology
+- [model] Treat the creative subconscious as a separate, playful partner that supplies ideas, so you can interact with it as with a person. Why: Anthropomorphizing gives a familiar model for interaction.
+- [behavior] The creative subconscious communicates through imagery and emotion rather than words, acts on impulse, feels intensely, and is playful and irrational.
+- [behavior] Even involuntary signals like sighing or eye-rolling make people go easy on a boss's bad ideas, reducing debate usefulness. When: A boss debating subordinates. Why: People read subtle reactions as punishment.
+- [heuristic] Use light, occasional, nonserious social signals, not money or threats, to encourage a specific action; money penalties breed anger and paranoia, and confrontation damages team climate. When: When one action needs encouraging in a team. Why: Social signals motivate without the side effects of economic rewards or punishment; light symbolic penalties keep people careful without making them paranoid.
+- [heuristic] Examine your own motivations as well as external feedback, because subconscious drives can shape your design choices without your knowing why. When: making creative decisions on a project. Why: Subconscious forces operate below awareness.
+- [heuristic] Frequency of small wins matters more than their size: a solved problem, a finished asset or a playtester understanding a detail all count. When: When planning tasks for developers. Why: Frequent small wins sustain daily engagement better than rare large milestones.
+- [procedure] 1) Sit apart from your own engaged mind as an observer. 2) Silently watch your thoughts and feelings as they arise. 3) Keep the observing mind separate from the engaged one. When: Observing experience continuously during play. Why: Two minds, one engaged and one observing, allow monitoring without spoiling the experience.
+- [fact] Many of the best creative ideas come from below conscious awareness rather than from logical argument.
+- [fact] The subconscious draws on experience more directly than the conscious mind does.
+
+## team meetings
+- [rule] Assign someone in every design meeting to take notes the whole team can read; on many teams this is the producer's job.
+- [rule] Join team discussions at the highest level you can, come prepared, and keep your input focused on the meeting's goal.
+- [rule] A meeting should have one clear goal that is completed by its end, and the person calling it sets the agenda.
+- [rule] Do not leave anyone out on purpose, and do not criticize speakers.
+- [heuristic] Differences of opinion help solve problems, so approach a topic from several angles.
+- [procedure] 1) Warn anyone who makes personal attacks, and ask them to leave if it continues. 2) Before closing, review decisions and assigned action items. 3) Schedule any needed follow-up early enough for preparation. 4) Send notes of decisions and assignments to participants and key absent members.
+- [pitfall] Without a clear agenda, meetings waste time and accomplish little.
+- [fact] Open discussion after play can be one-on-one or group, and can be free-form or guided by specific questions.
+- [fact] The caller usually acts as discussion leader, may hand parts of the meeting to others, and keeps the group moving toward the goal.
+
+## charts and overviews
+- [rule] Near the end of pre-production, print a large poster showing gameplay loops, systems, key features, and how players progress toward goals. When: late pre-production.
+- [rule] Share the game overview with support teams such as marketing and analytics so they keep the intended experience in view.
+- [rule] Update the overview poster whenever prototyping reveals new information or the game changes direction. Why: keeps the big picture accurate.
+- [heuristic] Engineers should prepare the pipeline overview for artists, keeping it as simple as possible.
+- [heuristic] Developing a consistent personal spreadsheet style, like a programmer's coding style, keeps sheets readable across projects. When: Maintaining many spreadsheets over time. Why: Consistency lets you and collaborators read a sheet quickly.
+- [heuristic] A shared game overview helps separate teams, including strike teams, coordinate work and break down silos.
+- [pitfall] Adding too many series to one graph, or switching to 3D, makes it unwieldy and harder to read.
+- [fact] Scatter plots, area charts and radar charts exist beyond bars, pies and lines; most of them can be made in a spreadsheet.
+
+## game rules and balance
+- [heuristic] Playtests can also ask whether players want to play again and which strategies they discover on their own.
+- [heuristic] Rules are discovered gradually through experimentation; write them down late, once the game is playable. When: during early development. Why: Rules arrive gradually and experimentally.
+- [procedure] 1) Play several games under the baseline rules and note how long each takes. 2) Change one variable, such as grid size, win length, turn structure, or player count, and play several games. 3) Compare play time, interest, strategy changes, balance, and social effects, and whether the change suggests other variables to change. When: when changing a rule variable such as turn structure or player count.
+- [procedure] 1) Score each option's attributes on an ordinal scale, low 1, medium 2, high 3, and total them. 2) Compare totals with observed play results. 3) If they disagree, raise or lower one attribute's weight, rescore, and recheck. 4) Playtest the revised model and repeat until the options feel fair. When: balancing a set of options rated on several attributes.
+- [procedure] 1) Propose a wording fix. 2) Judge whether it is too complicated. 3) If so, simplify it and repeat until the wording is simple.
+- [procedure] 1) Slow down before changing anything. 2) Think broadly about wider implications and implicit goals. 3) Let emotions fade. 4) Then decide on the change. When: A playtest reveals an apparent imbalance.
+- [procedure] 1) Write down a game's rules as you did its procedures. 2) Play the game using only that written version. 3) Note any rules you forgot and how their absence changed play. When: Checking whether a rule set is complete and clear. Why: Forgotten or missing rules reveal gaps in written documentation.
+- [procedure] 1) Give a stranger only the rulebook. 2) Watch them learn and play without help. 3) Cut rules that do not serve the fun. When: testing whether rules are unclear or hard to learn.
+
+## learning and skill growth
+- [definition] Temporal Difference learning is a family of algorithms that stores a value per state and updates it from the reinforcement signal and that state's previous value.
+- [rule] When learning playtesting, use a familiar game with no emotional stake. When: you are learning the playtesting process. Why: objectivity is easier when your own design skills are not on the line.
+- [heuristic] Studying a game's level editor reveals its formal structure and is a practical way to learn how to prototype your own designs.
+- [heuristic] Expect frequent failure while learning design; if you are never failing, you are probably not learning. When: Practicing design skills. Why: Learning comes from failing and adjusting, as in juggling.
+- [heuristic] Have a subject-matter expert check invented science, which is especially valuable for hard-science games where players may check details. When: games using detailed science. Why: Players and reviewers catch errors in technical content.
+- [tradeoff] Domain-specific books give depth in one subsystem but rarely explain its interaction with the rest of the game, while whole-engine books are monolithic and tied to one genre. When: choosing learning resources for game programming. Why: Each style covers a different gap: depth without integration, or integration without flexibility.
+- [fact] Expert designers give a better starting point, but they cannot guarantee a great experience on the first pass because the experience depends on the user.
+- [fact] A working memory training task built in a graphically rich environment, compared with a control task, improved fluid intelligence in elementary and middle school children.
+
+## level and content ordering
+- [rule] Ask for more than you need, such as the three least favorite parts, so answers come ordered by priority.
+- [rule] Rebuild the level after significant geometry or lighting changes before testing them. Why: A test run before a rebuild may not show the latest edit.
+- [rule] Richer NPCs require more work, so the whole team must commit to them within project scope.
+- [rule] Keep the setting and world section high level early, and expand it only as the narrative needs.
+- [rule] Keep side quests out of the main bible and add supporting side content in an addendum after the critical-path breakdown. Why: Transparency for the team without cluttering the critical path.
+- [heuristic] When content already exists, reorder it before creating new content, and judge the whole sequence from the audience's view. When: Content exists but the overall experience feels flat.
+- [heuristic] Ask players to rank the content they experience rather than rate it, since rankings give more consistent subjective annotations. When: when collecting subjective annotations of generated content. Why: Rating-based data shows lower inter-rater agreement, more inconsistency, order effects and biases.
+- [heuristic] If playtesting shows an opening level is too hard, move it later in the sequence and place easier material first. When: after playtests.
+
+## math and modeling
+- [definition] A matrix is a rectangular table of numbers or expressions, and a column vector is a matrix one element wide. Multiplying a matrix by a column vector gives another column vector. When: Setting up Markov chain transition calculations. Why: These operations carry state probabilities forward step by step.
+- [behavior] People who feel slow at math often struggle more with self-doubt than with a real lack of aptitude. When: learning game math.
+- [procedure] 1) Pick a specific measurable question about a game system, such as average turns to finish. 2) Build a state machine and transition matrix for it. 3) Solve the matrix to answer the question. When: answering a quantitative design question. Why: a clear question with a fixed state set is solvable with the matrix method.
+- [procedure] 1) Take each row of the matrix. 2) Pair its elements left to right with the vector's elements top to bottom. 3) Add the products to get one element of the result. Repeat for each row. When: Multiplying a matrix by a column vector. Why: This is the standard rule for applying a transition to a state distribution.
+- [tradeoff] Without models you must still assign numbers to new content, but those numbers will likely need redoing and more playtesting later; models reduce that rework. When: Assigning values to new content. Why: Models give a reasoned starting point.
+- [tradeoff] Large state spaces make the exact transition matrix impractical to write down, so approximation is needed; a small state list keeps the model exact and tractable. When: choosing how detailed a game model should be. Why: matrix size grows with the number of states.
+- [pitfall] Typing every enumerated outcome by hand is slow and error-prone, so generate the rows with fill operations or formulas.
+- [fact] Math ability is a learnable skill, not an inborn trait; the belief that people are either good or bad at math is a cultural myth.
+
+## training and learning
+- [model] Five evidence levels for transformation, weakest to strongest: feeling it works, anecdotes, expert approval, informal surveys and in-play assessment, scientific testing. When: checking whether a transformational game works. Why: Evidence strength rises with rigor.
+- [definition] Transfer of learning means a skill trained in one context improves performance in another context.
+- [rule] Have teams work on their current game during training rather than on classroom exercises, so the work is real.
+- [metric] Keep presentations to about 15 minutes and devote most of the session to team practice.
+- [tradeoff] Learning level design through a specific tool builds software skill but can miss what makes spaces memorable, while learning through theory builds understanding but can ignore playability; both are needed. When: Choosing how to develop level design skill. Why: Tool mastery and spatial theory each cover what the other lacks.
+- [fact] Subject matter experts come in two kinds: those who hold the facts and those who know the best ways to teach them, and designers benefit from both.
+- [fact] Training studies are fewer than correlational studies, so the evidence base for game-based skill training is thinner.
+- [fact] Months of testing condition combinations can yield a teaching curriculum that becomes the basis for a first-level tutorial.
+
+## crowdfunding campaigns
+- [model] Crowdfunding works as a preorder system, not an investment or charity; backers want something special, early access, and a good price. When: Framing a crowdfunding campaign. Why: Backers pay to get the product early, not for a financial return.
+- [heuristic] Set the lowest workable funding target, since missing an all-or-nothing target means receiving nothing; raise more later if the campaign succeeds. When: Planning a crowdfunding campaign with all-or-nothing rules. Why: A reachable target protects the campaign from total failure.
+- [heuristic] Keep rewards simple. Early release at a good price is the main draw, while extra items add mailing work and little funding. When: Designing crowdfunding reward tiers. Why: Many tiers overwhelm backers and extra merchandise changes funding little.
+- [metric] Plan about one month to design the page and video, one month to run the campaign, and one month to fulfill rewards, totaling two to three months. When: Scheduling a crowdfunding campaign. Why: Campaign preparation and fulfillment take substantial time away from building the game.
+- [tradeoff] Crowdfunding fits physical products or games priced at about twenty dollars or more; free-to-play games struggle because little reason exists to pay before trying. When: Deciding whether crowdfunding suits a game. Why: Backers need a reason to pay upfront before playing.
+- [pitfall] Treating crowdfunding as easy money or as a shortcut that skips pitching leads to poor results. When: Planning funding strategy. Why: Crowdfunding still requires a compelling pitch and substantial work.
+- [fact] Asking for a larger amount does not seem to make backers give more. When: Choosing a crowdfunding target. Why: Backer generosity does not scale with the ask.
+
+## game feel and level design
+- [model] Design work moves along a vertical axis running from vision through organization to execution, with designers shifting back and forth between goals and constraints.
+- [heuristic] Designers who move along the zoom axis with greater range and speed usually produce better design, whatever is being designed.
+- [procedure] 1) Tune spread, recoil, and trace. 2) Add client-side prediction so input responds immediately. 3) Iterate until the weapon feels natural enough that players stop noticing it. When: tuning shooter weapons. Why: Responsive, natural-feeling weapons let players focus on the game rather than the controls.
+- [procedure] 1) Playtest a navigation section with the cue. 2) Playtest it without the cue. 3) Compare where players struggle to find the way.
+- [metric] Weapon accuracy equals hits divided by shots; weapon power equals kills divided by hits. When: when measuring weapon performance from gameplay events.
+- [tradeoff] Modeling a whole level suits decoration and uses less memory on weak devices, but testing is slow because it needs export and import; modular tiles assembled in the engine allow faster iteration. When: when choosing how to build level geometry from 3D modeling.
+- [fact] Some world editors can change map size and nearly every facet of a game, not just individual levels.
+
+## launch and live operations
+- [rule] Sign the submission or confidentiality agreement when a publisher asks, since refusing signals that you do not understand the process.
+- [rule] Keep minor text simple and accessible, be available to answer questions about it, and keep it updated, since iteration never ends.
+- [pitfall] Games that closely resemble the storefront's existing popular titles may be turned away, since the platform avoids near-copies.
+- [fact] Most submissions a publisher reviews are passed on, and book and film submissions are rejected at similarly high rates, so rejection is normal in creative pitching.
+- [fact] Price and monetization tests are run as soft launches, meaning limited releases before the full launch.
+- [fact] Acceptance onto a tightly curated console storefront is very difficult, comparable to getting accepted by a traditional console publisher.
+- [fact] A submission agreement leaves the pitcher with little recourse if the publisher later builds a similar idea.
+
+## production and implementation
+- [definition] Gold code means all bugs are resolved.
+- [mechanism] Hindsight bias makes past development look smooth and predictable, which leads teams to believe the future can be planned in detail and so to overplan again. When: when post-project reviews are used to set future plans. Why: Erased mistakes and tangents make past development seem controllable.
+- [mechanism] The planning horizon usually lengthens over a project, moving from wild exploration early to detailed scheduling near the end. When: across the stages of a project.
+- [procedure] 1) Assemble the relevant stakeholders. 2) Hold several rounds of discussion. 3) Produce written reports, studies and analyses before deciding. When: When a design decision has major consequences. Why: For important decisions, a better outcome is worth the cost of a careful process.
+- [pitfall] Designing gameplay without considering the controls of the final platform leads to a game that does not feel right.
+- [pitfall] Features implemented without design, prototyping, or testing, especially under crunch, lead to costly problems.
+- [fact] Implementation supplies narrative delivery tools, production supplies the teamwork to build them, and neither works without the other.
+
+## think-aloud method
+- [definition] Think-aloud is a method in which players or participants narrate their thoughts, actions and reasoning continuously during a task, revealing first reactions and expectations about an interface. When: Understanding first contact with an interface. Why: Narration exposes the mental model behind actions. (x2)
+- [behavior] Think-aloud commentary reveals players' expectations and choices, but many people need help getting started with it. When: Running think-aloud playtests.
+- [rule] Ask participants to speak as they think and tell them no way is wrong; say the software is being tested, not the participant. When: Briefing participants for think-aloud. Why: Clear framing reduces anxiety and keeps feedback honest.
+- [heuristic] Some players find thinking aloud natural; identify them, or train repeat testers to do it.
+- [procedure] Run think-aloud tests one on one with about six participants. When: Planning a think-aloud study. Why: Individual sessions avoid peer influence.
+- [procedure] 1) Ask testers to think aloud about their choices and uncertainties. 2) If they fall silent, prompt them with a question about what they are thinking.
+- [procedure] 1) Ask testers to narrate their goals aloud during play. 2) Compare their stated goals with the planned goals. 3) Note any drift onto tangents. Why: Shows whether players pursue intended goals.
+
+## tutorial and writing
+- [rule] Design details change until the last minute, so tutorial and manual text drifts from implementation; assign someone to verify it against the implementation. When: Late in development.
+- [heuristic] Stick to the comparison formula, since people expect it and it keeps discussion on the idea rather than the presentation. When: Writing a pitch comparison. Why: Familiar structure reduces distraction.
+- [procedure] 1) Ask players objective questions about an item's purpose or a mission's goal. 2) Avoid asking whether the game was clear. When: Testing onboarding with players. Why: Objective questions reveal actual understanding, while asking about clarity gives vague opinions.
+- [procedure] 1) Download the engine and the companion tutorial files. 2) Unzip the package and read its README. 3) Note the engine install folder, whose exact name changes with each version. 4) Open the tutorial level from the File menu and start it with the Start this level on PC icon.
+- [procedure] 1) Expand the concept description into a three to five page treatment. 2) Ask formal and dramatic questions while writing. 3) Treat the document as a draft that will change. When: After outlining the formal system.
+- [procedure] 1) Use playtesting to find what players must learn. 2) Build the tutorial as short scenes that teach basic mechanics and introduce the story.
+- [metric] A first tutorial level should take about 5 minutes for players to complete.
+
+## code and asset reuse
+- [rule] Read the licence terms of any sample code before reusing it, even when the licence is liberal.
+- [rule] Save a package after importing into it; an unsaved package is marked with an asterisk, so check for one before testing.
+- [heuristic] When a short-deadline brief arrives, build the new concept on earlier prototypes that already embody the core idea. Why: Earlier designs can be turned into a concept within days.
+- [heuristic] Rebuilding a simple commercial game on paper reveals how its system is built.
+- [heuristic] Reuse, fake, or adapt existing code in prototypes rather than writing production-quality software.
+- [heuristic] Reusing existing animation saves time and money, which can decide whether a sequence is worth creating.
+
+## frame rate and timing
+- [definition] Frames per second measures how often the game loop cycles in real time.
+- [mechanism] When the loop runs as fast as possible, frame rate is set by the work done per frame and by the platform's speed. When: Loop is not capped and runs flat out. Why: More per-frame work or slower hardware reduces how many cycles fit in each second.
+- [behavior] High frame rates make motion feel smooth and responsive, while low frame rates make motion look jerky like stop-motion. When: Players watch the game at different frame rates. Why: Fewer rendered updates per second leave visible gaps between positions.
+- [procedure] 1) Count the frames between input and feedback. 2) Divide the frame count by the frame rate. 3) Multiply by 1000 to get milliseconds. Three frames at 60 fps is about 50 ms.
+- [procedure] 1) Record frame start time. 2) Process input, update, and render. 3) Sleep for the frame length minus the time elapsed since the start. 4) Repeat. When: Capping frame rate to a steady target. Why: Sleeping pads fast frames so the loop does not run faster than the target.
+- [pitfall] Game time and real time differ, since the world advances only when the loop cycles, so slow frames slow the world down. When: Frame rate drops under load. Why: Game progression is tied to loop cycles rather than wall-clock time.
+
+## game balance and economy
+- [heuristic] Win rates by object, character or strategy can be factored into expected outcomes, though most rating systems do not do this. When: Refining a rating system's predictions. Why: Object strength affects results beyond player rating.
+- [heuristic] Build a version of a system with every parameter set to zero, then tune each parameter upward to learn its effect on feel. When: when learning how a feel system's parameters behave. Why: A zeroed baseline isolates the contribution of each parameter.
+- [procedure] 1) Playtest the combined combat repeatedly. 2) Iterate on the balance. 3) Study successful games with the same genre, difficulty and camera view for reference. When: When balancing melee and ranged combat with no ready-made fix. Why: No off-the-shelf solution exists.
+- [procedure] 1) Select matches with extreme skill mismatches. 2) Measure how often the weaker player wins. 3) Double that percentage to estimate the luck factor. When: Estimating how much randomness affects outcomes. Why: Luck favors the expected winner half the time, so the weaker player's upset rate is half the luck share.
+- [procedure] 1) Randomly set up the hidden state. 2) Apply one strategy. 3) Record the result. 4) Repeat thousands of times. 5) Compare win rates across strategies. When: verifying a counterintuitive probability result. Why: large simulated runs reveal true rates without manual counting.
+- [fact] Each mechanic demands design labor to build, adjust and verify, and draws on computing resources that other features could use.
+
+## open discussion and openness
+- [definition] Openness means respectfully giving each idea, even one you disagree with, meaningful thought without necessarily adopting it; equating it with agreeing to every idea is a mistake.
+- [definition] Openness is accepting others' ideas, while candor is having and presenting your own ideas; they are distinct qualities.
+- [behavior] Without openness, a design team must either make everyone's views uniform, silence debate, or fall into bitter disagreement.
+- [behavior] Openness shows in open body language and genuine discussion, not merely in letting people speak.
+- [pitfall] Open questions about what people like produce vague responses that are hard to act on. When: When validating game ideas with players or testers.
+- [fact] Narrative task lists are open-ended, and new requests often arrive unexpectedly at inconvenient times.
+
+## performance and frame timing
+- [mechanism] Because rendering sits outside the inner update loop, a slow machine drops visual smoothness rather than slowing the simulation. When: Using a lag accumulator with fixed updates. Why: Rendering is not repeated per update, so simulation stays correct while the display becomes choppier.
+- [rule] In a game, balance search time against solution quality, then commit to the best result found rather than searching indefinitely.
+- [procedure] 1) Record the screen and the controller together with an inexpensive camera at 60 fps. 2) Count frames between the input and the on-screen response. 3) Convert the frame count to milliseconds. Why: Filming both sides gives an objective measure of delay.
+- [tradeoff] Reducing per-frame work to hit the budget lowers quality for every player, including those on fast machines. When: Frames regularly overrun the budget. Why: The reduction is applied globally rather than only to slow hardware.
+- [fact] Some sounds can stream from disk, but sounds that must play instantly need to reside in RAM, which competes with graphics assets. When: Deciding where sounds are stored. Why: Disk access is too slow for instant playback.
+- [fact] Some older memory-limited consoles avoided double buffering by synchronizing drawing directly to the video refresh.
+
+## problem diagnosis and validation
+- [behavior] Signals such as a key system failing or playtesters becoming attached to a minor character can indicate that the game's broad structure needs changing. When: Reviewing playtest or team results.
+- [heuristic] A feature shared by most winners may be a symptom of winning rather than its cause. When: analyzing what winners have in common. Why: winning may drive the feature's adoption.
+- [heuristic] Before acting on a suspected problem, check whether it is real or just a vocal minority.
+- [heuristic] Use user testing to find stuck points, since a designer's sense of an obvious task may not match players' experience.
+- [heuristic] When stuck on a design issue, present it to coworkers as a creative challenge to draw out their ideas.
+- [procedure] 1) Find where the prototype stagnates. 2) Decide whether a balancing loop or balance of power causes it. 3) Design a way to break the cycle. When: Auditing a prototype for stagnation.
+
+## risk assessment
+- [definition] Critical failure risks are fatal flaws hidden in a project, such as severe bugs, unpredicted dominant strategies or narrative holes, that surface later like time bombs.
+- [mechanism] Each design element may change; a feature's odds of surviving unchanged roughly equal its own certainty times each foundation's certainty, so high-layer features rarely survive unchanged. When: Planning features built on other systems; stacked designs with several dependency layers. Why: A feature's survival depends on every foundation beneath it; each uncertain layer multiplies the risk, so odds fall quickly with depth.
+- [heuristic] Use a clear dependency stack to limit how much of a project relies on immature designs, though it cannot remove immaturity burden entirely. When: When organizing a project with interdependent work. Why: Reducing dependence on unfinished parts lowers exposure to their instability.
+- [pitfall] Dismissing a risk because its chance per player is tiny can be a mistake when the player base is large.
+- [pitfall] Dependency-based caution can look wasteful or irresponsible to colleagues who do not yet understand the dependency risk.
+- [fact] Common development disasters include a hard-to-fix degenerate strategy, an interface newcomers cannot understand, a sudden publisher change of direction, and the loss of a key programmer.
+
+## tabletop design and market
+- [model] The tabletop market has four categories: mass market, hobby, American specialty, and European. Each is defined by its typical consumer, distribution methods, and product expectations. Why: Knowing a game's category helps an inventor choose the right publisher.
+- [heuristic] Get multiple takes of each line and track them, since post-production cannot rescue a flat performance.
+- [procedure] 1) Start with a germ of an idea and play with it. 2) Build a working prototype. 3) Test it with many players and collect feedback. 4) Revise repeatedly. 5) Pitch the finished game to publishers.
+- [fact] Tabletop publishers accept games for three reasons: a strong hook, crossover appeal to new players, or gameplay staff want to replay.
+- [fact] Tabletop retail has two traditional categories, mass-market chains and hobby stores, with online stores an emerging third.
+- [fact] People will work hard for small symbolic tokens, as a famous commander observed of soldiers and colored ribbons.
+
+## team size effects
+- [mechanism] Larger teams and longer schedules increase professional and personal stress, which must be managed.
+- [behavior] Small teams can cope with design through frequent conversation, while larger teams have a much harder time.
+- [behavior] The team shrinks in QA/polish because most production artists and outside talent are no longer needed.
+- [heuristic] A smaller team may need to cut ideas that a larger team could build.
+- [metric] For team sessions, use large sticky sheets of about 2 by 2.5 feet, or butcher paper taped to walls. When: Team brainstorming sessions. Why: Large surfaces let teams reposition and reuse ideas.
+- [fact] The large-team process assumes a specialist for each role, while smaller studios often use generalists who handle more aspects themselves.
+
+## technical and platform
+- [rule] Use memory-based analysis when in-the-moment analysis would spoil the experience. When: Experience would be disrupted by analysis. Why: Preserving the experience matters more than immediate notes.
+- [rule] Add abstraction only when confident the code needs that flexibility; resist speculative design, following the principle that you aren't going to need it. When: designing new code. Why: Unused flexibility adds cost without benefit.
+- [heuristic] A method that reproduces known results is more trustworthy for new cases than one checked only on its own output.
+- [heuristic] A packaging-style agent suits a team that has technology but needs a desirable property to pitch.
+- [heuristic] Consider bytecode when the host language is too low-level for the task, compile times slow iteration, or behavior must be sandboxed because it is untrusted. When: Deciding whether a game system should use a bytecode VM. Why: These conditions make scripted behavior worth its added complexity.
+- [fact] Web games cost less to produce, so experimental designs carry less financial risk than boxed products.
+
+## ai in development
+- [heuristic] AI with many tunable parameters, such as movement algorithms, nearly requires an in-game tweaking system on consoles.
+- [procedure] 1) Start from the behaviors in the design document. 2) Find the simplest technologies that deliver them. 3) Check each AI model part against those behaviors. 4) Choose technologies and a basic integration approach. 5) Build the layer connecting the AI to the game engine. When: Planning game AI from a design.
+- [procedure] 1) Generate many random legal layouts. 2) Play the AI against each until all pieces are sunk. 3) Record turns to win. 4) Report mean and median, and compare with baseline strategies. When: comparing guessing strategies. Why: simulation gives reliable performance statistics.
+- [fact] Fewer AI plug-ins are built now because development has shifted toward separate level editing tools, whose functions match the AI plug-in candidates.
+- [fact] In the UX process, AI can analyze user data, automate routine tasks, and support design evaluation.
+
+## outlier and statistics handling
+- [definition] An outlier is a data point far above or below the bulk of the data.
+- [rule] When searching for edge cases, keep outliers and examine them closely. When: looking for edge cases or unusual play. Why: Outliers are where edge cases and unexpected behavior appear.
+- [tradeoff] Discarding outliers suits typical-play analysis since they reflect unusual sessions; but dropping them without investigation can hide exploits or player confusion. When: analyzing normal play patterns. Why: Outliers reflect unusual sessions rather than typical behavior.
+- [pitfall] Treating statistical output as hard fact ignores its built-in error chance and leads to overconfident decisions.
+- [pitfall] Novice designers tend to reach for random simulation even when an exact count is easy to compute.
+
+## agent and packaging
+- [metric] Passive Hollywood-style agents representing film clients typically earn a 10% fee.
+- [pitfall] Packaging agents usually do not do development work, so don't confuse them with producers; they earn a share of the license fee and developer compensation, not a producer's fee.
+- [fact] Packaging agents can help developers win deals they might not get alone, or command a premium in budget or royalty rates.
+- [fact] Packaging agents secure content, attach a developer and talent such as writers and designers, and shop the package to publishers or financiers.
+
+## ai and character scripting
+- [procedure] 1) Count the avatar's states. 2) Record how each state changes the interpretation of every input. When: cataloging a game's control.
+- [procedure] 1) Pick three compelling characters from games you know. 2) For each, decide whether it is rounded or flat. 3) For each, decide whether it is dynamic or static. When: when analyzing character depth.
+- [pitfall] Behaviors with many conditions need complicated matching rules, which in tools often look like program code and are hard for designers to author.
+- [fact] Character AI data may include scripts that drive the algorithms in the pool.
+
+## community management
+- [model] The community manager role combines three functions: nurturing, listening, and encouraging.
+- [rule] Community does not appear by chance; provide communication and organization tools so players can connect and coordinate with each other.
+- [rule] Community managers should plant seeds and respond to specific needs they observe, rather than creating the community directly.
+- [pitfall] Depending on staff to catch cheaters increases support workload and hands enforcement to customer service teams.
+
+## hobby and tabletop games
+- [definition] House rules are changes players make to operational rules after noticing a deficiency over several rounds of play. When: Players are modifying a game for their group. Why: Repeated experience reveals problems that the written rules leave open.
+- [definition] Hobby tabletop games are very complex, such as role-playing games, miniature-figure battle games, and trading card games.
+- [behavior] Small hobby programs stay manageable for one person, but become hard to hold in one's head as they grow past that size, prompting a search for organization guidance. When: a personal project grows beyond what its author can track mentally. Why: Working memory cannot hold all interactions once a codebase exceeds a modest size.
+- [fact] Hobby shops are typically small, privately owned stores run by enthusiasts.
+
+## multiplayer systems
+- [rule] Test multiplayer games in configurations with the full player count, such as 5 vs 5 matches.
+- [metric] A multiplayer online game generally takes about four times the effort and expense of a comparable single-player game. When: when estimating the budget of a multiplayer online project.
+- [fact] Handling griefing and loopholes is a major reason multiplayer game development is so demanding.
+- [fact] Multiplayer games are much harder to debug and balance than single-player games, which drives much of their extra cost.
+
+## software process history
+- [model] Scrum organizes work into small cross-functional teams that set priorities every day and iterate in short cycles.
+- [definition] Scientific management, or Taylorism, concentrates all planning in a few minds and trains workers to execute prescribed methods exactly.
+- [heuristic] Scrum suits game development because fluid change helps solve hard design problems.
+- [fact] Winston Royce's foundational paper on software development emphasized iteration and returning to earlier steps, and it never used the word waterfall.
+
+## art and sound feedback
+- [rule] Ignore artwork in early prototypes, since polished visuals slow iteration and make designers reluctant to change things.
+- [procedure] 1) Ask what each sound contributes to the experience. 2) Ask how the player should feel at that point. 3) Use the answers to decide each sound, rather than matching assets to a checklist. When: Spotting sound for a level with designers. Why: Function-driven choices focus sound on player experience rather than on literal asset coverage.
+- [procedure] 1) Identify useful elements first. 2) Work out what the artist intended. 3) Open with a positive point before raising problems.
+
+## crunch and team health
+- [mechanism] Crunch and lack of inclusivity harm staff health and creativity, which in turn lowers game quality.
+- [rule] Do not encourage crunch; use measures that avoid overtime as much as possible.
+- [metric] In a 2023 developer survey, 28% of developers said their job involved crunch time; 63% of those had crunched more than twice in two years.
+
+## design brief writing
+- [heuristic] Give too much information in briefs rather than too little, and invite questions, especially the first time documents are shared with a team. Why: Team members differ in writing and speaking styles.
+- [heuristic] A design document shaped by the game's own needs, not by a template, is the result of recording what must be remembered and communicated.
+- [pitfall] A description that is too general hides the unique idea. When: Writing a one-liner description. Why: Vague wording removes what makes the idea distinct.
+
+## game ai evaluation
+- [rule] Track entries used over time, number of overwrites, and misses on previously stored positions, since these show whether the table is well parameterized.
+- [rule] Rank tournament winners by individual record, not unit record, so players try to win even when playing someone else's unit.
+- [procedure] 1) Fix the match format, such as elimination type, round count, and timer. 2) Set fair-play rules, such as equipment policy. 3) Ban any option whose power makes choosing it almost guarantee a win. When: Running a competitive tournament. Why: Each setting shapes fairness and match outcomes.
+
+## outside input and outsourcing
+- [model] Three routes get an outside idea made: ask the company first under a nondisclosure agreement, get a job inside a studio, or build a team and working demo.
+- [pitfall] Outsiders often misjudge technology limits, development time, finances and scheduling when pitching game ideas.
+- [fact] Most tabletop companies find it cheaper to buy or license designs from independent inventors than to employ inventors.
+
+## file and asset naming
+- [rule] Use underscores instead of spaces in every filename, including sound and music files. When: naming any asset file. Why: game software does not handle spaces in filenames well.
+- [rule] Set a file naming convention at the start of production to prevent confusion later. When: At the start of a project.
+
+## game feel tuning
+- [heuristic] Designers can apply flow questions to their own working time, since flow is when the most work gets done.
+- [fact] Some feel decisions look counterintuitive, such as deliberately altering gravity at a jump's apex.
+
+## rewards and incentives
+- [mechanism] Rewards tied to output create perverse incentives: politics, gossip, hidden work, risk avoidance, and competition that suppresses idea sharing. When: When rewards are linked to measured performance in a team. Why: People optimize for the reward rather than for the shared goal.
+- [heuristic] Playful learning experiences, where the learner makes something meaningful, are preferred over gamification and serious games that use the computer mainly to deliver lessons. When: Deciding how to frame an educational or onboarding activity. Why: Learners who teach the system retain more meaningful understanding.
+
+## cheat feature analysis
+- [procedure] 1) List a game's cheats or hidden debug features. 2) For each one, infer how testers would use it to reach or check content. 3) Relate the set to how it makes testing more efficient.
+
+## compatibility versus content
+- [tradeoff] On unreliable hardware, compatibility work costs much development time, but a reputation for guaranteed reliability can sway buyers more than extra content. When: the platform's hardware is unreliable.
+
+## early criticism
+- [pitfall] Criticizing ideas early breaks the flow of idea generation.
+
+## hard-to-explain concepts
+- [heuristic] Concepts that are hard to explain verbally should be shown as a playable build, since players grasp them by playing.
+
+## hidden rows and columns
+- [rule] Avoid hiding rows and columns in a spreadsheet when you can, since hidden data is easy to overlook. When: building or editing a spreadsheet. Why: hidden cells are easily forgotten.
+
+## pattern design method
+- [fact] A pattern-based design method resembles game playtesting and iteration.
+
+## stun pattern verification
+- [procedure] 1) Measure the share of follow-up hits landed on stunned opponents. 2) Count stuns per matchup. 3) Measure how often each move starts a combo. 4) Compare these against win rate before changing values. When: Suspecting a stun-and-combo pattern is causing a play-experience problem. Why: These checks confirm whether the pattern, not raw strength, drives the problem.

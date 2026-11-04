@@ -1,0 +1,1170 @@
+# level-design
+
+## level layout
+- [model] Level quality rests on three non-ranked elements: functional requirements (firmitas), usability (utilitas), and delight (venustas). When: Evaluating or planning a level's overall quality. Why: The three elements cover what a space must do, how easily it is used, and how it engages.
+- [model] Nested spaces place separate spaces inside a larger one, such as interiors entered through gateway icons on a continuous outdoor map.
+- [model] Game spaces can be organized in five ways: linear, grid, web, points in space, and divided space. Designers often combine them. When: Planning the structure of a game space.
+- [model] Four spatial relationships guide level building: vertical height, horizontal distance, the X/Z size of walkable platforms, and terrain incline angle. When: Designing level geometry for a platformer.
+- [model] Level design relies on contrast, sightlines, routes, dramatic build-ups, and uncertainty about where the path leads.
+- [model] Molecule design models a level as a graph, where nodes are play spaces and edges are visual or travel links between them.
+- [model] Tools for building tension in spaces are spatial psychology, prospect and refuge, lighting, negative space, and height.
+- [model] Architectural portals such as doors, arches or gaps mark passage to a new opportunity; use them as a model for how game introductions signal what lies ahead.
+- [model] A tile can be split into nine scenes: four empty edge pathways connecting areas, and five gameplay scenes at the four corners and the center.
+- [definition] Level design arranges architecture, props, and challenges to make play fun and interesting, translating mechanics into spaces players can inhabit; it is game design applied in detail. (x2)
+- [definition] Spatial transposition gives an input combination or position a different meaning via chording (simultaneous inputs) or context sensitivity, where object locations relative to the avatar change the input's meaning.
+- [definition] A toy box is a developer-only test level for building and testing mechanisms, their interactions, and how the character interacts with geometry, before they go into playable levels.
+- [definition] Points in space is a sparse layout of locations that suits wandering with returns to a safe oasis, or games where players define the space themselves. When: Choosing points-in-space organization.
+- [definition] Level design workflow covers how a level moves from idea to implementation and where production should start, which affects development schedules.
+- [definition] A level is a medium of communication between designers and players, which is why designers bring players in to test it. Why: the level's message is only known through player reactions.
+- [definition] The void is a deep, open center surrounded by clutter; placing a major encounter in a large hollow space shows this quality.
+- [definition] A symmetric level mirrors one part of the level onto another; asymmetric levels leave most areas unmirrored.
+- [definition] Linear space has the player moving forward and possibly back along a line, which may have two ends or loop back.
+- [definition] A level designer uses a level editor or toolkit to build missions, scenarios, or quests, and lays out components that fit the game's theme.
+- [definition] Edges are boundaries not formed by paths, such as walls, rows of buildings, vegetation changes or genius loci changes, that mark a change in character.
+- [definition] Paths are channels of travel that connect important gamespaces, often intimately scaled with few aesthetic features.
+- [definition] Nodes are intersections that serve as navigation references, gathering places, and strategic decision points.
+- [definition] A node is a play area containing hostile meetings, collectible drops, spawn locations, or chances for action.
+- [definition] A tour is a linear opening level that teaches mechanics while previewing later content.
+- [definition] Good space has qualities such as completeness, comfort and egolessness, which resemble refuges where people feel safe.
+- [mechanism] A change in spatial relationship between avatars, such as pairs being unable to fit through spaces a single avatar could pass, can communicate relational meaning. When: Designing spatial constraints tied to character relationships. Why: Altered physical constraints carry emotional or social meaning for the player.
+- [mechanism] Content spread over time is remembered better than content packed into long pauses, since massed learning is hard to retain.
+- [mechanism] Removing a game's boundaries changes the strategy and abilities it demands, because players gain options the rules once excluded.
+- [mechanism] Rules kept as lists or abstract networks stay intact but can be unplayable, while placing elements on a 2D plane makes them playable through spatial reasoning. When: Abstract relationships among many elements must be played by a person. Why: Spatial reasoning is a strong human capacity.
+- [mechanism] Removing connection points and usable screen space reduces the player's ability to improvise routes. When: Later level sections have fewer or smaller connectable areas. Why: Fewer attachment choices leave the player fewer ways to approach goals.
+- [mechanism] A story detail, such as a habitual sound, can serve as a search cue, so narrative becomes part of solving a puzzle.
+- [mechanism] Wraparound, where an exit on one edge reappears on the opposite edge, lets complex strategies fit inside a single screen.
+- [mechanism] A large space feels even bigger when it is entered after enclosed spaces.
+- [mechanism] In narrow space, room becomes a scarce resource, so conflict arises as players or NPCs compete for it.
+- [mechanism] Coordinate-based travel lets players reach any position by entering its coordinates, so access does not depend on the map's path structure. When: worlds with coordinate addressing.
+- [mechanism] Contrasting intimate, warm materials with cold, public transitional spaces makes the difference between refuge and passage readable. When: Designing spaces that should feel private versus public.
+- [mechanism] Shaping limits interaction until players are ready, teaching the elements of a space gradually.
+- [mechanism] Rooms with loops let players place level geometry between themselves and enemies, enabling escape through another exit.
+- [mechanism] Super-block layouts sized for cars, with vast green space and highway links, leave few chances for residents to run into one another. Why: Large distances limit casual encounters.
+- [behavior] Single-tile platforms make players approach slowly and carefully, so many of them turn a run into a plodding sequence.
+- [behavior] Early levels with many connection points relative to the player's goals give a large expressive range, so each approach to an enemy can differ. When: Area has many connectable platforms and no impassable ones. Why: Many valid attachment options let the player choose varied routes.
+- [behavior] A player who lingers in one spot of a level for several minutes may signal frustration and weak level design.
+- [behavior] Arcade players read more distinct screens as a sign of a more advanced game, while home buyers value expansive worlds as more content. When: arcade versus home console.
+- [behavior] In coordinate-addressed worlds, commerce concentrated on points along the axes and centre diagonal, which became busy thoroughfares. When: coordinate-addressed virtual worlds.
+- [behavior] Smaller floor patterns near high-value items make people slow down and browse, since the denser rhythm sets a slower pace. When: spaces near valuable goods. Why: denser rhythms slow walking pace.
+- [rule] If another department cannot build a planned scene, find out what they can build that still serves the story. When: a planned scene is not buildable.
+- [rule] Decide deliberately where a game's boundaries are defined and whether or when to breach them.
+- [rule] Remove boundaries between an experience and its physical surroundings by using physical controls and tangible output instead of screens. When: when the goal is to integrate play with the physical space. Why: Screens create a boundary that separates the experience from its environment.
+- [rule] Build levels toward three goals: adjusting player behavior, transmitting meaning, and augmenting space with information. When: Planning a level. Why: A clear goal separates deliberate design from an arbitrary arrangement of objects.
+- [rule] Extend a space across several scenes only when the pathways between the screens are clear.
+- [rule] Use sparse spacing where cruising is the intent and dense spacing where demanding navigation is the intent. When: Choosing spacing for a stretch of play. Why: Spacing sets how much attention the route demands.
+- [rule] Size special-tier walls and platform spacing to the specific special jump required to reach them.
+- [rule] Treat learning the game as part of the experience and design it with level design methods. Why: Learning is part of play, not a separate step before it.
+- [rule] Lay out each level's design as detailed as possible, since the level layouts are what builders implement.
+- [rule] Pin hand-placed level geometry with positioning constraints so the generator never moves it and minimises the number of position changes it makes elsewhere.
+- [rule] Study why bad levels are bad as well as why good ones work, since both teach design lessons. When: when analyzing level design.
+- [rule] Keep a separate scene, room, or level file in the engine for building and testing the parts of a level.
+- [rule] Follow light spaces with dark ones, dangerous spaces with safe ones, and busy areas with sparse ones.
+- [rule] In single-player games, use intimate space for friendly areas or to give the player an advantage.
+- [rule] Use walls or gates for abrupt edges; for gradual ones, use cues such as burned trees or arrows that warn of danger.
+- [rule] Give sandbox worlds distinct districts with unique gameplay; without them, many landmarks can still leave the world feeling empty.
+- [rule] In side-scrolling levels, show the far end of any pitfall within one screen width of where the player stands.
+- [rule] In side-scrolling levels, give enemies and projectiles enough time between entering the screen and reaching the player to be seen and avoided.
+- [rule] Let core mechanics decide node form: place intense uses such as gunfights, sharp turns, boss battles, or hard platforming in dedicated nodes.
+- [rule] Make main-route elements bright or warm and side-passage collectibles cooler or analogous, so the main route stands out. When: when a level has both a main route and optional side areas. Why: Contrast separates the path players should follow from optional spaces.
+- [rule] Design spaces that are rich in meaning, not merely clear, by using contrast and ambiguity between safe and dangerous qualities.
+- [rule] Gate paths between areas with a condition, such as main quest progress or a strength threshold the player can reach.
+- [heuristic] Choose a space model by the design question: 2D continuous for boundary changes, 3D continuous for height changes, discrete zones for analyzing which play happens where. When: Changing a game's space or analyzing its play areas. Why: Each model exposes different interrelationships. No hard rule fixes whether a space is 2D or 3D, or discrete or continuous; the model is a thinking tool, so use whichever is most useful at the moment.
+- [heuristic] Draw the curve to find the exact location of a flat section before choosing a fix for it. When: after drawing an interest curve.
+- [heuristic] Pairing simplicity with godlike power to create and destroy makes abstract worlds compelling.
+- [heuristic] Give layout and story a strong center; a strong avatar at the center of the game world is generally preferred.
+- [heuristic] Architecture helps designers understand how people relate to spaces, which matters when designing game worlds and cities. When: Designing environments. Why: Spatial design depends on human relationships with space.
+- [heuristic] Altering a game's boundaries is an interesting design exercise for exploring new play.
+- [heuristic] When unsure how to structure a game world, consult a catalog of spatial patterns; matching patterns to the world can make the structure seem obvious. When: stuck on world structure.
+- [heuristic] Custom levels built in an editor show how a level is assembled from a game's formal elements, a practical reference for designing level structure.
+- [heuristic] A board with a linear path can act as an interactive diagram that shows designers and players the intent of a linear experience.
+- [heuristic] Design in one-screen increments so each moment of play shows the core mechanics clearly.
+- [heuristic] Withhold weapons and tools in a tutorial's opening area and use a strict path to focus player actions on the lesson.
+- [heuristic] Natural features such as cliffs, valleys, caves, trees, bluffs, and high points can serve as thresholds, and a viewpoint on arrival can stage landmarks visited later. When: When creating entry points or overview points without artificial barriers. Why: Natural features let players survey the world without interrupting immersion.
+- [heuristic] Avoid layouts with adjacent navigable regions, since thin walls, walkways through rooms and heavy vertical movement fit Dirichlet domains poorly.
+- [heuristic] A dungeon can be built as its own separate space, reached through a gateway from a larger map. When: when designing a dungeon entered from a larger map.
+- [heuristic] Decide deliberately where players should feel constrained and where they should feel free when sequencing rooms and paths. When: Arranging generated or designed rooms and paths.
+- [heuristic] A few well-placed details can make a game world seem deep, so spend detail where it matters most. When: you cannot detail everything.
+- [heuristic] Challenge is often built by pairing hazards with wide, precise jumps made in quick succession, usually leaving one optimal full-speed path that the player learns to master. When: designing a sequence of jumps with enemies. Why: A single best route turns the section into a course that players can master through repetition.
+- [heuristic] Favor rounded or angular passages over blocky hard-edged geometry so the character's collider keeps flowing along edges instead of catching. When: Laying out traversal spaces for a capsule-shaped character. Why: Rounded edges preserve the edge-sliding flow that makes steering forgiving.
+- [heuristic] Subtrees of a partition tree can serve as themed zones with one entrance that can be locked, decorated or given a shared difficulty.
+- [heuristic] Adapt a space's layout to its specific site and terrain so the environment feels native to its location. When: Designing a space tied to a specific natural setting. Why: Responding to the existing site creates a sense of place, a principle often called genius loci.
+- [heuristic] Place large open plazas where routes converge so they can hold the crowds that the connecting paths bring. When: Designing the endpoint of multiple converging routes. Why: Convergence concentrates visitors, and open space absorbs them without congestion.
+- [heuristic] Restate genre-specific spatial rules as general principles so they apply across genres, such as treating advantageous high positions as a principle for many game types. When: Extracting reusable lessons from a genre-specific level rule. Why: Genre-neutral principles transfer to other games and levels.
+- [heuristic] Many keys before one lock, or one key before many locks, implies open-ended exploration; a graph read this way shows how many choices players have. When: when judging how open or linear a lock-and-key layout is.
+- [heuristic] Keep design player-centric and view a level as a series of scenes, which helps communicate it to players.
+- [heuristic] Even a straightforward linear path stays interesting when it includes twists, turns and challenges.
+- [heuristic] Use side-scrolling for mechanics best understood from the side, such as jumping, climbing, flying, and shooting. Why: Side-scrolling teaches these mechanics well because everything the player needs is within one screen's distance of the avatar.
+- [heuristic] Make narrative staging spaces unique, large, and visible from a distance, using vaulting, arches, domes, and tall structures so they are recognizable as goals. When: designing a space for a climactic or scripted event. Why: Players notice and approach spaces that stand out from their surroundings.
+- [heuristic] Give each node a distinct spatial character, sometimes called genius loci, so every landmark offers a different experience.
+- [heuristic] Transitions can use different geometry from nodes, such as sloped ramps as edges with corridors or mazes as nodes.
+- [heuristic] Divide the view into thirds both vertically and horizontally and place key elements along the dividing lines rather than at center. When: when composing a view or framing a key element. Why: Off-center placement keeps the eye moving and makes the composition more interesting.
+- [heuristic] Small left or right offsets along a path create a more interesting route than a straight line. When: when designing a path through a space. Why: Gentle shifts add visual interest and direct movement without full turns.
+- [heuristic] Levels that combine competition with exploration in a large open world must plan both activities together.
+- [heuristic] Spaces with several simultaneous functions, such as both-and rather than either-or features, are richer than spaces built on one function.
+- [heuristic] Make environments quickly reachable and clearly bounded, abstracted into symbolic assets, so players can take them in at a glance.
+- [heuristic] Grouping features in a triad, with two shorter ones beside a tall central one, implies stable horizontal movement.
+- [heuristic] Give a linear section of context before open areas, rewarding later freedom with new abilities.
+- [heuristic] Keep interactive areas close together, with routes that pass near other areas, so players and residents meet and interact. When: laying out towns and multiplayer maps. Why: Chance encounters sustain activity and safety.
+- [procedure] 1) Sketch the level design. 2) Gray-box it. 3) Playtest the grayboxed level with the target audience.
+- [procedure] 1) Try different data layouts. 2) Measure the speed difference of each. 3) Keep the layout that performs best. When: When the hot and cold split is unclear.
+- [procedure] 1) Identify the game's physical boundaries. 2) Identify its conceptual boundaries. 3) Compare both to see where play separates from everyday life. When: when analyzing any game's structure.
+- [procedure] Building a toy box level: 1) Create at least three simple mechanisms in a comfortable engine. 2) Find at least two ways their objects combine into new interactions. When: exploring how mechanisms combine. Why: combinations of simple objects produce new play.
+- [procedure] 1) Play an online multiplayer game. 2) Identify spaces that push players toward a distinct strategy or play style. 3) Sketch each space and its layout.
+- [procedure] 1) Make all puzzle pieces feed one final challenge. 2) Nest small pyramids into a hierarchy of increasingly challenging elements leading to the final challenge. 3) Make the top challenge interesting, compelling, and clear so players want to reach it. When: A set of puzzles lacks a common goal, or when designing a multi-stage puzzle structure. Why: A shared final goal gives scattered puzzles a purpose and direction.
+- [procedure] 1) Check whether the ship's position exceeds the screen size on X and on Y separately. 2) If it does, move the position to the opposite edge. When: objects must stay on a bounded playfield. Why: Separate per-axis checks keep the object in play without leaving the screen.
+- [procedure] 1) Outline all levels and name them. 2) Write a one-paragraph description of each level. 3) Design a map for each level. 4) Populate each map with content. When: Designing a set of levels.
+- [procedure] 1) Ask how players know where to go and what the landmarks are. 2) Ask whether new mechanics such as flight or teleportation are needed. 3) Ask whether existing assets can build it, and whether new assets can be reused. 4) Identify key visual elements. 5) Define governing world rules. 6) Define daily life beyond the hero's story.
+- [procedure] 1) Choose a level from a game. 2) Describe how its layout, sight lines and boundaries shape player movement and choices. 3) Note the emotional or narrative effect of the space. When: Analyzing an existing level to learn spatial design. Why: Structured analysis turns observation into transferable spatial knowledge.
+- [procedure] 1) Draw a straight critical path from entrance to exit. 2) Write the number of locks on the critical path on that path. 3) Branch sub-paths with keys off the critical path. 4) Place puzzles and significant obstacles on the graph, marked as locks but labeled with the obstacle. 5) Count the keys and locks ahead of the player to read linearity. When: when graphing a dungeon or lock-and-key level.
+- [metric] A 10-hour RPG reaching level 30 averages about three levels per hour, faster early (around four) and slower later (one or two). When: As a starting point for a 10-hour RPG; other values may fit other designs.
+- [tradeoff] Arbitrary bounding shapes are hard to support in editors, so tools usually offer boxes, which may be aligned at any angle. Why: Arbitrary bounds are complex to author and support.
+- [tradeoff] Single-screen rooms give a tight, contained feel at the cost of the traversal space a movement mechanic needs.
+- [tradeoff] Designers can control how much and what kind of information reaches players by choosing what each room communicates. When: when deciding what a level should convey. Why: Each room sets a bounded load, so information is paced and selected.
+- [pitfall] Placing objects without a plan, or building around appealing but untested ideas, often yields levels that are not fun once prototyped. When: Building a level in an editor. Why: Without a stated goal, layout lacks a purpose that play can confirm.
+- [pitfall] Crowding many complex mechanics into one space overwhelms new players. When: When a single level introduces many new mechanics at once. Why: Too much new information at once exceeds what players can process.
+- [pitfall] Tightly packed objects relative to movement speed feel clumsy and oppressive and can cause frustration.
+- [pitfall] Confining a swing-based traversal mechanic to single-screen rooms leaves no room to swing, making such levels feel claustrophobic and painful.
+- [pitfall] Equating good level design with fun narrows the range of experiences a designer can aim for.
+- [pitfall] Structural methods about compression and tension apply weakly to games, because most game art is not a rigid body under engine physics. When: when applying architectural analysis to game levels.
+- [pitfall] Reading a molecule graph's shape as the level's physical layout is a mistake; the shape shows how spaces interact.
+- [pitfall] Locations reachable only by typed coordinates stay hidden from players who do not know those coordinates.
+- [pitfall] Confusing layouts usually come from poor environment art, such as bland, repetitive spaces or meaningless spatial configurations. When: when players cannot tell where to go. Why: Without distinct visual cues, players cannot read the space.
+- [pitfall] A space built from one idea, such as open ground with cover, tends to feel flat and simplistic.
+- [pitfall] Linear levels with few choices, such as long hallways between cutscenes and encounters, can leave players detached and less likely to finish the game. Why: Players lose attachment to places where they have little choice or sense of dwelling.
+- [pitfall] Placing trees, rocks and buildings at random makes a scene feel unplanned; plan each position deliberately.
+- [fact] Tactical level splitting matches pathfinding splitting, so methods like Dirichlet domains and floor polygons apply; some developers use Dirichlet domains for tactics, though less often than grids.
+- [fact] Whether a narrative designer must also work as a level designer depends on the team.
+- [fact] Several expressive rule-based games incorporate spatial interaction directly into their rules, and they use rules to make statements about the human condition.
+- [fact] In 3D game space, y points up against gravity and x and z lie in the ground plane. Movement uses x and z.
+- [fact] Adjacency between discrete positions gives a space its structure; without it, the positions are just disconnected points.
+- [fact] Medium-level rules reward spatial mastery, and collecting a valuable object often feels more satisfying than skilfully avoiding a hazard. When: when comparing object-based rules with pure hazard-avoidance challenges.
+- [fact] Boundaries can be physical, like an arena edge or board, or abstract, like a shared social contract to play.
+- [fact] Spatial configurations channel how people move and act, a psychological method shared by buildings and game levels. Why: layout shapes behavior in both architecture and games.
+- [fact] Multiple floors give players prospect and refuge advantages over one another.
+- [fact] Level schedules do two jobs: they list the pieces that make up each environment, and they support art direction.
+- [fact] In dungeon exploration a party must arrange its roles so magicians and missile users are protected in the middle.
+- [fact] Dirichlet domains are hard to apply to tile-based levels, but map flooding computes equivalent regions on tile maps.
+- [fact] Country-scale strategy games need characters with distinct identities, which calls for group LOD methods, and those methods were later adapted in several real-time strategy games.
+- [fact] Screen-based media trains people to sit still and face forward, and low frame rates in early VR taught players to keep their heads still.
+- [fact] Level designers implement level designs, propose level concepts, and test levels, working with the designer to improve gameplay.
+- [fact] An initial level-design plan needs only the number and kind of each environment, such as wilderness, city or dungeon; the levels need not be built or mapped yet.
+- [fact] A story plan alone does not give a playable experience; it needs a spatial environment in which each plan event maps to a location.
+- [fact] Axial routes combined with nodes, such as plazas or focal buildings, form a planning model that has been reused across cities and capitals. When: Planning the overall structure of a large urban area. Why: The model gives clear orientation and organizes movement across many destinations.
+- [fact] Unlike 3D art, level design has no single accepted method, so spatial knowledge must be learned from several sources and applied across tools. When: Planning how to learn level design. Why: No standard procedure exists, so principles must be drawn from varied theory and practice.
+- [fact] Text output alone can create large imaginary worlds with no graphics.
+- [fact] The dungeon graph method applies to 2D and 3D action adventures, role-playing games, point-and-click adventures and Metroidvania-style games.
+- [fact] Arcade-style games with short levels and few mechanics need no extensive teaching levels, since their complexity comes from level mechanisms, enemies, and items.
+- [fact] Side-scrolling levels, viewed from the side like a building section, are among the most spatially limiting level types.
+- [fact] Architecture, landscape architecture and garden design develop spaces through the orientation of features and materials, and their methods can be adapted to digital games.
+- [fact] Patterns differ in how many spatial forms they allow: some admit few, while fluid patterns admit many implementations.
+- [fact] Capture-the-flag maps are typically symmetrical, with team bases at opposite ends of a wide battle space.
+
+## level pacing
+- [model] Mixed time systems combine turns with a continuous clock, such as a per-player total time limit in turn-based tournament play. Why: The turn structure stays discrete while the clock adds real-time pressure.
+- [model] Each level has fresh aesthetics or challenges at its start, a series of rising challenges, and often a boss battle at the end.
+- [model] In a level graph, nodes carry gameplay intent and size, while edges carry the character of the transitions between nodes.
+- [definition] Pacing is the rhythm of stress and relief, arranged so intense action alternates with quieter moments such as puzzle-solving, exploration, or practicing movement. (x2)
+- [definition] Pacing is the game's tempo, shaped by perceived pressure from stress, cognitive load or sustained attention, time limits, and harsh punishment for mistakes.
+- [definition] An island is an area where story events happen. A bridge is an area between islands where open-ended play happens.
+- [definition] A level schedule is a chart listing modular pieces, their sizes, and their locations, which also serves as a style guide for level art.
+- [definition] A sawtooth difficulty pattern alternates easier encounters with harder ones, creating moments of winning followed by harder moments where players may die repeatedly.
+- [definition] Kishotenketsu is a four-part storytelling structure from Japanese manga that can also sequence how platformer levels introduce mechanics.
+- [mechanism] Object construction and spacing, judged against the avatar's speed, shape the sense of motion, so the same speed feels different in different layouts. When: generating or placing objects in levels.
+- [mechanism] Spacing is a main challenge lever: wider gaps ease navigation, closer gaps raise difficulty. Tightening spacing later shrinks the steering and jumping margin. When: Raising difficulty across a game, such as early levels with far-apart, slow obstacles that later levels tighten.
+- [mechanism] Predictable alternations, such as safe rooms before bosses, tell players when to unwind and when to prepare, so they internalize a schedule that pulls them through the game. When: when a level or game repeats a structure that alternates tension and relief. Why: Players learn the rhythm and adjust their expectations and effort; repeated alternation becomes expected.
+- [mechanism] Nested inside a longer total clock, a much shorter clock pushes players to take risks and keeps play interesting. When: games with a total time limit.
+- [mechanism] When players can choose harder or easier levels at any time, confident players progress quickly while timid players power up longer, and failure can drop them back a level. When: Offering free level selection in a game. Why: Self-selection matches challenge to each player's confidence.
+- [mechanism] Empty space after a fight builds anticipation because players do not know whether a surprise waits, and longer walks can increase unease about the next combat. When: Designing empty corridors between combat. Why: Uncertainty about what comes next grows with time spent without knowing.
+- [mechanism] Game rules and match conditions can generate a pacing curve on the fly, following a three-act shape that varies slightly each time. When: When pacing comes from rules rather than a fixed script. Why: Emergent conditions reproduce the curve's shape while changing details.
+- [mechanism] A shortcut can block progress as an obstacle on the outward trip, then open as a shortcut on the return trip.
+- [mechanism] Freytag's five-part arc (exposition, rising action, climax, falling action, dénouement) can structure levels, worlds, and quests so that high and low action alternate. When: Structuring a level, world, or quest's pacing. Why: Alternating high and low action creates good pacing through contrast.
+- [mechanism] Levels where every space is always open become predictable; making some spaces available only at certain times restores uncertainty.
+- [mechanism] A battle space that is quick to cross makes raids fast, keeps fighting nearly constant, and can hold many players and vehicles.
+- [mechanism] When a housing area is cut off and its more stable residents leave, decay and crime tend to grow.
+- [mechanism] When an enemy can kill instantly, its patrol locations strongly shape the routes players take.
+- [mechanism] Tension worsens before it improves, and escalating conflict is what makes drama effective.
+- [mechanism] Throttle points, where branches rejoin, are where railroading is most noticeable.
+- [mechanism] Suspense requires something valuable at risk, such as life, victory, or wealth, with both success and failure genuinely possible.
+- [behavior] Fatigue raises perceived difficulty: a hard enemy feels harder right after a long stretch of multitasking. When: after prolonged multitasking. Why: Fatigue reduces the attention available for the challenge.
+- [rule] Set generated gap width and object spacing against character speed and jump distances so every route stays playable and feels right; verify layouts against movement abilities. When: Generating platform routes, dungeons or level layouts. Why: Otherwise generated routes may require impossible jumps; spacing is a balance against what movement allows. (x2)
+- [rule] Set obstacle spacing in generated layouts against avatar speed and turn rate, so the player has room to steer and the challenge is controlled. When: Generating obstacle courses or avoidance layouts, especially for fast-moving or driven characters. Why: Challenge depends on spacing relative to motion; matching spacing to speed and turn rate keeps layouts drivable.
+- [rule] Set the open or closed overall structure of a generated map to control its high-level feel, and use dense, twisting layouts to keep the player focused on nearby space. When: Generating maps or levels. Why: Overall structure sets the feel, and dense layouts restrict attention to nearby space.
+- [rule] When pacing generated levels, avoid long purposeless sparse stretches, and alternate them with dense stretches that add navigation demand. When: Generating routes or levels. Why: Sparse layouts without purpose lull the player, while dense layouts add demand.
+- [rule] Hint at the direction of a hidden reward without making the route of exploration feel rote. When: generating hidden rewards.
+- [rule] Generated challenges should be deliberate and match the target experience rather than appear at random. When: when generating dungeons or content. Why: unintended friction frustrates players.
+- [rule] Let skilled players move quickly through easy content, since fixed-length levels for all skill levels bore skilled players.
+- [rule] To smooth a difficulty spike, reorder content so difficulty rises gradually across the game. When: a difficulty spike appears in the sequence. Why: reordering spreads the challenge into a curve.
+- [rule] Gate a final, very hard level and new ending behind secret objectives that players must discover. When: Designing optional endgame content. Why: Hidden objectives reward thorough play and extend replayability.
+- [rule] Insert breathing spaces after intense sections, such as a calmer cutscene after action or a shift to an activity needing less attention. When: after intense or high-load sections.
+- [rule] Surround a tutorial area with lethal drops or hazards that have no escape, so players stay within the intended lesson area.
+- [rule] Split the level into chunks whose properties are roughly uniform for the tactic being analyzed, such as similar illumination for shadow-based tactics.
+- [rule] Place weapon and health caches before large battles so players can choose how to approach based on their strengths.
+- [rule] Define the target combat experience at several points in play, such as 5 minutes, 1 hour and 5 hours, to guide balancing. Why: Balancing needs a specific goal at each stage of the game.
+- [rule] Place dramatic story climaxes at the hardest gameplay moments, with rising tension during rising difficulty. When: Planning story beats alongside difficulty. Why: Aligning the two curves makes the climax feel earned.
+- [heuristic] Use steady-with-spikes pacing, with tense combat between longer dialogue, exploration and scavenging, since a rising escalation curve breaks apart when play is suspended and resumed. When: players are expected to leave and return between sessions. Why: Steady-with-spikes pacing stays engaging when cut into pieces.
+- [heuristic] The order and content of rooms or encounters in a generated level can carry learning, and can raise difficulty and pressure over time.
+- [heuristic] Design the data a generated level exposes to AI code as deliberately as the generation itself; the interface often dominates AI development effort. When: Procedurally generated levels that AI characters must read. Why: World interfacing is a major share of AI work and debugging.
+- [heuristic] Visible wayfinding cues can be applied in generated spaces where navigation is not the intended challenge.
+- [heuristic] Layout decisions belong within the wider UX strategy, since level design is one of many elements shaping player experience.
+- [heuristic] Generated level layouts and mission order should be planned with narrative in mind if they must support foreshadowing. When: when generators build levels for a story. Why: Foreshadowing depends on which places and sequence players experience.
+- [heuristic] Free-space measures and A* shortest paths can serve as direct, abstract simulations of unit movement when scoring generated layouts.
+- [heuristic] Build the geometry first, then place missions and objects onto it. When: Generating environments that must serve mission setup. Why: Mission placement depends on the terrain's affordances.
+- [heuristic] A gated tile type, such as lava traversable only after touching a key tile, is a common dungeon pattern that adds progression constraints. When: Designing dungeon progression.
+- [heuristic] Check that generated layouts, including dungeons, can be completed by an automated agent before they are presented to players.
+- [heuristic] A hierarchy of time structures, such as several short rounds forming one larger round, can give pacing both quick feedback and a satisfying overall length. When: Designing the timing of a game. Why: Nesting lets short and long rhythms coexist.
+- [heuristic] Interest curves chart an experience's most powerful moments, not every event in it.
+- [heuristic] Puzzle difficulty should rise through a chain of intermediate sub-goal actions, each slightly harder than the last, rather than jumping straight to the final challenge. Why: A puzzle is either solved or not, so its difficulty lives in its steps.
+- [heuristic] Balance the time players spend traveling against the time they spend interacting or practicing non-travel mechanics. When: a level has travel between mechanics. Why: excess travel dilutes the experience of the mechanics.
+- [heuristic] Start with short levels and let each successive level run slightly longer on average, with some variation. When: Pacing a sequence of levels or dungeon sections. Why: Early short levels feel exciting before players are invested, and longer stretches are easier to tolerate later.
+- [heuristic] Give combat rooms several encounter spots, flanking routes and height variation so the room is interesting to fight in.
+- [heuristic] Build levels from fixed-size blocks of scenes, focusing design effort on key scenes and using the rest for circulation.
+- [heuristic] When a literal gate is used, place it right after the first enemy encounter, without needing a key. When: When using a literal gate as a skill gate early in play. Why: Placing it after the first encounter ties the gate to the mechanic just learned.
+- [heuristic] A shortcut can let players skip a low-interest stretch while keeping that stretch available for those who want it.
+- [heuristic] Unusually fast completion times in a tutorial usually indicate a shortcut or exploit, so check the level and play records. When: completion times far below the rest of the data.
+- [heuristic] Long horizontal layouts with few movement limits suit traversal mechanics and tend to feel best to play. When: levels built around swinging or other traversal. Why: Movement needs room to play out.
+- [heuristic] Dungeon groups can be given distinct pacing, playing a role similar to rhythm in platform levels.
+- [heuristic] Alternate intense and calm phases, such as waves of enemies followed by preparation, so that stress is followed by relief. When: When planning the pacing of a level or encounter sequence.
+- [heuristic] Build levels that vary space size, map complexity, and exit count so they challenge a mode's mechanics in different ways.
+- [heuristic] Each highlighted gameplay moment, such as an encounter, puzzle or rest stop, can have its own distinct emotional character.
+- [heuristic] Establish safe zones early through several encounters with no enemies, so players learn them without needing explanation. When: when a game needs players to recognize safe spaces. Why: Repeated safe experiences teach the rule implicitly.
+- [heuristic] Make early exposed crossings narrow enough to force slow movement, so tension builds before the player reaches the reward view. When: when designing routes over rooftops, ledges or beams. Why: Constrained width slows the player and heightens exposure.
+- [heuristic] Alternate safe and dangerous spaces, either between scenes or within one scene, to add gameplay complexity.
+- [heuristic] Within individual challenges, the same idea appears as high or low survival moments, depending on the survival mechanics.
+- [heuristic] Chaotic background action creates tension while the real threat remains low.
+- [heuristic] The verbs in a level summary reveal pacing, moving from sneaking to fighting signals a shift in tempo. When: Writing level summaries to check pacing.
+- [procedure] 1) Graybox a level with tightly packed small elements at ground level and large forms beyond. 2) Playtest which rhythm players follow.
+- [procedure] 1) Start with an easier opening section. 2) Place a mid-boss. 3) Follow with a harder section. 4) End with a final boss. 5) Give a power reward after each peak. When: Building a level or dungeon floor with a repeating difficulty pattern. Why: Repeats the spike-and-reward pattern within a single level.
+- [procedure] 1) Draw a map of the level. 2) Add call-out boxes for significant gameplay areas. 3) Check their spacing to judge whether pacing works. When: Reviewing a level's pacing. Why: Spacing of key areas reveals rhythm and pacing problems.
+- [procedure] Plan pacing: 1) draw the whole level at macro scale 2) mark its intense micro-scale encounters 3) spread them evenly across the map 4) fill the gaps with circulation space for movement, exploration or rest. When: when planning a level layout on paper, before detailed building.
+- [procedure] 1) Record the player's progression through each campaign section with its underlying numbers and time spent. 2) Note the difficulty, effort and skill each section demands. 3) Compare sections to find the most and least engaging pacing. When: charting a single-player or cooperative campaign.
+- [procedure] 1) Hook. 2) Rising action. 3) Build-up. 4) Climax. 5) Denouement. When: When pacing a sequence or match. Why: This reusable curve holds attention without exhausting the audience.
+- [procedure] 1) Plot each emotion by intensity and valence. 2) Chart a winding path across the emotional spectrum. 3) Move the player through different flavors, not only up and down. When: When planning emotional progression through a level or experience. Why: Moving across valence as well as intensity yields richer emotional variety.
+- [procedure] 1) Identify the gameplay the space supports and its mechanics. 2) Look up and down; check whether contrasting art or reversed verticality creates danger. 3) Sense size, shape, light and sound and how they make the player feel. 4) Analyze pacing: whether the level moves the player quickly or invites exploration, and whether detours are required or bonus. 5) Check whether one play style or several are supported. 6) Ask how the space expresses narrative as backdrop, through exploration or through scripted events. 7) Examine historical and gameplay precedents. 8) Analyze composition, proportions and rhythms of environment art. 9) Compare level geometry with the avatar's movement abilities and check what lies beyond them. 10) Note which art repeats, whether it is interactive and whether it corresponds to a mechanic. When: when analyzing an existing level or a level being designed.
+- [procedure] 1) Begin with no opposition or simple waves 2) add a single threat 3) add hazards, puzzles, power-ups, more enemies, and new enemy types one level at a time.
+- [procedure] Use molecule and proximity diagrams to pace level elements and study how they interact, and urban design principles to organize large worlds. When: when planning pacing and organization of a level.
+- [procedure] 1) Place NPCs acting out an event in the player's view. 2) Build lines of sight toward the event. 3) Use spatial size types and landmarks to usher the player toward it. When: in first-person scenes where narrative events happen. Why: Players may wander away from events without spatial cues.
+- [procedure] 1) Show the challenge simply in the first room. 2) Make the second room more complex. 3) Make the third room hardest, when three rooms guard one reward. When: when several rooms guard a reward.
+- [procedure] 1) Arrive at the level. 2) Overcome smaller obstacles. 3) Overcome a large challenge or enemy. 4) Reach the goal. 5) Emerge victorious. When: Designing the internal structure of a single level.
+- [metric] Divide distinct weapons and enemies by playtime hours to get content per hour; overlapping items mean the effective rate is lower than the raw count. When: checking whether content volume is excessive. Why: More content than a good experience needs is wasted effort.
+- [tradeoff] Wide, regular rhythmic elements move players quickly through large circulation paths, while smaller, denser rhythms slow them to stop and explore.
+- [pitfall] No guaranteed method exists for designing cellular automaton rules that are certain to settle.
+- [pitfall] An early prototype that held players for only about two minutes made them question whether there was anything more to do, signalling a flat interest curve. When: Early playtests of an encounter.
+- [fact] Randomly placed level contents, such as enemy locations, are hidden information until the player explores them.
+- [fact] A generated level usually starts as geometry, so the AI needs a representation that converts that geometry into a form suited to its algorithms. When: AI must act in procedurally generated levels.
+- [fact] Spatial layout is one of the two sources of context, so generated room and corridor layout shapes the feel of play directly.
+- [fact] Maze and level constraints can cover start points, goals, cell types, and required paths through the level.
+- [fact] A level authoring tool can combine evolutionary generation with a physics-based agent that checks solvability and playtests designer-made levels.
+- [fact] Nonlinear experiences lack one fixed sequence, which makes interest curves harder to apply to them.
+
+## combat encounter design
+- [model] Projectile drag is modeled as a linear term in velocity with coefficient k and a quadratic term in speed with coefficient c; the quadratic term couples the axes. When: When simulating projectile flight with air resistance. Why: Quadratic drag makes the drag on one axis depend on motion along the others.
+- [definition] A god stat is overpowered or required for an optimal build.
+- [mechanism] Enemies that take many hits feel solid and imposing, while enemies that die in one hit feel fragile, so hit count communicates perceived strength. When: Tuning enemy durability or setting enemy health relative to player damage. Why: Players read hit count as a sign of the enemy's physical substance.
+- [mechanism] Health and damage systems give meaning to moment-to-moment interactions. When: Designing combat or hazard interactions. Why: Consequences of each interaction depend on health and damage values.
+- [mechanism] Letting players heal only others, not themselves, raises the value of healers and encourages nurturing play.
+- [mechanism] For each healing point, the player moves the discard pile's top card below the last card of their draw pile; healing beyond the discard pile's size is ignored.
+- [mechanism] When each card's cost is paid in the same health that decides the game, every cost is a direct loss toward defeat. When: Card duels where costs are paid in the win-deciding resource.
+- [mechanism] Walkable spaces with meaningful destinations and dead-end paths limit through-traffic, so the same people keep meeting and become familiar with one another. When: designing social spaces or neighborhoods. Why: Repeated sightings build acquaintance, which is a precondition for community.
+- [mechanism] Moving enemies turn a space into a hazard, so even small enclosures can become dangerous and nearby terrain feels different. When: enemies patrol near platforms or stairs. Why: Enemy motion covers and reshapes the area around them, not only their location.
+- [mechanism] Boss fights usually introduce a new mechanic and need a specially designed area; whether they are built depends on dramatic effect, budget, and staff availability. When: Planning boss encounters.
+- [mechanism] A story area that needs new environment art is cut if no artists are available to build it. When: Scheduling narrative-driven areas. Why: Production capacity limits what can be built.
+- [mechanism] Narrative beats that seal off regions players could previously enter reduce the playable space.
+- [mechanism] Defense and Attack both act like HP, since each lets a character survive more enemy encounters, and higher Attack shortens fights so enemies get fewer attacks. When: balancing combat stats in an RPG. Why: Both reduce the damage a character takes over a fight.
+- [mechanism] A Strength 1 card can never eliminate an opposing card, so it survives only against an equal Strength 1 card, a 20% chance. When: Uniform 1-to-5 Strength distribution.
+- [mechanism] Attacking is worth more when a character is stronger than the opponent, and defending is worth more when the character is weaker. When: comparing offensive and defensive stat values in a combat system. Why: the advantaged side benefits from converting strength into damage, while the weaker side benefits from avoiding it.
+- [mechanism] Doubling an opponent's damage per hit doubles the value of armor class relative to attack bonus, because avoiding each hit becomes more important.
+- [mechanism] Once a hit chance reaches 100% or falls to 0%, further bonuses to that stat add nothing. When: a bonus pushes hit chance past its limit.
+- [mechanism] A damage multiplier adds no value against targets that a normal hit already defeats, since the outcome does not change.
+- [mechanism] When enemy health varies, area damage kills weaker targets over time, so total area output shrinks as the group dwindles. When: Enemies in a group have unequal health. Why: Low-health targets die first and stop contributing.
+- [mechanism] Changing unit costs or damage values shifts the optimal unit mix, so rebalancing requires re-solving the payoff table.
+- [mechanism] When being hit drains both health and a weapon's energy, players must switch weapons quickly and plan order for high-health enemies, assuming weapon levels will drop. When: when damage also reduces resources. Why: Compounded losses shape tactical decisions.
+- [behavior] Up to four-versus-four the defender has the edge, since ties go to it; from five-versus-five upward the attacker gains the edge, growing with more armies on the board. When: Comparing attacker and defender odds in small and large territory battles. Why: Ties favor the defender and small rolls make ties frequent; in larger battles the attacker's extra dice and reserve effects accumulate across exchanges.
+- [behavior] Aggregated play data shows where players are likely to die, guiding placement of helpful items. When: Level and item placement. Why: Death clusters reveal where players struggle.
+- [rule] Decide the hit count a creature should take to die before tuning raw hit points; any hit point scale that produces that count works. Why: Players judge fights by hit counts, mainly perceiving the hit count.
+- [rule] For an average enemy, character and weapon, count hits to kill; use that average as the starting metric and midpoint when adjusting weapon damage and creature health.
+- [rule] Place quiet, empty space before and after large encounters, and structure combat into waves or segments separated by quiet periods, even in shooters, to create rhythm and tension. When: Designing encounter pacing. Why: Quiet space builds tension and allows recovery.
+- [rule] Balance each enemy's damage needs per weapon and upgrade level so enemies feel made of one material; keep each enemy type's shot count constant so weapon power stays readable. When: Tuning damage across weapons and upgrade levels, or setting enemy health values. Why: Consistent relative damage makes the world feel coherent, and consistent shot counts make weapon strength readable across encounters.
+- [rule] A player whose health drops to zero or below loses; if both players reach that threshold together, the match is drawn. When: Card duels where health reaching zero ends the game.
+- [rule] A unit that stands on a first aid hex for a full round restores its hit points to the starting amount.
+- [rule] A fight lasting 10 minutes or more with few enemies needs other content to fill the time, or enemies with many hit points or stages. When: encounters with few enemies. Why: Otherwise the fight drags or feels thin.
+- [rule] When analyzing a combat level, record whether the player is armed, which enemies are hostile, how enemies limit the path, and how enemies act as level elements.
+- [rule] When objects conflict, decide which sits above or below the curve using expert game knowledge or strategy analysis.
+- [rule] Decide the number of combatants by weighing growth over time, performance limits, player cognitive load, and team hours and budget.
+- [rule] Before choosing enemy counts, set how long an average enemy should take to kill and how long a typical combat should last.
+- [rule] Vary damage and enemy hit points within ranges, and vary enemy counts at a location within a range. Why: Ranges keep outcomes uncertain while staying within designed limits.
+- [rule] In Risk-style combat, one army must stay behind, so only armies beyond the first can attack; attackers roll up to three dice and defenders up to two. When: Resolving a territory battle with dice. Why: The rules cap dice and reserve one army in the territory.
+- [rule] To hit in a d20 system, roll a twenty-sided die, add the attack bonus, and succeed if the total equals or exceeds the defender's armor class.
+- [rule] Set damage so that heavy, slow actions do more damage than light, quick ones, matching the player's perception of each move's physical nature. When: when assigning damage to attacks of different weight or speed. Why: Damage that matches perceived physicality feels right even though the mapping is arbitrary.
+- [heuristic] Place high vantage points and clear sight lines, since height gives advantage as occupants look down on opponents, and high refuges offer wide views. Why: Clear sight lines let the character's abilities give the player an advantage over foes.
+- [heuristic] A game only improves lives if many people play it, so aim for broad appeal combined with a positive effect. When: designing a game meant to have a positive effect. Why: Unplayed games help no one, so reach determines impact.
+- [heuristic] When character speed rises, spread environment objects farther apart to counteract the crowding that high speed causes.
+- [heuristic] Keep creatures' independent travel small and bound movement with barriers like fences, doorways, or gates. When: Building levels with wandering creatures. Why: A smaller hinterland makes the level easier for a designer to build.
+- [heuristic] Alternate challenges with short scenarios and build toward a finale, so the experience keeps changing and interest rises. When: Structuring a timed encounter or sequence.
+- [heuristic] Off-curve enemies that hit hard can create spikes in encounter difficulty, which is acceptable as a reminder that foes can still be powerful. When: Placing strong enemies in encounter sequences. Why: Spikes in difficulty are noticeable to players.
+- [heuristic] Later sections can raise challenge by adding more enemies that are faster and less predictable, so no area feels safe. When: progressing difficulty through a level sequence. Why: Unpredictability removes safe zones and keeps tension high.
+- [heuristic] NPCs can block a space until the player completes a task, such as guarding a doorway or sending the player on a quest. When: when designing progression through a space. Why: Blocking until a task is done directs movement without walls.
+- [heuristic] Chain refuges so players move cover to cover in combat or hiding spot to hiding spot in stealth; these sequences create exciting play.
+- [heuristic] Obtuse corners can partially reveal rewards, enemies, or events, so what lies around the corner may be a reward or a threat.
+- [heuristic] Pair large overlook spaces for sniper duels with smaller hiding spaces for ambushes, so one encounter offers both long-range and close-range tension. When: designing a staged encounter with ranged and close combat. Why: Varied sightlines and cover shape how the encounter is played.
+- [heuristic] Give one battle area several uses, such as cliff tops for sniping, low cover for sneaking, and a midway landmark.
+- [heuristic] Similar objects in a game should be proportional in strength, since one super unit makes the rest irrelevant.
+- [heuristic] Judge an attack's damage against its economy position, target HP, weapon range, target armor, attacker position, and the number of hits the fight should take. When: tuning damage values.
+- [heuristic] If players are usually outnumbered, cost defensive stats higher because they are more powerful in that setting. When: players typically face more enemies than they can match. Why: defense blunts the pressure of numerical disadvantage.
+- [heuristic] When costing area damage, estimate how often enemies cluster and how long they stay clustered during an encounter. Why: Clustering frequency and duration set how much area damage actually hits.
+- [heuristic] Make hazards that also launch the character cost more health than ordinary enemy contact, so they feel more physically harmful.
+- [procedure] 1) Fix a typical enemy HP. 2) For each damage value, count the hits needed to defeat it. 3) Price each damage value by the usefulness of that hit count, not by its raw number. When: pricing weapon damage against a fixed enemy HP. Why: With fixed hit points, extra damage adds value only at hit-count thresholds, so cost should track real combat usefulness.
+- [procedure] 1) Wrap the target object in a dynamic trigger volume, which is easier to set up for weapon damage than a standard trigger volume. 2) Set the object's collision to block weapons and enable block-rigid-body and block-complex-collision-trace flags. 3) Create a take-damage event on the volume and set its damage threshold to 1.0. When: Setting up a shootable object that should trigger a game event when damaged by a weapon. Why: Damage events fire only when the object's collision and trigger setup allow weapon hits to register.
+- [procedure] To estimate effective HP from a healing spell, multiply MP by the healing ratio and add it to current HP, when that spell is the only healing and the only use of MP. When: a single healing spell is the sole use of MP. Why: Without other MP uses, MP converts to HP at a fixed rate.
+- [procedure] To balance a heal against an attack spell, compare the extra damage taken without the attack spell against the HP the heal restores. When: comparing healing and damage-dealing spells. Why: Both are valued by how much HP they keep the character from losing.
+- [procedure] To balance an Attack item against a Defense item, compare the HP saved by fewer enemy attacks with the HP saved by reduced damage per hit. When: comparing attack and defense items. Why: Both effects are measured in HP preserved over a fight.
+- [procedure] 1) Value each effect on one scale where benefits are positive and costs negative. 2) Sum the values. 3) Classify the effect as a benefit if the net is positive, and as a cost if it is negative. 4) Keep all values positive by adding costs and benefits, never subtracting. When: Effects that combine benefits and costs. Why: A single signed scale makes net value easy to read.
+- [procedure] 1) Pick a realistic combat where party power fits. 2) Define party stats and inventory. 3) Gather monster stats and the game's hit and damage formulas. 4) Simulate the fight in a spreadsheet. 5) Compare worst-case, best-case, and average outcomes using probability or Monte Carlo simulation, and recheck if they disagree. When: judging how dangerous an encounter is.
+- [procedure] 1) Multiply total hours by the combat share to get total combat time. 2) Divide by average combat length, including longer boss fights, to get encounters. 3) Assume encounters per enemy type and divide to get distinct enemies. 4) State every assumption not given. When: budgeting enemy assets for a long game.
+- [procedure] 1) Write the expected value as the immediate payoff plus the continuation probability times the expected value of the next state. 2) If all states are identical, set the value equal to itself. 3) Solve the resulting linear equation. When: A repeated chance process where each continuation is identical to the start. Why: Identical states collapse the recursion into one equation with one unknown.
+- [procedure] 1) Estimate the expected number of targets hit per attack. 2) Multiply the single-target attack's benefit by that number to get the area attack's value. When: Targets are clustered and roughly equal in health.
+- [procedure] 1) Compute basic damage minus target armor, plus piercing damage, as maximum damage. 2) Roll a random amount from 50 to 100 percent of that maximum per attack. When: when designing combat where rules set a range and chance picks the outcome.
+- [metric] Expected DPS equals average damage per projectile, times projectiles per shot, times shots per second, times the chance each projectile hits. When: Comparing the effective output of weapons.
+- [metric] Adjacent hexes hit with 100 percent chance, and the chance falls by 10 percent per hex of distance; resolve with a ten-sided die.
+- [metric] Units start with five hit points; every hit they take removes one.
+- [metric] Deathtouch is worth about 2 points, reflecting its strength in combat.
+- [metric] A card's expected damage is (Strength/5) × Damage, and each point counts as one opponent health only if the card survives. When: Estimating a card's offensive value.
+- [metric] Doubling the contagion period can roughly multiply the number of people who adopt the game about tenfold, according to the epidemic model. When: modeling word-of-mouth growth. Why: Small changes in how long players keep talking strongly affect total sales.
+- [metric] An item's chance to critically hit can double its value relative to an otherwise identical item. When: Pricing a crit-enabled item.
+- [metric] Enemy contact or enemy projectile costs one health container, spikes cost three, and falling into pits costs more than enemy contact.
+- [metric] Bosses take three powerful hits, while basic enemies die in one or two.
+- [metric] In this design, health has eight slices and each coin restores one empty slice.
+- [metric] Balance heroes for typical battle size; in one hero-driven strategy game armies were about 12 to 15 units, with 24 close to the maximum. When: tuning hero power against army size. Why: A hero tuned for large battles overwhelms small fights.
+- [tradeoff] Regeneration gives even, immediate pacing without resource searching but weakens hidden-item rewards and low-health drama; managed resources give drama and exploration but uneven pacing. When: when choosing a core health system.
+- [tradeoff] Keeping the player in close quarters forces melee but can feel constraining, while enemies that rush the player either force melee or make the player back up. When: When using environment or enemy behavior to steer combat mode. Why: Neither environment nor enemies settle the mode choice alone.
+- [tradeoff] Ammo-free melee weapons offer unlimited use but only at short range, while ranged ammo weapons reach farther but depend on a finite supply.
+- [pitfall] Presenting a small base value followed by many bonuses leads players to underestimate their total damage or output.
+- [pitfall] Placing intense encounters in quick succession turns a level into a relentless slog with no recovery.
+- [pitfall] Treating damage over time as equal to burst damage makes sustained effects look too strong; discounting future damage corrects this.
+- [pitfall] Expected DPS for spread or splash weapons assumes every projectile hits, so it overstates real output at range.
+- [pitfall] Halving damage does not halve its value when enemies have flat armor, because a fixed reduction can cut a small hit to zero.
+- [pitfall] Assuming other factors are equal rarely holds, so the simple target-count multiplier alone tends to overvalue area damage. Why: Enemy offense and health changes alter value during the fight.
+- [fact] Custom health games have produced measured benefits, including improved visual acuity in amblyopia, fewer emergency visits for diabetes, and better treatment adherence in cancer patients.
+- [fact] Combat adds pressure and cognitive load, while navigation lets players set their own pace unless a time limit applies.
+- [fact] Boss fights are hard to make fair and entertaining without a clear picture of the player's level, gear, spells and skill.
+
+## architecture and form
+- [model] Oku layouts wind streets and passages like onion layers, hiding gathering spaces found only by explorers, combining Zen views of other layers, layered walls, non-90-degree corners and access-denying passages.
+- [model] A Greek theater had three parts: a circular orchestra, a skene building serving as backdrop and backstage, and a proskenion where the performance took place.
+- [model] Amphitheater arenas combined tunnels, scenery, elevators, and trap doors to bring animals in for hunts and staged recreations.
+- [model] A modernist open-plan model has five points: piloti, free façade, ribbon windows, open floor plan, and roof terrace.
+- [model] Four generators of city diversity are multiuse districts with constant activity, short blocks, buildings of varying age, and high population density.
+- [model] A tartan interleaves structural members and surface elements at several levels of hierarchy, from large to small. Game tartans combine large prospect rhythms with intimate ones.
+- [definition] A parti is a measurement-free spatial sketch of a level's layout, used early to explore which gameplay ideas and orientations are worth pursuing, not for final planning. When: Exploring level concepts before committing to measurements. Why: Partis are fast to make but lack the precision needed for construction.
+- [definition] Architectural types are building forms linked to a function, formed when same-use buildings share a form over time; proportion-based architectural orders formed a shared vocabulary of recognizable forms.
+- [definition] Divided space carves an irregular space into sections, like a real map.
+- [definition] Architecture mainly shapes the experience people have inside a structure, not its outer look, and game designers share this goal of building spaces that produce experiences.
+- [definition] A ziggurat is a temple set atop a man-made hill, frequently constructed from kiln-fired brick.
+- [definition] Figure-ground arranges solid masses as figures within open negative space, and the spaces framed between figures become positive space that matters as much as the figures.
+- [definition] Form-void is a three-dimensional extension of figure-ground in which spaces are carved from solid masses or created by adding masses, suited to non-top-down views.
+- [definition] Intimate space is neither confining nor oversized; everything in it is reachable with the character's inherent abilities and fits its size and movement.
+- [definition] A labyrinth is a unicursal structure with one winding path that loops around and reaches an endpoint, serving as the model for linear gamespaces.
+- [definition] Contradiction in space means one place can feel both good and bad at once, such as safe yet threatening.
+- [definition] A bad space is a space designed to place players in specific, exhilarating danger.
+- [definition] Architectural rhythms of columns, arcades, tiles, and shadows guide people's movement and regulate how quickly they pass through a space.
+- [mechanism] A dense grid of columns beneath a heavy roof produces a sense of vast, dim, ethereal space that feels both enclosed and expansive. When: Designing a large interior meant to feel awe-inspiring or otherwise. Why: Repeated supports and low light create depth and mood.
+- [mechanism] Heavy, closely spaced supports feel weighty and assertive, while slender, raised supports feel light and lifted, so support form sets a space's emotional tone. When: Choosing the visual character of supports in a space. Why: Proportion and spacing of supports convey weight and lightness.
+- [mechanism] An axial layout that leads visitors toward a focal point structures their movement and can express a hierarchy between leader and congregation. Why: Such layouts evoke the kingdom of heaven.
+- [mechanism] Minimising interior structural stone lets large stained-glass windows grow and filter light, making visitors feel closer to the divine.
+- [mechanism] A required daily ritual can fix building orientation and add a functional element, such as a tower for a call to prayer.
+- [mechanism] A concealed backstage structure lets unseen voices and costume changes occur out of the audience's view.
+- [mechanism] With compartmentalisation declining, players can cross mountains, forests, and underwater caves without progressing through structured levels.
+- [mechanism] A visual pattern can take on new meaning across levels as mechanics grow, such as a shield pattern later marking explosive puzzle pieces. When: when a game reuses a visual pattern across levels. Why: Players relearn the pattern's role in each new context.
+- [mechanism] An arcade can separate a shaded space beneath it from a bright open courtyard, so one open area feels like two distinct spaces.
+- [mechanism] When housing is cut off from the rest of a city, public social life can shrink to whatever connecting passages remain.
+- [mechanism] Walkers entrain to large repeating floor patterns, so shrinking the pattern at a destination slows them as they approach. When: large floor pattern leading to a shop entrance. Why: walkers match their pace to the pattern.
+- [rule] Use meeting spaces only when a tutorial must truly stop the player for a demonstration.
+- [rule] Use a labyrinthine structure when a narrative, theme or argument must reach the player in a fixed order, or for linear navigation of one level.
+- [rule] Give starting settlements trainers for every class and introductory quests tied to the player's background.
+- [heuristic] Standardize a few recognizable forms, reusing them with consistent building types and signage to form a shared visual language that makes a whole environment readable. When: Building a consistent visual language across many spaces. Why: Recognizable repeated forms make an environment easier to read and to navigate.
+- [heuristic] Reuse the same sprite or model for service buildings across towns, and keep consistent functional props such as anvils, stoves or counters, so players recognize function everywhere.
+- [heuristic] Use figure-ground for plan-view layouts, placing figures to mark out rooms, corridors and meeting areas by reading the spaces they frame; use form-void when the view is not top-down. When: Choosing a spatial method for a level. Why: Framed spaces, not just solid figures, define how areas are used; figure-ground suits plan views while form-void handles 3D views.
+- [heuristic] Combine several uses of a mechanic rather than in isolation; place systems side by side or stacked for satisfying complexity. Contrasts add drama to space and mechanics. Why: Combined uses make mechanics and systems more interesting to players.
+- [heuristic] Urban planning theory can guide the design of augmented reality, alternate reality, and large-scale physical games. When: Planning spatial design for location-based games. Why: Urban theory addresses how people move through and use shared spaces.
+- [heuristic] Divided space fits games that replicate a real map. When: Choosing divided space organization.
+- [heuristic] Use terraces and colonnades to move visitors through a sequence of scenes, letting the space reveal a narrative step by step. When: Designing a route that tells a story or shows a sequence of scenes. Why: Stepped progression paces the reveal and guides the visitor through each scene.
+- [heuristic] Place the entrance on a short side of a long room so the room reads as long and the visitor walks toward a focal point at the far end. When: Designing a linear room that leads to a goal. Why: Entering the short side makes the length of the room the dominant experience.
+- [heuristic] Show structural and handcrafted materials honestly rather than hiding them, so the space communicates how it is made. When: Choosing finishes and materials for a space. Why: Honest materials make a space's construction legible and credible.
+- [heuristic] Zone multi-storey buildings by floor: a taller, plainer ground floor for business and a shorter upper floor with more elaborate windows for guests. When: multi-storey buildings with public and private functions. Why: Upper floors signal status and host visitors.
+- [heuristic] Articulate public and private areas and align landmarks on an axis to move visitors through a public space.
+- [heuristic] Spaces with little distinct character work as circulation that carries players toward the next destination, offering rest or building suspense.
+- [heuristic] Repeating a few building or room types helps players locate their next objective from a single viewpoint. When: in large open worlds. Why: Recognizable repeated structures reduce navigation effort.
+- [heuristic] Adding contradictory features that both strengthen and threaten the player's sneaking lets one space serve several functions at once. When: when a level space feels flat or single-purpose.
+- [heuristic] Arcs can apply at multiple scales: to a whole story, each book, each chapter, or each world, with each world following its own arc. When: Structuring games with many levels or worlds.
+- [heuristic] Use facades or balconies to summarize a space's contents or to hint at areas beyond what the player can enter.
+- [heuristic] Focus multiplayer space design on interaction, leaving open room where memorable player events can occur, not only on working mechanics.
+- [procedure] 1) Clarify the functional space first and use it as the skeleton. 2) Choose an organizing principle: linear, grid, web, points in space, or divided space. 3) Combine principles where needed. When: Starting to lay out a game space. Why: A clear organizing principle gives the layout a skeleton.
+- [procedure] 1) Enter from a transitional entry space. 2) Pass through the main long interior. 3) Reach the focal point at the far end, with an optional rear room behind it. When: Designing a room sequence that builds toward a focal point. Why: A clear progression from entry to goal organizes movement and builds anticipation.
+- [procedure] 1) Study the architectural style you want. 2) Define the game's look from it. 3) Build fictional structures from that style's real forms.
+- [procedure] 1) Learn why the space was built and what it serves now. 2) Look up while walking, noting forms, layering and materials. 3) Sense size, shape, light, sound and adjacent spaces. 4) Understand how structure holds the space up. 5) Judge whether materials work in compression or tension and whether they feel heavy or light. 6) Determine construction and materials. 7) Examine historical precedents. 8) Analyze composition, proportion and rhythm. 9) Observe fit with the setting. 10) Analyze what makes it special. When: when analyzing an existing space as a designer.
+- [procedure] Record a lobby- or courtyard-sized space, real or in a game, by drawing at least three of plan, section, elevation, axonometric or perspective, plus notes or diagrams. When: studying how spaces are represented.
+- [procedure] 1) Ask why the level is built the way it is 2) ask what gameplay experience it creates 3) ask what precedents it draws on 4) ask how its space is composed. When: when analyzing a level you played.
+- [procedure] Build spaces either by placing geometric forms into open space or by carving them out of a solid mass, using Boolean-style combination of models. When: when constructing 3D gamespaces in an engine or art tool. Why: Both methods create the same spatial relationships in different ways.
+- [tradeoff] Zoning functions into separate areas simplifies layout but prevents chance meetings; mixed-use spaces let players of different skills, styles and types meet.
+- [pitfall] A support that could not plausibly carry its load is noticed by players, and that can break engagement.
+- [pitfall] Copying decorative motifs without their underlying design logic produces a theme-park feel that reads as artificial.
+- [fact] Historic designers consistently composed buildings for visitor experience, including sight lines, movement sequences, form communicating meaning, storytelling through space and social play. When: Learning spatial design from architecture. Why: Architects designed how people moved through and perceived buildings, and each era shaped this, which transfers to levels.
+- [fact] Game worlds can treat architecture as navigable space with circulation and activity areas, or treat it as scenery with no navigable role.
+- [fact] Architecture offers practical theory on how people perceive space and provides precedents for emotionally evocative levels. When: Seeking spatial principles for level design. Why: Architecture has long shaped perception and emotion through space.
+- [fact] Monumental forms and materials can express a ruler's connection to the divine, and placing chambers with symbolic meaning reinforces that message. When: Designing a space that conveys status or belief. Why: Form, materials and placement communicate meaning to everyone who experiences the space.
+- [fact] Industrial materials allowed taller and wider buildings, and this provoked a backlash that favored handcrafted, natural materials. When: Understanding how material technology shapes spatial taste. Why: New capability prompted a return to honest, crafted materials.
+- [fact] Relief sculpture and mosaics can pass biblical narratives to audiences who cannot read. When: audience largely illiterate.
+- [fact] Buildings that change hands can gain narrative layers their original builders never intended.
+- [fact] Raising a sacred structure on a mound was understood to bring it closer to the gods and to recall the mountains of origin.
+- [fact] Supporting spaces attached to a playing area, such as a bullpen, can carry their own rules.
+- [fact] Renaissance architecture revived classical arches, domes, and column orders, and added symmetry and centralised floor plans.
+- [fact] Roman architecture contributed mainly engineering and structural innovation layered onto Greek architectural language.
+- [fact] Refinements of the arch, vault, and dome made large interior spaces possible.
+- [fact] Lintels, posts, column orders, domes, arches, and vaults are structural forms that make a gamespace feel believable.
+- [fact] Seeing architecture means processing its spatial, formal, contextual and historical elements, not only what the eyes detect.
+- [fact] Game levels do not have to obey physical, environmental or regulatory constraints, so game spaces can use experimental or freeform layouts that real buildings cannot.
+- [fact] In games, interior and exterior are mostly labels derived from the visual style applied to a gamespace.
+- [fact] Labyrinth floor patterns in medieval churches were used for meditative walking.
+- [fact] Buildings offering healing and curse removal can be marked by religious symbols and plan features such as a narthex or apse.
+- [fact] Pattern languages with explanations were written so non-experts could design their own spaces, such as houses.
+- [fact] Pattern language ideas have influenced building codes, urban planning, web development and computer science.
+- [fact] Later urban planning favoring walkable, mixed-use neighborhoods builds on these diversity ideas.
+
+## camera and viewpoint
+- [model] The main view families are first-person, third-person, 2D side-scrolling, 2D top-down, and axonometric or isometric.
+- [model] Top-down gamespaces are viewed from above like a building plan, giving few sight lines but strong orientation.
+- [model] Miniature spaces are either vantage-point gardens viewed from a fixed spot or stroll spaces walked through; large worlds often mix both.
+- [definition] A Zen view is a brief, deliberate glimpse of a reward, such as a vista or narrative stage, along the route, making players strive to reach that space.
+- [definition] Graphical perspective is the viewpoint a camera provides, like first or third person, shaping which actions players believe are available.
+- [definition] A modern isometric 3D camera is angled above and behind the character, aims downward, and uses perspective projection.
+- [definition] Level of detail allocates the most computation to what the player is likely to notice, rather than simply to what is nearest.
+- [definition] The 'ant farm' view abstracts three-dimensional space into a simplified overview, a representation that later shaped depictions of real and fictional 3D space.
+- [definition] In 3D engines the camera is an object whose placement determines what the player sees of the gamespace, so point of view depends on camera placement.
+- [mechanism] 2D and top-down views can show information beyond the character's line of sight, which most 3D games hide, since top-down games rely less on reaction-based action.
+- [mechanism] Framing choices change what viewers notice and how they respond; camera framing can convey story, and wide horizontal panoramic formats can suit simulating field experience. When: when framing a shot to convey story or simulate field experience.
+- [mechanism] Visual processing separates objects in a scene below awareness and draws boundaries, so a line drawing arrives already sorted and needs less effort to understand. When: when deciding how much visual detail to render. Why: Preprocessing removes work the brain would otherwise do.
+- [mechanism] Players move toward whatever draws their attention first, so controlling where they look controls where they go.
+- [mechanism] Framed openings and widening spaces can foreshadow or heighten the player's arrival at a location, turning transitions into guideposts. When: when designing transitions between areas. Why: The framing hints at what lies ahead and builds anticipation.
+- [mechanism] Off-center placement of a character and landmarks steers the player's gaze toward the landmark rather than holding it at center. When: when a landmark should draw the player's attention. Why: The eye is pulled along the off-center offset toward the focal element.
+- [mechanism] Vertical elements like windows and columns converge through perspective, drawing the gaze downward into a drop. When: when a space has a drop or pit.
+- [mechanism] Showing information beyond the avatar's view lets designers hint at secrets before the player can reach them.
+- [mechanism] A small amount of game reaction smooths jerky mouse input in first-person aiming.
+- [behavior] Players who can move forward tend to look forward and seldom look around unless the design holds them in place. When: Players are free to move in a VR scene.
+- [behavior] Players read screen shake that follows a short delay as a shockwave, and a jarring shake on an impact as a force of enormous size. When: Impacts and blasts shown with camera shake. Why: Players learn this shake vocabulary from film and recognize it as a sign of concussive force even without everyday analogues.
+- [rule] Allow participants enough time and clarity to react to dangers and openings, and do not let them easily become stuck or disoriented. When: Designing wayfinding and hazard display. Why: Those short on data or time experience unjust strain and lose interest.
+- [rule] Limit movement while players are visually cut off, to reduce injury from real-world objects.
+- [rule] Judge confined, dungeon-like spaces played in first person from the player's viewpoint. When: evaluating room size in first-person levels.
+- [rule] When the camera is central to a game, test camera systems in a toy box.
+- [rule] Scrolling stops at screen edge zones, so the avatar can push against the edge as if it were a solid wall. When: Avatar reaches a level's screen edge zone. Why: Edge zones prevent the camera from revealing areas beyond the boundary.
+- [rule] Reserve gentle screen shake for heavy objects, so the camera response signals mass.
+- [heuristic] Mixing direct and indirect camera control can feel clumsy, and level layout plus fixed views can offset the problems.
+- [heuristic] Enemies near the player should appear large, central and identifiable, while distant enemies appear smaller, because distance tracks relevance in 3D space.
+- [heuristic] Over-the-shoulder cameras sit close behind the character and let players swing the view toward where it looks, blending first- and third-person perspectives.
+- [heuristic] The bigger the group, the more a cutscene should be avoided or carefully placed, because members differ in interest and tolerance for waiting. When: MMO group content.
+- [heuristic] A centered focal point draws the eye to the middle first, while interest placed at the edges pushes the eye outward. When: Composing a view or framing a space.
+- [heuristic] Good level design lets visual cues guide players through a space, so they sense agency over their route.
+- [heuristic] Build large areas around tall, rounded structures, where the free camera is rarely obstructed and objectives stay visible. When: designing large open 3D areas. Why: Clear sightlines keep objectives visible.
+- [heuristic] Use porticos to let inhabitants look out onto vistas, and keep room-size ratios consistent across the space.
+- [heuristic] When screen space is limited, split a large world into framed views and compose each with painting techniques. When: limited screen space.
+- [heuristic] Test visual effects and foreground content to find how much clutter players can track before they lose their avatar.
+- [heuristic] Choose the camera to suit the point of view the player will have.
+- [heuristic] Because the player controls where to look in first person, use lines of sight and other architectural tricks to direct attention to details and guide movement. When: in first-person levels. Why: The player, not the designer, chooses the view direction.
+- [heuristic] Careful drawing of level geometry and backgrounds can deliver rewarding vistas in top-down games.
+- [heuristic] Vertical elements such as columns, trees, or doorframes are effective framing tools. When: when framing a path or view in a level. Why: Vertical shapes clearly bound the view around the focal point.
+- [heuristic] Negative space works best when a visible prospect implies a beyond extending past what the player can see.
+- [heuristic] A narrow opening that reveals a reward for a moment on the way to a goal can be built into the route to that goal.
+- [heuristic] Treat each view as a film shot and plan what sits in the frame, especially for scenes meant to fit a single frame.
+- [heuristic] A camera is well designed when players do not notice it.
+- [heuristic] Use a one-way camera that never scrolls back to discourage backtracking and keep the player moving forward.
+- [procedure] 1) Place cutscenes before major encounters to give the group a final moment to prepare and to introduce the boss. 2) Place cutscenes after major battles, when timing matters less.
+- [procedure] 1) Select a city-level LOD: one economic behaviour for the whole city, or a block-by-block simulation. 2) Give each block its own LOD: block behaviour, or per-citizen behaviour for the block containing the player. 3) Run individual behaviours only at the lowest level. When: Large simulated cities with a player present. Why: Each level of detail is scheduled by the level above.
+- [tradeoff] Many small vertical lines draw the eye upward, yet players rarely look up, so use verticality for grandeur or direction rather than as a surprise. When: when designing vertical space in a level. Why: players focus on the ground path ahead.
+- [tradeoff] Fixed cinematic camera angles from below, in front, or close up add drama but reduce player control.
+- [tradeoff] In third-person views, scaling rooms and furniture requires choosing between avatar size, cavernous rooms, sparse layouts, and slightly enlarged furniture spread out; the last counteracts third-person distortion best. When: Designing interiors for third-person games. Why: Players sense their body floating behind the avatar, making normal rooms feel cramped.
+- [tradeoff] A fixed camera avoids camera collisions in cramped spaces but removes free viewing, which can make those areas feel weaker. When: confined spaces.
+- [tradeoff] First-person views suit line-of-sight relationships and aiming and can be very immersive, but they suit platform jumping and melee fighting poorly compared with wider perspectives. When: when choosing a camera for a game. Why: Narrow view limits awareness of surroundings and spatial timing.
+- [tradeoff] Foreground elements that surround a focal view, like a picture frame, direct attention to that view and make the arrival at it more dramatic. When: when designing a view or destination the player should notice. Why: Framing isolates the focal point against its surroundings.
+- [pitfall] A camera set too low gives a disorienting pseudo-third-person view, which hurts both navigation and unit selection in a strategy game. When: choosing camera placement for strategy games. Why: A low angle hides the battlefield and makes selecting units difficult.
+- [pitfall] Scenery placed near the player's route is ignored when it does not match their current goals.
+- [pitfall] Making everything obvious from the start reduces the reasons players have to look around.
+- [pitfall] Early pseudo-3D methods such as isometric and prerendered 3D lowered landscape quality for a time because designers had not yet learned the new tools. When: when adopting a new rendering technique before mastering it. Why: unfamiliar tools cause weaker results until skills develop.
+- [pitfall] In first-person views players can drift away from narrative events, and without exterior views they may not understand the shape of the surrounding space. When: in first-person levels. Why: Nothing keeps players near events, and the exterior contours of the space are hidden.
+- [fact] Some areas switch to a fixed view from a preset vantage point rather than following the character.
+- [fact] Mode 7 on 16-bit consoles simulated three-dimensional depth, extending the ant-farm perspective of environments.
+- [fact] In perspective, circles become ellipses. When: drawing circular forms in a perspective view.
+- [fact] Making things look good from far away is easy; making them hold up up close is the hard part.
+- [fact] In first-person views the camera sits at eye level inside the avatar's head region, if the game uses a body model at all.
+- [fact] Pathfinding and orientation methods from 3D games are largely unusable in side-scrolling levels.
+- [fact] Top-down views suit expansive exploration, interaction with non-player characters, and aligning the character with targets for shooting, sword fighting, or basic jumping.
+
+## wayfinding
+- [definition] Landmarks are recognizable guideposts, natural features such as volcanoes or built structures such as towers and castles, that help players orient themselves relative to well-known features.
+- [definition] Readability is how easily a player, on entering or approaching a space, can evaluate its elements and understand it at first view. When: When judging whether a scene can be read on first view. Why: Players must evaluate elements quickly on entering a space.
+- [definition] Desk jumping is a player action the character would never take, because the player's motivations sit outside the fiction.
+- [definition] An Easter egg is a hidden joke or reward placed in a game for players to discover.
+- [mechanism] In an unfamiliar place the mind must look around to build an internal 3D model of the surroundings. When: The player enters a new environment.
+- [mechanism] A connection can pass one modality in one direction only, such as sight through one-way glass, with no reverse connection for sound or smell. When: a barrier passes some senses in one direction.
+- [mechanism] Steep inclines that slip the character back act as invisible limits, redirecting players without visible walls. When: Restricting access to an area. Why: Consistent slide physics makes the limit feel like a consequence rather than an imposed barrier.
+- [mechanism] Remains of victims placed on roads and in yards signal a threat in the world and guide players toward the enemies responsible. When: when placing enemies in a level with a story threat. Why: Enemies are usually found near the remains, so world detail doubles as level design.
+- [mechanism] Light sources guide players; a dark area with no light can leave players lost.
+- [mechanism] Circuitous room sequences leading to a central hall disorient visitors and heighten the sense of absolute power.
+- [mechanism] Boundaries and zones marked on a playing field govern possession, so codified sports encode their rules in the space itself.
+- [mechanism] Instant travel lets players cover large distances quickly, which reduces the time spent crossing a world.
+- [mechanism] Levels can work as memory palaces, embedding information such as plot, enemy locations, or puzzle components in rooms that players recall. When: when a level must convey information players need later. Why: Players remember information tied to places they moved through.
+- [behavior] Players rarely consciously notice environmental steering such as music, layout or visual cues, even while following them, and believe they chose freely, so steering works best subtle. When: Ambient or visual cues guide players without explicit instructions. Why: Music affects mood, desire and action below conscious awareness. (x2)
+- [behavior] Players often do not notice lost freedom in a scene when the scripted action matches what they already wanted and the game has trained them to expect freedom. When: When a scene removes control but gives the player the outcome they want. Why: The scripted outcome satisfies the expectation that drove the player's choices.
+- [behavior] In third-person games, players sense their body floating behind the avatar, so normal-sized interiors feel tight and players blame the room rather than the camera. When: Playing third-person games indoors. Why: Split body awareness distorts perceived space.
+- [behavior] Players sometimes backtrack to power up seldom-used weapons before boss fights, preparing deliberately for known challenges. When: when a boss or challenge is known to require a specific tool. Why: Players invest in preparation when rewards and threats are clear.
+- [behavior] In a symmetric level, knowing one half reveals the other, whereas asymmetric levels keep players guessing. When: a level with mirrored halves. Why: a mirrored layout lets one half predict the other.
+- [behavior] Players lost in a maze mark places they have already visited by dropping items there. When: Navigating large spaces with no visual landmarks. Why: Players need a way to tell visited areas apart.
+- [behavior] Designers cannot create experiences directly; they guide people indirectly through the structure of a space. When: Shaping how players feel and move through a space. Why: Experience emerges from how people use the structure.
+- [behavior] Players remember game spaces relatively, through doors and connections, rather than as accurate absolute layouts, so odd layouts rarely register as strange. When: Designing space that players must understand. Why: The mind stores spaces relatively, not as precise maps.
+- [behavior] From a high vantage above an enemy area, players scout patrol patterns like a plan and can memorize them without being in danger. When: when a safe elevated view overlooks enemies. Why: Distance from enemies removes immediate threat, so players study rather than react.
+- [behavior] When every match uses the same map, players learn it like a neighborhood and navigate by its landmarks. When: Maps reused across many matches. Why: Repeated shared use builds familiarity.
+- [rule] Make navigational symbols, guideposts and landmarks stand out from surrounding environment art through contrasting color so players notice and can read them. When: when designing navigational symbols, guideposts and landmarks in a level. Why: Players cannot use symbols that blend into the surrounding scenery.
+- [rule] Make locked obstacles visible early, such as walls needing a tool not yet acquired, so players recognize the tool when they get it.
+- [rule] Limit level navigability rather than trying to improve connection analysis, since teams that succeeded did so this way. When: Automatic region connection is unreliable.
+- [rule] Use level layout, such as a forked road, to steer players toward a story location or offer them a meaningful choice.
+- [rule] In open fields, guide players with dirt paths, signposts and rivers so they do not get lost. When: when paths cross open terrain. Why: Open terrain offers no natural channels of travel.
+- [rule] At junctions, hint at each branch with a distinct clue, so players can make informed choices rather than guessing. When: when a level splits into multiple paths. Why: Clues let players judge which branch is worth taking and avoid needless backtracking.
+- [heuristic] Use tall landmarks, called high weenies, as central route points that hold rewards and offer camera-friendly views of the world from above. When: Structuring open levels around a focal point. Why: Landmarks orient players and create a sense of vastness. (x2)
+- [heuristic] Use highly visible cues such as bright paint, large arrows, or visual indicators and landmarks to help players find their way, freeing attention for core challenges. When: when navigation is not the core challenge, or in strongly handmade levels. Why: Clear directions reduce attention spent on pathfinding. (x2)
+- [heuristic] Mark map nodes and junctions, which channel player traffic and host large battles, with brighter lighting or distinctive scenery to show players where to go. Why: Light draws the eye toward intended routes.
+- [heuristic] A shortcut is valuable when it removes a penalty-driven obligation, but is worthless for voluntary play with no penalty for skipping.
+- [heuristic] Mark the fastest route clearly and add a few side paths and shortcuts, since players mostly stick to the main route while side paths add freedom. When: Designing routes through a level.
+- [heuristic] A single, visually dominant floor marker can guide most players to a target without them consciously noticing it. When: You need players to reach a specific spot without forcing them.
+- [heuristic] Place a single striking landmark where players first enter a space so they head toward it. When: Designing the entry view of an area.
+- [heuristic] A visible, attention-catching object placed at a point of interest can signal the direction players should move toward their next goal. When: Laying out a space where players must find their way. Why: Players follow salient cues in their visual field.
+- [heuristic] Place a major landmark at a slight angle to the main approach so players experience it three-dimensionally as they move around it, rather than facing it head-on. When: Positioning a focal structure that players will walk around. Why: A straight-on frontal view feels static, while an angled view reveals depth and form during movement.
+- [heuristic] Connect major landmarks with straight, axial routes so visitors can navigate by moving from one visible destination to the next. When: Designing wayfinding across a large area with several landmarks. Why: Visible endpoints along a clear axis help people orient and travel without a map.
+- [heuristic] Light unvisited destinations so they draw players toward them and invite exploration.
+- [heuristic] Use contrast and reveals to mark important encounters or goals.
+- [heuristic] A landmark visible from most areas lets players see how close they are to their goal.
+- [heuristic] Show distinctive landmarks from an early vantage point so players see destinations they can later pursue. Why: Visible goals give players direction in open spaces.
+- [heuristic] Transparent textures or openings let players see a goal at the center of a maze, keeping them aware of the destination. When: when a maze ends at a goal.
+- [heuristic] Maze pickups visible from a top-down view motivate players to rush toward them, to escape enemies or gain points. When: when a maze holds pickups and enemies.
+- [heuristic] Make out-of-reach ledges and doors very visible, and revisit them once a new ability unlocks access. When: when the player may later gain a new ability. Why: prominent targets prompt return visits after progression.
+- [heuristic] Augment space with information so that the environment itself communicates where rewards and routes are.
+- [heuristic] Place a reward within the player's sight line but out of reach, and hide the route to it so the player must search. When: when players should choose optional routes rather than follow the main path. Why: a visible goal with an unknown path creates a mystery the player wants to solve.
+- [heuristic] In 3D spaces, vistas from cliffs and high points reveal landmarks and objectives, showing players what to do and where to go.
+- [heuristic] Use ground patterns such as striped shadows to lead the eye toward doorways and other destinations.
+- [heuristic] Terrain between main hubs can hold landmarks such as caves, tombs, and towers that lead to optional side quests.
+- [heuristic] Place special quest items in a designer-set order inside a procedural system to add a storytelling layer to otherwise random placement.
+- [procedure] 1) Place a toggleable ambient sound at the objective. 2) Switch it on with a trigger along the approach path. 3) Switch it off and hide the pickup when the player arrives. When: Steering players toward a pickup or objective.
+- [procedure] Use a color-coded key on a map to mark doors, item pickups and other significant objects. When: annotating a level map.
+- [procedure] 1) Name who the player is helping in the game. 2) Strengthen the player's connection to those characters. 3) Show in the story how reaching goals helps them. 4) Let the helped characters show appreciation. When: Goals feel abstract and need tying to someone in need.
+- [tradeoff] Making the best route obvious helps, but forcing players too strongly guarantees arrival at the cost of freedom and a poor experience; a subtle marker guides while keeping freedom. When: Deciding how strongly to route players. (x2)
+- [pitfall] Losing a cohesive, gravity-bound world structure leaves players little chance to map and become familiar with the space. When: Designing open or non-cohesive level structures. Why: Players build spatial familiarity from consistent structure they can learn.
+- [pitfall] Layout and physical setup can create expectations the design never fulfills, which weakens the experience.
+- [pitfall] Similar-looking props blur which objects matter to play, so players cannot tell which objects they can interact with.
+- [pitfall] Without an established understanding of the space, unmarked branches read as confusing rather than rewarding.
+- [fact] Before auto-maps, many players drew their own paper maps resembling graph-paper and architectural plans; such maps capture memories as well as layouts.
+- [fact] A sight-only long-distance connection can model a video link, such as a control room watching another room.
+- [fact] Landmarks help players find where they are and where they are going, and make a space interesting to look at and memorable. When: Designing any game space. Why: Landmarks are what players remember and talk about.
+- [fact] Objects at the ends of path shifts can act as symbols of specific mechanics. When: when placing markers along a shifted path.
+- [fact] Landmarks, boundaries and districts help players plan routes through a space.
+
+## progression gating
+- [model] Layered denial places several barriers between the player and a reward, and the layers can run horizontally or vertically and escalate in difficulty.
+- [model] Long-term goals such as boss battles, cutscenes, and story events form a foundation, with shorter goals like stages, tasks, puzzles, and enemy encounters nested inside them.
+- [model] Action-adventure designs can cycle through overworld tasks, then a dungeon that usually unlocks a fresh tool and a key story object, forming a repeating loop.
+- [mechanism] Without a cap, encounters repeat the same enemies because the player has outgrown the content, and expansions start from an uncertain player level.
+- [mechanism] A stat that controls carrying capacity or heavy-door access can gate treasure rooms, tying that stat to exploration. When: Dungeons where obstacles or loot depend on a stat.
+- [mechanism] Granting a traversal item that removes the danger lets players leave a limited area safely and ends its restrictions.
+- [mechanism] A designer-placed trigger switches a character on or off, and the character's AI then acts accordingly.
+- [mechanism] Designers can use terrain shape to restrict access to parts of an environment, aligning progression with gameplay and narrative. When: when pacing progression through a space. Why: terrain blocks movement, so it controls when areas become reachable.
+- [mechanism] When a map extends a mostly linear chain of upgrades, designing from the beginning onward fits the structure.
+- [mechanism] Character abilities such as hiding at walls and peeking around corners turn sharp corners into strategic hiding places.
+- [mechanism] When collectibles unlock portals and levels, players choose which missions to take, when to backtrack, and how long to explore.
+- [mechanism] Denying access to areas pushes exploration; ability rewards such as jump upgrades, armor or weapons open previously blocked areas.
+- [mechanism] After gaining a new power, players return to earlier spaces that now open, which drives backtracking.
+- [mechanism] Limiting new players to their starting area until they earn permission and resources gives them a bounded introduction to the wider world.
+- [mechanism] Early jobs that tour the first areas and visit social spots can teach the world before rank unlocks deeper systems.
+- [mechanism] Rewarding a character for reaching the goal it is driven toward communicates its motivation through play. When: when a mechanic should show a character's drive.
+- [rule] Set a trigger event's Max Trigger Count to 0 so it can fire indefinitely; otherwise a Touch event may fire only a limited number of times. When: events that must repeat, such as entering and leaving an area. Why: Repeated content looks poor on replay.
+- [rule] Give each level a grade or stars; passing unlocks progress, and players who unlock everything can chase top grades on earlier levels.
+- [rule] Signal growth goals with level-gated areas or zones where stronger enemies quickly defeat players.
+- [rule] Enforce content order with both scripted triggers and level geometry, such as requiring a route be crossed or an area explored before later content opens. When: content must be encountered in a specific sequence. Why: geometry and scripts together make order feel natural rather than arbitrary.
+- [rule] A first level should excite the player, introduce the world and core mechanics, and invite further exploration, since it carries more teaching work than any other space. When: designing the opening level or area of a game. Why: Players must want to keep playing while learning how the game works.
+- [rule] Information needed to progress should be obvious to every player, while optional detail is placed for those who explore. Why: Players differ in how much they explore.
+- [rule] Keep the critical path simple so its parts can be written separately.
+- [rule] Make endings rewarding through victory, closure for characters, or legendary loot, and make the journey to them exciting and memorable.
+- [rule] If an NPC rewards the player in the world, put the reward in the dialogue itself, and include success and failure lines that address the player. When: Writing mission completion and failure dialogue. Why: Keeps reward delivery consistent with the story.
+- [heuristic] Reward explorers with optional content: visual puns, ambient dialogue, lingering sounds, in-jokes, Easter eggs, elaborate side quests, or simple texture-based secrets. Why: Hidden detail gives explorers something to discover without burdening other players. (x2)
+- [heuristic] Plan loot in a generated dungeon as a chain where newer items depreciate older ones. When: When generating dungeon loot.
+- [heuristic] Build skill gates from environment features such as pits, switches, and boxes instead of keys, so the world feels organic rather than mechanical. When: When the world should feel natural rather than game-logic driven. Why: Environmental gates hide the mechanical nature of progression.
+- [heuristic] A small implicit target built into the environment can steer behavior while users keep their feeling of freedom; placing it slightly off-center softens the angle. When: Designing environmental prompts.
+- [heuristic] Place goals and well-spaced objects so they reward precise movement and big jumps, such as from launch areas.
+- [heuristic] Pair a rescue goal with level-based partial objectives to layer progression. When: when designing a rescue or escape goal. Why: Partial objectives add layers of progression on top of one overall goal.
+- [heuristic] Games usually raise challenge as they progress, and integrated games let the story develop alongside that rising challenge. When: Plotting tension across levels or sessions.
+- [heuristic] Making travel options available early is a hallmark of modern open-world design. When: open-world games.
+- [heuristic] Layer long-term and short-term goals together rather than planning from the top down alone, because layering produces richer gameplay. Why: nested rhythms at several scales add depth.
+- [heuristic] Reward each completed challenge with more story and a new challenge, so story and play advance together.
+- [heuristic] When several products share one world, make each one reinforce the others rather than compete with them. When: Several products share one world.
+- [heuristic] Physical attractions can act as an additional gateway into a world, giving audiences another way to enter it. When: Extending a world beyond its original medium.
+- [procedure] 1) Confine the player to a small territory blocked by obstacles they cannot cross. 2) Let them find enhancements there. 3) Use enhancements to leave or defeat the blockers. 4) Repeat so the world keeps expanding. When: when the world should grow as the avatar grows stronger.
+- [procedure] 1) Create a graybox level that directs players to a specific point. 2) Test whether environment art, overviews, tours, and visual forces lead players to the intended goal. When: When validating that a level guides players to a target. Why: Testing confirms that direction cues actually work for players.
+- [procedure] 1) Break the critical-path story into narrative-level missions from the high-level breakdowns. 2) Detail each mission with wireframes where needed. 3) Use the result as a visual reference for level and gameplay teams.
+- [procedure] 1) List the game's goals from long-term to short-term. 2) Draw major goals with thicker lines and minor goals with thinner lines, according to their importance. When: when checking how a game's rhythms layer. Why: line weight shows how goals nest at different scales.
+- [tradeoff] Letting players choose step order lets them tackle easy parts first and gain hints for harder ones, but fixed order forces the ramp on everyone.
+- [pitfall] Replays that repeat much of the content, and alternate endings that change little, make players feel replaying is tedious. When: designing multiple endings. Why: Repeated content looks poor on replay.
+- [pitfall] Requiring other gateways to follow a story alienates most audiences, though it may intrigue a few; a product that needs another medium to make sense is a warning sign.
+- [fact] A final challenge that blends previously taught skills works as a final exam for the player. Why: it tests whether earlier lessons were learned.
+- [fact] Successive gates along a route can express social hierarchy by restricting access to the central space, so that visitors must pass several thresholds to reach the most important area. When: Designing a hierarchical or restricted central area. Why: Each gate signals rank and controls who reaches the innermost space.
+- [fact] Graphing a non-dungeon level with major objectives in place of locks shows several objectives that can be completed in any order. When: when graphing a level without locks.
+- [fact] Communicating the limits of a game world builds a sense of possibility for players who test those limits.
+- [fact] In this structure the first piece may be found by chance, while later pieces come from progressing through conflicts.
+- [fact] The structure marks progression through both levels and narrative at once.
+
+## open world and scale
+- [definition] Sandbox games generate their entire world and most of its content algorithmically, as procedurally generated worlds made of blocks that teachers use for many learning goals. (x2)
+- [definition] Districts are identifiable sections players enter, distinguished by their NPCs, enemies, events or mini-games.
+- [mechanism] Boundaries that organize space and mark territory can partly reveal what lies beyond, drawing the eye outward while denying access.
+- [behavior] When the open ground is hazardous, scattered refuges become stepping stones, and players must reach them by movement or a tool. When: in hazardous open areas.
+- [rule] Design each reusable scene to address a player-experience need, since players in constructionist systems will see it many times. When: Scenes reused by a constructionist generator. Why: Players see the same scene repeatedly.
+- [rule] Populate the world from a data file or level editor, separating world population from world implementation so designers can place entities without code changes.
+- [heuristic] Players value unpredictable variation, so procedurally generated content can add enjoyment by producing varied outcomes rather than fixed patterns. When: when designing content generators. Why: Variation supplies the surprise players value.
+- [heuristic] A generator can apply a sawtooth pattern of easier and harder encounters when placing rooms or enemies.
+- [heuristic] Include landmark placement rules in procedural world generation so generated worlds keep navigational reference points.
+- [heuristic] Scripted travel options let designers build world logic around a fully connected set of locations. When: generating or designing location networks.
+- [heuristic] Add closed canyons, rock outcroppings and dense tree areas as deliberate contrast to open space.
+- [heuristic] Structure an open world as an open area with specific goals rather than a dense city, which supports exploration appeal.
+- [heuristic] Give small spaces clear boundaries and clearly defined pieces so they stay understandable and easy to shape.
+- [heuristic] In open levels, emphasize gateways vertically and use environmental cues to guide the player through.
+- [procedure] 1) Place defensive buildings near raw materials. 2) Put basic buildings on spots between two defensive buildings. 3) Put advanced buildings of a different type between two basic buildings. 4) Put very valuable facilities between two advanced buildings. When: laying out an RTS base with cellular automaton rules.
+- [procedure] 1) Identify the scenes or environment chunks that repeat in a PCG game. 2) Note what differs between repeats, such as enemy placement or theming.
+- [procedure] 1) Start with a large open space. 2) Add elevation changes. 3) Add better vantage points. 4) Add hiding places. 5) Adjust how players arrive so each addition serves both threat and safety. When: when an open arena feels too simplistic.
+- [procedure] 1) Give each district a set of tasks. 2) Unlock the next district when its tasks are completed.
+- [metric] A playfield about two kilometers square, measured in the game's own distance unit, reads as a large open valley.
+- [metric] Explorable space is judged by counting the paths and keys available before the player meets a lock or item-requiring puzzle. When: when measuring how much a dungeon offers before a gate.
+- [pitfall] Grouping buildings of the same technology type together lets a single attack destroy all of them. When: RTS base layout.
+- [pitfall] Reusing the same landscape chunks produces regularities that are easy to see from high altitude. When: Large terrains assembled from repeated pieces. Why: Repetition becomes visible when the player views a wide area.
+- [pitfall] Making a world larger does not convey size if architectural detail that signals scale or proportion is lost. When: Expanding level or world size. Why: Size is perceived through detail, so empty enlargement reads as nothing special.
+- [pitfall] A featureless space can make movement abilities feel pointless.
+- [pitfall] A fixed world can fail a story plan by missing needed locations, including irrelevant ones, or by needing rearranged locations for a coherent flow.
+- [pitfall] Players lose track of their location in large open 2D exploration worlds.
+- [pitfall] Separating interactive elements, or leaving large empty space between them, isolates people and reduces the contact that keeps a place lively and safe. When: designing cities or multiplayer spaces. Why: Regular contact between people sustains activity and safety.
+- [fact] Late-1990s environments were largely confined to a flat x,y plane, and depth on the Z axis was the next differentiator; by 2000–2010, environments became detailed 3D spaces traversable on all three axes.
+- [fact] Role-playing games centre on inventory, world exploration, and accumulating wealth and experience, so a generated dungeon can serve as their exploration space.
+- [fact] Modern environments (2000–2010) used varied and seasonal weather, including fog, dust, complex clouds, whirlwinds and tornados, as part of the environment rather than surface detail.
+- [fact] Procedurally arranged assets range from whole universes down to enemy and item placement in familiar spaces.
+- [fact] A tutorial space can feel open while still following a limited lesson plan.
+- [fact] Action games may have around 200 characters per level, often switched on or off, so a frequency scheduler for active characters is usually sufficient.
+- [fact] City simulations run only a few characters out of thousands, and off-screen characters keep no identity beyond a few story characters.
+- [fact] Functional space is the skeleton of a layout, while the fleshed-out space is what players actually experience.
+- [fact] As hardware improved, designers extended play beyond a single screen through scrolling worlds, distinct screens, and room-by-room structures.
+- [fact] Natural game spaces grew sharply in scale, in some cases spanning several virtual square miles.
+- [fact] A layout can use a large ocean dotted with archipelago islands instead of a single central landmass, which is a different spatial structure.
+- [fact] A newly planned district with separated functions can start out largely empty and still draw few pedestrians.
+
+## onboarding and mechanic teaching
+- [model] Open tutorials limit possibility space in three ways: linear paths, a guide who corrects straying, and danger that discourages leaving the area.
+- [definition] Scaffolding introduces a concept and applies it in increasingly complex ways across several exercises.
+- [mechanism] Wider spacing relative to movement speed makes the input-to-response mapping matter less to how the space feels.
+- [mechanism] Teaching placed inside a meaningful, low-stress situation, without punishing death, lets players learn mechanics through action rather than pressure. When: Designing opening sequences and early tutorial situations. Why: Stress and punishment during learning reduce attention available for the lesson.
+- [mechanism] Scenic features, sound such as running water, and movement through a space guide visitors along a route.
+- [behavior] Players who enjoy only part of a tutorial reveal which elements work, which is useful information for designing other levels. When: analyzing which tutorial parts players enjoy.
+- [rule] Limit each single-screen scene to one new mechanic, and separate teaching scenes with practice scenes rather than placing them back to back. When: When designing tutorial and introductory levels or sequencing tutorial scenes, especially for new mechanics. Why: Players can process only a small amount of information at once, and spacing lets them absorb a mechanic before practicing it.
+- [rule] Write the narrative after tutorial order and feature reasons are set, especially the first-time experience, so the story supports the onboarding plan rather than forcing changes to it.
+- [rule] Change stages when the player enters a new zone, not when the player gains a level. Why: Level-triggered changes make monsters shift suddenly during play, which feels wrong.
+- [rule] When a level adds a moving object such as a cart, playtest whether passages block it, and widen narrow passages that do not fit it. Why: Standard-width passages can stop the object and frustrate players.
+- [rule] Introduce a game's world and mechanics by showing them in play rather than explaining them in text. When: designing opening spaces.
+- [rule] Turn a new mechanic into a problem by requiring precise use of it to open a locked path, so practice becomes the solving step.
+- [rule] For multiplayer mode tips, focus on the why (main objective) rather than the how or the what. When: multiplayer mode tips.
+- [heuristic] Levels can add their own mechanic on top of the core mechanic for distinct identity and progression; assuming each level must repeat the core mechanic limits variety. When: when a level needs its own identity.
+- [heuristic] Build each challenge area of an open tutorial around one tool so each area teaches one lesson.
+- [heuristic] Keep an exit open during a demonstration so the scene persuades rather than forces the player to stay.
+- [heuristic] Physical props that suggest a use, such as a tool beside an object, can prompt players to examine or climb without written instructions. When: You want players to act without explicit tutorials.
+- [heuristic] Use telling details in a room to communicate a character's history and state of mind without dialogue. When: When generating or designing rooms that should convey a character.
+- [heuristic] Introduce two or three mechanisms per level, then mix them in new ways in later levels.
+- [heuristic] Keep the key elements of a teaching sequence within one screen's view, so the cause and effect are visible together. When: when introducing a mechanic in early levels. Why: Seeing trigger and outcome at once makes the link obvious.
+- [heuristic] Build the opening level so experienced players still enjoy replaying it.
+- [heuristic] Keep early learning steps short and rewarding so players reach the full system with each mechanic already learned.
+- [heuristic] Opening sequences can teach combat, locks, hazard avoidance, object pushing and lifting, environmental puzzles, stealth and enemy types in sequence.
+- [heuristic] Genre and audience set how much instruction is repeated; casual social games often restate instructions in dialogue, gameplay text and hints.
+- [heuristic] Deliver awkward control instructions through a character's voice in the fiction, so the instruction fits the story.
+- [procedure] 1) Show an obstacle the player cannot yet cross, such as a lock that needs a broken tool, so level geometry signals the needed tool. 2) Then introduce the key, such as resource harvesting, so learning it feels meaningful. (x2)
+- [procedure] 1) Introduce each obstacle or ability alone in a safe spot where failure is cheap, especially risky ones such as wall-jumping over a pit. 2) Only then require it in danger or combine abilities in new puzzles. When: When building a level sequence that teaches multiple abilities, or when an ability's first real use would be dangerous. Why: Isolating an ability lets players learn it before stakes rise, and low-cost failure allows practice before pressure.
+- [procedure] 1) Place an outer trigger that plays a warning sound. 2) Place an inner trigger that applies damage if the player continues. 3) Stop the warning when the player leaves the immediate proximity. When: A hazard the player can retreat from. Why: A warning before harm lets the player choose to retreat.
+- [procedure] 1) Introduce one mechanic in an early level. 2) Repeat it with increasing precision in varied obstacles. 3) Introduce a second mechanic while the first is reinforced. 4) Combine them later. When: sequencing mechanics across levels. Why: staggered repetition aids retention.
+- [procedure] 1) Place players in a situation that needs the feature 2) Provide the resources to solve it 3) Let them use the feature to escape or progress, teaching it through necessity. When: teaching medium or difficult features.
+- [procedure] 1) Introduce a mechanism in a safe space 2) use it above a small platform 3) use it above a hazard 4) use it above a hazard with enemies.
+- [procedure] 1) Show the game's identity through a memorable, high-energy moment. 2) Scaffold controls through a few set-pieces: low-resistance practice areas first, then a harder test of the same skills. 3) Deliver information without interrupting play. When: when designing a first level. Why: an opener can teach core skills while dramatizing the game.
+- [procedure] 1) Place a demonstration of the hazard before the player meets it. 2) Set the trigger distance, trigger size, and timing of the triggered event. When: when building scripted demonstrations. Why: trigger parameters control when the demonstration appears.
+- [tradeoff] Teach through narrative and in-world events so players learn unnoticed, but hiding a direct instruction in subtext leaves them unsure; state direct instructions when players must act. When: When designing tutorials or early instruction. Why: Invisible teaching avoids breaking immersion and feeling controlled, while hidden instructions can leave players unsure what to do. (x2)
+- [fact] Scripts can define level triggers, such as which keys open which doors, which is the kind of logic a dungeon's content layer needs.
+- [fact] Games teach mechanics either through a dedicated tutorial or through spaces where players discover mechanics on their own.
+
+## level production
+- [definition] A connectable tile can be attached to and is solid on the ground, but can be penetrated in the air. When: Tile is flagged connectable.
+- [definition] A design pattern pairs a recurring human problem with a spatial or material configuration that addresses that problem.
+- [mechanism] In ordered levels of rising difficulty, skilled players clear easy levels quickly, so skill differences balance themselves without boredom.
+- [mechanism] Using primitives gives access to engine systems such as particles and lighting, so atmosphere can be tested early. When: prototyping before final art.
+- [mechanism] Multilevel approaches to a flag let defenders hide below or snipe from above, giving them varied defensive options.
+- [rule] When nodes are placed automatically, give level designers a way to adjust the result.
+- [rule] Build the first levels last in production, since tools are refined and engine limits are known by then, while still treating them as the most important levels because they hook players.
+- [rule] Make a weapon's trajectory editable through a learnable parameter, so obstacles can be passed only by applying the taught concept correctly. When: teaching a math or logic concept through play.
+- [heuristic] Examining a level through many design lenses makes the best layout choices clear. When: Making layout decisions for a level. Why: Each lens exposes different aspects of challenge and choice.
+- [heuristic] Characterize the overall open or closed feel of a space before tuning finer detail. When: Early in designing a world or level. Why: Overall structure frames how every later detail is perceived.
+- [heuristic] Avoid micromanaging level implementation; a strong gameplay system produces combinations and situations the designer did not foresee. Why: Controlling designers limit what level designers can produce.
+- [heuristic] Analyse a single visible landscape rather than a whole game world when the full world is too broad for one study. When: full world too broad to analyse in one study. Why: Narrowing makes it easier to spot dominant or emerging design paradigms.
+- [heuristic] Primitives match engine grid measurements and transfer easily from graph paper or CAD. When: moving layouts from paper or CAD into an engine.
+- [heuristic] Plan level geometry around measurements so spaces fit the realities of gameplay.
+- [heuristic] Test chained mechanisms in a toy box, such as an element that neutralizes a hazard while switchable barriers control access to that element.
+- [heuristic] Organize arena design as a kit of parts, each piece serving the needs of a particular player type. When: Designing first-person shooter arenas for mixed player types.
+- [heuristic] Apply the gamespace generators when a multiplayer space should produce unplanned encounters between different player groups.
+- [procedure] 1) Playtest to find the action players already want in a scene. 2) If all testers want the same thing, script that action. 3) Check that testers do not notice the lost freedom. When: When considering removing player freedom for a specific scene. Why: Players who expect freedom elsewhere accept a scripted moment that matches what they already wanted.
+- [procedure] 1) Note repeated pieces found while sketching. 2) Make each repeated piece a prefabricated asset. 3) List these assets to set artists' production priorities. 4) Assemble levels from them like building blocks. When: when planning environment production from sketches. Why: reusable prefabs avoid building each environment from scratch.
+- [procedure] 1) Draw a map of the level. 2) Highlight significant gameplay areas and measure the distances between them. 3) Assign letters to item, enemy, and obstacle types and check how they are spaced.
+- [procedure] 1) Play a commercial game and select scenes or rooms. 2) For each, note what makes it effective and what gameplay it creates. 3) Identify the player types or challenge levels each space is built for. When: Studying level design from existing games. Why: Structured analysis turns play experience into reusable design knowledge.
+- [procedure] 1) List each modular piece in the level. 2) Record its model, quantity, size, and location. 3) Also itemize unscaled elements like flora and shrubbery. 4) Use the list to define the level's style guide. When: Documenting a measurement-based level. Why: A complete list supports consistent construction and art direction.
+- [procedure] 1) Find bottlenecks where players cannot proceed unless they solve one challenge. 2) Add parallel challenges for when a player is stumped. 3) Make the parallel challenges different enough to be useful. 4) Connect them so progress on one makes the others easier. When: Designing sequences of challenges where one could block the player. Why: Parallel routes prevent a single challenge from halting progress.
+- [procedure] 1) Writers supply the area's storyline and its links to neighbouring regions. 2) Designer drafts map layout and quest concept from that background. 3) Designer and writers review each quest's contribution and refine questlines. 4) Designer builds a rough map, iterates until an artist can polish it, then places spawn areas and interactive objects.
+- [procedure] 1) Design the ideal level that showcases the mechanics 2) work backward, introducing each idea so players are ready when that level arrives.
+- [procedure] 1) Mark the highlighted gameplay moments. 2) Place them on a macro-scale plan of the whole level, like a map. 3) Detail each space afterwards.
+- [pitfall] Water built as block volumes placed on the map and detached from the terrain looks crude and offers no player interaction. When: when water is implemented with limited technology.
+- [pitfall] Most engines work best with square or rectangular prefabricated pieces, so angled geometry is harder to build.
+- [fact] CAD drawings are clearer than most hand drafts and take less time to produce, and grid snapping in CAD can be set to real-world units matching engine units. When: when a drawing must convey more than a single sketch.
+- [fact] CAD blocks are stored drawings, such as doors or fixtures, that can be inserted at any size, and editing operations avoid redrawing by hand.
+- [fact] Simple interacting objects create new play: water can put out fire, and fire can ignite oil pools that slow players. Why: object interactions multiply options.
+- [fact] On a small project one person may build every level; on a larger one, a lead typically manages several level builders.
+- [fact] Typical engine primitives include cubes or box shapes, spheres, cylinders, and planes; certain engines add stairs and cones.
+- [fact] Primitives can make most large spatial geometry, since many level editors are robust enough for that. When: blocking out large spaces.
+- [fact] Art-style changes, different models, or texture transitions can each create an edge between areas.
+
+## scale and proportion
+- [model] Objects can be compared on five dimensions: number of objects, size of objects, nature of objects, layout of objects, and distance between objects.
+- [definition] Level design works at two scales: macro, which shows a whole level, and micro, which shows one individual gameplay instance.
+- [definition] Narrow space confines its occupant, leaving little more than the character's own size for movement.
+- [behavior] Virtual worlds lack many real-world scale cues such as lighting, textures, stereo vision, and the body, so players easily misjudge size and feel disoriented. When: Building a virtual space. Why: Missing real-world cues make scale hard to perceive.
+- [behavior] Players feel speed when small nearby objects, such as ground texture, plants and trees, rush past quickly. When: fast travel through a space with small surface detail. Why: Close, fast-passing detail gives strong motion cues.
+- [behavior] Swarms of enemies can make even a large space feel narrow. When: enemies arrive in large numbers. Why: crowding limits where the player can move.
+- [behavior] Moving from narrow, intimate space into open prospect space creates a sudden, dramatic reveal for players. When: transition from confined to open space.
+- [rule] Set object size, spacing and nature relative to avatar speed and movement rather than in absolute terms, so the world stays in harmony with how the avatar moves. When: Comparing or tuning avoidance difficulty; sizing and placing objects. Why: The same gap is easy or hard depending on how fast the avatar moves.
+- [rule] Widen passages in levels to avoid steering failures in narrow spaces. When: when designing levels for steered characters. Why: Wider passages reduce doorway misses and wall-induced equilibria.
+- [rule] Let minimum traversable floor widths override planned narrow dark passages, since technical limits can change the world layout.
+- [rule] For 2D games, map one grid unit to a power-of-two pixel size such as 16, 32 or 64, and proportion assets and spacing to those measurements. When: when sizing 2D level assets. Why: fixed pixel grids keep sprites and spacing consistent.
+- [rule] Use narrow space for horror and stealth where the character is weaker than its opponents, or for skill-based conflict and tense bottlenecks.
+- [heuristic] A few objects with interesting relationships in a small space can be as impactful as a wide space full of hazards.
+- [heuristic] Frame a large open area with mountains and an apparently endless sea so the space feels vast, with higher and lower levels beyond it.
+- [heuristic] Walls placed close together make wall-based movement easy to use.
+- [heuristic] In player-versus-player play, narrow spaces form bottlenecks for ambushes and traps, and create tight passing moments in racing.
+- [heuristic] Place a view at the top of a climb to reward the effort, pairing spatial achievement with a pause. When: when a route involves a climb. Why: the view makes the effort feel rewarded.
+- [heuristic] Use vistas in games with near-constant action to create quiet contrast without stopping play. When: in games with near-constant action. Why: a brief pause relieves intensity without slowing pace.
+- [procedure] 1) Pick virtual units you know intimately, such as feet or meters. 2) Keep everything in proportion to them. 3) Relate units back to the real world when something seems out of scale. When: Setting up measurements for a virtual world. Why: Real-world units make out-of-scale elements easy to diagnose.
+- [procedure] Check four scale cues: first-person eye height near five to seven feet, people and doorways that fit human size, common man-made objects present, and textures matching real-world scale. When: Diagnosing a world that looks out of scale despite correct proportions. Why: Players assume eye height and doorways match their own body and everyday objects.
+- [procedure] Map each room on graph paper, with each grid square standing for a fixed unit, so the map is to scale. When: documenting or analyzing a level's layout. Why: A fixed unit per square makes room sizes comparable and checkable.
+- [metric] Reference sizes: player height about 96 units, average room about 1024 by 1024 by 256 units, door about 128 units high. When: sizing levels and placing objects.
+- [metric] Narrowness is measured against the player character's size; a passage fitting only two characters side by side is narrow.
+- [tradeoff] Scale can express insignificance by making the player small relative to the world, or power by making the character large relative to it. When: Choosing how the player should feel about the world. Why: Relative scale carries emotional meaning independent of the actual size of the world.
+- [pitfall] Wide spaces tempt designers to place every switch, hazard and movable wall at once, which crowds the scene.
+- [pitfall] Using units with no real-world meaning makes scale problems hard to diagnose and fix. When: Defining the unit system of a virtual world. Why: Without real-world reference, nobody can tell what size is right.
+- [pitfall] Textures that are too large or too small for their real-world counterparts, such as oversized bricks or undersized floor tiles, break the illusion of scale. When: Applying textures to surfaces. Why: Textures carry the scale cues players rely on.
+- [pitfall] Scaling walls and furniture together up makes the avatar feel tiny, and normal-sized furniture in an enlarged room creates cavern-like or sparse spaces. When: Scaling interiors for third-person play. Why: Scale changes alter avatar perception and furniture usability.
+- [pitfall] Tight or narrow spaces that ignore how avatars and objects move cause player frustration.
+- [pitfall] Without an established norm of scale, gameplay and visuals can mismatch or become unplayable.
+- [fact] Strong open vistas convey a sense of huge space and possibility, and crossing an interesting open space is pleasurable in itself. When: Designing large open environments.
+- [fact] Playfield dimensions define a game's challenge, so changing its width alone can make it a very different game.
+- [fact] Race tracks wide enough for several vehicles let racers compete for position.
+
+## visual cues and lighting
+- [definition] An architectural weenie is a landmark that draws players toward goals while the world still feels open.
+- [mechanism] Clerestory windows set high above viewers bring light from above, making the interior feel ethereal.
+- [behavior] An enlarged character sprite in narrow levels makes the space feel more cramped and isolated. When: narrow levels with large sprites. Why: the avatar fills more of the view.
+- [rule] Plan environment colors around cultural and genre associations; color meanings differ across cultures (white signals weddings in some cultures, mourning in others), so avoid assuming one culture's meanings apply everywhere.
+- [rule] Use one consistent visual language, such as shared color or shape, for interactive objects so players can recognize what they can use. When: Designing interactive objects in a level. Why: Consistent signals let players identify usable objects without explanation.
+- [rule] Attach a light to the player to create a torch that follows them as they move.
+- [rule] Give each environmental symbol a unique appearance, distinct even from similar environment objects, so players can tell it apart from surrounding scenery.
+- [rule] Repeat each environmental symbol across the level so players learn what it means through repeated exposure.
+- [rule] Let one element serve several functions, including contradictory ones, so it helps in one context and hurts in another, creating tension. When: when designing interactive controls or terrain. Why: Ambiguity makes the same object meaningful in different situations.
+- [rule] Place light sources deliberately where they create the dramatic effects you want.
+- [heuristic] Hold players in a fixed spot with interesting things to inspect, which gradually leads them to look around the space. When: Early VR levels where players hesitate to turn their heads.
+- [heuristic] Focus richness on the places players will look at closely. When: you cannot detail everything.
+- [heuristic] Familiar archetypal visuals and sounds, like flames and magma for dragons or Gothic-style buildings for undead, signal a theme quickly.
+- [heuristic] Place telling details so players can choose to learn more; they should not be forced, but also not so subtle that players miss them.
+- [heuristic] Align architectural elements with specific phenomena, such as solstice light, so the structure directs occupant attention to a chosen moment or view. When: Designing a space where a focal moment or view should be noticed. Why: Deliberate alignment guides where occupants look and when they notice an event.
+- [heuristic] Lifting a dominant structure above surrounding settlements expresses power and ferocity.
+- [heuristic] Pure design concepts become more useful when contrasted and combined with other concepts rather than used alone.
+- [heuristic] Landscape features and level geometry should direct players toward places of interest.
+- [heuristic] Exhaust earlier options so that only one action remains, making the next step obvious.
+- [procedure] 1) Make relevant elements stand out. 2) Remove irrelevant load while teaching something important. 3) Do not rely on vision alone for key information; add another channel. When: Designing UI cues and level signals for important lessons. Why: Focused attention on relevant inputs improves learning.
+- [tradeoff] Placing an opposite quality, such as a bright element among dark ones or a complementary hue against the main color, draws attention to that element and guides players along a route. When: when a route or important element must stand out in a scene. Why: The unusual element breaks the dominant pattern and attracts the eye.
+- [pitfall] A visually dominant marker can hide other scene elements, stopping players from considering other actions.
+- [pitfall] Removing guidance abruptly can leave players at an obstacle with no clue how to proceed.
+- [fact] Repeated architectural structure with shadow leads people through a space; repeated arches with shaded lighting in a large hall also create atmospheric ambiguity.
+- [fact] The same building shape can signal different functions in different cultures, so form cues are culturally learned.
+- [fact] Contrast can create landmarks in open worlds and in small spaces such as halls, courtyards, and rooms. When: when designing landmarks at any scale.
+
+## graybox prototyping
+- [model] Simple features stand in for natural forms: rocks for mountains or cliffs, gravel or ponds for water, moss for distant trees or close grass, small pines for forest.
+- [definition] Graybox is a low-fidelity placeholder of flat gray boxes and simple geometry for a mechanic, system, or level, letting teams test gameplay goals cheaply before art and audio exist. (x2)
+- [definition] Prototyping means writing just enough working code to test whether a gameplay idea works before investing in it.
+- [mechanism] Repeated grayboxing reveals which objects designers use most, which helps prioritize which environmental objects to create first. When: Planning environment art production. Why: Frequently used objects deliver the most value when made first.
+- [rule] Only evaluators experienced with many grayboxes should judge early graybox design quality or approve designs, since inexperienced reviewers cannot separate design quality from missing art. When: When judging or approving an early graybox design. Why: Inexperienced evaluators reject good designs for their appearance.
+- [rule] Lock down movement mechanics in graybox before animating characters, because animation built on a changing movement system must be redone.
+- [rule] Judge a 3D game space by how it feels to the player inside it, not by whether it works as a realistic 2D blueprint. When: Evaluating game layouts that are physically unusual. Why: Players experience space from inside and rarely check realistic plans.
+- [rule] Use different hatch patterns to indicate the material of a cut form. When: annotating cut forms in drawings.
+- [heuristic] Mechanics tested thoroughly in gray boxes usually keep working after art is added.
+- [heuristic] Build and test mechanics in graybox before adding art, since a problem can be found, fixed and retested in minutes. When: Early in design when mechanics are still changing. Why: Gray shapes are cheap to change and carry no visual clutter.
+- [heuristic] Involve artists in graybox design so they help shape the placeholder forms they will later polish, and their work is discarded less often. Why: Artist work is trashed less often when they shape the boxes first.
+- [procedure] Running a graybox playtest: 1) Have a player new to the level, or a partner unfamiliar with a commercial game, play it. 2) Do not interrupt. 3) Take detailed notes on where players get stuck and what is unclear. When: a graybox level is ready for testing. Why: uninterrupted play shows real difficulties.
+- [procedure] 1) Replace cutscenes with still images or text pop-ups. 2) Replace complex interfaces with labeled buttons. 3) Replace sounds with synthesized beeps. 4) Replace dialogue with text-to-speech or on-screen text. When: when building a graybox of a game with these elements.
+- [procedure] 1) Build a rough space from simple geometry. 2) Playtest it. 3) Edit the geometry. 4) When edits shift from major spaces to small details, begin environment art. When: Developing a level before art production. Why: Edits shrinking to details signal the layout is stable enough for art.
+- [procedure] 1) Sketch the gameplay as spatial diagrams. 2) Use large masses for major areas, thin zones for connecting paths, and small shapes for secondary areas. 3) Test which uses of each mechanism are worth pursuing. When: Exploring a level concept early. Why: Diagrams reveal the spatial relationships gameplay depends on.
+- [procedure] Represent gameplay spaces such as boss rooms, sniping spots or finish lines as bubbles sized by type, with line type showing priority and connection kind. When: planning adjacency of gameplay spaces.
+- [procedure] Vary hatch orientation to distinguish zones, and mark shared spaces with intersecting hatches. When: diagramming zones that differ in use.
+- [tradeoff] Graybox testing suits mechanics-driven games, while experiences that depend on audiovisual emotional triggers lose most of their impact in graybox. When: when deciding whether graybox testing will reveal the game's real appeal. Why: Mechanics-driven play survives crude visuals; emotional audiovisual impact does not.
+- [pitfall] Young artists often avoid showing rough work for fear it will make people misjudge their talent.
+- [pitfall] Group decisions about grayboxes are especially vulnerable to the halo effect, which is often the biggest problem in graybox review. When: When a group reviews a graybox. Why: Group judgment amplifies a shared negative impression of visuals.
+- [fact] A graybox can cost about a hundred times less than the finished version to build, so most failed ideas are cheap to discard.
+
+## plan drawing and diagrams
+- [definition] A parti is a simple formal study that isolates the shape a building or level will take; it can be made on paper or as a model.
+- [definition] A plan is a top-down, perspective-free cut of a space, assumed viewed from about 4.5 feet above ground, with cut walls filled solid or hatched.
+- [definition] Blueprints reveal how areas are laid out and connect, serving as level maps for challenge and pacing.
+- [definition] An overview shows the scope of a space from an elevated or omniscient view without granting full access to it.
+- [rule] Plan maps that blend spaces for different play styles with proximity diagrams, placing related spaces near one another before building. When: multiplayer map layout.
+- [rule] Proximity diagrams analyze function and are not final spatial plans.
+- [heuristic] Sketch many uses of a single mechanism early, including its variants, before working out how each will function. When: Developing a mechanism for a level. Why: Breadth of uses reveals which variants are worth building.
+- [heuristic] Shape a building's plan around occupants' need for light and around household functions that should be close together. When: Laying out interior rooms. Why: Plans organized around use and light serve occupants better.
+- [heuristic] When building exteriors are not shown, plan shape must carry the type; when they are shown, exteriors should resemble familiar forms.
+- [procedure] 1) Design a mechanism the player must react to. 2) Sketch three zones for it: safe introduction, slight danger, and high danger. 3) Check that each zone teaches or tests the mechanism at its intended stakes. When: Planning how a new mechanism is introduced in a level. Why: Graded danger lets players learn the mechanism before it is tested under pressure.
+- [procedure] 1) Gray-box a level that gives a tour or overview. 2) Note what the overview shows. 3) Check how it prepares players to interact with the level. When: When designing an opening overview or tour of a level. Why: An overview orients players before they act.
+- [procedure] 1) Rotate a plan 30 or 45 degrees. 2) Project it upward to create 3D forms. When: showing three-dimensional form without perspective distortion.
+- [procedure] Sketch a short game-world stretch taking roughly thirty seconds to a minute to cross, noting three or more spots where the layout highlights a particular mechanic. When: analyzing how a level teaches or emphasizes mechanics.
+- [procedure] 1) List the required functions and spaces of the program. 2) Draw bubbles for spaces, sized by required area. 3) Connect bubbles with lines weighted by how important their adjacency is. When: analyzing which spaces must sit next to each other.
+- [pitfall] Designing solely from a top-down plan yields a largely flat 3D space, offering few spots where players must glance upward or move vertically. Why: Without vertical design, height adds little to play.
+- [pitfall] Overviews are passive; overusing them or fly-over cutscenes makes pacing stagnant and breaks the sense of discovery.
+- [fact] Outdoor terrain often already uses a grid-based height field, which can serve directly for tactical analysis.
+- [fact] Most people find it difficult to draw an accurate 2D map of a familiar place, even though they know which doors lead to which rooms. Why: Spatial knowledge is relational rather than cartographic.
+- [fact] Plans are usually an architect's first drawing, so they generate the spatial arrangement of a building.
+- [fact] Plans cannot show the third dimension; multilevel areas need dotted lines or a section.
+- [fact] In 2D games the camera looks from the top or side, and turning off perspective produces an orthographic view.
+
+## hub design
+- [model] A hub journey is linear like a ladder, while the player largely decides how to overcome each rung.
+- [model] In a hub-and-spoke structure, players complete a set of stages in any order, and after all are done the story becomes linear toward a finale. When: a set of stages can reasonably be done in any order. Why: free ordering gives choice, and a linear finale gives a climax.
+- [model] Hub-and-spoke dialogue returns to a root topic list after each topic resolves: the root list is the hub, and each topic branch is a spoke.
+- [model] In the hub and spokes structure, each spoke is a self-contained content nugget independent of the others.
+- [definition] A hub is an intimate lobby connecting to levels, called spokes, through portals or doors; it is a central point to return to and jump between gamespaces, and is semi-rhizomatic.
+- [mechanism] Interactive hotspots can simulate depth within a 2D space.
+- [rule] Use a hub when levels should load separately and the game is built around a central lobby; avoid it when a seamless large world is the goal.
+- [rule] Make quest hubs larger and slower-paced than spawn points, so they invite exploration and interaction.
+- [rule] Each middle hub must show the NPC reacting to the player's choice, with a distinct response for each option. Why: Otherwise the conversation feels scripted and the player's choice seems inconsequential.
+- [heuristic] Place casual gathering areas along routes players pass regularly for important tasks, so socializing happens naturally during play. When: designing hubs in online games. Why: Players gather where they already travel, not in places they must go out of their way to reach.
+- [heuristic] Hub settlements can grow from vendors and trainers to include inns, auction houses, banks and guild spaces.
+- [heuristic] Hub-based quests should push players outward, with many requiring travel to other hubs, so they form tours of the game's possibilities.
+- [heuristic] Players remember one detail per hub, the last one stated, so end each hub on the concrete problem. When: Writing any player-facing hub.
+- [heuristic] Word order in a hub often affects player understanding more than writers expect, so place key information deliberately.
+- [heuristic] A hub can supply a story justification for characters heading to thematic realms, such as frozen, volcanic or jungle settings.
+- [procedure] Non-decision hub: 1) Offer one correct guess about the NPC's next line. 2) Offer one incorrect guess. 3) Offer one 'Tell me more' option. This lets players characterize themselves. When: The NPC will continue speaking regardless of the player's choice.
+- [tradeoff] Loading levels separately is efficient, but it loses the seamless feel of a large sandbox world.
+- [fact] Hub spaces are typically non-threatening, letting players explore within the abilities their character already has.
+
+## hidden areas and secrets
+- [mechanism] Showing a threat the character cannot see creates suspense, because players know danger is near while the character remains unaware. Why: Gap between player knowledge and character knowledge.
+- [behavior] A narrow maze with hidden enemies is stressful for a low-health player but only risky for a healthy one.
+- [heuristic] Place secret rooms above and below a main scrolling space to reward curious players.
+- [heuristic] Players can see items placed inside solid terrain that the character could not logically perceive.
+- [heuristic] Hiding spaces such as lockers, vents and crawl spaces restrict both the character's mobility and the player's view.
+- [heuristic] Hide optional items in obscure alcoves and cantilevered ledges so exploring players find refuges that reward looking. When: in exploration-focused levels.
+- [heuristic] Meditative spaces can be kept off the main path and hinted at through partial reveals.
+- [heuristic] Reused assets such as textures, existing geometry and recycled characters can make memorable secrets when a studio lacks resources for full side quests. When: the studio has limited production resources. Why: Reused assets are fast to produce and place, and can still create memorable rewards.
+- [procedure] 1) Place the reward in view but out of reach. 2) Route the path through other rooms, or behind walls that hint at it through windows or cracks.
+- [pitfall] Rewards that mismatch their context feel arbitrary or unrealistic: a story reward in a dull area with no earning behavior, or a valuable reward for a trivial chore. When: when placing story progression between fixed milestones (for the story-reward case). Why: No player behavior seems to earn the reward in that context; mismatched reward and task breaks believability. (x2)
+- [pitfall] Hiding the exit or placing large obstacles that conceal enemies makes a room frustrating, especially in single-player play.
+- [pitfall] Triggers are hidden by default and invisible during play; unhide one while testing to see where it sits.
+- [pitfall] Hidden lethal danger with no clues can feel unfair and bring players back less often. When: when a hazard can kill without any prior hint. Why: Players cannot anticipate or prepare for the danger, so deaths feel arbitrary.
+- [pitfall] Dark alcoves are hard to see from a lit area, so enemies hidden in them can ambush the player who looks into the light. When: when the player moves from light into the surrounding dark. Why: shadow hides danger from a viewer in the light.
+- [fact] Small content is often given to new writers; it is not critical-path dialogue, yet the game still needs it.
+
+## reward placement and vaults
+- [definition] A reward vault is a room holding items, information, or resources, set apart from ordinary space by lighting, music, and architecture; some also serve as save rooms.
+- [definition] A rewarding vista is an impressive view that gives the player a pause after intense action, usually without gameplay resources, and its value lies in pacing and celebrating a climb.
+- [definition] Reward clues suggest that a reward may exist nearby without showing it directly, so the player is motivated to check.
+- [mechanism] Rewards placed off the direct route draw players onto riskier or less direct paths, much as scenery draws detours; use this to structure exploration and pace play in generated dungeons. When: when side areas should be explored or when placing rewards in generated dungeons. Why: players are drawn toward perceived value even when it costs a detour.
+- [mechanism] Placing rewards in narrow areas makes players linger where they are most vulnerable, so reward and danger rise together.
+- [rule] Give reward rooms their own lighting, sound, or architectural motif so they read as special spaces. When: in generated or hand-built layouts where rewards must be recognized. Why: distinct signals mark a room's function apart from normal play.
+- [heuristic] A consistent reward pace, such as one reward every few rooms, keeps players moving forward through a level. Why: regular payoffs maintain expectation.
+- [heuristic] Chart a level so it prompts the player to return and search for a required item before a later challenge. When: planning backtracking in a level.
+- [heuristic] Rewards break up tense moments and encourage players to keep exploring.
+- [heuristic] Reward vaults are often small and may use high ceilings, vaulting, or arches that celebrate the space, like a church apse.
+- [heuristic] For reward vaults, show the reward while obscuring the path to it.
+- [heuristic] Place rewards such as resource replenishment, a sought-after artifact, or a dramatic escape in the falling action or dénouement, where players can slow down. When: Placing rewards near the end of a level or quest arc. Why: Falling action gives players a pause in which rewards can be appreciated.
+- [procedure] Analyzing a game's reward pacing: 1) Identify its reward spaces. 2) Describe how it alternates them. 3) Describe how they pull players forward. 4) Describe how they are spaced. When: studying how a game paces rewards. Why: structured analysis reveals pacing patterns.
+- [procedure] Create reward clues with reusable modular assets, textures, lighting, and prefabricated symbols that recur throughout the game.
+- [fact] Spaces themselves can act as rewards, including reward vaults, rewarding vistas, meditative spaces, and narrative stages.
+
+## suspense
+- [definition] An uncertainty node is a decision point offering a choice between equal options whose contents are unknown.
+- [mechanism] Tying a game event to a real-world value, such as money or physical punishment, gives small in-game failures much more emotional weight. Why: The stake is felt beyond the screen.
+- [behavior] Withholding part of a landscape from view invites players to explore further.
+- [rule] Control how a scene is first revealed using thresholds or entrances that let players pause unseen and survey the space before engaging or entering. When: When designing the entry to a new area, especially in 3D. Why: The first view determines whether the space is readable or confusing.
+- [rule] Give players things to look into instead of making everything visible from the start. When: Designing the layout of a VR room. Why: Hidden detail gives players reasons to look around.
+- [rule] Use uncertainty nodes only once the player understands the space well enough to take educated risks.
+- [heuristic] Raise stakes gradually so that the climax has everything hanging in the balance.
+- [heuristic] Use a winding, forced approach with staged reveals rather than a straight one to build anticipation.
+- [tradeoff] Naming unseen places enlarges the perceived world cheaply, but detailing them later when players ask multiplies the content needed.
+- [pitfall] Designers of 2D games often underuse showing players what the character cannot see, a source of suspense. When: top-down or side views.
+- [pitfall] Suspense sags into boredom when nothing is at stake. When: When a moment has no meaningful consequence. Why: Without stakes, the anticipation that drives suspense has nothing to act on.
+- [pitfall] Building areas players never see adds no freedom and wastes effort that could improve the places they do visit.
+- [fact] Risk and randomness arise wherever players meet the unknown, not only in dice or generated numbers.
+
+## grids and measurement
+- [definition] Grid space divides the play area into repeated cells, which can be squares, rectangles, hexagons, or triangles.
+- [rule] Use the Top and Perspective views together when judging layout and height.
+- [rule] Snap geometry to the grid to avoid leaks that stop a level from compiling; some editors snap to power-of-two units such as 16, 32, 64 and 128. When: building geometry in editors that compile levels. Why: Off-grid gaps can leak and block compilation.
+- [heuristic] Encounter fixes range from small changes, such as better enemy lighting, to structural changes, such as rebuilding a flanking route.
+- [heuristic] For levels not built on tiles, impose a grid over the geometry and analyze that grid.
+- [heuristic] Grid layouts suit games where players need easy understanding, alignment, and consistent proportion, and where computers must handle the space easily. When: Choosing grid organization. Why: Regular cells are easy to read and compute.
+- [heuristic] Base level measurements on human-scale metrics of interaction, which underpin how spaces are sized and felt. Why: Renaissance proportion systems were based on human-body geometry.
+- [procedure] Comparing grid types: build one 3D level on a non-orthogonal grid and one on an orthogonal grid, then observe whether sightlines to points of interest change exploration. When: choosing a grid for 3D level layout. Why: sightlines can steer where players go.
+- [metric] A first-person camera set above about seven feet or below about five feet distorts the view, because players judge scale using an eye level close to their own. When: Setting first-person camera height. Why: Players judge scale from their own body height.
+- [pitfall] Levels built without regard to the player character may not fit it; some doors can be too small for the character to pass through. Why: Geometry sized without the character's metrics can block movement.
+- [fact] Hexagonal grids let units move diagonally, which a square grid does not allow.
+- [fact] Tabletop map makers rely on grid paper, and many game engines measure space in grid-based units.
+
+## optional routes and branching
+- [definition] Web space joins several marked points with paths so players can reach destinations in different ways, with travel that is meaningful or instantaneous.
+- [definition] A Steiner point is an added intermediate point, connected to several spaces, that gives the shortest connection among them when they are not directly linked.
+- [mechanism] Steiner spaces act as shortcuts: players jump or climb from a node to a Steiner space, then to another node, or cross open space to skip long-route parts.
+- [behavior] Players in a room with two exits almost always leave through one of them, because doors invite opening. When: An empty room with a few exits. Why: Even two options count as a choice.
+- [heuristic] Web layouts suit cases where several destinations should be reachable through a number of different routes. When: Choosing web organization.
+- [heuristic] Early areas can offer optional routes using special moves to reach higher ledges sooner. When: early level progression.
+- [heuristic] Gate a zone behind a key found in another zone, and split monster difficulty between the child nodes. When: Designing locked sections from a partition tree.
+- [heuristic] Optional dead ends and side branches off a main route can hold treasure or coin caches that reward exploration.
+- [heuristic] Steiner shortcut spaces can be rewarded with power-ups to encourage players to use them.
+- [heuristic] Offer risky optional routes with extra supplies, so skilled players can take them while others skip them.
+- [heuristic] Give narrow spaces two exits so players keep an escape route when enemies clog one of them.
+- [procedure] 1) Find a refuge that overlooks the prospect. 2) Read enemy placement and patrol timing from it. 3) Move to a secondary refuge. 4) Wait in refuges until the best moment to advance. When: in stealth levels with patrolling enemies. Why: Refuges let players observe threats before committing to movement.
+
+## scene capture and blockout
+- [model] Spaces are single-scan, understood from one spot with one camera pan, or multi-scan, needing scans, movement around obstacles, and further scans.
+- [definition] A scene is one screen's worth of designed level space the player sees at one moment, and is the basic unit of pacing. When: When dividing a level into units for teaching. Why: Screen-sized units match what players can process at once.
+- [definition] Scanning is the number of looks, such as camera pans and repositioning, a player needs to understand a space.
+- [definition] A scene is a single-screen or room-sized gameplay chunk that feels complete and self-contained, a trait many architectural patterns share.
+- [rule] Use the simplest geometry that simulates the colliders of the final level when grayboxing. When: Building graybox test levels. Why: Simple shapes capture physical interaction without wasting effort on art.
+- [rule] In 3D, treat rooms, hallways and other architectural sections, along with transitions between them, as scenes.
+- [heuristic] Block out and playtest levels, and test scoring or level layout, with cheap physical prototypes before committing to full construction. When: When scoring or level layout needs fast testing.
+- [heuristic] Prototype a single room first to focus on enemy movement and character interaction, then add hallways and connected rooms in later iterations. When: stealth or enclosed-space levels.
+- [heuristic] Build levels in order when the game is simple or its progression is linear and upgrade-driven. Why: Each level can add complexity on top of what came before.
+- [procedure] 1) Graybox a level using rhythmic architecture. 2) Have playtesters report whether it changes their pace and draws them along.
+- [procedure] 1) Set column widths to match row heights so cells are square. 2) Draw a bordered grid, such as 20 by 20. 3) Fill cells with black to form walls, mazes or dungeon layouts. When: sketching grid-based levels by hand.
+- [tradeoff] Single-scan spaces give quick understanding for casual players; multi-scan spaces give hiding places and surprises for competitive players. When: choosing how readable a space should be for a skill level.
+
+## prospect and refuge
+- [model] Prospects and refuges each come in primary and secondary types; primary ones are occupied or looked onto, secondary ones lie in the distance.
+- [model] Refuge-based spaces use low broad ceilings, natural materials, a central hearth, depressed sitting areas, and large overhangs that conceal occupants.
+- [definition] A prospect is a large open area that leaves its occupant exposed to attack.
+- [definition] A refuge is a small, sheltered space where an occupant can stay hidden while looking out to assess threats.
+- [behavior] Players tend to move through prospect spaces and stay still in refuge spaces, so each space type suits a different activity.
+- [rule] Set spacing between refuges in generated spaces, since the distance players cover between them controls pace at any scale. When: when generating arenas or landscapes.
+- [heuristic] Fog, music and shadows can heighten the vulnerability a player feels in a prospect space.
+- [heuristic] Pair each prospect with a refuge the player can watch it from, so the player can evaluate threats in the open space.
+- [heuristic] Set refuges on a different level: higher for a wide view, or lower for a cloistered hiding place.
+- [heuristic] Place refuges as protrusions overlooking a large circulation prospect, so occupants can watch the flow below. When: in large atrium or hub spaces.
+- [heuristic] Large prospect structures pull players from one battle to the next, while explorable interiors hold richer reward and narrative content.
+
+## skill gating and progression
+- [definition] A skill gate is a section that blocks progress until the player successfully performs a specific in-game action. When: When designing obstacles that require a mechanic to pass. Why: Gating progress behind skill ensures players practice the mechanic.
+- [mechanism] A movement ability that exceeds existing level constraints forces every level to block its unintended side effects with crates, invisible walls and misplaced props. When: adding a new capability late in development. Why: each level must contain the new ability's consequences.
+- [mechanism] Setting a clear rule early and then breaking it later creates delight, because players who learned the rule notice the exception and seek hidden routes.
+- [rule] Use environmental changes such as wall colour or texture to signal the player is moving deeper into a large dungeon. When: Designing large dungeons with multiple depth regions. Why: Visual change marks progress and prevents the sense of walking through identical levels.
+- [rule] Let progression unlock before every stage is cleared, so stuck players can advance and return to the remainder later. When: When designing progression gates for a set of levels. Why: Requiring full completion can trap players who are stuck on a few stages.
+- [rule] Keep a district border closed until the player has learned all the skills of the previous district. When: players must master one skill set before facing the next.
+- [heuristic] Progressions can be built by choosing each level according to which skills it forces the player to use.
+- [tradeoff] Gated expansion structures are not spatially complex, but they produce achievement and drama as players test their limits.
+- [pitfall] Removing the early easy steps of a puzzle makes it hard from the first moment and removes its lasting appeal.
+- [fact] Skill gates range from simple, such as an enemy to jump over, to complex, such as using a newly acquired ability to escape the room where it was found.
+- [fact] Short cliffs that the player must jump over can serve as skill gates that require jumping to continue. When: When gating progress through platforming skill. Why: A jump requirement tests the mechanic directly.
+
+## terrain and movement mechanics
+- [mechanism] A slight change in terrain, such as adding hills steeper than the tuning space allowed, can make a vehicle bottom out and lose all its momentum.
+- [mechanism] Editing terrain, such as placing a forest patch, updates AI movement costs behind the scenes, so the designer never sees the AI data.
+- [mechanism] Tile flag combinations set grapple behaviour: connectable-only tiles can be attached and pass through in air; impassable-only tiles make the grapple ricochet without connecting; both-flagged tiles can be attached to, but swinging upward into them knocks the avatar off. When: Tile carries one or both traversal flags. Why: Each flag combination determines whether the grapple connects, whether the avatar passes through, and whether he bounces off.
+- [mechanism] When the avatar alters terrain, the dug space changes state, so the layout becomes a mechanic rather than backdrop.
+- [mechanism] Vertical shadows converging on a vanishing point can make a height feel more dangerous, just as horizontal shadows set rhythm.
+- [rule] Draw walls as lines on the grid, and treat them as blocking both movement and shots.
+- [rule] Make platforms at least 2 units wide when players must balance on them with tilt controls, since narrower tiles feel unfairly hard. When: Designing narrow platforms for tilt-controlled movement. Why: Two units is the narrowest width players can balance on without frustration.
+- [pitfall] Most published tactical methods assume tile-based representations, so their examples may need translating for non-grid levels.
+- [pitfall] Thick connectable platforms let the player move through them, which must be set intentionally in level design. When: Designing thick connectable platforms. Why: Unintended penetration changes traversal and can break intended routes.
+- [fact] Initial environments were motionless: foliage stayed rigid, vegetation was still, and players couldn't interact with the ground.
+- [fact] By the modern era water was no longer a major technical constraint, so rivers and lakes became common and their transitions to terrain were handled more subtly.
+
+## architectural drawing and sketching
+- [definition] A sectional axonometric also shows the extruded interior geometry of a form.
+- [definition] Semi-planned axonometrics may not follow the plan exactly and can show 3D gameplay concepts. When: planning vertical gameplay ideas rather than exact geometry.
+- [definition] A section cuts a space vertically and is used with plans to describe three-dimensional space.
+- [definition] Sections help map multilevel puzzles, multiplayer battle positions, side-scrolling pacing, and height transitions such as ramps, overhead bridges and cliffs to drop from. When: designing vertical or multilevel gameplay.
+- [mechanism] Spaces designed as a planned sequence of views, with previews and choices along the route, let visitors anticipate a destination and make decisions before reaching it. When: Designing the route into a major landmark or destination. Why: Staged previews build anticipation and turn approach paths into a series of meaningful decisions.
+- [rule] Before building a level, sketch one area for each step of the sequence so the teaching order is planned. When: laying out a hand-built teaching level.
+- [heuristic] Nesting is a practical way to represent a complex world simply, since each interior connects to the outside only through its gateway. When: when a world is too complex to model as one continuous space.
+- [heuristic] Design one hierarchically important view for a key moment, rather than a set of equally weighted three-dimensional views.
+- [procedure] Assign one graph-paper square a set unit, such as one yard, to make quick sketches that stay accurately proportioned. When: sketching level layouts to scale.
+- [tradeoff] A more complex level representation yields fewer, more homogeneous regions, trading implementation simplicity for fewer analysis cells.
+
+## modular level construction
+- [definition] Modular pieces are premade, repeatable parts that can be assembled like building blocks, reducing art production and making measurement-based construction practical.
+- [mechanism] Modular games reuse elements and reshuffle them in new arrangements, so each room becomes an experiment that players iterate on. When: when a game is built from reusable parts. Why: Recombined familiar elements invite experimentation without new learning.
+- [heuristic] Use movable markers, such as matchsticks standing in for paper arena walls, so layouts can be moved and rearranged quickly during physical prototype tests. When: physical layout prototypes. Why: Quick rearrangement makes the system easy to tweak. (x2)
+- [heuristic] Organic pieces such as landmasses and trees can be scaled and rotated without looking out of place, while non-organic spaces benefit from strict modular tiles. When: Choosing between organic and modular pieces. Why: Organic forms hide scaling and rotation, while rigid geometry shows it.
+- [heuristic] Use modular, repeatable elements such as columns, mats and screens to define interior space, and arrange natural features to guide experience even when they look unplanned. When: Designing interiors or natural-looking outdoor areas. Why: Modular parts make spaces readable, and deliberate arrangement steers attention while preserving a natural look.
+- [heuristic] A slight gap between two modular walls can let a player leave the intended space, so modular pieces must fit together exactly. When: assembling modular pieces.
+- [heuristic] Build early levels around individual obstacles, then mix and match them in later levels. When: when designing a progression of puzzles or challenges. Why: Familiar parts combined in new ways create variety without new teaching.
+- [procedure] Play a game and sketch the modular objects or tiles that repeat in its environment to see how the level is assembled. When: analyzing modular level construction. Why: Repeated pieces reveal how a level is assembled from reusable units.
+- [procedure] Build a set of 2D or 3D tiles or environment objects that combine into a level, breaking a level into reusable units. When: creating level construction kits.
+
+## repetition and rhythm
+- [behavior] Players perceive a repeated layout as different when enemies or hazards in it change, because encounters shape how a space feels. When: A layout's geometry repeats across generated levels. Why: Enemies and hazards change how a chunk feels.
+- [heuristic] Show a key landmark several times along a route so that players keep orienting toward it and perceive it from multiple angles. When: Designing routes that lead to a central landmark. Why: Repeated views reinforce the landmark as a goal and reward continued movement toward it.
+- [heuristic] Track user views, representation, communication, lighting and materials as recurring spatial elements when analyzing or designing a space. When: Analyzing or designing a level. Why: These elements recur across eras and shape how spaces are experienced.
+- [heuristic] Once the format is clear, spread the elements apart in later iterations to create new challenges. When: when a mechanic has been taught and players understand it. Why: Familiar rules become a basis for harder variations.
+- [heuristic] Repeated rhythmic elements such as columns or openings draw players onward through a space.
+- [heuristic] A recognizable landmark on high ground that offers resources and a vantage point is welcomed by players even when it recurs. Why: Landmarks offer resources and a vantage point.
+- [pitfall] Making every area look alike leaves players lost, and making every area look different makes the space monotonous; too much chaos is as monotonous as too much order. When: Designing repeated or varied areas. Why: Both extremes remove the cues players use to orient and remember.
+- [pitfall] Repeating whole tiles is noticeable to players, and a shared theme does not fully hide the repetition.
+- [fact] Rhythmic elements can turn a single space into several perceived spaces.
+
+## staged mechanic teaching
+- [model] Staged skill progression has three stages: teach a basic form, advance that form, then combine it with other skills. When: teaching a skill across levels. Why: each stage builds on the last.
+- [rule] Teach movement and mechanics through the world, its atmosphere, or narrative events rather than explicit prompts or a separate tutorial, so players act immediately. (x2)
+- [rule] Teach symbols by letting players use them through the avatar's abilities, then repeat them in later levels. When: when introducing a new symbol or mechanic. Why: Hands-on use with repetition makes the symbol's meaning stick.
+- [heuristic] Teach players what building types do through training and demonstration, so they can later read function from appearance.
+- [procedure] Teaching abilities through obstacles: 1) Introduce each ability alone in an obstacle. 2) Repeat that situation to reinforce it. 3) Later require combining abilities, such as running and jumping into a long jump. When: a game has several player abilities. Why: isolated lessons build up to combined use.
+- [procedure] Design a teaching level for one reactive mechanism: 1) introduce it safely 2) add a little danger 3) twist it 4) end with a final high-danger test; use four or five scenes. When: when grayboxing a tutorial level.
+- [procedure] 1) Place enemies far from traps so players see they cannot be defeated directly. 2) Place spawn points surrounded by traps so players watch enemies hit traps. 3) Let the player lead enemies into traps, with trap, enemies, and door visible in one view. When: when teaching a mechanic that combines enemies, traps, and an unlock. Why: Each step shows the mechanic in a progressively more active way.
+- [procedure] 1) Split a complex system into stages. 2) Teach one stage per level. 3) Add a level where players perform the full process. 4) Then let players use the systems freely. When: a system has many interacting parts that must be learned in order. Why: Each stage is learned before players face the whole system.
+- [pitfall] Introducing a mechanism next to pits or enemies, rather than in a safe space, makes it hard for players to learn.
+
+## atmosphere and environmental state
+- [mechanism] When environment surfaces respond physically, such as squishy versus solid, the avatar's motion feel changes accordingly. When: Designing terrain or surfaces that the avatar interacts with physically. Why: Surface response shapes how movement is felt, so surface quality is part of control feel.
+- [mechanism] A seasonal change can alter how the same landscape plays, so one space offers different experiences over time without changing its geometry. When: when the same layout is revisited across a game's time cycle.
+- [behavior] Many players are surprised at how real a space feels once they explore it by looking around. When: Players examine a detailed VR space.
+- [rule] Level design should carry meaning as well as mechanics, using architecture, vernacular, and art assets to convey narrative.
+- [heuristic] Notice the feelings you have while exploring in real life, then recreate them in the game. When: designing exploration.
+- [heuristic] Arrange simple features so they evoke a remembered landscape; a gnarled tree placed among rocks suggests craggy mountains.
+- [procedure] 1) Decide the intended feel of each space, such as restful, tense or meditative, before detailing its content. 2) Shape it with lighting, shadows, spatial organization and size. 3) Reinforce it with environmental art and sound. When: when planning a space.
+- [procedure] 1) Set most content in the domain that embodies the theme. 2) Stage the climax in the opposing domain, so the contrast reinforces the central theme. When: Choosing settings and level structure for a theme. Why: Setting and contrast reinforce the central theme.
+
+## blockage and hazard design
+- [definition] A blockage halts progress until a condition is met; examples include a locked door needing a key, a guard wanting a favor, or a camera requiring the lights to be off.
+- [mechanism] A blockage guarantees that whatever happens while meeting its condition occurs before whatever lies beyond it.
+- [rule] Mark each barrier with a visible symbol matching the tool that breaks it; a barrier lacking a visible tool or cue leaves players no clear path back. Why: so players can plan backtracking.
+- [rule] Environmental mechanisms should be usable in many different ways to be valuable. When: Designing environmental mechanisms. Why: A mechanism with one use adds little variety over repeated play.
+- [rule] Place hazards such as enemy spawns that must be cleared, so clearing them makes an area passable.
+- [heuristic] Combine a newly introduced hazard with terrain from earlier mechanisms, so the player must apply both skills at once. When: late in a level sequence.
+- [pitfall] Enemies that sweep beams across the screen can remove connection points in the places the player wants to reach. When: Placing enemies over areas that hold connection points. Why: Hazards that cover anchors cancel the player's chosen routes.
+- [pitfall] Dense obstacle placement makes a vehicle harder to drive, so spacing must be wide enough for its speed and turn rate.
+
+## room graph structure
+- [model] Showing a world one room at a time lets limited hardware present a large space; later graphical adventures adopted this room model.
+- [model] A shared map can be structured with landmarks, districts and nodes, plus architecture for sniping, guerrilla refuge and isolated building.
+- [definition] A rhizome is a network in which every point connects directly to every other point, with no fixed entry or exit; mathematically, a complete graph.
+- [mechanism] A single route pulls an entire group to one spot, while a branching route spreads players across several destinations. When: Routing a group of players through a space.
+- [pitfall] A sense graph built from ray casts around geometry misses glass windows, ducts, and closed-circuit TV links. When: the graph is generated from geometry ray casts.
+- [pitfall] Upward climbs with fewer connection points and sections of isolated tiles increase falling risk and limit route choice. When: Designing vertical sections or chains of swings to small anchor areas. Why: Higher positions have fewer connection points, so a missed attachment means a fall.
+- [fact] In a room-based sensing model, room membership alone can decide what each character can hear.
+- [fact] Rooms map naturally to sense graph nodes, and doors, windows, ducts, and video links map to connections with per-modality rules. When: designing a sense graph for a dungeon.
+
+## exploration and rewards
+- [mechanism] Exploring with managed resources trades extra risk for possible helpful rewards, making the level far less linear than a regenerating design.
+- [behavior] Players explore a room they expect to hold a reward even when the reward is not immediately accessible. When: a room is expected to contain a reward. Why: expectation drives searching.
+- [rule] Promise discovery and then deliver it, building anticipation and a fear of getting lost without making exploration feel rote.
+- [heuristic] Reward head movement with hidden containers, fine print, falling objects, close-inspection scanners and hazards that players dodge by moving their heads. When: Positional tracking is available. Why: Positional tracking lets the game detect head motion.
+- [heuristic] Calm spaces can double as reward vaults when they offer healing, combining meditative and rewarding functions in one space.
+- [fact] Level design goals mostly cover facility and sustenance rewards, which are largely items such as recharges, keys, and power-ups.
+
+## multiplayer spatial design
+- [definition] Meeting spaces, such as courtyards, squares, meeting rooms, and classrooms, are places where people stop and socialize.
+- [rule] In multiplayer, use intimate space to create an even playing field.
+- [heuristic] In multiplayer, a prospect with a vantage point above others gives one player a spatial advantage.
+- [fact] Multiplayer and online games use meeting spaces too: spaces before climactic encounters, safe houses at level start and end, and towns or taverns for planning.
+- [fact] Multilateral intimate space appears in corridor shooters and multiplayer arenas that have no significant vantage points above or below.
+- [fact] Open, expansive plans are a common approach in multiplayer shooter maps.
+
+## player choice and reward
+- [mechanism] Coupling player agency with environment design shows that meaningful interaction with the world can deepen immersion.
+- [mechanism] Branching paths create a risk-reward structure, because players must weigh uncertain options with different costs and rewards.
+- [heuristic] Empowering players inside dangerous spaces can create exhilarating experiences rather than only fear. When: when the player is given strength inside a threatening space.
+- [procedure] Testing denied rewards: 1) Sketch a level where a reward is visible but access is blocked, so the player must search. 2) Graybox it. 3) Playtest and observe whether the path changes after the player finds the reward. When: testing whether rewards draw exploration. Why: visible but blocked rewards motivate searching.
+- [tradeoff] Removing choice entirely can make a level less remembered and reduce replay value, while combining unique materials, experiential detail and rule-signalling symbols keeps a space memorable. When: designing a level's balance between linear structure and player choice.
+- [fact] Spaces in a separate dimension can be entered by surprise and are hard to telegraph in advance.
+
+## pvp and arena space
+- [definition] The shrinking fortress is a scenario where enemies surround protagonists and progressively capture the safe territory they hold.
+- [mechanism] Gradually shrinking the playable area forces surviving players to meet, bounding how long a match can last. When: Designing last-player-standing matches. Why: A shrinking space removes places to hide and drives encounters.
+- [mechanism] Spectator areas can turn a game into both a game and a performance.
+- [heuristic] Keep scenery and narrative content sparse in PvP maps, since it pulls attention away from opponents the map should keep in focus and players rarely look at it for long. When: competitive multiplayer maps.
+- [heuristic] In competitive deathmatch maps, favor easy navigation with many loops and few dead ends so players meet one another quickly. When: competitive PvP shooter maps. Why: Quick encounters keep matches active.
+- [fact] The shrinking fortress scenario usually needs a large level space to work well.
+
+## spatial zoning and separation
+- [definition] Separated-use planning divides a space into distinct districts for living, working, and gathering, each serving one function.
+- [rule] Plan relationships between spaces with a molecule graph before drawing the level.
+- [heuristic] Developers often place species apart in the level or use only a few species at a time to limit unpredictable interactions.
+- [heuristic] Separate circulation and gathering spaces, as larger prospects, from private activities placed in enclosed refuges. When: when planning area functions. Why: Open movement suits open space, while rest suits enclosed space.
+- [tradeoff] Public zones support open interaction and movement, while private zones support intimacy and focus; a space's placement along this spectrum shapes what players do in it. When: Deciding how accessible or secluded each area of a level should be. Why: Varying openness changes how players behave, including whether they socialize, hurry, or pause.
+- [fact] Sacred buildings in both traditions separate their interior sacred space sharply from the outside world.
+
+## axonometric view design
+- [rule] Show vertical relationships between surfaces very clearly in axonometric views; poorly drawn views cause optical illusions that disorient players and misread height and position. Why: Without perspective depth cues, height and position are easy to misread.
+- [heuristic] Show as much information on screen as possible in axonometric views, unless the world is expansive enough to resemble a top-down game. When: in axonometric views. Why: Downward cameras limit sight lines, so visible information matters more.
+- [procedure] Mark vantage points, sniping spots and spatial puzzles over a visual backdrop in an axonometric diagram to plan three-dimensional gameplay. When: planning gameplay in three dimensions. Why: Axon-style diagrams make verticality and sight lines readable at a glance.
+- [pitfall] Players struggle to orient in axonometric space because cardinal directions are unavailable and sight lines are limited by the downward camera. When: in axonometric views. Why: The downward-facing camera restricts visible directions and distance.
+- [fact] Classic axonometric games from the early 1980s created an impression of 3D space with 2D art and no perspective distortion.
+
+## clues and information reveals
+- [mechanism] Levels that signal upcoming challenges, such as a boss gate with a preceding hallway, build anticipation and give players time to prepare resources. When: Designing transitions to major challenges. Why: Advance cues let players make informed decisions before a threat arrives.
+- [mechanism] Established certainty enables dramatic reveals, such as a threat that suddenly makes a normally safe room dangerous. When: when a predictable safe space is later made unsafe. Why: The violated expectation carries more weight when the player had reason to trust the space.
+- [rule] Place characters and clues at strategic spots so stuck players can find the way forward.
+- [rule] Annotate secrets on a map along with how to find them again, so the location can be revisited. When: mapping areas with hidden content.
+- [heuristic] Environment art such as banners and stone can hint that valuable items lie ahead of the player. When: when a path leads to a reward.
+
+## entry and arrival framing
+- [definition] An arrival is the moment a player first enters a space, and how that space feels depends on the spaces before it.
+- [mechanism] The space a player arrives from shapes how the next space feels: a high room feels grander after a small one, and a dark room feels scarier after a bright one. When: When sequencing rooms or areas of contrasting size or lighting. Why: Perception of a space depends on the contrast with the previous space.
+- [rule] Consider an early climactic confrontation in the opening that previews what the game offers. When: the game needs to hook players at the start. Why: An early peak shows players the game's potential before they commit.
+- [heuristic] Use one embellished entrance to guide visitors into a climactic interior that rewards arrival.
+- [heuristic] Place arrivals before enemy encounters, item pickups, and story events so they land with more impact.
+
+## maze and labyrinth design
+- [definition] A maze is a multicursal structure with branching paths and dead ends that leads to an exit.
+- [rule] Use mazes for dramatic gameplay where uncertain choices matter.
+- [heuristic] Maze levels are often paired with powerful enemies or time limits to add pressure.
+- [fact] A labyrinth is unicursal with one defined path, while a maze is multicursal with more than one.
+- [fact] A maze feel can come from ambiguous scenery and darkness rather than from walls.
+
+## safe rooms and checkpoints
+- [mechanism] With no threats present, players explore at an unhurried pace, which lets them learn controls comfortably. When: the player has control but no danger. Why: Removing pressure lets the player focus on learning.
+- [rule] Stock protected safe rooms with ammunition and health so players can plan before the next stage; make them larger or add caches when the game rewards planning and cooperation.
+- [rule] Make settlements safe havens by placing strong non-player guards who prevent player combat inside them. When: An open player-versus-player world needs safe zones. Why: Reduces player fighting in populated areas.
+- [heuristic] Small calm rooms placed between intense sections give players a recovery beat in pacing. When: when pacing intense sections.
+- [fact] Room-based levels place checkpoints naturally and reduce how much must load at once.
+
+## tools and metrics
+- [definition] A level editor is a program for building custom levels, usually with drag-and-drop tools, so no programming is needed.
+- [definition] An impassable tile can never be attached to or penetrated, even by the swinging trick. When: Tile is flagged impassable.
+- [definition] Metrics are gameplay-based measurements in engine units, such as character size, jump distance, attack reach, and distance covered over time when running or walking.
+- [mechanism] Hardware limits and short arcade sessions kept much early action confined to a single screen.
+- [fact] Molecule graphs use dotted lines for viewable spaces, solid lines for travel, arrows for one-way links, and thick lines for direct paths.
+
+## diagramming and sketching
+- [definition] Elevations show a building's exterior sides from outside; for game levels they only need the surfaces the player sees, so they lean toward concept art.
+- [definition] Concept diagrams express a core abstract idea, such as public versus private density, using hatching, color, arrows and shapes.
+- [rule] Use arrows for foot traffic, sight lines and design axes, and color to encode function. When: annotating concept diagrams.
+- [procedure] For each advertising method, sketch a scene from an existing game that uses it as a teaching device, and annotate where event triggers would go if the scene uses them.
+
+## metroidvania progression
+- [model] Metroidvania spaces are maze-like, with branching paths, dead ends, distinct districts and boundaries.
+- [definition] A metroidvania is a side-scrolling platformer set in large, contiguous mazes, where players progress by expanding their movement abilities.
+- [procedure] 1) Play a game and note how it limits or directs exploration. 2) Note how symbolic assets build associations that suggest next steps. 3) Note how choices encourage exploration. When: When analyzing how a metroidvania-style game guides exploration. Why: These three cues show how a game directs movement without explicit instruction.
+- [procedure] 1) Teach through direction and some uncertainty. 2) Reward exploration. 3) Lock new regions behind earned rewards. 4) Offer multiple equally enticing paths that encourage risk-taking. When: designing an interconnected world with gated progression.
+
+## miniature and garden design
+- [model] Miniature game spaces act as scale models: a few arranged elements suggest varied natural landscapes and large terrain in a small explorable area, offering many landscapes in a short time.
+- [model] Miniature worlds rely on three elements: clear boundaries, overviews and consistent abstraction.
+- [procedure] Map a world with a miniature garden space by drawing its regions and showing how each reflects a different landscape type. When: When analyzing how a compact world is divided into regions. Why: Mapping regions reveals how varied landscapes organize a space.
+- [procedure] 1) Give players an overview of the space. 2) Offer guided tours through it. 3) Keep boundaries defined but expandable, so new possibility appears over time. When: designing a bounded play world that should feel open. Why: Overview and tours introduce possibility, while expandable boundaries keep it growing.
+
+## checkpoints and retry
+- [rule] Place checkpoints before significant challenges, so a retry starts just before the difficult section rather than at a distant start. When: when placing checkpoints in a level with hard sections. Why: Restarting players at a spot where they can easily try again keeps the learning loop going.
+- [heuristic] Place a checkpoint at each scene of a few screens so a failed player restarts close to the problem and can retry quickly with a new approach. When: levels that teach through failure. Why: Constructivist learning relies on repeated failure and retry.
