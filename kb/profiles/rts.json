@@ -1,0 +1,8 @@
+{
+  "name": "Real-time strategy with base building, a story campaign and online skirmishes",
+  "genres": {"strategy": 3, "sim": 1},
+  "cam": ["topdown"],
+  "pl": ["solo", "pvp"],
+  "st": ["match", "story", "levels"],
+  "notes": "sim 1 for economy and production advice; campaign missions count as levels."
+}

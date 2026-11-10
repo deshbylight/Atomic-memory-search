@@ -1,0 +1,8 @@
+{
+  "name": "Competitive first-person arena shooter played in short online matches",
+  "genres": {"shooter": 3, "action": 3, "sports": 2},
+  "cam": ["fp"],
+  "pl": ["pvp"],
+  "st": ["match"],
+  "notes": "sports 2 for competitive-arena balance and matchmaking advice."
+}

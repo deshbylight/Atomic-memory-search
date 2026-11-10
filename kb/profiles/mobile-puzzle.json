@@ -1,0 +1,8 @@
+{
+  "name": "Free-to-play mobile puzzle game with short levels and live events",
+  "genres": {"puzzle": 3, "casual": 3},
+  "cam": ["topdown", "side2d"],
+  "pl": ["solo"],
+  "st": ["levels", "persistent"],
+  "notes": "persistent for the account economy and events that outlast single levels."
+}

@@ -1,0 +1,8 @@
+{
+  "name": "First-person co-op dungeon crawler RPG with a persistent dungeon",
+  "genres": {"crawler": 3, "rpg": 3, "action": 2, "adventure": 1, "sim": 1, "roguelike": 1},
+  "cam": ["fp"],
+  "pl": ["coop", "solo"],
+  "st": ["persistent", "levels"],
+  "notes": "Not a roguelike (progress persists): roguelike 1 keeps procedural-dungeon advice while the structure axis sinks run-reset advice. Dungeon floors count as levels."
+}

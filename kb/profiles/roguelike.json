@@ -1,0 +1,8 @@
+{
+  "name": "Top-down action roguelike with short runs and permanent unlocks",
+  "genres": {"roguelike": 3, "action": 3, "crawler": 2, "rpg": 1},
+  "cam": ["topdown"],
+  "pl": ["solo"],
+  "st": ["run"],
+  "notes": "Runs reset; meta-progression persists, so rpg 1 keeps unlock and build advice without long-campaign structure."
+}
