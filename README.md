@@ -95,7 +95,14 @@ A Russian query is mapped word by word to English index terms: Snowball stem (`v
 results stay English. A word the lexicon lacks is named on stderr and ignored.
 
 Measured on our question sets (share of expected facts found in the result, judged by a model): English
-0.85, Russian 0.81; one search takes about 0.7 s.
+0.85, Russian 0.82; one search takes about 0.7 s.
+
+The other modes, measured the same way on 60 questions each written in a reader's own words for one random card or
+world row (hit@8 = that card or row is among the 8 results): `--cards` English 0.72, Russian 0.85; `--worlds`
+English 0.62, Russian 0.90 (0.70 / 0.93 counting any row of the right record section). Russian scores higher because
+the lexicon maps each Russian word to several English synonyms; an English query has to use the passage's own words.
+`--game` raises the share of the top 10 atoms a model judges useful for that game from 0.45 to 0.48 on average over
+the six profiles and eight everyday questions: it reorders the results, it does not replace a precise query.
 
 ## World records
 
