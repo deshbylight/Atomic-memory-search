@@ -1,0 +1,21 @@
+# World records
+
+Each record describes one fictional world from a public-domain book, read in whole: its layers,
+rules, interactions, how it is shown and what the text leaves unresolved. Confidence per row:
+`high` = stated in the text, `medium` = inferred from what the text shows.
+
+| Record | Summary |
+|---|---|
+| [the carved city of the makers](CarvedCityOfTheMakers.md) | A dead stone city under ice whose walls hold the whole history of the race that built it. Its makers bred a shapeless labour species, lost the arts that controlled it and retreated underground, and the servants now hold the depths and carve crude copies of their masters' work. |
+| [caverns under the drowned courts](CavernsUnderDrownedCourts.md) | A sealed door in a sinking ruin leads to a lit cavern of castes, a thing that feeds on the living, and its makers who will not destroy it. |
+| [the conqueror raised from the dust](ConquerorRaisedFromDust.md) | Plotters wake a sorcerer dead for three thousand years with a burning stone, win a kingdom with his help and lose it again, while a deposed king crosses half the world after the stolen stone that is the only thing able to send the sorcerer back. |
+| [drift of peoples between catastrophes](DriftOfPeoples.md) | An invented history in which three catastrophes and a steady chain of migrations move peoples across a continent. What survives each fall is decided by position, materials, and who pushed whom, and almost all memory of it is lost. |
+| [the enemy wished back](EnemyWishedBack.md) | Lords of an island realm fight a sorcerer-king's empire across the world: one of them is taken by a sending, the others climb an unclimbed peak and ride a hatched steed to free him, their home is occupied and won back, and when the empire falls the victors grieve until the gods restore their enemy. |
+| [the hollow globe of unlike peoples](HollowGlobeOfUnlikePeoples.md) | A traveller drops through a cave into a hollow earth with its own sun, and passes from a country of slow walking trees to a country of quick apes to a shore he conquers, each people judging him by opposite measures. |
+| [the inner world of the silent masters](InnerWorldOfSilentMasters.md) | A land on the inside of a hollow planet under a sun that never moves, so time and direction cannot be measured. A deaf reptile race rules through ape-like guards who sign for it and interpret to everyone else, while tribes hide behind trails that break off. Those in power never notice the people who carry their loads. |
+| [the kingdom that keeps an old road](KingdomThatKeepsTheRoad.md) | A hidden kingdom behind a waterless plain and a mountain wall keeps up a road it did not build, seats its dead kings under a dripping roof, and guards a slab door that almost nobody can work. |
+| [the lit commonwealth below](LitCommonwealthBelow.md) | Below a mine lies a lit country without night, whose people hold a force that makes any one of them lethal to any other, and so have no war, no law and nothing left to write. |
+| [the people under the mine](PeopleUnderTheMine.md) | A mountain shared by miners and a people driven underground long ago. The two work different hours, hear each other through the rock, and the hidden people carry out a prepared plan, then a second one, which their own tunnel turns against them. |
+| [the ruler who bought a way down](RulerWhoBoughtAWayDown.md) | A ruler who wants to know everything pays a hideous stranger in lives for a door under the earth, keeps the terms by their letter, breaks them anyway, and is let in, to find that every door opens and that nothing behind them can be wanted any more. |
+| [the tales at the edge of the world](TalesAtTheWorldsEdge.md) | A collection of short tales about thieves, idols and dreamers near the edge of the world, in which wealth is bait, houses turn their backs on what they fear, and rivals bring their own roof down. |
+| [the world made from a slain body](WorldFromASlainBody.md) | A cosmos cut from the corpse of the first giant, held together by a great tree that its keepers must tend every day, ruled by a small society of gods whose peace rests on oaths, pledges and fetters. Every safeguard has one gap, and the gaps are found. |

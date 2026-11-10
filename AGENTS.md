@@ -23,6 +23,8 @@ programming questions at the lowest token cost: search, then answer from the few
 5. Need a whole topic? Read only its section of `kb/all/packs/<domain>.md`: find the line `## <topic>`
    (the topic name from the result) and read up to the next `## ` heading (median 440 words, largest
    about 5,200).
+6. Worldbuilding (a fictional world's layers, laws, how it is shown): read `worlds/README.md` and open
+   only the matching record; `find.py` does not search them.
 
 ## Do not
 

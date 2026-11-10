@@ -74,9 +74,17 @@ results stay English. A word the lexicon lacks is named on stderr and ignored.
 Measured on our question sets (share of expected facts found in the result, judged by a model): English
 0.80-0.82, Russian 0.75-0.80; one search takes about 0.7 s.
 
+## World records
+
+`worlds/` holds 13 records of fictional worlds, each from one public-domain book read in whole: layers,
+rules with their exact form, interactions, how the world is shown, and what the text leaves unresolved,
+every row marked `high` (stated) or `medium` (inferred) confidence. They are reference material for
+worldbuilding, not atoms: `find.py` does not search them. Start at `worlds/README.md` (one summary line
+per record) and open only the record you need (about 10 KB each).
+
 ## License
 
-Code (`*.py`) is released under the MIT license, see `LICENSE`. The atoms in `kb/` are offered for
+Code (`*.py`) is released under the MIT license, see `LICENSE`. The atoms in `kb/` and the records in `worlds/` are offered for
 study and reference under the same terms, to the extent the contributors of this repository hold rights
 in them. `vendor/snowball/` is the unmodified Snowball Russian stemmer (Python port), under its own
 BSD-3-Clause license in `vendor/snowball/LICENSE`.
