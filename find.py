@@ -90,6 +90,19 @@ def ru_terms(word):
     return set()
 
 
+def repair_mojibake(text):
+    """Undo UTF-8 text that reached argv decoded as cp1251 ('что' -> 'С‡С‚Рѕ'), as a Windows shell layer running
+    under the ANSI code page delivers it. Real Cyrillic encoded as cp1251 is not valid UTF-8, so it never changes;
+    ASCII is identical either way."""
+    try:
+        fixed = text.encode("cp1251").decode("utf-8")
+    except UnicodeError:
+        return text
+    if fixed != text:
+        print(f"query repaired from cp1251-decoded UTF-8: {fixed}", file=sys.stderr)
+    return fixed
+
+
 def query_terms(query, unknown=None):
     """Index term groups of a query: an English word is a group of one term (tok), a Russian word the group of
     its English translations (stem + lexicon). BM25 treats a group as one synonym term (summed tf, df of the
@@ -213,6 +226,7 @@ def main():
     if a.top is not None and a.top < 1:
         ap.error("--top must be at least 1")
     sys.stdout.reconfigure(encoding="utf-8"); sys.stderr.reconfigure(encoding="utf-8")  # stderr names Russian words
+    a.query = repair_mojibake(a.query)
     unknown = []
     query_terms(a.query, unknown)
     if unknown:
