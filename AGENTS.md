@@ -14,7 +14,7 @@ programming questions at the lowest token cost: search, then answer from the few
    `balance-economy`, `level-design`, `narrative`, `audio`, `game-feel`, `game-ai`, `pcg`, `programming`,
    `algorithms`, `ux-ui`.
 3. When the user's game is known, rank for it: `--game <profile>` (`kb/profiles/`: `roguelike`,
-   `arena-shooter`, `rts`, `mobile-puzzle`, `coop-dungeon-crawler`, or a path to the project's own profile
+   `arena-shooter`, `rts`, `mobile-puzzle`, `coop-dungeon-crawler`, `idle-incremental`, or a path to the project's own profile
    JSON in the same format). Each line shows `[fit: ...]`; `[off-profile: ...]` atoms were made for other
    kinds of games: use them only with that caveat.
 4. One search per question. If the result misses the point, at most two more searches with the words a

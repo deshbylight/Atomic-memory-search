@@ -70,14 +70,14 @@ line per atom), with `kb/all/packs/index.md` as the table of contents.
 | Field | Meaning |
 |---|---|
 | `u` | 1 = holds across most genres (general design, psychology, process, programming, math) |
-| `g` | genre weights 1-3 (3 = core to that genre, 2 = fits it well, 1 = usable with adaptation): `action`, `rpg`, `crawler`, `roguelike`, `platformer`, `shooter`, `strategy`, `puzzle`, `horror`, `adventure`, `sim`, `mmo`, `casual`, `sports`, `tabletop` |
+| `g` | genre weights 1-3 (3 = core to that genre, 2 = fits it well, 1 = usable with adaptation): `action`, `rpg`, `crawler`, `roguelike`, `platformer`, `shooter`, `strategy`, `puzzle`, `horror`, `adventure`, `sim`, `mmo`, `casual`, `idle` (incremental), `sports`, `tabletop` |
 | `cam` | camera it depends on: `fp`, `tp`, `topdown`, `side2d`, `text` |
 | `pl` | players: `solo`, `coop`, `pvp`, `massive` |
 | `st` | structure: `run`, `persistent`, `levels`, `match`, `story` |
 
 Every result line shows this as `[fit: ...]`. `--game <name>` ranks the atoms for one kind of game: a profile
 in `kb/profiles/<name>.json` (examples: `roguelike`, `arena-shooter`, `rts`, `mobile-puzzle`,
-`coop-dungeon-crawler`) gives genre weights and the cameras, player counts and structures of that game.
+`coop-dungeon-crawler`, `idle-incremental`) gives genre weights and the cameras, player counts and structures of that game.
 An atom's score is multiplied by its fit (genre weight x profile weight, a universal atom at least 2/3,
 times 0.4 per axis it depends on that the profile excludes, never below 0.25), so advice for other kinds of
 games sinks instead of vanishing; it is shown as `[off-profile: ...]`. For your own game copy a profile,

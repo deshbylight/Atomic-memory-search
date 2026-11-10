@@ -39,7 +39,7 @@ FIT_UNIVERSAL = 2 / 3  # fit of a statement that holds across genres: below a ge
 AXIS_MISS = 0.4  # fit factor per axis (camera, players, structure) the atom depends on and the profile excludes
 HEAD_MIN_MULT = 0.5  # with a profile, best-group atoms below this multiplier do not take the leading slots
 FIT_AXES = {"genres": {"action", "rpg", "crawler", "roguelike", "platformer", "shooter", "strategy", "puzzle", "horror",
-                       "adventure", "sim", "mmo", "casual", "sports", "tabletop"},
+                       "adventure", "sim", "mmo", "casual", "idle", "sports", "tabletop"},
             "cam": {"fp", "tp", "topdown", "side2d", "text"}, "pl": {"solo", "coop", "pvp", "massive"},
             "st": {"run", "persistent", "levels", "match", "story"}}
 

@@ -66,7 +66,7 @@
 {"id": "k113591ccf4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1d8d0b1e50", "u": 1, "g": {"strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0301e6bf09", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb9efae6c6a", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb9efae6c6a", "u": 1, "g": {"mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k294e6e776a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kef2b64750c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k20c224da15", "u": 1, "g": {"rpg": 1, "shooter": 1}, "cam": [], "pl": [], "st": []}
@@ -141,7 +141,7 @@
 {"id": "k2af89b7ee3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1d86b41982", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k70eed7b2de", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0076999785", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k0076999785", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k5b5c2328cd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0285a38e44", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfa32ee2a59", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -551,7 +551,7 @@
 {"id": "k526bbbaf08", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbb913d3069", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd1bcac7ec2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k906929b36f", "u": 1, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k906929b36f", "u": 1, "g": {"sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6bb3ca2343", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4f06093878", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb3dcb5c950", "u": 1, "g": {"tabletop": 1}, "cam": [], "pl": [], "st": []}
@@ -1535,7 +1535,7 @@
 {"id": "kc961917ce3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k27c0ca7496", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k491af3bcd6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb0f611f701", "u": 1, "g": {"strategy": 1, "puzzle": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb0f611f701", "u": 1, "g": {"strategy": 1, "puzzle": 1, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k501d79c0fc", "u": 1, "g": {"adventure": 2, "horror": 1, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k81ce2651ff", "u": 0, "g": {"horror": 3, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k78320ce2e4", "u": 1, "g": {"rpg": 2, "puzzle": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
@@ -2003,8 +2003,8 @@
 {"id": "k3a8f409cdd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3690b3a436", "u": 1, "g": {"horror": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb56d5a9bf4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k18aa2581d6", "u": 1, "g": {"casual": 1, "platformer": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k10505cfaa7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k18aa2581d6", "u": 1, "g": {"casual": 1, "platformer": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k10505cfaa7", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0d0ffa2e67", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k389268d905", "u": 1, "g": {"platformer": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k115859627d", "u": 0, "g": {"sports": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
@@ -2208,7 +2208,7 @@
 {"id": "k29ccb0da7d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdbaff12337", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k67c025adf6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kab602c2954", "u": 1, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kab602c2954", "u": 1, "g": {"mmo": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf05948ff04", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kaccb71ce4e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6b3320a436", "u": 1, "g": {"tabletop": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -2244,7 +2244,7 @@
 {"id": "k82ef233e22", "u": 0, "g": {"rpg": 3, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9eb63f423a", "u": 0, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "k92a6500547", "u": 0, "g": {"action": 2, "shooter": 2, "platformer": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k58541df82f", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k58541df82f", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd6e30b38ca", "u": 0, "g": {"rpg": 3, "crawler": 3, "roguelike": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb84b0400ae", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke9c3f47756", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
@@ -2287,7 +2287,7 @@
 {"id": "kcfcb8c8460", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5317e376b5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k73d2584aa2", "u": 0, "g": {"strategy": 3, "tabletop": 2, "mmo": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "k2a7c1e6139", "u": 1, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k2a7c1e6139", "u": 1, "g": {"sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf8288dfbac", "u": 0, "g": {"shooter": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k36bbb2384a", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k180d32b178", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
@@ -2327,7 +2327,7 @@
 {"id": "k17714ce056", "u": 0, "g": {"strategy": 3, "sports": 3, "shooter": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k09d90c498c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k26ffea3e5e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1c5cfd084f", "u": 0, "g": {"puzzle": 2, "sim": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k1c5cfd084f", "u": 0, "g": {"puzzle": 2, "sim": 2, "sports": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb67f57e656", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0874eb7f6f", "u": 1, "g": {"strategy": 2, "action": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k133f9cd0c9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2336,7 +2336,7 @@
 {"id": "ke97ca102ed", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcd340b218e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka02e26c272", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k7e1d1d95c7", "u": 0, "g": {"mmo": 3, "casual": 3, "tabletop": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k7e1d1d95c7", "u": 0, "g": {"mmo": 3, "casual": 3, "tabletop": 2, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "ka0f587c93d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k38ce277c14", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6201b8f185", "u": 0, "g": {"strategy": 3, "sports": 2, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -2422,7 +2422,7 @@
 {"id": "k7ec64c4728", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kba1e9b8bd9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbcb0c69398", "u": 0, "g": {"sports": 3, "strategy": 2, "shooter": 2, "mmo": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "k7e908de3d6", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k7e908de3d6", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kaa03341cf9", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k46ced5e6c7", "u": 0, "g": {"shooter": 2, "sports": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k7df9934ba3", "u": 1, "g": {"sim": 2, "mmo": 2, "tabletop": 1}, "cam": [], "pl": [], "st": []}
@@ -2448,7 +2448,7 @@
 {"id": "kf3c7de654c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfe67b01361", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1de99fa663", "u": 1, "g": {"strategy": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k2f74821ff8", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k2f74821ff8", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kd861ac8b16", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k55cc02d341", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kad601c87e4", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
@@ -2533,7 +2533,7 @@
 {"id": "kb1e80fadad", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "keb53df7c46", "u": 0, "g": {"platformer": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kb25722de75", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kfaad82bc17", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kfaad82bc17", "u": 1, "g": {"idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k0c1109d2b5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kca5a57ac39", "u": 1, "g": {"puzzle": 2, "casual": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k121729ebda", "u": 1, "g": {"action": 1, "platformer": 1}, "cam": [], "pl": [], "st": []}
@@ -2591,7 +2591,7 @@
 {"id": "k27da0f53a5", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7d07c00964", "u": 1, "g": {"strategy": 2, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kd22ab6d144", "u": 1, "g": {"rpg": 2, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k7762d3b417", "u": 1, "g": {"mmo": 1, "sim": 1, "rpg": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k7762d3b417", "u": 1, "g": {"mmo": 1, "sim": 1, "rpg": 1, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k922ebae1ff", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2533c02e08", "u": 1, "g": {"rpg": 3, "crawler": 2, "roguelike": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k90d25cb88a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2614,7 +2614,7 @@
 {"id": "k8e562753b0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka65f1f6003", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf722da86e8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k65c83c5fb4", "u": 0, "g": {"mmo": 3, "rpg": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k65c83c5fb4", "u": 0, "g": {"mmo": 3, "rpg": 2, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2782af7b5c", "u": 1, "g": {"action": 2, "shooter": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k70ff9643a5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke75b5e9127", "u": 1, "g": {"mmo": 2, "rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
@@ -2631,7 +2631,7 @@
 {"id": "kb5bc68cbc2", "u": 1, "g": {"strategy": 2, "sports": 1, "tabletop": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k39aed4b4ed", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k537c317a60", "u": 1, "g": {"action": 2, "platformer": 1, "shooter": 1}, "cam": [], "pl": ["solo"], "st": []}
-{"id": "k6d027659ed", "u": 1, "g": {"rpg": 2, "sim": 1, "mmo": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k6d027659ed", "u": 1, "g": {"rpg": 2, "sim": 1, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k3d9d12b249", "u": 1, "g": {"roguelike": 2, "rpg": 1, "crawler": 1}, "cam": [], "pl": ["solo"], "st": []}
 {"id": "kb81a857d3a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2f18585d87", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2670,13 +2670,13 @@
 {"id": "k71c4f3b85f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd1b371b046", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k14154bc28c", "u": 0, "g": {"sports": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kcdeb637ac9", "u": 0, "g": {"strategy": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kcdeb637ac9", "u": 0, "g": {"strategy": 3, "sim": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kc81d894441", "u": 1, "g": {"mmo": 2, "tabletop": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k60f2137530", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k85d6119cde", "u": 1, "g": {"shooter": 2, "sports": 2, "strategy": 1}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "kc6ab6eaf85", "u": 0, "g": {"action": 3, "shooter": 3, "crawler": 2}, "cam": [], "pl": ["solo"], "st": ["levels"]}
 {"id": "k729e01404b", "u": 1, "g": {"sim": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k38dcf08eb7", "u": 0, "g": {"rpg": 3, "crawler": 2, "roguelike": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k38dcf08eb7", "u": 0, "g": {"rpg": 3, "crawler": 2, "roguelike": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kfd356a494e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd967b0fd99", "u": 1, "g": {"sports": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k09963995b1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2689,22 +2689,22 @@
 {"id": "kaf57be422a", "u": 1, "g": {"tabletop": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k303f459e3b", "u": 1, "g": {"rpg": 2, "tabletop": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka8bc58f185", "u": 1, "g": {"tabletop": 3, "strategy": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k37cfda2d41", "u": 1, "g": {"mmo": 2, "casual": 2, "rpg": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k37cfda2d41", "u": 1, "g": {"mmo": 2, "casual": 2, "rpg": 1, "idle": 3}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k901c699602", "u": 1, "g": {"casual": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k3ba3105811", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k29fcf2aa04", "u": 1, "g": {"sports": 1, "strategy": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf2b6c05d1b", "u": 1, "g": {"strategy": 2, "tabletop": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k6f45faecde", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k68a473ae9f", "u": 1, "g": {"casual": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k6f45faecde", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k68a473ae9f", "u": 1, "g": {"casual": 1, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kbc6e79878a", "u": 1, "g": {"puzzle": 2, "platformer": 2, "action": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k5a64b2b83d", "u": 0, "g": {"casual": 3, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k43589a8e82", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke4228aba6f", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
-{"id": "kcacfff0f79", "u": 1, "g": {"casual": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kcacfff0f79", "u": 1, "g": {"casual": 2, "rpg": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k473ed1b9b9", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k596e380446", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc52aaa8e6d", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": ["persistent"]}
-{"id": "k1b0ec7e088", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k1b0ec7e088", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k8300682ef7", "u": 0, "g": {"sports": 3, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka716da5f49", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k84642b6b69", "u": 0, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
@@ -2716,7 +2716,7 @@
 {"id": "k2f4e7f3f02", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4954540e93", "u": 0, "g": {"shooter": 3}, "cam": ["fp", "tp"], "pl": ["pvp"], "st": ["match"]}
 {"id": "k19cec2a214", "u": 0, "g": {"sports": 2, "strategy": 2, "tabletop": 2}, "cam": [], "pl": ["pvp"], "st": []}
-{"id": "kaff8fa4059", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "kaff8fa4059", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k59114bd939", "u": 0, "g": {"casual": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kecab8e78b0", "u": 1, "g": {"sports": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k65cf259f01", "u": 0, "g": {"casual": 3, "sports": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
@@ -2737,7 +2737,7 @@
 {"id": "kd972c4e154", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k0f527f5633", "u": 1, "g": {"mmo": 2, "casual": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k87680cb3ec", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k568c6155fa", "u": 1, "g": {"rpg": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k568c6155fa", "u": 1, "g": {"rpg": 1, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd468137f54", "u": 0, "g": {"casual": 3, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k2d73b2d0e4", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kf08b7a0ed3", "u": 1, "g": {"tabletop": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
@@ -2753,7 +2753,7 @@
 {"id": "k6cb07a054e", "u": 0, "g": {"casual": 3, "mmo": 2, "sports": 1, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke989a5f218", "u": 0, "g": {"casual": 3, "mmo": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k665d87218e", "u": 1, "g": {"casual": 1, "roguelike": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k92aa7af1b2", "u": 1, "g": {"sim": 2, "strategy": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k92aa7af1b2", "u": 1, "g": {"sim": 2, "strategy": 2, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k21d71c3e3e", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf8e1f4fa0a", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k89d9f1d7cc", "u": 1, "g": {"sports": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": []}
@@ -2773,7 +2773,7 @@
 {"id": "kdd34157016", "u": 1, "g": {"puzzle": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kd2992aed58", "u": 1, "g": {"strategy": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc9ce03920f", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k3ad2ef9831", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k3ad2ef9831", "u": 0, "g": {"strategy": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k70ed55bed3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1b735dcf2c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k987118bfed", "u": 0, "g": {"sports": 3}, "cam": [], "pl": [], "st": []}
@@ -2828,7 +2828,7 @@
 {"id": "ka581d797c4", "u": 1, "g": {"sports": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke16e541fed", "u": 0, "g": {"strategy": 3, "sports": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k906f653f9c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k868659820f", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k868659820f", "u": 1, "g": {"rpg": 2, "crawler": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k638dd9826a", "u": 1, "g": {"strategy": 2, "tabletop": 2, "sim": 1}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k3a5a44606e", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kaa4bc0dec9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2847,7 +2847,7 @@
 {"id": "k67606b5092", "u": 1, "g": {"rpg": 2, "sim": 2, "mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k13f9edabc0", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k16e4480ed1", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k04093b9de8", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k04093b9de8", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k57dc745985", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k5273b7fc85", "u": 1, "g": {"platformer": 2, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kcd5019a1b6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -2868,16 +2868,16 @@
 {"id": "k0a2db4f9ed", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k05248d435c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdb4f27f805", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0151fd3d69", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0151fd3d69", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kbbc763edfd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k507b7f1757", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k407a0d2f90", "u": 0, "g": {"strategy": 3, "tabletop": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k507b7f1757", "u": 0, "g": {"mmo": 3, "casual": 1, "idle": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k407a0d2f90", "u": 0, "g": {"strategy": 3, "tabletop": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc00104fe31", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k697cff9df1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka11e1017fc", "u": 0, "g": {"mmo": 3, "rpg": 2, "tabletop": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k803817d3ec", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k46b314b877", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k661d012d8d", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k661d012d8d", "u": 0, "g": {"rpg": 3, "crawler": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k805cd637f7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k76f0599b57", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka73b0b388c", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
@@ -2897,7 +2897,7 @@
 {"id": "k2de9fbcb6a", "u": 0, "g": {"casual": 3, "sports": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kd8dc806f25", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kda3f37c850", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k2c3048363d", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k2c3048363d", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke18154794d", "u": 0, "g": {"casual": 2, "sports": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kfe6a63ded9", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k47569c1a2c", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": ["match"]}
@@ -2906,7 +2906,7 @@
 {"id": "k48d4940d52", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc782dc21ff", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "keec7ac3f1d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k3a864a92f7", "u": 0, "g": {"sim": 3, "crawler": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k3a864a92f7", "u": 0, "g": {"sim": 3, "crawler": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd9d1bd9d9f", "u": 1, "g": {"mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kfa97c1897d", "u": 1, "g": {"rpg": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9639b38016", "u": 1, "g": {"crawler": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
@@ -2918,14 +2918,14 @@
 {"id": "k1fa95cdc9a", "u": 1, "g": {"strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4ca757209d", "u": 0, "g": {"mmo": 3, "sim": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "ka2dcffad9e", "u": 1, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "ke30893cc28", "u": 0, "g": {"mmo": 3, "sim": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "ke30893cc28", "u": 0, "g": {"mmo": 3, "sim": 1, "idle": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kf1fb3b921e", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kc90db0c43c", "u": 0, "g": {"mmo": 3, "rpg": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "ke837e80025", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k071fda37f9", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k5d3178b4ff", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k071fda37f9", "u": 0, "g": {"mmo": 3, "casual": 1, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k5d3178b4ff", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k02a8c385ab", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k53e77faef9", "u": 0, "g": {"tabletop": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k53e77faef9", "u": 0, "g": {"tabletop": 3, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0807130662", "u": 1, "g": {"sports": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4a6ffa8596", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd081653b04", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -2934,25 +2934,25 @@
 {"id": "kaeccbb1608", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k170b36b7d7", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdfb70b8710", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k2d38390999", "u": 0, "g": {"casual": 3, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k2d38390999", "u": 0, "g": {"casual": 3, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k05c134d6a4", "u": 0, "g": {"crawler": 3, "rpg": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf52bc40492", "u": 0, "g": {"strategy": 3, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc9bc3c6baa", "u": 1, "g": {"puzzle": 1, "strategy": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kfd9f88199f", "u": 0, "g": {"strategy": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kfd9f88199f", "u": 0, "g": {"strategy": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kfbdbd2b904", "u": 1, "g": {"rpg": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke19c79c20e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7cc3fddbc1", "u": 0, "g": {"strategy": 3, "shooter": 1}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k8dd19c9b70", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf318b461c5", "u": 0, "g": {"casual": 3, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k793df28223", "u": 1, "g": {"action": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kef75f467bb", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kef75f467bb", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ke2ff64527d", "u": 1, "g": {"action": 2, "shooter": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf93a7dc5ca", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k0f68f8c4a0", "u": 1, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": []}
-{"id": "k83aeb9e719", "u": 1, "g": {"mmo": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k83aeb9e719", "u": 1, "g": {"mmo": 1, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2c62d69f29", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7412b92014", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kc1d08ef667", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kc1d08ef667", "u": 1, "g": {"mmo": 2, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k65139f21d3", "u": 1, "g": {"rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k86e554ae8c", "u": 0, "g": {"casual": 3, "mmo": 2, "sports": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "ke6340cde3d", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
@@ -2960,7 +2960,7 @@
 {"id": "k8f3de6faa1", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "ke5e2a0978d", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kc3a28ef590", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
-{"id": "ke4b0aab339", "u": 1, "g": {"mmo": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke4b0aab339", "u": 1, "g": {"mmo": 1, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6b0469dc2a", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k398880a400", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka3264b210b", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": ["pvp"], "st": []}
@@ -2972,39 +2972,39 @@
 {"id": "k98c094a2c4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k76aa79853e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7e93d23ec8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0f84c40fc3", "u": 1, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": ["coop", "massive", "pvp"], "st": []}
-{"id": "k1b402ce52c", "u": 1, "g": {"sim": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kb643bd2d6f", "u": 1, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k4e6a825f6c", "u": 1, "g": {"mmo": 3, "rpg": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k0f84c40fc3", "u": 1, "g": {"mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": ["coop", "massive", "pvp"], "st": []}
+{"id": "k1b402ce52c", "u": 1, "g": {"sim": 2, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb643bd2d6f", "u": 1, "g": {"mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k4e6a825f6c", "u": 1, "g": {"mmo": 3, "rpg": 2, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0eb6667a5f", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k0d85d0083c", "u": 0, "g": {"mmo": 3, "rpg": 2, "crawler": 2}, "cam": [], "pl": ["massive"], "st": []}
 {"id": "k7dc24c160f", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k977d64c323", "u": 1, "g": {"tabletop": 3, "sim": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k745c987e89", "u": 1, "g": {"sim": 2, "mmo": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k745c987e89", "u": 1, "g": {"sim": 2, "mmo": 2, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc8260fef31", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kbfd5d35fb7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k3e36cb2f19", "u": 1, "g": {"sim": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k3e36cb2f19", "u": 1, "g": {"sim": 1, "strategy": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9b5cb7d7db", "u": 1, "g": {"strategy": 2, "sports": 2, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k3f4ecbf205", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k955fba1a97", "u": 1, "g": {"sim": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k955fba1a97", "u": 1, "g": {"sim": 1, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf6a53e5bc4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k35abe0a565", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1b87e73ff8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf3c5c60ae5", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": ["massive"], "st": []}
-{"id": "kbaf268ab18", "u": 1, "g": {"strategy": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kbaf268ab18", "u": 1, "g": {"strategy": 2, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1b68a49e1d", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": []}
 {"id": "k7466c9c6d7", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kfcfa005728", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kf2a05d067d", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "kf2a05d067d", "u": 0, "g": {"mmo": 3, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k35dd720ef3", "u": 1, "g": {"platformer": 2}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "kc903375f17", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka4ca56ff4a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kf383ab833d", "u": 1, "g": {"casual": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kf383ab833d", "u": 1, "g": {"casual": 1, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k526fba1eab", "u": 1, "g": {"mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd12cf01d62", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kf0140376ba", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k46b7cda5f3", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "ke5f2d4033a", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke5f2d4033a", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k2791097b71", "u": 0, "g": {"strategy": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc9ebe5b559", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k558e791252", "u": 0, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
@@ -3015,7 +3015,7 @@
 {"id": "k44048ac1e6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k917be52417", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0c4160b5bf", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka2457897bf", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka2457897bf", "u": 1, "g": {"sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4584694081", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k57cc2987b6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7342848ac6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3031,7 +3031,7 @@
 {"id": "kf0716195b5", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k023c730810", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k733077d868", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k695879ae0d", "u": 0, "g": {"casual": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k695879ae0d", "u": 0, "g": {"casual": 3, "sim": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ke03db02643", "u": 0, "g": {"tabletop": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k410f98d463", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kc04749e78b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3064,7 +3064,7 @@
 {"id": "k6b274eb3b2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcd14231069", "u": 1, "g": {"shooter": 2, "action": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k35273d465f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k17860ac4e9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k17860ac4e9", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k244076af7b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd78fbfd5f7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke8eff47b58", "u": 1, "g": {"tabletop": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -3162,7 +3162,7 @@
 {"id": "ke888004ccd", "u": 0, "g": {"sports": 2, "shooter": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k2e0d61cd24", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf416e1b99b", "u": 0, "g": {"action": 1, "shooter": 1, "sports": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kbf152c7acc", "u": 1, "g": {"strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kbf152c7acc", "u": 1, "g": {"strategy": 1, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k334fcfba8d", "u": 0, "g": {"action": 2, "shooter": 2, "rpg": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb6f2eb6074", "u": 0, "g": {"action": 1, "shooter": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ked48aa5d1c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3201,30 +3201,30 @@
 {"id": "kcfcde564d5", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka4c7305878", "u": 0, "g": {"casual": 2, "sports": 2, "mmo": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k948356d343", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k16d90e5130", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k16d90e5130", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb77c8ebbc8", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke10496ce00", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k36ed169d78", "u": 0, "g": {"casual": 3, "sports": 2, "rpg": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k696d25c8c2", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k696d25c8c2", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k8eee00240f", "u": 0, "g": {"mmo": 3, "tabletop": 2, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
-{"id": "k8dfe71e95f", "u": 0, "g": {"casual": 3, "rpg": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k8dfe71e95f", "u": 0, "g": {"casual": 3, "rpg": 1, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1acb88dec3", "u": 0, "g": {"sports": 3, "strategy": 2, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k64be10dc6d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka8a9eeb9bf", "u": 0, "g": {"adventure": 3, "casual": 1}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "k21b3aef6af", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k21b3aef6af", "u": 0, "g": {"tabletop": 3, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1149eb75f6", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k428be9a4fc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kdb8d623edd", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kdb8d623edd", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k356fded6cb", "u": 0, "g": {"casual": 3, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1f4d46f8f3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kd0dae4de6c", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kd0dae4de6c", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k436251ad1b", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kaab7101eda", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kaab7101eda", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka6db21a10a", "u": 0, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
-{"id": "k789990991b", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
-{"id": "ke5b1ba0411", "u": 0, "g": {"casual": 3, "mmo": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k29f7211a41", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kba6437b925", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k789990991b", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke5b1ba0411", "u": 0, "g": {"casual": 3, "mmo": 1, "rpg": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k29f7211a41", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kba6437b925", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb76ed48fa7", "u": 0, "g": {"mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k312dae73e3", "u": 0, "g": {"shooter": 3, "action": 2, "sports": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k80be5704fa", "u": 0, "g": {"mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": ["persistent"]}
@@ -3234,15 +3234,15 @@
 {"id": "kb1f78f7b18", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf22840beed", "u": 0, "g": {"casual": 2, "mmo": 2, "shooter": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k646a940ba5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k57a6095da6", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k57a6095da6", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k866a295cca", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k13048e9b00", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke5c881cbd3", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k12de6d7f9e", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k87da2b5d8d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0516f08572", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k0a44281389", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k4342f37663", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0a44281389", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k4342f37663", "u": 1, "g": {"casual": 2, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "keb2f20319c", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k5f21e6c1c0", "u": 0, "g": {"tabletop": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kec19095d5b", "u": 0, "g": {"rpg": 3, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
@@ -3250,16 +3250,16 @@
 {"id": "kbb0e86d43b", "u": 0, "g": {"casual": 3, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kdb2b2b6378", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5f7192e8ce", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k59f9811ca9", "u": 0, "g": {"casual": 3, "puzzle": 2}, "cam": [], "pl": ["solo"], "st": ["levels"]}
+{"id": "k59f9811ca9", "u": 0, "g": {"casual": 3, "puzzle": 2, "idle": 1}, "cam": [], "pl": ["solo"], "st": ["levels"]}
 {"id": "k9c1c5f587c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k60e023b4fe", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k60e023b4fe", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9d0b2cb74f", "u": 0, "g": {"casual": 3, "roguelike": 2, "crawler": 1}, "cam": [], "pl": [], "st": ["run"]}
 {"id": "k969397ebe8", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k245a4f9af6", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kadb0fc41e5", "u": 0, "g": {"sim": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k245a4f9af6", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kadb0fc41e5", "u": 0, "g": {"sim": 3, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdc973fa654", "u": 0, "g": {"sports": 2, "shooter": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "kdea75c4826", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k92005a6250", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k92005a6250", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka6089d0937", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke2b2a6e3a6", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k8960b58c4e", "u": 1, "g": {"tabletop": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
@@ -3276,7 +3276,7 @@
 {"id": "ka01dbfe7dd", "u": 0, "g": {"casual": 3, "mmo": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k596533bfe0", "u": 0, "g": {"casual": 3, "mmo": 2, "strategy": 1, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kef5b264906", "u": 0, "g": {"casual": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k2cb013db10", "u": 0, "g": {"casual": 3, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k2cb013db10", "u": 0, "g": {"casual": 3, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k991526652b", "u": 0, "g": {"casual": 2, "mmo": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kcdefa831a9", "u": 1, "g": {"sim": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kfce752fbf6", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
@@ -3289,21 +3289,21 @@
 {"id": "k09e44d4414", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2236ffc0ff", "u": 0, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k3551f5959b", "u": 0, "g": {"shooter": 2, "sports": 2, "strategy": 2, "casual": 2}, "cam": [], "pl": ["pvp"], "st": []}
-{"id": "k311792a56c", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k311792a56c", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4219164b83", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kd5d0b0a3bb", "u": 0, "g": {"casual": 3, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
-{"id": "k842b3f9d2d", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "kd5d0b0a3bb", "u": 0, "g": {"casual": 3, "sports": 1, "idle": 1}, "cam": [], "pl": ["pvp"], "st": []}
+{"id": "k842b3f9d2d", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k65a121b0c0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k472bd99c4a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7108ac0001", "u": 1, "g": {"strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6254126456", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd4977f309b", "u": 1, "g": {"rpg": 2, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k764c08066b", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k6f6888b52b", "u": 1, "g": {"strategy": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k6f6888b52b", "u": 1, "g": {"strategy": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9a8e062f44", "u": 0, "g": {"action": 3, "sports": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k962535d2e7", "u": 1, "g": {"rpg": 2, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k409b5ae420", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k72bade34be", "u": 1, "g": {"casual": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k72bade34be", "u": 1, "g": {"casual": 1, "rpg": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ked50b29f5f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke78cc96d36", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1a72002981", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3322,7 +3322,7 @@
 {"id": "k9ad6603d96", "u": 0, "g": {"shooter": 3, "action": 2, "horror": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k39f54f2fe9", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k15fb84b4e1", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k49629c8023", "u": 1, "g": {"sim": 2, "strategy": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k49629c8023", "u": 1, "g": {"sim": 2, "strategy": 2, "tabletop": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka13607a95e", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kff0da96d23", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdac99177f9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3337,14 +3337,14 @@
 {"id": "k76b1acd698", "u": 1, "g": {"action": 2, "shooter": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kdc45ef1592", "u": 0, "g": {"strategy": 3, "tabletop": 2, "puzzle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1ab1a89b4c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k6c7c7459ec", "u": 1, "g": {"casual": 2, "mmo": 2, "shooter": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k6c7c7459ec", "u": 1, "g": {"casual": 2, "mmo": 2, "shooter": 1, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kc61cc74b70", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k982eb09899", "u": 1, "g": {"strategy": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke7c93a7615", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5536f9074a", "u": 1, "g": {"action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k98acaacb20", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k453872696f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k8c8c885319", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k8c8c885319", "u": 1, "g": {"mmo": 2, "casual": 2, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kaa68c0a856", "u": 1, "g": {"roguelike": 2, "crawler": 1}, "cam": [], "pl": [], "st": ["run"]}
 {"id": "kae7ec9e177", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke3eb8c33f3", "u": 0, "g": {"casual": 3, "rpg": 2, "mmo": 1}, "cam": [], "pl": [], "st": ["persistent"]}
@@ -3352,8 +3352,8 @@
 {"id": "kd1fe50ed8b", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka0d321110f", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kb2c851210d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k67ccd571f6", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k0aad15695a", "u": 1, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k67ccd571f6", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0aad15695a", "u": 1, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kd564264e74", "u": 0, "g": {"shooter": 2, "action": 2, "adventure": 2, "sim": 1}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "k8f55049b97", "u": 1, "g": {"action": 2, "platformer": 2, "shooter": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7e5a96bef0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3361,17 +3361,17 @@
 {"id": "kcc0c29cf1f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k216cae98b8", "u": 0, "g": {"crawler": 3, "rpg": 2, "action": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1a4235e77c", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k5055912a9d", "u": 0, "g": {"casual": 3, "roguelike": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k5055912a9d", "u": 0, "g": {"casual": 3, "roguelike": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kc59a78abde", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke0f3b5fb81", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "kd3bd296ef1", "u": 1, "g": {"horror": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb850c8dbc9", "u": 0, "g": {"crawler": 3, "rpg": 2, "action": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k86819b7e7a", "u": 1, "g": {"crawler": 2, "rpg": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k86819b7e7a", "u": 1, "g": {"crawler": 2, "rpg": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k3cc37f974f", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k2abe3c6d74", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kfa189d081d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6fdc0a9816", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb89cecce96", "u": 0, "g": {"casual": 3, "rpg": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kb89cecce96", "u": 0, "g": {"casual": 3, "rpg": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5c9295bf4b", "u": 0, "g": {"rpg": 3, "mmo": 2, "crawler": 2, "adventure": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k8a7dfce68c", "u": 0, "g": {"sports": 2, "shooter": 2, "mmo": 1}, "cam": [], "pl": ["coop", "pvp"], "st": ["match", "persistent"]}
 {"id": "ka60f4ebeb0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3386,10 +3386,10 @@
 {"id": "kce1c34bb9f", "u": 0, "g": {"platformer": 3, "action": 2, "roguelike": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc72f2873f6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0154cb48dc", "u": 0, "g": {"roguelike": 3, "platformer": 2, "action": 2}, "cam": [], "pl": [], "st": ["run"]}
-{"id": "k5afe3da143", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k5afe3da143", "u": 0, "g": {"casual": 3, "mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k5f4f7366ce", "u": 0, "g": {"mmo": 3, "sim": 1, "rpg": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kbc2a33971a", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k3f6dde117f", "u": 1, "g": {"rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k3f6dde117f", "u": 1, "g": {"rpg": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kbfc43396b6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k929a16ed56", "u": 0, "g": {"mmo": 2, "shooter": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "ke51cb7de09", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": [], "st": []}
@@ -3432,9 +3432,9 @@
 {"id": "k836700a919", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k6c462fa881", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7f187298c7", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k4c130622a5", "u": 1, "g": {"rpg": 2, "crawler": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k4c130622a5", "u": 1, "g": {"rpg": 2, "crawler": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k6145d39cf6", "u": 0, "g": {"rpg": 3, "crawler": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kd1faa3c7c8", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kd1faa3c7c8", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kb2def12a68", "u": 1, "g": {"mmo": 1, "sim": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke5420785eb", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k2a677c5db1", "u": 1, "g": {"mmo": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -3449,7 +3449,7 @@
 {"id": "kf4811fa546", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k54ea12cfed", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1c1e2b4bb8", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kb60dc70045", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kb60dc70045", "u": 1, "g": {"rpg": 2, "crawler": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc656fbb5a4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2c03811513", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kb68df43b7a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3606,7 +3606,7 @@
 {"id": "k523e19fe46", "u": 1, "g": {"rpg": 2, "crawler": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k08c28e06a8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ked613d9e29", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k99e6a732c1", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k99e6a732c1", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kc2c772b393", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8b374f28d3", "u": 1, "g": {"crawler": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k52fa0ea54e", "u": 1, "g": {"rpg": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
@@ -3649,30 +3649,30 @@
 {"id": "k5a073b9e8c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k592992ad1c", "u": 1, "g": {"rpg": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke6f081486f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kca6acb92a1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kca6acb92a1", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9983345f07", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k151d63191e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6df5483fbd", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka4e13e91c0", "u": 1, "g": {}, "cam": [], "pl": ["coop", "solo"], "st": []}
 {"id": "k58bdf3dccc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc1604f385e", "u": 1, "g": {"rpg": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kdbf3306edd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k028690f97d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kdbf3306edd", "u": 1, "g": {"idle": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k028690f97d", "u": 1, "g": {"idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k66a7f1f52c", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4b2da2a97a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd7c74abf8a", "u": 1, "g": {"strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6181dd6034", "u": 1, "g": {"crawler": 2, "roguelike": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9205f0f342", "u": 1, "g": {"rpg": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k7063209b20", "u": 1, "g": {"rpg": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k015e2905a2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1cff153bb4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k7063209b20", "u": 1, "g": {"rpg": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k015e2905a2", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k1cff153bb4", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kc3129aeec9", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb36b74fe2a", "u": 1, "g": {"shooter": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7e3ebd968f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k55f516ca11", "u": 1, "g": {"action": 1, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc328ae8625", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k2664734c6e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k12e61d0014", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k2664734c6e", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k12e61d0014", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0ee40a6e7e", "u": 1, "g": {"rpg": 2, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kde8d1f3d88", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6679bfa4f6", "u": 1, "g": {"tabletop": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -3693,29 +3693,29 @@
 {"id": "ka4943f7a19", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke09862a2b6", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k209dedb07f", "u": 1, "g": {"rpg": 1, "action": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k46f7610fd6", "u": 0, "g": {"rpg": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k571b02a4a1", "u": 1, "g": {"strategy": 1, "tabletop": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k46f7610fd6", "u": 0, "g": {"rpg": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k571b02a4a1", "u": 1, "g": {"strategy": 1, "tabletop": 1, "rpg": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k37b8bef5e7", "u": 0, "g": {"rpg": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k4feab58c48", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k84e5bd1414", "u": 1, "g": {"crawler": 2, "action": 1, "platformer": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k26ae80d4aa", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k1d96576c27", "u": 0, "g": {"casual": 3, "roguelike": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k1d96576c27", "u": 0, "g": {"casual": 3, "roguelike": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k874959f9b7", "u": 0, "g": {"puzzle": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k7bcab49fc0", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k7bcab49fc0", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ke25153fcc6", "u": 0, "g": {"tabletop": 3, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k8525871b07", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka1e6bfc89b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "ka1e6bfc89b", "u": 1, "g": {"idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k31e99e6b30", "u": 1, "g": {"rpg": 2, "crawler": 2, "action": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k9b3efb644d", "u": 0, "g": {"tabletop": 3, "sports": 2}, "cam": [], "pl": [], "st": []}
-{"id": "ka86528dcd1", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ka86528dcd1", "u": 1, "g": {"rpg": 2, "crawler": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6e6e23aaa4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k2551efc59b", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k2551efc59b", "u": 0, "g": {"casual": 3, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k4e59635964", "u": 0, "g": {"rpg": 3, "mmo": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k259457ed33", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k590ab5fb90", "u": 0, "g": {"casual": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k590ab5fb90", "u": 0, "g": {"casual": 3, "sim": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k2d59804ebe", "u": 0, "g": {"rpg": 2, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k6d422f7cdf", "u": 1, "g": {"platformer": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["levels"]}
-{"id": "kc196b5593f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kc196b5593f", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k332c5c9a47", "u": 1, "g": {"rpg": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k29a9b45e7d", "u": 0, "g": {"sports": 2, "strategy": 2, "tabletop": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "kbfdc7af4a3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3729,9 +3729,9 @@
 {"id": "k12208aaa26", "u": 1, "g": {"rpg": 2, "crawler": 2, "tabletop": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kea2580519e", "u": 1, "g": {"strategy": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf4993aacba", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k37a4f0eef5", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k37a4f0eef5", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9db333ba9d", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k0127324cbc", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0127324cbc", "u": 1, "g": {"rpg": 2, "crawler": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6855cd92c7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3394e45a20", "u": 1, "g": {"rpg": 2, "crawler": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k293f49450d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3740,10 +3740,10 @@
 {"id": "k1edc2f2a70", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kacf8f19353", "u": 1, "g": {"puzzle": 1, "platformer": 1}, "cam": [], "pl": ["solo"], "st": ["levels"]}
 {"id": "k92b13add06", "u": 1, "g": {"rpg": 2, "crawler": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kd2141fd020", "u": 1, "g": {"mmo": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kd2141fd020", "u": 1, "g": {"mmo": 1, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka8907c6d80", "u": 0, "g": {"mmo": 3, "sports": 2, "shooter": 2}, "cam": [], "pl": ["pvp"], "st": ["persistent"]}
 {"id": "k2f484be60d", "u": 1, "g": {"action": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
-{"id": "ka2f4e8fb3f", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ka2f4e8fb3f", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k61019b2ba5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k34c36bcd96", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k289859d2da", "u": 1, "g": {"roguelike": 2}, "cam": [], "pl": [], "st": []}
@@ -3800,7 +3800,7 @@
 {"id": "kc5db95c87b", "u": 0, "g": {"casual": 2, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka384d5939a", "u": 1, "g": {"platformer": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k216e1741d1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k321f9dfb9e", "u": 1, "g": {"casual": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k321f9dfb9e", "u": 1, "g": {"casual": 2, "rpg": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7fcb673f52", "u": 1, "g": {"rpg": 2, "crawler": 2, "sim": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1b0d0405f2", "u": 1, "g": {"roguelike": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k80d0c654ef", "u": 0, "g": {"strategy": 2, "tabletop": 2, "sports": 2, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -3842,7 +3842,7 @@
 {"id": "k761415781e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2dc86c0273", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8f7d6f9834", "u": 1, "g": {"tabletop": 1}, "cam": [], "pl": [], "st": []}
-{"id": "ka3eca6467f", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka3eca6467f", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0b38fe6ea3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k10cebe461c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k258b4c8c63", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3863,7 +3863,7 @@
 {"id": "k5b848131c2", "u": 1, "g": {"strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf618978e44", "u": 1, "g": {"rpg": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6b66de7c85", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k493df221ed", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k493df221ed", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k719c7ff0cd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k60e76306bb", "u": 0, "g": {"mmo": 3, "casual": 2, "shooter": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k26d94c5514", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3885,13 +3885,13 @@
 {"id": "k058b52ccfd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4112069cea", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb02afed1d4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kce6b29f3d0", "u": 0, "g": {"strategy": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kce6b29f3d0", "u": 0, "g": {"strategy": 3, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf8b281c11b", "u": 0, "g": {"action": 2, "shooter": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k43484033b3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd95caa542d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc301c4a3ea", "u": 1, "g": {"rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb154207d3d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k2fcb1a2ea8", "u": 1, "g": {"casual": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k2fcb1a2ea8", "u": 1, "g": {"casual": 1, "tabletop": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka9de62bbae", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6bb9ae33ff", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k279dfd3f30", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3901,7 +3901,7 @@
 {"id": "k748ff1df0a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kec5f24c6e1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k02ba88dbc2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kfb73e99d71", "u": 0, "g": {"rpg": 3, "crawler": 3, "roguelike": 2, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kfb73e99d71", "u": 0, "g": {"rpg": 3, "crawler": 3, "roguelike": 2, "mmo": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k820ee10a54", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2813833d34", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfba57f5cbc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3943,7 +3943,7 @@
 {"id": "k4038da2b8d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka110d0af1f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k75ab849354", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1927ed57d3", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k1927ed57d3", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k74591ae2a6", "u": 0, "g": {"puzzle": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3f9887077c", "u": 1, "g": {"roguelike": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k92cb29259a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3959,7 +3959,7 @@
 {"id": "kdd850adebc", "u": 0, "g": {"shooter": 2, "strategy": 2, "sim": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k63a29fa471", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc61fb99712", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k895b1e5de1", "u": 0, "g": {"tabletop": 3, "strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k895b1e5de1", "u": 0, "g": {"tabletop": 3, "strategy": 1, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4cf2658033", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdd0cf14b9a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka38f1a541b", "u": 0, "g": {"shooter": 2, "strategy": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
@@ -3980,7 +3980,7 @@
 {"id": "k469c305849", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kd698ed9214", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0e9225fde4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k2e9b81dcf9", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k2e9b81dcf9", "u": 0, "g": {"casual": 3, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kee260c1e41", "u": 1, "g": {"tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka6bc385451", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k39a018f035", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -3989,12 +3989,12 @@
 {"id": "kc007b65cea", "u": 1, "g": {"tabletop": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k31ef47661a", "u": 1, "g": {"action": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k31a6a716ec", "u": 0, "g": {"tabletop": 3, "mmo": 2}, "cam": [], "pl": ["massive"], "st": []}
-{"id": "k6c9df8c370", "u": 1, "g": {"mmo": 2, "sim": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k6c9df8c370", "u": 1, "g": {"mmo": 2, "sim": 2, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb21eb781a2", "u": 1, "g": {"mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4ddcc862fb", "u": 0, "g": {"sports": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5fd60377de", "u": 1, "g": {"mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kab159ef58b", "u": 0, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k542746b75c", "u": 1, "g": {"mmo": 2, "sim": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k542746b75c", "u": 1, "g": {"mmo": 2, "sim": 2, "casual": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kc9efc0bba3", "u": 1, "g": {"mmo": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6e667eea91", "u": 0, "g": {"tabletop": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kdb113df4d6", "u": 0, "g": {"tabletop": 2, "mmo": 2}, "cam": [], "pl": ["massive"], "st": []}
@@ -4013,7 +4013,7 @@
 {"id": "k19fd45301c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0652c2fc71", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfaf1abf77e", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k5d458c428d", "u": 1, "g": {"sim": 2, "mmo": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k5d458c428d", "u": 1, "g": {"sim": 2, "mmo": 2, "strategy": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k08cef48c91", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k60758d8650", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k572be4e562", "u": 1, "g": {"tabletop": 2, "strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -4067,7 +4067,7 @@
 {"id": "k62c5b4ab91", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1e266b6432", "u": 1, "g": {"rpg": 2, "crawler": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kcd36ee0d5a", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
-{"id": "ka7f0899f7e", "u": 0, "g": {"strategy": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka7f0899f7e", "u": 0, "g": {"strategy": 3, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k51798b44ad", "u": 1, "g": {"rpg": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kd2b4e6d8fe", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6eee90401b", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": []}
@@ -4222,7 +4222,7 @@
 {"id": "kaba3a3f0de", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf7acace0f9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9d774654e6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k3c88386168", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k3c88386168", "u": 1, "g": {"sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6e6f3573e1", "u": 1, "g": {}, "cam": [], "pl": ["coop", "pvp", "solo"], "st": []}
 {"id": "k586551ca29", "u": 0, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7f1615cc9c", "u": 0, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
@@ -4433,7 +4433,7 @@
 {"id": "kc14e3f0e49", "u": 0, "g": {"strategy": 3, "tabletop": 3, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb99d777add", "u": 1, "g": {"strategy": 2, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k8b7bb958ae", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k9ebbeeecef", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k9ebbeeecef", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kffac080178", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k20a0743b1e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd140421ffc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4468,7 +4468,7 @@
 {"id": "k7cb52a33d2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k471ac722a4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k20a50ccfb6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kcdd9831609", "u": 0, "g": {"sim": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kcdd9831609", "u": 0, "g": {"sim": 3, "strategy": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k63ec7748ee", "u": 0, "g": {"strategy": 3, "shooter": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kac461000a6", "u": 0, "g": {"action": 2, "horror": 2, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke913a2e3a9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4477,7 +4477,7 @@
 {"id": "k92e29756fd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k94cfec4f4a", "u": 1, "g": {}, "cam": [], "pl": ["solo"], "st": []}
 {"id": "kc5f0284312", "u": 0, "g": {"action": 2, "sports": 2, "horror": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k708eaec735", "u": 0, "g": {"sim": 3, "strategy": 2, "tabletop": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k708eaec735", "u": 0, "g": {"sim": 3, "strategy": 2, "tabletop": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3225e08cb9", "u": 0, "g": {"tabletop": 3, "strategy": 2, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6af55814a3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka72ae5b0ab", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4601,11 +4601,11 @@
 {"id": "k1d1d1d64fb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k35e85f49a8", "u": 0, "g": {"puzzle": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k868f2d05b2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k75af237b24", "u": 1, "g": {"casual": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k75af237b24", "u": 1, "g": {"casual": 1, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k66c36e3d02", "u": 0, "g": {"puzzle": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kdf310116f7", "u": 0, "g": {"puzzle": 3, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k05dd7c2eb1", "u": 0, "g": {"rpg": 3, "crawler": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k93bdcd1723", "u": 1, "g": {"sim": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k93bdcd1723", "u": 1, "g": {"sim": 2, "strategy": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3d7dba7cec", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k39279c8ac8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbe5f232d93", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4660,7 +4660,7 @@
 {"id": "k572afbe7ed", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5c253db61f", "u": 1, "g": {"rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k136df225b7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k744bf8b051", "u": 1, "g": {"strategy": 2, "casual": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k744bf8b051", "u": 1, "g": {"strategy": 2, "casual": 2, "rpg": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kc38ac1059f", "u": 0, "g": {"strategy": 3, "tabletop": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1e3f1353ed", "u": 1, "g": {"shooter": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kece7a4f341", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4676,13 +4676,13 @@
 {"id": "k481b890f45", "u": 1, "g": {}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k8d5d8d5e41", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0b40ae4ae3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k377e2c8c44", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k377e2c8c44", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k744d10f524", "u": 0, "g": {"tabletop": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdaf70468e1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0004d3d2f0", "u": 0, "g": {"mmo": 2, "sports": 2, "shooter": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "ka3a2ec546f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k03adb027ef", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ke8dd4b4ff7", "u": 1, "g": {"casual": 2, "mmo": 1, "rpg": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke8dd4b4ff7", "u": 1, "g": {"casual": 2, "mmo": 1, "rpg": 1, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3aeab02523", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb76260b337", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "k73765c66c7", "u": 0, "g": {"tabletop": 3, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -4776,7 +4776,7 @@
 {"id": "k503ab83037", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke8e7564f2b", "u": 0, "g": {"rpg": 2, "crawler": 2, "action": 1, "adventure": 1}, "cam": [], "pl": ["coop", "solo"], "st": ["story"]}
 {"id": "k3fa96b01cb", "u": 1, "g": {"action": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k955749c41a", "u": 0, "g": {"casual": 3, "rpg": 1}, "cam": [], "pl": ["solo"], "st": []}
+{"id": "k955749c41a", "u": 0, "g": {"casual": 3, "rpg": 1, "idle": 2}, "cam": [], "pl": ["solo"], "st": []}
 {"id": "k34ac006486", "u": 0, "g": {"sports": 3, "shooter": 2, "strategy": 2, "action": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k1d1bc02a32", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2afe2be78a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4856,7 +4856,7 @@
 {"id": "k1840219bdc", "u": 1, "g": {"platformer": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdcbb5f0121", "u": 0, "g": {"sports": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k7806d9c524", "u": 0, "g": {"crawler": 2, "rpg": 2, "roguelike": 1}, "cam": [], "pl": [], "st": ["levels"]}
-{"id": "kc9cabdc0f9", "u": 1, "g": {"rpg": 2, "crawler": 2, "action": 1}, "cam": [], "pl": [], "st": ["levels"]}
+{"id": "kc9cabdc0f9", "u": 1, "g": {"rpg": 2, "crawler": 2, "action": 1, "idle": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k8a82183717", "u": 0, "g": {"sports": 3, "strategy": 2, "tabletop": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k2f308a1511", "u": 0, "g": {"shooter": 3, "action": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k403a2795b7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -4918,7 +4918,7 @@
 {"id": "kbf3b55a292", "u": 0, "g": {"mmo": 2, "shooter": 1}, "cam": [], "pl": ["coop", "massive", "pvp"], "st": []}
 {"id": "k66aa295fa4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k75640000ff", "u": 0, "g": {"sports": 3, "casual": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "ke75d75de9c", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "ke75d75de9c", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb67a617dbd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke2203f622b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9a189236d3", "u": 0, "g": {"casual": 2, "action": 2}, "cam": [], "pl": [], "st": ["run"]}
@@ -4937,7 +4937,7 @@
 {"id": "k41bb8930eb", "u": 0, "g": {"strategy": 3, "tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k2b54c6c961", "u": 1, "g": {"strategy": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7d36e80d32", "u": 0, "g": {"rpg": 2, "crawler": 2, "adventure": 2, "horror": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k5694ce148a", "u": 0, "g": {"strategy": 3, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k5694ce148a", "u": 0, "g": {"strategy": 3, "rpg": 2, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ka77e63f646", "u": 0, "g": {"strategy": 3, "sports": 1, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k68626a9224", "u": 1, "g": {"platformer": 2, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k478bd91cf5", "u": 1, "g": {"adventure": 2, "puzzle": 2}, "cam": [], "pl": [], "st": []}
@@ -4951,8 +4951,8 @@
 {"id": "k892e99aa5a", "u": 0, "g": {"mmo": 3, "rpg": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k108310b224", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "ka194aff0bb", "u": 0, "g": {"mmo": 3, "rpg": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k2acb1f79ce", "u": 0, "g": {"mmo": 3, "tabletop": 2, "sim": 2, "sports": 1}, "cam": [], "pl": ["massive", "pvp"], "st": ["persistent"]}
-{"id": "k7d6b4b44b3", "u": 0, "g": {"mmo": 3, "rpg": 2, "tabletop": 2, "casual": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k2acb1f79ce", "u": 0, "g": {"mmo": 3, "tabletop": 2, "sim": 2, "sports": 1, "idle": 1}, "cam": [], "pl": ["massive", "pvp"], "st": ["persistent"]}
+{"id": "k7d6b4b44b3", "u": 0, "g": {"mmo": 3, "rpg": 2, "tabletop": 2, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k4b6c71adfb", "u": 0, "g": {"mmo": 2, "tabletop": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kbb849c7b7f", "u": 0, "g": {"mmo": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k08825b6dab", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -5070,7 +5070,7 @@
 {"id": "k63bb6af6c2", "u": 0, "g": {"mmo": 2, "casual": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k3b56c0ebca", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5bccd5360b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kc893c1b22f", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kc893c1b22f", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kbcacb76e66", "u": 1, "g": {"mmo": 2, "tabletop": 1}, "cam": [], "pl": ["coop", "massive", "pvp"], "st": []}
 {"id": "k4e2f443a4e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4e5b5caf4a", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
@@ -5106,7 +5106,7 @@
 {"id": "k3e11f03ded", "u": 1, "g": {"platformer": 2, "action": 2, "horror": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k964f98bfbb", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k8f635f0f1f", "u": 0, "g": {"rpg": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k425366c33e", "u": 1, "g": {"casual": 2, "mmo": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k425366c33e", "u": 1, "g": {"casual": 2, "mmo": 1, "sports": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k48472f0c2d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcbda43739d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k66b95019f9", "u": 1, "g": {"roguelike": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
@@ -5167,7 +5167,7 @@
 {"id": "kddfae7979a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6fcb1a42af", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8ff2691fc6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k9dff1382c7", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k9dff1382c7", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k501ba0030d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "keb2f8c5064", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0301a060d1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -5257,7 +5257,7 @@
 {"id": "k476d110eef", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb83cf16a84", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka44511c4b9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kdd9175dc36", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kdd9175dc36", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ked79f3529b", "u": 0, "g": {"rpg": 3, "crawler": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k1f7495c398", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k32bc62474c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -5279,14 +5279,14 @@
 {"id": "k44b2cac1eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1fe251ef05", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka2d3537994", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kdd8fbe2e61", "u": 0, "g": {"mmo": 3, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "kdd8fbe2e61", "u": 0, "g": {"mmo": 3, "rpg": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "ke27cb8238f", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kf999f46c0e", "u": 0, "g": {"adventure": 3, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k76276d280f", "u": 0, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k5147909611", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc7bb0e3568", "u": 0, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kf2544acde0", "u": 0, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "k45067d89d0", "u": 0, "g": {"mmo": 3, "sim": 3, "tabletop": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k45067d89d0", "u": 0, "g": {"mmo": 3, "sim": 3, "tabletop": 2, "casual": 2, "idle": 3}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "ke5f63b8740", "u": 1, "g": {"action": 2, "adventure": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k2ecaafcd29", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf896cefd10", "u": 1, "g": {"action": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
@@ -5304,7 +5304,7 @@
 {"id": "kd64bc7d9b2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8b68ddb6b1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0d80e727b9", "u": 0, "g": {"puzzle": 3, "adventure": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k5c951a9500", "u": 1, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k5c951a9500", "u": 1, "g": {"sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kfd92e81303", "u": 1, "g": {"strategy": 2, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k081d08409d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k646922b5e0", "u": 1, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
@@ -5313,7 +5313,7 @@
 {"id": "ka50d6dde6b", "u": 0, "g": {"adventure": 3}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kdfe98f5536", "u": 0, "g": {"adventure": 3, "puzzle": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kc003cb939c", "u": 0, "g": {"strategy": 3, "action": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k8a29f666e2", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k8a29f666e2", "u": 1, "g": {"rpg": 2, "mmo": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0db14fdcb9", "u": 1, "g": {"roguelike": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k786884498d", "u": 0, "g": {"platformer": 3, "action": 2}, "cam": ["side2d"], "pl": ["solo"], "st": ["persistent"]}
 {"id": "k210d11b52d", "u": 0, "g": {"sim": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -5427,7 +5427,7 @@
 {"id": "kfed16de270", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k02bc4adba3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5e14a14ca1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb58092a361", "u": 1, "g": {"sim": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb58092a361", "u": 1, "g": {"sim": 1, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2087adb8de", "u": 1, "g": {"puzzle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k18defcc499", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k57053e460a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -5540,7 +5540,7 @@
 {"id": "k6ab25765a9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0f4d93bb14", "u": 0, "g": {"strategy": 3, "mmo": 2, "tabletop": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kb2ed5486da", "u": 1, "g": {"mmo": 2, "shooter": 1}, "cam": [], "pl": ["massive", "pvp"], "st": []}
-{"id": "ka1f0d977e1", "u": 1, "g": {"strategy": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ka1f0d977e1", "u": 1, "g": {"strategy": 3, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke526bf699e", "u": 1, "g": {"strategy": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k8e39ac8fa0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k21c4530a56", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -5568,7 +5568,7 @@
 {"id": "kfca7b4958c", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "k688a55a9f4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4186ec0705", "u": 0, "g": {"action": 2, "shooter": 2, "sim": 1}, "cam": ["fp", "tp"], "pl": [], "st": []}
-{"id": "ka4367ffbaf", "u": 0, "g": {"mmo": 3, "sim": 3, "tabletop": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "ka4367ffbaf", "u": 0, "g": {"mmo": 3, "sim": 3, "tabletop": 1, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kfd592fce3a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k37e3872c71", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5ed9ca3147", "u": 0, "g": {"rpg": 3, "adventure": 2, "crawler": 2}, "cam": [], "pl": ["solo"], "st": ["story"]}
@@ -5867,7 +5867,7 @@
 {"id": "k97389acdc7", "u": 0, "g": {"shooter": 2, "sports": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "kbdb54c292a", "u": 0, "g": {"sim": 3}, "cam": [], "pl": [], "st": []}
 {"id": "keb5c8afcaf", "u": 0, "g": {"shooter": 2, "sports": 3, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "ke32c03d0b9", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke32c03d0b9", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "keb078bba36", "u": 1, "g": {"strategy": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k94e9e40e9b", "u": 1, "g": {}, "cam": [], "pl": ["coop", "pvp"], "st": []}
 {"id": "ka685ebc5a0", "u": 0, "g": {"sports": 2, "shooter": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -5921,7 +5921,7 @@
 {"id": "kaaafab317f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4600697cab", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka10edb495e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k9759ad6a02", "u": 1, "g": {"sim": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k9759ad6a02", "u": 1, "g": {"sim": 2, "strategy": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kab434ce0ba", "u": 1, "g": {"puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kee282df3b8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3214d046c2", "u": 1, "g": {"adventure": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -5954,7 +5954,7 @@
 {"id": "k7cb8cd367f", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "k6678d605c7", "u": 0, "g": {"sports": 3}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k703c2ae489", "u": 0, "g": {"mmo": 3, "crawler": 2}, "cam": [], "pl": ["pvp"], "st": []}
-{"id": "kc781cb8156", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "kc781cb8156", "u": 0, "g": {"casual": 3, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k4910ae5833", "u": 0, "g": {"tabletop": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k3c83e62ff7", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive", "pvp"], "st": ["persistent"]}
 {"id": "k5ab5cfbba5", "u": 1, "g": {"action": 2}, "cam": [], "pl": [], "st": []}
@@ -6072,7 +6072,7 @@
 {"id": "k00cb7e5552", "u": 0, "g": {"shooter": 3, "sports": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "kd0ef735de2", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kfc4b54b868", "u": 0, "g": {"sports": 3, "shooter": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "kf010eb0a7c", "u": 0, "g": {"mmo": 3, "casual": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "kf010eb0a7c", "u": 0, "g": {"mmo": 3, "casual": 1, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kc7edc91c5d", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k4619caa412", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k4d3b7adc17", "u": 1, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
@@ -6091,7 +6091,7 @@
 {"id": "k6592725478", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k66778d9357", "u": 1, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k1074e46fcf", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kb06dfaf22d", "u": 1, "g": {"casual": 2, "mmo": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb06dfaf22d", "u": 1, "g": {"casual": 2, "mmo": 2, "sports": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k57380361a3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfd513ddab2", "u": 0, "g": {"mmo": 2, "shooter": 2, "action": 1, "crawler": 1}, "cam": [], "pl": ["coop", "massive", "pvp"], "st": ["persistent"]}
 {"id": "kbbcf9e9ddc", "u": 0, "g": {"sports": 3, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -6273,7 +6273,7 @@
 {"id": "k324515c233", "u": 1, "g": {}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k4e107e6186", "u": 0, "g": {"shooter": 2, "sports": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": ["persistent"]}
 {"id": "k129f34281e", "u": 0, "g": {"shooter": 2, "sports": 2, "strategy": 1, "mmo": 1}, "cam": [], "pl": ["pvp"], "st": ["persistent"]}
-{"id": "k9b542a6efd", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k9b542a6efd", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kda8220c6ab", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1655f597a8", "u": 1, "g": {"action": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kbe45bf5872", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6337,7 +6337,7 @@
 {"id": "k2a086bd2de", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6d9cf20866", "u": 1, "g": {"adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kfd6f1b70e9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k00bfef59fd", "u": 0, "g": {"casual": 3, "puzzle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k00bfef59fd", "u": 0, "g": {"casual": 3, "puzzle": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0f9fabd78f", "u": 0, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3c8251f002", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb8048f01bc", "u": 0, "g": {"tabletop": 3, "casual": 1}, "cam": [], "pl": [], "st": []}
@@ -6395,7 +6395,7 @@
 {"id": "ke4cd2f0179", "u": 0, "g": {"rpg": 3, "adventure": 3}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k3980a594d6", "u": 1, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke83a269e55", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "kdb30bf4142", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kdb30bf4142", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kf0fc8cc2d5", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k1fd044fbaa", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k85ab2c72d0", "u": 1, "g": {"sim": 2, "rpg": 2, "adventure": 1}, "cam": [], "pl": [], "st": []}
@@ -6425,7 +6425,7 @@
 {"id": "ka20233d1ef", "u": 1, "g": {"puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k875fa79dc7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5d1e4cea3f", "u": 1, "g": {"shooter": 1, "action": 1}, "cam": [], "pl": ["coop", "pvp"], "st": []}
-{"id": "k2ac9ac5e47", "u": 1, "g": {"sim": 2, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k2ac9ac5e47", "u": 1, "g": {"sim": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k84a6ec479e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k55384150c9", "u": 1, "g": {"shooter": 2, "action": 2}, "cam": [], "pl": ["coop", "pvp"], "st": ["match"]}
 {"id": "k6e278bd28c", "u": 1, "g": {"action": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -6449,13 +6449,13 @@
 {"id": "kcc6a27e0f4", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k6573022d19", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k6ebbc86248", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k052915f4b8", "u": 0, "g": {"strategy": 2, "sim": 2, "adventure": 2, "rpg": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k052915f4b8", "u": 0, "g": {"strategy": 2, "sim": 2, "adventure": 2, "rpg": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kb4ce601924", "u": 0, "g": {"platformer": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k4de22cb0cd", "u": 1, "g": {"sim": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd5e113fb73", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0984039ad6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0533587442", "u": 1, "g": {"adventure": 2, "rpg": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kaf17d0f80a", "u": 1, "g": {"mmo": 2, "crawler": 2, "rpg": 2, "action": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kaf17d0f80a", "u": 1, "g": {"mmo": 2, "crawler": 2, "rpg": 2, "action": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k8712f96283", "u": 1, "g": {"puzzle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k8976b4bca1", "u": 0, "g": {"shooter": 3, "sports": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k822ad9b3e0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6481,7 +6481,7 @@
 {"id": "k7987f05841", "u": 0, "g": {"adventure": 3, "shooter": 2, "action": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k3346a34d61", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0722402bf6", "u": 0, "g": {"mmo": 3, "shooter": 2, "sports": 2}, "cam": [], "pl": ["massive", "pvp"], "st": ["persistent"]}
-{"id": "k84a26a8104", "u": 1, "g": {"casual": 3, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k84a26a8104", "u": 1, "g": {"casual": 3, "mmo": 2, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k47af57c784", "u": 1, "g": {"tabletop": 3, "strategy": 2}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k5c8ed29b36", "u": 1, "g": {"tabletop": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k19e824855a", "u": 0, "g": {"shooter": 3, "action": 3}, "cam": [], "pl": [], "st": []}
@@ -6543,7 +6543,7 @@
 {"id": "k33255d260d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kce8213c954", "u": 0, "g": {"strategy": 3, "action": 1}, "cam": ["topdown"], "pl": [], "st": []}
 {"id": "kead655005e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k35e6464c73", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k35e6464c73", "u": 1, "g": {"sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k04173584ea", "u": 1, "g": {"rpg": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka9b9c557a5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka12bfded94", "u": 1, "g": {"action": 1, "platformer": 1}, "cam": [], "pl": [], "st": []}
@@ -6595,7 +6595,7 @@
 {"id": "kfe209a17e8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6e9c068d98", "u": 1, "g": {"mmo": 2, "sports": 1}, "cam": [], "pl": ["massive"], "st": []}
 {"id": "k00452a6c7f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb46e6b14e5", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb46e6b14e5", "u": 1, "g": {"casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc077fc38fe", "u": 0, "g": {"sim": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kcc0a6c74e2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k63ae790187", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6851,7 +6851,7 @@
 {"id": "k692851bee9", "u": 1, "g": {"rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k876e7f7b6d", "u": 1, "g": {"adventure": 1, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0848adf4fb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k7232d96b05", "u": 1, "g": {"rpg": 3, "crawler": 2, "action": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k7232d96b05", "u": 1, "g": {"rpg": 3, "crawler": 2, "action": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k21ffe9ee29", "u": 0, "g": {"rpg": 3, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k89484ac0d0", "u": 1, "g": {"shooter": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k78a9e5052a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6869,7 +6869,7 @@
 {"id": "k6d7c538e64", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2b145942aa", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3e50ed7138", "u": 0, "g": {"roguelike": 3, "crawler": 1}, "cam": [], "pl": [], "st": ["run"]}
-{"id": "k7b6767a36f", "u": 1, "g": {"mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k7b6767a36f", "u": 1, "g": {"mmo": 2, "casual": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k9cfaaaed22", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc7295cb520", "u": 0, "g": {"tabletop": 3, "sports": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": ["persistent"]}
 {"id": "kd0c16ee1d6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6890,7 +6890,7 @@
 {"id": "k038a725bab", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k251a6b65cd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfac3f5ab7e", "u": 1, "g": {"mmo": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kb61a6aaf6d", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "kb61a6aaf6d", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k41226f5c61", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k91ecdd345f", "u": 1, "g": {"rpg": 1, "sim": 1}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "k8a341a426a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6901,7 +6901,7 @@
 {"id": "k8baed7c065", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k16e096e830", "u": 1, "g": {"rpg": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5beadf4f15", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kb6f1432883", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": ["run"]}
+{"id": "kb6f1432883", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": ["run"]}
 {"id": "ke38a66df50", "u": 1, "g": {"mmo": 1, "rpg": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k4f0c28653c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4e607c4134", "u": 0, "g": {"sports": 2, "strategy": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -6935,7 +6935,7 @@
 {"id": "k2439ed587e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke20119775c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k333ee450f8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k96fcae5ce4", "u": 1, "g": {"action": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k96fcae5ce4", "u": 1, "g": {"action": 1, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k91d7646cb4", "u": 1, "g": {"casual": 2, "puzzle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf8f35b837e", "u": 1, "g": {"mmo": 2}, "cam": [], "pl": ["massive", "pvp"], "st": []}
 {"id": "k932792ce33", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -6968,7 +6968,7 @@
 {"id": "k2feb13a603", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1e0b7284d2", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k1c5eb7e6c8", "u": 0, "g": {"mmo": 2, "shooter": 2, "sports": 1}, "cam": [], "pl": ["massive", "pvp"], "st": []}
-{"id": "k307f257e73", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k307f257e73", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0b32280ad7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8156c0ce34", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4c9a97c4a8", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 2}, "cam": [], "pl": [], "st": ["story"]}
@@ -7072,7 +7072,7 @@
 {"id": "k201cfaa96f", "u": 0, "g": {"casual": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2e042bca27", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke0554a7390", "u": 0, "g": {"action": 3, "shooter": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k93b4037d2b", "u": 0, "g": {"sim": 3, "strategy": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k93b4037d2b", "u": 0, "g": {"sim": 3, "strategy": 1, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k5f46d338ed", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke9d78e501d", "u": 0, "g": {"action": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6872d8b47a", "u": 0, "g": {"platformer": 3, "action": 1}, "cam": [], "pl": [], "st": []}
@@ -7339,7 +7339,7 @@
 {"id": "k25b2aea660", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5d0b68a16f", "u": 1, "g": {"platformer": 2}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "k2ee4708d5c", "u": 0, "g": {"rpg": 3, "adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "ke96b7af375", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "ke96b7af375", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1c6acba19e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k87a2ae2241", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0dcef41b3e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -7682,7 +7682,7 @@
 {"id": "kcefc2a345a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k80f65b2500", "u": 1, "g": {"shooter": 1, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kae32ff72c5", "u": 1, "g": {"action": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kf727d424bc", "u": 1, "g": {"sim": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kf727d424bc", "u": 1, "g": {"sim": 2, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k600649f778", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k820f01d6ca", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf5827b959b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -7811,7 +7811,7 @@
 {"id": "kdc12a86c01", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6be1554667", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kee45d47524", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k5857f1bb61", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k5857f1bb61", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k24fa52cf57", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kccf1783b3e", "u": 0, "g": {"sports": 3, "tabletop": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb69bf64d09", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -7973,7 +7973,7 @@
 {"id": "k826c38806b", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4c97e9ef85", "u": 1, "g": {"shooter": 2, "crawler": 2, "action": 1, "horror": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2e1e89bb03", "u": 1, "g": {"action": 1, "platformer": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k2e935cb4e2", "u": 1, "g": {"rpg": 2, "strategy": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k2e935cb4e2", "u": 1, "g": {"rpg": 2, "strategy": 2, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5001391100", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": []}
 {"id": "k36c8ec3bdc", "u": 1, "g": {"action": 2, "shooter": 2, "platformer": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kd14a3e3022", "u": 0, "g": {"rpg": 3}, "cam": [], "pl": [], "st": []}
@@ -8031,7 +8031,7 @@
 {"id": "k12abbf43e0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k99dc25e048", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6149dfba4a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k8ed4d6c3c3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k8ed4d6c3c3", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kabae686b30", "u": 1, "g": {"action": 2, "horror": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kae7cc74568", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k51cba68fde", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -8490,7 +8490,7 @@
 {"id": "k86fdeb638e", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kfbacbdb433", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k17ee1a84cd", "u": 1, "g": {"action": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k99fa6403d6", "u": 0, "g": {"action": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k99fa6403d6", "u": 0, "g": {"action": 2, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kaaa9c80b97", "u": 0, "g": {"sports": 3}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k1ee02b13cc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd48bc1e4db", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -8920,7 +8920,7 @@
 {"id": "ke63dea51cb", "u": 1, "g": {"platformer": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf158478834", "u": 1, "g": {"sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdd73d87090", "u": 0, "g": {"sports": 3}, "cam": [], "pl": [], "st": []}
-{"id": "kfd71a7f151", "u": 0, "g": {"strategy": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kfd71a7f151", "u": 0, "g": {"strategy": 3, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kdd1e234a4f", "u": 0, "g": {"sports": 3, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0f19ecdaa8", "u": 0, "g": {"shooter": 3, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke2b4886d47", "u": 1, "g": {"strategy": 2, "shooter": 2}, "cam": [], "pl": [], "st": []}
@@ -9119,7 +9119,7 @@
 {"id": "k79706cba47", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k98dc3c79fd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9d7f03e151", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k8f5e88c2c5", "u": 1, "g": {"sim": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k8f5e88c2c5", "u": 1, "g": {"sim": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3c89cbe37e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka41d968885", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke6cf6452bc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -9625,7 +9625,7 @@
 {"id": "k3a39594ac8", "u": 0, "g": {"mmo": 3, "sim": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k990165bb25", "u": 0, "g": {"rpg": 3, "adventure": 2, "shooter": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb6a1e5fa9e", "u": 1, "g": {"sports": 2, "strategy": 2, "action": 1}, "cam": [], "pl": ["pvp"], "st": []}
-{"id": "kd624649c60", "u": 0, "g": {"casual": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kd624649c60", "u": 0, "g": {"casual": 3, "sim": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k848aa54c2b", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k728e989a0f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb44e6ae5a3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -9977,7 +9977,7 @@
 {"id": "kd1ec772670", "u": 0, "g": {"strategy": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k30f79a4a79", "u": 1, "g": {"strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4065fd6556", "u": 0, "g": {"shooter": 3, "action": 2}, "cam": [], "pl": [], "st": ["levels"]}
-{"id": "ka67dec3085", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka67dec3085", "u": 1, "g": {"sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k5eb78b1984", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc247cd6393", "u": 1, "g": {"shooter": 1, "horror": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf4718e78d8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -10045,7 +10045,7 @@
 {"id": "k755a92ea3a", "u": 1, "g": {"sim": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5f55020154", "u": 0, "g": {"adventure": 3, "sim": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k6496fe17a2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kea9f2e17ad", "u": 1, "g": {"sim": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kea9f2e17ad", "u": 1, "g": {"sim": 1, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6910cbfb3d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6bceb3af57", "u": 0, "g": {"shooter": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1391708cfa", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -10139,7 +10139,7 @@
 {"id": "kffde5793f9", "u": 1, "g": {"action": 1, "sports": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9f4b2193ce", "u": 1, "g": {"platformer": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k751bfa5774", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kfdfd0f6212", "u": 1, "g": {"action": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kfdfd0f6212", "u": 1, "g": {"action": 1, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7a2242bb3e", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": []}
 {"id": "k7a62f57192", "u": 1, "g": {"platformer": 1, "action": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k68e7556bba", "u": 0, "g": {"platformer": 3, "action": 2, "adventure": 1}, "cam": [], "pl": [], "st": []}
@@ -10416,7 +10416,7 @@
 {"id": "k0948fc1f9e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2d8e26ed83", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf27ab158cd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k739083d2b3", "u": 1, "g": {"platformer": 2, "adventure": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k739083d2b3", "u": 1, "g": {"platformer": 2, "adventure": 2, "shooter": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kda8772ada6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1e42d2bfcb", "u": 1, "g": {"platformer": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke73984fc70", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -11619,7 +11619,7 @@
 {"id": "kd61831fa23", "u": 1, "g": {"platformer": 3, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k203bfafe19", "u": 1, "g": {"puzzle": 2, "platformer": 2, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke223de9f19", "u": 1, "g": {"action": 2, "adventure": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k1df4f6221e", "u": 1, "g": {"sim": 2, "strategy": 2, "puzzle": 1}, "cam": [], "pl": [], "st": ["levels"]}
+{"id": "k1df4f6221e", "u": 1, "g": {"sim": 2, "strategy": 2, "puzzle": 1, "idle": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "kba1ea4dee0", "u": 1, "g": {"platformer": 1, "adventure": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb9944d7019", "u": 0, "g": {"adventure": 2, "rpg": 2, "crawler": 2}, "cam": ["topdown"], "pl": [], "st": []}
 {"id": "k65c4b905b8", "u": 1, "g": {"roguelike": 2, "crawler": 2, "adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
@@ -11775,7 +11775,7 @@
 {"id": "kac62af82f4", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "ked257b5b05", "u": 0, "g": {"adventure": 3, "rpg": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kcd6fdf123f", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "ke163478a9a", "u": 1, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "ke163478a9a", "u": 1, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kac457f3f35", "u": 1, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ka8fcad38bc", "u": 0, "g": {"roguelike": 3, "sim": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["run"]}
 {"id": "kcdfeede3f9", "u": 0, "g": {"adventure": 3, "rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": ["story"]}
@@ -11804,7 +11804,7 @@
 {"id": "kcea5d8c446", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6e1276bc2f", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5158fa5e6f", "u": 0, "g": {"rpg": 2, "crawler": 2, "mmo": 2, "adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "ke2dd2f5233", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke2dd2f5233", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kac8b72e538", "u": 1, "g": {"adventure": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7b62fb790d", "u": 0, "g": {"adventure": 3, "rpg": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k161579f761", "u": 1, "g": {"adventure": 1, "rpg": 1}, "cam": [], "pl": [], "st": []}
@@ -11852,7 +11852,7 @@
 {"id": "k3d9384967d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka2badc4d5b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k540a1b19d7", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": ["persistent"]}
-{"id": "kc0695ade4f", "u": 1, "g": {"adventure": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kc0695ade4f", "u": 1, "g": {"adventure": 2, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k771bd003f8", "u": 1, "g": {"strategy": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kae814e58c9", "u": 1, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kd60645dd7b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -12045,7 +12045,7 @@
 {"id": "k1bce7baf10", "u": 0, "g": {"platformer": 3, "action": 2, "shooter": 2, "casual": 1}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "kbcb060bf48", "u": 0, "g": {"platformer": 2, "action": 2, "casual": 2}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k8e9f0e3b76", "u": 1, "g": {"roguelike": 2, "casual": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k3911cf2b0d", "u": 0, "g": {"casual": 3, "roguelike": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k3911cf2b0d", "u": 0, "g": {"casual": 3, "roguelike": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0d8e8ee5bf", "u": 0, "g": {"casual": 3, "platformer": 2}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "kbae112ac16", "u": 0, "g": {"casual": 2, "platformer": 2, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kce79d10870", "u": 1, "g": {"platformer": 1, "action": 1}, "cam": [], "pl": [], "st": []}
@@ -12153,7 +12153,7 @@
 {"id": "k6f4c4b523f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3959518ec2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke3e127bc4b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k3570654b0f", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k3570654b0f", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k91a025cd24", "u": 0, "g": {"mmo": 2, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0ee8494d93", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k874e0c6b41", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -12212,7 +12212,7 @@
 {"id": "k8f2eb45069", "u": 1, "g": {"adventure": 2, "sim": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k0172f85628", "u": 0, "g": {"rpg": 3, "mmo": 2, "crawler": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k7bd7ca6fbc", "u": 1, "g": {"horror": 2, "shooter": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kb0efa340a3", "u": 1, "g": {"sim": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kb0efa340a3", "u": 1, "g": {"sim": 2, "strategy": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k60c6d7fdfd", "u": 1, "g": {"shooter": 2, "horror": 1, "adventure": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k66a5aa6faf", "u": 1, "g": {"rpg": 2, "action": 2, "adventure": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k7b72f00e0c", "u": 1, "g": {"adventure": 2, "tabletop": 1}, "cam": [], "pl": [], "st": ["story"]}
@@ -12270,7 +12270,7 @@
 {"id": "ka31a89effc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9076a2cce9", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kda463cf6b9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k2b187a4771", "u": 1, "g": {"casual": 2, "puzzle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k2b187a4771", "u": 1, "g": {"casual": 2, "puzzle": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k50440ec0e0", "u": 0, "g": {"horror": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kbdc06e79c6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kefe0bb6b8c", "u": 1, "g": {"rpg": 2, "shooter": 1, "horror": 1}, "cam": [], "pl": [], "st": []}
@@ -12378,7 +12378,7 @@
 {"id": "k56d29ee9e6", "u": 1, "g": {"adventure": 2, "platformer": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9e2682ec37", "u": 1, "g": {"adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb2aaf9af17", "u": 1, "g": {"adventure": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k343b04c109", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k343b04c109", "u": 1, "g": {"casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9724625f68", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k30bab1da3e", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc27146c2e4", "u": 1, "g": {"sim": 2}, "cam": [], "pl": [], "st": []}
@@ -12386,7 +12386,7 @@
 {"id": "kd1800e5906", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k96098da2e4", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd2d255cda9", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kfc51153448", "u": 1, "g": {"sim": 2, "casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kfc51153448", "u": 1, "g": {"sim": 2, "casual": 2, "mmo": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "ka708bd1511", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kd61dfc4feb", "u": 1, "g": {"rpg": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9399fc410e", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
@@ -12406,7 +12406,7 @@
 {"id": "kfa548a4c14", "u": 1, "g": {"rpg": 1, "adventure": 1, "horror": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf720d66de1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kaee02c2a2e", "u": 0, "g": {"shooter": 3, "action": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k7947e2860c", "u": 0, "g": {"strategy": 3, "sim": 2}, "cam": [], "pl": [], "st": ["levels"]}
+{"id": "k7947e2860c", "u": 0, "g": {"strategy": 3, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k09f976925e", "u": 0, "g": {"rpg": 3, "crawler": 2, "adventure": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kea8ed5cced", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "kc349fec02a", "u": 0, "g": {"sim": 3, "adventure": 1}, "cam": [], "pl": [], "st": []}
@@ -12612,7 +12612,7 @@
 {"id": "k03627812cf", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k120b4996dd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0db1c5b45f", "u": 0, "g": {"strategy": 3}, "cam": [], "pl": [], "st": ["levels"]}
-{"id": "ke5db426e00", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ke5db426e00", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kab6f65265d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k541f41ecd6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd4f41dc45e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -12665,7 +12665,7 @@
 {"id": "k2f679a456a", "u": 0, "g": {"adventure": 3, "shooter": 2, "action": 2, "strategy": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k25a728151a", "u": 1, "g": {"adventure": 2, "sim": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kf894e1fae3", "u": 0, "g": {"rpg": 3, "adventure": 2}, "cam": [], "pl": [], "st": ["persistent", "story"]}
-{"id": "k886de2bad2", "u": 0, "g": {"sim": 2, "horror": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k886de2bad2", "u": 0, "g": {"sim": 2, "horror": 2, "adventure": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "ka842886e60", "u": 0, "g": {"platformer": 3, "adventure": 2, "action": 2}, "cam": ["side2d"], "pl": [], "st": ["levels"]}
 {"id": "k29958be42c", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "ke81bd7d1f0", "u": 1, "g": {"adventure": 2, "horror": 1}, "cam": [], "pl": [], "st": ["story"]}
@@ -12690,7 +12690,7 @@
 {"id": "kf71e727562", "u": 1, "g": {}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kae1e0a6e31", "u": 1, "g": {"adventure": 2, "action": 2}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k2f6cb6ffef", "u": 1, "g": {}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "k05303e6a3e", "u": 1, "g": {"sim": 1, "adventure": 1}, "cam": [], "pl": [], "st": ["story"]}
+{"id": "k05303e6a3e", "u": 1, "g": {"sim": 1, "adventure": 1, "idle": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k30fd1d81fd", "u": 1, "g": {}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "ka87156a917", "u": 0, "g": {"crawler": 3, "adventure": 2, "action": 2}, "cam": [], "pl": [], "st": ["levels", "story"]}
 {"id": "kadc68eb06f", "u": 0, "g": {"action": 3, "crawler": 2, "rpg": 2, "platformer": 1}, "cam": [], "pl": [], "st": []}
@@ -12801,7 +12801,7 @@
 {"id": "k3a0865da39", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4b304aa2fd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k441fa652b5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0af735339e", "u": 1, "g": {"casual": 1, "puzzle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0af735339e", "u": 1, "g": {"casual": 1, "puzzle": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k31d470783a", "u": 1, "g": {"rpg": 2, "crawler": 2, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7b28a5e86d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke96b26e9f7", "u": 0, "g": {"adventure": 1, "rpg": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -12889,7 +12889,7 @@
 {"id": "k08383900e6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka8dd11d2e3", "u": 1, "g": {"rpg": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k801cd8c8e2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kae6287a256", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kae6287a256", "u": 1, "g": {"sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k58bfdf5563", "u": 0, "g": {"mmo": 3, "rpg": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k9620a5ed03", "u": 1, "g": {"tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7403d8b9d8", "u": 0, "g": {"adventure": 3, "rpg": 2, "sim": 2, "action": 1}, "cam": [], "pl": [], "st": []}
@@ -13100,7 +13100,7 @@
 {"id": "kdab25fd388", "u": 0, "g": {"crawler": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k24e48d4380", "u": 1, "g": {"crawler": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k33edcdc34d", "u": 1, "g": {"roguelike": 2, "crawler": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kf8e06cb548", "u": 1, "g": {"strategy": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kf8e06cb548", "u": 1, "g": {"strategy": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5eec04f51e", "u": 0, "g": {"action": 2, "platformer": 2, "shooter": 1}, "cam": [], "pl": ["solo"], "st": []}
 {"id": "kbfb56395c0", "u": 0, "g": {"shooter": 2, "horror": 2}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "kb9dfb816eb", "u": 1, "g": {"sim": 2, "rpg": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
@@ -13697,7 +13697,7 @@
 {"id": "k15fcab7169", "u": 0, "g": {"rpg": 2, "adventure": 2, "mmo": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k18edd5e701", "u": 1, "g": {"rpg": 1, "crawler": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7ddc4d61cf", "u": 0, "g": {"shooter": 3, "action": 3, "crawler": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k95cc6fd625", "u": 0, "g": {"tabletop": 3, "casual": 1, "sports": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
+{"id": "k95cc6fd625", "u": 0, "g": {"tabletop": 3, "casual": 1, "sports": 1, "idle": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k97f9a975bd", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k72cedb498a", "u": 1, "g": {"sports": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k58480953ff", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -13709,7 +13709,7 @@
 {"id": "k74712ba414", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kaefb08db5f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2b93cfe94f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k8dd797b12b", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k8dd797b12b", "u": 1, "g": {"casual": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k83c4d13346", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kad9fe4cb9a", "u": 1, "g": {"sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc74081342a", "u": 0, "g": {"sports": 3, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -13987,7 +13987,7 @@
 {"id": "k45a77e98b3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc0839c4040", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9d38ae50c1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0ce1588d2f", "u": 0, "g": {"casual": 3, "roguelike": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0ce1588d2f", "u": 0, "g": {"casual": 3, "roguelike": 2, "crawler": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb0a824befd", "u": 0, "g": {"action": 2, "crawler": 2, "tabletop": 2}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "kdcd238f00f", "u": 0, "g": {"crawler": 2, "action": 2, "tabletop": 2, "strategy": 1}, "cam": [], "pl": ["coop"], "st": []}
 {"id": "k1c75ba139f", "u": 0, "g": {"mmo": 2, "sports": 2, "casual": 1}, "cam": [], "pl": ["coop", "pvp"], "st": ["match"]}
@@ -14063,7 +14063,7 @@
 {"id": "k56f0ac37eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k27be670b82", "u": 1, "g": {"action": 2, "sports": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k2d647beac7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k7e07509186", "u": 0, "g": {"mmo": 2, "casual": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k7e07509186", "u": 0, "g": {"mmo": 2, "casual": 2, "rpg": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k85d33d20c6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc3bd44bf85", "u": 1, "g": {"action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka3e3f9b1cf", "u": 0, "g": {"shooter": 2, "sports": 2, "mmo": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -14114,7 +14114,7 @@
 {"id": "k5d12edf3aa", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k69ec8a3ff3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kabacd17f53", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka36f0285c1", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka36f0285c1", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k6cf1b15ab9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbb6fd8c1f0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kde6960809f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -14268,7 +14268,7 @@
 {"id": "k1ce40c619e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k15c603b9e8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc3f2f46f95", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "ke48e10134b", "u": 1, "g": {"rpg": 3, "mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ke48e10134b", "u": 1, "g": {"rpg": 3, "mmo": 2, "casual": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "ke1d37e5fa3", "u": 1, "g": {"rpg": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k75d09240b8", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb4aa45dd9f", "u": 1, "g": {"platformer": 2}, "cam": [], "pl": [], "st": []}
@@ -14320,10 +14320,10 @@
 {"id": "kef1211bf9d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcdeda45fb8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2269865b01", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0d05eee7de", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k421b89a513", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k0d05eee7de", "u": 1, "g": {"casual": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k421b89a513", "u": 1, "g": {"casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke012b4ad95", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1ee462c185", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k1ee462c185", "u": 1, "g": {"casual": 2, "mmo": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0695c25a0a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf8f41a69a1", "u": 1, "g": {"sports": 2, "strategy": 2, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "ka425ff56ce", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -14407,14 +14407,14 @@
 {"id": "k8416769a78", "u": 0, "g": {"rpg": 2, "adventure": 2, "sim": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka91f583319", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k19504cdee4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k05edcaa059", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k05edcaa059", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k6784f45891", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k281efd200a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k74306bad2c", "u": 1, "g": {"adventure": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9b63604bc8", "u": 0, "g": {"action": 3, "platformer": 3, "shooter": 1, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k580f6d7507", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k66fe4e428d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kec6f459251", "u": 1, "g": {"strategy": 3, "sim": 2, "rpg": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kec6f459251", "u": 1, "g": {"strategy": 3, "sim": 2, "rpg": 1, "casual": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k3e3b151367", "u": 0, "g": {"adventure": 2, "horror": 2, "action": 1, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k38b97bc352", "u": 0, "g": {"platformer": 3, "roguelike": 2, "action": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k0fcb2535cf", "u": 1, "g": {"action": 2, "sports": 2, "shooter": 2, "platformer": 2}, "cam": [], "pl": [], "st": []}
@@ -14478,7 +14478,7 @@
 {"id": "k6d5af876f7", "u": 1, "g": {"mmo": 2}, "cam": [], "pl": ["coop", "massive"], "st": []}
 {"id": "k3dba130907", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kef5475d28a", "u": 1, "g": {"sports": 2}, "cam": [], "pl": [], "st": []}
-{"id": "ke4fd287a82", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ke4fd287a82", "u": 1, "g": {"casual": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kff2bb99242", "u": 1, "g": {"puzzle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k921cd03735", "u": 0, "g": {"shooter": 2, "mmo": 2, "sports": 1}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "kb305c354fc", "u": 0, "g": {"strategy": 2, "shooter": 2, "sports": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -14660,7 +14660,7 @@
 {"id": "kfbfdcb6640", "u": 0, "g": {"horror": 3, "rpg": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka0aee151cc", "u": 1, "g": {"crawler": 2, "rpg": 2, "mmo": 2, "roguelike": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k5770eebc23", "u": 0, "g": {"action": 2, "adventure": 2, "shooter": 1, "horror": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k656c47c34f", "u": 0, "g": {"casual": 3, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k656c47c34f", "u": 0, "g": {"casual": 3, "sim": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kab1859879d", "u": 1, "g": {"shooter": 2, "sports": 2}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k58b14600aa", "u": 0, "g": {"horror": 2, "crawler": 2, "action": 1}, "cam": [], "pl": [], "st": ["run"]}
 {"id": "kcbb09acc54", "u": 0, "g": {"tabletop": 3, "strategy": 2, "puzzle": 1}, "cam": [], "pl": [], "st": []}
@@ -14768,7 +14768,7 @@
 {"id": "k4e55131b52", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbd9df84115", "u": 1, "g": {"rpg": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k65e2e02ef3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kf46a792f1e", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kf46a792f1e", "u": 1, "g": {"sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k97dfd233c8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k571b1fe37c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf081fffec0", "u": 0, "g": {"shooter": 3, "sports": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
@@ -14784,16 +14784,16 @@
 {"id": "kf4e60d1739", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k54dc2078f1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k91b07bc885", "u": 1, "g": {"rpg": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k373d568e20", "u": 1, "g": {"sim": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k0c646adc6f", "u": 1, "g": {"strategy": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k373d568e20", "u": 1, "g": {"sim": 2, "strategy": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k0c646adc6f", "u": 1, "g": {"strategy": 2, "sim": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k97d72c5e58", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kac74463578", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb5bf8f4a9d", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kbcd945e682", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "ked31f28db6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0ddb313055", "u": 1, "g": {"casual": 2, "sports": 1}, "cam": [], "pl": ["coop"], "st": []}
-{"id": "keabfd611d3", "u": 1, "g": {"sim": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k6f2f14aa59", "u": 0, "g": {"sim": 3}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "keabfd611d3", "u": 1, "g": {"sim": 2, "strategy": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k6f2f14aa59", "u": 0, "g": {"sim": 3, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k3ac77e8a07", "u": 0, "g": {"strategy": 3, "sports": 2}, "cam": [], "pl": [], "st": ["match"]}
 {"id": "k830b9cdec3", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k6022bdf358", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -14823,7 +14823,7 @@
 {"id": "kfb3f9bb97a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0c13654b6a", "u": 0, "g": {"puzzle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kb01d44b74b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kca804fd49f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kca804fd49f", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k5abe39aa99", "u": 1, "g": {"mmo": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ke54d5756e6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb44b1d7fd2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -14879,7 +14879,7 @@
 {"id": "k71ceabb8d6", "u": 0, "g": {"sports": 3, "strategy": 2, "shooter": 1}, "cam": [], "pl": ["pvp"], "st": ["match"]}
 {"id": "k01283a8b2b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6d1f3f80c0", "u": 0, "g": {"adventure": 3, "rpg": 2, "action": 1}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "k4d29a3b0ab", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k4d29a3b0ab", "u": 1, "g": {"casual": 2, "mmo": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kd26427ed74", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k906e403871", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf0a18b2d7d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -14932,11 +14932,11 @@
 {"id": "k47abae6cd2", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kb376d52778", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k319cb5ffad", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1d14fcd852", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k1d14fcd852", "u": 0, "g": {"casual": 3, "mmo": 2, "rpg": 1, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9d250c163a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb51e0062ed", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb031732c42", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k162a3d7f8b", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k162a3d7f8b", "u": 1, "g": {"mmo": 2, "casual": 2, "idle": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "k648e4b3c02", "u": 0, "g": {"sim": 3, "casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k47658dac8c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k17f2a7c9bf", "u": 0, "g": {"tabletop": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
@@ -15182,7 +15182,7 @@
 {"id": "kcf0471da88", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5ea9644bf0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k089fe8cd51", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka0f757f781", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ka0f757f781", "u": 1, "g": {"casual": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "kd6bba0591e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k845ce03dee", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k86d1d10079", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15216,7 +15216,7 @@
 {"id": "kd550f55fa9", "u": 1, "g": {"strategy": 2, "tabletop": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k314d7d5dbb", "u": 1, "g": {"rpg": 2, "adventure": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf0d0e2748b", "u": 1, "g": {"sim": 2, "adventure": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k1273ec497b", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k1273ec497b", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kece9962aa4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4e7be7a4f4", "u": 1, "g": {"sim": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka203947256", "u": 1, "g": {"action": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
@@ -15225,7 +15225,7 @@
 {"id": "k7c92a736b0", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k9a9f9379af", "u": 0, "g": {"sim": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kc84a663949", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k89ee4b3364", "u": 1, "g": {"mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k89ee4b3364", "u": 1, "g": {"mmo": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb11c5b54a5", "u": 0, "g": {"adventure": 2, "horror": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb9c668c5d5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k82a164706f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15371,7 +15371,7 @@
 {"id": "kbe4ce5c943", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdab1f05dbb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka9e01febfa", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka9257fcc78", "u": 1, "g": {"strategy": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka9257fcc78", "u": 1, "g": {"strategy": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k1bddf8c772", "u": 1, "g": {"shooter": 1, "adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kae5b2ae6a6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcf3bee6c36", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15601,7 +15601,7 @@
 {"id": "kf18b3d4a81", "u": 0, "g": {"shooter": 2, "sports": 2}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "ka1dfd7747c", "u": 0, "g": {"shooter": 2, "sports": 2}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "kca9edaf8c5", "u": 0, "g": {"shooter": 1, "adventure": 1}, "cam": ["fp"], "pl": [], "st": []}
-{"id": "k209f7fec5f", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k209f7fec5f", "u": 1, "g": {"casual": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb2459db19a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka582b01264", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0d4c60598d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15671,7 +15671,7 @@
 {"id": "k14813cb8c7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k128e91c5c7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke4e5ecca29", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kc86647c4fe", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "kc86647c4fe", "u": 1, "g": {"idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k0244d01aa7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k48205e0453", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k82894f262a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15849,7 +15849,7 @@
 {"id": "k601b49978e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbaa787e55b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdfb90af3d5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka7a0e4c573", "u": 1, "g": {"strategy": 1, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "ka7a0e4c573", "u": 1, "g": {"strategy": 1, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k9a7ce79765", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka0aef49a3c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k25db1a29eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -15981,7 +15981,7 @@
 {"id": "k163ec6680b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4b43ae9b65", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8dba737440", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k66cd2d9927", "u": 1, "g": {"sim": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k66cd2d9927", "u": 1, "g": {"sim": 1, "strategy": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka29659509f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k83b2b3026a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc7fde6c0fd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -16367,7 +16367,7 @@
 {"id": "ke5ed91e7ce", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4b978b9122", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0ba1475aa3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k9f624f1aa9", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k9f624f1aa9", "u": 1, "g": {"casual": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k60fa4650ac", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kbc1b4b6c6f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4735df95d6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -16530,7 +16530,7 @@
 {"id": "k6d910a9d6b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k822ad5ea6c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k143d146a5e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kc4952323c1", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kc4952323c1", "u": 1, "g": {"mmo": 2, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kee224f641c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k54d1bba64c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd8a7570a28", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -16672,7 +16672,7 @@
 {"id": "kd9e15b2dc4", "u": 0, "g": {"rpg": 3, "crawler": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k46f5412239", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k32277b7b84", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ke4f50d83ca", "u": 0, "g": {"casual": 3, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke4f50d83ca", "u": 0, "g": {"casual": 3, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k617a9fbf7b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb6611715a1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kededacb718", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -16788,7 +16788,7 @@
 {"id": "kfa731732e2", "u": 1, "g": {"adventure": 2, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "keecdfa27a0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kafa66c9130", "u": 1, "g": {"adventure": 1, "action": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k3e7d8c3728", "u": 1, "g": {"strategy": 2, "sim": 1, "roguelike": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k3e7d8c3728", "u": 1, "g": {"strategy": 2, "sim": 1, "roguelike": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kf25b45c702", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "k03c6351640", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k8d4712947b", "u": 1, "g": {"crawler": 2, "adventure": 2}, "cam": [], "pl": [], "st": ["levels"]}
@@ -16935,12 +16935,12 @@
 {"id": "ked7fea0f12", "u": 1, "g": {"adventure": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k45576b61df", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k032521007b", "u": 0, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "kcb725805f8", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k207b708de5", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kcb725805f8", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k207b708de5", "u": 1, "g": {"casual": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k29edcee358", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9d4db0c88d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k1685ac21ee", "u": 1, "g": {"adventure": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k56ada32b87", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k56ada32b87", "u": 1, "g": {"casual": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k37f52997d1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8de95bd060", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k84dbc09749", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -16951,15 +16951,15 @@
 {"id": "k8fd4e21b27", "u": 1, "g": {"rpg": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kedcfb37483", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k85aaadbaee", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k7c6f1a1582", "u": 0, "g": {"mmo": 3, "casual": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k7c6f1a1582", "u": 0, "g": {"mmo": 3, "casual": 2, "idle": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kcb09139b89", "u": 1, "g": {"mmo": 1}, "cam": [], "pl": [], "st": ["persistent"]}
-{"id": "ka808044775", "u": 1, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "ka808044775", "u": 1, "g": {"casual": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "k3a20dae2db", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3239327e64", "u": 1, "g": {"rpg": 2, "crawler": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k156b08c4d1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k90129023c1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k24c6b5445b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kf03e455072", "u": 0, "g": {"casual": 2, "mmo": 2}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "kf03e455072", "u": 0, "g": {"casual": 2, "mmo": 2, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kdc27081f44", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k72a2f4a4fd", "u": 1, "g": {"tabletop": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7fdf1c79eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17069,7 +17069,7 @@
 {"id": "k867f52e9ba", "u": 1, "g": {"mmo": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k506e0780a2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdbdd78504c", "u": 1, "g": {"adventure": 2, "rpg": 1}, "cam": [], "pl": [], "st": ["story"]}
-{"id": "k1ec7e01a16", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k1ec7e01a16", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kfa0afddbb8", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka6d65674eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka54b7f7eff", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17176,7 +17176,7 @@
 {"id": "k54d664aa8f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3a2429b1af", "u": 1, "g": {"adventure": 2, "rpg": 2}, "cam": [], "pl": [], "st": ["story"]}
 {"id": "kca14c20f28", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k4a80b278b1", "u": 1, "g": {"mmo": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k4a80b278b1", "u": 1, "g": {"mmo": 2, "casual": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k637253c9c2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k65cc8b5cf7", "u": 0, "g": {"shooter": 2, "platformer": 2, "crawler": 2, "action": 2, "adventure": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k1052e8a2f7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17184,7 +17184,7 @@
 {"id": "kfe52402e6e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8099737d27", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8e26859b29", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k05ce48cd91", "u": 0, "g": {"mmo": 3, "strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "k05ce48cd91", "u": 0, "g": {"mmo": 3, "strategy": 1, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kb2b033b30b", "u": 1, "g": {"strategy": 2, "sports": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb481868321", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd71780e8c9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17241,11 +17241,11 @@
 {"id": "k614dcaaee6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka45b1c46c1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k730f0a9d2e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k8f48454524", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k8f48454524", "u": 0, "g": {"casual": 3, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kc5d9756d75", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k9321e2b702", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k01a6da7c8e", "u": 1, "g": {"action": 1, "crawler": 2, "rpg": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k5ca0fc4b38", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k5ca0fc4b38", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ka2a51f3dae", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k691127882c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k291fe36ebf", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17271,7 +17271,7 @@
 {"id": "k8fb3e080ec", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8f0dced755", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke9c22fb4bb", "u": 1, "g": {"puzzle": 1, "strategy": 1, "tabletop": 1}, "cam": [], "pl": [], "st": []}
-{"id": "kb5852b29b0", "u": 1, "g": {"sim": 1, "strategy": 1, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb5852b29b0", "u": 1, "g": {"sim": 1, "strategy": 1, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kea3470d06f", "u": 1, "g": {"platformer": 2, "puzzle": 2, "action": 1, "horror": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k71ce8b2db7", "u": 1, "g": {"platformer": 2, "adventure": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "k51c110bb54", "u": 0, "g": {"platformer": 3, "adventure": 2}, "cam": [], "pl": [], "st": ["persistent"]}
@@ -17371,7 +17371,7 @@
 {"id": "kc73f95bf35", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8e557a7aa5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka89f6e2a89", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kf5d7733f2f", "u": 1, "g": {"mmo": 2, "casual": 1}, "cam": [], "pl": [], "st": ["persistent"]}
+{"id": "kf5d7733f2f", "u": 1, "g": {"mmo": 2, "casual": 1, "idle": 1}, "cam": [], "pl": [], "st": ["persistent"]}
 {"id": "kab8ec11708", "u": 0, "g": {"rpg": 2, "sports": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k788454aeef", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3c9070836b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17398,7 +17398,7 @@
 {"id": "kfd83db0364", "u": 0, "g": {"rpg": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k1752de30a4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kb22511c598", "u": 0, "g": {"shooter": 3, "sports": 2, "action": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "k83131a820d", "u": 1, "g": {"rpg": 2, "strategy": 2, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k83131a820d", "u": 1, "g": {"rpg": 2, "strategy": 2, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k5a59ce4c5b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k205e498af9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfef3980ba2", "u": 1, "g": {"tabletop": 2, "roguelike": 1}, "cam": [], "pl": [], "st": []}
@@ -17446,7 +17446,7 @@
 {"id": "k318c15983d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc5eb847318", "u": 0, "g": {"platformer": 2, "shooter": 2, "action": 1, "adventure": 1}, "cam": [], "pl": [], "st": ["levels"]}
 {"id": "ke928906c92", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kbfcb7bcb42", "u": 0, "g": {"strategy": 3, "sim": 2, "rpg": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kbfcb7bcb42", "u": 0, "g": {"strategy": 3, "sim": 2, "rpg": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k16314cecd2", "u": 1, "g": {"shooter": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4ec1148b49", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka3a24aba60", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17457,7 +17457,7 @@
 {"id": "kaca9dee3a0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k6541c087c4", "u": 1, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": []}
 {"id": "keb29e75f8d", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k4407422ebc", "u": 0, "g": {"mmo": 3, "casual": 2, "shooter": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
+{"id": "k4407422ebc", "u": 0, "g": {"mmo": 3, "casual": 2, "shooter": 1, "idle": 1}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
 {"id": "kad5080939e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0f61a2cd44", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdfab1a1216", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -17933,7 +17933,7 @@
 {"id": "ka1147cddc0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k29a76ae083", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfa6e425262", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kca36db01e4", "u": 1, "g": {"sim": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kca36db01e4", "u": 1, "g": {"sim": 2, "strategy": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb4b8a3f239", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k16a32d0367", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0526aae7d6", "u": 0, "g": {"adventure": 2, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -17978,13 +17978,13 @@
 {"id": "ka5dd99d7f0", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4d8a367233", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kaf03eb0933", "u": 0, "g": {"adventure": 3, "rpg": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k2c473078b1", "u": 0, "g": {"casual": 3, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k2c473078b1", "u": 0, "g": {"casual": 3, "sim": 1, "idle": 3}, "cam": [], "pl": [], "st": []}
 {"id": "k8710eee961", "u": 0, "g": {"sports": 2, "tabletop": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k59fb34309a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kec1cb42a44", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k21033f2fd6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3914bf9b4c", "u": 1, "g": {"shooter": 2, "action": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k8408a30ba2", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k8408a30ba2", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k7e02bbbfc5", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8bd70753a7", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka728d4d8ba", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -18344,7 +18344,7 @@
 {"id": "k1bc9d4dc1a", "u": 0, "g": {"platformer": 3, "action": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3c25b748c4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf41312f69e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka446eb59f6", "u": 1, "g": {"sim": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka446eb59f6", "u": 1, "g": {"sim": 2, "strategy": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kec088bc3cb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7fa8989a7f", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kc0ae66888c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -19018,7 +19018,7 @@
 {"id": "k0d2ef53861", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd2e21a6079", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfd0c5de75b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kc1f283a1c8", "u": 1, "g": {"sim": 2, "strategy": 1, "casual": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kc1f283a1c8", "u": 1, "g": {"sim": 2, "strategy": 1, "casual": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k3caa192011", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2ec34abfea", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf2c84b62ca", "u": 1, "g": {"puzzle": 1, "strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
@@ -19444,7 +19444,7 @@
 {"id": "k349eeea045", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8dd48ada1b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k72e44c414f", "u": 1, "g": {"action": 2, "sports": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k8339e9fc73", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
+{"id": "k8339e9fc73", "u": 1, "g": {"idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k06840e2f6d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kfc1bfc7203", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k8adb34bec6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -19851,8 +19851,8 @@
 {"id": "k34353b0882", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k131690b8cf", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka89d1a9d98", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k0e166be591", "u": 1, "g": {"casual": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k6277e67013", "u": 0, "g": {"sports": 2, "mmo": 2, "casual": 2, "strategy": 1}, "cam": [], "pl": ["pvp"], "st": []}
+{"id": "k0e166be591", "u": 1, "g": {"casual": 2, "sim": 2, "idle": 3}, "cam": [], "pl": [], "st": []}
+{"id": "k6277e67013", "u": 0, "g": {"sports": 2, "mmo": 2, "casual": 2, "strategy": 1, "idle": 2}, "cam": [], "pl": ["pvp"], "st": []}
 {"id": "k2509a07583", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k2757219565", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k99b32d471c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -19961,7 +19961,7 @@
 {"id": "k28726efb39", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4d94be4373", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k70e4ce142e", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k08d9c50fed", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k08d9c50fed", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kda62561e78", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kce8ac417af", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k45656dd386", "u": 0, "g": {"casual": 1}, "cam": [], "pl": ["massive"], "st": []}
@@ -20139,7 +20139,7 @@
 {"id": "kc6a9025a3e", "u": 0, "g": {"sim": 2, "adventure": 1, "action": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kfa16590441", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k3e1f93e1d5", "u": 0, "g": {"platformer": 3}, "cam": ["side2d"], "pl": [], "st": []}
-{"id": "kf67e5b39e0", "u": 1, "g": {"sim": 2, "strategy": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kf67e5b39e0", "u": 1, "g": {"sim": 2, "strategy": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "kc6d54e3d1c", "u": 1, "g": {"strategy": 2, "sim": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k7979e2a8e4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kea50e8d84d", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -20148,10 +20148,10 @@
 {"id": "k4808fb0ec6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0866eb1fb9", "u": 1, "g": {"action": 2, "shooter": 2, "sports": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k8ef625495c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "k1a8e5da12e", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k1a8e5da12e", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k37441ae286", "u": 1, "g": {"sports": 2, "action": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k776fb654fb", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "k5423b89180", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k776fb654fb", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k5423b89180", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kebda78b01a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k0b7a0101cc", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k5c8f511cb4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -20159,14 +20159,14 @@
 {"id": "kb0558f5698", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k91ff6b1c07", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ke3830d3837", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
-{"id": "k9e69b3f4b2", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k9e69b3f4b2", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k59bb975688", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k94545a49e6", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4d0da70bfd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k7379a476e5", "u": 0, "g": {"strategy": 3, "tabletop": 3, "sports": 2}, "cam": [], "pl": ["pvp"], "st": ["match"]}
-{"id": "kb8d8ca1222", "u": 1, "g": {"casual": 2, "mmo": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kb8d8ca1222", "u": 1, "g": {"casual": 2, "mmo": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kb1f306eec3", "u": 0, "g": {"mmo": 3}, "cam": [], "pl": ["massive"], "st": ["persistent"]}
-{"id": "k6b8ce2c58b", "u": 1, "g": {"casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k6b8ce2c58b", "u": 1, "g": {"casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kf804757183", "u": 0, "g": {"sim": 2, "adventure": 1, "horror": 1}, "cam": ["fp"], "pl": ["solo"], "st": []}
 {"id": "k44239470d0", "u": 1, "g": {"casual": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4ff125b774", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -20184,7 +20184,7 @@
 {"id": "k1c9be60655", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kedf7e16292", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k4fd75a9d1b", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ke1b1366266", "u": 1, "g": {"crawler": 2, "rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ke1b1366266", "u": 1, "g": {"crawler": 2, "rpg": 2, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k44de14aacd", "u": 1, "g": {"action": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k2609323348", "u": 0, "g": {"action": 2, "adventure": 1}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "k32b30f4081", "u": 1, "g": {"platformer": 2}, "cam": [], "pl": [], "st": ["levels"]}
@@ -20200,7 +20200,7 @@
 {"id": "k737d8783f6", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kcd8d28f503", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kdaa121bc9e", "u": 1, "g": {"rpg": 2, "mmo": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k31cb3ef1b9", "u": 1, "g": {"rpg": 2, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "k31cb3ef1b9", "u": 1, "g": {"rpg": 2, "sim": 1, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k9204beb9a1", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kea66543944", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k86424f195d", "u": 1, "g": {"action": 2, "crawler": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
@@ -20222,7 +20222,7 @@
 {"id": "k1c61a824a3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k623bb2d7eb", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k571bf33acd", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ka1a7a004e4", "u": 1, "g": {"strategy": 1, "sim": 1}, "cam": [], "pl": [], "st": []}
+{"id": "ka1a7a004e4", "u": 1, "g": {"strategy": 1, "sim": 1, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "ked6489de15", "u": 0, "g": {"sim": 2, "adventure": 2, "action": 1}, "cam": ["fp"], "pl": [], "st": []}
 {"id": "kafc7a0cef4", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k190249d0d9", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
@@ -20315,7 +20315,7 @@
 {"id": "kf980f5fb9a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kd4582180f0", "u": 0, "g": {"rpg": 3, "crawler": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k4e467ae301", "u": 1, "g": {"strategy": 2}, "cam": [], "pl": [], "st": []}
-{"id": "k26a6efe796", "u": 1, "g": {"casual": 2, "roguelike": 2}, "cam": [], "pl": [], "st": []}
+{"id": "k26a6efe796", "u": 1, "g": {"casual": 2, "roguelike": 2, "idle": 2}, "cam": [], "pl": [], "st": []}
 {"id": "k847dac915a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "kf858bc2e19", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k71c417e454", "u": 1, "g": {"adventure": 2, "crawler": 1}, "cam": [], "pl": [], "st": []}
@@ -20496,7 +20496,7 @@
 {"id": "k083f1b6dd2", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "ka6da0a196d", "u": 1, "g": {"shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k4befc49896", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "ke5bc3c2cd1", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
+{"id": "ke5bc3c2cd1", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k75d86024bb", "u": 1, "g": {"roguelike": 2, "rpg": 1, "strategy": 1}, "cam": [], "pl": [], "st": []}
 {"id": "kbdbc7da300", "u": 0, "g": {"sports": 2, "strategy": 2, "mmo": 1}, "cam": [], "pl": ["pvp"], "st": ["persistent"]}
 {"id": "k87c19843d5", "u": 1, "g": {"action": 2, "strategy": 1}, "cam": [], "pl": [], "st": []}
@@ -20604,8 +20604,8 @@
 {"id": "kd8d322ad76", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k527a9cf023", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "k229eadb9f3", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
-{"id": "kefc6c28df1", "u": 0, "g": {"casual": 3}, "cam": [], "pl": [], "st": []}
-{"id": "kbcce73fa33", "u": 1, "g": {"strategy": 2, "casual": 2}, "cam": [], "pl": [], "st": []}
+{"id": "kefc6c28df1", "u": 0, "g": {"casual": 3, "idle": 1}, "cam": [], "pl": [], "st": []}
+{"id": "kbcce73fa33", "u": 1, "g": {"strategy": 2, "casual": 2, "idle": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k1da8b73a23", "u": 1, "g": {"action": 1, "sports": 2, "shooter": 1}, "cam": [], "pl": [], "st": []}
 {"id": "k791418922c", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}
 {"id": "keb3415cd1a", "u": 1, "g": {}, "cam": [], "pl": [], "st": []}

@@ -1,0 +1,8 @@
+{
+  "name": "Idle / incremental game with growing income, upgrades and prestige resets",
+  "genres": {"idle": 3, "casual": 1, "sim": 1},
+  "cam": ["topdown", "side2d", "text"],
+  "pl": ["solo"],
+  "st": ["persistent", "run"],
+  "notes": "run covers a prestige cycle, persistent the bonuses that survive it."
+}
