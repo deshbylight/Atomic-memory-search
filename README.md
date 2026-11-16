@@ -104,6 +104,24 @@ the lexicon maps each Russian word to several English synonyms; an English query
 `--game` raises the share of the top 10 atoms a model judges useful for that game from 0.45 to 0.48 on average over
 the six profiles and eight everyday questions: it reorders the results, it does not replace a precise query.
 
+## Detective atom set
+
+`kb/detective/` holds 30,224 atoms in 1,517 topics, written from detective, sensation and occult
+investigator fiction (1841-1930, public domain) and from how such plots are built: clues and their
+placement, deduction, testimony and alibis, misdirection, concealed identities, the reveal scene, telling a
+human cause from a supernatural one. They are design reference for investigation and mystery mechanics;
+most sit in the `narrative` domain. Same format and files as `kb/all/` (atoms, fit, Russian lexicon,
+packs); group ids start with `det-g`. Search it on its own:
+
+```
+python find.py --set detective "testimony that contradicts a clock"
+python find.py --set detective "улика, которую игрок видит раньше, чем понимает"
+```
+
+`--set` takes any folder under `kb/` that has an `atoms.jsonl` (default `all`); it applies to atom search,
+not to `--cards` or `--worlds`. Sets are searched one at a time, so the large detective set never crowds
+general design advice out of a result.
+
 ## World records
 
 `worlds/` holds 13 records of fictional worlds, each from one public-domain book read in whole: layers,

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Search the game-development knowledge atoms (kb/*/atoms.jsonl): BM25, Python standard library only.
+"""Search the game-development knowledge atoms (kb/<set>/atoms.jsonl): BM25, Python standard library only.
 
 Usage:
     python find.py "what happens to an economy without sinks"           (8-40 atoms, sized by relevance)
@@ -9,10 +9,14 @@ Usage:
     python find.py --game roguelike "pacing between fights"             (ranked for one kind of game)
     python find.py --cards "retained changes between visits"            (concept cards in cards/)
     python find.py --worlds "a city that hides from what it fears"      (world records in worlds/)
+    python find.py --set detective "testimony that contradicts a clock"  (another atom set: kb/detective/)
+
+--set picks one atom set, kb/<set>/ (default all). Sets are searched one at a time, so a large specialised
+set never crowds the general one out of a result.
 
 A short atom shares few words with a question, so AtomIndex also scores it by its topic and, strongest, by
 its best group (all atoms sharing a group id). A Russian query is mapped to English index
-terms through kb/*/lexicon_ru.json; results stay English.
+terms through kb/<set>/lexicon_ru.json; results stay English.
 
 --game <name|path> applies a game profile (kb/profiles/<name>.json) to the atom ranking: each atom's fit record
 (kb/<set>/fit.jsonl) says which genres, cameras, player counts and structures it is about, and atoms made for
@@ -31,6 +35,7 @@ SEC_TAKE = 12  # atoms of the best-matching group placed first in the result
 CUT_REL, CUT_MIN, CUT_MAX = 0.75, 8, 40  # default result: the best group's head, then every atom scoring >=
 # CUT_REL x the best score, CUT_MIN-CUT_MAX atoms, so a narrow question gets a short answer and a broad one a long one
 KB = Path(__file__).resolve().parent / "kb"
+ATOM_SET = "all"  # kb/<ATOM_SET>/ is searched; main() sets it from --set
 CARDS = Path(__file__).resolve().parent / "cards"
 WORLDS = Path(__file__).resolve().parent / "worlds"
 PAGE_TOP = 8  # default number of card or world-record hits
@@ -58,7 +63,7 @@ def tok(text):
 
 
 # Russian queries: each Cyrillic word is stemmed and replaced by the English index terms the lexicon maps it to
-# (kb/*/lexicon_ru.json). Documents stay English; only the query changes.
+# (kb/<set>/lexicon_ru.json). Documents stay English; only the query changes.
 RU_STOP = set("и в во на не ни с со к ко по о об от до из за для при без над под про у а но или ли же бы то это этот эта эти "
               "как что чтобы где когда почему зачем какой какая какие каких который которая которые чем кто чей "
               "мне меня мой моя мои я ты вы мы он она они его ее их свой своя свои есть быть был была были "
@@ -78,9 +83,9 @@ def ru_stem(word):
 
 def ru_lexicon():
     if "lex" not in _RU:
-        files = sorted(KB.glob("*/lexicon_ru.json"))
+        files = [f for f in (KB / ATOM_SET / "lexicon_ru.json",) if f.exists()]
         if not files:
-            raise FileNotFoundError(f"Russian query, but no lexicon in {KB}/*/lexicon_ru.json")
+            raise FileNotFoundError(f"Russian query, but no lexicon {KB / ATOM_SET / 'lexicon_ru.json'}")
         lex = {}
         for f in files:
             for s, terms in json.loads(f.read_text(encoding="utf-8")).items():
@@ -247,7 +252,8 @@ def load_profile(game):
 
 
 def load_fit():
-    return {o["id"]: o for f in sorted(KB.glob("*/fit.jsonl")) for o in map(json.loads, f.open(encoding="utf-8"))}
+    f = KB / ATOM_SET / "fit.jsonl"
+    return {o["id"]: o for o in map(json.loads, f.open(encoding="utf-8"))} if f.exists() else {}
 
 
 def fit_multiplier(fit, prof):
@@ -275,7 +281,7 @@ def fit_tag(fit, prof=None):
 
 def search_atoms(query, domain, top=None, prof=None):
     """[(score, atom, fit record or None)]. With a game profile, every atom needs a fit record."""
-    atoms = [json.loads(l) for f in sorted(KB.glob("*/atoms.jsonl")) for l in f.open(encoding="utf-8")]
+    atoms = [json.loads(l) for l in (KB / ATOM_SET / "atoms.jsonl").open(encoding="utf-8")]
     atoms = [a for a in atoms if not domain or a["domain"] == domain]
     if not atoms:
         return []
@@ -284,7 +290,7 @@ def search_atoms(query, domain, top=None, prof=None):
     if prof:
         missing = sum(a["id"] not in fits for a in atoms)
         if missing:
-            sys.exit(f"{missing} atoms have no fit record (kb/<set>/fit.jsonl)")
+            sys.exit(f"{missing} atoms have no fit record (kb/{ATOM_SET}/fit.jsonl)")
         mult = [fit_multiplier(fits[a["id"]], prof) for a in atoms]
     idx = AtomIndex(atoms)
     return [(s, atoms[i], fits.get(atoms[i]["id"])) for s, i in idx.rank(query, top, mult=mult)]
@@ -349,14 +355,18 @@ def main():
     ap.add_argument("--top", type=int, help="fixed number of atoms (default: 8-40, sized by relevance)")
     ap.add_argument("--domain", help="one domain, e.g. balance-economy")
     ap.add_argument("--game", help="game profile name in kb/profiles/ (e.g. roguelike) or a profile .json path")
+    sets = sorted(p.parent.name for p in KB.glob("*/atoms.jsonl"))
+    ap.add_argument("--set", default="all", choices=sets, help="atom set kb/<set>/ to search (default all)")
     where = ap.add_mutually_exclusive_group()
     where.add_argument("--cards", action="store_true", help="search the concept cards in cards/ instead of the atoms")
     where.add_argument("--worlds", action="store_true", help="search the world records in worlds/ instead of the atoms")
     a = ap.parse_args()
     if a.top is not None and a.top < 1:
         ap.error("--top must be at least 1")
-    if (a.cards or a.worlds) and (a.domain or a.game):
-        ap.error("--domain and --game apply to atoms, not to --cards or --worlds")
+    if (a.cards or a.worlds) and (a.domain or a.game or a.set != "all"):
+        ap.error("--domain, --game and --set apply to atoms, not to --cards or --worlds")
+    global ATOM_SET
+    ATOM_SET = a.set
     sys.stdout.reconfigure(encoding="utf-8"); sys.stderr.reconfigure(encoding="utf-8")  # stderr names Russian words
     a.query = repair_mojibake(a.query)
     prof = load_profile(a.game) if a.game else None
@@ -374,7 +384,7 @@ def main():
         return
     hits = search_atoms(a.query, a.domain, a.top, prof)
     if not hits:
-        print(f"no matching atoms (domain={a.domain or 'any'}; atom files: kb/*/atoms.jsonl)", file=sys.stderr)
+        print(f"no matching atoms (domain={a.domain or 'any'}; atom file: kb/{ATOM_SET}/atoms.jsonl)", file=sys.stderr)
     for s, at, fit in hits:
         agree = f" (x{at['support']})" if at["support"] > 1 else ""
         print(f"{s:5.2f}  {at['domain']}/{at['topic']}{agree}  {fit_tag(fit, prof)}{atom_line(at)}")

@@ -1,0 +1,158 @@
+# ux-ui
+
+## journal and recap
+- [mechanism] A deduction journal can reopen a dismissed candidate automatically when a new discovery removes one of its opposing reasons. When: Designing a player-facing case log that tracks candidate explanations. Why: Removing an opposing reason restores a candidate's plausibility, so it should return to view.
+- [rule] After a puzzle is solved, offer a journal recap listing each deduction beside its supporting clue so players can audit each step. When: a puzzle or mystery is resolved. Why: players can check their conclusions against the evidence they saw.
+- [rule] Let players log examined details and dialogue facts in a time-stamped notebook or journal so earlier observations can be compared later. When: Designing a clue-gathering interface. Why: Recorded observations are easily lost, and comparison across findings drives deduction.
+- [rule] Let a journal log every odd or unexplained detail, so players can test whether the accumulated oddities form a pattern and connect them to later findings. Why: players can connect earlier oddities to later findings.
+- [rule] Record traces and each object's original position and condition before the scene is disturbed or handled, since rain, visitors or handling erase the first state. Why: Once moved, the original evidence cannot be recovered.
+- [rule] Show a numbered case journal of facts with the player's links and contradictions, revised as new evidence arrives, so the reasoning chain stays visible. When: Players must combine clues.
+- [rule] Track which clues the player has found and use the final recap to show how those clues connect, so the reveal rewards the player's work. When: Designing an end-of-case cutscene or NPC monologue. Why: A recap grounded in found clues confirms the player's deductions.
+- [rule] Record silent periods as results. A window with no passage is data, not a failed watch. Why: An empty window can rule out a movement.
+- [rule] Open a puzzle with a sparse log describing a seemingly impossible state, such as a sealed room holding a body, and place the clue needed for the answer within it. When: when designing a puzzle that begins with a mystery.
+- [rule] Record a surprising test result in a durable form before any step that could interrupt or destroy the test subject. When: A test has a single unexpected outcome that may be lost. Why: Without a record, the result cannot be checked or reasoned from after the subject is lost.
+- [rule] Keep a written record of every instruction, change, and concession, so the test can be audited afterwards. When: A test or reproduction is being run. Why: Written records let others check whether the conditions were met.
+- [rule] Record searches carefully, since a search done while the occupant was absent can be challenged.
+- [rule] A journal can hold several NPC diaries, with prompts that send the player to compare the same night across them.
+- [rule] Give the player a journal of suspicions that other characters cannot read, so the player tracks evidence the NPCs do not share. When: the player is solving a mystery alongside NPCs. Why: private tracking supports deduction.
+- [rule] A journal should highlight repeated names, places and phrases when a new entry arrives, prompting the player to connect related clues.
+- [rule] Show an explicit empty slot in the player's case notes for a known-missing link, so the player knows the gap exists and can search for it. When: when a case requires a fact the player has not found. Why: A visible gap directs search and prevents players from assuming the case is complete.
+- [rule] Provide a case-review screen at the end of a generated mystery that scores each player theory against the true chain of events, listing matched and missed facts. Why: the player sees which parts of their reasoning held.
+- [rule] Let players mark log entries for review and return to flagged events later, like pencil marks on a working record. When: a case log is in use. Why: suspicious entries stay available for reconsideration.
+- [rule] Provide a journal that logs each NPC tale so players can compare stories against facts they have already found. When: Players receive multiple narrated accounts that may contradict or confirm discovered facts. Why: A record lets players cross-check claims, turning storytelling into deduction.
+- [rule] Keep a visible list of known occupants in a journal so anomalies stand out against the expected set. When: Players must notice unexpected presences. Why: An anomaly is only recognizable against a clear baseline of what is normal.
+- [heuristic] Tag each record or claim with its creator, source and reliability, and let rumours change as they pass between NPCs, so players can spot misleading sources. When: Designing a player-facing record of clues. (x2)
+- [heuristic] After a puzzle is solved, replay events in discovery order, showing how each clue supports the solution and marking decoys and missed clues. When: after a puzzle or mystery is solved. Why: Replay shows how the solution followed from visible clues.
+- [heuristic] Give players a recap that lists collected facts and asks them to mark the ones that matter, so the reveal rests on evidence they already saw. When: the solution depends on several earlier facts.
+- [heuristic] A journal or recap screen that lists relevant observations rewards player attention and helps them connect clues. When: Players gather many observations over a mystery. Why: A recap makes relevant clues visible without relying on memory.
+- [heuristic] Note what is missing as well as what is present, because an absence can be a clue in an investigation. When: when the space will be used for investigation.
+- [heuristic] A record book in a level can hold dates that must match a key item's engraved date, so a mismatch becomes a puzzle clue. When: when designing puzzles around documents. Why: Players can check the mismatch themselves.
+- [heuristic] Record each trace's position relative to the path edge so its placement can be reasoned about later.
+- [heuristic] Place verifiable records, such as registers or case files, in a distant location so that a trip to verify them is rewarded. When: when designing investigation content with travel. Why: Physical travel to obtain records gives the player a meaningful verification step.
+- [heuristic] Summarising confirmed links at the end gives the group a shared model of the situation.
+- [heuristic] Record failed operations and their causes so the lessons remain available to the wider team. When: A planned operation does not achieve its goal. Why: Unrecorded failures leave no reference for avoiding the same mistake later.
+- [heuristic] Count a recurring category, such as ministers, across two periods to make a structural comparison that a single anecdote cannot provide. When: When comparing turnover or patterns between periods of a community's history. Why: Counts across periods reveal patterns that individual cases obscure.
+- [heuristic] A case notebook that indexes every name and alias the player meets lets a name in one source connect to a name in dialogue.
+- [heuristic] A reading action can list each visible cue beside the conclusion it supports, so players see the chain of reasoning.
+- [heuristic] A recap screen can order the clues the player has collected into a timeline, showing how the pieces connect before the final accusation. When: A mystery needs the player to review evidence before a final decision. Why: A visible ordering helps the player verify the chain before committing.
+- [heuristic] A player journal can tag each entry with a confidence level, marking entries made in darkness or under stress as uncertain. When: Designing a player-facing evidence log. Why: Confidence tags let the player weigh observations by how they were gathered.
+- [heuristic] A journal that records each clue lets players reconstruct a solution on their own, so it should hold the details that reasoning needs. When: Designing investigation journals. Why: Players reason from recorded evidence.
+- [heuristic] Logging each attempt in a journal lets the player compare outcomes across tries. When: Designing a puzzle that requires comparing repeated attempts. Why: A record of prior results makes patterns across trials visible.
+- [heuristic] A journal or rumour mechanic can spread public blame that later proves false. When: Designing in-world information systems.
+- [procedure] 1) Define the injury or service the missing person would need. 2) List the institutions likely to have provided it within a set radius. 3) Visit or check each. 4) Match each record against the timeline. 5) Treat each negative as information. When: A missing person must have sought care or a service at a known location. Why: Systematic elimination narrows the search to the place that fits.
+- [procedure] 1) Have each investigator report. 2) State the central working theory. 3) List outstanding tasks. 4) Review each suspect separately, listing evidence against and in favour. 5) List conditions still unproven. When: when several suspects remain and the evidence points in different directions. Why: a fixed format stops one clue from growing into a theory.
+- [procedure] 1) Locate the order to hold the trial. 2) Locate the indictment. 3) Locate the plea. 4) Locate the finding. 5) Locate any later reversal by a higher body. 6) Order the entries by date. When: When reconstructing a trial that appears across several records. Why: Each stage leaves its own record, and their order shows how the case moved.
+- [procedure] 1) Let the player record theories in a journal. 2) Let new clues prompt revisiting each recorded theory. 3) Let the player mark theories as confirmed or ruled out. When: when designing a journal for deduction gameplay. Why: the record supports repeated cycles of speculation and testing.
+- [pitfall] A case review can turn into a tally where the most-cited points win regardless of quality; weigh each point by its strength. When: when summarising evidence for several suspects.
+- [pitfall] Proofreading can miss a writer's own name errors, so mistakes in identifying people can survive into print.
+
+## inventory
+- [definition] On a magnification scale, 1x shows original size, a multiplier above 1 enlarges, and a fraction below 1 reduces. When: Showing a zoomed view of a small object.
+- [mechanism] A rival who finds a hidden cache first can take its contents and replant the marker, so the original message is used against its finder. When: when a cache can be discovered by others.
+- [mechanism] A container puzzle with identical containers can let the player reason from stated odds, with hints that progressively narrow the candidate set. When: Designing a container-finding puzzle. Why: Stated odds and hints give the player a rational search order.
+- [mechanism] Containers in a game can show locked, forced, or empty states as clues, so the player infers which NPC had access to a key or a reason to remove items. Why: Container states encode who had access and what was taken, letting the player deduce actors.
+- [rule] Show expected and actual inventory contents side by side, or keep inventory visible and consistent, so players can detect swaps and work out what was taken. When: When players are expected to deduce item changes. Why: Deduction from mismatch requires that the player can see both the expected and actual state.
+- [rule] Show a zoomed clue view with a visible magnification scale and a reference, so players can compare fine details accurately. When: Puzzles depend on reading small marks such as runes or prints. Why: Without a scale, players cannot judge size or match a detail to a reference.
+- [rule] Carry a trace found in an open area into later scenes so other characters can see it and react to it as evidence.
+- [rule] An item an NPC carries stays with them, so a message they took can be found on their body or at their destination.
+- [rule] Store a building's or plot's history as a chain of owners, so players can trace who held it at any given time.
+- [rule] Make a parcel or item moved between rooms a traceable clue, and check its location against the carrying NPC's routine. When: designing item-based clues. Why: a routine-based location lets players reconstruct the path.
+- [rule] Hide clues in mundane containers that fit a character's habits, so the player finds them by searching.
+- [rule] Place depletable resources such as fuel or rations in containers a player must inspect, so that a missing amount can serve as a clue. When: When designing a resource clue for a level. Why: A depleted container must be checked by the player to reveal the discrepancy.
+- [rule] Keep a fragment inventory for breakable objects with a known total; a surplus or gap signals the object was broken elsewhere and moved.
+- [rule] Place a cache at a specific world location named by an NPC's confession, and let the player verify it by finding the items. When: Designing a hidden item cache tied to an NPC's story. Why: A concrete, checkable location turns dialogue into a followable lead.
+- [rule] Let the player clear suspicion by presenting physical items at the scene, such as tools, ledgers or receipts, that explain the outcome. When: when designing accusation resolution in a mystery. Why: physical items let the player prove an innocent explanation.
+- [rule] After a trap or event, show the player a checklist of changed inventory, with one unexplained missing item as the clue. When: a game event changes the player's inventory. Why: a visible list of changes gives the player a concrete clue to pursue.
+- [rule] Let the player's journal record expected inventory so that a discrepancy becomes a prompt for investigation. When: the player tracks items in a space. Why: A logged expectation turns a missing item into a visible question.
+- [rule] Let players compare a found item against an NPC's inventory screen as a deduction step. When: a found item may belong to an NPC. Why: A direct comparison turns discovery into a reasoning step.
+- [rule] Show the original quote beside the recorded summary when a record has altered a statement, so players can compare what was said with what was written.
+- [rule] An item-examination interaction can use a powder tool to reveal latent marks that then appear on the item, and a comparison screen can let the player match them to candidates. When: Designing evidence examination in a game. Why: Visible reveal and comparison make forensic clues accessible to players.
+- [heuristic] A supply cache found in an unlit cell signals that an unseen actor is active nearby.
+- [heuristic] Count the sheets in each bundle; the bundle one sheet short of its expected total is the likely source of a removed sheet. When: The source stack is complete enough to be counted. Why: A missing sheet from a known bundle links the forged or removed sheet to that bundle.
+- [heuristic] An item people do not normally carry, found with a suspect, is strong evidence of intent.
+- [heuristic] Leave a faction's relic or tool at a scene as a calling card so players connect the scene to that group. When: Designing scenes that point to a group. Why: A recognisable token links evidence to identity.
+- [heuristic] Test where a route ends by checking its carriers for signs of their environment, such as whether they are wet or dry.
+- [heuristic] A bulky device that needs a container narrows the list of people who could have carried it away. When: a missing object is large or awkward to carry. Why: carrying it requires a container and access to it.
+- [heuristic] Question a carrier's staff and records, since they hold handover times and signatures.
+- [heuristic] A document's intended recipient can be deduced from its container, forming a puzzle chain.
+- [heuristic] Explain an abstract standard with everyday comparisons so non-specialists can apply it to the facts. When: Presenting a technical or legal standard to a lay audience. Why: Familiar comparisons make abstract thresholds usable.
+- [heuristic] Keep evidence items persistent so players can reference them during confrontation. When: Designing a mystery game's evidence system.
+- [procedure] 1) List every carried item. 2) Record identifying details such as maker, serial number and any addresses. 3) Note each item's location on the character. When: when a character's possessions may reveal identity or movement. Why: Identifying details link items to people and places.
+- [procedure] 1) Examine the trace in both transmitted and reflected light. 2) Calibrate the magnified view against a reference scale. 3) Hold the view perfectly still during capture. 4) Take a backup capture in case the first fails. When: A fixed image must be compared at high magnification. Why: Light, scale and stillness each affect whether the comparison is reliable.
+- [metric] A concealed mechanism such as a light wire can move only light objects, so it fails with heavy furniture. When: Designing a hidden mechanism that moves objects. Why: Load beyond the mechanism's strength defeats it.
+- [pitfall] A traceable item may have been taken innocently and in bulk, so its source can implicate a whole group rather than one person.
+- [pitfall] Borrowed items can point to their owner rather than their user, so tracing a borrowed object may implicate the wrong person. When: An item used at a scene belongs to someone else. Why: The item's source and its user are different people.
+- [pitfall] Treating a brand as an identity is an error, because many people can share the same product. When: a product is used to name a person. Why: Common products do not single out one owner.
+- [pitfall] Owners who held land only briefly do not show long-term ties, so their presence in a later list is weak evidence of connection.
+
+## case board design
+- [rule] A deduction board lists competing theories side by side, each with clues it explains, contradicts or leaves unexplained, flags the best-supported theory, and records motive and opportunity. When: Players must choose among competing theories. Why: Explicit support and gaps make the choice reasoned; parallel theories let the player compare and track open questions. (x2)
+- [rule] A case board marks each entry as observed or deduced, and each theory step as backed by evidence or an assumption, so players see which conclusions rest on evidence. When: When designing a player notebook or theory tool. Why: Separating evidence from guesses supports better reasoning.
+- [rule] Let a deduction board chain clues, such as physical trait, skill and location, into a provisional hypothesis confirmed only by a third clue or witness. When: Players combine clues to form theories.
+- [rule] Show the player's earned deductions as a checklist in confrontation dialogue, so they can see which conclusions their evidence supports. Why: Makes progress in reasoning visible and rewards correct chains of inference.
+- [rule] On a theory board, give each competing explanation a single checkable contradiction the player can test.
+- [rule] Provide a deduction board where players compare evidence such as handwriting and labels, gating the solution on the evidence the player has collected. When: players must confirm an identity from documents.
+- [rule] When an NPC gives an alibi or explanation, show the claims it depends on and let the player mark each as confirmed, contradicted or unverifiable.
+- [rule] Give the player a notebook recording each suspect's supporting facts, so the final reconciliation is a puzzle rather than a guess. Why: Recorded facts let the player check claims instead of relying on memory.
+- [heuristic] A theory board can require each rival explanation to survive every clue before the player accepts it. When: Designing a deduction interface for a mystery. Why: Requiring full consistency prevents premature acceptance of a partial explanation.
+- [heuristic] Let players cross-reference lists, rumours and staff statements in a case-file screen to eliminate suspects. When: Designing an investigation interface.
+- [heuristic] Keep suspect boards cheap to revise so players do not lock onto the first accusation. When: Designing a suspect-tracking interface.
+- [heuristic] A final-act screen can let players assemble evidence into a case, choose presentation order, and see each link checked. When: Designing a mystery resolution interface.
+- [procedure] 1) Record each collected fact in the case notes. 2) Mark whether it bears on the central case. 3) Let the player separate the marked facts to learn relevance. When: when designing a case-notes or evidence-tracking interface. Why: sorting facts by relevance trains the player to discriminate evidence.
+
+## npc reaction cues
+- [behavior] NPCs that recognize a returning player can change their dialogue or alert state, so repeated presence has consequences. When: A player repeatedly visits the same area or NPC. Why: Memory of the player's earlier presence changes how NPCs react.
+- [rule] Show NPC reaction tells, such as pauses and tone changes, as readable signals so players learn to interpret them; an unperceivable tell cannot be used to judge a bluff.
+- [rule] Add visible tells, such as a glance toward an accomplice or a sly sidelong reaction hinting at a secret unstated aloud; let players confirm them before accusing. When: Designing NPC behavior that hints at a secret or NPC reactions during dialogue. Why: Confirmation lets the player act on evidence rather than guesswork; non-verbal hints reward observant players.
+- [rule] Show NPC reactions on a visible meter so the player can track escalation from calm through agitation to collapse. When: when NPCs react to player provocation. Why: makes reaction stages readable.
+- [rule] Give NPCs visible cues, such as flushing or fidgeting, that change with suspicion so players can read them as clues. When: Designing NPC presentation for a deduction or social game. Why: Visible state changes give players readable evidence.
+- [rule] Use a brief visual cue or dialogue line to show the player that a character has been recognised.
+- [rule] Signal a death or loss through an NPC's reaction rather than a text box, before the details appear. When: the player should sense loss before learning specifics. Why: A reaction draws the player in more than a caption.
+- [rule] Show NPC credibility as a meter that changes with emotional state, so players can weigh the NPC's claims. When: An NPC makes claims the player must evaluate. Why: A visible credibility state makes trust a readable choice.
+- [rule] Show a witness's visible reluctance or apology as a readable cue, so the player can judge how far to trust the account. When: Presenting a reluctant or self-effacing NPC. Why: Visible demeanor helps players calibrate trust without a meta-label.
+- [rule] Give visible feedback when a protective barrier is breached so the player can tell self-caused breaches from enemy action. When: Designing a barrier the player can breach accidentally. Why: Clear feedback lets players attribute causes correctly.
+- [heuristic] When a scene has no audio, display facial and gesture cues so players can infer the characters' intent. When: a scene is observed without sound.
+- [heuristic] Give each NPC a visible trait that survives disguise, such as a scar, limp or ring, so the player can spot them in a costumed crowd. When: when designing NPCs in masked or costumed events. Why: Persistent traits let the player identify characters despite costumes.
+- [heuristic] Offer the player a choice of questions where conspicuous-feature answers seem sufficient, while detail questions expose the witness's error. When: Designing a witness-testing interaction. Why: Players who stop at obvious features miss the errors that detailed questions would reveal.
+
+## timeline views
+- [rule] Give players a timeline board filled from testimonies that logs NPC movements and flags entries conflicting with alibis, checked against locked doors, timestamps and items left behind. When: When players track multiple witness statements or must test several accounts of the same hours. Why: Visual placement makes contradictions and gaps easy to spot. (x2)
+- [rule] Provide a replay or timeline view so players can compare each character's movements with the events they witnessed. When: When players must check character accounts against recorded actions. Why: Side-by-side comparison makes mismatches between stated and actual movement visible.
+- [rule] A case board should store time-stamped events and let the player sort witnesses and vehicles by time window.
+- [rule] Show a timeline that records when each event became known, so players can see where information lagged behind events. When: information arrives at different times. Why: the gap between event and knowledge changes what players infer.
+- [rule] Present a case file or journal in chronological order, separating dates, confirmed facts and open questions clearly. When: A game presents accumulated investigation facts to the player. Why: Clear separation shows what is known and what remains open.
+- [rule] Give players a timeline board listing each visit and its duration, with the window where an object could change hands highlighted. When: When designing investigation interfaces for a game. Why: A visual board lets players see overlaps and gaps without tracking them in their heads.
+- [heuristic] A game case log can store each event as a numbered entry so the player can rebuild the timeline and spot gaps. When: the player must reconstruct the order of events across locations. Why: an ordered record makes missing steps visible.
+- [heuristic] Store the timeline in the quest log so the player can check when an NPC was present and when events happened. When: A mystery depends on the order of events. Why: Lets the player verify claims.
+
+## timers and time logs
+- [mechanism] A game timer shown as an in-world date or hour that players can check repeatedly keeps the clock visible rather than hidden. Why: Repeated checking keeps the deadline present in the player's mind.
+- [rule] Provide game-clock or instrument timestamps and log timed events in order, so players can arrange them on a timeline and spot gaps. When: the player must reconstruct the order of past events. Why: timestamps let players order clues without guessing; ordering exposes missing intervals.
+- [rule] Make deadlines visible: give a timer or sound cue at each countdown stage, and show a fixed deadline's remaining window on the player's map. When: a timed sequence or mission depending on a timed event is active. Why: visible stages and remaining windows keep the deadline readable and let players plan around it.
+- [rule] Log witness statements with timestamps so the player can notice when accounts conflict. When: the player collects several statements. Why: Timestamps make inconsistencies visible.
+- [rule] Display clocks as fair timers, and let a disguise swap be possible only during a window the player can see closing. When: A timed disguise mechanic is used. Why: The player can judge the remaining time and act on it.
+- [rule] Mark gaps in in-game logs with visible placeholders so attentive players can spot where information was withheld.
+- [heuristic] Listing deadlines in a quest log, together with their consequences, helps players plan. When: Presenting timed objectives to the player. Why: Visible deadlines and penalties let players prioritize.
+- [pitfall] A timing condition that is not stated clearly makes players fail for reasons unrelated to the puzzle itself.
+
+## clue and evidence visibility
+- [mechanism] Poor lighting or viewing one clue at a time narrows how much a viewer can read from an image.
+- [mechanism] Presenting evidence to a group of NPCs with the match shown on screen lets the player see the fit that the NPCs judge. When: Designing an evidence-presentation scene. Why: Shared visual confirmation makes the match legible to both player and NPCs.
+- [rule] Keep a witness log that separates first-hand clues from rumors, and accept only first-hand clues as proof.
+- [rule] Design environmental hints as ambiguous shapes whose meaning becomes clear only after the player obtains the matching key item. When: Designing environmental puzzles or hints. Why: Gating the reading behind an item ties the clue to progression.
+- [rule] Record a player's knowledge of an alibi gap as an open question, giving a clear next objective. When: A player has identified an unexplained time window. Why: An explicit open question tells the player what to investigate next.
+- [heuristic] Let the player magnify or enlarge a clue so the comparison is visible and fair. When: When a clue depends on fine detail to be matched. Why: Visible detail lets the player make the comparison themselves.
+- [heuristic] Let players compare items side by side so matching and merely similar features can be told apart. When: When designing a comparison interface for clues. Why: Direct comparison separates true matches from superficial resemblance.
+
+## status effect cues
+- [mechanism] A reflective surface can reveal a hidden watcher behind the player, showing the player was observed without the watcher being seen directly. When: when designing a reveal of an unseen observer. Why: The reflection gives the player a visual clue to a presence they could not otherwise perceive.
+- [mechanism] Give different feedback for solid and hollow surfaces when the player probes them, so probing becomes a readable skill. When: Players search walls or floors for hidden features. Why: Distinct responses let the player infer what lies beneath.
+- [rule] Under a perception-altering status effect, show a clear warning and mark observations unreliable, since visual cues may mislead while the logged state stays accurate and checkable. When: The player's character has an active status effect that alters display. Why: Altered perception can mislead the player, so the authoritative state should be available to verify.
+- [rule] Tag symptom logs by cause so players can see which effects are resolved and which remain. When: when presenting a list of effects in a game. Why: Grouping by cause makes remaining mysteries visible.
+- [heuristic] A covert signal, such as a blank card or a set gesture, can let the player send a result to an NPC without naming them. When: Designing a secret communication mechanic. Why: Signals convey results without exposing the player or the target.
+
+## flagging and scored checks
+- [rule] Flag biased, distressed, or impressionistic claims in item descriptions or dialogue so players know which details to verify before acting on them. When: Writing NPC dialogue or item descriptions that carry uncertain, emotional, or biased claims. Why: Explicit marking tells the player which claims require checking.
+- [heuristic] Use confirmation prompts to lock in clue facts before a new dialogue branch opens, so the player's confirmed knowledge is fixed before progressing. When: Designing branching investigation dialogue. Why: Checkpoints ensure the player has accepted key facts before the story moves on.
+- [heuristic] Score a player's description of a suspect against specific generated attributes rather than a vague impression, so recall is rewarded for accuracy. When: Building a describe-the-suspect mechanic. Why: Specific scoring rewards precise observation over general summary.
+- [pitfall] Observers can misjudge a scene where an impossible result appears, reacting in ways that mislead about what happened. When: An unexpected or impossible result is observed at a scene. Why: Surprise can distort interpretation and response.
