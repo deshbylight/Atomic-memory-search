@@ -1,0 +1,36 @@
+# ux-ui
+
+## ui layout and feedback
+- [rule] The return screen should show elapsed time, animate the earned amount, and point immediately to what the windfall can now buy. When: when designing the welcome-back screen for an idle game. Why: A receipt wastes the anticipation built during absence, while an animated payout with a clear next step drives re-engagement.
+- [rule] Sort dungeons by required level, show clear counts when any exist, and disable the enter button with the refusal reason as a tooltip. When: Designing the dungeon selection panel. Why: Level ordering shows progression and tooltips explain why entry is blocked.
+- [rule] Show locked achievements grayed out and hidden achievements as question marks until unlocked in the completion log. When: Displaying an achievement grid. Why: Grayed and hidden states show what remains without spoiling hidden goals.
+- [rule] Apply one shared theme resource to the root control so child controls inherit consistent styling. When: Building a multi-screen idle game UI. Why: Inheritance keeps styling uniform across screens.
+- [rule] Keep tooltips on a top layer that follows the mouse with a small offset and clamps inside the screen edges. When: Showing hover tooltips. Why: Clamping prevents tooltips from leaving the visible area.
+- [procedure] 1) Create a base style box. 2) Duplicate it for each state: normal, hover, pressed, disabled. 3) Change only the color on each copy. When: Styling interactive buttons across states.
+- [procedure] 1) Add incoming notifications to a queue. 2) Show one notification at a time. 3) Keep each visible for its duration, default 2.5 seconds, before showing the next. When: Displaying multiple timed notifications. Why: Sequential display avoids stacked popups.
+- [procedure] 1) State how long the game advanced. 2) State what was earned. 3) Say if a limit or efficiency factor altered the outcome. When: Showing offline progress on return. Why: Players need the basis of the number to trust it.
+- [tradeoff] Gated content: show grayed out with requirement as goal; in shops, hide unmet-level items but show each cost, quantity selector, and remaining stock for capped items. When: when content is gated behind a requirement, or when rendering a shop panel. Why: A visible requirement turns locked content into a target, while hiding locked shop items avoids clutter and stock and quantity controls support informed buying.
+- [pitfall] Greedy ad placement works as a tax on the fun, so ads placed to maximize views damage the play they are meant to monetize. When: when placing rewarded or interstitial ads in a game. Why: Interruptions at the wrong moment erode the enjoyment that makes players return.
+- [pitfall] Containers arrange children automatically, so manually positioning those children conflicts with the container layout. When: Placing controls inside containers.
+- [pitfall] Long skill or recipe lists overflow unless wrapped in a scroll container. When: Displaying lists longer than the screen.
+- [fact] A base resolution of 1920 by 1080 with canvas-items stretch and expand aspect scales the UI to varying screen sizes. When: Setting up a fixed-base-resolution UI.
+
+## idle progress display
+- [rule] Animate resource or XP gains with a brief floating label, such as '+42 XP', and a gold tint on skill panels, without modal interruption instead of silent value updates. When: A player gains a resource or XP, including level-ups. Why: Transient visual gain feedback makes progress feel rewarding and confirms it while play continues.
+- [rule] Show per-time rates alongside totals, such as 'logs per hour' or 'XP per hour'. When: Progress accumulates over time in an idle or incremental game. Why: Rates let players judge how fast they are growing.
+- [rule] Show completion logs that indicate how close the player is to 100 percent. When: Collection or completion goals exist. Why: A visible completion measure gives players a clear next target.
+- [rule] Show time as hours, minutes and seconds, dropping leading units that are zero. When: Displaying durations to players.
+- [rule] Show a skill's progress bar as XP earned within the current level against XP required for the next level. When: Displaying skill progress.
+- [rule] When progress slows, the game should explain the cause and present a minimum of two sensible remedies.
+- [procedure] 1) Multiply the per-second value by 3,600. 2) Append '/hr' and an optional unit. When: Showing production rates to players. Why: Session-length rates are easier to judge than per-second values.
+- [metric] Completion percent equals unlocked achievement count divided by total definitions, times 100. When: Showing completion progress in a log. Why: A simple ratio gives players a clear measure of overall completion.
+- [fact] The estimated dungeon duration shown to players is a UI hint calculated from the total enemy HP in the run. When: Displaying expected dungeon length. Why: Enemy HP totals approximate how long the fight will take.
+
+## large number handling
+- [mechanism] Exponential notation compresses runaway growth so each tenfold increase reads as a small step in the exponent, making relentless growth feel steady. When: when displaying numbers that grow by orders of magnitude. Why: Small exponent increments represent huge value jumps, so the growth feels smooth rather than overwhelming.
+- [rule] Pick a default number notation that fits the game's tone, and provide a toggle, since identical values may read as warm or sterile depending on formatting. When: when designing number display for an idle or incremental game. Why: Players differ in the feel they prefer, and notation shapes how growth is perceived.
+- [rule] When the reward is just a counter climbing higher, number typography forms a central part of game feel and deserves design care. When: when the main reward in a game is a growing counter. Why: The displayed number carries the reward, so its form directly shapes how satisfying progress feels.
+- [tradeoff] Plain integers under 1,000 with K/M/B suffixes at one or two decimals, or comma grouping to 10,000 then one-decimal K to 1 million and two-decimal M, B, T beyond. When: when displaying totals that grow into thousands, millions or billions. Why: Raw long integers are hard to read and make growth hard to perceive; suffixes keep big numbers readable.
+- [tradeoff] Suffix notation (thousand, million, letter suffixes) feels warm and human early on, while scientific notation is colder but unlimited and precise at large scales. When: when choosing how large idle-game numbers are displayed. Why: Familiar words suit early numbers; scientific form keeps working when suffixes run out.
+- [pitfall] Standard floating-point numbers top out around 1.8e308, so very large idle-game values overflow and need a custom big-number representation. When: when idle-game values grow beyond standard float range. Why: Native float types cannot represent magnitudes past their maximum.
+- [pitfall] Fixed formatting thresholds make values just below and above a boundary look different, which can confuse players reading the number. When: Choosing number formatting thresholds. Why: Format switches at discrete points.

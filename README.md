@@ -104,23 +104,31 @@ the lexicon maps each Russian word to several English synonyms; an English query
 `--game` raises the share of the top 10 atoms a model judges useful for that game from 0.45 to 0.48 on average over
 the six profiles and eight everyday questions: it reorders the results, it does not replace a precise query.
 
-## Detective atom set
+## Genre atom sets
 
-`kb/detective/` holds 30,224 atoms in 1,517 topics, written from detective, sensation and occult
-investigator fiction (1841-1930, public domain) and from how such plots are built: clues and their
-placement, deduction, testimony and alibis, misdirection, concealed identities, the reveal scene, telling a
-human cause from a supernatural one. They are design reference for investigation and mystery mechanics;
-most sit in the `narrative` domain. Same format and files as `kb/all/` (atoms, fit, Russian lexicon,
-packs); group ids start with `det-g`. Search it on its own:
+Besides `kb/all/`, three sets cover one subject each, in the same format and files (atoms, fit, Russian
+lexicon, packs). Search one with `--set <name>`:
+
+| Set | Atoms | Topics | Written from | Group ids |
+|---|---|---|---|---|
+| `kb/detective/` | 30,224 | 1,517 | detective, sensation and occult investigator fiction (1841-1930, public domain) and how such plots are built | `det-g` |
+| `kb/roguelike/` | 1,694 | 148 | free web articles on roguelike design: permadeath, dungeon generation, item identification, resource clocks, time systems, AI, field of view | `rog-g` |
+| `kb/idle/` | 262 | 29 | free web articles on idle and incremental design: cost and production formulas, prestige layers, offline progress, pacing, large numbers | `idl-g` |
+
+The detective set is design reference for investigation and mystery mechanics: clues and their placement,
+deduction, testimony and alibis, misdirection, concealed identities, the reveal scene, telling a human cause
+from a supernatural one; most of it sits in the `narrative` domain.
 
 ```
 python find.py --set detective "testimony that contradicts a clock"
 python find.py --set detective "улика, которую игрок видит раньше, чем понимает"
+python find.py --set roguelike "food clock pacing"
+python find.py --set idle "формула валюты престижа"
 ```
 
 `--set` takes any folder under `kb/` that has an `atoms.jsonl` (default `all`); it applies to atom search,
-not to `--cards` or `--worlds`. Sets are searched one at a time, so the large detective set never crowds
-general design advice out of a result.
+not to `--cards` or `--worlds`. Sets are searched one at a time, so a large genre set never crowds general
+design advice out of a result.
 
 ## World records
 
